@@ -1,0 +1,77 @@
+引
+用
+体
+检
+引用体检
+
+逐条核查参考文献：是否真实存在 · 信息是否准确 · 是否已被撤稿
+
+送检单 粘贴参考文献列表
+GB/T 7714 · APA · IEEE
+参考文献列表
+识别到 1 条
+期刊 1
+载入示例
+清空
+开始体检
+
+⚿
+只把参考文献条目发送给 Crossref、OpenAlex、doi.org 检索，不上传论文正文。查不到不等于一定是编造，结果供人工复核参考。
+
+体 检 报 告
+
+引用健康度
+100
+/ 100
+
+已完成 1 / 1 条|用时 12.3 秒
+
+复制修正版清单
+全部
+1
+已核实
+1
+01
+已核实
+
+Miller, G. A. (1956). The magical number seven, plus or minus two: Some limits on our capacity for processing information. Psychological Review, 63(2), 81–97. https://doi.org/10.1037/h0043158
+
+已核实：与数据库记录一致（来源：Crossref）
+
+把握度 98%
+收起
+字段
+引用中的写法
+数据库记录
+比对
+题名
+The magical number seven, plus or minus two: Some limits on our capacity for processing information
+The magical number seven, plus or minus two: Some limits on our capacity for processing information.
+✓一致
+作者
+Miller, G. A
+Miller GA
+✓一致
+年份
+1956
+1956
+✓一致
+期刊 / 会议
+Psychological Review
+Psychological Review
+✓一致
+DOI
+10.1037/h0043158
+10.1037/h0043158
+✓一致
+
+按数据库记录生成的规范写法
+
+Miller, G. A. (1956). The magical number seven, plus or minus two: Some limits on our capacity for processing information. Psychological Review, 63(2), 81–97. https://doi.org/10.1037/h0043158
+
+复制
+
+核查过程 · 共 1 步
+
+CROSSREFCrossref：DOI 10.1037/h0043158 对应《The magical number seven, plus or minus …》12331ms
+数据来源：Crossref（含 Retraction Watch 撤稿数据）· OpenAlex · doi.org。规范写法只依据数据库记录生成，不由大模型编写。

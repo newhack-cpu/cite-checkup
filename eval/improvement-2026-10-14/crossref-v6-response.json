@@ -1,0 +1,260 @@
+{
+  "status": "ok",
+  "message-type": "work-list",
+  "message-version": "1.0.0",
+  "message": {
+    "facets": {},
+    "total-results": 18393,
+    "items": [
+      {
+        "issue": "1",
+        "DOI": "10.1111/j.2517-6161.1995.tb02031.x",
+        "type": "journal-article",
+        "page": "289-300",
+        "title": [
+          "Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing"
+        ],
+        "volume": "57",
+        "author": [
+          {
+            "given": "Yoav",
+            "family": "Benjamini",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Tel Aviv University , Israel"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Yosef",
+            "family": "Hochberg",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Tel Aviv University , Israel"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Journal of the Royal Statistical Society Series B: Statistical Methodology"
+        ],
+        "score": 120.940216,
+        "issued": {
+          "date-parts": [
+            [
+              1995,
+              1,
+              1
+            ]
+          ]
+        },
+        "URL": "https://doi.org/10.1111/j.2517-6161.1995.tb02031.x"
+      },
+      {
+        "issue": "4",
+        "DOI": "10.1111/j.1467-9868.2010.00746.x",
+        "type": "journal-article",
+        "page": "405-416",
+        "title": [
+          "Discovering the False Discovery Rate"
+        ],
+        "volume": "72",
+        "author": [
+          {
+            "given": "Yoav",
+            "family": "Benjamini",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Tel Aviv University , Israel"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Journal of the Royal Statistical Society Series B: Statistical Methodology"
+        ],
+        "score": 58.299873,
+        "issued": {
+          "date-parts": [
+            [
+              2010,
+              8,
+              5
+            ]
+          ]
+        },
+        "URL": "https://doi.org/10.1111/j.1467-9868.2010.00746.x"
+      },
+      {
+        "issue": "2",
+        "short-container-title": [
+          "Journal of Statistical Planning and Inference"
+        ],
+        "DOI": "10.1016/s0378-3758(01)00252-x",
+        "type": "journal-article",
+        "page": "351-362",
+        "title": [
+          "A modified Benjamini–Hochberg multiple comparisons procedure for controlling the false discovery rate"
+        ],
+        "volume": "104",
+        "author": [
+          {
+            "given": "Koon Shing",
+            "family": "Kwong",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Burt",
+            "family": "Holland",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Siu Hung",
+            "family": "Cheung",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Journal of Statistical Planning and Inference"
+        ],
+        "score": 58.040787,
+        "issued": {
+          "date-parts": [
+            [
+              2002,
+              6
+            ]
+          ]
+        },
+        "URL": "https://doi.org/10.1016/s0378-3758(01)00252-x"
+      },
+      {
+        "issue": "1",
+        "DOI": "10.1111/rssb.12298",
+        "type": "journal-article",
+        "page": "45-74",
+        "title": [
+          "Multiple Testing with the Structure-Adaptive Benjamini–Hochberg Algorithm"
+        ],
+        "volume": "81",
+        "author": [
+          {
+            "given": "Ang",
+            "family": "Li",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "University of Chicago   USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Rina Foygel",
+            "family": "Barber",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "University of Chicago   USA"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Journal of the Royal Statistical Society Series B: Statistical Methodology"
+        ],
+        "score": 54.77762,
+        "issued": {
+          "date-parts": [
+            [
+              2018,
+              11,
+              2
+            ]
+          ]
+        },
+        "URL": "https://doi.org/10.1111/rssb.12298"
+      },
+      {
+        "issue": "4",
+        "short-container-title": [
+          "Journal of the Royal Statistical Society: Series B (Methodological)"
+        ],
+        "DOI": "10.1111/rssb.1995.57.issue-4",
+        "type": "journal-issue",
+        "volume": "57",
+        "container-title": [
+          "Journal of the Royal Statistical Society: Series B (Methodological)"
+        ],
+        "score": 52.72001,
+        "issued": {
+          "date-parts": [
+            [
+              1995,
+              11
+            ]
+          ]
+        },
+        "URL": "https://doi.org/10.1111/rssb.1995.57.issue-4"
+      }
+    ],
+    "items-per-page": 5,
+    "query": {
+      "start-index": 0,
+      "search-terms": null
+    }
+  }
+}

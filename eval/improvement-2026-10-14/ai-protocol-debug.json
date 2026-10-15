@@ -1,0 +1,36 @@
+{
+  "status": 200,
+  "type": "application/json",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "index": 0,
+            "id": "call_00_EO2WYiVqR1tBpdqTOzf93857",
+            "type": "function",
+            "function": {
+              "name": "verify_references",
+              "arguments": "{\"references\": [{\"sourceIndex\": 1, \"raw\": \"LECUN Y, BENGIO Y, HINTON G | Deep learning | Nature | 2015 | DOI: 10.1038/nature14539\", \"title\": \"Deep learning\", \"authors\": \"LECUN Y, BENGIO Y, HINTON G\", \"venue\": \"Nature\", \"year\": 2015, \"doi\": \"10.1038/nature14539\"}, {\"sourceIndex\": 2, \"raw\": \"Hochreiter, S., & Schmidhuber, J. (1997). Long short-term memory. Neural Networks, 9(8), 1735–1780. DOI: 10.1162/neco.1997.9.8.1735\", \"title\": \"Long short-term memory\", \"authors\": \"Hochreiter, S., & Schmidhuber, J.\", \"venue\": \"Neural Networks\", \"year\": 1997, \"doi\": \"10.1162/neco.1997.9.8.1735\"}]}"
+            }
+          }
+        ]
+      },
+      "logprobs": null,
+      "finish_reason": "tool_calls"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 875,
+    "completion_tokens": 267,
+    "total_tokens": 1142,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 875
+  }
+}

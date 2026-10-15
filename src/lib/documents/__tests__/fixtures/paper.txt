@@ -1,0 +1,5 @@
+A controlled trial found no significant difference in memory scores.
+参考文献
+[1] Miller, G. (1956). The magical number seven. Psychological Review, 63(2), 81-97. doi:10.1037/h0043158
+致谢
+Thanks.

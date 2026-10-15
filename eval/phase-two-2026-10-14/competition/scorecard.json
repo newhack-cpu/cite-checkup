@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-14",
+  "competition": "第九届传智杯 AI WEB 网页开发挑战赛",
+  "officialTrackUrl": "https://www.boxuegu.com/matchTrack/detail/?id=10037",
+  "scope": "本地作品工程模拟复评；不是官方成绩、名次或获奖预测；不含现场答辩",
+  "status": "final-simulation-based-on-verified-local-build",
+  "total": 73,
+  "max": 100,
+  "previousTotal": 48,
+  "change": 25,
+  "criteria": [
+    {
+      "name": "AI技术深度", "max": 35, "score": 23,
+      "basis": "真实DeepSeek Function Calling、书目核验与单来源BM25 RAG均有运行证据；原文与工具参数校验、精确引句定位及未完成状态已落实。",
+      "deductions": "没有自主规划Agent；RAG仅有限材料，缺盲测/消融；没有多模态理解；没有MCP Server，工具整合仍限于本应用。",
+      "subcriteria": [
+        {"name":"大模型集成质量","max":8,"score":7,"reason":"真实模型解析及4例论断链路通过；有结构、范围及输出校验。样本少，缺模型对照与长文质量评测。"},
+        {"name":"Agent/工作流设计","max":8,"score":5,"reason":"程序编排解析、查询、检索与判断，具备限定工具。无模型自主规划、反思或跨轮决策。"},
+        {"name":"RAG技术应用","max":6,"score":4,"reason":"BM25分块召回、范围标注和引句定位真实可用。无大样本检索质量/判断提升消融，跨语言与长文漏召回风险仍在。"},
+        {"name":"多模态能力","max":5,"score":0,"reason":"PDF/DOCX/TXT只做文字提取；未实现OCR、视觉或语音模型理解。"},
+        {"name":"AI安全与可控性","max":4,"score":3.5,"reason":"输入来源、工具、结构及精确引句校验，明确降级/失败/取消。未完成完整渗透、对抗红队或生产级共享预算验证。"},
+        {"name":"MCP/工具集成","max":4,"score":3.5,"reason":"verify_references与judge_claim通过Function Calling受控集成；不把Function Calling冒充MCP，外部互操作与工具规划仍有限。"}
+      ]
+    },
+    {
+      "name":"创新性","max":25,"score":18,
+      "basis":"将书目事实和论断证据拆成两条可追溯任务，保留原始错误并以报告交互表达范围。",
+      "deductions":"采用成熟技术组合，没有新模型或检索算法证据；缺竞品对照和用户研究。",
+      "subcriteria":[
+        {"name":"选题创新","max":10,"score":8,"reason":"AI引用自查场景明确；未证明需求独有性或系统竞品优势。"},
+        {"name":"技术方案创新","max":8,"score":5,"reason":"受约束解析、外部事实核验、RAG溯源组合有工程价值；基础方法成熟。"},
+        {"name":"交互模式创新","max":7,"score":5,"reason":"体检式交互、来源范围、确认应用与引句定位一致；尚无用户研究验证创新收益。"}
+      ]
+    },
+    {
+      "name":"前端工程质量","max":10,"score":8.5,
+      "basis":"TypeScript、组件与业务模块分层；离线边界测试，桌面与手机无横向溢出和pageerror。",
+      "deductions":"未做正式Core Web Vitals、弱网、长期稳定性或负载测量；本地生产构建通过不等于完成公网生产验证。",
+      "subcriteria":[
+        {"name":"前端代码质量","max":4,"score":3.5,"reason":"结构和校验清晰，有真实故障回归；跨环境长期验证不足。"},
+        {"name":"组件化与架构设计","max":3,"score":3,"reason":"核验、AI、claims、documents与展示分离，接口和类型边界清晰。"},
+        {"name":"前端性能优化","max":3,"score":2,"reason":"字体自托管、复用数据与有限调用；未量化首屏、交互延迟和高并发。"}
+      ]
+    },
+    {
+      "name":"实用性","max":10,"score":8.5,
+      "basis":"文献核验、文件导入、来源范围与论断关系已形成可操作流程，并有真实API/数据库结果。",
+      "deductions":"没有真实用户效率研究；数据库覆盖与摘要不足限制，不能替代全文审阅。",
+      "subcriteria":[
+        {"name":"场景真实性","max":5,"score":4.5,"reason":"问题明确且有文献幻觉研究背景；缺目标用户访谈。"},
+        {"name":"解决方案有效性","max":5,"score":4,"reason":"回归与冒烟可复核；样本小，跨域推广、中文覆盖和长文证据仍受限。"}
+      ]
+    },
+    {
+      "name":"用户体验","max":10,"score":8.5,
+      "basis":"纸张/印章视觉统一；上传确认、标签页状态、取消恢复、引用定位、报告与手机布局有验收。",
+      "deductions":"未做真实用户可用性/无障碍完整评估；慢模型仍有等待，论断不是逐token流式输出。",
+      "subcriteria":[
+        {"name":"UI设计与视觉表现","max":4,"score":3.5,"reason":"视觉统一、桌面手机已检查；缺正式设计/无障碍评测。"},
+        {"name":"前端交互体验","max":3,"score":2.5,"reason":"输入保留、预览确认、报告和取消明确；未完成广泛浏览器与真实用户测试。"},
+        {"name":"AI交互体验","max":3,"score":2.5,"reason":"阶段进度、来源/证据与失败状态可见；论断等待期间细粒度进度有限。"}
+      ]
+    },
+    {
+      "name":"社会价值与商业潜力","max":10,"score":6.5,
+      "basis":"帮助写作者发现引用问题并强调学术证据边界，具有教育和学术诚信意义。",
+      "deductions":"没有真实试点、付费客户、单位成本测量、定价/转化/留存证据。",
+      "subcriteria":[
+        {"name":"社会价值","max":5,"score":4.5,"reason":"学术诚信和负责任AI方向清晰；实际教育效果尚未研究。"},
+        {"name":"商业潜力","max":5,"score":2,"reason":"可探索写作中心/图书馆服务，但目前只是方向，没有商业验证。"}
+      ]
+    }
+  ],
+  "verification": {
+    "referenceEvaluation":"29/29，真实公开数据库；自建小样本，不代表总体准确率",
+    "referenceAi":"真实DeepSeek+数据库，两条公开引文通过，无降级",
+    "claimsAi":"eval/results/claims-smoke-2026-10-14T02-20-44-807Z.json：4/4；1条Crossref真实摘要与3条明确标注的合成材料，全部引句有效",
+    "browser":"eval/phase-two-2026-10-14/qa-dev-browser-acceptance.json：1440/390；10次真实文件解析；claims用真实响应回放验证UI；无溢出/pageerror",
+    "browserLiveClaim":"eval/phase-two-2026-10-14/browser-claim-report.md：真实页面合成矛盾判断与报告",
+    "productionBrowser":"eval/phase-two-2026-10-14/qa-production-browser-acceptance.json：生产版1440/390，claims回放UI通过，无开发叠层/溢出/pageerror",
+    "productionImport":"src/lib/documents/__tests__/production-import-verification.json：普通200、中文200、32MiB展开攻击413，实际生产HTTP3例通过",
+    "finalTests":"23文件289项通过；eval/phase-two-2026-10-14/final-checks.json与final-test.log，根代理实际执行",
+    "lint":"passed，final-lint.log，exit 0",
+    "typecheck":"passed，final-typecheck.log，exit 0",
+    "productionBuild":"passed，final-build.log，exit 0",
+    "clientSecretScan":"232静态文件，密钥匹配0；client-secret-check.json",
+    "pdf":"11页本地技术验收版；最终渲染见competition/pdf-validation.json",
+    "video":"独立普通话音轨已生成；实际成片待root验收"
+  },
+  "submissionGaps":["真实学校、团队成员和分工尚待填写","本地HEAD未建立，不能伪造Git开发历史","尚未提供GitHub/Gitee评审访问权限","没有公网部署，官方将其列为可选加分","报名、缴费及正式提交尚未执行或确认"],
+  "submitted":false,
+  "officialScore":false
+}

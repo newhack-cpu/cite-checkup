@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-14",
+  "desktop": "1440x1000",
+  "mobile": "390x844",
+  "sampleCount": 11,
+  "sampleResult": "5 verified, 2 mismatch, 2 not_found, 1 retracted, 1 unverifiable; existing server cache",
+  "freshReference": "Miller 1956 DOI 10.1037/h0043158; 12.3s; verified; see fresh-reference.txt",
+  "passed": [
+    "empty-input blocked",
+    "sample loader and clear",
+    "81 references blocked after deferred recalculation",
+    "sample verdict filter",
+    "corrected list clipboard",
+    "detail expansion",
+    "desktop and mobile no horizontal overflow"
+  ],
+  "confirmedIssue": "Simulated response ends after meta + one result: shows completed 1/11, health score 100, remaining cards pending, corrected copy enabled",
+  "notes": [
+    "No source modifications",
+    "Existing localhost:3210 listener preserved",
+    "127.0.0.1 hydration issue excluded from grade; localhost verified",
+    "Fresh response body capture failed in Playwright but DOM text/screenshot saved",
+    "Full 29-case online evaluation and production build not run"
+  ],
+  "pageErrors": []
+}

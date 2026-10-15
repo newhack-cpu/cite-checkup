@@ -1,0 +1,16 @@
+{
+  "scope": "Existing project evaluation only; no source changes",
+  "viewports": ["1440x1000", "390x844"],
+  "checks": [
+    "Initial desktop/mobile readability, layout and horizontal overflow",
+    "Empty input disabled; sample loading, entry count and clear",
+    "Real sample submission, streaming states, final verdicts",
+    "Detail expansion, field comparison, evidence links and process",
+    "Result filters and corrected list copy",
+    "More than 80 references blocked",
+    "Request failure and incomplete stream behavior",
+    "All controls and dense result layout on mobile"
+  ],
+  "evidence": "Screenshots plus browser observations saved alongside this file",
+  "service": "Existing listener on port 3210; preserve user-owned process"
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "step": "test",
+    "exitCode": 0,
+    "seconds": 16.6505801,
+    "log": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\final-test.log"
+  },
+  {
+    "step": "lint",
+    "exitCode": 0,
+    "seconds": 28.0643636,
+    "log": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\final-lint.log"
+  },
+  {
+    "step": "typecheck",
+    "exitCode": 0,
+    "seconds": 18.713705,
+    "log": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\final-typecheck.log"
+  },
+  {
+    "step": "build",
+    "exitCode": 0,
+    "seconds": 39.1245206,
+    "log": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\final-build.log"
+  }
+]

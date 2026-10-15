@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-10-14T02:44:27.100Z",
+  "base": "http://127.0.0.1:3210",
+  "observations": [
+    {
+      "case": "ordinary-pdf",
+      "wireBytes": 2084,
+      "status": 200,
+      "code": null,
+      "metadata": {
+        "filename": "paper.pdf",
+        "format": "pdf",
+        "byteSize": 2084,
+        "characterCount": 294,
+        "pageCount": 2,
+        "extraction": "text-layer"
+      },
+      "elapsedMs": 1799,
+      "passed": true
+    },
+    {
+      "case": "chinese-pdf",
+      "wireBytes": 2474,
+      "status": 200,
+      "code": null,
+      "metadata": {
+        "filename": "chinese.pdf",
+        "format": "pdf",
+        "byteSize": 2474,
+        "characterCount": 54,
+        "pageCount": 1,
+        "extraction": "text-layer"
+      },
+      "elapsedMs": 1135,
+      "passed": true
+    },
+    {
+      "case": "32-mib-flate-expansion",
+      "wireBytes": 33246,
+      "status": 413,
+      "code": "PDF_RESOURCE_LIMIT",
+      "metadata": null,
+      "elapsedMs": 1142,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

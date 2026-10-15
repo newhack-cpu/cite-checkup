@@ -1,0 +1,26 @@
+{
+  "mode": "offline upstream fixtures only; no network",
+  "aiAuthorOmission": {
+    "raw": "LeCun, Y., Smith, J., & Brown, K. (2015). Deep learning. Nature, 521(7553), 436-444. DOI: 10.9999/ai-author-audit",
+    "standard": {
+      "verdict": "mismatch",
+      "issues": [
+        "引用中有作者姓名与数据库记录不符，数据库作者为 LeCun Y, Bengio Y, Hinton G"
+      ],
+      "authors": "LeCun, Y., Smith, J., & Brown, K"
+    },
+    "ai": {
+      "verdict": "verified",
+      "issues": [],
+      "authors": "LeCun, Y."
+    }
+  },
+  "nearCandidateExport": {
+    "raw": "LeCun, Y., Bengio, Y., & Hinton, G. (2015). Alpha beta gamma delta theta iota. Nature, 521(7553), 436-444.",
+    "verdict": "mismatch",
+    "summary": "找到相近文献，但信息有出入，请核对是否为同一篇",
+    "confidence": 0.55,
+    "suggestion": "LeCun, Y., Bengio, Y., & Hinton, G. (2015). Alpha beta gamma delta epsilon zeta. Nature. https://doi.org/10.9999/near-audit",
+    "export": "[1] LeCun, Y., Bengio, Y., & Hinton, G. (2015). Alpha beta gamma delta epsilon zeta. Nature. https://doi.org/10.9999/near-audit"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "error": "无法读取 PDF；文件可能损坏或格式不受支持。请重新导出为带文字层的 PDF。",
+  "code": "INVALID_DOCUMENT"
+}

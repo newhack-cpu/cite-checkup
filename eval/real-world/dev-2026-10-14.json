@@ -1,0 +1,1209 @@
+{
+ "name": "dev-2026-10-14",
+ "description": "开发集：调规则时可以反复查看",
+ "createdAt": "2026-10-14",
+ "method": "Crossref /works?filter=…,has-references:true,from-pub-date:2023-01-01&sample=N，按出版社各抽若干篇已发表论文，从其参考文献中随机取 unstructured 原文。所有条目都出自已发表论文，视为真实存在的文献。",
+ "cases": [
+  {
+   "id": "D001",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.jbiotec.2026.04.001",
+   "raw": "Andriamaharavo, N.R. Retention Data NIST Mass Spectrometry Data Center, NIST Mass Spectrometry Data Center. Retrieved March 2014, 17.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "web",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D002",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.foodres.2023.113454",
+   "raw": "Stone, H., Sidel, J., Oliver, S., Woolsey, A., & Singleton, R. C. (2004). Sensory Evaluation by Quantitative Descriptive Analysis. In Descriptive sensory analysis in practice (Vol. 28, pp. 23-34).",
+   "assertedDoi": "10.1002/9780470385036.ch1c",
+   "label": {
+    "kind": "book",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D003",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.foodres.2023.113454",
+   "raw": "Council, E. (2002). Council Directive 2001/110/EC of 20 December 2001 relating to honey. In (pp. p. 47–52). Official Journal of the European Communities: Official Journal of the European Communities.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "legal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D004",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.foodres.2023.113454",
+   "raw": "Kivima, E., Tanilas, K., Martverk, K., Rosenvald, S., Timberg, L., & Laos, K. (2021). The Composition, Physicochemical Properties, Antioxidant Activity, and Sensory Properties of Estonian Honeys. Foods, 10 (3), 511.Doi: doi:10.3390/foods10030511.",
+   "assertedDoi": "10.3390/foods10030511",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D005",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.anndiagpath.2024.152375",
+   "raw": "Onenerk AM, Ozdemir HG, Ozkara S, Aker Vardar F, Ustaalioglu Oven B. KRAS/NRAS mutational analysis and clinicopathologic correlation of colorectal carcinoma: a single institute experience from Turkey. J Med Surg Res 2021;VIII:1022–9.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "en",
+    "note": "Crossref 作者记录本身错乱（姓名颠倒），引文正确"
+   }
+  },
+  {
+   "id": "D006",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.anndiagpath.2024.152375",
+   "raw": "González IA, Bauer PS, Liu J, Chatterjee D. Intraepithelial tumour infiltrating lymphocytes are associated with absence of tumour budding and immature/myxoid desmoplastic reaction, and with better recurrence-free survival in stages I–III colorectal cancer. Histopathology 2021;78:252–64. doi:https://doi.org/10.1111/his.14211.",
+   "assertedDoi": "10.1111/his.14211",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D007",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.anndiagpath.2024.152375",
+   "raw": "Gao J, Shen Z, Deng Z, Mei L. Impact of Tumor–Stroma Ratio on the Prognosis of Colorectal Cancer: A Systematic Review. Front Oncol 2021;11. doi:https://doi.org/10.3389/fonc.2021.738080.",
+   "assertedDoi": "10.3389/fonc.2021.738080",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D008",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.sciaf.2025.e02617",
+   "raw": "D. Africa, Development News, Research, World Bank, kernel description, Accessed 2023.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "web",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D009",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.ijbiomac.2025.142260",
+   "raw": "Belzer C, de Vos WM, Microbes inside--from diversity to function: the case of Akkermansia. ISME J. 6 (8) (2012) 1449–58. (PubMed: 22437156).",
+   "assertedDoi": "10.1038/ismej.2012.6",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D010",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.ijbiomac.2025.142260",
+   "raw": "Yuan J, Wang Y, Huang Y, Study on microwave extraction and antioxidant activity of total polysaccharides from Radix Hedysari, applied Chemistry 48 (02) (2019) 373–375+379. doi: 10.16581/j.cnki.issn1671-3206.2019.02.014.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D011",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.ijbiomac.2025.142260",
+   "raw": "Wu W, Zhou J, Xuan R, Chen J, Han H, Liu J, Niu T, Chen H, Wang F. Dietary κ-carrageenan facilitates gut microbiota-mediated intestinal inflammation. Carbohydr Polym 277 (202) 118830. [PubMed: 34893247].",
+   "assertedDoi": "10.1016/j.carbpol.2021.118830",
+   "label": {
+    "kind": "journal",
+    "lang": "en",
+    "note": "引文年份写成 (202)，原文笔误",
+    "acceptMismatch": true
+   }
+  },
+  {
+   "id": "D012",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.psep.2023.08.040",
+   "raw": "MathWorks, 2023. Surrogate Optimization Algorithm [WWW Document]. URL 〈https://www.mathworks.com/help/gads/surrogate-optimization-algorithm.html〉 (accessed 4.25.23).",
+   "assertedDoi": null,
+   "label": {
+    "kind": "web",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D013",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.psep.2023.08.040",
+   "raw": "EPD, 2021. Clinical Waste Management - Resources [WWW Document]. URL 〈https://www.epd.gov.hk/epd/clinicalwaste/en/information.html〉 (accessed 4.25.23).",
+   "assertedDoi": null,
+   "label": {
+    "kind": "web",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D014",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.psep.2023.08.040",
+   "raw": "Vilardi, G., Verdone, N., 2020. Exergy Analysis of Waste Incineration Plant: Flue Gas Recirculation and Process Optimization. Proceedings 2020, Vol. 58, Page 29 58, 29. 〈https://doi.org/10.3390/WEF-06923〉.",
+   "assertedDoi": "10.3390/WEF-06923",
+   "label": {
+    "kind": "conference",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D015",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.eurox.2023.100222",
+   "raw": "Hasta Hakları Aktivistleri Derneği, Sezaryen Raporu II Artan Sezaryen Oranlarının İncelenmesi HHAD. Available from: 2022 〈http://www.hastahaklari.org.tr/〉.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "report",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D016",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.eurox.2023.100222",
+   "raw": "Erefe İ. Veri Toplama Araçlarının Niteliği. In: Erefe İ (ed.), Hemşirelikte Araştırma İlke Süreç ve Yöntemleri. Ankara: Hemşirelikte Araştırma ve Geliştirme Derneği; 2004.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "book",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D017",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.ijfatigue.2023.107735",
+   "raw": "ASTM International. ASTM E384-17 Standard test method for microindentation hardness of materials; 2017.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "standard",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D018",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.ijfatigue.2023.107735",
+   "raw": "Ludwigson, D. C. & Hall, A. M. DMIC Report 111 The Physical Metallurgy of Precipitation-Hardenable Stainless Steels. (1959).",
+   "assertedDoi": null,
+   "label": {
+    "kind": "report",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D019",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s00170-024-14047-z",
+   "raw": "Behera AK, de Sousa RA, Ingarao G, Oleksik V (2017) Single point incremental forming: an assessment of the progress and technology trends from 2005 to 2015. J Manuf Process 27:37–62. https://doi.org/10.1016/J.JMAPRO.2017.03.014",
+   "assertedDoi": "10.1016/J.JMAPRO.2017.03.014",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D020",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s00170-024-14047-z",
+   "raw": "Bertini L, Kubit A, Al-Sabur R et al (2022) Investigating residual stresses in metal-plastic composites stiffening ribs formed using the single point incremental forming method. Materials (Basel) 15:8252. https://doi.org/10.3390/MA15228252",
+   "assertedDoi": "10.3390/MA15228252",
+   "label": {
+    "kind": "journal",
+    "lang": "en",
+    "note": "引文第一作者 Bertini L 不在 Crossref 作者列表中，疑为原文引用错误（待用第二数据源确认）",
+    "acceptMismatch": true
+   }
+  },
+  {
+   "id": "D021",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s00170-024-14047-z",
+   "raw": "Cao K, Ma X, Zhang B et al (2010) Tensile behavior of polycarbonate over a wide range of strain rates. Mater Sci Eng A 527:4056–4061. https://doi.org/10.1016/j.msea.2010.03.088",
+   "assertedDoi": "10.1016/j.msea.2010.03.088",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D022",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1186/s40001-026-04702-4",
+   "raw": "He Q, Zhuang D, Zheng L, Fan Z, Zhu J, Zhou P, et al. Harmonic focus compared with classic hemostasis during total parathyroidectomy in secondary hyperparathyroidism: a prospective randomized trial. Am Surg. 2014;80(12):E342–5.",
+   "assertedDoi": "10.1177/000313481408001206",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D023",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1186/s40001-026-04702-4",
+   "raw": "Xu W, Lu G, Gong L, Tang W, Lu J. Endoscopic parathyroidectomy versus open parathyroidectomy for patients with refractory secondary hyperparathyroidism: a meta-analysis. Wideochir Inne Tech Maloinwazyjne. 2023 Dec;18(4):578–587. https://doi.org/10.5114/wiitm.2023.132439. Epub 2023 Oct 27. PMID: 38239584; PMCID: PMC10793148.",
+   "assertedDoi": "10.5114/wiitm.2023.132439",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D024",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1186/s40001-026-04702-4",
+   "raw": "Kwon D, Kim BC, Lee YM, Sung TY, Chung KW, Kim WW. Hungry bone syndrome after parathyroidectomy in secondary and tertiary hyperparathyroidism: a retrospective cohort study. Ann Surg Treat Res. 2026 Mar;110(3):149–156. https://doi.org/10.4174/astr.2026.110.3.149. Epub 2026 Mar 4. PMID: 41822741; PMCID: PMC12978853.",
+   "assertedDoi": "10.4174/astr.2026.110.3.149",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D025",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s40278-026-98092-6",
+   "raw": "Harada M, et al. Perioperative Management of a Case of Trousseau Syndrome Accompanied by Aortic Valve Vegetation. Cureus 17: e77202, No. 1, Jan 2025. Available from: URL: https://www.ncbi.nlm.nih.gov/pmc/articles/11808285",
+   "assertedDoi": "10.7759/cureus.77202",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D026",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s40516-026-00342-y",
+   "raw": "Spierings, A.B.L.G.: Comparison of density of stainless steel 316L parts produced with selective laser melting using different powder grades. In: Bourell, D.L.C.R.H.S.C.C.B.J.J.M.H. (ed.) Solid freeform fabrication proceedings : August 2009. pp. 342–353. University of texas at austin, Texas (2009)",
+   "assertedDoi": null,
+   "label": {
+    "kind": "conference",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D027",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s40516-026-00342-y",
+   "raw": "Ostolaza, M., Arrizubieta, J.I., Lamikiz, A., Cortina, M.: Functionally graded AISI 316L and AISI H13 manufactured by L-DED for die and mould applications. Appl. Sci. 11, 1–11 (2021). https://doi.org/10.3390/app11020771",
+   "assertedDoi": "10.3390/app11020771",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D028",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s40516-026-00342-y",
+   "raw": "Jiang, Z., Diggle, B., Tan, M.L., Viktorova, J., Bennett, C.W., Connal, L.A.: Extrusion 3D printing of polymeric materials with advanced properties. Adv. Sci. 7, 1–32 (2020). https://doi.org/10.1002/advs.202001379",
+   "assertedDoi": "10.1002/advs.202001379",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D029",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1038/s41433-026-04379-3",
+   "raw": "Eilon E, Lishinsky-Fischer N, Levy J. Systemic prostacyclin analogues in pulmonary hypertension are associated with reduced risk of age-related macular degeneration: a cohort study. Eye. 2026;40:71–6.",
+   "assertedDoi": "10.1038/s41433-025-04093-6",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D030",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s12221-024-00555-y",
+   "raw": "D.D. Fang, Cotton Fiber: Physics, Chemistry and Biology. Springer (2018). https://doi.org/10.1007/978-3-030-00871-0",
+   "assertedDoi": "10.1007/978-3-030-00871-0",
+   "label": {
+    "kind": "book",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D031",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s12221-024-00555-y",
+   "raw": "A. Meftahi, R. Khajavi, A. Rashidi, M. Rahimi, A. Bahador, J. Nanostruct. Chem. 8, 311 (2018). https://doi.org/10.1007/s40097-018-0275-4",
+   "assertedDoi": "10.1007/s40097-018-0275-4",
+   "label": {
+    "kind": "journal",
+    "lang": "en",
+    "note": "物理期刊惯例：引文不写题名，DOI 正确"
+   }
+  },
+  {
+   "id": "D032",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s12221-024-00555-y",
+   "raw": "S. Chokshi, V. Parmar, P. Gohil, V. Chaudhary, Journal of Natural Fibers 19, 3942 (2022). https://doi.org/10.1080/15440478.2020.1848738",
+   "assertedDoi": "10.1080/15440478.2020.1848738",
+   "label": {
+    "kind": "journal",
+    "lang": "en",
+    "note": "物理期刊惯例：引文不写题名；在线发表 2020、卷期 2022"
+   }
+  },
+  {
+   "id": "D033",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s00134-025-07842-z",
+   "raw": "Martin-Loeches I, Reyes LF, Nseir S, Ranzani O, Povoa P, Diaz E et al (2023) European Network for ICU-Related Respiratory Infections (ENIRRIs): a multinational, prospective, cohort study of nosocomial LRTI. Intensive Care Med 49:1212–1222",
+   "assertedDoi": "10.1007/s00134-023-07210-9",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D034",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s00134-025-07842-z",
+   "raw": "Torres A, Ferrer M, Badia JR (2010) Treatment guidelines and outcomes of hospital-acquired and ventilator-associated pneumonia. Clin Infect Dis Off Publ Infect Dis Soc Am 51(Suppl 1):S48-53",
+   "assertedDoi": "10.1086/653049",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D035",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s00134-025-07842-z",
+   "raw": "Kreitmann L, Jermoumi S, Vasseur M, Chabani M, Nourry E, Richard J-C et al (2023) Relationship between COVID-19 and ICU-acquired colonization and infection related to multidrug-resistant bacteria: a prospective multicenter before-after study. Intensive Care Med 49:796–807",
+   "assertedDoi": "10.1007/s00134-023-07109-5",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D036",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s11042-023-14351-y",
+   "raw": "Cai H, Qu Z, Li Z, Zhang Y, Hu X, Hu B (2020) Feature-level fusion approaches based on multi-modal EEG data for depression recognition. Inform Fusion 59:127–138",
+   "assertedDoi": "10.1016/j.inffus.2020.01.008",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D037",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/jdd.13593",
+   "raw": "Ultimate Dental. Accessed Nov 15 2023.https://www.ultimatedental.com/uploads/Kerr‐SimpliShade_IFU.pdf",
+   "assertedDoi": null,
+   "label": {
+    "kind": "web",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D038",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/jdd.13593",
+   "raw": "Ultimate Dental. Accessed Nov 15 2023.https://www.ultimatedental.com/uploads//SDS/Kerr‐OptiBondUniv_SDS.pdf",
+   "assertedDoi": null,
+   "label": {
+    "kind": "web",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D039",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/chem.202402794",
+   "raw": "M. Yi M. Jing Y. Yang Y. Huang G. Zou T. Wu H. Hou and X. Ji Advanced Functional Materials2024 n/a 2400001.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "en",
+    "note": "Wiley 的 unstructured 把作者、刊名、年份粘在一起，没有题名"
+   }
+  },
+  {
+   "id": "D040",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/chem.202402794",
+   "raw": "I. Jeon D. Yang D. Yadav J. Seo H. Zhang L. Yin H. S. Ahn C.-R. Cho Electrochimica Acta2023 439 141730.",
+   "assertedDoi": "10.1016/j.electacta.2022.141730",
+   "label": {
+    "kind": "journal",
+    "lang": "en",
+    "note": "同上"
+   }
+  },
+  {
+   "id": "D041",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/jclp.70042",
+   "raw": "Department of Veterans Affairs.2023b.Evidence Evaluation and Decisions for Posttraumatic Stress Disorder Claims Related to Personal Trauma.https://www.knowva.ebenefits.va.gov/system/templates/selfservice/va_ssnew/help/customer/locale/en-US/portal/554400000001018/content/554400000177715/M21-1-Part-VIII-Subpart-iv-Chapter-1-Section-E-Evidence-Evaluation-and-Decisions-for-Posttraumatic-Stress-Disorder-PTSD-Claims-Related-to-Personal-Trauma#1c.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "web",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D042",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/jclp.70042",
+   "raw": "Department of Defense.2022.Department of Defense Annual Report on Sexual Assault in the Military Fiscal Year 2021.https://www.sapr.mil/sites/default/files/public/docs/reports/FY21_Annual_Report.pdf.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "report",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D043",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/jclp.70042",
+   "raw": "Government Accountability Office.2021.VA Disability Exams: Better Planning Needed as Use of Contracted Examiners Continues to Grow.https://www.gao.gov/assets/gao-21-444t.pdf.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "report",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D044",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/jssr.70003",
+   "raw": "Pew Research Center.2014a.Religion in Latin America.Pew.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "report",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D045",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/jssr.70003",
+   "raw": "Pew Research Center.2014b.Religious Landscape Study.Pew.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "report",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D046",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/jssr.70003",
+   "raw": "Pew Research Center.2017b.Europe's Growing Muslim Population.Pew.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "report",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D047",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/mrm.70110",
+   "raw": "VizioliL MoellerS DowdleL et al.Spanning spatial scales with functional imaging in the human brain; initial experiences at 10.5 Tesla. December2024:2024.12.20.629800. doi:10.1101/2024.12.20.629800",
+   "assertedDoi": "10.1101/2024.12.20.629800",
+   "label": {
+    "kind": "preprint",
+    "lang": "en",
+    "note": "引文列出的作者是数据库第 1、4、5 位，可能是预印本版本差异",
+    "acceptMismatch": true
+   }
+  },
+  {
+   "id": "D048",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/mrm.70110",
+   "raw": "EstebanO MarkiewiczCJ GoncalvesM.SDCflows: Susceptibility Distortion Correction workFLOWS. April2025. doi:10.5281/zenodo.15271272",
+   "assertedDoi": null,
+   "label": {
+    "kind": "software",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D049",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/mrm.70110",
+   "raw": "EstebanO MarkiewiczCJ BlairR PoldrackRA GorgolewskiKJ.sMRIPrep: structural MRI PREProcessing workflows. December2024. doi:10.5281/zenodo.14532379",
+   "assertedDoi": null,
+   "label": {
+    "kind": "software",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D050",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/1748-5967.12712",
+   "raw": "ByrdJH(1998)Temperature‐dependent development and computer modeling of insect growth: its application to forensic entomology. University of Florida ProQuest Dissertations Publishing 9837361.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "thesis",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D051",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/1748-5967.12712",
+   "raw": "AdamsB(2018)The biological significance and utility of feeding byDermestes maculatus. M.Sc. Thesis in University of Nebraska‐Lincoln Lincoln NE.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "thesis",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D052",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/hlca.202300210",
+   "raw": "D. Shriver P. Atkins T. Overton J. Rourke M. Weller Armstrong F.Shriver & Atkins Inorganic Chemistry; Oxford University Press: Oxford 2006.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "book",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D053",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/hlca.202300210",
+   "raw": "Gaussian 16 Revision C.01 M. J. Frisch G. W. Trucks H. B. Schlegel G. E. Scuseria M. A. Robb J. R. Cheeseman G. Scalmani V. Barone G. A. Petersson H. Nakatsuji X. Li M. Caricato A. V. Marenich J. Bloino B. G. Janesko R. Gomperts B. Mennucci H. P. Hratchian J. V. Ortiz A. F. Izmaylov J. L. Sonnenberg D. Williams-Young F. Ding F. Lipparini F. Egidi J. Goings B. Peng A. Petrone T. Henderson D. Ranasinghe V. G. Zakrzewski J. Gao N. Rega G. Zheng W. Liang M. Hada M. Ehara K. Toyota R. Fukuda J. Hasegawa M. Ishida T. Nakajima Y. Honda O. Kitao H. Nakai T. Vreven K. Throssell Jr. J. A. Montgomery J. E. Peralta F. Ogliaro M. J. Bearpark J. J. Heyd E. N. Brothers K. N. Kudin V. N. Staroverov T. A. Keith R. Kobayashi J. Normand K. Raghavachari A. P. Rendell J. C. Burant S. S. Iyengar J. Tomasi M. Cossi J. M. Millam M. Klene C. Adamo R. Cammi J. W. Ochterski R. L. Martin K. Morokuma O. Farkas J. B. Foresman D. J. Fox Gaussian Inc. Wallingford CT 2016.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "software",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D054",
+   "group": "Wiley",
+   "sourcePaper": "10.1155/sci/9150101",
+   "raw": "European Parliament and Council Consolidated Text: Regulation (EU) 2017/745 of the European Parliament and of the Council of 5 April 2017 on Medical Devices Amending Directive 2001/83/EC Regulation (EC) No 178/2002 and Regulation (EC) No 1223/2009 and Repealing Council Directives 90/385/EEC and 93/42/EEC (Text With EEA Relevance) 2021 Text With EEA Relevance.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "legal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D055",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/antibiotics14030237",
+   "raw": "Villanueva-Bueno, C., Montecatine-Alonso, E., Jiménez-Parrilla, F., González-López, M., Manrique-Rodríguez, S., Moreno-Ramos, F., Cañete-Ramírez, C., Dolz, E., García-Robles, A., and Caro-Teller, J.M. (2023). Antimicrobial Defined Daily Dose in Neonatal Population: Validation in the Clinical Practice. Antibiotics, 12.",
+   "assertedDoi": "10.3390/antibiotics12030602",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D056",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/antibiotics14030237",
+   "raw": "World Health Organization (2024, October 13). Antimicrobial Resistance. Available online: https://www.who.int/news-room/fact-sheets/detail/antimicrobial-resistance.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "web",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D057",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/antibiotics14030237",
+   "raw": "Shamseddine, J., Sadeq, A., Yousuf, K., Abukhater, R., Yahya, L.O., Espil, M.A., Hassan, M.E., Fadl, R.E., Ahmed, R.T.E., and Elkonaissi, I. (2023). Impact of Antimicrobial Stewardship Interventions on Days of Therapy and Guideline Adherence: A Comparative Point-Prevalence Survey Assessment. Front. Trop. Dis., 3.",
+   "assertedDoi": "10.3389/fitd.2022.1050344",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D058",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/nano14100887",
+   "raw": "Zhou, X.F., Sun, H.N., and Bai, X. (2020). Two-dimensional transition metal dichalcogenides: Synthesis, biomedical applications and biosafety evaluation. Front. Bioeng. Biotechnol., 8.",
+   "assertedDoi": "10.3389/fbioe.2020.00236",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D059",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/nano14100887",
+   "raw": "Hassan, M., Li, P.P., Lin, J., Li, Z.H., Javed, M.S., Peng, Z.C., and Celebi, K. (2024). Smart energy storage: W18O49 NW/Ti3C2Tx composite-enabled all solid state flexible electrochromic supercapacitors. Small, e2400278.",
+   "assertedDoi": "10.1002/smll.202400278",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D060",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/jcm14061860",
+   "raw": "Zhou, X., Yang, G., Zeng, X., Wang, L., Xiang, J., Zhao, J., Chen, X., and Zhang, L. (2023). Dupilumab and the potential risk of eosinophilic pneumonia: Case report, literature review, and FAERS database analysis. Front. Immunol., 14.",
+   "assertedDoi": "10.3389/fimmu.2023.1277734",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D061",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/bios13020284",
+   "raw": "Elaine, A.A., Krisyanto, S.I., and Hasanah, A.N. (2022). Dual-Functional Monomer MIPs and Their Comparison to Mono-Functional Monomer MIPs for SPE and as Sensors. Polymers, 14.",
+   "assertedDoi": "10.3390/polym14173498",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D062",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/bios13020284",
+   "raw": "Kumar, S., Ye, F., Dobretsov, S., and Dutta, J. (2019). Chitosan Nanocomposite Coatings for Food, Paints, and Water Treatment Applications. Appl. Sci., 9.",
+   "assertedDoi": "10.3390/app9122409",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D063",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/ma18081724",
+   "raw": "Anitua, E., and Tejero, R. (2022). Provisional Matrix Formation at Implant Surfaces-The Bridging Role of Calcium Ions. Cells, 11.",
+   "assertedDoi": "10.3390/cells11193048",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D064",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/ma18081724",
+   "raw": "Ceruso, F.M., Ieria, I., Tallarico, M., Meloni, S.M., Lumbau, A.I., Mastroianni, A., Zotti, A., and Gargari, M. (2022). Comparison between Early Loaded Single Implants with Internal Conical Connection or Implants with Transmucosal Neck Design: A Non-Randomized Controlled Trial with 1-Year Clinical, Aesthetics, and Radiographic Evaluation. Materials, 15.",
+   "assertedDoi": "10.3390/ma15020511",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D065",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/ma18081724",
+   "raw": "Pabst, A., Asran, A., Luers, S., Laub, M., Holfeld, C., Palarie, V., Thiem, D.G.E., Becker, P., Hartmann, A., and Heimes, D. (2022). Osseointegration of a New, Ultrahydrophilic and Nanostructured Dental Implant Surface: A Comparative In Vivo Study. Biomedicines, 10.",
+   "assertedDoi": "10.3390/biomedicines10050943",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D066",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/en16134968",
+   "raw": "Shi, Y.M. (2012). Volcano edificies and Gas Pool Formation in Changling Faulted Depression, Songliao Basin, China. [Ph.D. Thesis, China University of Geosciences (Beijing)].",
+   "assertedDoi": null,
+   "label": {
+    "kind": "thesis",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D067",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/en16134968",
+   "raw": "Li, R.L., Zhu, J.F., Liu, Y.H., Li, Z.B., Fan, X.P., Leng, Q.L., and Zhang, T.T. (2022). Volcanic rock reservoir characteristics and hydrocarbon accumulation factors of rift unit in southern area, Songliao Basin. Earth Sci. Front.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D068",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/en16134968",
+   "raw": "(2012). Standard Pore Size Distribution and Porosity of Solid Materials by Mercury Porosimetry and Gas Adsorption—Part 3:Analysis of Micropores by Gas Adsorption (Standard No. GB/T 21650.3-2011).",
+   "assertedDoi": null,
+   "label": {
+    "kind": "standard",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D069",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/s25216782",
+   "raw": "Shami, Z., Arslan, T., and Lomax, P. (2025). Wearable Soft Robots: Case Study of Using Shape Memory Alloys in Rehabilitation. Bioengineering, 12.",
+   "assertedDoi": "10.3390/bioengineering12030276",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D070",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/s25216782",
+   "raw": "Deng, E., and Tadesse, Y. (2021). A soft 3D-printed robotic hand actuated by coiled SMA. Actuators, 10.",
+   "assertedDoi": "10.3390/act10010006",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D071",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/s25216782",
+   "raw": "Denslow, E. (2025, February 28). Passive Range of Motion Exercises for Stroke Patients to Help Improve Mobility—Home Recovery for Stroke, Brain Injury and More. Flint Rehab. Available online: https://www.flintrehab.com/passive-range-motion-exercises-for-stroke-patients/.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "web",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D072",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/antiox12030542",
+   "raw": "Moseti, D., Regassa, A., and Kim, W.K. (2016). Molecular Regulation of Adipogenesis and Potential Anti-Adipogenic Bioactive Molecules. Int. J. Mol. Sci., 17.",
+   "assertedDoi": "10.3390/ijms17010124",
+   "label": {
+    "kind": "journal",
+    "lang": "en"
+   }
+  },
+  {
+   "id": "D073",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/ssv-2024-0014",
+   "raw": "Duan H X, Shi Q, Kang S P, et al. Advances in research on the interactions among arbuscular mycorrhizal fungi, rhizobia, and plants (in Chinese). Acta Pratacul Sin, 2024, 33: 166–182 [段海霞, 师茜, 康生萍, 等. 丛枝菌根真菌和根瘤菌与植物共生研究进展. 草业学报, 2024, 33: 166–182].",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D074",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/ssv-2024-0014",
+   "raw": "Cheng Q. The Earth Is A Clock: a natural history of biological nitrogen fixation and the planetary future (in Chinese). Beijing: Science Press, 2013 [程奇. 地球是钟(固氮篇). 北京: 科学出版社, 2013].",
+   "assertedDoi": null,
+   "label": {
+    "kind": "book",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D075",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/ssv-2024-0014",
+   "raw": "Wang J L, Liu C, Lei L. Asymbiotic nitrogen-fixing bacteria and their nitrogen fixation potential (in Chinese). Acta Microbiol Sin, 2022, 62: 2861–2878 [王加龙, 刘驰, 雷丽, 等. 非共生固氮菌及其固氮作用. 微生物学报, 2022, 62: 2861–2878].",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D076",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/sspma-2023-0067",
+   "raw": "Yue S, Liu X F. The accuracy measurement of carrier mobility of cubic boron arsenide (in Chinese). Chin Sci Bull, 2022, 67: 3247-3249 [岳帅, 刘新风. 立方砷化硼载流子迁移率的精准测量. 科学通报, 2022, 67: 3247–3249].",
+   "assertedDoi": "10.1360/TB-2022-0837",
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D077",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/sspma-2023-0067",
+   "raw": "Shan H Y, Zu S, Fang Z Y. Research progress in ultrafast dynamics of plasmonic hot electrons (in Chinese). Laser Optoelectron Prog, 2017, 54: 20–30 [单杭永, 祖帅, 方哲宇. 表面等离激元热电子超快动力学研究进展. 激光与光电子学进展, 2017, 54: 20–30].",
+   "assertedDoi": "10.3788/LOP54.030002",
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D078",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/sspma-2023-0067",
+   "raw": "Zhou M, Liu L P, Dai Q X, et al. Femito second ultrafast dynamic progress and femtosecond pulse measurement (in Chinese). Laser Optoelectron Prog, 2004, 8: 6–12 [周明, 刘立鹏, 戴起勋, 等. 飞秒超快动力学过程及飞秒检测. 激光与光电子学进展, 2004, 8: 6–12].",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D079",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/n072025-0158",
+   "raw": "刘显, 陈强路, 王小林, 丘靥, 杨源显. 2020. 方解石晶体定向性对水的拉曼光谱影响的实验评估——天然包裹体盐度的测定. 南京大学学报, 56: 297–307.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D080",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/n072025-0066",
+   "raw": "满孝永. 2009. 北疆历史农牧业地理. 硕士学位论文. 西安: 西北大学. 10–35.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "thesis",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D081",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/n072025-0066",
+   "raw": "李水城. 2018. 谈阿凡纳谢沃文化——兼论新疆阿依托汗一号墓地的发现. 新疆文物, 1–2: 105–121.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D082",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/n072025-0066",
+   "raw": "闫雪梅, 鲁礼鹏, 张奋强. 2020. 新疆阜康白杨河上游墓群发掘简报. 文物, 12: 4–20.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D083",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/ssv-2022-0287",
+   "raw": "Zhang L Y. The development status of medical polymer materials in China (in Chinese). Shanxi Chem, 2005, 25: 11–14+33 [张立英. 我国医用高分子材料的发展现状. 山西化工, 2005, 25: 11–14+33].",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D084",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/n072025-0246",
+   "raw": "宫鹏, 牛振国, 程晓, 等. 2010. 中国1990和2000基准年湿地变化遥感. 中国科学: 地球科学, 40: 768–775.",
+   "assertedDoi": "10.1360/zd2010-40-6-768",
+   "label": {
+    "kind": "journal",
+    "lang": "zh",
+    "note": "Crossref 记录的作者与引文完全不同，待用第二数据源确认哪边有误",
+    "acceptMismatch": true
+   }
+  },
+  {
+   "id": "D085",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/n072025-0246",
+   "raw": "陆瑶, 黄良波, 贾珺杰, 等. 2023. 内陆水体初级生产力评估方法研究进展. 地球科学进展, 38: 57–69.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D086",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/n072025-0246",
+   "raw": "徐涛, 刘国东, 邢冰. 2014. 天津地区大气降水中氢氧稳定同位素特征及影响因素研究. 西南民族大学学报(自然科学版), 40: 421–427.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D087",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/sste-2024-0102",
+   "raw": "廖宝文, 张乔民. 2014. 中国红树林的分布、面积和树种组成. 湿地科学, 12: 435–440.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D088",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/sste-2024-0102",
+   "raw": "展鹏飞, 仝川. 2023. 甲烷排放部分抵消湿地生态系统碳汇功能: 全球数据分析. 应用生态学报, 34: 2958–2968.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D089",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/sste-2024-0102",
+   "raw": "遆超普, 颜晓元. 2010. 基于氮排放数据的中国大陆大气氮素湿沉降量估算. 农业环境科学学报, 28: 1606–1611.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D090",
+   "group": "科学出版社/中国科学(中文)",
+   "sourcePaper": "10.1360/csb-2025-5421",
+   "raw": "Li Z X. Simulation-based investigation of converging-diverging flow channel atructures in commercial flow field plates for proton exchange membrane fuel cells (in Chinese). Master Dissertation. Xi’an: Xi’an Jiaotong University, 2023 [李泽希. 质子交换膜燃料电池单电池尺度及电堆尺度下传输过程仿真研究. 硕士学位论文. 西安: 西安交通大学, 2023].",
+   "assertedDoi": null,
+   "label": {
+    "kind": "thesis",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D091",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/aauj.2024115",
+   "raw": "王 韦韦, 朱 存玺, 陈 黎卿. 玉米免耕播种机主动式秸秆移位防堵装置的设计与试验. 农业工程学报, 2017, 33: 10-17.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D092",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/aauj.2024115",
+   "raw": "罗 伟文, 胡 志超, 吴 峰. 全秸硬茬地小麦播种机碎秸导流装置参数设计与优化. 农业工程学报, 2019, 35: 1-10.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D093",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/aauj.2024115",
+   "raw": "贾 洪雷, 刘 行, 余 海波. 免耕播种机凹面爪式清茬机构仿真与试验. 农业机械学报, 2018, 49: 68-77.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D094",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/j.issn.2096-1634.20260414.0013",
+   "raw": "潘乃谷. 但开风气不为师：费孝通学科建设思想访谈[J]. 民俗研究, 1997(1): 16-34.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D095",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/j.issn.2096-1634.20260414.0013",
+   "raw": "费孝通. 社会学调查要发展[J]. 社会, 1983(3): 10-14.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D096",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/j.issn.2096-1634.20260414.0013",
+   "raw": "费皖. 费孝通“上书紫光阁”[J]. 百年潮, 2012(7): 72-73.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D097",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/1000-3207.2026.2026.0044",
+   "raw": "陈晓瑛, 胡俊茹, 王国霞, 等. 黑水虻幼虫粉替代鱼粉对黄颡鱼幼鱼生长性能、肌肉品质及血清生化指标的影响[J]. 动物营养学报, 2019, 31(6): 2788-2799.].",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D098",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/1000-3207.2026.2026.0044",
+   "raw": "农业农村部渔业渔政管理局, 全国水产技术推广总站, 中国水产学会. 中国渔业统计年鉴-2025 [M]. 北京: 中国农业出版社, 2025: 24.].",
+   "assertedDoi": null,
+   "label": {
+    "kind": "book",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D099",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/1000-3207.2026.2026.0044",
+   "raw": "黄 莹, 兰 怡菲, 叶 忠勋. 产朊假丝酵母替代鱼粉蛋白对克氏原螯虾幼虾生长性能、抗氧化能力和消化系统组织形态的影响. 水生生物学报, 2025, 49: 127-139.",
+   "assertedDoi": "10.3724/1000-3207.2025.2025.0201",
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D100",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/j.issn.1671-4342.20250084",
+   "raw": "赖凡，毛海燕. 试析美军数字现代化战略的半导体技术前沿［J］. 国防科技，2022（004）：043.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D101",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/j.issn.1671-4342.20250084",
+   "raw": "国家统计局社会科技和文化产业统计局. 中国高技术产业统计年鉴2024［M］. 北京：中国统计出版社，2025.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "book",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D102",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/j.issn.1671-4342.20250084",
+   "raw": "丁如. 美国芯片补贴“护栏条款”对中国的影响及应对建议［J］. 科技导报，2024，42（17）：28-40.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D103",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/j.gyjzg25041202",
+   "raw": "江源，田晓伟. 社会脆弱性问题研究进展评述与展望［J］. 软科学，2023，37（9）：139-144..",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D104",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/j.gyjzg25041202",
+   "raw": "冯慧，付国伟. 城市老旧小区治理：现实梗阻与未来路向：基于利益博弈视角的分析［J］. 学习论坛，2023（3）：93-100..",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D105",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/j.gyjzg25041202",
+   "raw": "戴祥玉，卜凡帅. 城乡结合部老旧社区的嵌入式治理［J］. 华南农业大学学报（社会科学版），2020，19（5）：130-140..",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D106",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/1000-6915.jrme.2024.0887",
+   "raw": "赵毅鑫，乔海清，谢镕澴，等. 煤岩单轴压缩破坏声发射轻量化三维卷积预测模型研究[J]. 岩石力学与工程学报，2022，41(8)：1 567–1 580.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D107",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/1000-6915.jrme.2024.0887",
+   "raw": "汤志立，徐千军. 基于9种机器学习算法的岩爆预测研究[J]. 岩石力学与工程学报，2020，39(4)：773–781.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "D108",
+   "group": "科学出版社 10.3724(中文)",
+   "sourcePaper": "10.3724/1000-6915.jrme.2024.0887",
+   "raw": "杨背背，殷坤龙，杜娟. 基于时间序列与长短时记忆网络的滑坡位移动态预测模型[J]. 岩石力学与工程学报，2018，37(10)：2 334–2 343.",
+   "assertedDoi": null,
+   "label": {
+    "kind": "journal",
+    "lang": "zh"
+   }
+  }
+ ]
+}

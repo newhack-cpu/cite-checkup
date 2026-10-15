@@ -1,0 +1,37 @@
+{
+  "ranAt": "2026-10-14T01:33:37.399Z",
+  "realDatabase": true,
+  "faultsUseRecordedResponses": true,
+  "desktop": {
+    "emptyDisabled": true,
+    "privacy": true,
+    "results": 11,
+    "copy": true,
+    "download": true,
+    "filter": true
+  },
+  "mobile": {
+    "width": 390,
+    "noOverflow": true,
+    "recordedResults": 2,
+    "longDoiWrap": {
+      "checkedAt": "2026-10-14T01:37:53.218Z",
+      "clientWidth": 170,
+      "scrollWidth": 170
+    }
+  },
+  "truncated": {
+    "copyDisabled": true,
+    "pendingStopped": true,
+    "partialReportMarked": true
+  },
+  "fallback": {
+    "noticeVisible": true
+  },
+  "cancel": {
+    "messageVisible": true,
+    "stopHidden": true
+  },
+  "pageErrors": [],
+  "passed": true
+}

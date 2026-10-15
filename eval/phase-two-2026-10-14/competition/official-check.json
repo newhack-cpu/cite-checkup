@@ -1,0 +1,27 @@
+{
+  "checkedDate": "2026-10-14",
+  "method": "HTTPS Invoke-RestMethod to official API",
+  "page": "https://www.boxuegu.com/matchTrack/detail/?id=10037",
+  "api": "https://gateway.boxuegu.com/portal-marketing/competition/track/detail?id=10037&includeDetail=true",
+  "responseCode": 200,
+  "responseTime": 1791943064164,
+  "trackId": 10037,
+  "sha256": "8883E6011D664D6A7F6DF4DA996BDD95955837E8202D072D664DBA38AECA56B0",
+  "video": {
+    "minMinutes": 5,
+    "maxMinutes": 8,
+    "format": "MP4",
+    "minResolution": "1080p",
+    "narrationLanguage": "Mandarin"
+  },
+  "pdfMaxPages": 30,
+  "weights": [
+    35,
+    25,
+    10,
+    10,
+    10,
+    10
+  ],
+  "webReader": "unavailable; official HTTPS API fetched successfully"
+}

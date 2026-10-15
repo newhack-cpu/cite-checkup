@@ -1,0 +1,10 @@
+{
+  "features": [
+    {"name":"文档导入", "checks":["PDF/DOCX/TXT真实解析", "预览先于填入", "参考文献片段/全文选择", "取消与重选", "损坏/加密/扫描/超限报错", "导入后原有核验可用"], "visual":["desktop-preview", "mobile-preview", "import-error"]},
+    {"name":"论断证据核查", "checks":["DOI摘要与用户正文互斥", "支持/矛盾/不足真实模型", "原文引句可追溯", "来源范围标签", "证据展开/收起与定位", "报告下载", "取消/缺钥/错误状态"], "visual":["desktop-claim-empty", "claim-result", "mobile-claim", "incomplete"]},
+    {"name":"集成", "checks":["页签键盘与状态保留", "旧11条示例及复制筛选", "195项基线测试保留", "test/lint/typecheck/build", "客户端密钥不泄漏"], "visual":["initial-desktop", "initial-mobile", "dense-result"]},
+    {"name":"参赛交付", "checks":["官方规则核对", "按实测重新评分", "PDF页数/中文/渲染", "视频5-8分钟MP4/1080p/普通话", "链接/文件可用"]}
+  ],
+  "exploratory": ["切换页签返回后保留输入", "长DOI/长段落不被卡片裁切", "缺失或无关证据不显示支持", "非文档和ZIP炸弹不进入主线程解析"],
+  "not_claimed": ["扫描件OCR", "文献全文自动下载", "全局事实裁决", "比赛官方评分或提交成功"]
+}

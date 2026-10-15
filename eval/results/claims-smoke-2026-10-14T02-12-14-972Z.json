@@ -1,0 +1,212 @@
+{
+  "ranAt": "2026-10-14T02:12:14.977Z",
+  "model": "deepseek-flash",
+  "passed": false,
+  "results": [
+    {
+      "id": "public-abstract",
+      "input": {
+        "doi": "10.1038/nature14539",
+        "claim": "深度学习模型能够通过多层处理，学习数据的多层次表示。"
+      },
+      "expected": "supported",
+      "response": {
+        "status": "incomplete",
+        "claim": "深度学习模型能够通过多层处理，学习数据的多层次表示。",
+        "verdict": null,
+        "explanation": "未获取到该 DOI 的可用摘要，核查未完成；请提供合法获取的证据正文",
+        "citations": [],
+        "chunks": [],
+        "source": null,
+        "coverage": {
+          "scope": "none",
+          "totalChunks": 0,
+          "retrievedChunks": 0,
+          "retrievedChars": 0,
+          "method": "bm25-en-zh-v1"
+        },
+        "warnings": [
+          "本结果为 AI 对论断与召回文本关系的辅助判断；引句可定位不代表科学结论已获证实，需人工复核。",
+          "仅检查本次指定来源，不覆盖跨文献系统检索；检索可能漏召回同义表达、跨语言内容和其他段落中的限制条件。"
+        ],
+        "model": null,
+        "errorCode": "NO_EVIDENCE"
+      },
+      "httpStatus": 200,
+      "ms": 14647,
+      "citationsValid": true,
+      "passed": false
+    },
+    {
+      "id": "synthetic-supported",
+      "input": {
+        "evidenceText": "这是功能验收用的合成研究材料，不是真实论文。研究招募了40名大学生，分为学习计划组和对照组，各20人。干预持续四周。学习计划组与对照组的平均测验成绩差异没有达到统计显著性。研究没有观察到学习计划提高考试成绩的可靠证据。研究没有追踪长期效果。",
+        "evidenceLabel": "验收合成材料",
+        "claim": "研究招募了40名大学生，干预持续四周。"
+      },
+      "expected": "supported",
+      "response": {
+        "status": "incomplete",
+        "claim": "研究招募了40名大学生，干预持续四周。",
+        "verdict": null,
+        "explanation": "模型结果未通过原文引用与结构校验，本次核查未完成",
+        "citations": [],
+        "chunks": [
+          {
+            "id": "source-1-c1",
+            "sourceId": "source-1",
+            "text": "这是功能验收用的合成研究材料，不是真实论文。研究招募了40名大学生，分为学习计划组和对照组，各20人。干预持续四周。学习计划组与对照组的平均测验成绩差异没有达到统计显著性。研究没有观察到学习计划提高考试成绩的可靠证据。研究没有追踪长期效果。",
+            "start": 0,
+            "end": 120,
+            "score": 3.939031
+          }
+        ],
+        "source": {
+          "id": "source-1",
+          "kind": "user_provided",
+          "label": "验收合成材料",
+          "retrievedAt": "2026-10-14T02:12:07.560Z",
+          "scope": "user_provided_text",
+          "totalChars": 120
+        },
+        "coverage": {
+          "scope": "user_provided_text",
+          "totalChunks": 1,
+          "retrievedChunks": 1,
+          "retrievedChars": 120,
+          "method": "bm25-en-zh-v1"
+        },
+        "warnings": [
+          "本结果为 AI 对论断与召回文本关系的辅助判断；引句可定位不代表科学结论已获证实，需人工复核。",
+          "仅检查本次指定来源，不覆盖跨文献系统检索；检索可能漏召回同义表达、跨语言内容和其他段落中的限制条件。",
+          "证据正文由用户提供，来源、真实性与完整性未经数据库核验；判断只对本次提供并召回的文字负责。"
+        ],
+        "model": null,
+        "errorCode": "INVALID_MODEL_RESPONSE"
+      },
+      "httpStatus": 200,
+      "ms": 3016,
+      "citationsValid": true,
+      "passed": false
+    },
+    {
+      "id": "synthetic-contradicted",
+      "input": {
+        "evidenceText": "这是功能验收用的合成研究材料，不是真实论文。研究招募了40名大学生，分为学习计划组和对照组，各20人。干预持续四周。学习计划组与对照组的平均测验成绩差异没有达到统计显著性。研究没有观察到学习计划提高考试成绩的可靠证据。研究没有追踪长期效果。",
+        "evidenceLabel": "验收合成材料",
+        "claim": "这项研究招募了400名大学生。"
+      },
+      "expected": "contradicted",
+      "response": {
+        "status": "complete",
+        "claim": "这项研究招募了400名大学生。",
+        "verdict": "contradicted",
+        "explanation": "证据文本明确写明“研究招募了40名大学生”，而待评估主张称“招募了400名大学生”，样本量数字与证据直接冲突（40 vs 400），属于在相同条件下给出不相容的结果，因此判定为 contradicted。需注意：该材料为功能验收用的合成研究材料，并非真实论文，其内容真实性未经独立核实；本判定仅针对所提供文本与该主张之间的关系，不涉及研究本身是否可信或科学结论是否成立。证据未提供抽样方式、招募地点、时间范围等信息，故主张中“大学生”这一人群描述虽与文本一致，但样本量这一核心部分被直接否定。",
+        "citations": [
+          {
+            "sourceId": "source-1",
+            "chunkId": "source-1-c1",
+            "quote": "研究招募了40名大学生，分为学习计划组和对照组，各20人。",
+            "start": 22,
+            "end": 51
+          }
+        ],
+        "chunks": [
+          {
+            "id": "source-1-c1",
+            "sourceId": "source-1",
+            "text": "这是功能验收用的合成研究材料，不是真实论文。研究招募了40名大学生，分为学习计划组和对照组，各20人。干预持续四周。学习计划组与对照组的平均测验成绩差异没有达到统计显著性。研究没有观察到学习计划提高考试成绩的可靠证据。研究没有追踪长期效果。",
+            "start": 0,
+            "end": 120,
+            "score": 2.212939
+          }
+        ],
+        "source": {
+          "id": "source-1",
+          "kind": "user_provided",
+          "label": "验收合成材料",
+          "retrievedAt": "2026-10-14T02:12:10.639Z",
+          "scope": "user_provided_text",
+          "totalChars": 120
+        },
+        "coverage": {
+          "scope": "user_provided_text",
+          "totalChunks": 1,
+          "retrievedChunks": 1,
+          "retrievedChars": 120,
+          "method": "bm25-en-zh-v1"
+        },
+        "warnings": [
+          "本结果为 AI 对论断与召回文本关系的辅助判断；引句可定位不代表科学结论已获证实，需人工复核。",
+          "仅检查本次指定来源，不覆盖跨文献系统检索；检索可能漏召回同义表达、跨语言内容和其他段落中的限制条件。",
+          "证据正文由用户提供，来源、真实性与完整性未经数据库核验；判断只对本次提供并召回的文字负责。"
+        ],
+        "model": "deepseek-flash"
+      },
+      "httpStatus": 200,
+      "ms": 2206,
+      "citationsValid": true,
+      "passed": true
+    },
+    {
+      "id": "synthetic-insufficient",
+      "input": {
+        "evidenceText": "这是功能验收用的合成研究材料，不是真实论文。研究招募了40名大学生，分为学习计划组和对照组，各20人。干预持续四周。学习计划组与对照组的平均测验成绩差异没有达到统计显著性。研究没有观察到学习计划提高考试成绩的可靠证据。研究没有追踪长期效果。",
+        "evidenceLabel": "验收合成材料",
+        "claim": "干预使参与者一年后的收入翻倍。"
+      },
+      "expected": "insufficient_evidence",
+      "response": {
+        "status": "complete",
+        "claim": "干预使参与者一年后的收入翻倍。",
+        "verdict": "insufficient_evidence",
+        "explanation": "检索到的唯一文本（source-1-c1）描述的是40名大学生、为期四周的学习计划干预，结局为平均测验成绩，且明确说明\"研究没有追踪长期效果\"。该文本完全没有涉及收入这一结局，也没有任何一年后随访数据，因此既不能支持\"干预使参与者一年后的收入翻倍\"，也不构成对它的直接矛盾（缺少匹配条件下的相反结果）。此外，该材料自称是\"功能验收用的合成研究材料，不是真实论文\"，其内容真实性未经独立核实。缺失的关键范围包括：收入结局指标、随访时间点（一年后）、效应量（翻倍）以及相应的人群与对照比较。故判定为证据不足。",
+        "citations": [
+          {
+            "sourceId": "source-1",
+            "chunkId": "source-1-c1",
+            "quote": "研究招募了40名大学生，分为学习计划组和对照组，各20人。干预持续四周。学习计划组与对照组的平均测验成绩差异没有达到统计显著性。研究没有观察到学习计划提高考试成绩的可靠证据。研究没有追踪长期效果。",
+            "start": 22,
+            "end": 120
+          }
+        ],
+        "chunks": [
+          {
+            "id": "source-1-c1",
+            "sourceId": "source-1",
+            "text": "这是功能验收用的合成研究材料，不是真实论文。研究招募了40名大学生，分为学习计划组和对照组，各20人。干预持续四周。学习计划组与对照组的平均测验成绩差异没有达到统计显著性。研究没有观察到学习计划提高考试成绩的可靠证据。研究没有追踪长期效果。",
+            "start": 0,
+            "end": 120,
+            "score": 0.287682
+          }
+        ],
+        "source": {
+          "id": "source-1",
+          "kind": "user_provided",
+          "label": "验收合成材料",
+          "retrievedAt": "2026-10-14T02:12:12.790Z",
+          "scope": "user_provided_text",
+          "totalChars": 120
+        },
+        "coverage": {
+          "scope": "user_provided_text",
+          "totalChunks": 1,
+          "retrievedChunks": 1,
+          "retrievedChars": 120,
+          "method": "bm25-en-zh-v1"
+        },
+        "warnings": [
+          "本结果为 AI 对论断与召回文本关系的辅助判断；引句可定位不代表科学结论已获证实，需人工复核。",
+          "仅检查本次指定来源，不覆盖跨文献系统检索；检索可能漏召回同义表达、跨语言内容和其他段落中的限制条件。",
+          "证据正文由用户提供，来源、真实性与完整性未经数据库核验；判断只对本次提供并召回的文字负责。"
+        ],
+        "model": "deepseek-flash"
+      },
+      "httpStatus": 200,
+      "ms": 2240,
+      "citationsValid": true,
+      "passed": true
+    }
+  ],
+  "limitation": "四条流程验收，不代表开放场景判断准确率；三条证据是明确标注的合成材料。"
+}

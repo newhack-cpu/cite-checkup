@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-14",
+  "competition": "第九届传智杯 AI WEB 网页开发挑战赛",
+  "officialTrackUrl": "https://www.boxuegu.com/matchTrack/detail/?id=10037",
+  "scope": "现有作品模拟评分，不含现场答辩，不是官方成绩或获奖预测",
+  "total": 48,
+  "criteria": [
+    {"name": "AI技术深度", "max": 35, "score": 3, "basis": "规则解析及数据库检索已经实现；LLM、Agent、RAG、多模态、MCP/Function Calling未实现。仅为可解释、来源约束及人工兜底基础给少量分。"},
+    {"name": "创新性", "max": 25, "score": 16, "basis": "AI幻觉引用场景明确，体检式交互有辨识度；算法和AI技术组合创新证据不足。"},
+    {"name": "前端工程质量", "max": 10, "score": 8, "basis": "分层组件、TypeScript、流式接口及基础质量检查良好；中断处理有缺陷，未验证生产构建与性能指标。"},
+    {"name": "实用性", "max": 10, "score": 7, "basis": "核心正常流程可用，自动纠错有价值；误判边界和数据库覆盖率限制削弱可信度。"},
+    {"name": "用户体验", "max": 10, "score": 8, "basis": "视觉统一、手机适配、筛选复制和解释性强；AI交互尚未实现，部分流结束状态和标签有误导。"},
+    {"name": "社会价值与商业潜力", "max": 10, "score": 6, "basis": "学术诚信价值清晰；未见用户验证、付费模式、成本与市场分析证据。"}
+  ],
+  "verification": {"tests": "31/31", "lint": "passed", "typecheck": "passed", "uiSample": "11 references passed using existing cache", "freshReference": "Crossref DOI 10.1037/h0043158 completed in 12.3s", "fullOnlineEvaluation": "not rerun", "productionBuild": "not run"},
+  "submissionGaps": ["本地没有Git提交历史", "团队信息待填写", "本目录未发现正式演示视频和技术PDF"],
+  "sourceChanges": false
+}

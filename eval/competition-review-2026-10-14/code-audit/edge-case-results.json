@@ -1,0 +1,275 @@
+{
+  "ranAt": "2026-10-14T00:56:00.459Z",
+  "mode": "offline mocked upstream fixtures; not an accuracy benchmark",
+  "results": [
+    {
+      "id": "title-mismatch-can-be-verified",
+      "raw": "LeCun, Y., Bengio, Y., & Hinton, G. (2015). Alpha beta gamma. Nature, 521(7553), 436-444. DOI: 10.9999/audit-title",
+      "verdict": "verified",
+      "confidence": 0.9548875000000001,
+      "summary": "已核实：与数据库记录一致（来源：Crossref）",
+      "issues": [],
+      "notes": [],
+      "fields": [
+        {
+          "field": "title",
+          "status": "mismatch",
+          "cited": "Alpha beta gamma",
+          "actual": "Alpha beta gamma delta epsilon zeta eta theta iota kappa"
+        },
+        {
+          "field": "authors",
+          "status": "match",
+          "cited": "LeCun, Y., Bengio, Y., & Hinton, G",
+          "actual": "LeCun Y, Bengio Y, Hinton G"
+        },
+        {
+          "field": "year",
+          "status": "match",
+          "cited": "2015",
+          "actual": "2015"
+        },
+        {
+          "field": "venue",
+          "status": "match",
+          "cited": "Nature",
+          "actual": "Nature"
+        },
+        {
+          "field": "doi",
+          "status": "match",
+          "cited": "10.9999/audit-title",
+          "actual": "10.9999/audit-title"
+        }
+      ],
+      "calls": [
+        "api.crossref.org/works/10.9999/audit-title"
+      ],
+      "score": {
+        "titleScore": 0.5449999999999999,
+        "authorRatio": 1,
+        "firstAuthor": "match",
+        "authorOrderOk": true,
+        "yearDiff": 0,
+        "venueScore": 1,
+        "venueCited": true,
+        "doiMatch": true,
+        "composite": 0.89975,
+        "same": true,
+        "partial": false
+      }
+    },
+    {
+      "id": "second-third-author-order-not-detected",
+      "raw": "LeCun, Y., Hinton, G., & Bengio, Y. (2015). Deep learning. Nature, 521(7553), 436-444. DOI: 10.9999/audit-order",
+      "verdict": "verified",
+      "confidence": 0.98,
+      "summary": "已核实：与数据库记录一致（来源：Crossref）",
+      "issues": [],
+      "notes": [],
+      "fields": [
+        {
+          "field": "title",
+          "status": "match",
+          "cited": "Deep learning",
+          "actual": "Deep learning"
+        },
+        {
+          "field": "authors",
+          "status": "match",
+          "cited": "LeCun, Y., Hinton, G., & Bengio, Y",
+          "actual": "LeCun Y, Bengio Y, Hinton G"
+        },
+        {
+          "field": "year",
+          "status": "match",
+          "cited": "2015",
+          "actual": "2015"
+        },
+        {
+          "field": "venue",
+          "status": "match",
+          "cited": "Nature",
+          "actual": "Nature"
+        },
+        {
+          "field": "doi",
+          "status": "match",
+          "cited": "10.9999/audit-order",
+          "actual": "10.9999/audit-order"
+        }
+      ],
+      "calls": [
+        "api.crossref.org/works/10.9999/audit-order"
+      ],
+      "score": {
+        "titleScore": 1,
+        "authorRatio": 1,
+        "firstAuthor": "match",
+        "authorOrderOk": true,
+        "yearDiff": 0,
+        "venueScore": 1,
+        "venueCited": true,
+        "doiMatch": true,
+        "composite": 1.15,
+        "same": true,
+        "partial": false
+      }
+    },
+    {
+      "id": "invented-coauthors-not-detected",
+      "raw": "LeCun, Y., Smith, J., & Brown, K. (2015). Deep learning. Nature, 521(7553), 436-444. DOI: 10.9999/audit-authors",
+      "verdict": "verified",
+      "confidence": 0.98,
+      "summary": "已核实：与数据库记录一致（来源：Crossref）",
+      "issues": [],
+      "notes": [],
+      "fields": [
+        {
+          "field": "title",
+          "status": "match",
+          "cited": "Deep learning",
+          "actual": "Deep learning"
+        },
+        {
+          "field": "authors",
+          "status": "partial",
+          "cited": "LeCun, Y., Smith, J., & Brown, K",
+          "actual": "LeCun Y, Bengio Y, Hinton G"
+        },
+        {
+          "field": "year",
+          "status": "match",
+          "cited": "2015",
+          "actual": "2015"
+        },
+        {
+          "field": "venue",
+          "status": "match",
+          "cited": "Nature",
+          "actual": "Nature"
+        },
+        {
+          "field": "doi",
+          "status": "match",
+          "cited": "10.9999/audit-authors",
+          "actual": "10.9999/audit-authors"
+        }
+      ],
+      "calls": [
+        "api.crossref.org/works/10.9999/audit-authors"
+      ],
+      "score": {
+        "titleScore": 1,
+        "authorRatio": 0.3333333333333333,
+        "firstAuthor": "match",
+        "yearDiff": 0,
+        "venueScore": 1,
+        "venueCited": true,
+        "doiMatch": true,
+        "composite": 1.0166666666666666,
+        "same": true,
+        "partial": false
+      }
+    },
+    {
+      "id": "crossref-retracted-prefix-without-update-metadata",
+      "raw": "LeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. Nature, 521(7553), 436-444. DOI: 10.9999/audit-retraction",
+      "verdict": "verified",
+      "confidence": 0.98,
+      "summary": "已核实：与数据库记录一致（来源：Crossref）",
+      "issues": [],
+      "notes": [],
+      "fields": [
+        {
+          "field": "title",
+          "status": "match",
+          "cited": "Deep learning",
+          "actual": "RETRACTED: Deep learning"
+        },
+        {
+          "field": "authors",
+          "status": "match",
+          "cited": "LeCun, Y., Bengio, Y., & Hinton, G",
+          "actual": "LeCun Y, Bengio Y, Hinton G"
+        },
+        {
+          "field": "year",
+          "status": "match",
+          "cited": "2015",
+          "actual": "2015"
+        },
+        {
+          "field": "venue",
+          "status": "match",
+          "cited": "Nature",
+          "actual": "Nature"
+        },
+        {
+          "field": "doi",
+          "status": "match",
+          "cited": "10.9999/audit-retraction",
+          "actual": "10.9999/audit-retraction"
+        }
+      ],
+      "calls": [
+        "api.crossref.org/works/10.9999/audit-retraction"
+      ],
+      "score": {
+        "titleScore": 1,
+        "authorRatio": 1,
+        "firstAuthor": "match",
+        "authorOrderOk": true,
+        "yearDiff": 0,
+        "venueScore": 1,
+        "venueCited": true,
+        "doiMatch": true,
+        "composite": 1.15,
+        "same": true,
+        "partial": false
+      }
+    },
+    {
+      "id": "upstream-403-becomes-not-found",
+      "raw": "Smith, J. (2020). Scholarly citation verification under restricted database access. Journal of Research, 2(1), 1-10.",
+      "verdict": "not_found",
+      "confidence": 0.75,
+      "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+      "issues": [
+        "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+      ],
+      "notes": [],
+      "fields": [],
+      "calls": [
+        "api.crossref.org/works",
+        "api.openalex.org/works"
+      ]
+    },
+    {
+      "id": "budget-zero-single-source-becomes-not-found",
+      "raw": "Smith, J. (2020). Verifiable citation checking across journal metadata collections. Journal of Research, 2(1), 1-10.",
+      "verdict": "not_found",
+      "confidence": 0.75,
+      "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+      "issues": [
+        "在 Crossref 中都检索不到题名、作者相符的文献"
+      ],
+      "notes": [],
+      "fields": [],
+      "calls": [
+        "api.crossref.org/works"
+      ],
+      "score": {
+        "titleScore": 0,
+        "authorRatio": 0,
+        "firstAuthor": "mismatch",
+        "yearDiff": 5,
+        "venueScore": 0,
+        "venueCited": true,
+        "composite": 0,
+        "same": false,
+        "partial": false
+      }
+    }
+  ]
+}

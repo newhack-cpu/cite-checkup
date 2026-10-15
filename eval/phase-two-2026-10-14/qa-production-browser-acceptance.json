@@ -1,0 +1,211 @@
+{
+  "ranAt": "2026-10-14T02:44:32.455Z",
+  "base": "http://localhost:3210",
+  "runLabel": "production",
+  "only": "claims",
+  "locatorTimeoutMs": 5000,
+  "documents": {
+    "mode": "Real browser uploads to local /api/import; real fixture PDF/DOCX parsing",
+    "fixtureRoot": "D:\\Darks\\projects\\cite-checkup\\src\\lib\\documents\\__tests__\\fixtures"
+  },
+  "claims": {
+    "mode": "Recorded real API responses replayed by Playwright route; no new model/database calls",
+    "successPath": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\claims-smoke-2026-10-14T02-20-44-807Z.json",
+    "failurePath": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\claims-smoke-2026-10-14T02-12-14-972Z.json"
+  },
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "uploads": [],
+      "claims": [
+        {
+          "id": "public-abstract",
+          "status": "complete",
+          "verdict": "supported",
+          "citationCount": 1,
+          "transport": "recorded response fixture replay"
+        },
+        {
+          "id": "synthetic-contradicted",
+          "status": "complete",
+          "verdict": "contradicted",
+          "citationCount": 1,
+          "transport": "recorded response fixture replay"
+        },
+        {
+          "id": "synthetic-insufficient",
+          "status": "complete",
+          "verdict": "insufficient_evidence",
+          "citationCount": 1,
+          "transport": "recorded response fixture replay"
+        },
+        {
+          "id": "incomplete",
+          "status": "incomplete",
+          "verdict": null,
+          "citationCount": 0,
+          "transport": "recorded response fixture replay"
+        }
+      ],
+      "layout": [
+        {
+          "step": "claims public-abstract",
+          "viewport": 1440,
+          "scrollWidth": 1440,
+          "bodyWidth": 1440
+        },
+        {
+          "step": "claims synthetic-contradicted",
+          "viewport": 1440,
+          "scrollWidth": 1440,
+          "bodyWidth": 1440
+        },
+        {
+          "step": "claims synthetic-insufficient",
+          "viewport": 1440,
+          "scrollWidth": 1440,
+          "bodyWidth": 1440
+        },
+        {
+          "step": "claims incomplete",
+          "viewport": 1440,
+          "scrollWidth": 1440,
+          "bodyWidth": 1440
+        },
+        {
+          "step": "cancelled claims",
+          "viewport": 1440,
+          "scrollWidth": 1440,
+          "bodyWidth": 1440
+        }
+      ],
+      "tabState": {
+        "keyboardRight": true,
+        "keyboardLeft": true,
+        "originalInputRetained": true,
+        "claimAndResultRetained": true
+      },
+      "screenshots": [
+        "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\qa-production-1440-claims-supported.png",
+        "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\qa-production-1440-claims-contradicted.png",
+        "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\qa-production-1440-claims-insufficient.png",
+        "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\qa-production-1440-claims-incomplete.png",
+        "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\qa-production-1440-claims-cancelled.png"
+      ],
+      "quoteNavigation": {
+        "collapse": true,
+        "citationExpandsChunk": true,
+        "exactQuote": true,
+        "positionsVisible": true,
+        "report": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\qa-production-1440-supported-report.md"
+      },
+      "incompleteReport": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\qa-production-1440-incomplete-report.md",
+      "cancel": {
+        "pendingRouteFixture": true,
+        "noVerdictAfterCancellation": true,
+        "controlsRecovered": true
+      },
+      "claimsReplayedPosts": 5,
+      "passed": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "uploads": [],
+      "claims": [
+        {
+          "id": "public-abstract",
+          "status": "complete",
+          "verdict": "supported",
+          "citationCount": 1,
+          "transport": "recorded response fixture replay"
+        },
+        {
+          "id": "synthetic-contradicted",
+          "status": "complete",
+          "verdict": "contradicted",
+          "citationCount": 1,
+          "transport": "recorded response fixture replay"
+        },
+        {
+          "id": "synthetic-insufficient",
+          "status": "complete",
+          "verdict": "insufficient_evidence",
+          "citationCount": 1,
+          "transport": "recorded response fixture replay"
+        },
+        {
+          "id": "incomplete",
+          "status": "incomplete",
+          "verdict": null,
+          "citationCount": 0,
+          "transport": "recorded response fixture replay"
+        }
+      ],
+      "layout": [
+        {
+          "step": "claims public-abstract",
+          "viewport": 390,
+          "scrollWidth": 390,
+          "bodyWidth": 390
+        },
+        {
+          "step": "claims synthetic-contradicted",
+          "viewport": 390,
+          "scrollWidth": 390,
+          "bodyWidth": 390
+        },
+        {
+          "step": "claims synthetic-insufficient",
+          "viewport": 390,
+          "scrollWidth": 390,
+          "bodyWidth": 390
+        },
+        {
+          "step": "claims incomplete",
+          "viewport": 390,
+          "scrollWidth": 390,
+          "bodyWidth": 390
+        },
+        {
+          "step": "cancelled claims",
+          "viewport": 390,
+          "scrollWidth": 390,
+          "bodyWidth": 390
+        }
+      ],
+      "tabState": {
+        "keyboardRight": true,
+        "keyboardLeft": true,
+        "originalInputRetained": true,
+        "claimAndResultRetained": true
+      },
+      "screenshots": [
+        "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\qa-production-390-claims-supported.png",
+        "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\mobile-claims-final.png",
+        "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\qa-production-390-claims-contradicted.png",
+        "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\qa-production-390-claims-insufficient.png",
+        "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\qa-production-390-claims-incomplete.png",
+        "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\qa-production-390-claims-cancelled.png"
+      ],
+      "quoteNavigation": {
+        "collapse": true,
+        "citationExpandsChunk": true,
+        "exactQuote": true,
+        "positionsVisible": true,
+        "report": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\qa-production-390-supported-report.md"
+      },
+      "incompleteReport": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\qa-production-390-incomplete-report.md",
+      "cancel": {
+        "pendingRouteFixture": true,
+        "noVerdictAfterCancellation": true,
+        "controlsRecovered": true
+      },
+      "claimsReplayedPosts": 5,
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "passed": true
+}

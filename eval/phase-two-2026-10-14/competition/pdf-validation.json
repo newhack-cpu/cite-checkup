@@ -1,0 +1,93 @@
+{
+  "checkedAt": "2026-10-14T10:45:54.754277+08:00",
+  "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\output\\pdf\\引用体检-技术说明.pdf",
+  "sha256": "432ff57febc5d12be3e36da8720bbc54f40ae4f05659b7155b122ccb4fb613bc",
+  "pages": 11,
+  "maxPages": 30,
+  "textSelectable": true,
+  "pageNumbers": true,
+  "noOutOfPageText": true,
+  "containsPendingDraft": false,
+  "visualReview": "passed: agent inspected all 11 Poppler-rendered pages via contact-1.png, contact-2.png, contact-3.png; no clipping, overlaps, missing glyphs or footer/page-number defects",
+  "pageDetails": [
+    {
+      "page": 1,
+      "textCharacters": 620,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\competition\\render-final\\page-01.png"
+    },
+    {
+      "page": 2,
+      "textCharacters": 598,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\competition\\render-final\\page-02.png"
+    },
+    {
+      "page": 3,
+      "textCharacters": 619,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\competition\\render-final\\page-03.png"
+    },
+    {
+      "page": 4,
+      "textCharacters": 658,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\competition\\render-final\\page-04.png"
+    },
+    {
+      "page": 5,
+      "textCharacters": 621,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\competition\\render-final\\page-05.png"
+    },
+    {
+      "page": 6,
+      "textCharacters": 708,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\competition\\render-final\\page-06.png"
+    },
+    {
+      "page": 7,
+      "textCharacters": 614,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\competition\\render-final\\page-07.png"
+    },
+    {
+      "page": 8,
+      "textCharacters": 842,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\competition\\render-final\\page-08.png"
+    },
+    {
+      "page": 9,
+      "textCharacters": 794,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\competition\\render-final\\page-09.png"
+    },
+    {
+      "page": 10,
+      "textCharacters": 639,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\competition\\render-final\\page-10.png"
+    },
+    {
+      "page": 11,
+      "textCharacters": 1204,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\competition\\render-final\\page-11.png"
+    }
+  ],
+  "passed": true,
+  "visualReviewedAt": "2026-10-14T02:46:52.2781419Z"
+}

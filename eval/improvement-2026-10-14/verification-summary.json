@@ -1,0 +1,22 @@
+{
+  "tests": 195,
+  "lint": true,
+  "typescript": true,
+  "build": true,
+  "database": {
+    "passed": 29,
+    "total": 29,
+    "seconds": 26.9
+  },
+  "ai": {
+    "passed": true,
+    "fixtureCount": 2,
+    "retried": true,
+    "code": "UND_ERR_CONNECT_TIMEOUT",
+    "evidence": "eval/results/ai-smoke-2026-10-14T01-36-52-721Z.json"
+  },
+  "clientSecretScan": {
+    "files": 231,
+    "matches": 0
+  }
+}

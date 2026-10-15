@@ -1,0 +1,35 @@
+{
+  "goal": "在现有项目中修复可靠性问题并实现DeepSeek辅助引文核验，完成自动测试、真实构建和桌面手机验收",
+  "authorization": "用户2026-10-14要求继续完善，并选择DeepSeek；直接推进，不重复方案审批",
+  "backup": "D:/Darks/projects/cite-checkup/eval/improvement-2026-10-14/before-changes.zip",
+  "contracts": {
+    "Verdict": "新增concern，与retracted分开",
+    "CheckEvent": "新增phase {phase:extract|verify,message}和notice {message}",
+    "ai": "prepareAIReferences(text,{signal?,onProgress?})返回{refs:ParsedRef[],model:string}；配置由getAIStatus()返回{available:boolean,provider:string,model:string}。环境DEEPSEEK_API_KEY,DEEPSEEK_MODEL(默认deepseek-flash),DEEPSEEK_BASE_URL(默认https://api.deepseek.com)。公开status不得暴露密钥或完整base URL。使用真实function calling为verify_references提交字段，字段必须有原文依据；失败由API显式回退标准核验。",
+    "verification": "verifyAll增加可选signal用于停止后续任务；最终文献结论完全来自核验引擎，模型不能覆写。"
+  },
+  "ownership": {
+    "engine": "src/lib/verify/{match,verify,http}.ts、sources/*、对应tests；不编辑types.ts",
+    "ai": "src/lib/ai/**及自身tests，不改共享types/API/UI/config/docs",
+    "root": "types.ts、API、UI、流解析、报告导出、配置、README、PROJECT_STATE；最终集成验收",
+    "api_workflow": "src/app/api/check、check-request、check-limits及对应tests，主执行者集成验收"
+  },
+  "acceptance": [
+    "已复现误判有回归测试并修复",
+    "concern独立显示",
+    "截断流不会显示完整健康分或导出未完成条目",
+    "AI缺密钥/失败明确降级",
+    "AI幻觉字段/注入输出被拒绝",
+    "test/lint/typecheck/build通过",
+    "桌面与手机正常流程及故障流程验收"
+  ],
+  "not_claimed": [
+    "完整自主Agent",
+    "正文论断RAG",
+    "PDF多模态",
+    "MCP服务器",
+    "大样本真实模型准确率",
+    "公网生产部署"
+  ],
+  "status": "本轮完成；详见PROJECT_STATE.md及最终验收证据"
+}

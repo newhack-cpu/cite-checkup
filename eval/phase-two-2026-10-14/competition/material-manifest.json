@@ -1,0 +1,102 @@
+{
+  "createdAt": "2026-10-14T02:52:54.5204882Z",
+  "project": "D:\\Darks\\projects\\cite-checkup",
+  "pdfPages": 11,
+  "pdfVerified": true,
+  "score": 73,
+  "officialScore": false,
+  "submitted": false,
+  "files": [
+    {
+      "path": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\output\\pdf\\引用体检-技术说明.pdf",
+      "bytes": 224343,
+      "sha256": "432ff57febc5d12be3e36da8720bbc54f40ae4f05659b7155b122ccb4fb613bc"
+    },
+    {
+      "path": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\technical-report.html",
+      "bytes": 23983,
+      "sha256": "cb0d61707032ecc32687d9ac11105a405443c01bce31a332dc91e4db8f1197ab"
+    },
+    {
+      "path": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\technical-content.json",
+      "bytes": 19851,
+      "sha256": "10132b10ab61e52099d38e9065de8024bea5079c4e143682fe89730868539946"
+    },
+    {
+      "path": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\build_technical_report.py",
+      "bytes": 9228,
+      "sha256": "ce7f0ffedf391917168368eda90378239decebf02bf392935f1639d6338d56f8"
+    },
+    {
+      "path": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\validate_technical_report.py",
+      "bytes": 2690,
+      "sha256": "9c3301f90d42af0dfa424865fa6de91b75c07d048bb75787680bb31d0eb318ef"
+    },
+    {
+      "path": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\narration.json",
+      "bytes": 7222,
+      "sha256": "99fb02f268f216a89de2a996e8e8772d499ebe25d051b13cfcf0633663d2c1e3"
+    },
+    {
+      "path": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\DEMO_SCRIPT.md",
+      "bytes": 5184,
+      "sha256": "6d353b67e1dcf4b70bb151218309fcf73566516551174bc54f306d86e5187c53"
+    },
+    {
+      "path": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\DEFENSE_QA.md",
+      "bytes": 5551,
+      "sha256": "e959a037e1882267c910d1409c6b109d5ad22bd5f806e2927c86f8788d7e33f8"
+    },
+    {
+      "path": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\OFFICIAL_REQUIREMENTS.md",
+      "bytes": 3285,
+      "sha256": "9470a2c71ced68cdcf8d1639ea3642f3fb769699ba1ca591712eb26271655cf7"
+    },
+    {
+      "path": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\REVIEW.md",
+      "bytes": 2585,
+      "sha256": "edb9686bce5da6207924aa6720021c4c85b2b7b8e6c51125a9c4342a0eb34504"
+    },
+    {
+      "path": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\competition\\scorecard.json",
+      "bytes": 7720,
+      "sha256": "3496bb1f6ed94bbf27efc94c985663c43ba0f9593562603e1ac44a6bf3bd7432"
+    },
+    {
+      "path": "D:\\Darks\\projects\\cite-checkup\\eval\\phase-two-2026-10-14\\competition\\pdf-validation.json",
+      "bytes": 3321,
+      "sha256": "f7116a903acaea8102d28dfedb586d2db0b0b95889c9f89f2c77e48ad214f48c"
+    },
+    {
+      "path": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\output\\video\\引用体检-完整演示-1080p.mp4",
+      "bytes": 34498033,
+      "sha256": "d4c65dac9188a90ee04e089ac1be2b07bdfeeb42e8260cab8d5c3e0ad99ad943"
+    },
+    {
+      "path": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\output\\video\\video-verification.json",
+      "bytes": 5828,
+      "sha256": "1116f4bb1ab166fb009576ed8cdb972c5621854ff9ddad1fbea4f32b976788b8"
+    },
+    {
+      "path": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\README.md",
+      "bytes": 2646,
+      "sha256": "fc341fd7489b7c83499441d6353623c81dda61c9e76326dbb7920f7fde2d73d1"
+    },
+    {
+      "path": "D:\\Darks\\projects\\cite-checkup\\PROJECT_STATE.md",
+      "bytes": 8468,
+      "sha256": "87d804714582968b6372878384b4d0c40c99877479f9789dc1408c217c306145"
+    }
+  ],
+  "videoStatus": "root recording and muxing; not yet claimed complete",
+  "limitations": [
+    "真实团队资料未填",
+    "未建立完整真实Git历史与评审访问",
+    "未正式报名或提交",
+    "无公网部署"
+  ],
+  "videoVerified": true,
+  "videoDurationSeconds": 398.593016,
+  "videoBoundaryNote": "One actual model output was rejected and remains visibly incomplete; not counted as a successful judgment.",
+  "finalizedAt": "2026-10-14T03:42:38.205622+00:00"
+}

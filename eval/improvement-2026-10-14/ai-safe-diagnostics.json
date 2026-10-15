@@ -1,0 +1,39 @@
+{
+  "ranAt": "2026-10-14T01:30:20.874Z",
+  "evidence": [
+    {
+      "httpStatus": 200,
+      "ms": 1572,
+      "finishReasons": [
+        "tool_calls"
+      ],
+      "toolNames": [
+        "verify_references"
+      ]
+    },
+    {
+      "attempt": 1,
+      "result": "success",
+      "refs": 2,
+      "filledTitle": true,
+      "ms": 1616
+    },
+    {
+      "httpStatus": 200,
+      "ms": 1489,
+      "finishReasons": [
+        "tool_calls"
+      ],
+      "toolNames": [
+        "verify_references"
+      ]
+    },
+    {
+      "attempt": 2,
+      "result": "success",
+      "refs": 2,
+      "filledTitle": true,
+      "ms": 1490
+    }
+  ]
+}

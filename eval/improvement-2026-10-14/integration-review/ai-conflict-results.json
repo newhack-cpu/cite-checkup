@@ -1,0 +1,36 @@
+[
+  {
+    "id": "year-conflict-hidden",
+    "raw": "LeCun, Y., Bengio, Y., & Hinton, G. (2020). Deep learning. Nature, 521(7553), 2015-2020. DOI: 10.9999/ai-conflict",
+    "extracted": {
+      "year": 2015
+    },
+    "standard": {
+      "verdict": "mismatch",
+      "issues": [
+        "年份不符：引用写 2020，数据库记录为 2015"
+      ]
+    },
+    "ai": {
+      "verdict": "verified",
+      "issues": []
+    }
+  },
+  {
+    "id": "venue-conflict-hidden",
+    "raw": "LeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. Nature Medicine, 521(7553), 436-444. DOI: 10.9999/ai-conflict",
+    "extracted": {
+      "venue": "Nature"
+    },
+    "standard": {
+      "verdict": "mismatch",
+      "issues": [
+        "期刊名不符：引用写「Nature Medicine」，数据库记录为「Nature」"
+      ]
+    },
+    "ai": {
+      "verdict": "verified",
+      "issues": []
+    }
+  }
+]
