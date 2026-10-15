@@ -1,0 +1,5 @@
+# 二进制文件：提交和检出时都不做换行转换。
+# 部分 PDF 只含 LF，会被 Git 当成文本；在 core.autocrlf=true（Git for Windows 默认）下检出时被改成 CRLF，
+# 交叉引用偏移随之错位，文档导入测试会失败。
+*.pdf binary
+*.docx binary
