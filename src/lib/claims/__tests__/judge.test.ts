@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { validateJudgment } from "../judge";
+import { completionArguments, validateJudgment } from "../judge";
 import type { EvidenceChunk } from "../types";
 
 const chunks: EvidenceChunk[] = [{ id: "s-c1", sourceId: "s", text: "The trial found no significant benefit after 12 weeks.", start: 30, end: 83, score: 2 }];
@@ -20,6 +20,14 @@ describe("model evidence boundary", () => {
     { ...judgment, citations: [{ sourceId: "s", chunkId: "s-c1", quote: "no", start: 1 }] },
   ])("rejects fabricated evidence, source IDs, enums or extra model fields", (value) => {
     expect(() => validateJudgment(value, chunks)).toThrow();
+  });
+
+  it("accepts arguments the model wrapped in a single known envelope, and still validates the content", () => {
+    // 2026-10-15 实测 DeepSeek 返回 {"arguments": {...}}，判断本身正确却被整体拒绝
+    const body = (args: unknown) => ({ choices: [{ finish_reason: "tool_calls", message: { role: "assistant", tool_calls: [{ id: "c1", type: "function", function: { name: "judge_claim", arguments: JSON.stringify(args) } }] } }] });
+    expect(validateJudgment(completionArguments(body({ arguments: judgment })), chunks).verdict).toBe("contradicted");
+    expect(() => validateJudgment(completionArguments(body({ arguments: judgment, call: "judge_claim" })), chunks)).toThrow();
+    expect(() => validateJudgment(completionArguments(body({ arguments: { ...judgment, citations: [{ sourceId: "s", chunkId: "s-c1", quote: "invented quote" }] } })), chunks)).toThrow();
   });
 
   it.each(["supported", "partially_supported", "contradicted"])("rejects %s without a verifiable citation", (verdict) => {

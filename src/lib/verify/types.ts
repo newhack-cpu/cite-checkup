@@ -52,7 +52,7 @@ export interface RetractionInfo {
 
 /** 各数据源返回的元数据统一成这个结构 */
 export interface WorkRecord {
-  source: "crossref" | "doi-csl" | "openalex";
+  source: "crossref" | "doi-csl" | "openalex" | "datacite";
   doi?: string;
   title: string;
   subtitle?: string;
@@ -105,9 +105,31 @@ export interface CheckStep {
     | "crossref_journal"
     | "openalex_lookup"
     | "openalex_search"
-    | "openalex_source";
+    | "openalex_source"
+    | "agent_search"
+    | "agent_note";
   detail: string;
   ok: boolean;
+  ms: number;
+  /** AI 检索步骤里模型给出的检索理由（只是计划说明，不是结论） */
+  reason?: string;
+}
+
+/** AI 检索 Agent 的追查记录：模型只决定怎么查，结论仍由规则引擎给出 */
+export interface AgentTrace {
+  model: string;
+  /** 实际执行的检索 / DOI 查询次数 */
+  toolCalls: number;
+  /** 调用模型的轮数 */
+  rounds: number;
+  /** 规则复核后：找到并确认了同一篇（confirmed），或仍未确认（unchanged） */
+  outcome: "confirmed" | "unchanged";
+  /** 追查前的结论，便于对照 */
+  before: { verdict: Verdict; summary: string };
+  /** 模型写的检索小结，只描述查了什么，不作为结论 */
+  note?: string;
+  /** 模型消耗的 token 数（模型返回 usage 时才有） */
+  tokens?: number;
   ms: number;
 }
 
@@ -132,6 +154,8 @@ export interface RefResult {
   suggestion?: string;
   steps: CheckStep[];
   parsed: ParsedRef;
+  /** 经过 AI 检索 Agent 追查时才有 */
+  agent?: AgentTrace;
 }
 
 export interface CheckStats {

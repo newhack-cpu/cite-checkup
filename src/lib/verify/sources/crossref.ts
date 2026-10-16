@@ -182,7 +182,18 @@ export async function crossrefSearch(
     .replace(/\s+/g, " ")
     .trim()
     .slice(0, 400);
-  const params = withMailto(new URLSearchParams({ "query.bibliographic": cleaned, rows: String(rows), select: SELECT }));
+  return crossrefFieldSearch({ bibliographic: cleaned }, rows, signal);
+}
+
+/** 按字段检索：题名或关键词，可选作者姓、出版年份（前后放宽一年） */
+export async function crossrefFieldSearch(
+  fields: { bibliographic: string; author?: string; year?: number },
+  rows = 5,
+  signal?: AbortSignal,
+): Promise<{ records: (WorkRecord & { score?: number })[]; ms: number }> {
+  const params = withMailto(new URLSearchParams({ "query.bibliographic": fields.bibliographic, rows: String(rows), select: SELECT }));
+  if (fields.author) params.set("query.author", fields.author);
+  if (fields.year) params.set("filter", `from-pub-date:${fields.year - 1},until-pub-date:${fields.year + 1}`);
   const res = await getJson(`${BASE}/works?${params}`, {
     signal,
     allowNotFound: false,

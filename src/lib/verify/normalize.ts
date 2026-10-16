@@ -124,9 +124,9 @@ export function alnum(s: string): string {
 }
 
 /**
- * 拆开粘连的姓名缩写，只用于作者比对：VizioliL → Vizioli L，MarkiewiczCJ → Markiewicz CJ。
- * 要求大写缩写后面紧跟分隔符，所以 McDonald、LeCun 这类姓不受影响。
+ * 拆开粘连的姓名缩写，只用于作者比对：VizioliL → Vizioli L，MarkiewiczCJ → Markiewicz CJ，AdamsB(2018) → Adams B(2018)。
+ * 要求大写缩写后面紧跟分隔符或括号，所以 McDonald、LeCun 这类姓不受影响。
  */
 export function deglueNames(s: string): string {
-  return s.replace(/(\p{Lu}[\p{Ll}'’-]+)(\p{Lu}{1,3})(?=[\s,.;:]|$)/gu, "$1 $2");
+  return s.replace(/(\p{Lu}[\p{Ll}'’-]+)(\p{Lu}{1,3})(?=[\s,.;:(]|$)/gu, "$1 $2");
 }

@@ -159,6 +159,20 @@ function leftoverWords(plain: string, rec: WorkRecord): number {
   ).length;
 }
 
+const ORGANIZATION_RE =
+  /\b(?:committee|council|commission|organi[sz]ation|association|society|institute|agency|department|ministry|office|bureau|centre|center|foundation|consortium|board|administration|authority|corporation|international|inc|ltd|gmbh|team|group)\b|委员会|协会|学会|研究院|研究所|中心|组织/i;
+
+/** 记录里的作者全是机构名（没有名、名称里有 Committee、Society 等） */
+export function isOrganizationList(authors: Author[]): boolean {
+  return authors.length > 0 && authors.every((a) => !a.given && ORGANIZATION_RE.test(a.family));
+}
+
+/** 图书、学位论文常有多个版本、印次，或后来的存档、数字化记录，记录年份与引文不同不一定是写错 */
+export function yearVaries(ref: ParsedRef, rec: WorkRecord): boolean {
+  return ref.kind === "book" || ref.kind === "thesis"
+    || /^(?:book|edited-book|monograph|reference-book|book-set|book-series|dissertation)$/i.test(rec.type ?? "");
+}
+
 /** 数据库记录的全部出版年份：正式出版年份在前，另有纸本、在线首发年份 */
 export function recordYears(rec: WorkRecord): number[] {
   return [...new Set([rec.year, ...(rec.years ?? [])].filter((y): y is number => y !== undefined))];
@@ -187,8 +201,10 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
   const authorText = deglueNames(ref.authorsGuess ?? ref.raw);
   const rawNorm = normalizeText(authorText);
   const rawCompact = compact(authorText);
-  const considered = rec.authors.slice(0, 3);
-  const positions = rec.authors.map((a) => locateAuthor(a, rawNorm, rawCompact));
+  // 标准、机构报告的"作者"是机构（ASTM International ↔ D30 Committee），按姓氏比对没有意义，当作没有作者信息
+  const people = ref.kind === "standard" || isOrganizationList(rec.authors) ? [] : rec.authors;
+  const considered = people.slice(0, 3);
+  const positions = people.map((a) => locateAuthor(a, rawNorm, rawCompact));
   const found = positions.filter((p) => p >= 0);
   const authorRatio = considered.length ? positions.slice(0, 3).filter((p) => p >= 0).length / considered.length : undefined;
   const firstAuthor: MatchScore["firstAuthor"] = considered.length === 0 ? "unknown" : positions[0] >= 0 ? "match" : "mismatch";
@@ -196,9 +212,9 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
   const authorOrderOk = found.length >= 2 && new Set(found).size === found.length
     ? found.every((p, i) => i === 0 || p > found[i - 1]) : undefined;
   let authorListMismatch: boolean | undefined;
-  if (ref.authorsGuess && rec.authors.length) {
+  if (ref.authorsGuess && people.length) {
     const initialsOf = (s: string) => normalizeText(s).split(" ").filter(Boolean).map((p) => p[0]).join("");
-    const known = new Set(rec.authors.flatMap((a) => {
+    const known = new Set(people.flatMap((a) => {
       const names = normalizeText(`${a.family} ${a.given ?? ""}`).split(" ");
       // 姓名放反的记录里，引文的缩写其实来自 family（"A. Mine" ↔ "Onenerk AM"）
       return [...names, normalizeText(a.family).replace(/ /g, ""), initialsOf(a.given ?? ""), initialsOf(a.family),
@@ -248,6 +264,9 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
   let same: boolean;
   if (doiMatch && titleScore >= 0.5) {
     same = true;
+  } else if (yearDiff !== undefined && yearDiff > 1 && yearVaries(ref, rec) && titleScore < 0.95) {
+    // 图书、学位论文年份差得远时，常是同一作者的另一部作品或新版：题名必须几乎逐字一致才算同一篇
+    same = false;
   } else if (titleMissing) {
     // 有 DOI：第一作者对上，年份或卷号也对上即可；没有 DOI：作者、年份、刊名、卷号、页码都要对上
     same = firstAuthor === "match" && (doiMatch
@@ -310,7 +329,7 @@ export function fieldChecks(ref: ParsedRef, rec: WorkRecord, s: MatchScore): Fie
 
   checks.push({
     field: "year",
-    status: s.yearDiff === undefined ? "missing" : s.yearDiff === 0 ? "match" : s.yearDiff === 1 ? "partial" : "mismatch",
+    status: s.yearDiff === undefined ? "missing" : s.yearDiff === 0 ? "match" : s.yearDiff === 1 || yearVaries(ref, rec) ? "partial" : "mismatch",
     cited: ref.year?.toString(),
     actual: recordYears(rec).join(" / ") || undefined,
   });

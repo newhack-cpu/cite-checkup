@@ -155,6 +155,60 @@ describe("field comparison with real metadata quirks", () => {
     expect(s.authorRatio).toBe(1);
   });
 
+  it("separates initials glued to a parenthesised year (D051)", () => {
+    const raw = "AdamsB(2018)The biological significance and utility of feeding byDermestes maculatus. M.Sc. Thesis in University of Nebraska‐Lincoln Lincoln NE.";
+    const rec: WorkRecord = {
+      source: "openalex", title: "THE BIOLOGICAL SIGNIFICANCE AND UTILITY OF FEEDING BY DERMESTES MACULATUS",
+      authors: [{ family: "Adams", given: "B" }], year: 2018,
+    };
+    expect(scoreCandidate(ref(raw), rec).firstAuthor).toBe("match");
+    expect(field(raw, rec, "authors")?.status).toBe("match");
+  });
+
+  it("treats a different year of the same book as another edition, not an error (D052)", () => {
+    const raw = "D. Shriver P. Atkins T. Overton J. Rourke M. Weller Armstrong F.Shriver & Atkins Inorganic Chemistry; Oxford University Press: Oxford 2006.";
+    const rec: WorkRecord = {
+      source: "datacite", doi: "10.82444/warw.33604591", title: "Shriver & Atkins' inorganic chemistry",
+      authors: [{ family: "Atkins", given: "P. W." }, { family: "Overton", given: "T." }], year: 2026, type: "Book",
+    };
+    expect(field(raw, rec, "year")?.status).toBe("partial");
+    // 学位论文的数据库记录常是后来的存档、数字化年份（D050）
+    const thesis = "ByrdJH(1998)Temperature‐dependent development and computer modeling of insect growth: its application to forensic entomology. University of Florida Gainesville FL.";
+    expect(field(thesis, {
+      source: "crossref", title: "Temperature-dependent development and computer modeling of insect growth: its application to forensic entomology",
+      authors: [{ family: "Byrd", given: "Jason H." }], year: 2010, type: "dissertation",
+    }, "year")?.status).toBe("partial");
+    // 期刊论文的年份差两年以上仍然算错
+    expect(field("Torres A, Ferrer M, Badia JR (2015) Treatment guidelines and outcomes of hospital-acquired and ventilator-associated pneumonia. Clin Infect Dis 51:S48-53", {
+      source: "crossref", title: "Treatment guidelines and outcomes of hospital-acquired and ventilator-associated pneumonia",
+      authors: [{ family: "Torres", given: "Antoni" }], year: 2010, venue: "Clinical Infectious Diseases",
+    }, "year")?.status).toBe("mismatch");
+  });
+
+  it("does not take a much later work by the same author with a similar title as the cited book chapter", () => {
+    const raw = "Jaishankar, K. (2008). Space transition theory of cyber crimes. In F. Schmallager & M. Pittaro (Eds.), Crimes of the Internet (pp. 283–301). Prentice Hall.";
+    const later: WorkRecord = { source: "crossref", title: "Space Transition Theory", authors: [{ family: "Jaishankar", given: "K." }], year: 2026, type: "book-chapter" };
+    expect(scoreCandidate(ref(raw), later).same).toBe(false);
+    // 同一部书的另一版本，题名逐字一致，仍算同一篇
+    expect(scoreCandidate(ref(raw), { ...later, title: "Space transition theory of cyber crimes", year: 2016 }).same).toBe(true);
+  });
+
+  it("does not compare organisational authors by surname (standards, committees)", () => {
+    const rec: WorkRecord = {
+      source: "crossref", doi: "10.1520/e0384-17", title: "Test Method for Microindentation Hardness of Materials",
+      authors: [{ family: "E04 Committee" }], year: 2017,
+    };
+    const raw = "ASTM International. ASTM E384-17 Standard test method for microindentation hardness of materials; 2017.";
+    const s = scoreCandidate(ref(raw), rec);
+    expect(s.firstAuthor).toBe("unknown");
+    expect(s.same).toBe(true);
+    expect(field(raw, rec, "authors")?.status).toBe("missing");
+    // 普通论文照样比对作者
+    expect(scoreCandidate(ref("Smith J. Test method for microindentation hardness of materials. Wear. 2017."), {
+      ...rec, authors: [{ family: "Kishi", given: "T" }],
+    }).firstAuthor).toBe("mismatch");
+  });
+
   it("accepts a journal name followed by its subtitle, but not a different journal (D034)", () => {
     expect(venueSimilarity("Clin Infect Dis Off Publ Infect Dis Soc Am", "Clinical Infectious Diseases")).toBe(1);
     expect(venueSimilarity("Nature Medicine", "Nature")).toBeLessThan(0.6);

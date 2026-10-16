@@ -4,10 +4,11 @@ import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { SAMPLE_REFERENCES } from "@/lib/samples";
 import { VERDICT_META, VERDICT_ORDER } from "@/lib/verdict-meta";
 import { parseReferenceList } from "@/lib/verify/extract";
+import { agentEligible, readAgentStream } from "@/lib/agent-stream";
 import { readCheckStream } from "@/lib/check-stream";
 import type { CheckEvent, ParsedRef, RefKind, RefResult } from "@/lib/verify/types";
 import { ReportSummary, type Filter } from "./report-summary";
-import { ResultCard } from "./result-card";
+import { ResultCard, type AgentRunState } from "./result-card";
 import { Stamp } from "./seal";
 import { DocumentImport } from "./document-import";
 
@@ -44,7 +45,10 @@ export function Checker() {
   const [aiStatus, setAiStatus] = useState<{ available: boolean; model: string } | null>(null);
   const [progress, setProgress] = useState("");
   const [notices, setNotices] = useState<string[]>([]);
+  const [agentAvailable, setAgentAvailable] = useState(false);
+  const [agentRuns, setAgentRuns] = useState<Map<number, AgentRunState>>(new Map());
   const abortRef = useRef<AbortController | null>(null);
+  const agentAborts = useRef(new Map<number, AbortController>());
   const reportRef = useRef<HTMLDivElement>(null);
 
   // 输入框里实时识别条目数
@@ -65,18 +69,77 @@ export function Checker() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
-  useEffect(() => () => abortRef.current?.abort(), []);
+  useEffect(() => {
+    const agents = agentAborts.current;
+    return () => {
+      abortRef.current?.abort();
+      for (const controller of agents.values()) controller.abort();
+    };
+  }, []);
   useEffect(() => {
     const controller = new AbortController();
     fetch("/api/check", { signal: controller.signal, cache: "no-store" })
       .then(res => res.ok ? res.json() : null)
       .then(status => { if (status && typeof status.available === "boolean") setAiStatus(status); })
       .catch(() => {});
+    fetch("/api/agent", { signal: controller.signal, cache: "no-store" })
+      .then(res => res.ok ? res.json() : null)
+      .then(status => setAgentAvailable(status?.available === true))
+      .catch(() => {});
     return () => controller.abort();
   }, []);
 
+  function stopAgents() {
+    for (const controller of agentAborts.current.values()) controller.abort();
+    agentAborts.current.clear();
+    setAgentRuns(new Map());
+  }
+
+  /** AI 检索单条：每一步实时显示，结束后用规则复核的新结果替换原结论；失败时原结论不变 */
+  async function runAgent(item: ParsedRef) {
+    if (agentAborts.current.has(item.index)) return;
+    const controller = new AbortController();
+    agentAborts.current.set(item.index, controller);
+    const update = (state?: AgentRunState) => setAgentRuns(prev => {
+      const next = new Map(prev);
+      if (state) next.set(item.index, state);
+      else next.delete(item.index);
+      return next;
+    });
+    const steps: AgentRunState["steps"] = [];
+    update({ status: "running", steps: [] });
+    try {
+      const res = await fetch("/api/agent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ raw: item.raw, index: item.index }),
+        signal: controller.signal,
+      });
+      if (!res.ok || !res.body) {
+        const body = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(body.error ?? `请求失败（${res.status}）`);
+      }
+      const result = await readAgentStream(res.body, item.index, event => {
+        if (event.type === "step" && agentAborts.current.get(item.index) === controller) {
+          steps.push(event.step);
+          update({ status: "running", steps: [...steps] });
+        }
+      });
+      if (agentAborts.current.get(item.index) !== controller) return;
+      setResults(prev => new Map(prev).set(item.index, result));
+      update(undefined);
+    } catch (err) {
+      if (agentAborts.current.get(item.index) === controller && !controller.signal.aborted) {
+        update({ status: "failed", steps, error: (err as Error).message || "网络异常" });
+      }
+    } finally {
+      if (agentAborts.current.get(item.index) === controller) agentAborts.current.delete(item.index);
+    }
+  }
+
   async function run() {
     abortRef.current?.abort();
+    stopAgents();
     const controller = new AbortController();
     abortRef.current = controller;
     setError(null);
@@ -214,7 +277,8 @@ export function Checker() {
         </div>
         <p className="mt-4 flex gap-2 text-[12.5px] leading-6 text-ink-faint">
           <span aria-hidden>⚿</span>
-          {mode === "ai" ? "AI 辅助模式会将参考文献条目发送给 DeepSeek 解析，再查询公开数据库。请勿粘贴未公开论文正文或敏感信息。" : "只把参考文献条目发送给 Crossref、OpenAlex、doi.org 检索，不上传论文正文。"}查不到不等于一定是编造，结果供人工复核参考。
+          {mode === "ai" ? "AI 辅助模式会将参考文献条目发送给 DeepSeek 解析，再查询公开数据库。请勿粘贴未公开论文正文或敏感信息。" : "只把参考文献条目发送给 Crossref、OpenAlex、doi.org 检索，不上传论文正文。"}
+          {agentAvailable && "点击「AI 继续查」时，该条引文会发送给 DeepSeek 规划检索，并查询 DataCite 等数据源。"}查不到不等于一定是编造，结果供人工复核参考。
         </p>
       </section>
 
@@ -239,9 +303,20 @@ export function Checker() {
               onFilter={setFilter}
             />
             <div className="space-y-3">
-              {visible.map((r) => (
-                <ResultCard key={`${runId}-${r.index}`} refItem={r} result={results.get(r.index)} stopped={phase === "interrupted"} />
-              ))}
+              {visible.map((r) => {
+                const result = results.get(r.index);
+                const state = agentRuns.get(r.index);
+                const canRun = agentAvailable && phase !== "running" && !!result && !result.agent && agentEligible(result) && state?.status !== "running";
+                return (
+                  <ResultCard
+                    key={`${runId}-${r.index}`}
+                    refItem={r}
+                    result={result}
+                    stopped={phase === "interrupted"}
+                    agent={{ state, onRun: canRun ? () => void runAgent(r) : undefined }}
+                  />
+                );
+              })}
               {visible.length === 0 && <p className="py-10 text-center font-kai text-[16px] text-ink-faint">这一类暂时没有条目</p>}
             </div>
           </>
@@ -258,6 +333,7 @@ function EmptyState({ waiting }: { waiting: boolean }) {
     { n: "壹", title: "DOI 是否真实注册", body: "通过 doi.org 查询，覆盖 Crossref、DataCite、中文 DOI 等所有注册机构。大模型编造的 DOI 在这一步就会露馅。" },
     { n: "贰", title: "题名、作者、年份、期刊是否对得上", body: "用整条引文到 Crossref 检索，必要时用 OpenAlex 兜底，再逐字段比对。真题名配假作者、DOI 张冠李戴都能识别。" },
     { n: "叁", title: "是否已被撤稿", body: "读取 Crossref 中的 Retraction Watch 撤稿数据，提醒你别把已撤稿的研究当论据。" },
+    { n: "肆", title: "查不到的，交给 AI 继续查", body: "对无法核验或只找到相近候选的条目，DeepSeek 规划检索策略，换着方式查 Crossref、OpenAlex、DataCite，每一步都摆在你眼前；找到的候选仍由规则逐字段确认。" },
   ];
   return (
     <section className="sheet animate-rise rounded-sm border border-rule/80 p-6 [animation-delay:220ms] sm:p-8">

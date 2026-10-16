@@ -86,10 +86,16 @@ export async function openalexByDoi(doi: string, signal?: AbortSignal): Promise<
   return { record: mapOpenAlex(res.json as OpenAlexWork), ms: res.ms };
 }
 
-export async function openalexSearchTitle(title: string, rows = 5, signal?: AbortSignal): Promise<{ records: WorkRecord[]; ms: number }> {
+export async function openalexSearchTitle(
+  title: string,
+  rows = 5,
+  signal?: AbortSignal,
+  year?: number,
+): Promise<{ records: WorkRecord[]; ms: number }> {
   // filter 的值里逗号、竖线、冒号有特殊含义，统一换成空格
   const q = title.replace(/[,|:：，]/g, " ").replace(/\s+/g, " ").trim().slice(0, 250);
-  const params = withKey(new URLSearchParams({ filter: `title.search:${q}`, "per-page": String(rows), select: SELECT }));
+  const filter = year ? `title.search:${q},publication_year:${year - 1}-${year + 1}` : `title.search:${q}`;
+  const params = withKey(new URLSearchParams({ filter, "per-page": String(rows), select: SELECT }));
   const res = await getJson(`${BASE}/works?${params}`, {
     signal,
     allowNotFound: false,

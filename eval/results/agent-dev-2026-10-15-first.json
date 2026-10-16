@@ -1,0 +1,1947 @@
+{
+ "ranAt": "2026-10-16T00:04:25.526Z",
+ "dataset": "dev-2026-10-14",
+ "rulesFile": "eval/results/real-dev-2026-10-15-rules.json",
+ "summary": {
+  "eligible": 61,
+  "confirmed": 3,
+  "confirmedVerdicts": {
+   "verified": 1,
+   "mismatch": 2
+  },
+  "unchanged": 58,
+  "failed": 0,
+  "becameNotFound": 0,
+  "avgToolCalls": 3.08,
+  "avgTokens": 5698,
+  "avgSeconds": 13,
+  "totalTokens": 347565,
+  "openalexSearchesUsed": 20,
+  "byLanguage": {
+   "en": {
+    "eligible": 29,
+    "confirmed": 3
+   },
+   "zh": {
+    "eligible": 32,
+    "confirmed": 0
+   }
+  }
+ },
+ "rows": [
+  {
+   "id": "D001",
+   "lang": "en",
+   "kind": "web",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 3620,
+   "ms": 12369,
+   "note": "已用 DataCite 检索 NIST 质谱数据中心保留数据（无结果），并用 Crossref 以作者 Andriamaharavo 检索，仅得到其参与的相关期刊论文，均非该网页型数据资源。该条目属网页/电子资源，开放学术数据库未收录对应记录。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "查找该NIST保留数据资源是否有可检索记录",
+     "detail": "DataCite 检索「NIST Mass Spectrometry Data Ce…」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "用作者姓氏缩小检索该NIST数据记录",
+     "detail": "Crossref 检索「Retention Data NIST Mass Spect…」（作者 Andriamaharavo）：4 条候选，最接近《Creation of Libraries of Recurring Mass …》（Mallard WG, Andriamaharavo NR 等，2014）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D003",
+   "lang": "en",
+   "kind": "legal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6422,
+   "ms": 16496,
+   "note": "已用指令标题在 Crossref、DataCite 与 OpenAlex 检索，均未找到与《Council Directive 2001/110/EC relating to honey》标题、作者与年份同时吻合的记录；Crossref 返回的均为其他编号的欧盟指令或税法提案。该文献属欧盟官方公报法律文本，不在这些学术数据库覆盖范围内，建议人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索该欧盟蜂蜜指令的正式记录",
+     "detail": "Crossref 检索「Council Directive 2001/110/EC …」：5 条候选，最接近《COUNCIL DIRECTIVE 2009/133/EC》",
+     "ok": true
+    },
+    {
+     "reason": "在数据仓储中查找该指令文本记录",
+     "detail": "DataCite 检索「Council Directive 2001/110/EC …」：2 条候选，最接近《Determination of hydroxy methyl furfural…》（Tezera Alehegn, Kusse Gudishe Goroya，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在开放索引中查找该指令的收录记录",
+     "detail": "OpenAlex 题名检索「Council Directive 2001/110/EC …」（2002±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D008",
+   "lang": "en",
+   "kind": "web",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 4095,
+   "ms": 8567,
+   "note": "该条目为世界银行网站页面类电子资源，已用题名关键词在Crossref与DataCite检索，均未找到题名、作者与年份相符的记录，仅返回不相关的图书章节与预印本。此类网页资源不在开放学术数据库覆盖范围内，建议人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "尝试在Crossref中定位该网页类条目的题名",
+     "detail": "Crossref 检索「Development News Research Worl…」：5 条候选，最接近《Whither World Bank Research?》（Fine B, Van Waeyenberge E 等，2011）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找世界银行相关报告或数据集记录",
+     "detail": "DataCite 检索「World Bank Development News Re…」：5 条候选，最接近《The Möbius Protocol: A Formalized Topolo…》（Kulik D，2026）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D010",
+   "lang": "en",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6349,
+   "ms": 23368,
+   "note": "已用英文标题加作者在Crossref检索、用中文关键词在DataCite检索、并用中文标题在OpenAlex检索，均未找到与《应用化工》2019年48卷2期该文相符的记录；该DOI在CNKI注册但注册机构不提供可比对元数据。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用英文标题与作者检索该文献的Crossref记录",
+     "detail": "Crossref 检索「Study on microwave extraction …」（作者 Yuan，2019±1 年）：5 条候选，最接近《Characterization and antioxidant activit…》（Chen GT, Yuan B 等，2019）",
+     "ok": true
+    },
+    {
+     "reason": "尝试在DataCite中查找该中文文献记录",
+     "detail": "DataCite 检索「微波提取 红芪 多糖 抗氧化活性」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "用中文标题在OpenAlex中查找该文献记录",
+     "detail": "OpenAlex 题名检索「微波提取红芪总多糖及抗氧化活性研究」（2019±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D012",
+   "lang": "en",
+   "kind": "web",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 3731,
+   "ms": 15189,
+   "note": "该文献为MathWorks公司网页帮助文档（surrogate optimization algorithm），在Crossref与DataCite中均未检索到对应记录，仅返回标题相近但作者与年份不符的期刊论文与组件条目。此类厂商网页资源不在开放学术数据库覆盖范围内，建议人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "尝试在Crossref中查找该MathWorks网页文档记录",
+     "detail": "Crossref 检索「Surrogate Optimization Algorit…」：5 条候选，最接近《A surrogate-model based multi-modal opti…》（Yahyaie F, Filizadeh S，2011）",
+     "ok": true
+    },
+    {
+     "reason": "尝试在DataCite中查找该软件文档记录",
+     "detail": "DataCite 检索「Surrogate Optimization Algorit…」：1 条候选，最接近《Automated simulation-based model optimiz…》（Bleickert J，2025）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D013",
+   "lang": "en",
+   "kind": "web",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 3256,
+   "ms": 4989,
+   "note": "该条目为香港环保署网站页面，已用标题与机构名在Crossref和DataCite检索，均无对应记录；此类网页资源不在开放学术数据库覆盖范围内，建议人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "尝试在Crossref中查找该香港环保署网页资源条目",
+     "detail": "Crossref 检索「Clinical Waste Management Reso…」（作者 EPD，2021±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在DataCite中查找该政府网页或报告记录",
+     "detail": "DataCite 检索「Clinical Waste Management Reso…」：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D015",
+   "lang": "en",
+   "kind": "report",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 3848,
+   "ms": 6982,
+   "note": "已用土耳其语报告标题在 Crossref 与 DataCite 检索，均未找到该协会《Sezaryen Raporu II》报告记录，Crossref 仅返回若干主题相近但作者与年份不符的期刊文章。该文献为协会网页发布的报告，属开放学术数据库覆盖范围之外，建议人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索该土耳其语报告标题是否被学术数据库收录",
+     "detail": "Crossref 检索「Sezaryen Raporu Artan Sezaryen…」：5 条候选，最接近《Sezaryen Doğumda Gelişmiş İyileşme (ERAC…》",
+     "ok": true
+    },
+    {
+     "reason": "在数据/报告库中查找该协会报告记录",
+     "detail": "DataCite 检索「Sezaryen Raporu Artan Sezaryen…」：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D016",
+   "lang": "en",
+   "kind": "book",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 5219,
+   "ms": 7486,
+   "note": "已用土耳其语书章标题及编著书名在Crossref、DataCite和OpenAlex中检索，均未返回候选记录；该土耳其语编著书章节未见于这些数据库。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索该土耳其语书章标题是否被Crossref收录",
+     "detail": "Crossref 检索「Veri Toplama Araçlarının Nitel…」（作者 Erefe）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在DataCite中查找该编著书或书章记录",
+     "detail": "DataCite 检索「Hemşirelikte Araştırma İlke Sü…」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在OpenAlex中查找该土耳其语编著书是否被收录",
+     "detail": "OpenAlex 题名检索「Hemşirelikte Araştırma İlke Sü…」（2004±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D017",
+   "lang": "en",
+   "kind": "standard",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 3593,
+   "ms": 8440,
+   "note": "已用标准标题在 DataCite 与 Crossref 检索 ASTM E384-17《微压痕硬度标准试验方法》，均未返回匹配记录；ASTM 标准通常不在这些开放学术数据库覆盖范围内，建议人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在DataCite中查找该ASTM标准记录",
+     "detail": "DataCite 检索「ASTM E384 Standard Test Method…」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "用标准标题与年份在Crossref中再查一次",
+     "detail": "Crossref 检索「Standard Test Method for Micro…」（作者 ASTM International，2017±1 年）：5 条候选，最接近《Update on the Standard Template to Colle…》（International Monetary Fund，2017）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D018",
+   "lang": "en",
+   "kind": "report",
+   "before": "unverifiable",
+   "after": "verified",
+   "matchStatus": "confirmed",
+   "outcome": "confirmed",
+   "toolCalls": 3,
+   "rounds": 2,
+   "tokens": 3268,
+   "ms": 7852,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在DataCite中查找该报告的题名与作者年份",
+     "detail": "DataCite 检索「The Physical Metallurgy of Pre…」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "用作者姓氏与年份缩小检索该报告记录",
+     "detail": "Crossref 检索「Physical Metallurgy of Precipi…」（作者 Ludwigson，1959±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在OpenAlex中查找该报告题名与年份",
+     "detail": "OpenAlex 题名检索「The Physical Metallurgy of Pre…」（1959±1 年）：1 条候选，最接近《THE PHYSICAL METALLURGY OF PRECIPITATION…》（Ludwigson D, Hall AM，1959）",
+     "ok": true
+    }
+   ],
+   "match": {
+    "title": "THE PHYSICAL METALLURGY OF PRECIPITATION-HARDENABLE STAINLESS STEELS",
+    "year": 1959,
+    "source": "openalex"
+   }
+  },
+  {
+   "id": "D037",
+   "lang": "en",
+   "kind": "web",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 3514,
+   "ms": 4140,
+   "note": "该条目为厂商网站上的产品使用说明书（Ultimate Dental 托管的 Kerr SimpliShade IFU），属网页/电子资源。已检索 DataCite 与 Crossref，均未找到对应的学术记录，仅返回无关候选，故无匹配条目。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "尝试在数据仓储中查找该厂商说明书类记录",
+     "detail": "DataCite 检索「Kerr SimpliShade IFU」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "尝试在Crossref中查找该说明书是否有DOI记录",
+     "detail": "Crossref 检索「Kerr SimpliShade Instructions …」：5 条候选，最接近《The Role of Partial Reinforcement, Expli…》（Kerr R）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D038",
+   "lang": "en",
+   "kind": "web",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 0,
+   "rounds": 1,
+   "tokens": 1469,
+   "ms": 1412,
+   "note": "该条目为厂商安全数据表（SDS）网页，无标题、作者与DOI，不属于Crossref、OpenAlex或DataCite等学术数据库的收录范围，未做进一步检索。",
+   "issues": [],
+   "steps": []
+  },
+  {
+   "id": "D039",
+   "lang": "en",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 5966,
+   "ms": 11401,
+   "note": "引文未给出标题，仅凭期刊名、文章编号2400001、年份2024及作者姓氏在Crossref、DataCite和OpenAlex中检索，均未找到标题与作者同时吻合的记录，仅返回若干不相关候选。建议补充标题后再次核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用文章编号2400001与作者Yi检索该刊条目",
+     "detail": "Crossref 检索「Advanced Functional Materials …」（作者 Yi，2024±1 年）：5 条候选，最接近《Functional Graphene Fiber Materials for …》（Zhai H, Liu J 等，2025）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中按文章编号与作者组合查找记录",
+     "detail": "DataCite 检索「Advanced Functional Materials …」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在OpenAlex中按文章编号与作者组合查找该文",
+     "detail": "OpenAlex 题名检索「Advanced Functional Materials …」（2024±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D041",
+   "lang": "en",
+   "kind": "web",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 4030,
+   "ms": 5451,
+   "note": "该引文为美国退伍军人事务部（VA）M21-1 手册的网络章节，属机构网站内容。已用标题与报告编号在 DataCite 和 Crossref 检索，均未找到对应记录，仅返回不相关的期刊论文与书籍章节。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "查找该退伍军人事务部报告是否被DataCite收录",
+     "detail": "DataCite 检索「Evidence Evaluation and Decisi…」：2 条候选，最接近《Applied Identity Physics: Substrate Weap…》（Trent R，2026）",
+     "ok": true
+    },
+    {
+     "reason": "用报告编号与标题在Crossref中再试一次",
+     "detail": "Crossref 检索「M21-1 Evidence Evaluation and …」：5 条候选，最接近《Cognitive Therapy for PTSD: Updating Mem…》（Ehlers A, Wild J，2022）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D042",
+   "lang": "en",
+   "kind": "report",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 5637,
+   "ms": 16130,
+   "note": "在DataCite、OpenAlex和Crossref中检索了该国防部年度报告标题及核心词，均未找到对应记录；此类政府报告不在这些学术数据库覆盖范围内，需人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在DataCite中查找该国防部年度报告的记录",
+     "detail": "DataCite 检索「Department of Defense Annual R…」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在OpenAlex中查找该报告的收录记录",
+     "detail": "OpenAlex 题名检索「Department of Defense Annual R…」（2022±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "用报告标题核心词在Crossref再确认一次",
+     "detail": "Crossref 检索「Annual Report on Sexual Assaul…」（作者 Department of Defense，2022±1 年）：5 条候选，最接近《IMF Annual Report 2022》（International Monetary Fund. Secretary's Department，2022）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D043",
+   "lang": "en",
+   "kind": "report",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 5697,
+   "ms": 12283,
+   "note": "已用完整标题在 DataCite、Crossref 和 OpenAlex 中检索该 GAO 报告，均未找到匹配记录；此类政府报告通常不在这些学术数据库覆盖范围内，建议人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "查找该GAO报告是否被DataCite收录",
+     "detail": "DataCite 检索「VA Disability Exams: Better Pl…」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "用完整标题在Crossref中查找该报告记录",
+     "detail": "Crossref 检索「VA Disability Exams Better Pla…」：5 条候选，最接近《Sci-Hub use continues to grow》",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中查找该GAO报告记录",
+     "detail": "OpenAlex 题名检索「VA Disability Exams: Better Pl…」（2021±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D044",
+   "lang": "en",
+   "kind": "report",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6758,
+   "ms": 12430,
+   "note": "已用报告标题在 DataCite、Crossref 和 OpenAlex 中检索，未找到与皮尤研究中心 2014 年《Religion in Latin America》完全对应的记录；命中的同名条目作者与年份均不符，该报告属机构出版物，需人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "查找该皮尤报告在数据仓储中的记录",
+     "detail": "DataCite 检索「Religion in Latin America Pew …」：5 条候选，最接近《Catholics in Latin America generally hav…》（Evans J, Lesage K 等，2026）",
+     "ok": true
+    },
+    {
+     "reason": "用报告全称在Crossref中检索",
+     "detail": "Crossref 检索「Religion in Latin America Wide…」：5 条候选，最接近《The Geopolitics of the Catholic Church i…》（Puntigliano AR，2026）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中查找该皮尤2014年报告记录",
+     "detail": "OpenAlex 题名检索「Religion in Latin America」（2014±1 年）：5 条候选，最接近《Religion in Latin America》（Karjalainen M, Vuola E，2014）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D045",
+   "lang": "en",
+   "kind": "report",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6810,
+   "ms": 13708,
+   "note": "已用标题与机构名在 DataCite、Crossref 和 OpenAlex 中检索该皮尤报告，仅找到 2023-24 年宗教景观研究数据集及 2014 年全球宗教景观研究方法章节，未发现与所引 2014 年报告完全对应的记录。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在数据/报告库中查找该皮尤研究报告记录",
+     "detail": "DataCite 检索「Religious Landscape Study Pew …」：5 条候选，最接近《Pew Research Center 2023-24 Religious La…》（Pew Research Center, Smith G 等，2026）",
+     "ok": true
+    },
+    {
+     "reason": "用标题与机构名在Crossref中再查一次报告记录",
+     "detail": "Crossref 检索「Religious Landscape Study」（作者 Pew，2014±1 年）：2 条候选，最接近《Disrupted Brain Functional Network in In…》（Wee CY, Zhao Z 等，2014）",
+     "ok": true
+    },
+    {
+     "reason": "在开放索引中查找2014年皮尤宗教景观研究报告",
+     "detail": "OpenAlex 题名检索「Religious Landscape Study」（2014±1 年）：5 条候选，最接近《Methodology of the Pew Research Global R…》（Hackett C, Grim BJ 等，2014）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D046",
+   "lang": "en",
+   "kind": "report",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6391,
+   "ms": 15135,
+   "note": "已用报告标题在 DataCite、Crossref 和 OpenAlex 中检索，均未找到与《Europe's Growing Muslim Population》(2017, Pew Research Center) 匹配的记录，仅返回标题或作者不符的其他文献。该报告属机构出版物，开放学术数据库覆盖有限。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "查找该皮尤报告的记录以核对标题与年份",
+     "detail": "DataCite 检索「Europe's Growing Muslim Popula…」：4 条候选，最接近《China-Indian Geo Strategic Rivalry in th…》（Muhammad D，2025）",
+     "ok": true
+    },
+    {
+     "reason": "用报告标题在Crossref中检索对应记录",
+     "detail": "Crossref 检索「Europe's Growing Muslim Popula…」（2017±1 年）：5 条候选，最接近《Growing Up Muslim in Europe and the Unit…》",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中检索该皮尤报告标题",
+     "detail": "OpenAlex 题名检索「Europe's Growing Muslim Popula…」（2017±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D050",
+   "lang": "en",
+   "kind": "thesis",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 5614,
+   "ms": 15135,
+   "note": "已用 DataCite、OpenAlex 及 Crossref（含作者 Byrd、1998 年）检索该佛罗里达大学学位论文题名，均未找到题名与作者相符的记录，仅返回若干不相关的期刊文章。该学位论文（ProQuest 编号 9837361）未见于这些数据库。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "查找该佛罗里达大学学位论文的收录记录",
+     "detail": "DataCite 检索「Temperature-dependent developm…」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在开放索引中查找该学位论文的题录",
+     "detail": "OpenAlex 题名检索「Temperature-dependent developm…」（1998±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "用作者与年份缩小检索该学位论文",
+     "detail": "Crossref 检索「Temperature-dependent developm…」（作者 Byrd，1998±1 年）：5 条候选，最接近《Effects of Temperature on Sarcophaga hae…》（Byrd JH, Butler JF，1998）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D051",
+   "lang": "en",
+   "kind": "thesis",
+   "before": "unverifiable",
+   "after": "mismatch",
+   "matchStatus": "confirmed",
+   "outcome": "confirmed",
+   "toolCalls": 2,
+   "rounds": 1,
+   "tokens": 1559,
+   "ms": 11007,
+   "issues": [
+    "作者与数据库记录不符，数据库作者为 Adams B"
+   ],
+   "steps": [
+    {
+     "reason": "在DataCite中查找该学位论文记录",
+     "detail": "DataCite 检索「The biological significance an…」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在OpenAlex中查找该学位论文",
+     "detail": "OpenAlex 题名检索「The biological significance an…」（2018±1 年）：1 条候选，最接近《THE BIOLOGICAL SIGNIFICANCE AND UTILITY …》（Adams B，2018）",
+     "ok": true
+    }
+   ],
+   "match": {
+    "title": "THE BIOLOGICAL SIGNIFICANCE AND UTILITY OF FEEDING BY DERMESTES MACULATUS",
+    "year": 2018,
+    "source": "openalex"
+   }
+  },
+  {
+   "id": "D052",
+   "lang": "en",
+   "kind": "book",
+   "before": "unverifiable",
+   "after": "mismatch",
+   "matchStatus": "confirmed",
+   "outcome": "confirmed",
+   "toolCalls": 2,
+   "rounds": 1,
+   "tokens": 1549,
+   "ms": 9841,
+   "issues": [
+    "年份不符：引用写 2006，数据库记录为 2026"
+   ],
+   "steps": [
+    {
+     "reason": "按书名与第一作者检索该无机化学教材的图书条目",
+     "detail": "Crossref 检索「Shriver & Atkins Inorganic Che…」（作者 Shriver，2006±1 年）：5 条候选，最接近《Honest Patriots》（Shriver DW，2005）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该教材是否有可解析的记录",
+     "detail": "DataCite 检索「Shriver Atkins Inorganic Chemi…」：1 条候选，最接近《Shriver & Atkins' inorganic chemistry》（Atkins PW, Overton T 等，2026）",
+     "ok": true
+    }
+   ],
+   "match": {
+    "doi": "10.82444/warw.33604591",
+    "title": "Shriver & Atkins' inorganic chemistry",
+    "year": 2026,
+    "source": "datacite"
+   }
+  },
+  {
+   "id": "D053",
+   "lang": "en",
+   "kind": "software",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 8168,
+   "ms": 26400,
+   "note": "在 DataCite、Crossref 与 OpenAlex 中检索了 \"Gaussian 16 Revision C.01\"（作者 Frisch，2016），均未找到与该软件引用匹配的记录，仅返回标题与作者不符的条目。该条目为 Gaussian Inc. 发布的商业量子化学软件，属数据库覆盖范围之外，需人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在 DataCite 中查找 Gaussian 16 软件记录",
+     "detail": "DataCite 检索「Gaussian 16 Revision C.01」：5 条候选，最接近《Vibrational Sample-Based Quantum Diagona…》（KUMAR K, Lötstedt E 等，2026）",
+     "ok": true
+    },
+    {
+     "reason": "在 Crossref 中按标题与作者查找该软件条目",
+     "detail": "Crossref 检索「Gaussian 16 Revision C.01」（作者 Frisch，2016±1 年）：5 条候选，最接近《Schöpfung und Spiritualität in den Weltr…》（Frisch HJ，2016）",
+     "ok": true
+    },
+    {
+     "reason": "在 OpenAlex 中查找该软件引用记录",
+     "detail": "OpenAlex 题名检索「Gaussian 16 Revision C.01」（2016±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D054",
+   "lang": "en",
+   "kind": "legal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 4368,
+   "ms": 13455,
+   "note": "已用法规标题在 Crossref 与 DataCite 检索，均未找到该欧盟法规文本本身的记录，返回的只是引用该法规的期刊论文、书籍章节等二手文献。该文献属法律法规文本，不在开放学术数据库覆盖范围内，建议人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索该欧盟医疗器械法规的正式记录",
+     "detail": "Crossref 检索「Regulation (EU) 2017/745 on me…」（2017±1 年）：5 条候选，最接近《EU Policymaking on Medical Devices》（Altenstetter C，2017）",
+     "ok": true
+    },
+    {
+     "reason": "在数据仓储中查找该法规文本记录",
+     "detail": "DataCite 检索「Regulation (EU) 2017/745 medic…」：5 条候选，最接近《REGULATORY CHALLENGES IN APPROVAL OF MED…》（Rokkam Youa Sree*, B. Ramarao, M Prasada Rao，2026）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D056",
+   "lang": "en",
+   "kind": "web",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 4037,
+   "ms": 17117,
+   "note": "该引文为WHO官网抗微生物耐药性实况报道网页，已用标题词与机构名在Crossref和DataCite检索，均未找到对应的网页条目，仅见其他WHO相关出版物。此类网页资源不在开放学术数据库覆盖范围内，建议人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "尝试在DataCite中查找WHO抗微生物耐药性实况报道记录",
+     "detail": "DataCite 检索「Antimicrobial Resistance World…」：5 条候选，最接近《Viral Hepatitis A and E: Epidemiology, T…》（Ashish Zatkar, Roshan Shinde 等，2025）",
+     "ok": true
+    },
+    {
+     "reason": "用机构名与标题词检索WHO实况报道条目",
+     "detail": "Crossref 检索「Antimicrobial Resistance fact …」（作者 World Health Organization）：5 条候选，最接近《Sustaining Action Against Antimicrobial …》（World Bank, World Health Organization，2022）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D066",
+   "lang": "en",
+   "kind": "thesis",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 5717,
+   "ms": 9139,
+   "note": "在DataCite、OpenAlex和Crossref中分别以该学位论文标题（含作者Shi与年份2012）检索，均未找到匹配记录，Crossref仅返回若干主题相近但标题与作者不符的期刊/会议论文。该文献为学位论文，未在开放学术数据库中发现对应条目。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在DataCite中查找该学位论文记录",
+     "detail": "DataCite 检索「Volcano edifices and Gas Pool …」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在OpenAlex中查找该学位论文",
+     "detail": "OpenAlex 题名检索「Volcano edifices and Gas Pool …」（2012±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "用作者与年份在Crossref中再查一次",
+     "detail": "Crossref 检索「Volcano edifices Gas Pool Form…」（作者 Shi，2012±1 年）：5 条候选，最接近《Analysis of \"Lower Limit Formation\" in L…》（Xiao L, Mao ZQ 等，2011）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D067",
+   "lang": "en",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 7050,
+   "ms": 18391,
+   "note": "已用英文完整题名加首作者、中文题名在Crossref检索，并在DataCite查找，均未找到与该引文题名、作者、年份同时吻合的记录；仅出现若干主题相近但题名不符的候选。检索预算已用尽，建议人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用完整英文题名与首作者检索该文是否被Crossref收录",
+     "detail": "Crossref 检索「Volcanic rock reservoir charac…」（作者 Li，2022±1 年）：5 条候选，最接近《Characteristics and Affecting Factors of…》（Li Z, Bao Z 等，2022）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该文的预印本或数据集记录",
+     "detail": "DataCite 检索「Volcanic rock reservoir charac…」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "用中文题名在Crossref中检索该文记录",
+     "detail": "Crossref 检索「松辽盆地南部断陷火山岩储层特征及油气成藏因素」（作者 Li）：5 条候选，最接近《Reservoir characteristics and hydrocarbo…》（Li H, Tang HM 等，2018）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D068",
+   "lang": "en",
+   "kind": "standard",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 5942,
+   "ms": 13559,
+   "note": "在Crossref中检索到多条题为《Pore size distribution and porosity of solid materials by mercury porosimetry and gas adsorption》的标准记录（含DOI），但均未标注GB/T 21650.3-2011编号、年份或分部分信息；DataCite无结果。该标准编号与第三部分（微孔气体吸附分析）的对应关系未能确认。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索该中国国家标准是否有DOI记录",
+     "detail": "Crossref 检索「GB/T 21650.3-2011 pore size di…」：5 条候选，最接近《Pore size distribution and porosity of s…》",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该标准记录",
+     "detail": "DataCite 检索「GB/T 21650.3-2011 Pore Size Di…」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "查看该标准记录是否对应GB/T 21650.3-2011第三部分",
+     "detail": "Crossref 查询 DOI 10.3403/30132411：1 条候选，最接近《Pore size distribution and porosity of s…》",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D071",
+   "lang": "en",
+   "kind": "web",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6213,
+   "ms": 15923,
+   "note": "已用标题在Crossref、DataCite和OpenAlex检索该Flint Rehab网页文章，均未找到匹配记录（Crossref仅返回主题相近的被动关节活动度论文）。该文献属网页/电子资源，不在这些学术数据库覆盖范围内，建议人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索该网页文章标题是否被Crossref收录",
+     "detail": "Crossref 检索「Passive Range of Motion Exerci…」：5 条候选，最接近《Performing passive range-of-motion exerc…》（&NA;，2006）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该Flint Rehab网页资源记录",
+     "detail": "DataCite 检索「Passive Range of Motion Exerci…」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在OpenAlex中查找该Flint Rehab网页文章记录",
+     "detail": "OpenAlex 题名检索「Passive Range of Motion Exerci…」（2025±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D073",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 7191,
+   "ms": 13680,
+   "note": "已用中文标题与第一作者在 Crossref、DataCite 检索，并按中文标题在 OpenAlex 查询，均未找到与《草业学报》2024年33卷166–182页对应的记录；开放数据库对中文期刊收录有限。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该中文期刊论文",
+     "detail": "Crossref 检索「丛枝菌根真菌和根瘤菌与植物共生研究进展」（作者 段海霞，2024±1 年）：5 条候选，最接近《Research Progress on Gene Knockout in Fi…》（廖海艳，2024）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文论文记录",
+     "detail": "DataCite 检索「丛枝菌根真菌和根瘤菌与植物共生研究进展」：4 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中按中文标题查找该论文",
+     "detail": "OpenAlex 题名检索「丛枝菌根真菌和根瘤菌与植物共生研究进展」（2024±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D074",
+   "lang": "zh",
+   "kind": "book",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6854,
+   "ms": 16402,
+   "note": "已用中文书名《地球是钟(固氮篇)》及作者程奇在 Crossref、DataCite 和 OpenAlex 检索，均未找到题名、作者与年份相符的图书记录，仅返回不相关的期刊论文与数据集条目。该中文专著可能不在这些数据库覆盖范围内，建议人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文书名与作者检索该图书条目",
+     "detail": "Crossref 检索「地球是钟 固氮篇」（作者 程奇）：5 条候选，最接近《Optimization of Spherical Robot Componen…》（程雨奇，2024）",
+     "ok": true
+    },
+    {
+     "reason": "在数据仓储中查找该中文图书记录",
+     "detail": "DataCite 检索「地球是钟 固氮篇 程奇」：4 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在开放索引中查找该中文图书题名",
+     "detail": "OpenAlex 题名检索「地球是钟 固氮篇」（2013±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D075",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 7171,
+   "ms": 15658,
+   "note": "已用中文标题在Crossref、DataCite和OpenAlex检索，均未找到与《非共生固氮菌及其固氮作用》（微生物学报2022年62卷）匹配的记录，仅返回标题不符的候选。该中文期刊文献在开放数据库中收录有限。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题检索微生物学报该文",
+     "detail": "Crossref 检索「非共生固氮菌及其固氮作用」（作者 Wang，2022±1 年）：5 条候选，最接近《Effects of Nitrogen Deposition on Arbusc…》（WANG Yaoxiong 汪，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文文献记录",
+     "detail": "DataCite 检索「非共生固氮菌及其固氮作用」：4 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中检索该中文标题",
+     "detail": "OpenAlex 题名检索「非共生固氮菌及其固氮作用」（2022±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D078",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 7230,
+   "ms": 16859,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该中文期刊论文",
+     "detail": "Crossref 检索「飞秒超快动力学过程及飞秒检测」（作者 周明，2004±1 年）：5 条候选，最接近《结构I型氙水合物的分子动力学研究》（周宏余, 程伟 等，2005）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文文献记录",
+     "detail": "DataCite 检索「飞秒超快动力学过程及飞秒检测」：5 条候选，最接近《The Omnidirectional Spherical Spiral: A …》（Hu J, AI D 等，2026）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中检索该中文标题以确认收录情况",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "用英文标题与作者再试一次检索",
+     "detail": "Crossref 检索「femtosecond ultrafast dynamics…」（作者 Zhou，2004±1 年）：5 条候选，最接近《Femtosecond laser speckles》（Liu W, Zhou C，2005）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D079",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 6960,
+   "ms": 17085,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与首作者检索该期刊论文",
+     "detail": "Crossref 检索「方解石晶体定向性对水的拉曼光谱影响的实验评估」（作者 刘显，2020±1 年）：5 条候选，最接近《基于光力捕获金纳米立方体的拉曼光谱增强》（Rong Sheng 荣, Liu Hongshuang 刘 等，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文论文记录",
+     "detail": "DataCite 检索「方解石晶体定向性 水的拉曼光谱 天然包裹体盐度」：5 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中检索该中文论文标题",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "改用末位作者与关键词再检索一次",
+     "detail": "Crossref 检索「天然包裹体盐度的测定 拉曼光谱 方解石」（作者 丘靥）：5 条候选，最接近《巴赫曼交际语言测试理论下英语专八考试之改错的信效度分析》（郑艳红, 吴文琳 等，2021）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D080",
+   "lang": "zh",
+   "kind": "thesis",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6463,
+   "ms": 8475,
+   "note": "已用中文题名\"北疆历史农牧业地理\"及作者满孝永、2009年在 DataCite 与 Crossref 检索，均未找到匹配记录（DataCite 仅返回无关的语音模型条目，Crossref 返回遥感、地质等无关文献）；OpenAlex 检索额度已用尽。该中文学位论文未在开放学术数据库中出现，需人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索该中文学位论文是否被 DataCite 收录",
+     "detail": "DataCite 检索「北疆历史农牧业地理」：4 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在开放索引中查找该学位论文题名与年份",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "用中文题名与作者再查 Crossref 是否收录该论文",
+     "detail": "Crossref 检索「北疆历史农牧业地理」（作者 满孝永，2009±1 年）：5 条候选，最接近《Progress in remote sensing of vegetation…》（张永江, 河北农业大学农学院 等，2009）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D081",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 7131,
+   "ms": 18860,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与作者检索该期刊论文",
+     "detail": "Crossref 检索「谈阿凡纳谢沃文化 阿依托汗一号墓地」（作者 李水城，2018±1 年）：5 条候选，最接近《东昆仑祁漫塔格阿确墩地区侵入岩U-Pb年代学、地球化学及其地质意义》（李婷, 李猛 等，2018）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文文献记录",
+     "detail": "DataCite 检索「阿凡纳谢沃文化 阿依托汗一号墓地 新疆文物」：4 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中按中文标题查找该文",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "用作者与核心关键词再试一次检索",
+     "detail": "Crossref 检索「阿凡纳谢沃文化」（作者 李水城）：5 条候选，最接近《“互联网＋大众传媒”时代文化传播的 泛娱乐化分析》（李非凡，2025）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D082",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 6589,
+   "ms": 13696,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该发掘简报",
+     "detail": "Crossref 检索「新疆阜康白杨河上游墓群发掘简报」（作者 闫雪梅，2020±1 年）：5 条候选，最接近《Regional differences of gramineae herbag…》（ZHENG Yi 郑, YANG Lianmei 杨 等，2020）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该简报的收录记录",
+     "detail": "DataCite 检索「新疆阜康白杨河上游墓群发掘简报」：2 条候选，最接近《ESPnet2 pretrained model, kamo-naoyuki/h…》（Kamo-Naoyuki，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中检索该中文发掘简报",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "改用第二作者与简化标题再检索一次",
+     "detail": "Crossref 检索「白杨河上游墓群发掘简报」（作者 鲁礼鹏）：5 条候选，最接近《Analysis of phytoplankton structure base…》（JIA Peng 贾，2021）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D085",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 7069,
+   "ms": 14401,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该期刊论文",
+     "detail": "Crossref 检索「内陆水体初级生产力评估方法研究进展」（作者 陆瑶，2023±1 年）：5 条候选，最接近《The Influence of Sample Pretreatment on …》（陆瑶，2024）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文文献记录",
+     "detail": "DataCite 检索「内陆水体初级生产力评估方法研究进展」：5 条候选，最接近《B29 Steel Triangle Charter Instead of At…》（Hill H，2024）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中检索该中文标题以确认收录情况",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "改用第二作者与关键词组合再检索一次",
+     "detail": "Crossref 检索「初级生产力评估方法 内陆水体」（作者 贾珺杰）：5 条候选，最接近《水利新质生产力评价方法及应用》（杰邓, 茜王，2025）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D086",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 6596,
+   "ms": 14771,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该期刊论文",
+     "detail": "Crossref 检索「天津地区大气降水中氢氧稳定同位素特征及影响因素研究」（作者 徐涛，2014±1 年）：5 条候选，最接近《铅锌矿床中的Cd同位素组成特征及其成因意义》（张羽旭, 朱传威 等，2013）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文论文记录",
+     "detail": "DataCite 检索「天津地区大气降水中氢氧稳定同位素特征及影响因素研究」：2 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中检索该中文论文标题",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "改用关键词与作者再检索一次",
+     "detail": "Crossref 检索「大气降水 氢氧稳定同位素 天津」（作者 徐涛，2014±1 年）：5 条候选，最接近《新疆阿拉塔格地区新元古代花岗片麻岩的锆石U-Pb定年与Hf同位素: 对中天山地块…》（宗克清, 贺振宇 等，2014）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D087",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 6832,
+   "ms": 16560,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该期刊论文",
+     "detail": "Crossref 检索「中国红树林的分布、面积和树种组成」（作者 廖宝文，2014±1 年）：5 条候选，最接近《Ecological distribution of benthic polyc…》（LIN Junhui 林, ZHENG Fengwu 郑 等，2014）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文文献记录",
+     "detail": "DataCite 检索「中国红树林的分布、面积和树种组成」：5 条候选，最接近《渭南实施乡村振兴战略的实践与思考》（刘林娜，2024）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中查找该中文论文记录",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "尝试该文英文标题与第二作者检索",
+     "detail": "Crossref 检索「Distribution, area and species…」（作者 张乔民）：5 条候选，最接近《Vegetation Geographical Distribution and…》（张乔华，2025）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D088",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 5984,
+   "ms": 10116,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该期刊论文",
+     "detail": "Crossref 检索「甲烷排放部分抵消湿地生态系统碳汇功能 全球数据分析」（作者 展鹏飞，2023±1 年）：5 条候选，最接近《气候变化背景下林业生态系统碳汇功能提升的技术路径与政策机制》（方万力, 季雅玲 等，2024）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文文献记录",
+     "detail": "DataCite 检索「甲烷排放部分抵消湿地生态系统碳汇功能 全球数据分析」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在OpenAlex中检索该中文标题以确认收录情况",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "改用第二作者与关键词组合再检索一次",
+     "detail": "Crossref 检索「湿地生态系统碳汇 甲烷排放 全球数据分析」（作者 仝川）：5 条候选，最接近《Stoichiometry of carbon dioxide and meth…》（WANG Weiqi 王, ZENG Congsheng 曾 等，2012）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D089",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 6930,
+   "ms": 13828,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该中文期刊论文",
+     "detail": "Crossref 检索「基于氮排放数据的中国大陆大气氮素湿沉降量估算」（作者 遆超普）：5 条候选，最接近《基于大数据的交通流量预测与疏导方案设计》（李光超，2025）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文文献记录",
+     "detail": "DataCite 检索「基于氮排放数据的中国大陆大气氮素湿沉降量估算」：4 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中检索该中文标题与年份",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "改用第二作者与关键词组合再检索一次",
+     "detail": "Crossref 检索「大气氮素湿沉降量估算 氮排放 中国大陆」（作者 颜晓元）：5 条候选，最接近《中国归来》（康晓光，2008）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D090",
+   "lang": "zh",
+   "kind": "thesis",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 7184,
+   "ms": 16987,
+   "note": "已用中文题名在 DataCite 与 Crossref 检索，另尝试 OpenAlex（额度已用尽），均未找到与李泽希 2023 年西安交通大学硕士学位论文相符的记录，仅返回不相关的期刊论文与数据集条目。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文题名检索该硕士学位论文是否被收录",
+     "detail": "DataCite 检索「质子交换膜燃料电池单电池尺度及电堆尺度下传输过程仿真研究」：5 条候选，最接近《ESPnet2 pretrained model, vectominist/se…》（Vectominist，2022）",
+     "ok": true
+    },
+    {
+     "reason": "用中文题名在Crossref中查找该学位论文记录",
+     "detail": "Crossref 检索「质子交换膜燃料电池单电池尺度及电堆尺度下传输过程仿真研究」：5 条候选，最接近《直接甲醇燃料电池质子交换膜内两相逆流的研究》",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中查找该中文学位论文记录",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D091",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 5674,
+   "ms": 16528,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与作者检索该期刊论文",
+     "detail": "Crossref 检索「玉米免耕播种机主动式秸秆移位防堵装置的设计与试验」（作者 王，2017±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在DataCite中查找该中文论文记录",
+     "detail": "DataCite 检索「玉米免耕播种机主动式秸秆移位防堵装置的设计与试验」：2 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中检索该中文论文标题",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "改用作者与关键词组合再检索一次",
+     "detail": "Crossref 检索「免耕播种机 秸秆移位 防堵装置 设计与试验」（作者 朱存玺）：5 条候选，最接近《基于MEMS技术的微型机电控制装置设计与制造》（朱华刚, 斐张，2025）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D092",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 5258,
+   "ms": 11870,
+   "note": "已用中文标题加第一作者在 Crossref、DataCite 检索，均无匹配记录；OpenAlex 检索额度已用尽，未能进一步核查。该文献为中文期刊论文，开放数据库收录有限。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该期刊论文",
+     "detail": "Crossref 检索「全秸硬茬地小麦播种机碎秸导流装置参数设计与优化」（作者 罗，2019±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在DataCite中查找该中文论文记录",
+     "detail": "DataCite 检索「全秸硬茬地小麦播种机碎秸导流装置参数设计与优化」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在OpenAlex中检索该中文标题以确认收录情况",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D093",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 5217,
+   "ms": 6202,
+   "note": "已用中文标题与第一作者在 Crossref、DataCite 检索，均无匹配记录；OpenAlex 检索额度已用尽。该文献为中文期刊论文，开放数据库收录有限，未能定位到对应条目。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该期刊论文",
+     "detail": "Crossref 检索「免耕播种机凹面爪式清茬机构仿真与试验」（作者 贾，2018±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在DataCite中查找该中文论文记录",
+     "detail": "DataCite 检索「免耕播种机凹面爪式清茬机构仿真与试验」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在OpenAlex中检索该中文标题以确认收录情况",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D094",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 7074,
+   "ms": 9736,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与作者检索该访谈文章",
+     "detail": "Crossref 检索「但开风气不为师 费孝通学科建设思想访谈」（作者 潘乃谷，1997±1 年）：4 条候选，最接近《32.病院環境監視装置の開発 : 第72回日本医科器械学会大会予稿集》（富田敏司, 中田精三 等，1997）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文访谈记录",
+     "detail": "DataCite 检索「但开风气不为师 费孝通学科建设思想访谈」：5 条候选，最接近《积极老龄化视角下老年人短视频使用问题研究》（xiao Z，2025）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中查找该中文访谈文章",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "改用作者与期刊名再检索一次",
+     "detail": "Crossref 检索「费孝通学科建设思想访谈 民俗研究」（作者 潘乃谷）：5 条候选，最接近《习近平青年观与医学院校思想政治教育研究》（凌子徐, 莉莉潘，2025）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D095",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6903,
+   "ms": 13301,
+   "note": "已用中文标题加作者、年份在 Crossref 与 DataCite 检索，均未找到与《社会学调查要发展》（费孝通，社会，1983）匹配的记录，仅返回无关中文文献；OpenAlex 检索额度已用尽。该文献可能未被这些开放数据库收录，建议到知网或万方核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题加作者年份检索该期刊文章",
+     "detail": "Crossref 检索「社会学调查要发展」（作者 费孝通，1983±1 年）：5 条候选，最接近《有机硫化物引发丙烯腈光聚合研究》（曹维孝，1983）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文文献记录",
+     "detail": "DataCite 检索「社会学调查要发展 费孝通」：5 条候选，最接近《积极老龄化视角下老年人短视频使用问题研究》（xiao Z，2025）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中检索该中文文章标题",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D096",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6916,
+   "ms": 10949,
+   "note": "已用中文标题与作者费皖在Crossref、DataCite检索，均未找到《百年潮》2012年第7期该文记录；OpenAlex额度已用尽。开放数据库对中文期刊收录有限，建议到知网或万方核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与作者检索该期刊文章记录",
+     "detail": "Crossref 检索「费孝通“上书紫光阁”」（作者 费皖，2012±1 年）：5 条候选，最接近《The Research of Hundred-Nanosecond Pulse…》（Zhang Xiaopeng 张, Fei Qunxing 费 等，2012）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文文章记录",
+     "detail": "DataCite 检索「费孝通 上书紫光阁 百年潮」：4 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中查找该中文文章记录",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D097",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 6286,
+   "ms": 15153,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该期刊论文",
+     "detail": "Crossref 检索「黑水虻幼虫粉替代鱼粉对黄颡鱼幼鱼生长性能、肌肉品质及血清生化…」（作者 陈晓瑛，2019±1 年）：5 条候选，最接近《幼儿绘画对幼儿的影响》（吴晓莉，2020）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文论文记录",
+     "detail": "DataCite 检索「黑水虻幼虫粉替代鱼粉对黄颡鱼幼鱼生长性能 肌肉品质 血清生化…」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在OpenAlex中检索该中文论文标题",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "改用第二作者与关键词组合再检索一次",
+     "detail": "Crossref 检索「黑水虻幼虫粉替代鱼粉 黄颡鱼 生长性能 肌肉品质」（作者 胡俊茹）：5 条候选，最接近《非离子态氨对转&ldquo;全鱼&rdquo;生长激素基因鲤鱼的急性毒性和慢性毒…》（管波, 汪亚平 等，2010）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D098",
+   "lang": "zh",
+   "kind": "book",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 5757,
+   "ms": 11647,
+   "note": "已用中文年鉴题名在Crossref与DataCite检索，均未找到《中国渔业统计年鉴-2025》的对应记录，仅返回不相关的渔业类文献。该文献为年鉴类图书，开放学术数据库覆盖有限，建议人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索该年鉴是否在Crossref有记录",
+     "detail": "Crossref 检索「中国渔业统计年鉴」（2025±1 年）：5 条候选，最接近《中华人民共和国内陆渔业概况与加强内陆渔业统计资料收集与分析能力建设》",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该年鉴的图书或数据集记录",
+     "detail": "DataCite 检索「中国渔业统计年鉴 2025」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在OpenAlex中查找该年鉴的收录记录",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D099",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 5431,
+   "ms": 8444,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与作者检索该期刊论文",
+     "detail": "Crossref 检索「产朊假丝酵母替代鱼粉蛋白对克氏原螯虾幼虾生长性能、抗氧化能力…」（作者 黄，2025±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在DataCite中查找该中文论文记录",
+     "detail": "DataCite 检索「产朊假丝酵母替代鱼粉蛋白 克氏原螯虾幼虾 生长性能 抗氧化能…」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在OpenAlex中检索该中文标题",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "尝试用英文关键词与作者检索该论文",
+     "detail": "Crossref 检索「Candida utilis replacement fis…」（作者 叶忠勋）：4 条候选，最接近《Effects of Dietary Protein Levels on Gro…》（Xue M, Yin B 等，2026）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D100",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 6711,
+   "ms": 11131,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该期刊论文",
+     "detail": "Crossref 检索「试析美军数字现代化战略的半导体技术前沿」（作者 赖凡，2022±1 年）：5 条候选，最接近《数字化测量技术在矿山测量的应用分析》（伟张, 孟凡锋，2022）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文文献记录",
+     "detail": "DataCite 检索「试析美军数字现代化战略的半导体技术前沿」：5 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中检索该中文期刊论文",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "改用第二作者与关键词组合再检索一次",
+     "detail": "Crossref 检索「美军数字现代化战略 半导体技术前沿 国防科技」（作者 毛海燕）：5 条候选，最接近《教学评一体化在小学信息技术教学中的应用》（胡海燕，2023）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D101",
+   "lang": "zh",
+   "kind": "book",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 3948,
+   "ms": 11770,
+   "note": "已用中文年鉴题名在Crossref与DataCite检索，均未找到《中国高技术产业统计年鉴2024》的对应记录，返回结果题名与作者均不匹配。该文献为国家统计局出版的统计年鉴类图书，不在这些开放学术数据库覆盖范围内。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索该统计年鉴是否在Crossref有记录",
+     "detail": "Crossref 检索「中国高技术产业统计年鉴」：5 条候选，最接近《产品生命周期模型视角下中国高技术产业贸易的演变》（柯郁馨, 杨佳华，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该年鉴的图书或数据集记录",
+     "detail": "DataCite 检索「中国高技术产业统计年鉴 2024」：4 条候选，最接近《weijian/2026-USCAP-AI-Pathology-Report: …》（Jan，2026）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D102",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 6418,
+   "ms": 10086,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与作者检索该期刊论文",
+     "detail": "Crossref 检索「美国芯片补贴“护栏条款”对中国的影响及应对建议」（作者 丁如，2024±1 年）：5 条候选，最接近《岩土工程勘察对基坑支护施工的影响及对策解析》（丁凌云，2024）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文论文记录",
+     "detail": "DataCite 检索「美国芯片补贴 护栏条款 对中国的影响及应对建议」：2 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中检索该中文论文标题",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "改用关键词与作者再检索一次",
+     "detail": "Crossref 检索「芯片补贴 护栏条款 中国 应对建议」（作者 丁如）：5 条候选，最接近《智慧供热系统在中国集中供热领域的应用与前景》（丁超，2025）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D103",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 7007,
+   "ms": 14954,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该期刊论文",
+     "detail": "Crossref 检索「社会脆弱性问题研究进展评述与展望」（作者 江源，2023±1 年）：5 条候选，最接近《我国产业园区数字化转型现状、问题及发展路径研究》（杨春江，2023）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文文献记录",
+     "detail": "DataCite 检索「社会脆弱性问题研究进展评述与展望」：5 条候选，最接近《ESPnet2 pretrained model, vectominist/se…》（Vectominist，2022）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中检索该中文综述论文",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "改用第二作者与关键词组合再检索一次",
+     "detail": "Crossref 检索「社会脆弱性 研究进展 评述 展望」（作者 田晓伟）：5 条候选，最接近《社会—生态脆弱性相互关系的计量推断方法》（李宁, Ning L 等，2016）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D104",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 6441,
+   "ms": 18616,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该期刊论文",
+     "detail": "Crossref 检索「城市老旧小区治理 现实梗阻与未来路向 利益博弈」（作者 冯慧，2023±1 年）：5 条候选，最接近《基于生态水利设计理念的城市河道治理工程》（叶仁政, 严佳慧，2023）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文论文记录",
+     "detail": "DataCite 检索「城市老旧小区治理 现实梗阻与未来路向 利益博弈」：2 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中检索该中文标题及作者年份",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "改用第二作者与期刊名再检索一次",
+     "detail": "Crossref 检索「老旧小区治理 利益博弈 学习论坛」（作者 付国伟）：5 条候选，最接近《老旧小区改造中人车分流模式研究——以翠竹新村北区小区为例》（倪伟伟, 张杰，2024）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D105",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 7013,
+   "ms": 14260,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该期刊论文",
+     "detail": "Crossref 检索「城乡结合部老旧社区的嵌入式治理」（作者 戴祥玉，2020±1 年）：5 条候选，最接近《公共建筑内部空间的创新设计与生态理念的结合研究》（刘玉诚, 李晓宇，2020）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文论文记录",
+     "detail": "DataCite 检索「城乡结合部老旧社区的嵌入式治理」：5 条候选，最接近《B53 The Top G6 Legislation and Axis Legi…》（Hill H，2025）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中查找该中文期刊论文",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "改用第二作者与关键词组合再检索一次",
+     "detail": "Crossref 检索「老旧社区 嵌入式治理 城乡结合部」（作者 卜凡帅）：5 条候选，最接近《社区治理创新的条件与动力：基于J社区“社团主理人”项目的多源流分析》（尹亦凡, 马帅，2025）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D106",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 6521,
+   "ms": 11794,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该期刊论文",
+     "detail": "Crossref 检索「煤岩单轴压缩破坏声发射轻量化三维卷积预测模型研究」（作者 赵毅鑫，2022±1 年）：5 条候选，最接近《Research on Stock Forecasting Based on L…》（王鑫，2022）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文论文记录",
+     "detail": "DataCite 检索「煤岩单轴压缩破坏声发射轻量化三维卷积预测模型研究」：2 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中检索该中文论文标题",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "改用期刊名与关键词组合再检索一次",
+     "detail": "Crossref 检索「岩石力学与工程学报 声发射 三维卷积 煤岩单轴压缩」（作者 赵毅鑫）：5 条候选，最接近《铜山矿深部矿体Ⅱ号探矿竖井工程岩体力学分析》（赵纯林, 焦东 等，2026）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D107",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 5982,
+   "ms": 17896,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该期刊论文",
+     "detail": "Crossref 检索「基于9种机器学习算法的岩爆预测研究」（作者 汤志立，2020±1 年）：5 条候选，最接近《基于工作过程的高职《数控机床操作与加工》项目化教学研究》（宾立，2020）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文论文记录",
+     "detail": "DataCite 检索「基于9种机器学习算法的岩爆预测研究」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在OpenAlex中检索该中文标题及作者",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "改用第二作者与期刊关键词再检索一次",
+     "detail": "Crossref 检索「岩爆预测 机器学习 岩石力学与工程学报」（作者 徐千军）：5 条候选，最接近《岩石力学试验中试样选择和抗压强度预测方法研究》（路厚松, 金宏杰 等，2022）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D108",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 6934,
+   "ms": 17942,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该期刊论文",
+     "detail": "Crossref 检索「基于时间序列与长短时记忆网络的滑坡位移动态预测模型」（作者 杨背背，2018±1 年）：5 条候选，最接近《基于时间序列分解和多变量混沌模型的滑坡阶跃式位移预测》（黄发明, 殷坤龙 等，2018）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文论文记录",
+     "detail": "DataCite 检索「基于时间序列与长短时记忆网络的滑坡位移动态预测模型」：5 条候选，最接近《长将(长照)图理论x负空间x飞空间》（习砲子8964，2026）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中检索该中文标题的收录情况",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "改用关键词与作者再检索一次",
+     "detail": "Crossref 检索「滑坡位移动态预测模型 长短时记忆网络」（作者 杨背背）：5 条候选，最接近《基于时间序列分解和多变量混沌模型的滑坡阶跃式位移预测》（黄发明, 殷坤龙 等，2018）",
+     "ok": true
+    }
+   ]
+  }
+ ]
+}

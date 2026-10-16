@@ -22,9 +22,9 @@
 | ✅ | 停止核查、截断流检测、未完成报告标注；下载包含原文、问题、数据库记录与查询过程的 Markdown 报告 |
 | ✅ | 论断证据核查（RAG）：DOI 摘要或用户提供的原文，分块检索、四类判断、原文引句与定位 |
 | ✅ | PDF 文字层 / DOCX / TXT 导入：提取预览、全文或参考文献区域选择、确认后替换输入 |
-| 🚧 | Agent 化：模型自主规划每条文献的检索策略，工具调用全程可视化 |
+| ✅ | AI 检索 Agent：对“无法核验 / 只有相近候选”的条目，由 DeepSeek 规划检索、调用 Crossref / OpenAlex / DataCite / DOI 工具，每一步实时显示；候选仍由规则逐字段确认 |
 | 🚧 | 多模态理解 / 扫描 PDF 与照片 OCR（文档文字提取不属于多模态理解） |
-| 🚧 | MCP Server：把核查能力开放给 Cursor、Claude 等 AI 客户端 |
+| ✅ | MCP Server：把“核验参考文献”“核查论断”开放给 Claude、Cursor 等 MCP 客户端（stdio） |
 | 🚧 | 隐藏提示词检测：识别论文 PDF 中的白色小字、注入指令 |
 
 ## 核查流程
@@ -41,7 +41,23 @@ Crossref 整条引文模糊检索 ──仍未找到且为英文──► OpenAl
 对候选逐字段打分，选出最佳匹配 → 撤稿检查 → 给出结论 + 规范写法 + 核查过程
 ```
 
-选择 **AI 辅助解析** 时，在查询数据库前增加 DeepSeek `verify_references` 工具调用。服务端固定条目边界、验证原文与字段来源，只补充规则未提取到的字段，保留原文中的错误作者、年份和期刊等证据。模型无法直接给出真实性结论，也不能选择任意网络地址。这是受约束的解析与核验工作流，尚不是自主规划检索的完整 Agent。
+选择 **AI 辅助解析** 时，在查询数据库前增加 DeepSeek `verify_references` 工具调用。服务端固定条目边界、验证原文与字段来源，只补充规则未提取到的字段，保留原文中的错误作者、年份和期刊等证据。模型无法直接给出真实性结论，也不能选择任意网络地址。
+
+**AI 检索 Agent（“AI 继续查”）**：标准核验后，“无法核验”或“只找到相近候选”的条目旁会出现“AI 继续查”按钮。点击后，DeepSeek 先阅读原文、已解析的字段和已经查过的路径，再决定下一步调用哪个工具：
+
+- `search_crossref`：按题名或关键词检索，可加作者姓、年份 ±1；
+- `search_openalex`：按题名检索，每条最多 1 次；
+- `search_datacite`：检索软件、数据集、报告、学位论文和预印本；
+- `lookup_doi`：只能查询引文或检索结果中出现过的 DOI；
+- `finish`：结束检索。
+
+每次调用都带一句中文理由，检索结果连同规则比对提示（题名、第一作者、年份是否吻合）回传给模型，供它调整下一步。每一步都实时显示在卡片上。规则一旦确认找到同一篇就停止；每条最多检索 4 次、调用模型 4 轮、耗时 80 秒。
+
+结束后，所有候选交给与标准核验相同的规则逐字段比对：
+
+- 模型不能指定哪一篇算数，不能给出真伪结论；
+- Agent 只能找到证据，不能制造“疑似不存在”；
+- 模型失败、超时或参数不合规时，原结论保持不变并如实说明。
 
 **判定原则**
 
@@ -81,6 +97,8 @@ pnpm eval --out=eval/results/local.json  # 核验引擎访问真实数据库，�
 pnpm eval:real eval/real-world/dev-2026-10-14.json --out=eval/results/local-real.json  # 真实论文参考文献评测
 pnpm smoke:ai   # 需服务运行及有效密钥；真实DeepSeek工具调用+数据库核验
 pnpm smoke:claims # 真实摘要 + 合成材料支持/矛盾/不足；产生少量模型用量
+pnpm eval:agent eval/real-world/dev-2026-10-14.json eval/results/real-dev-2026-10-15-v2-rules.json  # AI 检索 Agent 评测
+pnpm smoke:mcp    # 用 stdio 启动 MCP Server，真实调用两个工具
 ```
 
 AI 冒烟默认访问 `http://localhost:3210`（可通过 `SMOKE_BASE_URL` 指定），会向 DeepSeek 发送两条公开文献引文并产生少量 API 用量；结果保存至 `eval/results/ai-smoke-*.json`。任何 AI 降级都不会被当作 AI 验收通过。离线测试使用固定响应，不证明模型的真实准确率。
@@ -124,21 +142,81 @@ dev 上降到 0 有调规则的成分，**盲测的 10.1% 才是对新数据的�
 - 汉字作者与拼音记录的跨文字比对；
 - 图书重印本。
 
+### AI 检索 Agent 评测
+
+`pnpm eval:agent` 从一次规则核验的结果中，取出“无法核验 / 只有相近候选”的条目，逐条交给 Agent。Agent 在 test 集上从没调过，这次是它的盲测。两次运行 OpenAlex 题名检索各限 20 次。
+
+| 集合 | 可追查 | AI 找到并经规则确认 | 结论不变 | 失败 | 变成“疑似不存在” | 每条平均 |
+|---|---:|---:|---:|---:|---:|---|
+| dev 108 | 61 | 3（均为已核实） | 58 | 0 | 0 | 3.1 次检索、5.8 千 token、12 秒 |
+| test 119（盲测） | 58 | 7（4 条已核实、3 条信息有误） | 51 | 0 | 0 | 2.9 次检索、5.5 千 token、10 秒 |
+
+结论不变的多数条目确实不在这几个库里：知网期刊、网页、标准、年鉴、法规等。中文条目 52 条，Agent 一条也没找到。
+
+盲测确认的 7 条逐条复核：
+
+- **已核实的 4 条**：3 条正确；1 条匹配到同一作者 2026 年的同名新文章，不是被引的 2008 年章节。
+- **信息有误的 3 条**：1 条引文确实把作者名写错了；1 条是匹配到 CRS 报告的旧版本，属于误报；1 条无法确认。
+
+盲测之后补了两条保守规则：
+
+- 报告、图书等覆盖不足的类型，AI 找到的记录与引文有出入时，只作为候选给出，不判“信息有误”；
+- 图书、学位论文年份差距大时，题名必须几乎逐字一致才算同一篇。
+
+修正后，上面两条误判都不会再出现，但 test 集已经用过，没有重测。dev 集第一次运行发现的两处规则误判也已修正，记录保留在 [agent-dev-2026-10-15-first.json](eval/results/agent-dev-2026-10-15-first.json)。
+
+明细：[dev Agent](eval/results/agent-dev-2026-10-15.json) · [test Agent](eval/results/agent-test-2026-10-15.json)。
+
+### 参考文献规则核验明细
+
 明细：[dev 修复后](eval/results/real-dev-2026-10-15-rules.json) · [dev 修复前](eval/results/real-dev-2026-10-14-rules.json) · [test 修复后](eval/results/real-test-2026-10-15-rules.json) · [test 修复前](eval/results/real-test-2026-10-15-baseline-rules.json)。
 
 第一阶段通过 195 项离线测试；[原浏览器验收记录](eval/improvement-2026-10-14/browser-acceptance.json)覆盖 11 条真实示例、筛选、复制、下载，以及用固定响应模拟的断流、降级与停止流程。
 
-第二阶段最终通过 **23 个文件、289 项测试**、ESLint、TypeScript 和生产构建（[检查记录](eval/phase-two-2026-10-14/final-checks.json)）。2026-10-15 准确率修复后为 **24 个文件、317 项测试**，ESLint、TypeScript 和生产构建全部通过；新增的 [真实引文回归测试](src/lib/verify/__tests__/real-world.test.ts) 逐条对应上表中修好的误报。[开发版浏览器验收](eval/phase-two-2026-10-14/qa-dev-browser-acceptance.json)覆盖桌面 1440 与手机 390 的文档预览确认、状态保留、引句定位、下载、取消和未完成状态；论断界面使用已录制响应回放，另在[生产版复验](eval/phase-two-2026-10-14/qa-production-browser-acceptance.json)通过。最终生产接口真实上传普通/中文 PDF 均成功，压缩扩张样例明确拒绝（[记录](src/lib/documents/__tests__/production-import-verification.json)）。
+第二阶段最终通过 **23 个文件、289 项测试**、ESLint、TypeScript 和生产构建（[检查记录](eval/phase-two-2026-10-14/final-checks.json)）。2026-10-15 准确率修复后为 **24 个文件、317 项测试**；加入 AI 检索 Agent 和 MCP Server 后为 **27 个文件、370 项测试**，ESLint、TypeScript 和生产构建全部通过，29 条人工样例仍为 29/29（[记录](eval/results/curated-2026-10-15-v2.json)）；新增的 [真实引文回归测试](src/lib/verify/__tests__/real-world.test.ts) 逐条对应上表中修好的误报。[开发版浏览器验收](eval/phase-two-2026-10-14/qa-dev-browser-acceptance.json)覆盖桌面 1440 与手机 390 的文档预览确认、状态保留、引句定位、下载、取消和未完成状态；论断界面使用已录制响应回放，另在[生产版复验](eval/phase-two-2026-10-14/qa-production-browser-acceptance.json)通过。最终生产接口真实上传普通/中文 PDF 均成功，压缩扩张样例明确拒绝（[记录](src/lib/documents/__tests__/production-import-verification.json)）。
 
 [真实论断联网记录](eval/results/claims-smoke-2026-10-14T02-20-44-807Z.json)四例全部符合预期：一条公开论文摘要，三条明确标为合成材料的支持、矛盾、证据不足。校验包含引句、来源、片段与字符位置。四例只证明流程可用，不能当作开放场景的准确率。失败记录及修复依据保留在评测目录。
 
 [真实 AI 调用记录](eval/results/ai-smoke-2026-10-14T01-36-52-721Z.json)验证了 `deepseek-flash` 的字段提取与数据库核验衔接，两条结果分别为已核实和期刊有误。该次首次连接超时、一次重试成功，未发生规则降级；此前的两次降级记录也保留在 `eval/results/`。这项冒烟只证明调用链可用，不代表所有格式的解析质量。
+
+## MCP Server
+
+`pnpm mcp` 以 stdio 方式启动 MCP Server（官方 TypeScript SDK 1.31.0），提供两个只读工具：
+
+| 工具 | 输入 | 输出 |
+|---|---|---|
+| `verify_references` | `references`：参考文献列表（最多 80 条 / 60,000 字符） | 每条的结论、问题、数据库匹配记录和规范写法；逐条发送进度通知 |
+| `check_claim` | `claim` 加 `doi` 或 `evidence_text`（二选一） | 支持 / 部分支持 / 矛盾 / 证据不足，附逐字核对过的原文引句 |
+
+两个工具都同时返回文字摘要和带输出结构定义（outputSchema）的结构化结果。结论分别来自数据库逐字段比对和原文引句校验，与网页端相同；`check_claim` 需要 `.env.local` 里的 DeepSeek 密钥，没有密钥时返回明确的“未配置”错误。
+
+Claude Desktop（`claude_desktop_config.json`）或 Cursor（`.cursor/mcp.json`）中添加：
+
+```json
+{
+  "mcpServers": {
+    "cite-checkup": {
+      "command": "pnpm",
+      "args": ["--silent", "--dir", "D:/Darks/projects/cite-checkup", "mcp"],
+      "env": { "NODE_USE_ENV_PROXY": "1" }
+    }
+  }
+}
+```
+
+- 把路径换成你的项目目录；
+- `--silent` 不能省，否则 pnpm 的提示会混进 stdout 的协议消息；
+- 不走代理时可以去掉 `env`；
+- 服务端按脚本位置读取 `.env.local`，与客户端的工作目录无关。
+
+`pnpm smoke:mcp` 用同样的命令启动服务端，列出工具，并真实调用两个工具（[记录](eval/results/mcp-smoke-2026-10-16T00-35-59-125Z.json)）：两条公开文献一条已核实、一条查出年份写错；DOI 摘要论断判为“证据支持”，并附原文引句。
 
 ## 技术架构
 
 - **前端**：Next.js 16（App Router）+ React 19 + TypeScript（strict）+ Tailwind CSS 4
 - **接口**：`GET /api/check` 返回 AI 配置可用状态；`POST /api/check` 接收 `{text, mode: "standard" | "ai"}`，NDJSON 流式返回阶段、降级提示、结果及完成统计
 - **导入**：`POST /api/import` 接收 `FormData.file`，返回纯文字、参考文献区域、格式/页数/警告。确认预览后才替换用户输入；不调用 AI、不持久保存原文件。支持 8 MiB、100 页以内的文字 PDF、DOCX、TXT，不支持旧版 DOC、扫描识别或加密文件。
+- **AI 检索**：`GET /api/agent` 返回可用状态；`POST /api/agent` 接收 `{raw, index}`（单条引文，最多 2,000 字符），以 NDJSON 逐步返回 `step`，最后返回规则复核后的 `result`（含 `agent` 追查记录：工具调用次数、模型轮数、token、追查前结论）。实现见 `src/lib/agent/`。
 - **论断 RAG**：`GET /api/claims` 返回配置与限制；`POST /api/claims` 接收 `{claim, doi}` 或 `{claim, evidenceText, evidenceLabel?}`。固定分块 + 中英文 BM25 检索最多 6 段，再由 DeepSeek `judge_claim` 输出支持、部分支持、矛盾或不足；服务端校验来源 ID、片段 ID、原文引句及位置。使用词法检索，没有向量数据库；短文本跨语言零匹配时纳入全部有限片段并显式提示，长文可能漏召回。
 - **数据源**：Crossref REST API、doi.org（注册查询 + 内容协商）、OpenAlex API
 - **字体**：思源宋体、霞鹜文楷、IBM Plex Mono，均自托管并按字符分片加载（不依赖 Google Fonts）
@@ -167,6 +245,7 @@ src/
 - API Key 只放在 `.env.local`，仓库中只提交 `.env.example`。
 - 核查接口每 IP 每分钟最多 6 次、每次最多 80 条 / 60,000 字符。AI 每 IP 每分钟 2 次、每进程每小时 30 次、同时 2 次、单次 20,000 字符；超过 AI 限额时明确回退标准核验。
 - 限额在当前 Node 进程内计数，重启会清空，多实例不会共享。公网部署前需在可信代理覆盖客户端 `x-forwarded-for`，并增加共享限流/账户预算；目前不是生产级账户计费系统。
+- AI 检索每 IP 每分钟 6 次、每进程每小时 60 次、同时 2 次；单条最多 4 次检索、4 轮模型调用、80 秒。工具参数逐项校验（工具名白名单、字段白名单、长度、年份范围、DOI 格式），DOI 只能查引文或检索结果中出现过的；检索只访问固定的学术数据源；模型写的理由和小结会去掉网址，只作为过程说明显示。
 - 引文工具只允许 `verify_references`；论断工具只允许 `judge_claim`。未知工具、非法字段、虚构引句、错误来源编号、截断或超大响应均被拒绝；材料中的指令视为待分析数据。取消会停止模型请求及后续查询。
 - 论断核查单次论断最多 2,000 字符、证据 160,000 字符；每 IP 每分钟 6 次、每进程同时 2 次、每小时 30 次及输入 240,000 字符。模型和来源失败标为未完成，不伪造判断。导入解析资源与 ZIP/XML 边界详见 [导入模块说明](src/lib/documents/README.md)。
 - 已知瞬时连接错误最多重试一次，共用 60 秒总超时；鉴权、HTTP 错误及内容校验失败不重试。生产日志只输出固定错误分类，不记录引文、密钥、地址或原始异常。
@@ -177,7 +256,9 @@ src/
 - 中文引文对应英文元数据（或反过来）时暂时无法比对，下一步用大模型做跨语言比对。
 - 会议论文的期刊名差异较大，目前只对期刊类文献做期刊名比对。
 - 论断判断只针对指定来源及召回文字；摘要不等于全文，用户提供的材料真实性未经独立认证，不做跨文献系统综述。原文引句存在也不保证模型解释正确，仍需人工复核；该流程不额外查询撤稿状态。
-- 没有自主检索规划 Agent、MCP Server、图像理解、隐藏文字检测、账户系统或共享限流。公开部署前需补上部署环境对应的隔离、访问和额度控制。
+- AI 检索 Agent 只能查 Crossref、OpenAlex、DataCite 和 doi.org 覆盖的文献，知网、万方和图书馆目录仍需人工核查；OpenAlex 无密钥时每天约 100 次题名检索。
+- MCP Server 目前只提供 stdio 本地进程，没有远程 HTTP 部署与鉴权；论断核查与网页端共用每进程每小时 30 次的限额。
+- 没有图像理解、隐藏文字检测、账户系统或共享限流。公开部署前需补上部署环境对应的隔离、访问和额度控制。
 
 ## 参赛材料与验收证据
 

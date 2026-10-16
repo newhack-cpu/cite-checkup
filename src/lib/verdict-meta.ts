@@ -40,6 +40,8 @@ export const STEP_SOURCE: Record<CheckStep["action"], string> = {
   openalex_lookup: "OpenAlex",
   openalex_search: "OpenAlex",
   openalex_source: "OpenAlex",
+  agent_search: "AI 检索",
+  agent_note: "AI 小结",
 };
 
 /**

@@ -1,5 +1,6 @@
 // Server-side only: callers must use this from API routes, never client components.
 // The model supplies extraction arguments; only the deterministic engine may issue verdicts.
+import { unwrapToolArguments } from "../tool-args";
 import { extractDoi, parseReference, splitReferences } from "../verify/extract";
 import type { ParsedRef } from "../verify/types";
 
@@ -101,6 +102,9 @@ function configuration() {
   } catch { /* Public status exposes availability, never a private URL. */ }
   return { apiKey, model, endpoint };
 }
+
+/** 服务端 DeepSeek 配置，供 AI 检索 Agent 复用；密钥和地址都不能返回给前端。 */
+export const deepseekConfiguration = configuration;
 
 export function getAIStatus(): { available: boolean; provider: string; model: string } {
   const { apiKey, model, endpoint } = configuration();
@@ -214,7 +218,7 @@ function completionArguments(value: unknown): unknown {
   }
   if (call.function.arguments.length > MAX_ARGUMENT_CHARS) throw new AIError("AI 工具参数过长");
   try {
-    return JSON.parse(call.function.arguments);
+    return unwrapToolArguments(JSON.parse(call.function.arguments));
   } catch {
     throw new AIError("AI 工具参数不是有效的 JSON 格式");
   }

@@ -10,6 +10,7 @@ import {
   fieldChecks,
   formatAuthorsShort,
   fuzzyRecall,
+  yearVaries,
   recordYears,
   scoreCandidate,
   venueSimilarity,
@@ -49,11 +50,23 @@ const OUT_OF_SCOPE: Partial<Record<RefKind, string>> = {
   software: "软件 / 数据集",
 };
 
+/** 开放数据库覆盖不足的文献类型（图书、报告、网页等），返回中文类名 */
+export function outOfScope(kind: RefKind): string | undefined {
+  return OUT_OF_SCOPE[kind];
+}
+
 const SOURCE_LABEL: Record<WorkRecord["source"], string> = {
   crossref: "Crossref",
   "doi-csl": "DOI 注册机构",
   openalex: "OpenAlex",
+  datacite: "DataCite",
 };
+
+/** AI 检索 Agent 追加的候选和检索步骤；候选一样要经过规则逐字段比对 */
+export interface ExtraEvidence {
+  candidates: WorkRecord[];
+  steps: CheckStep[];
+}
 
 // 这些前缀属于 DataCite（arXiv、Zenodo、figshare），Crossref 里一定查不到，直接问 doi.org
 const DATACITE_PREFIXES = ["10.48550/", "10.5281/", "10.6084/"];
@@ -96,7 +109,7 @@ function rank(ref: ParsedRef, candidates: WorkRecord[]): Ranked[] {
   return list.sort((a, b) => Number(b.score.same) - Number(a.score.same) || b.score.composite - a.score.composite);
 }
 
-export async function verifyReference(ref: ParsedRef, ctx: VerifyContext): Promise<RefResult> {
+export async function verifyReference(ref: ParsedRef, ctx: VerifyContext, extra?: ExtraEvidence): Promise<RefResult> {
   const steps: CheckStep[] = [];
   const candidates: WorkRecord[] = [];
   const evidence: DoiEvidence = {};
@@ -162,6 +175,12 @@ export async function verifyReference(ref: ParsedRef, ctx: VerifyContext): Promi
         ok: r.records.length > 0,
       }));
       candidates.push(...records);
+      ranked = rank(ref, candidates);
+    }
+    // 模型只负责找候选，哪一篇算同一篇仍由下面的规则决定
+    if (extra) {
+      steps.push(...extra.steps);
+      candidates.push(...extra.candidates);
       ranked = rank(ref, candidates);
     }
 
@@ -293,7 +312,8 @@ function judgeSame(ref: ParsedRef, rec: WorkRecord, s: MatchScore, steps: CheckS
   }
   if (s.yearDiff !== undefined) {
     const dbYears = recordYears(rec).join(" / ");
-    if (s.yearDiff > 1) issues.push(`年份不符：引用写 ${ref.year}，数据库记录为 ${dbYears}`);
+    if (s.yearDiff > 1 && yearVaries(ref, rec)) notes.push(`数据库记录的年份为 ${dbYears}，引用写 ${ref.year}；图书、学位论文常有多个版本或后来的存档记录，请核对所引版本`);
+    else if (s.yearDiff > 1) issues.push(`年份不符：引用写 ${ref.year}，数据库记录为 ${dbYears}`);
     else if (s.yearDiff === 1)
       notes.push(`年份相差一年（引用 ${ref.year}，数据库 ${dbYears}），可能是在线发表与正式出版年份不同`);
   }

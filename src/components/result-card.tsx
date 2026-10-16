@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { agentSummary } from "@/lib/agent-stream";
 import { FIELD_LABEL, STEP_SOURCE, VERDICT_META } from "@/lib/verdict-meta";
-import type { FieldCheck, ParsedRef, RefResult } from "@/lib/verify/types";
+import type { AgentTrace, CheckStep, FieldCheck, ParsedRef, RefResult } from "@/lib/verify/types";
 import { PendingStamp, Stamp } from "./seal";
 
 const FIELD_MARK: Record<FieldCheck["status"], { sign: string; text: string; color: string }> = {
@@ -94,25 +95,80 @@ function Suggestion({ text, candidate = false }: { text: string; candidate?: boo
 function Steps({ steps }: { steps: RefResult["steps"] }) {
   return (
     <ol className="relative ml-1.5 space-y-2 border-l border-dashed border-ink/20 pl-5">
-      {steps.map((s, i) => (
-        <li key={i} className="relative text-[13px] leading-6 text-ink-soft">
-          <span
-            aria-hidden
-            className="absolute -left-[25px] top-[9px] size-[9px] rounded-full border-2"
-            style={{ borderColor: s.ok ? "var(--color-jade)" : "var(--color-ink-faint)", background: "var(--color-card)" }}
-          />
-          <span className="mr-2 inline-block min-w-[4.5rem] font-mono text-[11.5px] uppercase tracking-wider text-ink-faint">
-            {STEP_SOURCE[s.action]}
-          </span>
-          {s.detail}
-          <span className="ml-2 font-mono text-[11.5px] text-ink-faint tabular">{s.ms ? `${s.ms}ms` : "缓存"}</span>
-        </li>
-      ))}
+      {steps.map((s, i) => {
+        const ai = s.action === "agent_search" || s.action === "agent_note";
+        return (
+          <li key={i} className="relative text-[13px] leading-6 text-ink-soft">
+            <span
+              aria-hidden
+              className="absolute -left-[25px] top-[9px] size-[9px] rounded-full border-2"
+              style={{ borderColor: s.ok ? (ai ? "var(--color-seal)" : "var(--color-jade)") : "var(--color-ink-faint)", background: "var(--color-card)" }}
+            />
+            <span className={`mr-2 inline-block min-w-[4.5rem] font-mono text-[11.5px] uppercase tracking-wider ${ai ? "text-seal" : "text-ink-faint"}`}>
+              {STEP_SOURCE[s.action]}
+            </span>
+            {s.reason && <span className="mr-1.5 font-kai text-[14px] text-ink-faint">「{s.reason}」</span>}
+            {s.detail}
+            {s.action !== "agent_note" && <span className="ml-2 font-mono text-[11.5px] text-ink-faint tabular">{s.ms ? `${s.ms}ms` : "缓存"}</span>}
+          </li>
+        );
+      })}
     </ol>
   );
 }
 
-export function ResultCard({ refItem, result, stopped = false }: { refItem: ParsedRef; result?: RefResult; stopped?: boolean }) {
+export interface AgentRunState {
+  status: "running" | "failed";
+  steps: CheckStep[];
+  error?: string;
+}
+
+/** AI 检索：运行中实时显示每一步；结束后结论卡片换成规则复核的新结果 */
+function AgentPanel({ state, onRun }: { state?: AgentRunState; onRun?: () => void }) {
+  if (!state) return null;
+  if (state.status === "failed") {
+    return (
+      <div role="alert" className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-sm border border-seal/30 bg-seal/5 px-4 py-2.5 text-[13.5px] text-seal">
+        <span>AI 检索未完成：{state.error ?? "请稍后重试"}</span>
+        {onRun && <button type="button" onClick={onRun} className="underline decoration-dotted underline-offset-4 hover:text-seal-deep">重试</button>}
+      </div>
+    );
+  }
+  return (
+    <div role="status" aria-live="polite" className="mt-3 rounded-sm border border-seal/30 bg-seal/[0.04] px-4 py-3">
+      <p className="mb-2 text-[12px] tracking-[0.2em] text-seal">AI 检索中 · 模型规划检索，结论由规则复核</p>
+      {state.steps.length > 0 && <Steps steps={state.steps} />}
+      <p className="mt-2 font-kai text-[14.5px] text-ink-faint">
+        {state.steps.length ? "正在规划下一步" : "正在读取核查记录、规划检索"}
+        <span className="animate-blink">▍</span>
+      </p>
+    </div>
+  );
+}
+
+function AgentOutcome({ agent }: { agent: AgentTrace }) {
+  const confirmed = agent.outcome === "confirmed";
+  const text = agentSummary(agent);
+  return (
+    <p className="mt-2 flex items-start gap-2 text-[13px] leading-6" style={{ color: confirmed ? "var(--color-jade)" : "var(--color-ink-faint)" }}>
+      <span aria-hidden className="mt-[3px] shrink-0 rounded-sm border border-current px-1 font-mono text-[10.5px] leading-4">AI</span>
+      <span>{text}{confirmed && <span className="text-ink-faint">（追查前：{agent.before.summary}）</span>}</span>
+    </p>
+  );
+}
+
+export function ResultCard({
+  refItem,
+  result,
+  stopped = false,
+  agent,
+}: {
+  refItem: ParsedRef;
+  result?: RefResult;
+  stopped?: boolean;
+  /** onRun 只在该条可以交给 AI 检索时提供 */
+  agent?: { state?: AgentRunState; onRun?: () => void };
+}) {
   const verdict = result?.verdict;
   const problem = verdict === "mismatch" || verdict === "not_found" || verdict === "retracted" || verdict === "concern";
   const [open, setOpen] = useState<boolean | null>(null);
@@ -147,20 +203,35 @@ export function ResultCard({ refItem, result, stopped = false }: { refItem: Pars
             {result.confidence > 0 && (
               <span title="基于匹配规则的参考指标，并非经过统计校准的正确概率" className="font-mono text-[11.5px] text-ink-faint tabular">匹配参考值 {Math.round(result.confidence * 100)}%</span>
             )}
-            <button
-              type="button"
-              onClick={() => setOpen(!expanded)}
-              aria-expanded={expanded}
-              className="ml-auto text-[13px] text-ink-faint underline decoration-dotted underline-offset-4 hover:text-seal"
-            >
-              {expanded ? "收起" : "展开详情"}
-            </button>
+            <span className="ml-auto flex items-center gap-3">
+              {agent?.onRun && !agent.state && (
+                <button
+                  type="button"
+                  onClick={agent.onRun}
+                  title="由 DeepSeek 规划检索策略并调用数据库工具，找到的候选仍由规则逐字段比对"
+                  className="rounded-sm border border-seal/50 px-2.5 py-0.5 text-[13px] text-seal transition hover:bg-seal hover:text-card focus-visible:outline-2 focus-visible:outline-seal"
+                >
+                  AI 继续查
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => setOpen(!expanded)}
+                aria-expanded={expanded}
+                className="text-[13px] text-ink-faint underline decoration-dotted underline-offset-4 hover:text-seal"
+              >
+                {expanded ? "收起" : "展开详情"}
+              </button>
+            </span>
           </div>
         ) : (
           <p className="clear-right mt-3 text-[14px] text-ink-faint">
             {stopped ? "本条尚未完成核查，请重新提交；不能据此判断文献是否存在。" : <>正在查询 DOI 注册、比对元数据、检查撤稿记录<span className="animate-blink">▍</span></>}
           </p>
         )}
+
+        {result?.agent && !agent?.state && <AgentOutcome agent={result.agent} />}
+        <AgentPanel state={agent?.state} onRun={agent?.onRun} />
 
         {result && expanded && (
           <div className="mt-4 space-y-5 border-t border-dashed border-rule pt-4">

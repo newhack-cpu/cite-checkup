@@ -17,10 +17,21 @@ export interface CheckRequestBody {
 
 /** Bound the wire body before parsing JSON, including chunked requests. */
 export async function readCheckRequest(request: Request): Promise<CheckRequestBody> {
+  const body = await readJsonBody(request, MAX_CHECK_BODY_BYTES);
+  if (!body || typeof body !== "object" || Array.isArray(body)) throw new CheckRequestError(400, "请求格式不正确");
+  const { text, mode } = body as Record<string, unknown>;
+  if (typeof text !== "string" || !text.trim()) throw new CheckRequestError(400, "请先粘贴参考文献");
+  if (text.length > MAX_CHECK_CHARS) throw new CheckRequestError(413, `内容太长了，单次最多 ${MAX_CHECK_CHARS.toLocaleString()} 个字符`);
+  if (mode !== undefined && mode !== "standard" && mode !== "ai") throw new CheckRequestError(400, "核验模式不正确，请选择标准或 AI 模式");
+  return { text, mode: mode ?? "standard" };
+}
+
+/** Read and parse a JSON body no larger than maxBytes, including chunked requests. */
+export async function readJsonBody(request: Request, maxBytes: number): Promise<unknown> {
   const length = request.headers.get("content-length");
   if (length !== null) {
     if (!/^\d+$/.test(length)) throw new CheckRequestError(400, "请求长度格式不正确");
-    if (Number(length) > MAX_CHECK_BODY_BYTES) throw new CheckRequestError(413, "请求体太大，请缩短参考文献内容");
+    if (Number(length) > maxBytes) throw new CheckRequestError(413, "请求体太大，请缩短参考文献内容");
   }
   if (request.signal.aborted) throw new CheckRequestError(499, "请求已取消");
   if (!request.body) throw new CheckRequestError(400, "请求格式不正确");
@@ -38,7 +49,7 @@ export async function readCheckRequest(request: Request): Promise<CheckRequestBo
       if (request.signal.aborted) throw new CheckRequestError(499, "请求已取消");
       if (done) break;
       bytes += value.byteLength;
-      if (bytes > MAX_CHECK_BODY_BYTES) {
+      if (bytes > maxBytes) {
         void reader.cancel().catch(() => {});
         throw new CheckRequestError(413, "请求体太大，请缩短参考文献内容");
       }
@@ -54,10 +65,5 @@ export async function readCheckRequest(request: Request): Promise<CheckRequestBo
     request.signal.removeEventListener("abort", abort);
     reader.releaseLock();
   }
-  if (!body || typeof body !== "object" || Array.isArray(body)) throw new CheckRequestError(400, "请求格式不正确");
-  const { text, mode } = body as Record<string, unknown>;
-  if (typeof text !== "string" || !text.trim()) throw new CheckRequestError(400, "请先粘贴参考文献");
-  if (text.length > MAX_CHECK_CHARS) throw new CheckRequestError(413, `内容太长了，单次最多 ${MAX_CHECK_CHARS.toLocaleString()} 个字符`);
-  if (mode !== undefined && mode !== "standard" && mode !== "ai") throw new CheckRequestError(400, "核验模式不正确，请选择标准或 AI 模式");
-  return { text, mode: mode ?? "standard" };
+  return body;
 }

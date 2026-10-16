@@ -3,7 +3,7 @@ const HOUR = 60 * MINUTE;
 const MAX_IPS = 10_000;
 
 /** Process-local only. Full maps reject new identities until an entry expires. */
-class WindowLimit {
+export class WindowLimit {
   private readonly hits = new Map<string, number[]>();
   private sweptAt = 0;
 

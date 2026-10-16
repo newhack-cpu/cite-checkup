@@ -29,4 +29,15 @@ describe("report exports", () => {
     expect(text).toContain("Another reference 2021.");
     expect(text).not.toContain("健康度：100");
   });
+  it("records the AI search plan and states that the rules decided", () => {
+    const r: RefResult = {
+      ...base, verdict: "verified", summary: "已核实",
+      steps: [{ action: "agent_search", reason: "按书名加作者检索", detail: "Crossref 检索「Deep learning」：1 条候选", ok: true, ms: 120 }],
+      agent: { model: "m", toolCalls: 1, rounds: 1, outcome: "confirmed", before: { verdict: "unverifiable", summary: "图书类文献不在覆盖范围" }, ms: 900 },
+    };
+    const text = buildReportMarkdown(refs.slice(0, 1), new Map([[1, r]]), true);
+    expect(text).toContain("AI 检索理由：按书名加作者检索");
+    expect(text).toContain("AI 检索：AI 检索 1 次找到候选，规则逐字段比对确认是同一篇");
+    expect(text).toContain("结论由规则复核给出");
+  });
 });
