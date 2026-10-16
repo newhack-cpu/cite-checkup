@@ -5,7 +5,15 @@
 - 验收标准：原误判回归、真实DeepSeek/数据库链路、导入与证据边界、取消/未完成、桌面/手机、生产构建、技术PDF逐页渲染、5–8分钟1080p普通话MP4。
 - 约束：沿用项目纸张/印章风格；模型不能决定文献真实性；不伪造证据或秘密；保留用户模型设置；没有公网发布、正式提交或编造团队资料。
 
-## 2026-10-16 论断 RAG 升级：开放全文 + 混合检索（最新）
+## 2026-10-16 更新技术说明 PDF 与视频讲稿（最新）
+
+- 技术说明 `docs/competition/technical-content.json` 重写为 14 页：新增 AI 检索 Agent、论断检索评测、多模态、MCP 四页，修正 10-14 版里“未实现 Agent / MCP / 多模态 / 隐藏文字检测、只有 BM25”的过时说法，数字取自 eval/results 下的结果文件。PDF 与 HTML 由 `build_technical_report.py` 生成。
+- 构建脚本两处排版修正：reportlab 的避头标点表只有日文标点，正文改为自己预先断行（英文单词不拆、全角逗号等不出现在行首、开括号不留行尾、数字间短横不拆）；宋体缺“↔”，改写措辞。逐页查看了 14 页渲染图，行首标点 0 处。
+- `validate_technical_report.py` 改为写入 `eval/results/technical-pdf-<日期>/`，不再覆盖 10-14 的验收证据。本次：14 页、文字可选、页码齐全、无出界。
+- 视频：`narration.json` 与 `DEMO_SCRIPT.md` 重写为 10 章约 7 分 15 秒（官方 5–8 分钟），覆盖拍照识别、规则核验、AI 继续查、隐藏提示词、开放全文论断核查、边界、MCP、验证与展望；列出每段当天要跑通的输入（T028、F4、preprint-hidden.pdf、Walters 论文 DOI 等）和异常分支。“证据不足”示例已实测。
+- 同步更新 `DEFENSE_QA.md`（Agent / MCP / 多模态 / RAG / 隐藏提示词 / 盲测解读）、`SUBMISSION_CHECKLIST.md`（重录视频、跑新盲测集、本人填写 CROSSREF_MAILTO 与 OPENALEX_API_KEY）和参赛材料 README。`REVIEW.md` 的 73/100 是 10-14 的模拟评分，未重新评分。
+
+## 2026-10-16 论断 RAG 升级：开放全文 + 混合检索
 
 - 开放全文（`src/lib/claims/fulltext.ts`）：DOI 先查 Crossref 记录，再试 Europe PMC 开放获取全文（JATS XML → 纯文本，只留题名、摘要、各节标题和段落、图表标题），再试 arXiv 预印本 PDF（DOI 本身是 arXiv，或 Crossref `relation.has-preprint` 登记了 arXiv）；都没有才用摘要。只访问 www.ebi.ac.uk、export.arxiv.org，不跟随跳转，XML ≤ 6 MiB、PDF ≤ 8 MiB、正文 ≤ 150,000 字符；PDF 走文档导入的安全解析器，隐藏文字会被排除并提示。
 - 混合检索（`src/lib/claims/assist.ts`）：多于 6 段时，原论断 BM25 + 模型扩展检索词（`expand_query`，中英文同义词）的 BM25 做倒数排名融合取 20 段，模型按 0–3 分重排（`rank_evidence`）取前 6 段。两步输出都严格校验，失败退回词面检索并写 warning；`coverage.method` / `coverage.expansion` 记录用了什么。短材料（≤ 6 段）保持原来的行为。
@@ -135,12 +143,12 @@
 - 第一阶段前快照：`D:\Darks\projects\cite-checkup\eval\improvement-2026-10-14\before-changes.zip`
 - 第二阶段前快照与任务约定：`D:\Darks\projects\cite-checkup\eval\phase-two-2026-10-14\before-phase-two.zip`、`BRIEF.md`
 - 参赛材料目录：`D:\Darks\projects\cite-checkup\docs\competition\README.md`
-- 技术说明PDF：`D:\Darks\projects\cite-checkup\docs\competition\output\pdf\引用体检-技术说明.pdf`（11页，已定稿验收）
+- 技术说明PDF：`D:\Darks\projects\cite-checkup\docs\competition\output\pdf\引用体检-技术说明.pdf`（2026-10-16 版 14 页；逐页渲染与行首标点检查见 `eval/results/technical-pdf-2026-10-16/`；10-14 的 11 页版验收在 `eval/phase-two-2026-10-14/competition/`）
 - 可编辑内容源：`D:\Darks\projects\cite-checkup\docs\competition\technical-content.json`、`technical-report.html`；构建脚本`build_technical_report.py`。
 - 评分：`D:\Darks\projects\cite-checkup\docs\competition\REVIEW.md`，73/100模拟分，原版48/100，非官方成绩。
 - 分镜/普通话稿/答辩：同目录`DEMO_SCRIPT.md`、`narration.json`、`DEFENSE_QA.md`、`SUBMISSION_CHECKLIST.md`。
 - 视频源与实际响应：`D:\Darks\projects\cite-checkup\docs\competition\media`；root独占。`rehearsal`明确为回放彩排，不算真实调用证据。
-- 正式视频：`D:\Darks\projects\cite-checkup\docs\competition\output\video\引用体检-完整演示-1080p.mp4`；6分39秒、1920×1080、25fps、H264/AAC、普通话合成讲解。规格与验收见同目录`video-verification.json`。
+- 正式视频：`D:\Darks\projects\cite-checkup\docs\competition\output\video\引用体检-完整演示-1080p.mp4`；6分39秒、1920×1080、25fps、H264/AAC、普通话合成讲解，是 10-14 的旧版，不含之后的新功能。规格与验收见同目录`video-verification.json`。新讲稿（10 章约 7 分 15 秒）见 `DEMO_SCRIPT.md`、`narration.json`，由用户本人录制。
 
 ## 已完成
 

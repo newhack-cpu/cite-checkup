@@ -6,13 +6,19 @@ Content comes from technical-content.json. No network or model calls are made.
 from pathlib import Path
 import json
 import html
+import re
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfbase.pdfmetrics import stringWidth
 from reportlab.lib import colors
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.enums import TA_LEFT
 from reportlab.platypus import Paragraph, Table, TableStyle, Spacer, Flowable, Frame
+import reportlab.platypus.paragraph as rl_paragraph
+
+# reportlab 的避头规则只收了日文标点；补上中文全角逗号、冒号、分号、问号、叹号和后引号，不让它们出现在行首
+rl_paragraph.ALL_CANNOT_START += '，：；？！”’》」'
 
 HERE = Path(__file__).resolve().parent
 OUT = HERE / 'output' / 'pdf'
@@ -38,7 +44,44 @@ STYLES = {
     'callout': ParagraphStyle('callout', fontName='CNHead', fontSize=11, leading=18, textColor=GREEN, wordWrap='CJK'),
 }
 
-def para(text, style='body'):
+CLOSING = set('，。、；：？！）》」』”’】〕…%')
+OPENING = set('（《「『“‘【〔')
+# 英文、数字及其间的标点和短横（"10–12"、"5.5–5.8"）作为一个断行单位
+UNIT_RE = re.compile(r'[A-Za-z0-9@#&+_/.:=~*^<>|\'",;!?()\[\]±–-]+|\s|.')
+
+def prewrap(text, style, width):
+    """正文自己断行：英文单词不拆开，闭合标点挂在行尾、不出现在行首，开括号不留在行尾。"""
+    font, size = STYLES[style].fontName, STYLES[style].fontSize
+    hard = width + 3  # 版心实际宽度；挂在行尾的标点不能超过它，否则 reportlab 会再折一次
+    lines = []
+    for raw in text.split('\n'):
+        units = []
+        for unit in UNIT_RE.findall(raw):
+            used = stringWidth(''.join(units), font, size)
+            w = stringWidth(unit, font, size)
+            overflow = used + w > width
+            hang = unit[0] in CLOSING and used + w <= hard
+            if units and overflow and not hang:
+                carry = []
+                # 闭合标点挂不下：把前一个字一起带到下一行；开括号、前引号不留在行尾
+                if unit[0] in CLOSING and len(units) > 1:
+                    carry.insert(0, units.pop())
+                while units and units[-1] in OPENING:
+                    carry.insert(0, units.pop())
+                lines.append(''.join(units).rstrip())
+                units = carry
+                if unit.isspace():
+                    continue
+            units.append(unit)
+        lines.append(''.join(units).rstrip())
+    return lines
+
+# 正文框宽 491；预断行时留 3pt 余量，避免和 reportlab 自己的测量差一点而又折出一行
+BODY_WIDTH = 488
+
+def para(text, style='body', width=None):
+    if width:
+        return Paragraph('<br/>'.join(html.escape(line) for line in prewrap(text, style, width)), STYLES[style])
     return Paragraph(html.escape(text).replace('\n', '<br/>'), STYLES[style])
 
 def table(headers, rows, widths=None):
@@ -85,12 +128,12 @@ class Diagram(Flowable):
 def blocks(page):
     story=[]
     if page.get('lead'):
-        story += [para(page['lead']), Spacer(1,5)]
+        story += [para(page['lead'], 'body', BODY_WIDTH), Spacer(1,5)]
     for block in page['blocks']:
         kind=block['type']
         if kind=='section':
             story += [para(block['title'], 'heading')]
-            story += [para(x) for x in block['paragraphs']]
+            story += [para(x, 'body', BODY_WIDTH) for x in block['paragraphs']]
         elif kind=='table':
             story += [table(block['headers'], block['rows'], block.get('widths')), Spacer(1,11)]
         elif kind=='callout':
@@ -100,7 +143,7 @@ def blocks(page):
         elif kind=='diagram':
             story += [Diagram(block['lanes']), Spacer(1,5)]
         elif kind=='small':
-            story += [para(block['text'], 'small')]
+            story += [para(block['text'], 'small', BODY_WIDTH)]
         else:
             raise ValueError(kind)
     return story

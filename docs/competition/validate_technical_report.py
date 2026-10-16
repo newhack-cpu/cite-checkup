@@ -10,8 +10,9 @@ from PIL import Image, ImageOps, ImageDraw
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 PDF = HERE / 'output' / 'pdf' / '引用体检-技术说明.pdf'
-QA = ROOT / 'eval' / 'phase-two-2026-10-14' / 'competition'
-RENDER = QA / 'render-final'
+# 每次验收写进当天的目录，不覆盖旧版本的验收证据（10-14 版在 eval/phase-two-2026-10-14/competition/）
+QA = ROOT / 'eval' / 'results' / f"technical-pdf-{datetime.now().strftime('%Y-%m-%d')}"
+RENDER = QA / 'render'
 RENDER.mkdir(parents=True, exist_ok=True)
 subprocess.run(['pdftoppm','-r','110','-png',str(PDF),str(RENDER/'page')],check=True)
 doc = fitz.open(PDF)

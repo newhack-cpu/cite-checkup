@@ -1,0 +1,112 @@
+{
+  "checkedAt": "2026-10-16T10:07:06.857668+00:00",
+  "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\output\\pdf\\引用体检-技术说明.pdf",
+  "sha256": "abefcb76f7fffd3c55b36199d19fcc300dd937a35b9478bf506367191f529051",
+  "pages": 14,
+  "maxPages": 30,
+  "textSelectable": true,
+  "pageNumbers": true,
+  "noOutOfPageText": true,
+  "containsPendingDraft": false,
+  "visualReview": "pending human image inspection",
+  "pageDetails": [
+    {
+      "page": 1,
+      "textCharacters": 771,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-16\\render\\page-01.png"
+    },
+    {
+      "page": 2,
+      "textCharacters": 717,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-16\\render\\page-02.png"
+    },
+    {
+      "page": 3,
+      "textCharacters": 718,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-16\\render\\page-03.png"
+    },
+    {
+      "page": 4,
+      "textCharacters": 890,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-16\\render\\page-04.png"
+    },
+    {
+      "page": 5,
+      "textCharacters": 791,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-16\\render\\page-05.png"
+    },
+    {
+      "page": 6,
+      "textCharacters": 791,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-16\\render\\page-06.png"
+    },
+    {
+      "page": 7,
+      "textCharacters": 735,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-16\\render\\page-07.png"
+    },
+    {
+      "page": 8,
+      "textCharacters": 667,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-16\\render\\page-08.png"
+    },
+    {
+      "page": 9,
+      "textCharacters": 846,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-16\\render\\page-09.png"
+    },
+    {
+      "page": 10,
+      "textCharacters": 650,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-16\\render\\page-10.png"
+    },
+    {
+      "page": 11,
+      "textCharacters": 786,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-16\\render\\page-11.png"
+    },
+    {
+      "page": 12,
+      "textCharacters": 897,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-16\\render\\page-12.png"
+    },
+    {
+      "page": 13,
+      "textCharacters": 667,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-16\\render\\page-13.png"
+    },
+    {
+      "page": 14,
+      "textCharacters": 1371,
+      "pageNumber": true,
+      "outOfPageText": [],
+      "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-16\\render\\page-14.png"
+    }
+  ]
+}

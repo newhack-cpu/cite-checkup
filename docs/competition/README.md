@@ -5,17 +5,17 @@
 | 文件 | 用途 |
 |---|---|
 | `OFFICIAL_REQUIREMENTS.md` | 2026-10-14 实时核对的官方材料要求及评分口径 |
-| `output/pdf/引用体检-技术说明.pdf` | 11 页本地技术验收版；已写入最终289项测试与实际功能证据，逐页验收见评审目录 |
+| `output/pdf/引用体检-技术说明.pdf` | 2026-10-16 版，14 页：加入 AI 检索 Agent、拍照 / 截图识别、隐藏提示词检测、开放全文 + 混合检索和 MCP；逐页验收见 `eval/results/technical-pdf-2026-10-16/` |
 | `technical-report.html` | 自含 HTML 阅读/编辑源；修改后需另存，浏览器改动不会自动回写 JSON |
 | `technical-content.json` | 结构化正式内容源；应从此修改内容后重新构建 PDF/HTML |
 | `build_technical_report.py` | 使用 ReportLab 的本地构建脚本，不调用模型或网络 |
-| `validate_technical_report.py` | Poppler渲染与页面/文本/页码检查；视觉验收另行实际查看 |
-| `narration.json` | 正式视频 8 章普通话讲解稿与动作；成片以实际时长验收 |
-| `DEMO_SCRIPT.md` | 正式约 6 分钟操作分镜及约 4 分钟快版 |
+| `validate_technical_report.py` | Poppler 渲染与页面 / 文本 / 页码检查，结果写入 `eval/results/technical-pdf-<日期>/`，不覆盖旧版验收；视觉验收另行实际查看 |
+| `narration.json` | 2026-10-16 重写：10 章、约 7 分 15 秒的普通话讲解稿与动作，由本人录制 |
+| `DEMO_SCRIPT.md` | 正式约 7 分 15 秒分镜、4 分钟快版、录制前逐项准备的演示输入和异常分支 |
 | `DEFENSE_QA.md` | 如实说明技术价值、范围和局限的答辩问答 |
 | `SUBMISSION_CHECKLIST.md` | 正式提交前需本人补充/核对的事项 |
-| `REVIEW.md` | 73/100 模拟复评和扣分依据；不是官方成绩 |
-| `output/video/引用体检-完整演示-1080p.mp4` | 6分39秒、1080p、普通话合成解说；真实操作与一次真实拒绝判断边界 |
+| `REVIEW.md` | 10-14 的 73/100 模拟复评和扣分依据；之后加入的功能未重新评分，不是官方成绩 |
+| `output/video/引用体检-完整演示-1080p.mp4` | 10-14 旧版成片（6 分 39 秒、1080p、合成解说），不含之后的新功能，需按新讲稿重录 |
 | `output/video/video-verification.json` | 视频规格、源片段、实际失败记录与导出验收 |
 | `media/` | 由主执行者维护的实际录屏、旁白和最终视频，按各自验证记录确认 |
 
