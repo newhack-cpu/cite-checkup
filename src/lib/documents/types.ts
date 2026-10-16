@@ -1,3 +1,5 @@
+import type { HiddenTextReport } from "./hidden";
+
 export type DocumentFormat = "pdf" | "docx" | "txt";
 
 export interface ReferenceSection {
@@ -11,6 +13,8 @@ export interface ImportedDocument {
   text: string;
   references: ReferenceSection | null;
   warnings: string[];
+  /** 读者看不见、但会被 AI 读到的隐藏文字；已从 text 中去掉。没有发现时为 null */
+  hidden: HiddenTextReport | null;
   metadata: {
     filename: string;
     format: DocumentFormat;

@@ -3,7 +3,7 @@
 `DocumentImport` accepts `onImport(text)`, optional `disabled`, and `purpose: "references" | "evidence"`.
 It sends one `file` through `POST /api/import`, shows editable plain text, and calls `onImport` only after the user presses the confirmation button. Confirmation explicitly replaces the caller's current text. Reference input is capped at 60,000 characters; evidence input at 160,000. There is no silent truncation.
 
-The response is `ImportedDocument` from `types.ts`: `text`, a heuristic `references` region or `null`, `warnings`, and metadata including original filename, format, byte size, character count and PDF page count. Error responses have a stable `code` and an actionable Chinese `error` string. Original files are held only in request memory; the implementation does not persist them or send them to any AI service.
+The response is `ImportedDocument` from `types.ts`: `text`, a heuristic `references` region or `null`, `warnings`, `hidden` (hidden-text findings or `null`, see below), and metadata including original filename, format, byte size, character count and PDF page count. Error responses have a stable `code` and an actionable Chinese `error` string. Original files are held only in request memory; the implementation does not persist them or send them to any AI service.
 
 ## Limits and extraction scope
 
@@ -15,6 +15,20 @@ The response is `ImportedDocument` from `types.ts`: `text`, a heuristic `referen
 - TXT: UTF-8 or BOM-marked UTF-16; binary control characters and malformed encoding are rejected.
 - Extracted text: 160,000 characters maximum. Scanned/image-only PDFs get an explicit no-text error that points to the separate image recognition flow (`/api/vision`, see `src/lib/vision/`); this import path itself does no OCR. Layout, table reading order and PDF line breaks require user review.
 - Admission: two simultaneous imports and 12 attempts per minute per forwarded IP, within each Node process. Multi-instance/public deployments also need trusted-proxy and shared ingress limits.
+
+## Hidden text and hidden prompts
+
+Text a reader cannot see but an AI system reads is reported and removed from `text` before preview. Parsers wrap hidden spans in Unicode noncharacter markers (U+FDD0/U+FDD1 plus a technique code; any noncharacters already in the source are stripped first) and `hidden.ts` turns them into findings:
+
+- PDF: white or near-white fill (gray, RGB, CMYK, or `sc`/`scn` with 1/3/4 components), text rendering modes 3 and 7, effective size below 1.5 pt, and origins outside the page. Pages whose text is mostly invisible are treated as OCR layers over scanned images and reported only as a warning.
+- DOCX: `w:vanish`, near-white `w:color` unless run/paragraph/cell shading, highlight or page background is dark, and sizes below 2 pt; formats resolve through `docDefaults`, the paragraph style (or the default paragraph style), the character style and direct formatting, following `basedOn`. A malformed `styles.xml` only disables style resolution.
+- All formats: Unicode tag characters (U+E0000–U+E007F) are decoded and removed; zero-width characters are removed with a warning.
+
+A finding is listed when it looks like an instruction to an AI system (English and Chinese patterns in `looksLikeInstruction`), or when it is long enough not to be ordinary layout: white-only text needs 40 non-space characters (short white labels usually sit on dark banners, which PDF text extraction cannot see), other techniques 12. Listed spans are removed from the imported text; unlisted ones stay. Not covered: text under images or opaque shapes, fill alpha 0 via `ExtGState`, clipping, annotations and form fields, and white text on a dark background drawn by the page itself (PDF has no "background colour").
+
+PDF colour and rendering mode are not part of PDF.js text items, and `getOperatorList()` would decode images that the guard below rejects. `pdf-hidden-text.ts` therefore appends a second, observation-only block to the same audited worker module, after the hash check: it wraps `EvaluatorPreprocessor.prototype.preprocessCommand` to track fill colour and rendering mode on the graphics state (which PDF.js clones on `q`/`Q`), and `Font.prototype.charsToGlyphs` to collect the Unicode text shown while hidden, one run per text line. It never changes arguments or return values, catches its own errors and does not decode additional streams. `pdf.ts` then locates each run in the page text by comparing NFKC characters while ignoring whitespace; a line cut off at the page edge falls back to its longest matching prefix or suffix, and runs that never reached the text layer (off-page glyphs are dropped by PDF.js) are reported without removal. These hooks rely on PDF.js internals and must be re-audited together with the decoder guard on any upgrade.
+
+Fixtures: `__tests__/fixtures/generate_hidden.py` writes `hidden-prompt.pdf`, `ocr-layer.pdf`, `hidden-prompt.docx` and `hidden-unicode.txt`; every hidden sentence is invented for testing.
 
 ## PDF decoder guard and dependency upgrades
 

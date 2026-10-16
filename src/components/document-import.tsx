@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useEffectEvent, useId, useRef, useState } from "react";
-import { DOCUMENT_LIMITS, type ImportedDocument } from "@/lib/documents/types";
+import type { HiddenTechnique, HiddenTextReport } from "@/lib/documents/hidden";
+import { DOCUMENT_LIMITS, type DocumentFormat, type ImportedDocument } from "@/lib/documents/types";
 
 export interface DocumentImportProps {
   onImport: (text: string) => void;
@@ -21,6 +22,40 @@ interface VisionPreview {
   model: string;
   /** 压缩后原图的本地预览地址，用于对照核对 */
   thumbs: string[];
+}
+
+const TECHNIQUE_LABEL: Record<HiddenTechnique, string> = {
+  white: "白色文字",
+  invisible: "不可见渲染",
+  tiny: "极小字号",
+  offpage: "页面外",
+  unicode: "Unicode 隐形字符",
+};
+
+/** 导入时发现的隐藏文字：读者看不见、AI 却会读到；像指令的用印章红，其余用琥珀色 */
+function HiddenTextNotice({ report, format }: { report: HiddenTextReport; format: DocumentFormat }) {
+  const danger = report.instructions > 0;
+  const label = (t: HiddenTechnique) => (t === "invisible" && format === "docx" ? "Word 隐藏格式" : TECHNIQUE_LABEL[t]);
+  return (
+    <section aria-label="隐藏文字检测" className={`rounded-sm border-l-2 px-3 py-2 ${danger ? "border-seal bg-seal/5" : "border-amber bg-amber/5"}`}>
+      <p className={`text-[12px] font-medium ${danger ? "text-seal" : "text-amber"}`}>
+        发现 {report.total} 处隐藏文字{danger ? `，其中 ${report.instructions} 处像是写给 AI 的指令` : ""}
+      </p>
+      <p className="mt-1 text-[11px] leading-5 text-ink-soft">读者看不见这些文字，AI 却会读到；已从下方预览中去掉。是否有意为之需要人工判断，深色背景上的白字、缩得很小的图表文字也可能被列出。</p>
+      <ul className="mt-2 space-y-2">
+        {report.findings.map((finding, index) => (
+          <li key={index} className="text-[11px] leading-5">
+            <p className="text-ink-faint">
+              {finding.page ? `第 ${finding.page} 页 · ` : ""}{finding.techniques.map(label).join(" + ")}
+              {finding.instruction && <span className="text-seal"> · 像写给 AI 的指令</span>}
+            </p>
+            <blockquote className="mt-0.5 whitespace-pre-line break-words border-l border-rule pl-2 font-serif text-ink-soft">{finding.text}</blockquote>
+          </li>
+        ))}
+      </ul>
+      {report.total > report.findings.length && <p className="mt-2 text-[11px] text-ink-faint">另有 {report.total - report.findings.length} 处未列出。</p>}
+    </section>
+  );
 }
 
 /** 浏览器里先把长边缩到 2048 像素再重新编码：上传更快，也去掉了照片里的 GPS 等 EXIF 信息 */
@@ -212,6 +247,7 @@ export function DocumentImport({ onImport, disabled = false, purpose = "referenc
             <p className="break-all text-[12px] font-medium text-ink">{document.metadata.filename}</p>
             <p className="mt-1 text-[11px] text-ink-faint">{document.metadata.format.toUpperCase()} · {document.metadata.pageCount ? `${document.metadata.pageCount} 页 · ` : ""}{document.metadata.characterCount.toLocaleString()} 字符</p>
           </div>
+          {document.hidden && <HiddenTextNotice report={document.hidden} format={document.metadata.format} />}
           <fieldset disabled={disabled} className="flex flex-wrap gap-3 text-[12px] text-ink-soft">
             <legend className="mb-2 text-[12px] font-medium text-ink">选择导入范围</legend>
             <label className="flex items-center gap-1.5"><input type="radio" name={`${id}-range`} checked={selection === "full"} onChange={() => select("full")} className="accent-seal" />全文文字</label>
