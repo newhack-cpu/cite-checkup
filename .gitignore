@@ -62,3 +62,6 @@ docs/competition/media/*.log
 eval/**/*.png
 eval/**/*.zip
 eval/**/*.log
+
+# 图片识别评测生成的图片，用 eval/vision/generate.py 重新生成
+eval/vision/out/

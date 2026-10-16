@@ -12,6 +12,7 @@
     "eval": "tsx scripts/eval.mts",
     "eval:real": "tsx scripts/eval-real.mts",
     "eval:agent": "tsx scripts/eval-agent.mts",
+    "eval:vision": "tsx scripts/eval-vision.mts",
     "smoke:ai": "tsx scripts/smoke-ai.mts",
     "smoke:claims": "tsx scripts/smoke-claims.mts",
     "smoke:mcp": "tsx scripts/mcp-smoke.mts",

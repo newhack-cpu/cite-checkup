@@ -13,7 +13,7 @@ The response is `ImportedDocument` from `types.ts`: `text`, a heuristic `referen
 - DOCX: streaming ZIP entries; at most 1,000 entries, 32 MiB declared total expansion, 8 MiB per entry, compression ratio at most 200 for entries larger than 1 MiB. Actual bytes for opened XML entries are bounded and checked against the ZIP declaration. Only selected XML parts are opened; no archive contents are written to disk.
 - DOCX XML: DTD/entity declarations, unsafe/duplicate paths, encryption, macros, `altChunk`, depth above 128 or more than 200,000 elements are rejected. External relationships are reported and never fetched. Text is extracted from Word body paragraphs/tables using namespaces, excluding deleted revisions. Headers, footers, footnotes, images, equations and text boxes are not a completeness guarantee. DOCX pagination is not inferred from potentially stale Word metadata.
 - TXT: UTF-8 or BOM-marked UTF-16; binary control characters and malformed encoding are rejected.
-- Extracted text: 160,000 characters maximum. Scanned/image-only PDFs get an explicit no-text/OCR-needed error; no OCR or multimodal capability is claimed. Layout, table reading order and PDF line breaks require user review.
+- Extracted text: 160,000 characters maximum. Scanned/image-only PDFs get an explicit no-text error that points to the separate image recognition flow (`/api/vision`, see `src/lib/vision/`); this import path itself does no OCR. Layout, table reading order and PDF line breaks require user review.
 - Admission: two simultaneous imports and 12 attempts per minute per forwarded IP, within each Node process. Multi-instance/public deployments also need trusted-proxy and shared ingress limits.
 
 ## PDF decoder guard and dependency upgrades

@@ -217,7 +217,7 @@ export function Checker() {
             </h2>
             <span className="hidden whitespace-nowrap font-mono text-[11px] tracking-wider text-ink-faint sm:inline">GB/T 7714 · APA · IEEE</span>
           </header>
-          <DocumentImport onImport={setText} disabled={phase === "running"} purpose="references" />
+          <DocumentImport onImport={setText} disabled={phase === "running"} purpose="references" pasteTargetId="refs" />
           <fieldset disabled={phase === "running"} className="border-b border-dashed border-rule px-5 py-3">
             <legend className="sr-only">核验模式</legend>
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-[13px] text-ink-soft">

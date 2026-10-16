@@ -65,7 +65,7 @@ globalThis.__citePdfAbort = (code) => {
       else emptyPages++;
       page.cleanup();
     }
-    if (!pages.length) fail('NO_TEXT', '未提取到 PDF 文字层。文件可能是扫描件或图片；本工具不执行 OCR，请先转换为带文字层的 PDF 或粘贴文字。');
+    if (!pages.length) fail('NO_TEXT', '未提取到 PDF 文字层，文件可能是扫描件。参考文献页可截图后用「拍照 / 截图识别」，或先转换为带文字层的 PDF。');
     parentPort.postMessage({ text: pages.join('\n\n'), pageCount: document.numPages, emptyPages });
   } catch (error) {
     const encrypted = error?.name === 'PasswordException';

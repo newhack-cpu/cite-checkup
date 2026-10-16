@@ -37,7 +37,7 @@ export async function importDocument(file: File, signal?: AbortSignal): Promise<
   }
   throwIfAborted(signal);
   text = text.replace(/\r\n?/g, "\n").replace(/[ \t]+\n/g, "\n").replace(/\n{4,}/g, "\n\n\n").trim();
-  if (!text) throw new DocumentImportError("NO_TEXT", "未提取到可用文字。图片或扫描内容需要先转换为文本，本工具不执行 OCR。");
+  if (!text) throw new DocumentImportError("NO_TEXT", "未提取到可用文字。文件可能是图片或扫描件；参考文献可截图后用「拍照 / 截图识别」。");
   if (text.length > DOCUMENT_LIMITS.characters) throw new DocumentImportError("TEXT_TOO_LONG", "文档文字超过 160,000 字符，请拆分后导入。", 413);
   const references = extractReferenceSection(text);
   if (references) warnings.push("参考文献区域根据标题识别，可能包含漏选或多选；请确认并编辑预览后再使用。");

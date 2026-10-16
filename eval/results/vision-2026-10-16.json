@@ -1,0 +1,88 @@
+{
+ "ranAt": "2026-10-16T04:54:51.673Z",
+ "model": "deepseek-flash",
+ "totalEntries": 16,
+ "exactEntries": 16,
+ "rows": [
+  {
+   "id": "en-screenshot",
+   "kind": "screenshot",
+   "expectedEntries": 5,
+   "gotEntries": 5,
+   "exactEntries": 5,
+   "cer": 0,
+   "seconds": 3.959,
+   "tokens": 1314,
+   "diffs": [],
+   "verdictsFromImage": [
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "verified"
+   ],
+   "verdictsFromTruth": [
+    "verified",
+    "verified",
+    "verified",
+    "verified",
+    "verified"
+   ],
+   "sameVerdicts": true
+  },
+  {
+   "id": "zh-screenshot",
+   "kind": "screenshot",
+   "expectedEntries": 5,
+   "gotEntries": 5,
+   "exactEntries": 5,
+   "cer": 0,
+   "seconds": 4.855,
+   "tokens": 1186,
+   "diffs": [],
+   "verdictsFromImage": [
+    "mismatch",
+    "unverifiable",
+    "unverifiable",
+    "unverifiable",
+    "verified"
+   ],
+   "verdictsFromTruth": [
+    "mismatch",
+    "unverifiable",
+    "unverifiable",
+    "unverifiable",
+    "verified"
+   ],
+   "sameVerdicts": true
+  },
+  {
+   "id": "mixed-photo",
+   "kind": "photo",
+   "expectedEntries": 6,
+   "gotEntries": 6,
+   "exactEntries": 6,
+   "cer": 0,
+   "seconds": 2.947,
+   "tokens": 1518,
+   "diffs": [],
+   "verdictsFromImage": [
+    "verified",
+    "verified",
+    "verified",
+    "mismatch",
+    "unverifiable",
+    "unverifiable"
+   ],
+   "verdictsFromTruth": [
+    "verified",
+    "verified",
+    "verified",
+    "mismatch",
+    "unverifiable",
+    "unverifiable"
+   ],
+   "sameVerdicts": true
+  }
+ ]
+}
