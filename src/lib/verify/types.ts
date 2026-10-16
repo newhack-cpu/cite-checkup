@@ -13,6 +13,7 @@ export type RefKind =
   | "web"
   | "legal"
   | "software"
+  | "presentation"
   | "preprint"
   | "unknown";
 

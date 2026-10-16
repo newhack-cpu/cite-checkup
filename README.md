@@ -111,6 +111,7 @@ pnpm typecheck
 pnpm build
 pnpm eval --out=eval/results/local.json  # 核验引擎访问真实数据库，保存独立结果
 pnpm eval:real eval/real-world/dev-2026-10-14.json --out=eval/results/local-real.json  # 真实论文参考文献评测
+pnpm sample:real --out=eval/real-world/blind-新日期.json   # 从 Crossref 抽一批新的真实参考文献（排除已用过的论文）
 pnpm smoke:ai   # 需服务运行及有效密钥；真实DeepSeek工具调用+数据库核验
 pnpm smoke:claims # 真实摘要 + 合成材料支持/矛盾/不足；产生少量模型用量
 pnpm eval:agent eval/real-world/dev-2026-10-14.json eval/results/real-dev-2026-10-15-v2-rules.json  # AI 检索 Agent 评测
@@ -159,6 +160,26 @@ dev 上降到 0 有调规则的成分，**盲测的 10.1% 才是对新数据的�
 - 汉字作者与拼音记录的跨文字比对；
 - 图书重印本。
 
+**2026-10-16 修复盲测剩余误报**（这之后 test 集不再算盲测）。逐条看了 12 条误报，按原因修了 9 类规则：
+
+- 题名里的 "Dr."、"No."、": 2." 不再当成句号；ACS 格式的题名到分号为止；
+- 识别 "Paper presented at" 这类会议报告、FAO 等机构发布的报告、德语报告和 "Bull. No." 报告编号；
+- 引文末尾写了出版社（"Indoles; Elsevier, 1996"）的按图书处理；去掉条目开头粘着的脚注字母；
+- 复姓只写一个姓、另一个变成缩写（Patil MU ↔ Uttam Patil M，Esper RC ↔ Carrillo Esper R）；
+- 汉字作者与拼音记录互相比对（用 [pinyin-pro](https://github.com/zh-lx/pinyin-pro) 转写，多音字姓按姓氏读音）；
+- Crossref 中文记录的作者顺序常登记错（宫鹏等 2010 那篇，宫鹏在记录里排第 14 位）：引文列出的作者都在记录里时，只提示、不判错；英文记录仍按顺序比对；
+- 只有一个名称、没有作者、年份和 DOI 的条目判为信息不足；
+- 期刊在 Crossref 里开始注册 DOI 的年份晚于引文年份时，查不到不算证据（Indian J Pure Appl Phys 从 2020 年起才有 DOI）；期刊目录检索去掉 "&" 和 "and"，否则一条也查不到；
+- OpenAlex 记录的首要位置是机构知识库时，不把知识库名当期刊名。
+
+验证方式：
+
+- 12 条误报和宫鹏那条逐条联网重跑，全部不再误报；T019 只剩真实的年份错误；
+- 新旧两版只用 Crossref（屏蔽 OpenAlex，两边证据相同）各跑一遍 dev 和 test：test 的 6 条“信息有误”误报消失，剩下 3 条正是复核确认的真实错误；两个集合都没有新增误报；
+- 解析结果逐条对比，227 条里 17 条有变化，逐条检查后结论都没有变差。
+
+**新的盲测集**：[`blind-2026-10-16`](eval/real-world/blind-2026-10-16.json) 共 110 条（英文 86、中文 24），来自 81 篇另外的论文。出版社组合也换了，加入 SAGE、Cambridge、PLOS 等。抽样只输出了每组条数，规则定稿前没有查看条目内容，可以用 `pnpm sample:real` 重抽。由于 OpenAlex 无 key 时每天只有约 100 次题名检索，这个集合和修复后的 dev、test 完整重跑要等额度恢复，结果出来后补进本节。
+
 ### AI 检索 Agent 评测
 
 `pnpm eval:agent` 从一次规则核验的结果中，取出“无法核验 / 只有相近候选”的条目，逐条交给 Agent。Agent 在 test 集上从没调过，这次是它的盲测。两次运行 OpenAlex 题名检索各限 20 次。
@@ -202,7 +223,7 @@ dev 上降到 0 有调规则的成分，**盲测的 10.1% 才是对新数据的�
 
 第一阶段通过 195 项离线测试；[原浏览器验收记录](eval/improvement-2026-10-14/browser-acceptance.json)覆盖 11 条真实示例、筛选、复制、下载，以及用固定响应模拟的断流、降级与停止流程。
 
-第二阶段最终通过 **23 个文件、289 项测试**、ESLint、TypeScript 和生产构建（[检查记录](eval/phase-two-2026-10-14/final-checks.json)）。2026-10-15 准确率修复后为 **24 个文件、317 项测试**；加入 AI 检索 Agent 和 MCP Server 后为 **27 个文件、370 项测试**；加入拍照 / 截图识别后为 **29 个文件、393 项测试**；加入隐藏提示词检测后为 **30 个文件、419 项测试**，ESLint、TypeScript 和生产构建全部通过，29 条人工样例仍为 29/29（[记录](eval/results/curated-2026-10-15-v2.json)）；新增的 [真实引文回归测试](src/lib/verify/__tests__/real-world.test.ts) 逐条对应上表中修好的误报。[开发版浏览器验收](eval/phase-two-2026-10-14/qa-dev-browser-acceptance.json)覆盖桌面 1440 与手机 390 的文档预览确认、状态保留、引句定位、下载、取消和未完成状态；论断界面使用已录制响应回放，另在[生产版复验](eval/phase-two-2026-10-14/qa-production-browser-acceptance.json)通过。最终生产接口真实上传普通/中文 PDF 均成功，压缩扩张样例明确拒绝（[记录](src/lib/documents/__tests__/production-import-verification.json)）。
+第二阶段最终通过 **23 个文件、289 项测试**、ESLint、TypeScript 和生产构建（[检查记录](eval/phase-two-2026-10-14/final-checks.json)）。2026-10-15 准确率修复后为 **24 个文件、317 项测试**；加入 AI 检索 Agent 和 MCP Server 后为 **27 个文件、370 项测试**；加入拍照 / 截图识别后为 **29 个文件、393 项测试**；加入隐藏提示词检测后为 **30 个文件、419 项测试**；修复盲测剩余误报后为 **31 个文件、438 项测试**，ESLint、TypeScript 和生产构建全部通过，29 条人工样例仍为 29/29（[记录](eval/results/curated-2026-10-15-v2.json)）；新增的 [真实引文回归测试](src/lib/verify/__tests__/real-world.test.ts) 逐条对应上表中修好的误报。[开发版浏览器验收](eval/phase-two-2026-10-14/qa-dev-browser-acceptance.json)覆盖桌面 1440 与手机 390 的文档预览确认、状态保留、引句定位、下载、取消和未完成状态；论断界面使用已录制响应回放，另在[生产版复验](eval/phase-two-2026-10-14/qa-production-browser-acceptance.json)通过。最终生产接口真实上传普通/中文 PDF 均成功，压缩扩张样例明确拒绝（[记录](src/lib/documents/__tests__/production-import-verification.json)）。
 
 [真实论断联网记录](eval/results/claims-smoke-2026-10-14T02-20-44-807Z.json)四例全部符合预期：一条公开论文摘要，三条明确标为合成材料的支持、矛盾、证据不足。校验包含引句、来源、片段与字符位置。四例只证明流程可用，不能当作开放场景的准确率。失败记录及修复依据保留在评测目录。
 
@@ -284,7 +305,7 @@ src/
 ## 已知局限
 
 - 中文文献：知网、万方没有开放接口，只能核验已在 Crossref 注册 DOI 的中文文献。
-- 中文引文对应英文元数据（或反过来）时暂时无法比对，下一步用大模型做跨语言比对。
+- 作者已支持汉字与拼音互相比对；中文题名对应英文元数据（或反过来）时仍无法比对题名。
 - 会议论文的期刊名差异较大，目前只对期刊类文献做期刊名比对。
 - 论断判断只针对指定来源及召回文字；摘要不等于全文，用户提供的材料真实性未经独立认证，不做跨文献系统综述。原文引句存在也不保证模型解释正确，仍需人工复核；该流程不额外查询撤稿状态。
 - AI 检索 Agent 只能查 Crossref、OpenAlex、DataCite 和 doi.org 覆盖的文献，知网、万方和图书馆目录仍需人工核查；OpenAlex 无密钥时每天约 100 次题名检索。

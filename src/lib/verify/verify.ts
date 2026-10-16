@@ -6,6 +6,7 @@
 
 import { suggestCitation } from "./format";
 import { UpstreamError } from "./http";
+import { tokenCount } from "./normalize";
 import {
   fieldChecks,
   formatAuthorsShort,
@@ -47,6 +48,7 @@ const OUT_OF_SCOPE: Partial<Record<RefKind, string>> = {
   newspaper: "报纸",
   web: "网页 / 电子资源",
   legal: "法律法规",
+  presentation: "会议报告 / 海报",
   software: "软件 / 数据集",
 };
 
@@ -281,8 +283,12 @@ async function coverageGap(venue: string, year: number, steps: CheckStep[], ctx:
         ok: named.length > 0,
       };
     });
-    // 该刊在 Crossref 的记录在引文年份之前就停了（比如只登记过 2007–2009 年），之后的论文查不到不能当作证据
-    const lapsed = journals.find((j) => sameJournal(venue, j.title) && j.lastYear !== undefined && j.lastYear < year);
+    // 该刊在 Crossref 的记录不覆盖引文年份：之前就停了（只登记过 2007–2009 年），或之后才开始注册 DOI
+    // （Indian J Pure Appl Phys 从 2020 年起才有 DOI），这一年的论文查不到不能当作证据
+    // 之后才开始注册 DOI 的情况要排除同名新刊：只要有一本同名期刊覆盖引文年份，就不算缺口
+    const named = journals.filter((j) => sameJournal(venue, j.title) && j.firstYear !== undefined && j.lastYear !== undefined);
+    const covered = named.some((j) => j.firstYear! <= year && year <= j.lastYear!);
+    const lapsed = named.find((j) => j.lastYear! < year) ?? (covered ? undefined : named.find((j) => j.firstYear! > year));
     if (lapsed) {
       return `Crossref 中的《${lapsed.title}》（ISSN ${lapsed.issn[0]}）只有 ${lapsed.firstYear}–${lapsed.lastYear} 年的文献记录，`
         + `引用写的 ${year} 年不在收录范围内，查不到不代表文献不存在`;
@@ -305,7 +311,8 @@ function judgeSame(ref: ParsedRef, rec: WorkRecord, s: MatchScore, steps: CheckS
     else issues.push(`DOI 与数据库记录不一致，数据库记录为 ${rec.doi}`);
   }
   if (s.authorRatio !== undefined) {
-    if (s.authorRatio === 0) issues.push(`作者与数据库记录不符，数据库作者为 ${formatAuthorsShort(rec.authors)}`);
+    if (s.authorsReordered) notes.push(`引用列出的作者都在数据库记录中，但顺序不同（数据库为 ${formatAuthorsShort(rec.authors)}）；Crossref 的中文记录有时把作者顺序登记错，请以原文为准`);
+    else if (s.authorRatio === 0) issues.push(`作者与数据库记录不符，数据库作者为 ${formatAuthorsShort(rec.authors)}`);
     else if (s.firstAuthor === "mismatch") issues.push(`第一作者不符，数据库第一作者为 ${formatAuthorsShort(rec.authors.slice(0, 1))}`);
     else if (s.authorOrderOk === false) issues.push(`作者顺序与数据库不一致，数据库顺序为 ${formatAuthorsShort(rec.authors)}`);
     else if (s.authorListMismatch) issues.push(`引用中有作者姓名与数据库记录不符，数据库作者为 ${formatAuthorsShort(rec.authors)}`);
@@ -419,6 +426,14 @@ function judgeNotSame(ref: ParsedRef, best: Ranked | undefined, steps: CheckStep
     return {
       ...b, verdict: "unverifiable", confidence: 0,
       summary: `${scope}类文献不在开放学术数据库的覆盖范围内，请人工核查`,
+    };
+  }
+  // 只有一个名称、没有作者、年份和 DOI 的条目（"Nutrition landscape information system (NLiS)"）：
+  // 相近的候选和查不到都说明不了什么
+  if (!ref.year && !ref.authorsGuess && !ref.doi && tokenCount(ref.raw) <= 8) {
+    return {
+      ...b, verdict: "unverifiable", confidence: 0,
+      summary: "引文只写了名称，没有作者、年份或 DOI，信息不足以核验，请补全后再查",
     };
   }
   if (ref.lang === "zh") {

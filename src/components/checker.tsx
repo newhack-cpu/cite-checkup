@@ -25,6 +25,7 @@ const KIND_LABEL: Record<RefKind, string> = {
   newspaper: "报纸",
   web: "网页",
   legal: "法规",
+  presentation: "会议报告",
   software: "软件",
   preprint: "预印本",
   unknown: "其他",

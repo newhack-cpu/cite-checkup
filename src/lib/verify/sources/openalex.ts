@@ -15,7 +15,7 @@ interface OpenAlexWork {
   title?: string | null;
   publication_year?: number | null;
   authorships?: { author?: { display_name?: string } }[];
-  primary_location?: { source?: { display_name?: string } | null } | null;
+  primary_location?: { source?: { display_name?: string; type?: string | null } | null } | null;
   is_retracted?: boolean;
   type?: string;
   biblio?: { volume?: string | null; issue?: string | null; first_page?: string | null; last_page?: string | null };
@@ -44,7 +44,9 @@ export function mapOpenAlex(w: OpenAlexWork): WorkRecord {
     title: decodeEntities(w.title ?? ""),
     authors: (w.authorships ?? []).map((a) => a.author?.display_name).filter((n): n is string => !!n).map(splitName),
     year: w.publication_year ?? undefined,
-    venue: w.primary_location?.source?.display_name ? decodeEntities(w.primary_location.source.display_name) : undefined,
+    // 首要位置是机构知识库（"Lund University Publications"）时，那不是期刊名，不拿来和引文比对
+    venue: w.primary_location?.source?.display_name && w.primary_location.source.type !== "repository"
+      ? decodeEntities(w.primary_location.source.display_name) : undefined,
     volume: b.volume ?? undefined,
     issue: b.issue ?? undefined,
     pages,

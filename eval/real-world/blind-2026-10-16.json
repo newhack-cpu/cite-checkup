@@ -1,0 +1,1109 @@
+{
+ "name": "blind-2026-10-16",
+ "description": "盲测集：与 dev、test 来自不同论文和不同的出版社组合；抽样后、规则定稿前不查看条目，只运行一次",
+ "createdAt": "2026-10-16T09:38:06.624Z",
+ "method": "Crossref /works?filter=member 或 prefix,has-references:true,from-pub-date:2023-01-01,type:journal-article&sample=40，按出版社各抽若干篇已发表论文（排除已有集合用过的源论文），每篇随机取至多 2 条 unstructured 原文。所有条目都出自已发表论文，视为真实存在的文献。",
+ "cases": [
+  {
+   "id": "B001",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.ejor.2025.06.013",
+   "raw": "Kagita, V. R., Pujari, A. K., Padmanabhan, V., Aziz, H., & Kumar, V. (2021). Committee selection using attribute approvals. In Proceedings of the 20th international conference on autonomous agents and MultiAgent systems (pp. 683–691).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B002",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.ejor.2025.06.013",
+   "raw": "Lu, T., & Boutilier, C. (2011). Budgeted social choice: From consensus to personalized decision making. In Twenty-second international joint conference on artificial intelligence.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B003",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.ibusrev.2026.102648",
+   "raw": "Burke, M. (2022). What next for scientific collaboration as stand-off between China and the west heats up? Royal Society of Chemistry. Available at: https://www.chemistryworld.com/news/what-next-for-scientific-collaboration-as-stand-off-between-china-and-the-west-heats-up/4016361.article. Accessed on 31 August, 2023.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B004",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.ibusrev.2026.102648",
+   "raw": "Brown, M. & Singh, P. (2018). China’s technology transfer strategy: How Chinese investments in emerging technology enable a strategic competitor to access the crown jewels of US innovation. Defense Innovation Unit Experimental. Available at https://docslib.org/doc/6235909/diux-china-s-technology-transfer-strategy-how-chinese-investments-in-emerging-technology-enable-a-strategic-competitor-to-access-the-crown-jewels-of-u-s.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B005",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.indcrop.2024.120392",
+   "raw": "Blue Ribbon Advisory Report, Blue Ribbon Advisory Panel, Wright Laboratory, Wright Patterson Airforce Base, Dayton, OH, 1995.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B006",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.microc.2023.109032",
+   "raw": "W. Tian, H. Zhang, X. Duan, H. Sun, G. Shao, S.J.A.F.M. Wang, Porous Carbons: Structure oriented Design and Versatile Applications, 30 (2020).",
+   "assertedDoi": "10.1002/adfm.201909265",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B007",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.microc.2023.109032",
+   "raw": "M. Shahbodaghi, H. Faraji, H. Shahbaazi, M.J.M.J. Shabani, Magnetic deep eutectic solvent-based microextraction for determination of organophosphorus flame retardants in aqueous samples: One step closer to green chemistry, 183 (2022) 108120.",
+   "assertedDoi": "10.1016/j.microc.2022.108120",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B008",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.envint.2023.108055",
+   "raw": "Jenkins, M.D., Drever, J.I., Reider, R.G., Buchanan, T., 1987. Chemical composition of fresh snow on Mount Everest. Journal of Geophysical Research 92, 10,999-11,002.",
+   "assertedDoi": "10.1029/JD092iD09p10999",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B009",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.envint.2023.108055",
+   "raw": "CAZypedia, 2021. Glycoside Hydrolase Family 23 — CAZypedia, © 2007-2021 The Authors and Curators of CAZypedia.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B010",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.bspc.2026.111010",
+   "raw": "R.R. Selvaraju, M. Cogswell, A. Das, R. Vedantam, D. Parikh, D. Batra, Grad-CAM: Visual Explanations from Deep Networks via Gradient-Based Localization, in: Proceedings of the IEEE International Conference on Computer Vision, ICCV, 2017, pp. 618–626.",
+   "assertedDoi": "10.1109/ICCV.2017.74",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B011",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.bspc.2026.111010",
+   "raw": "A. Dosovitskiy, L. Beyer, A. Kolesnikov, et al., An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale, in: International Conference on Learning Representations, ICLR, 2021.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B012",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.cej.2025.168637",
+   "raw": "L. Chen, B. Chen, X. Su, Engineering biomimetic nanovesicles for PEBP1 mRNA delivery to inhibit ferroptosis in abdominal aortic aneurysm, Bioeng. Transl. Med. e70025. doi:https://doi.org/10.1002/btm2.70025.",
+   "assertedDoi": "10.1002/btm2.70025",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B013",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1038/s41467-025-56041-3",
+   "raw": "Zhang, F. et al. Structural basis of JAZ repression of MYC transcription factors in jasmonate signalling. Nature 525, 269–273 (2015).",
+   "assertedDoi": "10.1038/nature14661",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B014",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1038/s41467-025-56041-3",
+   "raw": "Çevik, V. et al. MEDIATOR25 acts as an integrative hub for the regulation of jasmonate-responsive gene expression in Arabidopsis. Plant Physiol. 160, 541–555 (2012).",
+   "assertedDoi": "10.1104/pp.112.202697",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B015",
+   "group": "Springer Nature",
+   "sourcePaper": "10.7759/cureus.53587",
+   "raw": "Keçeci B, Küçük L, Isayev A, Sabah D. Effect of adjuvant therapies on recurrence in aneurysmal bone cysts. Acta Orthop Traumatol Turc. 2014, 48:500-6. 10.3944/AOTT.2014.14.0020",
+   "assertedDoi": "10.3944/AOTT.2014.14.0020",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B016",
+   "group": "Springer Nature",
+   "sourcePaper": "10.7759/cureus.53587",
+   "raw": "Deventer N, Deventer N, Gosheger G, de Vaal M, Vogt B, Budny T. Current strategies for the treatment of solitary and aneurysmal bone cysts: a review of the literature. J Bone Oncol. 2021, 30:100384. 10.1016/j.jbo.2021.100384",
+   "assertedDoi": "10.1016/j.jbo.2021.100384",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B017",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s00062-024-01444-w",
+   "raw": "Pajtler KW, Witt H, Sill M, Jones DTW, Hovestadt V, Kratochwil F, et al. Molecular classification of ependymal tumors across all CNS compartments, histopathological grades, and age groups. Cancer Cell. 2015;27:728–43.",
+   "assertedDoi": "10.1016/j.ccell.2015.04.002",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B018",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s00062-024-01444-w",
+   "raw": "Cunningham DA, Lowe LH, Shao L, Acosta NR. Neuroradiologic characteristics of astroblastoma and systematic review of the literature: 2 new cases and 125 cases reported in 59 publications. Pediatr Radiol. 2016;46:1301–8.",
+   "assertedDoi": "10.1007/s00247-016-3607-x",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B019",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s11030-026-11503-8",
+   "raw": "Bajda M, Guzior N, Ignasik M et al (2011) Multi-target-directed ligands in Alzheimer’s disease treatment. Curr Med Chem 18:4949–4975. https://doi.org/10.2174/092986711797535245",
+   "assertedDoi": "10.2174/092986711797535245",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B020",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s11030-026-11503-8",
+   "raw": "Sharma A, Narang A, Kumar N et al (2025) CADD based designing and biological evaluation of novel triazole based thiazolidinedione coumarin hybrids as antidiabetic agent. Sci Rep 15:4302. https://doi.org/10.1038/s41598-025-88944-y",
+   "assertedDoi": "10.1038/s41598-025-88944-y",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B021",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s40278-026-93911-y",
+   "raw": "Abbasi SA, et al. A 49-Year-Old Woman With Trastuzumab-Deruxtecan-Induced Pneumonitis Responsive to IV Immunoglobulin Therapy After Failed Steroid Treatment. Chest 169: e89-e91, No. 3, Mar 2026. Available from: URL: https://pubmed.ncbi.nlm.nih.gov/41813314",
+   "assertedDoi": "10.1016/j.chest.2025.11.005",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B022",
+   "group": "Springer Nature",
+   "sourcePaper": "10.7759/cureus.94596",
+   "raw": "Tziomalos K. Secondary hypertension: novel insights. Curr Hypertens Rev. 2020, 16:11.",
+   "assertedDoi": "10.2174/1573402115666190416161116",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B023",
+   "group": "Springer Nature",
+   "sourcePaper": "10.7759/cureus.94596",
+   "raw": "Silver J, Kilav R, Naveh-Many T. Mechanisms of secondary hyperparathyroidism. Am J Physiol Renal Physiol. 2002, 283:F367-76. 10.1152/ajprenal.00061.2002",
+   "assertedDoi": "10.1152/ajprenal.00061.2002",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B024",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s12371-023-00860-7",
+   "raw": "Sapoetra ND, Ridwan R, Sahide MAK, Masuda K (2019) Local community’s perception, attitude, and participation towards different level management of geopark: a comparison Geosite case study, between Muroto Cape and Rammang-rammang Geosite. IOP Conf Series: Earth Environ Sci 343:012044",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B025",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/nin.70027",
+   "raw": "Alonso J.2024.DEI Bans Flourished in 2024. Politicians Aren't Finished. Inside Higher Ed.https://www.insidehighered.com/news/faculty-issues/diversity-equity/2024/12/16/how-battle-over-dei-shook-out-2024-and-whats-come.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B026",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/nin.70027",
+   "raw": "National Commission to Address Racism in Nursing.2021.Summary Report: Listening Sessions on Racism in Nursing(p. 15) [Listening Serries]. American Nurses Association.https://www.nursingworld.org/practice-policy/workforce/clinical-practice-material/national-commission-to-address-racism-in-nursing/.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B027",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/ise3.85",
+   "raw": "Nakamoto Satoshi.2008. “Bitcoin: A peer‐to‐peer electronic cash system.”https://bitcoin.org/bitcoin.pdf",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B028",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/ise3.85",
+   "raw": "Williams Robert Crane.2017. “Prospects for Blockchain‐based Settlement Frameworks as a Resolution to the Threat of De‐risking to Caribbean Financial Systems.”ECLAC:Port of Spain Trinidad and Tobago.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B029",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/jso.27413",
+   "raw": "FDA. NETSPOT (kit for the preparation of gallium Ga 68 dotatate injection).2016.https://www.accessdata.fda.gov/drugsatfda_docs/nda/2016/208547Orig1s000TOC.cfm",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B030",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/rrq.70125",
+   "raw": "D&D Beyond.2022.“How Many Crits Were Rolled This Year? Check Out 2022 Unrolled!”D&D Beyond.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B031",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/rrq.70125",
+   "raw": "Miller C.2024.“Project 2025 Poses a Danger to Inclusive English Language Arts and Affirming Schools.” Field Notes: NCTE.https://web.archive.org/web/20240810180617/https://ncte.org/blog/2024/07/project‐2025‐danger/.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B032",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/jar.70308",
+   "raw": "World Bank.2015.“For Persons With Disabilities Accessible Transport Provides Pathways to Opportunity.”https://www.worldbank.org/en/news/feature/2015/12/03/for‐persons‐with‐disabilities‐accessible‐transport‐provides‐pathways‐to‐opportunity.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B033",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/jar.70308",
+   "raw": "Kessler Foundation.2015.“National Employment and Disability Survey.”https://kesslerfoundation.org/employment‐disability‐survey‐workplace‐realities‐kfsurvey‐2015.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B034",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/aogs.14750",
+   "raw": "MeyerD DimitriadouE HornikK WeingesselA LeischF.R Package Version 1.7–8 ed. Vienna Austria: e1071: Misc Functions of the Department of Statistics Probability Theory Group.2021.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B035",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/aab.70096",
+   "raw": "Thornley P.(2012).Biofuels review.https://research.manchester.ac.uk/en/publications/biofuels-review/",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B036",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/cam4.71405",
+   "raw": "IARC Working Group on the Evaluation of Carcinogenic Risks to Humans “Overall Evaluations of Carcinogenicity: An Updating of IARC Monographs Volumes 1 to 42 ”IARC Monographs on the Evaluation of Carcinogenic Risks to Humans 1987 International Agency for Research on Cancer.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B037",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/17557380241310123",
+   "raw": "NICE (2024b). Clinical knowledge summary: Scenario: suspected cow’s milk allergy. Available at: https://cks.nice.org.uk/topics/cows-milk-allergy-in-children/management/suspected-cows-milk-allergy/ (accessed 20 August 2024).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B038",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/17557380241310123",
+   "raw": "The GP Infant Feeding Network (UK) (2019) The milk allergy in primary care (MAP) guideline 2019. Available at: https://gpifn.org.uk/imap/ (accessed 18 August 2024).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B039",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/17506980241284254",
+   "raw": "Schausberger F (2020) Karl Renner—Auch nur ein Mensch. Available at: https://www.derstandard.at/story/2000122637400/karl-renner-auch-nur-ein-mensch",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B040",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/17506980241284254",
+   "raw": "Tambuscio M Tschiggerl M (2023) “#schleichdiduoaschloch” terror collective memory and social media. Social Media + Society. Epub ahead of print 6 August. DOI: 10.1177/20563051231186365.",
+   "assertedDoi": "10.1177/20563051231186365",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B041",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/11782234251365941",
+   "raw": "Wang JF. Paclitaxel-loaded microspheres incorporated into chitosan and hyaluronic acid films for prevention of post-surgical adhesions. [Thesis The University of British Columbia]. 2001.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B042",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/11782234251365941",
+   "raw": "Melear J Lakhani N O’Shaughnessy JA et al. Abstract A088: novel anti-EGFR antibody-drug conjugate AVID100: a phase 2a trial in patients with EGFR-overexpressing advanced solid tumors. 2019;18:A088-0A88.",
+   "assertedDoi": "10.1158/1535-7163.TARG-19-A088",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B043",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/10659129261454646",
+   "raw": "Bankert Alexa. 2024. When Politics Becomes Personal: The Effect of Partisan Identity on Anti-Democratic Behavior. Cambridge University Press.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B044",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/10659129261454646",
+   "raw": "McCarty Nolan, Poole Keith, Rosenthal Howard. 2006. Polarized America: The Dance of Ideology and Unequal Riches. MIT Press.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B045",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/12034754251341846",
+   "raw": "Dynacare Blood Test Labs & Health Services. ADALIMUMAB (Internet); 2023. https://www.dynacare.ca/specialpages/secondarynav/find-a-test/nat/adalimumab.aspx?sa=a+.Dynacare",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B046",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/15553434241230604",
+   "raw": "National Highway Traffic Safety Administration. (2021). Standing general order on crash reporting. https://www.nhtsa.gov/laws-regulations/standing-general-order-crash-reporting",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B047",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/15553434241230604",
+   "raw": "Kuehn M., Vogelpohl T., Vollrath M. (2017, May). Takeover times in highly automated driving (level 3). Proceedings of the 25th International technical conference on the enhanced safety of vehicles (ESV), 1 - 11 .",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B048",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/13621688251352282",
+   "raw": "Chang J.Y. Kim W. Lee H. (2015). A language support program for English-medium instruction courses: Its development and evaluation in an EFL setting. International Journal of Bilingual Education and Bilingualism 20 510–528. https://doi.org/10.1080/13670050.2015.1080658",
+   "assertedDoi": "10.1080/13670050.2015.1080658",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B049",
+   "group": "IOP Publishing",
+   "sourcePaper": "10.1088/2053-1591/ae304b",
+   "raw": "Environment U.N. Emissions Gap Report 2024 UNEP - UN Environment Programme Available online: https://www.unep.org/resources/emissions-gap-report-2024",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B050",
+   "group": "IOP Publishing",
+   "sourcePaper": "10.1088/2053-1591/ae304b",
+   "raw": "Environment U.N. Global Status Report for Buildings and Construction UNEP - UN Environment Programme Available online: https://www.unep.org/resources/report/global-status-report-buildings-and-construction",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B051",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/eso.2025.10103",
+   "raw": "The Oklahoma News (Oklahoma City, OK)",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B052",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/eso.2025.10103",
+   "raw": "The Peabody Gazette-Herald (Peabody, KS)",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B053",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/hyp.2026.10079",
+   "raw": "Ward, Caleb . 2020. Agency, Responsibility, and the Limits of Sexual Consent, Dissertation; State University of New York, Stony Brook.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B054",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s0376892924000055",
+   "raw": "Hockings, M , Stolton, S , Dudley, N (2000) Evaluating Effectiveness: A Framework for Assessing the Management of Protected Areas. Gland, Switzerland and Cambridge, UK: IUCN [www document]. URL https://portals.iucn.org/library/efiles/documents/pag-014.pdf",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B055",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s0376892924000055",
+   "raw": "Ervin, J (2003) WWF rapid assessment and prioritization of protected area management (RAPPAM) methodology. Gland, Switzerland: WWF [www document]. URL https://wwfeu.awsassets.panda.org/downloads/rappam.pdf",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B056",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/lap.2023.15",
+   "raw": "World Health Organization. 1978. Declaration of Alma Ata: International Conference on Primary Health Care, Alma Ata, USSR, 6–12 September.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B057",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/lap.2023.15",
+   "raw": "IBGE MUNIC. 2018. Perfil dos Municípios Brasileiros—2018. https://ww2.ibge.gov.br/home/estatistica/economia/perfilmunic/2018/default.shtm. Accessed January 19, 2023.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B058",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/jfm.2026.11549",
+   "raw": "Salmon, R. 2020 More lectures on geophysical fluid dynamics. Available at: https://pordlabs.ucsd.edu/rsalmon/More.Lectures.pdf.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B059",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s0004972724000054",
+   "raw": "[6] Cabanillas, E. , ‘Quotients of numerical semigroups generated by two numbers’, Preprint, 2019, arXiv:1904.082402v2.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B060",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s0021932025100473",
+   "raw": "World Health Organization (2023a) First WHO report details devastating impact of hypertension and ways to stop it. Retrieved September 20, 2023, from https://www.who.int/news/item/19-09-2023-first-who-report-details-devastating-impact-of-hypertension-and-ways-to-stop-it.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B061",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s0021932025100473",
+   "raw": "Bank, AD (2019, June 8). East Africa Regional Overview [Text]. Retrieved October 6, 2024, from https://www.afdb.org/en/countries/east-africa/east-africa-overview.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B062",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s0007485326100911",
+   "raw": "Anthos, , (n.d.) http://www.anthos.es (accesed 5 December 2025).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B063",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/app15041969",
+   "raw": "Pham, H.V., Yuji, F., and Kamei, K. (2011, January 20–22). Hybrid Artificial Neural Networks for TBM performance prediction in complex underground conditions. Proceedings of the 2011 IEEE/SICE International Symposium on System Integration (SII 2011), Kyoto, Japan.",
+   "assertedDoi": "10.1109/SII.2011.6147611",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B064",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/app15041969",
+   "raw": "VDI Zentrum Ressourceneffizienz (2021, July 02). Grundlagen zur Echtzeitdatenerfassung Und-Verarbeitung. Available online: https://www.ressource-deutschland.de/themen/echtzeitdaten/grundlagen/.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B065",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/ijms26125593",
+   "raw": "Finn, R.N., Chauvigné, F., Hlidberg, J.B., Cutler, C.P., and Cerdà, J. (2014). The lineage-specific evolution of aquaporin gene clusters facilitated tetrapod terrestrial adaptation. PLoS ONE, 9.",
+   "assertedDoi": "10.1371/journal.pone.0113686",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B066",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/ijms26125593",
+   "raw": "Carrier, J.C., Musick, J.A., and Heithaus, M.R. (2004). Chapter 9. Homeostasis: Osmoregulation, pH regulation, and nitrogen excretion. Biology of Sharks and Their Relatives, CRC Press.",
+   "assertedDoi": "10.1201/9780203491317",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B067",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/rs15235616",
+   "raw": "Brito, M.C., Redweik, P., Catita, C., Freitas, S., and Santos, M. (2019). 3D solar potential in the urban environment: A case study in Lisbon. Energies, 12.",
+   "assertedDoi": "10.3390/en12183457",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B068",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/rs15235616",
+   "raw": "Zhao, K., Kang, J., Jung, J., and Sohn, G. (2018, January 18–22). Building extraction from satellite images using mask R-CNN with building boundary regularization. Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition Workshops, Salt Lake City, UT, USA.",
+   "assertedDoi": "10.1109/CVPRW.2018.00045",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B069",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/app132112003",
+   "raw": "Gan, B.-R., Yang, X.-G., Liao, H.-M., and Zhou, J.-W. (2020). Flood routing process and high dam interception of natural discharge from the 2018 Baige landslide-dammed lake. Water, 12.",
+   "assertedDoi": "10.3390/w12020605",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B070",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/app132112003",
+   "raw": "Han, L., Zhang, J., Zhang, Y., Ma, Q., Alu, S., and Lang, Q. (2019). Hazard assessment of earthquake disaster chains based on a Bayesian network model and ArcGIS. IJGI, 8.",
+   "assertedDoi": "10.3390/ijgi8050210",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B071",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/cancers15204982",
+   "raw": "Kim, M.-J., Cho, Y.-A., Kim, E., Choe, J.-Y., Park, J.-W., Lee, J., Lee, J.-W., Moon, S.-H., Kim, Y.-S., and Kim, S.-E. (2022). Cellular Prion Protein Is Closely Associated with Early Recurrence and Poor Survival in Patients with Hepatocellular Carcinoma. Diagnostics, 12.",
+   "assertedDoi": "10.3390/diagnostics12071635",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B072",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/cancers15204982",
+   "raw": "Yu, G., Jiang, L., Xu, Y., Guo, H., Liu, H., Zhang, Y., Yang, H., Yuan, C., and Ma, J. (2012). Silencing prion protein in MDA-MB-435 breast cancer cells leads to pleiotropic cellular responses to cytotoxic stimuli. PLoS ONE, 7.",
+   "assertedDoi": "10.1371/journal.pone.0048146",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B073",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/diseases12080169",
+   "raw": "Forsyth, C.B., Zhang, L., Bhushan, A., Swanson, B., Zhang, L., Mamede, J.I., Voigt, R.M., Shaikh, M., Engen, P.A., and Keshavarzian, A. (2022). The SARS-CoV-2 S1 Spike Protein Promotes MAPK and NF-kB Activation in Human Lung Cells and Inflammatory Cytokine Production in Human Lung and Intestinal Epithelial Cells. Microorganisms, 10.",
+   "assertedDoi": "10.20944/preprints202206.0010.v1",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B074",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/su151813871",
+   "raw": "Strandgard, M. (2019). Mitchell R 2019 Comparison of cost productivity residue yield of cutto-length fuel-adapted harvesting in a Pinus radiata, D. Don final harvest in Western Australia. N. Z. J. For. Sci., 49.",
+   "assertedDoi": "10.33494/nzjfs492019x37x",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B075",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0350782",
+   "raw": "U.S. Food and Drug Administration. 2025. [cited 2025 Dec 12]https://www.fda.gov/news-events/press-announcements/fda-approves-two-oral-therapies-treat-gonorrhea",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B076",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0350782",
+   "raw": "World Health Organization. World Health Organization. 2024. https://www.who.int/news-room/fact-sheets/detail/sexually-transmitted-infections-(stis",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B077",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pgph.0004908",
+   "raw": "De Vos M. Diagnostic accuracy of tongue swabs for tuberculosis using a common protocol for Xpert MTB/RIF Ultra testing: A multi-country assessment. 2023.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B078",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0302886",
+   "raw": "Pauly, M.V. Valuing health care benefits in money terms. In: Valuing health care: Costs, benefits, and effectiveness of pharmaceuticals and other medical technologies Sloan, F A (Ed). Cambridge: Cambridge University Press.; 1996.",
+   "assertedDoi": "10.1017/CBO9780511625817.006",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B079",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0302886",
+   "raw": "Australian Government, Department of Health. Guidelines for preparing submissions to the Pharmaceutical Benefits Advisory Committee (PBAC) [Internet]. Australian Government; 2016 [cited 2023 Jan 18]. Available from: https://pbac.pbs.gov.au/.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B080",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0289468",
+   "raw": "Oksanen J, Blanchet FG, Friendly M, Kindt R, Legendre P, McGlinn D, et al. Package vegan. Community Ecology Package. 2017.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B081",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0289468",
+   "raw": "R-Core-Team. R: A language and environment for statistical computing. Vienna, Austria: R Foundation for Statistical Computing; 2015.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B082",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0308905",
+   "raw": "Ibrahim, M. F., Putri, M. M., & Utama, D. M. (2020). A literature review on reducing carbon emission from supply chain system: drivers, barriers, performance indicators, and practices. In IOP Conference Series: Materials Science and Engineering (Vol. 722, No. 1, p. 012034). IOP Publishing.",
+   "assertedDoi": "10.1088/1757-899X/722/1/012034",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B083",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0308905",
+   "raw": "“OpenCelliD—Largest Open Database of Cell Towers & Geolocation—by Unwired Labs.” [Online]. Available: https://www.opencellid.org/#zoom=16&lat=37.77889&lon=-122.41942. [Accessed: 15-Mar-2022].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B084",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0332740",
+   "raw": "Mackay AD, Scobie DR, Rhodes TR, Devantier B. Has progress been made in increasing the eco-efficiency of livestock systems? New Zealand Journal of Animal Science and Production. 2019;79:43–55. http://creativecommons.org.nz/licences/licences-explained/",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B085",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pmen.0000555",
+   "raw": "Acoba EF. Social support and mental health: the mediating role of perceived stress. 2024;1:1–12.",
+   "assertedDoi": "10.3389/fpsyg.2024.1330720",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B086",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pmen.0000555",
+   "raw": "Mulud ZA, McCarthy G. Caregiver Burden Among Caregivers of Individuals With Severe Mental Illness: Testing the Moderation and Mediation Models of Resilience. Archives of Psychiatric Nursing. 2017 [cited 2024 Jan 22]. https://consensus.app/papers/caregiver-burden-among-caregivers-individuals-with-mulud/b6430ac1610b56a7b93e987488ef8456/",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B087",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sspma-2023-0246",
+   "raw": "Zhang B, Peng J. Laser tracker system for measurement (in Chinese). Metrol Meas Technol, 2006, 26: 5–6 [张博, 彭军. 激光跟踪测量系统. 计测技术, 2006, 26: 5–6].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B088",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sspma-2023-0246",
+   "raw": "Ning L, Lei Z, Liu Y H, et al. Analysis of solar thermal deformation of large aperture radio telescope panels (in Chinese). Technol Market, 2022, 29: 78–80 [宁亮, 雷震, 刘宇华, 等. 大口径射电望远镜面板日照热变形分析. 技术与市场, 2022, 29: 78–80].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B089",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2024-0003",
+   "raw": "李万伦, 陈晶, 贾凌霄, 马冰, 陈扬, 孙君一. 2022. 玄武岩CO2地质封存研究进展. 地质论评, 68: 648–657.",
+   "assertedDoi": "10.37155/2811-0595-0203-61",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B090",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2024-0003",
+   "raw": "丁仲礼, 张涛. 2022. 碳中和: 逻辑体系与技术需求. 北京: 科学出版社. 265–278.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B091",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2023-0307",
+   "raw": "傅伯杰, 欧阳志云, 施鹏, 樊杰, 王小丹, 郑华, 赵文武, 吴飞. 2021. 青藏高原生态安全屏障状况与保护对策. 中国科学院院刊, 36: 1298–1306.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B092",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2023-0307",
+   "raw": "汪涛, 王晓昳, 刘丹, 吕冠廷, 任帅, 丁金枝, 陈报章, 曲建升, 汪亚峰, 朴世龙, 陈发虎. 2023. 青藏高原碳汇现状及其未来趋势. 中国科学: 地球科学, 53: 1506–1516.",
+   "assertedDoi": "10.1360/N072022-0210",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B093",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/tb-2022-1158",
+   "raw": "Li K M. Industrial solid waste derived SiO2 as support for synthesizing amine functional adsorbents used for CO2 capture and its mechanism (in Chinese). Doctor Dissertation. Beijing: Tsinghua University, 2017 [李凯敏. 固废源SiO2基固态胺材料用于CO2捕集技术及机理研究. 博士学位论文. 北京: 清华大学, 2017].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B094",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/tb-2022-1158",
+   "raw": "Environmental Planning Institute, Ministry of Ecology and Environment. China Carbon Dioxide Capture, Use and Storage (CCUS) Annual Report (in Chinese). 2021 [生态环境部环境规划院. 中国二氧化碳捕集利用与封存(CCUS)年度报告. 2021].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B095",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sst-2025-0240",
+   "raw": "Liu W Y, Qian L, Li F J, et al. Growth and luminescence properties of Li2MoO4 crystal by Bridgman method (in Chinese). J Synth Cryst, 2025, 54: 793–800 [刘文宇, 钱露, 李芳建, 等. Li2MoO4晶体的坩埚下降法生长及其发光性能. 人工晶体学报, 2025, 54: 793–800].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B096",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sst-2025-0240",
+   "raw": "Wei R, Wang M G, Hu X B, et al. Growth and luminescence properties of ZnMoO4 crystal (in Chinese). J Synth Cryst, 2015, 44: 3406–3410 [魏冉, 王敏刚, 胡旭波, 等. 钼酸锌晶体生长与发光特性研究. 人工晶体学报, 2015, 44: 3406–3410].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B097",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2026-0083",
+   "raw": "郑永飞, 徐峥, 赵子福, 戴立群. 2018. 华北中生代镁铁质岩浆作用与克拉通减薄和破坏. 中国科学: 地球科学, 48: 379–414.",
+   "assertedDoi": "10.1360/N072017-00235",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B098",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2026-0083",
+   "raw": "陈立辉, 张笑宇, 赵键. 2026. 地幔地球化学的建立和发展. 中国科学: 地球科学, 56: 855–862.",
+   "assertedDoi": "10.1360/SSTe-2025-0334",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B099",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.1007-2802.20240031",
+   "raw": "雒克定, 魏均, 张静宜, 等. 1980. 单斜蓝硒铜矿——一种新的亚硒酸盐矿物. 科学通报, (2): 85–89.",
+   "assertedDoi": "10.1360/csb1980-25-2-85",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B100",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.1007-2802.20240031",
+   "raw": "范书伶, 王平, 张珩琳, 等. 2020. 环境中硒的迁移、微生物转化及纳米硒应用研究进展. 科学通报, 65: 2853–2862.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B101",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.1674-4969.20250041",
+   "raw": "国务院办公厅. 国务院办公厅关于加快医学教育创新发展的指导意见[EB/OL]. (2020-09-23)[ 2025-02-18]. https://www.gov.cn/zhengce/content/2020-09/23/content_5546373.htm..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B102",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.1674-4969.20250041",
+   "raw": "李春晖, 李春蕊. CAR-T细胞治疗在自身免疫性疾病中的应用[J]. 内科急危重症杂志, 2023, 29(5): 363-369, 385..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B103",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/aauj.2024105",
+   "raw": "张 琦, 蒲 婷婷, 王 艺儒. 柿品种杂交亲和性研究. 中国农业大学学报, 2023, 28: 87-98.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B104",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/aauj.2024105",
+   "raw": "杨 波, 毕 旭灿, 汪 丽霞. 常山胡柚种质资源收集开发利用研究进展. 果树资源学报, 2024, 5: 88-92.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B105",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.1007-6336.2026-0031",
+   "raw": "王 金鹏, 刘 晓伟, 荣 楠. 广东省大亚湾和红海湾表层沉积物重金属分布特征及风险评价. 环境化学, 2024, 43: 942-950.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B106",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.1007-6336.2026-0031",
+   "raw": "杜 吉净, 毛 龙江, 谭 志海. 海州湾岩芯沉积物重金属污染评价和来源分析. 海洋环境科学, 2016, 35: 814-821.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B107",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.gyjzg23062103",
+   "raw": "奚悦，张万斌，李培楠，等. 城市地下空间资源质量三维精细化评价［J］. 浙江大学学报（工学版），2022，56（4）：656-663 ．.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B108",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.gyjzg23062103",
+   "raw": "王述红，赵贺兴，姜磊，等. 基于两阶段法地铁盾构开挖对邻近桩基影响分析［J］. 东北大学学报（自然科学版），2014，35（6）：871-874..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B109",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/jfmd.2605061",
+   "raw": "蔡 克峰. Ⅰ-型锗基笼形物: 极有希望的热电材料. 功能材料与器件学报, 2004, 10: 139-144.",
+   "assertedDoi": "10.3969/j.issn.1007-4252.2004.02.001",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B110",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/jfmd.2605061",
+   "raw": "张 久兴, 张 隆, 路 清梅. N型La0.9NixCo4-xSb12化合物的制备及热电性能研究. 功能材料与器件学报, 2004, 10: 59-62.",
+   "assertedDoi": "10.3969/j.issn.1007-4252.2004.01.013",
+   "label": {
+    "lang": "zh"
+   }
+  }
+ ],
+ "notes": "IEEE 在 Crossref 登记的参考文献没有 unstructured 原文，抽到 0 条；IOP 只抽到 2 条。抽样只输出了每组条数，规则定稿前没有查看条目内容。"
+}

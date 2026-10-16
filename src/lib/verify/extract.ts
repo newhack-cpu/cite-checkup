@@ -37,7 +37,8 @@ export function splitReferences(text: string): string[] {
     entries = nonEmpty;
   }
 
-  return entries.map((e) => e.replace(/\s+/g, " ").trim()).filter((e) => e.length >= 8);
+  // 只贴了一条、或只有个别条目带序号时，上面不会按序号切分，开头的 "[1]" 仍要去掉，否则作者段识别不出来
+  return entries.map((e) => e.replace(MARKER_RE, "").replace(/\s+/g, " ").trim()).filter((e) => e.length >= 8);
 }
 
 /**
@@ -156,6 +157,18 @@ const WEB_RE =
   /\b(?:retrieved|accessed|available (?:online|at|from)|last (?:accessed|visited)|online:)\b|\[www document\]|\burl\s*[:〈<(]|访问日期|引用日期/i;
 const REPORT_RE =
   /\b(?:report|white paper|working paper|technical note|policy brief|fact sheet|briefing paper|discussion paper|guidelines?|yearbook)\b|报告|年鉴|白皮书/i;
+// 德语等外文的报告用词、政府机构，以及 "Bull. No. 46" 这类报告编号
+const REPORT_EXTRA_RE =
+  /\b(?:berichte?|forschungsbericht|arbeitsbericht|abschlussbericht|schriftenreihe|gutachten|bundesanstalt|bundesamt|bundesministerium|umweltbundesamt|rapport|informe)\b|\b(?:bull(?:etin)?|rep(?:ort)?|tech(?:nical)?\.?\s*rep(?:ort)?)\.?\s*no\.?\s*\d/i;
+// 引文末尾的发布机构是国际组织或政府机构（"..., FAO." "World Bank, 2019."），通常是报告
+const ORG_PUBLISHER_RE =
+  /(?:^|[,.;:]\s*)(?:FAO|WHO|UNESCO|UNICEF|UNDP|UNEP|UNHCR|UNFPA|UN-Habitat|OECD|IMF|IPCC|IEA|IRENA|ILO|WTO|USDA|USGS|EPA|NOAA|CDC|NIH|NICE|Eurostat|World Bank|European Commission|United Nations|Food and Agriculture Organi[sz]ation(?: of the United Nations)?|World Health Organi[sz]ation)\b[^.]{0,40}\.?\s*$/;
+// 在会议上宣读、展示但没有正式出版的报告或海报
+const PRESENTATION_RE =
+  /\b(?:paper|poster|talk|oral presentation|keynote|abstract)\s+presented\s+(?:at|to)\b|\bpresented\s+at\b|\bposter\s+(?:session|presentation)\b|会议报告|会议海报/i;
+// 出版社名紧跟分号、冒号或逗号（ACS："Indoles; Elsevier, 1996"；Vancouver 章节："... Degeneration: Springer; 2008"）
+const PUBLISHER_RE =
+  /\b(?:Springer(?:-Verlag)?|Elsevier|Wiley(?:-VCH|-Blackwell|-Interscience)?|John Wiley|Routledge|SAGE|Taylor (?:&|and) Francis|Chapman (?:&|and) Hall(?:\/CRC)?|CRC|Pergamon|Butterworth(?:-Heinemann)?|Birkh[aä]user|De Gruyter|Palgrave(?: Macmillan)?|Macmillan|World Scientific|Humana|Thieme|Karger|Mosby|Saunders|Lippincott|McGraw[- ]Hill|Pearson|Prentice[- ]Hall|Addison[- ]Wesley|Marcel Dekker|Kluwer|Nova Science|IGI Global|Woodhead)\b\s*(?:[;:,]|\.?\s*$)/;
 // 机构作者：开头就是部委、机构、协会这类名称
 const ORG_AUTHOR_RE =
   /^(?:the\s+)?(?:[A-Z][\w&'’.-]*\s+){0,4}(?:Organi[sz]ation|Department|Ministry|Office|Agency|Bureau|Council|Commission|Parliament|Institute|Center|Centre|Association|Foundation|Society|Administration|Authority|Board|Committee|Union|Bank|Fund|Programme|Program|Service)\b/;
@@ -168,15 +181,16 @@ export function detectKind(s: string): RefKind {
   const m = t.match(GBT_MARKER_RE);
   if (m) return GBT_TYPE[m[1].toUpperCase()] ?? "unknown";
   if (THESIS_RE.test(t)) return "thesis";
+  if (PRESENTATION_RE.test(t) && !/\bproc(?:eedings|\.)/i.test(t)) return "presentation";
   if ((CONFERENCE_RE.test(t) && !JOURNAL_PROCEEDINGS_RE.test(t)) || MAJOR_VENUE_RE.test(t)) return "conference";
   if (JOURNAL_PATTERNS.some((re) => re.test(t))) return "journal";
   if (STANDARD_CODE_RE.test(t) || STANDARD_WORD_RE.test(t)) return "standard";
   if (PATENT_RE.test(t)) return "patent";
   if (LEGAL_RE.test(t)) return "legal";
   if (SOFTWARE_RE.test(t)) return "software";
-  if (BOOK_RE.test(t)) return "book";
+  if (BOOK_RE.test(t) || PUBLISHER_RE.test(t)) return "book";
   if (WEB_RE.test(t)) return "web";
-  if (REPORT_RE.test(t) || ORG_AUTHOR_RE.test(t)) return "report";
+  if (REPORT_RE.test(t) || REPORT_EXTRA_RE.test(t) || ORG_AUTHOR_RE.test(t) || ORG_PUBLISHER_RE.test(t)) return "report";
   // 只有普通网址、没有 DOI，多半是网页
   const urls = t.replace(/https?:\/\/(?:dx\.)?doi\.org\/\S+/gi, " ");
   if (/https?:\/\/|www\.\w/i.test(urls) && !/\b10\.\d{4,9}\//.test(t)) return "web";
@@ -199,6 +213,8 @@ const NAME_PATTERNS = [
 const ET_AL_RE = /^(?:et\s+al\.?|等人?)$/i;
 const INITIALS_ONLY_RE = new RegExp(`^(?:${INITIAL}){1,4}$`, "u");
 const SURNAME_ONLY_RE = new RegExp(`^${PARTICLE}${SURNAME}$`, "u");
+// " R. J. Indoles"：带点的缩写之后紧跟一个大写开头的词（题名）
+const INITIALS_THEN_TITLE_RE = /^\s*(?:\p{Lu}\.\s?-?\s?){1,4}(?=\s*\p{Lu}[\p{Ll}\p{Lu}])/u;
 // 最后一位作者后面紧跟 ". 题名"（Vancouver / GB/T / 中文）
 const LAST_NAME_THEN_TITLE_RE = new RegExp(`^(${VANCOUVER_NAME}|${CJK_NAME}|et\\s+al|等人?)[.．]\\s*\\S`, "u");
 // 片段以姓名开头，后面却不是 ". 题名"（"Counterfeit X | 2015"、"J. Nanostruct. Chem."）：作者段在哪结束说不清
@@ -258,6 +274,13 @@ function leadingNames(t: string): Span | undefined {
       i++;
       continue;
     }
+    // ACS："Sundberg, R. J. Indoles; Elsevier"：缩写后面直接接题名，作者段到缩写为止
+    const acs = next && SURNAME_ONLY_RE.test(seg) ? segs[i + 1].text.match(INITIALS_THEN_TITLE_RE) : null;
+    if (acs) {
+      end = segs[i + 1].start + acs[0].length;
+      real++;
+      break;
+    }
     if (isName(seg)) {
       end = segs[i].end;
       if (!ET_AL_RE.test(seg)) real++;
@@ -294,11 +317,35 @@ function authorSpan(t: string): Span | undefined {
  * 也不能把题名、刊名混进作者段（否则会把真实文献误判成"作者不符"）。
  */
 export function guessAuthors(s: string): string | undefined {
-  const span = authorSpan(s.normalize("NFKC").trim());
+  const span = authorSpan(stripFootnoteMarker(s.normalize("NFKC").trim()));
   return span?.text.replace(/[,.:;\s]+$/, "").trim() || undefined;
 }
 
+/** 条目开头粘着的上标脚注字母（"aSundberg, R. J."）：一个小写字母紧贴大写开头的姓 */
+export function stripFootnoteMarker(s: string): string {
+  return s.replace(/^[a-z](?=\p{Lu}\p{Ll}{2,}[,\s])/u, "");
+}
+
 // ---------- 题名、期刊 ----------
+
+// 句点后面不算题名结束的缩写：称谓（Dr. Jekyll）、No.、Vol.、vs. 等
+const TITLE_ABBREVIATION_RE = /(?:^|[\s(\[])(?:Dr|Mr|Mrs|Ms|Mx|Prof|St|Sr|Jr|Mt|vs|cf|No|Nos|Vol|Vols|Fig|Figs|Eq|Eqs|Ch|Sec|Pt|ca|approx|U\.S|U\.K|e\.g|i\.e)$/i;
+
+/**
+ * 从开头取到题名结束：第一个后面跟着空白（或文末）的 . ? ! 。，至少 min 个字符。
+ * 跳过缩写后的句点，以及 "high temperature: 2. Experimental" "Part II. Methods" 这类分部编号。
+ */
+function untilTitleEnd(s: string, min: number, max = 400): string | undefined {
+  const end = /[.?!．。](?=\s|$)/g;
+  for (let m = end.exec(s); m; m = end.exec(s)) {
+    if (m.index < min) continue;
+    if (m.index > max) return undefined;
+    const before = s.slice(0, m.index);
+    if (m[0] === "." && (TITLE_ABBREVIATION_RE.test(before) || /[:：]\s*(?:\d{1,2}|[IVX]{1,4})$/.test(before) || /\bpart\s+(?:\d{1,2}|[IVX]{1,4})$/i.test(before))) continue;
+    return before;
+  }
+  return undefined;
+}
 
 /** 题名候选的基本检查：有足够的文字，不能是 "19, 3942 (2022)" 这种刊名卷页 */
 function plausibleTitle(x: string): boolean {
@@ -322,17 +369,25 @@ function rawTitle(s: string): string | undefined {
   const gbt = t.match(/^(.+?)[.．]\s*(.+?)\s*\[(?:J|M|C|A|D|S|P|R|N|EB|DB|CP|Z)(?:\/[A-Z]{2})?\]/i);
   if (gbt && gbt[2].length >= 4) return gbt[2].trim();
   // APA：Author, A. (2019). Title. Journal...
-  const apa = t.match(/\(\s*(?:18|19|20)\d{2}[a-z]?(?:\s*,[^)]{0,30})?\s*\)\s*[.,]?\s*(.+?)(?:[.?!](?:\s|$))/);
-  if (apa && apa[1].length >= 8 && plausibleTitle(apa[1])) return apa[1].trim();
+  const apaYear = t.match(/\(\s*(?:18|19|20)\d{2}[a-z]?(?:\s*,[^)]{0,30})?\s*\)\s*[.,]?\s*/);
+  const apa = apaYear ? untilTitleEnd(t.slice(apaYear.index! + apaYear[0].length), 1, 2000) : undefined;
+  if (apa && apa.length >= 8 && plausibleTitle(apa)) return apa.trim();
   // IEEE / MLA：题名在引号里
   const quoted = t.match(/[“"](.{8,}?)[,.]?[”"]/);
   if (quoted) return quoted[1].trim();
   // Vancouver / Springer / 物理期刊 / 中文无类型标识：作者段之后到下一个句号
   const span = authorSpan(t);
   if (span) {
-    const rest = t.slice(span.end).replace(/^[\s.,:;．，]+/, "").replace(/^(?:et\s+al|等人?)[.．,]?\s*/i, "");
-    const m = rest.match(/^(?:(?:18|19|20)\d{2}[.．]\s*)?(.{6,400}?)(?:[.?!．。](?:\s|$)|\s*\[[A-Z]{1,2}(?:\/[A-Z]{2})?\])/);
-    if (m && plausibleTitle(m[1])) return m[1].trim();
+    const rest = t.slice(span.end).replace(/^[\s.,:;．，]+/, "").replace(/^(?:et\s+al|等人?)[.．,]?\s*/i, "")
+      .replace(/^(?:18|19|20)\d{2}[.．]\s*/, "");
+    let title = untilTitleEnd(rest, 6);
+    // GB/T 类型标识 [J] [M] 也是题名的结束
+    const marker = rest.search(/\s*\[[A-Z]{1,2}(?:\/[A-Z]{2})?\]/);
+    if (marker >= 6 && marker <= 400 && (title === undefined || marker < title.length)) title = rest.slice(0, marker);
+    // ACS："Density Estimation ...; Chapman & Hall/CRC: 1986"，分号后面是出版社；"In 书名; ..." 是所在的书，不是本文题名
+    title = title?.split(/;\s/)[0].replace(/^\(?eds?\.?\)?\s+/i, "");
+    if (title && /^in:?\s/i.test(title)) title = undefined;
+    if (title && plausibleTitle(title)) return title.trim();
   }
   return undefined;
 }
@@ -349,7 +404,7 @@ export function guessVenue(s: string, titleGuess?: string): string | undefined {
         .slice(at + titleGuess.length)
         .replace(/^\s*\(in chinese\)/i, "")
         .replace(/^\s*\[[A-Z]{1,2}(?:\/[A-Z]{2})?\]/i, "")
-        .replace(/^\s*[.?!”"．。]+\s*/, "");
+        .replace(/^\s*[,.;:?!”"．。]+\s*/, "");
       if (/^(in\s|proceedings|proc\.|https?:)/i.test(rest)) return undefined;
       const m = rest.match(/^([^,，(\d]{2,}?)\s*(?:[,，]|\(|\d)/);
       if (m) return m[1].replace(/[.\s]+$/, "").trim() || undefined;

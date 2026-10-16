@@ -13,7 +13,10 @@ import {
   tokenSet,
   tokenize,
 } from "./normalize";
+import { romanizeHanAuthorList, romanizeHanName } from "./romanize";
 import type { Author, FieldCheck, ParsedRef, WorkRecord } from "./types";
+
+const HAN_RE = /\p{Script=Han}/u;
 
 export interface MatchScore {
   /** 题名一致程度 0–1 */
@@ -28,6 +31,8 @@ export interface MatchScore {
   authorOrderOk?: boolean;
   /** 已识别的作者段中是否包含数据库作者以外的姓名；省略作者不算错误。 */
   authorListMismatch?: boolean;
+  /** 中文记录：引文列出的作者都在数据库作者里，只是顺序不同（Crossref 的中文记录常把顺序登记错） */
+  authorsReordered?: boolean;
   /** 引文年份与数据库各个出版年份（正式、纸本、在线首发）的最小差值 */
   yearDiff?: number;
   /** 数据库记录的卷号、起始页（或文章号）是否出现在引文里 */
@@ -197,12 +202,19 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
   const titleScore = ref.titleGuess ? 0.65 * forward + 0.35 * backward : forward;
   const titleMissing = titleScore < 0.5 && !ref.titleGuess && leftoverWords(plain, rec) <= 2;
 
+  // 跨文字比对：引文是汉字姓名而记录是拼音（窦杰 ↔ Dou J），或反过来，先把汉字一侧转成拼音
+  const recordHan = rec.authors.some((a) => isCjk(a.family.trim()[0] ?? ""));
+  const citedHan = !!ref.authorsGuess && HAN_RE.test(ref.authorsGuess) && !/[A-Za-z]{3,}/.test(ref.authorsGuess.replace(/\bet\s+al\b/gi, ""));
+  const citedAuthors = citedHan && rec.authors.length && !recordHan ? romanizeHanAuthorList(ref.authorsGuess!) : ref.authorsGuess;
+  const recordAuthors = recordHan && !citedHan && !HAN_RE.test(ref.authorsGuess ?? ref.raw)
+    ? rec.authors.map((a) => romanizeHanName(a.family + (a.given ?? "")) ?? a) : rec.authors;
+
   // 有独立作者段时只在该段查找，避免把题名 / 期刊中的人名算成作者；粘连的缩写（EstebanO）先拆开。
-  const authorText = deglueNames(ref.authorsGuess ?? ref.raw);
+  const authorText = deglueNames(citedAuthors ?? ref.raw);
   const rawNorm = normalizeText(authorText);
   const rawCompact = compact(authorText);
   // 标准、机构报告的"作者"是机构（ASTM International ↔ D30 Committee），按姓氏比对没有意义，当作没有作者信息
-  const people = ref.kind === "standard" || isOrganizationList(rec.authors) ? [] : rec.authors;
+  const people = ref.kind === "standard" || isOrganizationList(recordAuthors) ? [] : recordAuthors;
   const considered = people.slice(0, 3);
   const positions = people.map((a) => locateAuthor(a, rawNorm, rawCompact));
   const found = positions.filter((p) => p >= 0);
@@ -212,17 +224,33 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
   const authorOrderOk = found.length >= 2 && new Set(found).size === found.length
     ? found.every((p, i) => i === 0 || p > found[i - 1]) : undefined;
   let authorListMismatch: boolean | undefined;
-  if (ref.authorsGuess && people.length) {
+  if (citedAuthors && people.length) {
     const initialsOf = (s: string) => normalizeText(s).split(" ").filter(Boolean).map((p) => p[0]).join("");
     const known = new Set(people.flatMap((a) => {
       const names = normalizeText(`${a.family} ${a.given ?? ""}`).split(" ");
+      // 复姓只写其中一个姓、另一个变成缩写：Uttam Patil M ↔ Patil MU，Carrillo Esper R ↔ Esper RC，P.R. LE ↔ Pr LE
+      const familyTokens = normalizeText(a.family).split(" ").filter(Boolean);
+      const given = initialsOf(a.given ?? "");
+      const compound = familyTokens.length < 2 ? [] : familyTokens.flatMap((_, i) => {
+        const others = familyTokens.filter((__, j) => j !== i).map((t) => t[0]).join("");
+        return [others, given + others, others + given];
+      });
       // 姓名放反的记录里，引文的缩写其实来自 family（"A. Mine" ↔ "Onenerk AM"）
-      return [...names, normalizeText(a.family).replace(/ /g, ""), initialsOf(a.given ?? ""), initialsOf(a.family),
+      return [...names, ...compound, normalizeText(a.family).replace(/ /g, ""), given, initialsOf(a.family),
         compact(a.family + (a.given ?? ""))];
     }));
-    const cited = normalizeText(deglueNames(ref.authorsGuess))
+    const cited = normalizeText(deglueNames(citedAuthors))
       .replace(/\bet\s+al\b|\band\b|等(?:人)?/g, " ").split(/\s+/).filter(Boolean);
     authorListMismatch = cited.some((name) => name.length > 1 && !known.has(name));
+  }
+  // 中文记录：引文列出的作者都能在数据库作者中找到，但顺序或第一作者不同。Crossref 的中文记录常把顺序登记错
+  // （宫鹏等 2010 的记录里宫鹏排在第 14 位），这时不能说引文写错了作者
+  let authorsReordered: boolean | undefined;
+  if (recordHan && ref.authorsGuess && HAN_RE.test(ref.authorsGuess) && people.length) {
+    const recorded = new Set(people.map((a) => compact(a.family + (a.given ?? ""))));
+    const cited = ref.authorsGuess.split(/\s*[,，、;；]\s*/).map(compact).filter((s) => s && !/^(?:等人?|et\s*al\.?)$/i.test(s));
+    authorsReordered = cited.length > 0 && cited.every((name) => recorded.has(name))
+      && (authorOrderOk === false || firstAuthor === "mismatch" || (authorRatio ?? 1) < 0.5);
   }
 
   const years = recordYears(rec);
@@ -284,7 +312,7 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
   const partial = !same && titleScore >= 0.6 && (authorOk || noAuthors) && (yearDiff === undefined || yearDiff <= 2);
 
   return {
-    titleScore, titleMissing, authorRatio, firstAuthor, authorOrderOk, authorListMismatch, yearDiff, volumeHit, pageHit,
+    titleScore, titleMissing, authorRatio, firstAuthor, authorOrderOk, authorListMismatch, authorsReordered, yearDiff, volumeHit, pageHit,
     venueScore, venueCited, doiMatch, composite, same, partial,
   };
 }
@@ -317,7 +345,9 @@ export function fieldChecks(ref: ParsedRef, rec: WorkRecord, s: MatchScore): Fie
     status:
       s.authorRatio === undefined
         ? "missing"
-        : s.firstAuthor === "match" && s.authorListMismatch !== true && s.authorOrderOk !== false
+        : s.authorsReordered
+          ? "partial"
+          : s.firstAuthor === "match" && s.authorListMismatch !== true && s.authorOrderOk !== false
           && (s.authorRatio >= 0.5 || s.authorListMismatch === false)
           ? "match"
           : s.authorRatio > 0

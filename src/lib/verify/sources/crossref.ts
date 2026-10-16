@@ -224,7 +224,9 @@ export interface JournalCoverage {
 
 /** 在 Crossref 期刊目录里按刊名检索，带回每本刊有文献记录的年份范围（不消耗任何额度） */
 export async function crossrefJournals(query: string, signal?: AbortSignal): Promise<{ journals: JournalCoverage[]; ms: number }> {
-  const params = withMailto(new URLSearchParams({ query: query.replace(/\s+/g, " ").trim().slice(0, 200), rows: "10" }));
+  // 期刊目录检索要求每个词都命中：刊名写 "&" 时查 "and"（或反过来）会一条都查不到，所以两个都去掉
+  const terms = query.replace(/&|\band\b/gi, " ").replace(/\s+/g, " ").trim().slice(0, 200);
+  const params = withMailto(new URLSearchParams({ query: terms, rows: "10" }));
   const res = await getJson(`${BASE}/journals?${params}`, {
     signal,
     allowNotFound: false,
