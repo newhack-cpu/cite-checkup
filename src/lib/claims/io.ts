@@ -35,6 +35,43 @@ export async function withDeadline<T>(task: (signal: AbortSignal) => Promise<T>,
   }
 }
 
+/** 读取有大小上限的二进制或文本响应（开放全文的 XML / PDF）；类型不符、超限或中途取消都按数据源失败处理 */
+export async function readBoundedBytes(response: Response, signal: AbortSignal, maxBytes: number, type: RegExp): Promise<Uint8Array<ArrayBuffer>> {
+  const fail = () => new ClaimError("SOURCE_UNAVAILABLE", "开放全文的格式或大小不符合要求");
+  if (!type.test(response.headers.get("content-type") ?? "") || Number(response.headers.get("content-length")) > maxBytes || !response.body) {
+    void response.body?.cancel().catch(() => {});
+    throw fail();
+  }
+  const reader = response.body.getReader();
+  const cancel = () => { void reader.cancel().catch(() => {}); };
+  signal.addEventListener("abort", cancel, { once: true });
+  const parts: Uint8Array[] = [];
+  let size = 0;
+  try {
+    for (;;) {
+      signal.throwIfAborted();
+      const { value, done } = await reader.read();
+      signal.throwIfAborted();
+      if (done) break;
+      size += value.byteLength;
+      if (size > maxBytes) throw fail();
+      parts.push(value);
+    }
+    const bytes = new Uint8Array(size);
+    let offset = 0;
+    for (const part of parts) { bytes.set(part, offset); offset += part.byteLength; }
+    return bytes;
+  } catch (error) {
+    signal.throwIfAborted();
+    if (error instanceof ClaimError) throw error;
+    throw fail();
+  } finally {
+    signal.removeEventListener("abort", cancel);
+    cancel();
+    reader.releaseLock();
+  }
+}
+
 export async function readBoundedJson(response: Response, signal: AbortSignal, maxBytes: number): Promise<unknown> {
   const fail = () => new ClaimError("SOURCE_UNAVAILABLE", "上游响应格式或大小不符合要求，本次核查未完成");
   if (!/^application\/(?:[\w.+-]+\+)?json\b/i.test(response.headers.get("content-type") ?? "") ||

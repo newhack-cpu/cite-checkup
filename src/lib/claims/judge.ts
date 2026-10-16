@@ -32,7 +32,8 @@ export function validateJudgment(value: unknown, chunks: EvidenceChunk[]): { ver
     citations.push({ sourceId: chunk.sourceId, chunkId: chunk.id, quote: citation.quote, start: chunk.start + at, end: chunk.start + at + citation.quote.length });
   }
   if (value.verdict !== "insufficient_evidence" && citations.length === 0) throw invalid();
-  return { verdict: value.verdict as ClaimVerdict, explanation: value.explanation.trim(), citations };
+  // 模型偶尔把说明里的引号多转义一层（\"Even with ...\"），只在说明文字里还原；引句仍须与原文逐字一致
+  return { verdict: value.verdict as ClaimVerdict, explanation: value.explanation.replace(/\\"/g, "\"").trim(), citations };
 }
 
 export function completionArguments(value: unknown): unknown {

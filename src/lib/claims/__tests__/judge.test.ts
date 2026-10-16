@@ -39,3 +39,13 @@ describe("model evidence boundary", () => {
     expect(validateJudgment({ verdict: "insufficient_evidence", explanation: "片段未报告该结局。", citations: [] }, []).verdict).toBe("insufficient_evidence");
   });
 });
+
+describe("judgment explanation cleanup", () => {
+  it("restores quotes the model escaped twice in the explanation, without touching quotations", async () => {
+    const { validateJudgment } = await import("../judge");
+    const chunks = [{ id: "source-1-c1", sourceId: "source-1", text: "Even with GPT-4, however, 70% of the cited book chapters are fabricated.", start: 0, end: 72, score: 1 }];
+    const result = validateJudgment({ verdict: "supported", explanation: '原文写道（\\"Even with GPT-4\\"），与论断一致。', citations: [{ sourceId: "source-1", chunkId: "source-1-c1", quote: "70% of the cited book chapters are fabricated" }] }, chunks);
+    expect(result.explanation).toBe('原文写道（"Even with GPT-4"），与论断一致。');
+    expect(result.citations[0].quote).toBe("70% of the cited book chapters are fabricated");
+  });
+});

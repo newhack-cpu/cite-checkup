@@ -27,7 +27,7 @@ describe("allowlisted academic abstract sources", () => {
     vi.stubGlobal("fetch", vi.fn()
       .mockResolvedValueOnce(json({ message: { DOI: "10.1234/trial", title: ["Trial"] } }))
       .mockResolvedValueOnce(json({ doi: "https://doi.org/10.1234/trial", title: "Trial", abstract_inverted_index: { No: [0], benefit: [1], observed: [2] } })));
-    const result = await fetchDoiEvidence("10.1234/trial");
+    const result = await fetchDoiEvidence("10.1234/trial", undefined, { fullText: false });
     expect(result.source.kind).toBe("openalex_abstract");
     expect(result.text).toBe("No benefit observed");
     expect(result.warnings.join(" ")).toMatch(/Crossref/);
@@ -42,14 +42,14 @@ describe("allowlisted academic abstract sources", () => {
     vi.stubGlobal("fetch", vi.fn()
       .mockResolvedValueOnce(json({ message: { DOI: "10.1234/trial" } }))
       .mockResolvedValueOnce(json({ doi: "https://doi.org/10.1234/trial", abstract_inverted_index: null })));
-    await expect(fetchDoiEvidence("10.1234/trial")).rejects.toMatchObject({ code: "NO_EVIDENCE" });
+    await expect(fetchDoiEvidence("10.1234/trial", undefined, { fullText: false })).rejects.toMatchObject({ code: "NO_EVIDENCE" });
   });
 
   it("retries a recognized connection failure once and still validates the fetched record", async () => {
     const fetcher = vi.fn().mockRejectedValueOnce(new TypeError("native unsafe detail", { cause: { code: "UND_ERR_CONNECT_TIMEOUT" } }))
       .mockResolvedValueOnce(json({ message: { DOI: "10.1234/trial", abstract: "The randomized trial found no significant improvement." } }));
     vi.stubGlobal("fetch", fetcher);
-    const result = await fetchDoiEvidence("10.1234/trial");
+    const result = await fetchDoiEvidence("10.1234/trial", undefined, { fullText: false });
     expect(result.text).toContain("no significant improvement");
     expect(fetcher).toHaveBeenCalledTimes(2);
   });

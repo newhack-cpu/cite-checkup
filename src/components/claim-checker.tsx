@@ -6,6 +6,7 @@ import { buildClaimReport, CLAIM_LABELS } from "@/lib/claim-report";
 import { DocumentImport } from "./document-import";
 
 const COLORS: Record<ClaimVerdict, string> = { supported: "var(--color-jade)", partially_supported: "var(--color-amber)", contradicted: "var(--color-seal)", insufficient_evidence: "var(--color-slate)" };
+const METHOD_LABEL: Record<ClaimResult["coverage"]["method"], string> = { "hybrid-v1": "混合检索（词面 + 模型扩展检索词 + 模型重排）", "bm25-en-zh-v1": "词面检索", "all-chunks": "材料较短，全部片段参与判断" };
 const DEMO_EVIDENCE = "以下为功能演示用的虚构研究片段，不是真实论文。\n\n研究方法：本研究招募了40名大学生，将他们随机分为学习计划组和对照组，各20人。干预持续四周。研究仅测量这40名参与者的课程测验成绩。\n\n研究结果：学习计划组与对照组的平均成绩差异没有达到统计显著性。研究没有观察到学习计划能提高考试成绩的可靠证据。\n\n研究局限：样本规模小，干预时间短，无法将结果推广到所有年龄段的学生，也不能推断长期学习效果。";
 const field = "w-full rounded-sm border border-rule bg-card px-3 py-2.5 text-[14px] leading-7 text-ink outline-none focus-visible:border-seal disabled:opacity-60";
 
@@ -93,14 +94,14 @@ export function ClaimChecker() {
             <fieldset disabled={running}>
               <legend className="mb-3 text-sm text-ink-soft">证据来自哪里</legend>
               <div className="flex flex-wrap gap-4 text-[13px]">
-                <label className="flex items-center gap-2"><input type="radio" name="claim-source" checked={sourceMode === "doi"} onChange={() => setSourceMode("doi")} className="accent-seal" />通过 DOI 查摘要</label>
+                <label className="flex items-center gap-2"><input type="radio" name="claim-source" checked={sourceMode === "doi"} onChange={() => setSourceMode("doi")} className="accent-seal" />通过 DOI 查原文</label>
                 <label className="flex items-center gap-2"><input type="radio" name="claim-source" checked={sourceMode === "text"} onChange={() => setSourceMode("text")} className="accent-seal" />提供文献正文</label>
               </div>
             </fieldset>
             {sourceMode === "doi" ? <div>
               <label htmlFor="claim-doi" className="mb-2 block text-sm text-ink-soft">文献 DOI</label>
               <input id="claim-doi" value={doi} onChange={event => setDoi(event.target.value)} disabled={running} className={`${field} font-mono`} placeholder="10.1038/s41598-023-41032-5" />
-              <p className="mt-2 text-xs leading-6 text-ink-faint">从 Crossref / OpenAlex 获取摘要。摘要缺失时会提示补充正文，不凭题名推断。</p>
+              <p className="mt-2 text-xs leading-6 text-ink-faint">优先读取 Europe PMC、arXiv 的开放获取全文，取不到再用 Crossref / OpenAlex 摘要；都没有时会提示补充正文，不凭题名推断。</p>
             </div> : <div className="space-y-3">
               <label htmlFor="evidence-label" className="block text-sm text-ink-soft">来源说明</label>
               <input id="evidence-label" value={label} onChange={event => setLabel(event.target.value)} disabled={running} maxLength={200} className={field} placeholder="文献题名、章节或文件名" />
@@ -137,9 +138,10 @@ export function ClaimChecker() {
             <p className="mt-5 border-l-2 border-rule pl-4 font-serif text-[15px] leading-8">{result.claim}</p>
             <p className="mt-5 font-kai text-[18px] leading-8 text-ink-soft">{result.explanation}</p>
             <div className="mt-5 border-t border-dashed border-rule pt-4 text-[12.5px] leading-7 text-ink-faint">
-              <p>判断范围：{result.source?.scope === "abstract" ? "仅数据库摘要，未核查全文" : result.source ? "仅用户提供的文本，来源未经独立认证" : "尚未取得可用证据"}</p>
-              {result.source && <p className="break-words">来源：{result.source.title || result.source.label}{result.source.doi && <> · <a className="break-all underline" href={`https://doi.org/${encodeURI(result.source.doi)}`} target="_blank" rel="noreferrer">{result.source.doi}</a></>}</p>}
-              <p>检索到 {result.coverage.retrievedChunks} / {result.coverage.totalChunks} 个片段，{result.coverage.retrievedChars.toLocaleString()} 字符。</p>
+              <p>判断范围：{result.source?.scope === "full_text" ? `${result.source.label}，只核查召回的片段` : result.source?.scope === "abstract" ? "仅数据库摘要，未核查全文" : result.source ? "仅用户提供的文本，来源未经独立认证" : "尚未取得可用证据"}</p>
+              {result.source && <p className="break-words">来源：{result.source.title || result.source.label}{result.source.doi && <> · <a className="break-all underline" href={`https://doi.org/${encodeURI(result.source.doi)}`} target="_blank" rel="noreferrer">{result.source.doi}</a></>}{result.source.scope === "full_text" && result.source.url && <> · <a className="break-all underline" href={result.source.url} target="_blank" rel="noreferrer">全文</a></>}</p>}
+              <p>检索到 {result.coverage.retrievedChunks} / {result.coverage.totalChunks} 个片段，{result.coverage.retrievedChars.toLocaleString()} 字符{METHOD_LABEL[result.coverage.method] ? ` · ${METHOD_LABEL[result.coverage.method]}` : ""}。</p>
+              {result.coverage.expansion?.length ? <p className="break-words">扩展检索词：{result.coverage.expansion.join("、")}</p> : null}
             </div>
             {result.warnings.length > 0 && <ul className="mt-4 space-y-2 text-[13px] leading-6 text-amber">{result.warnings.map((warning, index) => <li key={index}>注：{warning}</li>)}</ul>}
           </section>
@@ -159,10 +161,10 @@ export function ClaimChecker() {
           <h2 className="mt-3 font-serif text-[27px] font-black leading-snug">文献是真的，<br />也要看这句话有没有依据。</h2>
           <ol className="mt-7 space-y-6">{[
             ["壹", "提供一句论断", "拆开过长的复合结论，每次聚焦一个能被证据检验的说法。"],
-            ["贰", "检索相关原文", "可按 DOI 获取摘要，也可导入正文。系统分段检索，保留每段来源和文本位置。"],
+            ["贰", "检索相关原文", "可按 DOI 读取开放全文或摘要，也可导入正文。长材料先做词面检索，再由模型补充中英文检索词、重排候选片段，保留每段来源和文本位置。"],
             ["叁", "带着证据看判断", "支持、部分支持、矛盾或证据不足，每个有效引句都能回到召回片段复核。"],
           ].map(([n, title, body]) => <li key={n} className="flex gap-4"><span className="flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-seal font-bold text-seal">{n}</span><div><h3 className="font-bold">{title}</h3><p className="mt-1 text-sm leading-7 text-ink-soft">{body}</p></div></li>)}</ol>
-          <p className="mt-7 border-t border-dashed border-rule pt-5 font-kai text-[17px] leading-8 text-ink-soft">摘要不能替代全文，模型判断也不能替代对研究方法与适用范围的人工复核。</p>
+          <p className="mt-7 border-t border-dashed border-rule pt-5 font-kai text-[17px] leading-8 text-ink-soft">召回的片段不能替代通读全文，模型判断也不能替代对研究方法与适用范围的人工复核。</p>
         </section>}
       </div>
     </div>

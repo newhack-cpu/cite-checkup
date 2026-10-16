@@ -5,7 +5,8 @@ import { MAX_CLAIM_CHARS, MAX_EVIDENCE_CHARS } from "./request";
 import { MAX_RETRIEVED_CHUNKS } from "./retrieval";
 import type { ClaimServiceStatus, ClaimSource, EvidenceChunk } from "./types";
 
-function configuration() {
+/** DeepSeek 配置；检索辅助（查询扩展、重排）与判断共用 */
+export function configuration() {
   const apiKey = process.env.DEEPSEEK_API_KEY?.trim() ?? "";
   const model = process.env.DEEPSEEK_MODEL?.trim() || "deepseek-flash";
   let endpoint: string | undefined;

@@ -43,10 +43,20 @@ function terms(text: string): string[] {
   return result;
 }
 
+/** 查询词及权重：每个不同的词计一次，weight 用于给扩展词降权 */
+export function termWeights(text: string, weight = 1): Map<string, number> {
+  return new Map([...new Set(terms(text))].map((term) => [term, weight]));
+}
+
 /** BM25 over an in-memory per-request index, with English words and Han bigrams. */
 export function retrieveEvidence(claim: string, chunks: EvidenceChunk[]): EvidenceChunk[] {
+  return rankEvidence(termWeights(claim), chunks, MAX_RETRIEVED_CHUNKS);
+}
+
+/** 按加权查询词做 BM25，返回得分大于 0 的前 limit 段（同分按出现位置） */
+export function rankEvidence(weights: Map<string, number>, chunks: EvidenceChunk[], limit: number): EvidenceChunk[] {
   if (!chunks.length) return [];
-  const query = [...new Set(terms(claim))];
+  const query = [...weights.keys()];
   if (!query.length) return [];
   const docs = chunks.map((chunk) => {
     const words = terms(chunk.text);
@@ -63,8 +73,8 @@ export function retrieveEvidence(claim: string, chunks: EvidenceChunk[]): Eviden
     let score = 0;
     for (const term of query) {
       const count = frequencies.get(term) ?? 0;
-      if (count) score += (idfs.get(term) ?? 0) * (count * 2.2) / (count + 1.2 * (0.25 + 0.75 * length / average));
+      if (count) score += (weights.get(term) ?? 1) * (idfs.get(term) ?? 0) * (count * 2.2) / (count + 1.2 * (0.25 + 0.75 * length / average));
     }
     return { ...chunk, score: Math.round(score * 1_000_000) / 1_000_000 };
-  }).filter((chunk) => chunk.score > 0).sort((a, b) => b.score - a.score || a.start - b.start).slice(0, MAX_RETRIEVED_CHUNKS);
+  }).filter((chunk) => chunk.score > 0).sort((a, b) => b.score - a.score || a.start - b.start).slice(0, limit);
 }

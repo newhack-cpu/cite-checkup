@@ -20,7 +20,7 @@
 | ✅ | 流式返回，逐条显示核查过程（查了哪个库、耗时、为什么这样判） |
 | ✅ | DeepSeek 辅助解析：用 Function Calling 提交原文已有字段，再由数据库核验；无密钥或失败时明确回退 |
 | ✅ | 停止核查、截断流检测、未完成报告标注；下载包含原文、问题、数据库记录与查询过程的 Markdown 报告 |
-| ✅ | 论断证据核查（RAG）：DOI 摘要或用户提供的原文，分块检索、四类判断、原文引句与定位 |
+| ✅ | 论断证据核查（RAG）：DOI 优先读取开放获取全文（Europe PMC / arXiv），没有时用摘要；长材料用混合检索（词面 + 模型扩展中英文检索词 + 模型重排）；四类判断、原文引句与定位 |
 | ✅ | PDF 文字层 / DOCX / TXT 导入：提取预览、全文或参考文献区域选择、确认后替换输入 |
 | ✅ | AI 检索 Agent：对“无法核验 / 只有相近候选”的条目，由 DeepSeek 规划检索、调用 Crossref / OpenAlex / DataCite / DOI 工具，每一步实时显示；候选仍由规则逐字段确认 |
 | ✅ | 拍照 / 截图识别：上传或直接粘贴参考文献页的截图、手机照片、扫描件截图，DeepSeek 视觉模型逐条转写，对照原图确认后再由规则核验 |
@@ -114,6 +114,7 @@ pnpm eval:real eval/real-world/dev-2026-10-14.json --out=eval/results/local-real
 pnpm sample:real --out=eval/real-world/blind-新日期.json   # 从 Crossref 抽一批新的真实参考文献（排除已用过的论文）
 pnpm smoke:ai   # 需服务运行及有效密钥；真实DeepSeek工具调用+数据库核验
 pnpm smoke:claims # 真实摘要 + 合成材料支持/矛盾/不足；产生少量模型用量
+pnpm eval:retrieval # 论断检索评测：三篇开放全文、24 条论断，对比词面 / 扩展 / 混合检索
 pnpm eval:agent eval/real-world/dev-2026-10-14.json eval/results/real-dev-2026-10-15-v2-rules.json  # AI 检索 Agent 评测
 pnpm smoke:mcp    # 用 stdio 启动 MCP Server，真实调用两个工具
 python eval/vision/generate.py && pnpm eval:vision  # 图片识别评测：生成图片并逐字比对、对比核验结论
@@ -217,13 +218,33 @@ dev 上降到 0 有调规则的成分，**盲测的 10.1% 才是对新数据的�
 
 这是合成的小样本：印刷体、排版清楚，只能说明识别链路可用、转写不会改变结论；真实拍照的反光、透视、手写批注没有覆盖，识别结果仍需对照原图核对。
 
+### 论断检索评测
+
+[`eval/claims-retrieval/cases.json`](eval/claims-retrieval/cases.json) 取三篇 CC BY 开放获取论文的全文，评测时通过 Europe PMC 实时获取，与产品同一条路径：
+
+- Walters & Wilder 2023
+- Kung 等 2023
+- Bhattacharyya 等 2023
+
+评测者通读全文后写了 24 条原文确实支持的论断，每篇 4 条英文转述、4 条中文表述，用词刻意与原文不同，并标出原文里的出处句子。只评检索：召回的前 6 段里有没有出处句子（[记录](eval/results/retrieval-2026-10-16.json)）。
+
+| 检索方式 | 全部 24 条命中率 | MRR | 英文 12 条 | 中文 12 条 |
+|---|---:|---:|---:|---:|
+| 词面 BM25（原来的做法） | 75% | 0.61 | 100% | 50% |
+| + 模型扩展中英文检索词（排名融合） | 100% | 0.79 | 100% | 100% |
+| + 模型重排（现在的默认） | 100% | **0.98** | 100% | 100% |
+
+- 24 条的出处句子只有 2 条在摘要里，只读摘要的话，大多数论断找不到证据；
+- 中文论断对英文原文时，词面检索只找到一半，查询扩展补上了跨语言的那一半，重排把出处片段排到了第 1 位（23/24）；
+- 局限：样本小，论断由评测者编写，而且都是原文支持的说法；三篇论文都不长（14–31 段），重排的 20 段候选覆盖了文档的大部分，长文档上重排的提升可能没这么大。这里只评检索，没有评判断。
+
 ### 参考文献规则核验明细
 
 明细：[dev 修复后](eval/results/real-dev-2026-10-15-rules.json) · [dev 修复前](eval/results/real-dev-2026-10-14-rules.json) · [test 修复后](eval/results/real-test-2026-10-15-rules.json) · [test 修复前](eval/results/real-test-2026-10-15-baseline-rules.json)。
 
 第一阶段通过 195 项离线测试；[原浏览器验收记录](eval/improvement-2026-10-14/browser-acceptance.json)覆盖 11 条真实示例、筛选、复制、下载，以及用固定响应模拟的断流、降级与停止流程。
 
-第二阶段最终通过 **23 个文件、289 项测试**、ESLint、TypeScript 和生产构建（[检查记录](eval/phase-two-2026-10-14/final-checks.json)）。2026-10-15 准确率修复后为 **24 个文件、317 项测试**；加入 AI 检索 Agent 和 MCP Server 后为 **27 个文件、370 项测试**；加入拍照 / 截图识别后为 **29 个文件、393 项测试**；加入隐藏提示词检测后为 **30 个文件、419 项测试**；修复盲测剩余误报后为 **31 个文件、438 项测试**，ESLint、TypeScript 和生产构建全部通过，29 条人工样例仍为 29/29（[记录](eval/results/curated-2026-10-15-v2.json)）；新增的 [真实引文回归测试](src/lib/verify/__tests__/real-world.test.ts) 逐条对应上表中修好的误报。[开发版浏览器验收](eval/phase-two-2026-10-14/qa-dev-browser-acceptance.json)覆盖桌面 1440 与手机 390 的文档预览确认、状态保留、引句定位、下载、取消和未完成状态；论断界面使用已录制响应回放，另在[生产版复验](eval/phase-two-2026-10-14/qa-production-browser-acceptance.json)通过。最终生产接口真实上传普通/中文 PDF 均成功，压缩扩张样例明确拒绝（[记录](src/lib/documents/__tests__/production-import-verification.json)）。
+第二阶段最终通过 **23 个文件、289 项测试**、ESLint、TypeScript 和生产构建（[检查记录](eval/phase-two-2026-10-14/final-checks.json)）。2026-10-15 准确率修复后为 **24 个文件、317 项测试**；加入 AI 检索 Agent 和 MCP Server 后为 **27 个文件、370 项测试**；加入拍照 / 截图识别后为 **29 个文件、393 项测试**；加入隐藏提示词检测后为 **30 个文件、419 项测试**；修复盲测剩余误报后为 **31 个文件、438 项测试**；升级论断 RAG 后为 **33 个文件、459 项测试**，ESLint、TypeScript 和生产构建全部通过，29 条人工样例仍为 29/29（[记录](eval/results/curated-2026-10-15-v2.json)）；新增的 [真实引文回归测试](src/lib/verify/__tests__/real-world.test.ts) 逐条对应上表中修好的误报。[开发版浏览器验收](eval/phase-two-2026-10-14/qa-dev-browser-acceptance.json)覆盖桌面 1440 与手机 390 的文档预览确认、状态保留、引句定位、下载、取消和未完成状态；论断界面使用已录制响应回放，另在[生产版复验](eval/phase-two-2026-10-14/qa-production-browser-acceptance.json)通过。最终生产接口真实上传普通/中文 PDF 均成功，压缩扩张样例明确拒绝（[记录](src/lib/documents/__tests__/production-import-verification.json)）。
 
 [真实论断联网记录](eval/results/claims-smoke-2026-10-14T02-20-44-807Z.json)四例全部符合预期：一条公开论文摘要，三条明确标为合成材料的支持、矛盾、证据不足。校验包含引句、来源、片段与字符位置。四例只证明流程可用，不能当作开放场景的准确率。失败记录及修复依据保留在评测目录。
 
@@ -268,7 +289,10 @@ Claude Desktop（`claude_desktop_config.json`）或 Cursor（`.cursor/mcp.json`�
 - **导入**：`POST /api/import` 接收 `FormData.file`，返回纯文字、参考文献区域、格式/页数/警告，以及隐藏文字检测结果 `hidden`（没有时为 `null`）。确认预览后才替换用户输入；不调用 AI、不持久保存原文件。支持 8 MiB、100 页以内的文字 PDF、DOCX、TXT，不支持旧版 DOC 和加密文件；扫描版 PDF 没有文字层，会提示截图后走图片识别。
 - **图片识别**：`GET /api/vision` 返回可用状态；`POST /api/vision` 接收 `FormData.image`（1–4 张，合计 8 MiB 以内），按文件头识别 PNG / JPEG / WebP / GIF，返回 `{entries, text, warnings, model, images}`。只转写不核验，实现见 `src/lib/vision/`。
 - **AI 检索**：`GET /api/agent` 返回可用状态；`POST /api/agent` 接收 `{raw, index}`（单条引文，最多 2,000 字符），以 NDJSON 逐步返回 `step`，最后返回规则复核后的 `result`（含 `agent` 追查记录：工具调用次数、模型轮数、token、追查前结论）。实现见 `src/lib/agent/`。
-- **论断 RAG**：`GET /api/claims` 返回配置与限制；`POST /api/claims` 接收 `{claim, doi}` 或 `{claim, evidenceText, evidenceLabel?}`。固定分块 + 中英文 BM25 检索最多 6 段，再由 DeepSeek `judge_claim` 输出支持、部分支持、矛盾或不足；服务端校验来源 ID、片段 ID、原文引句及位置。使用词法检索，没有向量数据库；短文本跨语言零匹配时纳入全部有限片段并显式提示，长文可能漏召回。
+- **论断 RAG**：`GET /api/claims` 返回配置与限制；`POST /api/claims` 接收 `{claim, doi}` 或 `{claim, evidenceText, evidenceLabel?}`。
+  - DOI 证据依次尝试：Europe PMC 开放全文（JATS XML，去掉参考文献、表格和公式）、arXiv 预印本 PDF（DOI 本身是 arXiv，或出版社在 Crossref 登记了预印本），PDF 走与导入相同的安全解析器和隐藏文字检测；都没有时用 Crossref / OpenAlex 摘要。
+  - 固定分块后，长材料（多于 6 段）用混合检索：原论断的 BM25 与模型扩展检索词（`expand_query`，中英文同义词、缩写）的 BM25 按倒数排名融合取 20 段，再由模型按 0–3 分重排（`rank_evidence`），取前 6 段；任一步失败都退回词面检索并在结果里说明。
+  - DeepSeek `judge_claim` 输出支持、部分支持、矛盾或不足；服务端校验来源 ID、片段 ID、原文引句及位置。DeepSeek 没有向量接口，所以没有用向量检索。实现见 `src/lib/claims/`（`fulltext.ts`、`assist.ts`、`retrieval.ts`）。
 - **数据源**：Crossref REST API、doi.org（注册查询 + 内容协商）、OpenAlex API
 - **字体**：思源宋体、霞鹜文楷、IBM Plex Mono，均自托管并按字符分片加载（不依赖 Google Fonts）
 
@@ -292,7 +316,8 @@ src/
 
 ## 隐私与安全
 
-- 参考文献标准模式把条目发送给公开学术数据库；选择 AI 解析后，还会把条目发送给 DeepSeek。论断核查把论断及召回片段发送给 DeepSeek；请仅提供有权处理的内容，不上传个人隐私。
+- 参考文献标准模式把条目发送给公开学术数据库；选择 AI 解析后，还会把条目发送给 DeepSeek。论断核查把论断、最多 20 段候选片段（重排）和最终 6 段（判断）发送给 DeepSeek；请仅提供有权处理的内容，不上传个人隐私。
+- 开放全文只访问 www.ebi.ac.uk 和 export.arxiv.org 两个固定主机，不跟随跳转；XML 最多 6 MiB，PDF 最多 8 MiB，正文最多 150,000 字符。查询扩展和重排的输出逐项校验（检索词不能含网址，重排只能用候选片段的编号），它们只决定交给判断的片段，不产生结论。
 - API Key 只放在 `.env.local`，仓库中只提交 `.env.example`。
 - 核查接口每 IP 每分钟最多 6 次、每次最多 80 条 / 60,000 字符。AI 每 IP 每分钟 2 次、每进程每小时 30 次、同时 2 次、单次 20,000 字符；超过 AI 限额时明确回退标准核验。
 - 限额在当前 Node 进程内计数，重启会清空，多实例不会共享。公网部署前需在可信代理覆盖客户端 `x-forwarded-for`，并增加共享限流/账户预算；目前不是生产级账户计费系统。
@@ -307,7 +332,7 @@ src/
 - 中文文献：知网、万方没有开放接口，只能核验已在 Crossref 注册 DOI 的中文文献。
 - 作者已支持汉字与拼音互相比对；中文题名对应英文元数据（或反过来）时仍无法比对题名。
 - 会议论文的期刊名差异较大，目前只对期刊类文献做期刊名比对。
-- 论断判断只针对指定来源及召回文字；摘要不等于全文，用户提供的材料真实性未经独立认证，不做跨文献系统综述。原文引句存在也不保证模型解释正确，仍需人工复核；该流程不额外查询撤稿状态。
+- 论断判断只针对指定来源及召回文字；只有 Europe PMC 开放获取子集和 arXiv 能读到全文，其余 DOI 仍只有摘要；预印本可能与正式版本不同。用户提供的材料真实性未经独立认证，不做跨文献系统综述。原文引句存在也不保证模型解释正确，仍需人工复核；该流程不额外查询撤稿状态。
 - AI 检索 Agent 只能查 Crossref、OpenAlex、DataCite 和 doi.org 覆盖的文献，知网、万方和图书馆目录仍需人工核查；OpenAlex 无密钥时每天约 100 次题名检索。
 - MCP Server 目前只提供 stdio 本地进程，没有远程 HTTP 部署与鉴权；论断核查与网页端共用每进程每小时 30 次的限额。
 - 图片识别只转写参考文献条目，不理解图表；评测只覆盖清晰的印刷体，手写、强反光或严重透视的照片可能漏字，需要对照原图修改。iPhone 的 HEIC 照片需先截图或转成 JPG。

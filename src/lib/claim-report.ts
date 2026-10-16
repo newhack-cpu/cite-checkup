@@ -16,11 +16,15 @@ export function buildClaimReport(result: ClaimResult): string {
     `判断：${result.status === "complete" && result.verdict ? CLAIM_LABELS[result.verdict] : "本次未形成判断"}`,
     `说明：${safe(result.explanation)}`, "",
     `来源：${safe(result.source?.label ?? "未取得证据")}`,
-    `证据范围：${result.source?.scope === "abstract" ? "数据库摘要，未核查全文" : result.source ? "用户提供的文本，未独立认证来源" : "无"}`,
+    `证据范围：${result.source?.scope === "full_text" ? "开放获取全文，只核查召回的片段" : result.source?.scope === "abstract" ? "数据库摘要，未核查全文" : result.source ? "用户提供的文本，未独立认证来源" : "无"}`,
   ];
   if (result.source?.doi) lines.push(`DOI：${safe(result.source.doi)}`);
   if (result.source?.title) lines.push(`文献题名：${safe(result.source.title)}`);
-  lines.push(`检索覆盖：${result.coverage.retrievedChunks} / ${result.coverage.totalChunks} 个片段，${result.coverage.retrievedChars} 字符`, "");
+  if (result.source?.scope === "full_text" && result.source.url) lines.push(`全文地址：${safe(result.source.url)}`);
+  const method = { "hybrid-v1": "混合检索（词面 + 模型扩展检索词 + 模型重排）", "bm25-en-zh-v1": "词面检索", "all-chunks": "材料较短，全部片段参与判断" }[result.coverage.method];
+  lines.push(`检索覆盖：${result.coverage.retrievedChunks} / ${result.coverage.totalChunks} 个片段，${result.coverage.retrievedChars} 字符${method ? `；${method}` : ""}`);
+  if (result.coverage.expansion?.length) lines.push(`扩展检索词：${result.coverage.expansion.map(safe).join("、")}`);
+  lines.push("");
   for (const warning of result.warnings) lines.push(`- 边界提示：${safe(warning)}`);
   lines.push("", "## 判断引用的原文", "");
   if (!result.citations.length) lines.push("无有效原文引句。证据不足或未完成均不代表论断错误。");

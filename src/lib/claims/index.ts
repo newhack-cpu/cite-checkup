@@ -1,11 +1,12 @@
 // Server only. Client components import wire types from ./types instead.
+import { hybridRetrieve } from "./assist";
 import { ClaimError } from "./errors";
 import { withDeadline } from "./io";
 import { getClaimStatus, judgeRetrievedEvidence } from "./model";
 import { validateClaimInput } from "./request";
 import { chunkEvidence, MAX_RETRIEVED_CHUNKS, normalizeEvidence, retrieveEvidence } from "./retrieval";
 import { fetchDoiEvidence } from "./sources";
-import type { ClaimInput, ClaimResult, ClaimSource } from "./types";
+import type { ClaimInput, ClaimResult, ClaimSource, EvidenceChunk } from "./types";
 
 export { getClaimStatus } from "./model";
 
@@ -28,7 +29,10 @@ export async function checkClaim(raw: ClaimInput, options: { signal?: AbortSigna
         const evidence = await fetchDoiEvidence(input.doi, signal);
         source = evidence.source;
         text = evidence.text;
-        result.warnings.push(...evidence.warnings, "DOI 模式仅核查 Crossref / OpenAlex 提供的该篇文献摘要；未读取论文全文，摘要通常缺少完整方法、数据与限制。DOI 收录不等于同行评审或质量背书。", "本功能未独立完成撤稿状态核验；请配合参考文献体检与人工审阅使用。");
+        result.warnings.push(...evidence.warnings, source.scope === "full_text"
+          ? "DOI 模式读取了该文的开放获取全文，但只核查本次召回的片段；DOI 收录不等于同行评审或质量背书。"
+          : "DOI 模式未找到开放获取全文，仅核查 Crossref / OpenAlex 提供的该篇文献摘要；摘要通常缺少完整方法、数据与限制。DOI 收录不等于同行评审或质量背书。",
+        "本功能未独立完成撤稿状态核验；请配合参考文献体检与人工审阅使用。");
       } else {
         text = normalizeEvidence(input.evidenceText ?? "");
         source = { id: "source-1", kind: "user_provided", label: input.evidenceLabel || "用户提供的证据正文", retrievedAt: new Date().toISOString(), scope: "user_provided_text", totalChars: text.length };
@@ -40,12 +44,23 @@ export async function checkClaim(raw: ClaimInput, options: { signal?: AbortSigna
       const allChunks = chunkEvidence(text, source.id);
       result.coverage.totalChunks = allChunks.length;
       if (!allChunks.length) throw new ClaimError("NO_EVIDENCE", "没有可用的证据正文，本次核查未完成");
-      let chunks = retrieveEvidence(input.claim, allChunks);
-      // A bounded short document can be fully recalled without lexical matches.
-      // This supports translated claims and avoids treating English/Chinese mismatch as a finding.
-      if (!chunks.length && allChunks.length <= MAX_RETRIEVED_CHUNKS) {
-        chunks = allChunks;
-        result.warnings.push("未找到词面匹配；所给材料较短，已将全部片段召回交由模型判断，可能包含跨语言或无关内容。");
+      let chunks: EvidenceChunk[];
+      if (allChunks.length > MAX_RETRIEVED_CHUNKS) {
+        // 长材料：BM25 + 跨语言查询扩展，排名融合后由模型重排，取前 6 段
+        const hybrid = await hybridRetrieve(input.claim, allChunks, signal);
+        chunks = hybrid.chunks;
+        result.coverage.method = hybrid.method;
+        if (hybrid.expansion?.length) result.coverage.expansion = hybrid.expansion;
+        result.warnings.push(...hybrid.warnings);
+      } else {
+        chunks = retrieveEvidence(input.claim, allChunks);
+        // A bounded short document can be fully recalled without lexical matches.
+        // This supports translated claims and avoids treating English/Chinese mismatch as a finding.
+        if (!chunks.length) {
+          chunks = allChunks;
+          result.coverage.method = "all-chunks";
+          result.warnings.push("未找到词面匹配；所给材料较短，已将全部片段召回交由模型判断，可能包含跨语言或无关内容。");
+        }
       }
       result.chunks = chunks;
       result.coverage.retrievedChunks = chunks.length;
@@ -56,7 +71,7 @@ export async function checkClaim(raw: ClaimInput, options: { signal?: AbortSigna
       const judgment = await judgeRetrievedEvidence(input.claim, source, chunks, signal);
       signal.throwIfAborted();
       return { ...result, ...judgment, status: "complete" };
-    }, options.signal, 75_000);
+    }, options.signal, 85_000);
   } catch (error) {
     if (options.signal?.aborted) throw new DOMException("证据核查已取消", "AbortError");
     const safe = error instanceof ClaimError ? error : new ClaimError("MODEL_UNAVAILABLE", "证据核查发生错误，本次核查未完成，请稍后重试");

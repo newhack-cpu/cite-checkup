@@ -12,14 +12,14 @@ export interface ClaimInput {
 
 export interface ClaimSource {
   id: string;
-  kind: "crossref_abstract" | "openalex_abstract" | "user_provided";
+  kind: "crossref_abstract" | "openalex_abstract" | "europepmc_fulltext" | "arxiv_fulltext" | "user_provided";
   label: string;
   title?: string;
   doi?: string;
   url?: string;
   retrievedAt: string;
-  /** User material is not independently authenticated. Abstracts are never full text. */
-  scope: "abstract" | "user_provided_text";
+  /** User material is not independently authenticated. Abstracts are never full text; full text comes only from open-access sources. */
+  scope: "abstract" | "full_text" | "user_provided_text";
   totalChars: number;
 }
 
@@ -52,11 +52,14 @@ export interface ClaimResult {
   chunks: EvidenceChunk[];
   source: ClaimSource | null;
   coverage: {
-    scope: "abstract" | "user_provided_text" | "none";
+    scope: "abstract" | "full_text" | "user_provided_text" | "none";
     totalChunks: number;
     retrievedChunks: number;
     retrievedChars: number;
-    method: "bm25-en-zh-v1";
+    /** all-chunks: short material sent whole; hybrid-v1: BM25 + model query expansion + model reranking */
+    method: "bm25-en-zh-v1" | "hybrid-v1" | "all-chunks";
+    /** Model-generated search terms used for hybrid retrieval (cross-language synonyms) */
+    expansion?: string[];
   };
   warnings: string[];
   model: string | null;

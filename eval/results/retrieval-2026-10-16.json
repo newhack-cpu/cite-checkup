@@ -1,0 +1,795 @@
+{
+ "ranAt": "2026-10-16T09:53:15.356Z",
+ "dataset": "claims-retrieval-2026-10-16",
+ "model": "deepseek-flash",
+ "topK": 6,
+ "inAbstract": 2,
+ "summary": {
+  "all": {
+   "bm25": {
+    "n": 24,
+    "recall": 0.75,
+    "mrr": 0.614
+   },
+   "expanded": {
+    "n": 24,
+    "recall": 1,
+    "mrr": 0.79
+   },
+   "hybrid": {
+    "n": 24,
+    "recall": 1,
+    "mrr": 0.979
+   }
+  },
+  "en": {
+   "bm25": {
+    "n": 12,
+    "recall": 1,
+    "mrr": 0.769
+   },
+   "expanded": {
+    "n": 12,
+    "recall": 1,
+    "mrr": 0.806
+   },
+   "hybrid": {
+    "n": 12,
+    "recall": 1,
+    "mrr": 1
+   }
+  },
+  "zh": {
+   "bm25": {
+    "n": 12,
+    "recall": 0.5,
+    "mrr": 0.458
+   },
+   "expanded": {
+    "n": 12,
+    "recall": 1,
+    "mrr": 0.774
+   },
+   "hybrid": {
+    "n": 12,
+    "recall": 1,
+    "mrr": 0.958
+   }
+  }
+ },
+ "rows": [
+  {
+   "id": "W1",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "expanded": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "GPT-4 fabricated citations",
+    "hallucinated references GPT-4",
+    "book chapter citation fabrication",
+    "citation type distribution",
+    "fake references rate",
+    "GPT-4 参考文献 捏造",
+    "GPT-4 幻觉 引用",
+    "图书章节 虚假引用",
+    "引用类型 分布",
+    "虚构文献 比例",
+    "ChatGPT fabricated references",
+    "non-existent citations",
+    "reference hallucination rate",
+    "bibliography errors LLM",
+    "70% fabricated citations",
+    "book chapters most common"
+   ],
+   "warnings": [],
+   "seconds": 5.312
+  },
+  {
+   "id": "W2",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 2,
+    "expanded": 2,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "ChatGPT citations links",
+    "ChatGPT 引用链接",
+    "citation hallucination rate",
+    "引用幻觉 比例",
+    "fabricated references ChatGPT",
+    "ChatGPT 参考文献 错误",
+    "URL citation accuracy",
+    "链接指向错误 引用",
+    "ChatGPT browsing citations",
+    "ChatGPT 联网 引用来源",
+    "one third incorrect citations",
+    "三分之一 引用错误",
+    "reference verification ChatGPT",
+    "ChatGPT 引用 真实性 核查",
+    "wrong link cited source",
+    "citation accuracy evaluation LLM"
+   ],
+   "warnings": [],
+   "seconds": 3.776
+  },
+  {
+   "id": "W3",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "expanded": 2,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "generated papers length",
+    "word count",
+    "2000 words",
+    "target length",
+    "paper length requirement",
+    "generated text length",
+    "output length",
+    "生成论文长度",
+    "字数统计",
+    "两千字",
+    "目标字数",
+    "论文篇幅",
+    "生成长度",
+    "文本长度",
+    "字数要求",
+    "生成文本字数"
+   ],
+   "warnings": [],
+   "seconds": 3.512
+  },
+  {
+   "id": "W4",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 3,
+    "expanded": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "reference formatting errors",
+    "generated references",
+    "title capitalization",
+    "capitalization errors",
+    "most frequent error",
+    "bibliography formatting",
+    "citation formatting problems",
+    "参考文献格式错误",
+    "生成参考文献",
+    "标题大小写",
+    "大写错误",
+    "最常见错误",
+    "文献著录格式",
+    "引用格式问题",
+    "title case",
+    "sentence case"
+   ],
+   "warnings": [],
+   "seconds": 3.436
+  },
+  {
+   "id": "W5",
+   "lang": "zh",
+   "inAbstract": true,
+   "rank": {
+    "bm25": 1,
+    "expanded": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "GPT-3.5 fabricated citations",
+    "GPT-3.5 编造引文",
+    "hallucinated references ChatGPT",
+    "虚假参考文献 比例",
+    "citation accuracy large language models",
+    "参考文献 真实性 大语言模型",
+    "ChatGPT fabricated references rate",
+    "引文 幻觉 比例",
+    "GPT-3.5 reference hallucination",
+    "fabricated citations percentage",
+    "编造引文 超过一半",
+    "LLM generated bibliography errors",
+    "AI 生成参考文献 错误率",
+    "ChatGPT citation verification study",
+    "GPT-3.5 文献引用 准确性",
+    "non-existent references ChatGPT"
+   ],
+   "warnings": [],
+   "seconds": 3.921
+  },
+  {
+   "id": "W6",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "expanded": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "Google Scholar",
+    "PubMed",
+    "Scopus",
+    "WorldCat",
+    "citation verification",
+    "reference checking",
+    "bibliographic database search",
+    "citation accuracy",
+    "引文真实性核查",
+    "谷歌学术",
+    "文献数据库检索",
+    "参考文献核对",
+    "引文准确性",
+    "虚假引用检测",
+    "数据库来源检索",
+    "引文存在性验证"
+   ],
+   "warnings": [],
+   "seconds": 3.237
+  },
+  {
+   "id": "W7",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 0,
+    "expanded": 4,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "文献综述 实证研究",
+    "literature review empirical study",
+    "narrative review mislabeled",
+    "综述 方法 结果 编造",
+    "fabricated data review article",
+    "research integrity review article",
+    "systematic review methodology",
+    "综述 类型 分类",
+    "review article misclassification",
+    "学术不端 综述",
+    "data fabrication detection",
+    "review versus original research",
+    "文献综述 写作规范",
+    "five review articles",
+    "peer review publication type",
+    "综述 冒充 原创研究"
+   ],
+   "warnings": [],
+   "seconds": 3.665
+  },
+  {
+   "id": "W8",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 0,
+    "expanded": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "online publication date",
+    "original publication date",
+    "earlier literature",
+    "publication date error",
+    "online first date",
+    "citation date accuracy",
+    "bibliographic metadata",
+    "在线发布日期",
+    "最初出版日期",
+    "早期文献",
+    "出版日期错误",
+    "引用日期准确性",
+    "文献元数据",
+    "优先出版日期",
+    "版本记录日期",
+    "日期著录"
+   ],
+   "warnings": [],
+   "seconds": 3.422
+  },
+  {
+   "id": "K1",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "expanded": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "two doctors rated each answer",
+    "physician raters blinded",
+    "independent rating without seeing",
+    "accuracy rating",
+    "concordance rating",
+    "insight rating",
+    "inter-rater agreement",
+    "blinded assessment",
+    "两名医生评分",
+    "准确性评分",
+    "一致性评分",
+    "洞察力评分",
+    "独立评分 互不知晓",
+    "评分者间一致性",
+    "盲法评估"
+   ],
+   "warnings": [],
+   "seconds": 3.835
+  },
+  {
+   "id": "K2",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "expanded": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "items with pictures dropped",
+    "clinical photographs excluded",
+    "graphs removed from test set",
+    "image-containing items excluded",
+    "含图片条目 剔除",
+    "临床照片 排除",
+    "图表 移除",
+    "测试集 图像条目 过滤",
+    "multimodal items excluded",
+    "figure-containing questions removed",
+    "test set filtering images",
+    "视觉信息 条目 删除",
+    "model evaluation item exclusion",
+    "图像类题目 排除",
+    "non-text items dropped",
+    "测试前 剔除 图片题"
+   ],
+   "warnings": [],
+   "seconds": 3.728
+  },
+  {
+   "id": "K3",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "expanded": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "general chatbot",
+    "通用聊天机器人",
+    "general-purpose LLM",
+    "通用大语言模型",
+    "biomedical literature trained model",
+    "生物医学文献训练模型",
+    "domain-specific biomedical LLM",
+    "生物医学专用模型",
+    "BioBERT",
+    "PubMedBERT",
+    "biomedical NLP benchmark",
+    "生物医学自然语言处理评测",
+    "performance comparison",
+    "性能比较",
+    "question answering accuracy",
+    "问答准确率"
+   ],
+   "warnings": [],
+   "seconds": 3.735
+  },
+  {
+   "id": "K4",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 5,
+    "expanded": 3,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "correctly answered questions",
+    "wrongly answered questions",
+    "explanation richness",
+    "insight in explanations",
+    "answer correctness",
+    "explanation quality",
+    "question answering explanations",
+    "答对的问题",
+    "答错的问题",
+    "解释丰富度",
+    "解释洞察力",
+    "答案正确性",
+    "解释质量",
+    "问答解释",
+    "错误答案解释",
+    "正确答案解释"
+   ],
+   "warnings": [],
+   "seconds": 3.996
+  },
+  {
+   "id": "K5",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 0,
+    "expanded": 3,
+    "hybrid": 2
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "ChatGPT answer explanation consistency",
+    "answer-explanation agreement rate",
+    "self-consistency of explanations",
+    "95% consistency",
+    "ChatGPT 答案与解释一致性",
+    "解释与答案一致率",
+    "大语言模型 自洽性",
+    "解释忠实度 faithfulness",
+    "rationale-answer agreement",
+    "chain-of-thought consistency",
+    "ChatGPT 解释质量评估",
+    "LLM explanation plausibility",
+    "answer explanation alignment metric",
+    "模型输出一致性 百分比"
+   ],
+   "warnings": [],
+   "seconds": 3.72
+  },
+  {
+   "id": "K6",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 0,
+    "expanded": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "90% of responses",
+    "九成回答",
+    "valuable insight",
+    "有价值的见解",
+    "at least one insight",
+    "至少包含一条见解",
+    "proportion of responses",
+    "回答比例",
+    "insight rate",
+    "见解率",
+    "response quality",
+    "回答质量",
+    "useful insight",
+    "有用见解",
+    "percentage of answers",
+    "回答百分比"
+   ],
+   "warnings": [],
+   "seconds": 3.694
+  },
+  {
+   "id": "K7",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "expanded": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "ChatGPT accuracy USMLE Step 1",
+    "ChatGPT 准确率 美国医师执照考试",
+    "USMLE Step 1 performance ChatGPT",
+    "Step 2 CK accuracy ChatGPT",
+    "Step 3 accuracy ChatGPT",
+    "ChatGPT medical licensing exam scores",
+    "ChatGPT 医学考试 三项 成绩",
+    "GPT-4 USMLE benchmark accuracy",
+    "ChatGPT 答题正确率 比较",
+    "USMLE Step 1 vs Step 2 CK",
+    "large language model medical exam performance",
+    "ChatGPT 大型语言模型 医学考试",
+    "lowest accuracy among exams ChatGPT",
+    "ChatGPT 最低准确率 考试"
+   ],
+   "warnings": [],
+   "seconds": 4.297
+  },
+  {
+   "id": "K8",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "expanded": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "350 items",
+    "350 questions",
+    "screening process",
+    "coding stage",
+    "item screening",
+    "final sample size",
+    "350 道题目",
+    "筛选",
+    "编码阶段",
+    "题目数量",
+    "纳入编码",
+    "筛选后剩余题目"
+   ],
+   "warnings": [],
+   "seconds": 3.128
+  },
+  {
+   "id": "B1",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 5,
+    "expanded": 3,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "AI-generated paper detection",
+    "machine-written text detection",
+    "AI text detector accuracy",
+    "generated paper classification",
+    "AI写作检测工具",
+    "机器生成文本识别",
+    "人工智能生成论文",
+    "检测工具判定结果",
+    "fully AI-generated manuscript",
+    "detector false positive rate",
+    "human-written vs AI-written",
+    "学术论文AI检测",
+    "LLM-generated academic text",
+    "detection tool performance evaluation"
+   ],
+   "warnings": [],
+   "seconds": 3.221
+  },
+  {
+   "id": "B2",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "expanded": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "health inequities papers",
+    "prevention research papers",
+    "fabricated references",
+    "invented citations",
+    "hallucinated references",
+    "reference accuracy",
+    "citation errors",
+    "bibliography fabrication",
+    "健康不公平 论文",
+    "预防 研究 论文",
+    "伪造参考文献",
+    "虚构引用",
+    "参考文献准确性",
+    "引用错误",
+    "文献捏造",
+    "论文撤稿"
+   ],
+   "warnings": [],
+   "seconds": 3.635
+  },
+  {
+   "id": "B3",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "expanded": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "reference errors",
+    "citation errors",
+    "fabricated references",
+    "hallucinated citations",
+    "chatbot output references",
+    "large language model citations",
+    "ChatGPT references accuracy",
+    "peer-reviewed articles references",
+    "reference accuracy comparison",
+    "参考文献错误",
+    "引用错误",
+    "虚假参考文献",
+    "聊天机器人 引用",
+    "大语言模型 参考文献",
+    "同行评审论文 引用准确性",
+    "参考文献准确性 比较"
+   ],
+   "warnings": [],
+   "seconds": 2.901
+  },
+  {
+   "id": "B4",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "expanded": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "sample size",
+    "adequate sample size",
+    "at least ninety references",
+    "90 references",
+    "number of references",
+    "reference count",
+    "study sample size requirement",
+    "样本量",
+    "足够样本量",
+    "至少九十篇参考文献",
+    "参考文献数量",
+    "文献数量",
+    "研究样本量要求",
+    "纳入文献数量",
+    "参考文献篇数",
+    "样本量估算"
+   ],
+   "warnings": [],
+   "seconds": 3.473
+  },
+  {
+   "id": "B5",
+   "lang": "zh",
+   "inAbstract": true,
+   "rank": {
+    "bm25": 1,
+    "expanded": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "reference errors",
+    "bibliographic reference accuracy",
+    "PMID errors",
+    "PMID 编号错误",
+    "参考文献著录错误",
+    "citation errors",
+    "reference list errors",
+    "DOI errors",
+    "author name errors",
+    "journal title errors",
+    "page number errors",
+    "year of publication errors",
+    "error rate by element",
+    "PubMed identifier accuracy",
+    "参考文献要素 出错率",
+    "reference accuracy study"
+   ],
+   "warnings": [],
+   "seconds": 3.86
+  },
+  {
+   "id": "B6",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 2,
+    "expanded": 2,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "systematic review",
+    "系统综述",
+    "reference checking",
+    "参考文献核查",
+    "two independent reviewers",
+    "两名研究者独立",
+    "Medline",
+    "PubMed",
+    "Google Scholar",
+    "谷歌学术",
+    "Directory of Open Access Journals",
+    "DOAJ 开放获取期刊目录",
+    "reference screening",
+    "文献筛选",
+    "duplicate independent screening",
+    "独立双人核查"
+   ],
+   "warnings": [],
+   "seconds": 3.742
+  },
+  {
+   "id": "B7",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 0,
+    "expanded": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "resource constraints",
+    "limited resources",
+    "did not verify",
+    "not verified",
+    "full text accuracy",
+    "paper content accuracy",
+    "verification of article content",
+    "study limitations",
+    "受资源限制",
+    "资源有限",
+    "未核实",
+    "论文正文",
+    "正文内容准确性",
+    "研究局限性",
+    "无法验证",
+    "内容核实"
+   ],
+   "warnings": [],
+   "seconds": 4.011
+  },
+  {
+   "id": "B8",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 0,
+    "expanded": 5,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v1",
+   "expansion": [
+    "fabricated references",
+    "reference fabrication rate",
+    "respiratory medicine publications",
+    "respiratory journal citations",
+    "fabricated citations by specialty",
+    "citation integrity misconduct",
+    "编造参考文献",
+    "参考文献造假比例",
+    "呼吸科论文",
+    "呼吸科期刊",
+    "学术不端 引用",
+    "各学科造假率比较",
+    "fabricated references prevalence",
+    "reference accuracy retraction",
+    "呼吸科 引用不端",
+    "bibliography fabrication discipline"
+   ],
+   "warnings": [],
+   "seconds": 4.053
+  }
+ ]
+}
