@@ -35,6 +35,38 @@ describe("model evidence boundary", () => {
     expect(() => validateJudgment({ ...judgment, verdict }, [])).toThrow();
   });
 
+  it("accepts a quote whose line breaks the model wrote as spaces, and returns the source text", () => {
+    // 2026-10-16 arXiv:2507.06185 实测：PDF 文字每行末尾有换行，模型引用时写成了空格
+    const pdf: EvidenceChunk[] = [{ id: "p-c1", sourceId: "p", text: "Technical safeguards represent the most immediate defense. Journal submission portals\nshould implement automated screening tools.", start: 100, end: 229, score: 1 }];
+    const result = validateJudgment({ ...judgment, verdict: "supported", citations: [{ sourceId: "p", chunkId: "p-c1", quote: "Journal submission portals should implement automated screening tools." }] }, pdf);
+    expect(result.citations).toEqual([{ sourceId: "p", chunkId: "p-c1", quote: "Journal submission portals\nshould implement automated screening tools.", start: 159, end: 229 }]);
+    // 忽略空白不等于放宽字符：改了一个词仍然拒绝
+    expect(() => validateJudgment({ ...judgment, verdict: "supported", citations: [{ sourceId: "p", chunkId: "p-c1", quote: "Journal submission portals must implement automated screening tools." }] }, pdf)).toThrow();
+  });
+
+  it("accepts a sentence that crosses a page break when the model leaves out the page marker", () => {
+    // 同一次实测：句子跨到第 7 页，中间夹着导入插入的“[第 7 页]”和原文页码 7
+    const text = "must establish explicit guidelines to prevent misuse by authors and reviewers\n\n[第 7 页]\n7\n\nalike.\nThese policies must have teeth.";
+    const page: EvidenceChunk[] = [{ id: "g-c1", sourceId: "g", text, start: 0, end: text.length, score: 1 }];
+    const result = validateJudgment({ ...judgment, verdict: "supported", citations: [{ sourceId: "g", chunkId: "g-c1", quote: "prevent misuse by authors and reviewers alike." }] }, page);
+    expect(result.citations[0].quote).toBe("prevent misuse by authors and reviewers\n\n[第 7 页]\n7\n\nalike.");
+    // 页码之外的数字不能被跳过
+    expect(() => validateJudgment({ ...judgment, verdict: "supported", citations: [{ sourceId: "g", chunkId: "g-c1", quote: "authors and reviewers alike. These policies" }] }, [{ ...page[0], text: text.replace("alike.\nThese", "alike. 12 These") }])).toThrow();
+  });
+
+  it("keeps one citation when the model quotes the same sentence from two overlapping chunks", () => {
+    const overlap: EvidenceChunk[] = [
+      { id: "o-c1", sourceId: "o", text: "Intro text. The trial found no significant benefit after 12 weeks.", start: 0, end: 66, score: 1 },
+      { id: "o-c2", sourceId: "o", text: "The trial found no significant benefit after 12 weeks. More text follows.", start: 12, end: 85, score: 1 },
+    ];
+    const result = validateJudgment({ ...judgment, citations: [
+      { sourceId: "o", chunkId: "o-c1", quote: "no significant benefit" },
+      { sourceId: "o", chunkId: "o-c2", quote: "The trial found no significant benefit after 12 weeks." },
+      { sourceId: "o", chunkId: "o-c2", quote: "no significant benefit" },
+    ] }, overlap);
+    expect(result.citations).toEqual([{ sourceId: "o", chunkId: "o-c2", quote: "The trial found no significant benefit after 12 weeks.", start: 12, end: 66 }]);
+  });
+
   it("accepts a clearly limited insufficient-evidence result", () => {
     expect(validateJudgment({ verdict: "insufficient_evidence", explanation: "片段未报告该结局。", citations: [] }, []).verdict).toBe("insufficient_evidence");
   });

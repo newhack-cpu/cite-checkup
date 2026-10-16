@@ -1,0 +1,261 @@
+{
+ "ranAt": "2026-10-16T15:13:56.100Z",
+ "doi": "10.48550/arXiv.2507.06185",
+ "downloads": [
+  {
+   "url": "https://export.arxiv.org/pdf/2507.06185",
+   "bytes": 279302,
+   "status": 200
+  }
+ ],
+ "pages": 8,
+ "textChars": 20747,
+ "sourceWarnings": [
+  "证据来自 arXiv 预印本 PDF 的文字层，可能与正式发表的版本不同；公式、表格和图片未读取，多栏排版可能打乱顺序。"
+ ],
+ "totalSeconds": 39.429,
+ "runs": [
+  {
+   "claim": "2025 年 7 月，有 18 篇 arXiv 稿件被发现藏有影响 AI 辅助审稿的隐藏提示词。",
+   "seconds": 18.372,
+   "status": "complete",
+   "verdict": "supported",
+   "errorCode": null,
+   "source": {
+    "kind": "arxiv_fulltext",
+    "label": "arXiv 预印本全文",
+    "scope": "full_text",
+    "url": "https://arxiv.org/abs/2507.06185",
+    "totalChars": 20747
+   },
+   "coverage": {
+    "scope": "full_text",
+    "totalChunks": 21,
+    "retrievedChunks": 6,
+    "retrievedChars": 7063,
+    "method": "hybrid-v1",
+    "expansion": [
+     "hidden prompts in arXiv papers",
+     "prompt injection peer review",
+     "AI-assisted peer review",
+     "LLM review prompt injection",
+     "adversarial prompt in manuscripts",
+     "arXiv July 2025 submissions",
+     "18 papers hidden instructions",
+     "影响 AI 辅助审稿的隐藏提示词",
+     "提示词注入 同行评审",
+     "AI 辅助审稿 大语言模型",
+     "arXiv 预印本 隐藏指令",
+     "2025年7月 arXiv 稿件",
+     "18篇论文 隐藏提示",
+     "审稿人 提示注入攻击",
+     "学术出版 提示词操纵",
+     "LLM reviewer manipulation"
+    ]
+   },
+   "citations": [
+    {
+     "chunkId": "source-1-c1",
+     "start": 606,
+     "end": 753,
+     "quotePreview": "In July 2025, 18 academic manuscripts on arXiv contained hidden instructions that manipulated\nAI- assisted peer review (…"
+    },
+    {
+     "chunkId": "source-1-c4",
+     "start": 3280,
+     "end": 3457,
+     "quotePreview": "Targeted searches (keywords such as\n\n“GIVE A POSITIVE REVIEW” combined with “site:arXiv.org”) identified 18 papers conta…"
+    },
+    {
+     "chunkId": "source-1-c8",
+     "start": 7683,
+     "end": 7778,
+     "quotePreview": "Note: Search conducted on July 7, 2025. This count is a lower bound, not an incidence estimate."
+    }
+   ],
+   "explanationPreview": "证据直接支持该主张的核心内容。摘要明确写道：“In July 2025, 18 academic manuscripts on arXiv contained hidden instructions that manipulated AI-assisted peer review (indirect prompt injection).” 正文进一步说明作者通过定向检索（关键词如“GIVE A P",
+   "warnings": [
+    "本结果为 AI 对论断与召回文本关系的辅助判断；引句可定位不代表科学结论已获证实，需人工复核。",
+    "仅检查本次指定来源，不覆盖跨文献系统检索；检索可能漏召回同义表达、跨语言内容和其他段落中的限制条件。",
+    "证据来自 arXiv 预印本 PDF 的文字层，可能与正式发表的版本不同；公式、表格和图片未读取，多栏排版可能打乱顺序。",
+    "DOI 模式读取了该文的开放获取全文，但只核查本次召回的片段；DOI 收录不等于同行评审或质量背书。",
+    "本功能未独立完成撤稿状态核验；请配合参考文献体检与人工审阅使用。"
+   ]
+  },
+  {
+   "claim": "作者认为这些隐藏提示词是用来抓住违规使用 AI 的审稿人的“蜜罐”，因此是正当的。",
+   "seconds": 9.285,
+   "status": "complete",
+   "verdict": "contradicted",
+   "errorCode": null,
+   "source": {
+    "kind": "arxiv_fulltext",
+    "label": "arXiv 预印本全文",
+    "scope": "full_text",
+    "url": "https://arxiv.org/abs/2507.06185",
+    "totalChars": 20747
+   },
+   "coverage": {
+    "scope": "full_text",
+    "totalChunks": 21,
+    "retrievedChunks": 6,
+    "retrievedChars": 7026,
+    "method": "hybrid-v1",
+    "expansion": [
+     "hidden prompt injection",
+     "隐藏提示词",
+     "prompt injection peer review",
+     "提示注入 审稿",
+     "honeypot AI detection",
+     "蜜罐 检测 AI",
+     "reviewer AI misuse",
+     "审稿人 违规使用 AI",
+     "LLM prompt injection ethics",
+     "提示注入 正当性",
+     "academic integrity AI reviewers",
+     "学术诚信 AI 审稿",
+     "covert instruction detection",
+     "隐蔽指令 检测",
+     "justification prompt injection",
+     "AI-assisted peer review policy"
+    ]
+   },
+   "citations": [
+    {
+     "chunkId": "source-1-c2",
+     "start": 1330,
+     "end": 1668,
+     "quotePreview": "The\nhoneypot defense — that prompts detect reviewers improperly using AI — fails under examination,\ngiven the consistent…"
+    },
+    {
+     "chunkId": "source-1-c12",
+     "start": 11178,
+     "end": 11565,
+     "quotePreview": "A genuine honeypot would employ neutral or obviously problematic instructions that\nexpose AI use without benefiting the …"
+    },
+    {
+     "chunkId": "source-1-c12",
+     "start": 11778,
+     "end": 12008,
+     "quotePreview": "Regardless of technical success, the combination of concealment and unidirectionally\nself-serving instructions raises et…"
+    }
+   ],
+   "explanationPreview": "检索证据直接否定了该主张。原文明确写道“The honeypot defense — that prompts detect reviewers improperly using AI — fails under examination, given the consistently self-serving nature of these hidden prompts”，即“蜜罐”辩护经不起检验",
+   "warnings": [
+    "本结果为 AI 对论断与召回文本关系的辅助判断；引句可定位不代表科学结论已获证实，需人工复核。",
+    "仅检查本次指定来源，不覆盖跨文献系统检索；检索可能漏召回同义表达、跨语言内容和其他段落中的限制条件。",
+    "证据来自 arXiv 预印本 PDF 的文字层，可能与正式发表的版本不同；公式、表格和图片未读取，多栏排版可能打乱顺序。",
+    "DOI 模式读取了该文的开放获取全文，但只核查本次召回的片段；DOI 收录不等于同行评审或质量背书。",
+    "本功能未独立完成撤稿状态核验；请配合参考文献体检与人工审阅使用。"
+   ]
+  },
+  {
+   "claim": "The commentary recommends technical screening of submissions and harmonized policies on generative AI in peer review.",
+   "seconds": 9.74,
+   "status": "incomplete",
+   "verdict": null,
+   "errorCode": "INVALID_MODEL_RESPONSE",
+   "source": {
+    "kind": "arxiv_fulltext",
+    "label": "arXiv 预印本全文",
+    "scope": "full_text",
+    "url": "https://arxiv.org/abs/2507.06185",
+    "totalChars": 20747
+   },
+   "coverage": {
+    "scope": "full_text",
+    "totalChunks": 21,
+    "retrievedChunks": 6,
+    "retrievedChars": 6999,
+    "method": "hybrid-v1",
+    "expansion": [
+     "generative AI peer review",
+     "technical screening of submissions",
+     "harmonized policies generative AI",
+     "AI detection tools manuscripts",
+     "peer review policy harmonization",
+     "生成式人工智能 同行评审",
+     "投稿 技术筛查",
+     "AI 检测 稿件",
+     "同行评审 政策 统一",
+     "学术出版 生成式AI 政策",
+     "large language models peer review",
+     "LLM-assisted manuscript screening",
+     "editorial policy generative AI",
+     "AI use disclosure publishing",
+     "出版伦理 人工智能",
+     "期刊 投稿 人工智能 规范"
+    ]
+   },
+   "citations": [],
+   "explanationPreview": "模型结果未通过原文引用与结构校验，本次核查未完成",
+   "warnings": [
+    "本结果为 AI 对论断与召回文本关系的辅助判断；引句可定位不代表科学结论已获证实，需人工复核。",
+    "仅检查本次指定来源，不覆盖跨文献系统检索；检索可能漏召回同义表达、跨语言内容和其他段落中的限制条件。",
+    "证据来自 arXiv 预印本 PDF 的文字层，可能与正式发表的版本不同；公式、表格和图片未读取，多栏排版可能打乱顺序。",
+    "DOI 模式读取了该文的开放获取全文，但只核查本次召回的片段；DOI 收录不等于同行评审或质量背书。",
+    "本功能未独立完成撤稿状态核验；请配合参考文献体检与人工审阅使用。"
+   ]
+  }
+ ],
+ "replaysAfterQuoteFix": {
+  "note": "修复引句校验（忽略空白定位、按原文位置去重）后，用同一次下载得到的全文文字重放；没有再次下载 PDF",
+  "ranAt": "2026-10-16T15:23:35.875Z",
+  "replays": [
+   {
+    "round": 1,
+    "claim": "2025 年 7 月，有 18 篇 arXiv 稿件被发现藏有影响 AI 辅助审稿的隐藏提示词。",
+    "verdict": "supported",
+    "citations": 3,
+    "method": "hybrid-v1",
+    "seconds": 9.746
+   },
+   {
+    "round": 1,
+    "claim": "作者认为这些隐藏提示词是用来抓住违规使用 AI 的审稿人的“蜜罐”，因此是正当的。",
+    "verdict": "contradicted",
+    "citations": 3,
+    "method": "hybrid-v1",
+    "seconds": 8.834
+   },
+   {
+    "round": 1,
+    "claim": "The commentary recommends technical screening of submissions and harmonized policies on generative AI in peer review.",
+    "verdict": "supported",
+    "citations": 3,
+    "method": "hybrid-v1",
+    "seconds": 9.572
+   },
+   {
+    "round": 2,
+    "claim": "2025 年 7 月，有 18 篇 arXiv 稿件被发现藏有影响 AI 辅助审稿的隐藏提示词。",
+    "verdict": "supported",
+    "citations": 3,
+    "method": "hybrid-v1",
+    "seconds": 7.582
+   },
+   {
+    "round": 2,
+    "claim": "作者认为这些隐藏提示词是用来抓住违规使用 AI 的审稿人的“蜜罐”，因此是正当的。",
+    "verdict": "contradicted",
+    "citations": 3,
+    "method": "hybrid-v1",
+    "seconds": 10.148
+   },
+   {
+    "round": 2,
+    "claim": "The commentary recommends technical screening of submissions and harmonized policies on generative AI in peer review.",
+    "verdict": "supported",
+    "citations": 4,
+    "method": "hybrid-v1",
+    "seconds": 9.513
+   }
+  ]
+ },
+ "summary": {
+  "download": "export.arxiv.org/pdf/2507.06185 只下载 1 次，279,302 字节，8 页、20,747 字符；隐藏文字检测 0 处（论文正文引用的隐藏提示词是可见文字，没有误报）",
+  "liveRun": "端到端 DOI → arXiv 全文 → 混合检索 → 判断：中文论断“18 篇稿件”证据支持；“蜜罐辩护”论断矛盾；英文论断因引句校验失败未完成",
+  "rootCause": "同一条英文论断在保存的全文上重放：修复前 4/4 失败，模型把 PDF 行末换行写成空格；忽略空白定位后 10 次 9 次成功，剩下 1 次是跨页句子（中间夹着导入插入的页标记和页码）；再忽略页标记与页码行后 6/6 成功",
+  "fix": "src/lib/claims/judge.ts：引句先逐字匹配，再忽略空白和页标记定位，返回原文那一段；按原文位置去重重叠片段的重复引句"
+ }
+}
