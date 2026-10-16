@@ -1,6 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { readFile } from "node:fs/promises";
 
+// A real PDF parse starts a fresh worker that loads PDF.js; under a busy parallel run that can exceed the default 5 s.
+// Above parsePdf's own 25 s limit, so a hung parse still fails with its TIMEOUT error rather than a bare test timeout.
+const PDF_TIMEOUT = 30_000;
+
 beforeEach(() => vi.resetModules());
 async function route() { return import("./route"); }
 function multipart(file: File) {
@@ -16,7 +20,7 @@ describe("/api/import", () => {
     expect(response.status).toBe(200);
     expect(response.headers.get("cache-control")).toContain("no-store");
     expect(await response.json()).toMatchObject({ text: expect.stringContaining("Miller"), metadata: { format: "pdf", pageCount: 2 }, warnings: expect.any(Array) });
-  });
+  }, PDF_TIMEOUT);
 
   it("rejects invalid form requests and duplicate files", async () => {
     const { POST } = await route();

@@ -5,6 +5,10 @@ import { fetchDoiEvidence } from "../sources";
 
 afterEach(() => { vi.unstubAllGlobals(); vi.unstubAllEnvs(); });
 
+// A real PDF parse starts a fresh worker that loads PDF.js; under a busy parallel run that can exceed the default 5 s.
+// Above parsePdf's own 25 s limit, so a hung parse still fails with its TIMEOUT error rather than a bare test timeout.
+const PDF_TIMEOUT = 30_000;
+
 const SECTION = "Participants who slept more than seven hours recalled 18% more words than those who slept less than five hours. ".repeat(6);
 const JATS = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.2 20190208//EN" "JATS-archivearticle1.dtd">
@@ -87,7 +91,7 @@ describe("arXiv preprint full text", () => {
     expect(full!.text).toContain("recalled 18% more words");
     expect(full!.text).not.toContain("IGNORE ALL PREVIOUS INSTRUCTIONS");
     expect(full!.warnings.join("")).toMatch(/隐藏文字.*像写给 AI 的指令/);
-  });
+  }, PDF_TIMEOUT);
 
   it("refuses responses that are not PDFs", async () => {
     serve([[/^export\.arxiv\.org\/pdf\//, () => new Response("<html>", { headers: { "Content-Type": "text/html" } })]]);
@@ -129,5 +133,5 @@ describe("DOI evidence with open full text first", () => {
     const evidence = await fetchDoiEvidence("10.1234/sleep");
     expect(evidence.source).toMatchObject({ kind: "arxiv_fulltext", scope: "full_text", url: "https://arxiv.org/abs/2501.00001" });
     expect(evidence.warnings.join("")).toContain("预印本 2501.00001");
-  });
+  }, PDF_TIMEOUT);
 });

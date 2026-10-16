@@ -7,6 +7,10 @@ async function fixture(name: string) {
   return new File([new Uint8Array(await readFile(new URL(`./fixtures/${name}`, import.meta.url)))], name);
 }
 
+// A real PDF parse starts a fresh worker that loads PDF.js; under a busy parallel run that can exceed the default 5 s.
+// Above parsePdf's own 25 s limit, so a hung parse still fails with its TIMEOUT error rather than a bare test timeout.
+const PDF_TIMEOUT = 30_000;
+
 describe("safe document import using actual binary files", () => {
   it.each(["paper.pdf", "paper.docx", "paper.txt"])("extracts plain text and references from %s", async name => {
     const result = await importDocument(await fixture(name));
@@ -19,7 +23,7 @@ describe("safe document import using actual binary files", () => {
     if (name.endsWith("pdf")) expect(result.metadata.pageCount).toBe(2);
     if (name.endsWith("docx")) expect(result.text).toContain("中文正文");
     expect(result.hidden).toBeNull();
-  });
+  }, PDF_TIMEOUT);
 
   it.each([
     ["encrypted.pdf", "ENCRYPTED"], ["no-text.pdf", "NO_TEXT"],
@@ -30,7 +34,7 @@ describe("safe document import using actual binary files", () => {
     ["encrypted-flag.docx", "ENCRYPTED"],
   ])("rejects %s with actionable code %s", async (name, code) => {
     await expect(importDocument(await fixture(name))).rejects.toMatchObject({ code, message: expect.any(String) });
-  });
+  }, PDF_TIMEOUT);
 
   it("ignores external DOCX relationships while warning the user", async () => {
     const result = await importDocument(await fixture("external-reference.docx"));
@@ -64,7 +68,7 @@ describe("safe document import using actual binary files", () => {
     const result = await importDocument(await fixture("chinese.pdf"));
     expect(result.text.replaceAll(" ", "")).toContain("中文研究正文");
     expect(result.references?.text.replaceAll(" ", "")).toContain("张三");
-  });
+  }, PDF_TIMEOUT);
 
   it("terminates PDF parsing when an in-flight request is cancelled", async () => {
     const controller = new AbortController();
@@ -92,7 +96,7 @@ describe("hidden text in real files (fixtures from generate_hidden.py)", () => {
     expect(result.references?.text).toContain("[1] Miller");
     expect(result.references?.text).toContain("[3] Baddeley");
     expect(result.references?.text).not.toContain("[2] Smith");
-  });
+  }, PDF_TIMEOUT);
 
   it("treats invisible text over a page image as an OCR layer, not hidden text", async () => {
     const result = await importDocument(await fixture("ocr-layer.pdf"));
@@ -100,7 +104,7 @@ describe("hidden text in real files (fixtures from generate_hidden.py)", () => {
     expect(result.text).toContain("Scanned page text recognised by OCR software.");
     expect(result.references?.text).toContain("Miller");
     expect(result.warnings.join("")).toContain("OCR 文字层");
-  });
+  }, PDF_TIMEOUT);
 
   it("finds Word hidden formatting (direct and via a style), white text and 1 pt text, but not white text on a dark banner", async () => {
     const result = await importDocument(await fixture("hidden-prompt.docx"));
