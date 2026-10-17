@@ -151,20 +151,30 @@ describe("AI search agent", () => {
     expect(JSON.parse(request.messages[1].content)).toMatchObject({ citation: BOOK, currentResult: expect.any(String) });
   });
 
+  const REPORT = "Johnson R, Crafton RE, Upton HF. Invasive species: major laws and the role of selected federal agencies. Congressional Research Service report; 2017.";
+  const crsRecord = (authors: { family: string; given: string }[]) => ({
+    DOI: "10.5555/crs-rl30123", title: ["Invasive Species: Major Laws and the Role of Selected Federal Agencies"], type: "report",
+    author: authors, issued: { "date-parts": [[2013]] },
+  });
+  const searchReport = turn([{ name: "search_crossref", args: { query: "Invasive species: major laws and the role of selected federal agencies", author: "Johnson", reason: "按报告题名检索" } }]);
+
   it("offers a differing record for a report only as a candidate, since it is often another edition", async () => {
-    const report = "Johnson R, Crafton RE, Upton HF. Invasive species: major laws and the role of selected federal agencies. Congressional Research Service report; 2017.";
-    serve({
-      turns: [turn([{ name: "search_crossref", args: { query: "Invasive species: major laws and the role of selected federal agencies", author: "Johnson", reason: "按报告题名检索" } }])],
-      crossrefAgentItems: [{
-        DOI: "10.5555/crs-rl30123", title: ["Invasive Species: Major Laws and the Role of Selected Federal Agencies"], type: "report",
-        author: [{ family: "Corn", given: "M. Lynne" }, { family: "Johnson", given: "Renée" }], issued: { "date-parts": [[2013]] },
-      }],
-    });
-    const result = await (await agent()).runAgent(report, 1);
+    // 第一作者相同、合著者和年份不同：规则认定是同一份报告的另一版本
+    serve({ turns: [searchReport], crossrefAgentItems: [crsRecord([{ family: "Johnson", given: "Renée" }, { family: "Corn", given: "M. Lynne" }])] });
+    const result = await (await agent()).runAgent(REPORT, 1);
     expect(result.verdict).toBe("unverifiable");
     expect(result.matchStatus).toBe("candidate");
     expect(result.issues).toEqual([]);
     expect(result.notes.join("")).toContain("与该记录的差异");
+    expect(result.agent?.outcome).toBe("unchanged");
+  });
+
+  it("does not take a report record whose year and first author both differ as the cited report", async () => {
+    serve({ turns: [searchReport], crossrefAgentItems: [crsRecord([{ family: "Corn", given: "M. Lynne" }, { family: "Johnson", given: "Renée" }])] });
+    const result = await (await agent()).runAgent(REPORT, 1);
+    expect(result.verdict).toBe("unverifiable");
+    expect(result.matchStatus).not.toBe("confirmed");
+    expect(result.issues).toEqual([]);
     expect(result.agent?.outcome).toBe("unchanged");
   });
 

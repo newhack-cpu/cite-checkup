@@ -150,7 +150,9 @@ const PATENT_RE = /\bpatent\b|专利|\b(?:US|CN|EP|WO|JP)\s?\d{6,}\s?[A-Z]?\d?\b
 const LEGAL_RE =
   /\b(?:directive|regulation\s*\((?:eu|ec|eec)\)|regulation no\.?|act of \d{4}|official journal of the european|federal register|public law \d|code of federal regulations|statute|decree)\b|法律|法规|条例/i;
 const SOFTWARE_RE =
-  /\b(?:software|computer program|r package|python package|source code|zenodo)\b|\b(?:version|revision|release)\s+[a-z]?\.?\d+(?:\.\d+)*\b|\bv\d+\.\d+(?:\.\d+)?\b|\bgaussian\s+\d{2}\b|\bR Core Team\b|github\.com/i;
+  /\b(?:software|computer program|r package|python package|source code|zenodo)\b|\b(?:version|revision|release)\s+[a-z]?\.?\d+(?:\.\d+)*\b|\bv\d+\.\d+(?:\.\d+)?\b|\bgaussian\s+\d{2}\b|\bR[\s-]+Core[\s-]+Team\b|\bR Foundation for Statistical Computing\b|github\.com|r-project\.org/i;
+// CRAN 参考手册的题名写法 "Package vegan." "Package ‘vegan’,"：包名小写开头，紧跟句号或逗号（区分大小写）
+const SOFTWARE_NAME_RE = /\bPackage\s+['‘’"]?[a-z][\w.]*['’"]?\s*[.,;]|\bCRAN\b/;
 const BOOK_RE =
   /\b(?:press|publishers?|publishing|verlag|isbn)\b|出版社|\bin:?\s.+\((?:eds?|hrsg)\.?\)|\((?:eds?)\.?\)|\bed(?:s|ition)?\.\s|\b\d+(?:st|nd|rd|th)\s+ed(?:ition|\.)|\/978-\d/i;
 const WEB_RE =
@@ -172,6 +174,20 @@ const PUBLISHER_RE =
 // 机构作者：开头就是部委、机构、协会这类名称
 const ORG_AUTHOR_RE =
   /^(?:the\s+)?(?:[A-Z][\w&'’.-]*\s+){0,4}(?:Organi[sz]ation|Department|Ministry|Office|Agency|Bureau|Council|Commission|Parliament|Institute|Center|Centre|Association|Foundation|Society|Administration|Authority|Board|Committee|Union|Bank|Fund|Programme|Program|Service)\b/;
+// 访问日期（"Accessed on 31 August, 2023" "[cited 2023 Aug 31]"）里的年份不是卷号
+const ACCESS_DATE_RE = /\b(?:accessed|retrieved|last\s+(?:accessed|visited|viewed))\b[^.;]{0,40}?\b(?:18|19|20)\d{2}\b|\[cited\b[^\]]{0,30}\]/gi;
+
+/** 署名是机构名称（"World Health Organization. 1978. ..."），而不是个人 */
+export function organizationAuthor(s: string): boolean {
+  return ORG_AUTHOR_RE.test(stripFootnoteMarker(s.normalize("NFKC").trim()));
+}
+
+/** 机构或网站自己发布的内容：开头的署名和末尾的发布者是同一个名称（"D&D Beyond.2022.“…”D&D Beyond."） */
+function selfPublished(t: string): boolean {
+  const head = t.match(/^([^.,;:(\d]{3,60}?)\s*[.,(]/)?.[1].trim().toLowerCase();
+  const tail = t.match(/[.”"]\s*([^.,;:”"\d]{3,60}?)\s*\.?\s*$/)?.[1].trim().toLowerCase();
+  return !!head && head === tail;
+}
 
 /** 文献类型：GB/T 7714 类型标识优先，其次看"卷(期): 页"这类期刊特征，最后看关键词 */
 export function detectKind(s: string): RefKind {
@@ -182,15 +198,21 @@ export function detectKind(s: string): RefKind {
   if (m) return GBT_TYPE[m[1].toUpperCase()] ?? "unknown";
   if (THESIS_RE.test(t)) return "thesis";
   if (PRESENTATION_RE.test(t) && !/\bproc(?:eedings|\.)/i.test(t)) return "presentation";
-  if ((CONFERENCE_RE.test(t) && !JOURNAL_PROCEEDINGS_RE.test(t)) || MAJOR_VENUE_RE.test(t)) return "conference";
-  if (JOURNAL_PATTERNS.some((re) => re.test(t))) return "journal";
+  // 机构发布的会议宣言、决议（"World Health Organization. 1978. Declaration of Alma Ata: International Conference on ..."）
+  // 不是会议论文：机构署名、又没有 "In:" "Proceedings" 这类收录信息时，不按会议论文处理
+  const institutional = ORG_AUTHOR_RE.test(t) && !/\bproc(?:eedings|\.)|\bin:\s/i.test(t);
+  if ((CONFERENCE_RE.test(t) && !JOURNAL_PROCEEDINGS_RE.test(t) && !institutional) || MAJOR_VENUE_RE.test(t)) return "conference";
+  // 期刊特征只在去掉普通网址和访问日期后找：新闻网页末尾的 "Accessed on 31 August, 2023." 会被当成 "刊名, 卷号."
+  const core = t.replace(/https?:\/\/(?!(?:dx\.)?doi\.org\/)\S+/gi, " ").replace(ACCESS_DATE_RE, " ");
+  if (JOURNAL_PATTERNS.some((re) => re.test(core))) return "journal";
   if (STANDARD_CODE_RE.test(t) || STANDARD_WORD_RE.test(t)) return "standard";
   if (PATENT_RE.test(t)) return "patent";
   if (LEGAL_RE.test(t)) return "legal";
-  if (SOFTWARE_RE.test(t)) return "software";
+  if (SOFTWARE_RE.test(t) || SOFTWARE_NAME_RE.test(t)) return "software";
   if (BOOK_RE.test(t) || PUBLISHER_RE.test(t)) return "book";
   if (WEB_RE.test(t)) return "web";
   if (REPORT_RE.test(t) || REPORT_EXTRA_RE.test(t) || ORG_AUTHOR_RE.test(t) || ORG_PUBLISHER_RE.test(t)) return "report";
+  if (selfPublished(t)) return "web";
   // 只有普通网址、没有 DOI，多半是网页
   const urls = t.replace(/https?:\/\/(?:dx\.)?doi\.org\/\S+/gi, " ");
   if (/https?:\/\/|www\.\w/i.test(urls) && !/\b10\.\d{4,9}\//.test(t)) return "web";
@@ -332,6 +354,16 @@ export function stripFootnoteMarker(s: string): string {
 const TITLE_ABBREVIATION_RE = /(?:^|[\s(\[])(?:Dr|Mr|Mrs|Ms|Mx|Prof|St|Sr|Jr|Mt|vs|cf|No|Nos|Vol|Vols|Fig|Figs|Eq|Eqs|Ch|Sec|Pt|ca|approx|U\.S|U\.K|e\.g|i\.e)$/i;
 
 /**
+ * 题名里单个大写字母后的句点是缩写，不是题名结束：物种名 "E. coli"（后面接小写词），
+ * 植物命名人 "Pinus radiata, D. Don final harvest"（学名之后，后面接姓氏和小写词）
+ */
+function initialInTitle(before: string, after: string): boolean {
+  if (!/(?:^|[\s(])\p{Lu}$/u.test(before)) return false;
+  return /^\s+(?!doi\b)\p{Ll}/u.test(after)
+    || (/\b\p{Lu}\p{Ll}+\s+\p{Ll}{3,},?\s+\p{Lu}$/u.test(before) && /^\s+\p{Lu}\p{Ll}+\s+\p{Ll}/u.test(after));
+}
+
+/**
  * 从开头取到题名结束：第一个后面跟着空白（或文末）的 . ? ! 。，至少 min 个字符。
  * 跳过缩写后的句点，以及 "high temperature: 2. Experimental" "Part II. Methods" 这类分部编号。
  */
@@ -341,7 +373,8 @@ function untilTitleEnd(s: string, min: number, max = 400): string | undefined {
     if (m.index < min) continue;
     if (m.index > max) return undefined;
     const before = s.slice(0, m.index);
-    if (m[0] === "." && (TITLE_ABBREVIATION_RE.test(before) || /[:：]\s*(?:\d{1,2}|[IVX]{1,4})$/.test(before) || /\bpart\s+(?:\d{1,2}|[IVX]{1,4})$/i.test(before))) continue;
+    if (m[0] === "." && (TITLE_ABBREVIATION_RE.test(before) || /[:：]\s*(?:\d{1,2}|[IVX]{1,4})$/.test(before) || /\bpart\s+(?:\d{1,2}|[IVX]{1,4})$/i.test(before)
+      || initialInTitle(before, s.slice(m.index + 1)))) continue;
     return before;
   }
   return undefined;
@@ -359,8 +392,9 @@ function plausibleTitle(x: string): boolean {
 
 /** 启发式猜题名。猜不准没关系，后面的匹配主要拿数据库题名去原文里找 */
 export function guessTitle(s: string): string | undefined {
-  // 中文期刊的英文译名常带 "(in Chinese)" 后缀，不属于题名
-  return rawTitle(s)?.replace(/\s*\(in chinese\)\s*$/i, "").trim() || undefined;
+  // 中文期刊的英文译名常带 "(in Chinese)" 后缀，不属于题名；
+  // Elsevier 写法 "题名, in: 会议名 / 书名, 2021." 里 ", in:" 之后是收录它的会议或图书
+  return rawTitle(s)?.split(/,\s+in:\s/i)[0].replace(/\s*\(in chinese\)\s*$/i, "").trim() || undefined;
 }
 
 function rawTitle(s: string): string | undefined {
@@ -405,7 +439,7 @@ export function guessVenue(s: string, titleGuess?: string): string | undefined {
         .replace(/^\s*\(in chinese\)/i, "")
         .replace(/^\s*\[[A-Z]{1,2}(?:\/[A-Z]{2})?\]/i, "")
         .replace(/^\s*[,.;:?!”"．。]+\s*/, "");
-      if (/^(in\s|proceedings|proc\.|https?:)/i.test(rest)) return undefined;
+      if (/^(in:?\s|proceedings|proc\.|https?:)/i.test(rest)) return undefined;
       const m = rest.match(/^([^,，(\d]{2,}?)\s*(?:[,，]|\(|\d)/);
       if (m) return m[1].replace(/[.\s]+$/, "").trim() || undefined;
       // 刊名缩写在引文末尾、后面没有卷期页码（"... Songliao Basin. Earth Sci. Front."）；

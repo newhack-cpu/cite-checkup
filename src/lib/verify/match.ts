@@ -1,6 +1,7 @@
 // 把一条引文和数据库里的一条记录做逐字段比对，判断是不是同一篇文献。
 // 思路：不依赖把引文完全解析正确，而是拿数据库里的题名、作者、期刊去原文里找。
 
+import { organizationAuthor } from "./extract";
 import {
   alnum,
   compact,
@@ -172,10 +173,29 @@ export function isOrganizationList(authors: Author[]): boolean {
   return authors.length > 0 && authors.every((a) => !a.given && ORGANIZATION_RE.test(a.family));
 }
 
-/** 图书、学位论文常有多个版本、印次，或后来的存档、数字化记录，记录年份与引文不同不一定是写错 */
+// 开放数据库覆盖不足的文献类型（与 verify.ts 的 OUT_OF_SCOPE 相同）：数据库里查到的常是它的另一版本、转载或同名的其他作品
+const VERSIONED_KINDS = new Set<ParsedRef["kind"]>(["book", "thesis", "standard", "patent", "report", "newspaper", "web", "legal", "presentation", "software"]);
+const VERSIONED_TYPE_RE = /^(?:book|edited-book|monograph|reference-book|book-set|book-series|dissertation|dataset|software|database)$/i;
+const JOURNAL_TYPE_RE = /^(?:journal-article|article|review|proceedings-article)$/i;
+
+/** 引文或记录属于常有多个版本的类型：年份差得远时，记录可能是另一版本、转载或同名的其他作品 */
+function editionsLikely(ref: ParsedRef, rec: WorkRecord): boolean {
+  return VERSIONED_KINDS.has(ref.kind) || VERSIONED_TYPE_RE.test(rec.type ?? "");
+}
+
+/**
+ * 图书、学位论文常有多个版本、印次，或后来的存档、数字化记录；网页、报告常被转载到 SSRN 等平台（比特币白皮书 2008 ↔ SSRN 2019）；
+ * 软件、数据集的记录常是总 DOI（首发年份）。这些记录的年份与引文不同不一定是写错。
+ * 记录本身是期刊论文时（引文只是被识别成了报告、网页）年份仍要对得上
+ */
 export function yearVaries(ref: ParsedRef, rec: WorkRecord): boolean {
-  return ref.kind === "book" || ref.kind === "thesis"
-    || /^(?:book|edited-book|monograph|reference-book|book-set|book-series|dissertation)$/i.test(rec.type ?? "");
+  if (ref.kind === "book" || ref.kind === "thesis" || VERSIONED_TYPE_RE.test(rec.type ?? "")) return true;
+  return VERSIONED_KINDS.has(ref.kind) && !!rec.type && !JOURNAL_TYPE_RE.test(rec.type);
+}
+
+/** 软件、数据集按版本发布：数据库记录常是整个软件包的总 DOI，作者是现任维护者，引用写的是某个版本的作者 */
+export function versionedRecord(ref: ParsedRef, rec: WorkRecord): boolean {
+  return ref.kind === "software" || /^(?:dataset|software|database)$/i.test(rec.type ?? "");
 }
 
 /** 数据库记录的全部出版年份：正式出版年份在前，另有纸本、在线首发年份 */
@@ -214,7 +234,14 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
   const rawNorm = normalizeText(authorText);
   const rawCompact = compact(authorText);
   // 标准、机构报告的"作者"是机构（ASTM International ↔ D30 Committee），按姓氏比对没有意义，当作没有作者信息
-  const people = ref.kind === "standard" || isOrganizationList(recordAuthors) ? [] : recordAuthors;
+  let people = ref.kind === "standard" || isOrganizationList(recordAuthors) ? [] : recordAuthors;
+  // 引文是机构署名（"World Health Organization. 1978. ..."），记录里的个人作者一个也不在引文中：同样不按姓氏比对。
+  // 期刊论文的记录常列出执笔的个人（"American Diabetes Association. ... Diabetes Care 2023" ↔ ElSayed NA 等）；
+  // 报告、宣言这类非期刊文献，这样的记录通常是收录或转载它的图书章节、期刊（B056），不算同一篇
+  const orgCited = !citedAuthors && people.length > 0 && organizationAuthor(ref.raw)
+    && people.every((a) => locateAuthor(a, rawNorm, rawCompact) < 0);
+  const reprint = orgCited && VERSIONED_KINDS.has(ref.kind);
+  if (orgCited) people = [];
   const considered = people.slice(0, 3);
   const positions = people.map((a) => locateAuthor(a, rawNorm, rawCompact));
   const found = positions.filter((p) => p >= 0);
@@ -239,9 +266,17 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
       return [...names, ...compound, normalizeText(a.family).replace(/ /g, ""), given, initialsOf(a.family),
         compact(a.family + (a.given ?? ""))];
     }));
+    // 记录里只有名、缺中间名缩写（OpenAlex 的 "Tim Rhodes"）：引文多写一个首字母（Rhodes TR）不算错
+    const initialsByFamily = new Map<string, string[]>();
+    for (const a of people) {
+      const family = normalizeText(a.family).split(" ").pop() ?? "";
+      const given = initialsOf(a.given ?? "");
+      if (family && given) initialsByFamily.set(family, [...(initialsByFamily.get(family) ?? []), given]);
+    }
     const cited = normalizeText(deglueNames(citedAuthors))
       .replace(/\bet\s+al\b|\band\b|等(?:人)?/g, " ").split(/\s+/).filter(Boolean);
-    authorListMismatch = cited.some((name) => name.length > 1 && !known.has(name));
+    authorListMismatch = cited.some((name, i) => name.length > 1 && !known.has(name)
+      && !(/^[a-z]{2,3}$/.test(name) && (initialsByFamily.get(cited[i - 1]) ?? []).some((g) => name.startsWith(g))));
   }
   // 中文记录：引文列出的作者都能在数据库作者中找到，但顺序或第一作者不同。Crossref 的中文记录常把顺序登记错
   // （宫鹏等 2010 的记录里宫鹏排在第 14 位），这时不能说引文写错了作者
@@ -292,8 +327,10 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
   let same: boolean;
   if (doiMatch && titleScore >= 0.5) {
     same = true;
-  } else if (yearDiff !== undefined && yearDiff > 1 && yearVaries(ref, rec) && titleScore < 0.95) {
-    // 图书、学位论文年份差得远时，常是同一作者的另一部作品或新版：题名必须几乎逐字一致才算同一篇
+  } else if (reprint) {
+    same = false;
+  } else if (yearDiff !== undefined && yearDiff > 1 && editionsLikely(ref, rec) && (titleScore < 0.95 || firstAuthor === "mismatch")) {
+    // 图书、报告、网页年份差得远时，常是同一作者的另一部作品、新版或转载：题名几乎逐字一致、第一作者也对得上才算同一篇
     same = false;
   } else if (titleMissing) {
     // 有 DOI：第一作者对上，年份或卷号也对上即可；没有 DOI：作者、年份、刊名、卷号、页码都要对上
@@ -309,7 +346,7 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
     // 长题名几乎逐字一致时，即使作者写错也认定为同一篇（大模型常把真题名配上假作者）
     same = (strongTitle && (authorOk || (yearOk && venueOk))) || (titleScore >= 0.92 && tokenCount(main) >= 6);
   }
-  const partial = !same && titleScore >= 0.6 && (authorOk || noAuthors) && (yearDiff === undefined || yearDiff <= 2);
+  const partial = !same && !reprint && titleScore >= 0.6 && (authorOk || noAuthors) && (yearDiff === undefined || yearDiff <= 2);
 
   return {
     titleScore, titleMissing, authorRatio, firstAuthor, authorOrderOk, authorListMismatch, authorsReordered, yearDiff, volumeHit, pageHit,

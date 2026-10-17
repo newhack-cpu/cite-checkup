@@ -15,6 +15,7 @@ import {
   recordYears,
   scoreCandidate,
   venueSimilarity,
+  versionedRecord,
   type MatchScore,
 } from "./match";
 import { crossrefByDoi, crossrefJournals, crossrefSearch } from "./sources/crossref";
@@ -198,7 +199,7 @@ export async function verifyReference(ref: ParsedRef, ctx: VerifyContext, extra?
     if (best?.score.same) {
       let rec = best.rec;
       const extraNotes: string[] = [];
-      const score = await withVenueAlias(ref, rec, best.score, steps, ctx, extraNotes);
+      let score = await withVenueAlias(ref, rec, best.score, steps, ctx, extraNotes);
       // Crossref 撤稿元数据可能不完整，同样需要 OpenAlex 交叉核对。
       if (rec.doi && rec.source !== "openalex" && rec.retraction?.status !== "retracted" && rec.retraction?.status !== "withdrawn") {
         const doi = rec.doi;
@@ -208,6 +209,13 @@ export async function verifyReference(ref: ParsedRef, ctx: VerifyContext, extra?
             ok: !!r.record,
           }));
           if (oa.record?.retraction) rec = { ...rec, retraction: oa.record.retraction };
+          // 两个数据库登记的出版年份不同、引文与 OpenAlex 一致时，不算引文写错（Crossref 把 2014 年的论文登记成 2020 年，B015）
+          const oaYear = oa.record?.year;
+          if (oaYear && ref.year && score.yearDiff !== undefined && score.yearDiff > 1 && Math.abs(ref.year - oaYear) < score.yearDiff) {
+            extraNotes.push(`Crossref 登记的出版年份为 ${recordYears(rec).join(" / ")}，OpenAlex 为 ${oaYear}；引用年份与 OpenAlex 一致或更接近，两个数据库的记录不一致，请以原文为准`);
+            rec = { ...rec, years: [...(rec.years ?? []), oaYear] };
+            score = { ...score, yearDiff: Math.abs(ref.year - oaYear) };
+          }
           if (!oa.record) extraNotes.push("OpenAlex 未收录该 DOI，撤稿状态交叉核验未完成；已保留数据库中的文献信息，请人工核对出版社页面");
         } catch {
           ctx.signal?.throwIfAborted();
@@ -318,16 +326,20 @@ function judgeSame(ref: ParsedRef, rec: WorkRecord, s: MatchScore, steps: CheckS
       issues.push(`引用中的 DOI 指向另一篇文献《${short(ev.doiRecord.title)}》，正确 DOI 应为 ${rec.doi}`);
     else issues.push(`DOI 与数据库记录不一致，数据库记录为 ${rec.doi}`);
   }
+  // 数据库记录可能是另一版本、转载或软件包的总 DOI：年份差得远时提示核对版本，不算写错
+  const otherVersion = s.yearDiff !== undefined && s.yearDiff > 1 && yearVaries(ref, rec);
   if (s.authorRatio !== undefined) {
     if (s.authorsReordered) notes.push(`引用列出的作者都在数据库记录中，但顺序不同（数据库为 ${formatAuthorsShort(rec.authors)}）；Crossref 的中文记录有时把作者顺序登记错，请以原文为准`);
     else if (s.authorRatio === 0) issues.push(`作者与数据库记录不符，数据库作者为 ${formatAuthorsShort(rec.authors)}`);
     else if (s.firstAuthor === "mismatch") issues.push(`第一作者不符，数据库第一作者为 ${formatAuthorsShort(rec.authors.slice(0, 1))}`);
+    else if ((s.authorOrderOk === false || s.authorListMismatch) && versionedRecord(ref, rec))
+      notes.push(`软件、数据集的作者名单随版本变化，数据库记录的作者为 ${formatAuthorsShort(rec.authors)}，请核对所引版本`);
     else if (s.authorOrderOk === false) issues.push(`作者顺序与数据库不一致，数据库顺序为 ${formatAuthorsShort(rec.authors)}`);
     else if (s.authorListMismatch) issues.push(`引用中有作者姓名与数据库记录不符，数据库作者为 ${formatAuthorsShort(rec.authors)}`);
   }
   if (s.yearDiff !== undefined) {
     const dbYears = recordYears(rec).join(" / ");
-    if (s.yearDiff > 1 && yearVaries(ref, rec)) notes.push(`数据库记录的年份为 ${dbYears}，引用写 ${ref.year}；图书、学位论文常有多个版本或后来的存档记录，请核对所引版本`);
+    if (otherVersion) notes.push(`数据库记录的年份为 ${dbYears}，引用写 ${ref.year}；图书、学位论文、报告、网页、软件常有多个版本、转载或后来的存档记录，请核对所引版本`);
     else if (s.yearDiff > 1) issues.push(`年份不符：引用写 ${ref.year}，数据库记录为 ${dbYears}`);
     else if (s.yearDiff === 1)
       notes.push(`年份相差一年（引用 ${ref.year}，数据库 ${dbYears}），可能是在线发表与正式出版年份不同`);
@@ -337,7 +349,9 @@ function judgeSame(ref: ParsedRef, rec: WorkRecord, s: MatchScore, steps: CheckS
     issues.push(`期刊名不符：引用写「${ref.venueGuess}」，数据库记录为「${rec.venue}」`);
   if (fields.find((f) => f.field === "title")?.status === "partial") notes.push("题名与数据库记录不完全一致，请核对用词");
   if (fields.find((f) => f.field === "title")?.status === "mismatch") issues.push(`题名与数据库记录不符，数据库题名为《${rec.title}》`);
-  if (!ref.doi && rec.doi) notes.push(`建议补充 DOI：${rec.doi}`);
+  if (!ref.doi && rec.doi) {
+    notes.push(otherVersion ? `数据库记录的 DOI 为 ${rec.doi}，可能属于另一版本或转载，核对版本后再决定是否补充` : `建议补充 DOI：${rec.doi}`);
+  }
 
   const common = {
     ...base(ref, steps),
