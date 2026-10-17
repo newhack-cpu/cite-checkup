@@ -1,0 +1,1170 @@
+{
+ "ranAt": "2026-10-17T04:26:12.990Z",
+ "dataset": "test-2026-10-14",
+ "mode": "rules",
+ "total": 119,
+ "seconds": 89.564,
+ "counts": {
+  "verified": 48,
+  "mismatch": 3,
+  "not_found": 0,
+  "retracted": 0,
+  "concern": 0,
+  "unverifiable": 64,
+  "error": 4
+ },
+ "falseAlarms": 3,
+ "results": [
+  {
+   "id": "T001",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.65109/xald3176",
+    "title": "Exploration of Indoor Environments through Predicting the Layout of Partially Observed Rooms",
+    "year": 2021,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T002",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1109/ecmr.2015.7324214",
+    "title": "OLT: A Toolkit for Object Labeling applied to robotic RGB-D datasets",
+    "year": 2015,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T003",
+   "verdict": "unverifiable",
+   "summary": "标准类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "standard"
+  },
+  {
+   "id": "T004",
+   "verdict": "unverifiable",
+   "summary": "标准类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "standard"
+  },
+  {
+   "id": "T005",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "T006",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "T007",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "T008",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "book",
+   "match": {
+    "doi": "10.1007/978-981-10-0376-9_29",
+    "title": "Influence of Water Content on Total Strain of Super High-Strength Concrete Under Elevated Temperature",
+    "year": 2016,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T009",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "T010",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1109/cvpr.2016.90",
+    "title": "Deep Residual Learning for Image Recognition",
+    "year": 2016,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T011",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1109/cvpr42600.2020.00034",
+    "title": "A Self-supervised Approach for Adversarial Robustness",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T012",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "web",
+   "match": {
+    "doi": "10.1057/978-1-349-96053-8_6121",
+    "title": "National Library of Medicine (NLM)",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T013",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.5951/mathteaceduc.7.2.0007",
+    "title": "Engaging Teachers in the Powerful Combination of Mathematical Modeling and Social Justice: The Flint Water Task",
+    "year": 2019,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T014",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1108/978-1-61735-161-7",
+    "title": "Language and Mathematics Education",
+    "year": 2010,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T015",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1080/09654313.2019.1705765",
+    "title": "Locational challenges and opportunities for SMEs in border regions",
+    "year": 2019,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T016",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1080/00472778.2021.1955123",
+    "title": "A systematic literature review on SME financing: Trends and future directions",
+    "year": 2021,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T017",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "T018",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1002/jssc.200301608",
+    "title": "Investigating the history of prehistoric glues by gas chromatography–mass spectrometry",
+    "year": 2004,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T019",
+   "verdict": "mismatch",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "年份不符：引用写 2013，数据库记录为 2010"
+   ],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1016/s1665-2681(19)31691-6",
+    "title": "Liver involvement in severe human influenza A H1N1",
+    "year": 2010,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T020",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.3389/fimmu.2018.01581",
+    "title": "Influenza A Virus Cell Entry, Replication, Virion Assembly and Movement",
+    "year": 2018,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T021",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1016/j.cancergen.2018.11.002",
+    "title": "Novel rearrangements involving the RET gene in papillary thyroid carcinoma",
+    "year": 2019,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T022",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.3389/fendo.2023.1283397",
+    "title": "Editorial: Recent advances in papillary thyroid carcinoma: diagnosis and predictive factors",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T023",
+   "verdict": "mismatch",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "引用中的 DOI 10.32604/csse.2022.020183 并不存在，正确 DOI 应为 10.32604/csse.2022.020023"
+   ],
+   "kind": "journal",
+   "match": {
+    "doi": "10.32604/csse.2022.020023",
+    "title": "Consensus-Based Ensemble Model for Arabic Cyberbullying Detection",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T024",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1145/2396761.2398658",
+    "title": "Language processing for arabic microblog retrieval",
+    "year": 2012,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T025",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1145/3569009.3572798",
+    "title": "LIGHT TISSUE: Development of cellulose-based optical textile sensors",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T026",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1109/iros55552.2023.10341754",
+    "title": "Soft Optical Sensor and Haptic Feedback System for Remote and Robot-Assisted Palpation",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T027",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1145/3133956.3134015",
+    "title": "DeepLog",
+    "year": 2017,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T028",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "conference"
+  },
+  {
+   "id": "T029",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "T030",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "T031",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "T032",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "T033",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1145/3623509.3635262",
+    "title": "Chitosan Biofilm Actuators: Humidity Responsive Materials for Sustainable Interaction Design",
+    "year": 2024,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T034",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1109/iwasi66786.2025.11121968",
+    "title": "Nanocarbon Conductive Ink from Food Waste for Printed Resistive Loads",
+    "year": 2025,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T035",
+   "verdict": "error",
+   "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+   "issues": [
+    "api.crossref.org 返回 429"
+   ],
+   "kind": "unknown"
+  },
+  {
+   "id": "T036",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.3389/ftox.2023.1189303",
+    "title": "New approach methods to improve human health risk assessment of thyroid hormone system disruption–a PARC project",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T037",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1109/icasi.2018.8394455",
+    "title": "Blockchain and smart contract for digital certificate",
+    "year": 2018,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T038",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1109/icit48102.2019.00049",
+    "title": "ProveDoc: A Blockchain Based Proof of Existence with Proof of Storage",
+    "year": 2019,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T039",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "T040",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "T041",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "T042",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1016/j.jcrs.2007.02.032",
+    "title": "Prophylaxis of postoperative endophthalmitis following cataract surgery: Results of the ESCRS multicenter study and identification of risk factors",
+    "year": 2007,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T043",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "T044",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：OpenAlex）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "title": "Benefits of Legislating Cryptocurrencies: Perception of Nigerian Professional Accountants",
+    "year": 2018,
+    "source": "openalex"
+   }
+  },
+  {
+   "id": "T045",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "T046",
+   "verdict": "unverifiable",
+   "summary": "引用的期刊在该年份不在开放数据库收录范围内，查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "T047",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "T048",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "T049",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1038/s41598-018-36915-x",
+    "title": "Towards a Fishing Pressure Prediction System for a Western Pacific EEZ",
+    "year": 2019,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T050",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "T051",
+   "verdict": "error",
+   "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+   "issues": [
+    "api.crossref.org 返回 429"
+   ],
+   "kind": "journal"
+  },
+  {
+   "id": "T052",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/jcm12227154",
+    "title": "Non-Invasive Cardiac Output Measurement Using Inert Gas Rebreathing Method during Cardiopulmonary Exercise Testing—A Systematic Review",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T053",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/ma17246305",
+    "title": "Unit Load of Abrasive Grains in the Machining Zone During Microfinishing with Abrasive Films",
+    "year": 2024,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T054",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/ma13112458",
+    "title": "Research on Deterministic Figuring of Ultra-Precision Shaft Parts Based on Analysis and Control of Figuring Ability",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T055",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/plants11020205",
+    "title": "Try or Die: Dynamics of Plant Respiration and How to Survive Low Oxygen Conditions",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T056",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3389/fendo.2022.663625",
+    "title": "Hypoxia Induces Saturated Fatty Acids Accumulation and Reduces Unsaturated Fatty Acids Independently of Reverse Tricarboxylic Acid Cycle in L6 Myotubes",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T057",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "conference"
+  },
+  {
+   "id": "T058",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1109/pvsc.2012.6317715",
+    "title": "Electrothermal heating process applied to c-Si PV recycling",
+    "year": 2012,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T059",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "T060",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "T061",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "T062",
+   "verdict": "error",
+   "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+   "issues": [
+    "api.crossref.org 返回 429"
+   ],
+   "kind": "unknown"
+  },
+  {
+   "id": "T063",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.31234/osf.io/qnphf",
+    "title": "Diversity promotes abstraction and cognitive flexibility in collective problem solving",
+    "year": 2021,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T064",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：OpenAlex）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "title": "Creativity in Higher Education: The use of Creative Cognition in Studying",
+    "year": 2016,
+    "source": "openalex"
+   }
+  },
+  {
+   "id": "T065",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "T066",
+   "verdict": "unverifiable",
+   "summary": "引文只写了名称，没有作者、年份或 DOI，信息不足以核验，请补全后再查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "T067",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1016/s0300-9629(96)00464-1",
+    "title": "Gastric Na+K+ATPase activity and intestinal urea hydrolysis of the common vampire bat, Desmodus rotundus",
+    "year": 1997,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T068",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "T069",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "T070",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "T071",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：DOI 注册机构）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.24433/co.1015433.v1",
+    "title": "Orbit Fitting (Transit + Radial Velocity + Rossiter-McLaughlin)",
+    "year": 2024,
+    "source": "doi-csl"
+   }
+  },
+  {
+   "id": "T072",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "book",
+   "match": {
+    "doi": "10.1007/978-0-387-74904-4_4",
+    "title": "On the Role of CNTF as a Pontential Therapy for Retinal Degeneration: Dr. Jekyll or Mr. Hyde?",
+    "year": 2008,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T073",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "book",
+   "match": {
+    "doi": "10.1007/978-1-4939-9752-7_10",
+    "title": "Molegro Virtual Docker for Docking",
+    "year": 2019,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T074",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "T075",
+   "verdict": "unverifiable",
+   "summary": "会议报告 / 海报类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "presentation"
+  },
+  {
+   "id": "T076",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1109/embc.2016.7591736",
+    "title": "EEG analysis via multiscale Lempel-Ziv complexity for seizure detection",
+    "year": 2016,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T077",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "web",
+   "match": {
+    "doi": "10.32942/x21m1h",
+    "title": "Mapping the landscape of live baitfish regulations for aquatic invasive species prevention in the United States",
+    "year": 2025,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T078",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "T079",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "T080",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "T081",
+   "verdict": "mismatch",
+   "summary": "文献存在，但有 2 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "作者与数据库记录不符，数据库作者为 Smeitink J, Jiang X, Pecheritsyna S, Renkema H, van Maanen R, Beyrath J",
+    "年份不符：引用写 2023，数据库记录为 2020"
+   ],
+   "kind": "journal",
+   "match": {
+    "doi": "10.20944/preprints202004.0180.v1",
+    "title": "Hypothesis: mPGES-1-Derived Prostaglandin E2, a So Far Missing Link in COVID-19 Pathophysiology?",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T082",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "T083",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "T084",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "T085",
+   "verdict": "unverifiable",
+   "summary": "软件 / 数据集类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "software"
+  },
+  {
+   "id": "T086",
+   "verdict": "unverifiable",
+   "summary": "软件 / 数据集类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "software"
+  },
+  {
+   "id": "T087",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "T088",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "T089",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "T090",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：DOI 注册机构）；撤稿状态交叉核验未完成",
+   "issues": [],
+   "kind": "preprint",
+   "match": {
+    "doi": "10.48550/arxiv.2405.19276",
+    "title": "A Recipe for Charge Density Prediction",
+    "year": 2024,
+    "source": "doi-csl"
+   }
+  },
+  {
+   "id": "T091",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "book",
+   "match": {
+    "doi": "10.1201/9781315140919",
+    "title": "Density Estimation for Statistics and Data Analysis",
+    "year": 2018,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T092",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1002/9781118696781.ch6",
+    "title": "Sedatives and Tranquilizers",
+    "year": 2016,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T093",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "T094",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "thesis",
+   "match": {
+    "doi": "10.58837/chula.the.2024.433",
+    "title": "Development of janus membrane from electrospun nanofiber for membrane distillation processes",
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T095",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "T096",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1360/zd-2015-45-7-982",
+    "title": "黄河流域硅的组成与输出",
+    "year": 2015,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T097",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "T098",
+   "verdict": "unverifiable",
+   "summary": "DOI 已注册，但注册机构不提供可比对的元数据，请人工核对",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "T099",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "T100",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "T101",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "T102",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1360/sste-2021-0197",
+    "title": "中国陆地生态系统碳汇估算<bold>: </bold>方法<bold>、</bold>进展<bold>、</bold>展望",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T103",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1360/sste-2022-0011",
+    "title": "试论陆地生态系统碳汇在<bold>&ldquo;</bold>碳中和<bold>&rdquo;</bold>目标中的作用",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T104",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "T105",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "T106",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "T107",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "conference"
+  },
+  {
+   "id": "T108",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "T109",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "T110",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "T111",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "T112",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "T113",
+   "verdict": "error",
+   "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+   "issues": [
+    "api.crossref.org 返回 429"
+   ],
+   "kind": "thesis"
+  },
+  {
+   "id": "T114",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "T115",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "T116",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "T117",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3799/dqkx.2022.419",
+    "title": "机器学习在滑坡智能防灾减灾中的应用与发展趋势",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "T118",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "T119",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  }
+ ]
+}

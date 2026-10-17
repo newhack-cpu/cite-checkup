@@ -1,0 +1,1055 @@
+{
+ "ranAt": "2026-10-17T04:23:10.011Z",
+ "dataset": "dev-2026-10-14",
+ "mode": "rules",
+ "total": 108,
+ "seconds": 69.51,
+ "counts": {
+  "verified": 45,
+  "mismatch": 1,
+  "not_found": 0,
+  "retracted": 0,
+  "concern": 0,
+  "unverifiable": 61,
+  "error": 1
+ },
+ "falseAlarms": 0,
+ "results": [
+  {
+   "id": "D001",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "D002",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1002/9780470385036.ch1c",
+    "title": "Sensory Evaluation by Quantitative Descriptive Analysis",
+    "year": 2004,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D003",
+   "verdict": "unverifiable",
+   "summary": "法律法规类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "legal"
+  },
+  {
+   "id": "D004",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/foods10030511",
+    "title": "The Composition, Physicochemical Properties, Antioxidant Activity, and Sensory Properties of Estonian Honeys",
+    "year": 2021,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D005",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.46327/msrjg.1.000000000000207",
+    "title": "KRAS/NRAS Mutational Analysis and Clinicopathologic Correlation of Colorectal Carcinoma: A Single Institute Experience From Turkey",
+    "year": 2021,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D006",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1111/his.14211",
+    "title": "Intraepithelial tumour infiltrating lymphocytes are associated with absence of tumour budding and immature/myxoid desmoplastic reaction, and with better recurrence‐free survival in stages I–III colorectal cancer",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D007",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3389/fonc.2021.738080",
+    "title": "Impact of Tumor–Stroma Ratio on the Prognosis of Colorectal Cancer: A Systematic Review",
+    "year": 2021,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D008",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "D009",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1038/ismej.2012.6",
+    "title": "Microbes inside—from diversity to function: the case of Akkermansia",
+    "year": 2012,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D010",
+   "verdict": "unverifiable",
+   "summary": "DOI 已注册，但注册机构不提供可比对的元数据，请人工核对",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D011",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1016/j.carbpol.2021.118830",
+    "title": "Dietary κ-carrageenan facilitates gut microbiota-mediated intestinal inflammation",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D012",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "D013",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "D014",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.3390/wef-06923",
+    "title": "Exergy Analysis of Waste Incineration Plant: Flue Gas Recirculation and Process Optimization",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D015",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "D016",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "D017",
+   "verdict": "unverifiable",
+   "summary": "标准类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "standard"
+  },
+  {
+   "id": "D018",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "D019",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1016/j.jmapro.2017.03.014",
+    "title": "Single point incremental forming: An assessment of the progress and technology trends from 2005 to 2015",
+    "year": 2017,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D020",
+   "verdict": "mismatch",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "引用中有作者姓名与数据库记录不符，数据库作者为 Kubit A, Al-Sabur R, Gradzik A, Ochał K, Slota J, Korzeniowski M"
+   ],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.3390/ma15228252",
+    "title": "Investigating Residual Stresses in Metal-Plastic Composites Stiffening Ribs Formed Using the Single Point Incremental Forming Method",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D021",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1016/j.msea.2010.03.088",
+    "title": "Tensile behavior of polycarbonate over a wide range of strain rates",
+    "year": 2010,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D022",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1177/000313481408001206",
+    "title": "Harmonic Focus Compared with Classic Hemostasis during Total Parathyroidectomy in Secondary Hyperparathyroidism: A Prospective Randomized Trial",
+    "year": 2014,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D023",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.5114/wiitm.2023.132439",
+    "title": "Endoscopic parathyroidectomy versus open parathyroidectomy for patients with refractory secondary hyperparathyroidism: a meta-analysis.",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D024",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.4174/astr.2026.110.3.149",
+    "title": "Hungry bone syndrome after parathyroidectomy in secondary and tertiary hyperparathyroidism: a retrospective cohort study",
+    "year": 2026,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D025",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.7759/cureus.77202",
+    "title": "Perioperative Management of a Case of Trousseau Syndrome Accompanied by Aortic Valve Vegetation",
+    "year": 2025,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D026",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：OpenAlex）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.26153/tsw/15113",
+    "title": "Comparison of Density of Stainless Steel 316L Parts Produced with Selective Laser Melting using Different Powder Grades",
+    "year": 2009,
+    "source": "openalex"
+   }
+  },
+  {
+   "id": "D027",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/app11020771",
+    "title": "Functionally Graded AISI 316L and AISI H13 Manufactured by L-DED for Die and Mould Applications",
+    "year": 2021,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D028",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1002/advs.202001379",
+    "title": "Extrusion 3D Printing of Polymeric Materials with Advanced Properties",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D029",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1038/s41433-025-04093-6",
+    "title": "Systemic prostacyclin analogues in pulmonary hypertension are associated with reduced risk of age-related macular degeneration: a cohort study",
+    "year": 2025,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D030",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "book",
+   "match": {
+    "doi": "10.1007/978-3-030-00871-0",
+    "title": "Cotton Fiber: Physics, Chemistry and Biology",
+    "year": 2018,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D031",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1007/s40097-018-0275-4",
+    "title": "Preventing the collapse of 3D bacterial cellulose network via citric acid",
+    "year": 2018,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D032",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1080/15440478.2020.1848738",
+    "title": "Chemical Composition and Mechanical Properties of Natural Fibers",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D033",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1007/s00134-023-07210-9",
+    "title": "European Network for ICU-Related Respiratory Infections (ENIRRIs): a multinational, prospective, cohort study of nosocomial LRTI",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D034",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1086/653049",
+    "title": "Treatment Guidelines and Outcomes of Hospital‐Acquired and Ventilator‐Associated Pneumonia",
+    "year": 2010,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D035",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1007/s00134-023-07109-5",
+    "title": "Relationship between COVID-19 and ICU-acquired colonization and infection related to multidrug-resistant bacteria: a prospective multicenter before-after study",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D036",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1016/j.inffus.2020.01.008",
+    "title": "Feature-level fusion approaches based on multimodal EEG data for depression recognition",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D037",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "D038",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "D039",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D040",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1016/j.electacta.2022.141730",
+    "title": "Sodium storage behavior and long cycle stability of boron-doped carbon nanofibers for sodium-ion battery anodes",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D041",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "D042",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "D043",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "D044",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "D045",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "D046",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "D047",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "preprint",
+   "match": {
+    "doi": "10.1101/2024.12.20.629800",
+    "title": "Spanning spatial scales with functional imaging in the human brain; initial experiences at 10.5 Tesla",
+    "year": 2024,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D048",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：DOI 注册机构）；撤稿状态交叉核验未完成",
+   "issues": [],
+   "kind": "software",
+   "match": {
+    "doi": "10.5281/zenodo.15271272",
+    "title": "SDCflows: Susceptibility Distortion Correction workFLOWS.",
+    "year": 2025,
+    "source": "doi-csl"
+   }
+  },
+  {
+   "id": "D049",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：DOI 注册机构）；撤稿状态交叉核验未完成",
+   "issues": [],
+   "kind": "software",
+   "match": {
+    "doi": "10.5281/zenodo.14532379",
+    "title": "sMRIPrep: Structural MRI PREProcessing workflows",
+    "year": 2024,
+    "source": "doi-csl"
+   }
+  },
+  {
+   "id": "D050",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "D051",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "D052",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "D053",
+   "verdict": "unverifiable",
+   "summary": "软件 / 数据集类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "software"
+  },
+  {
+   "id": "D054",
+   "verdict": "unverifiable",
+   "summary": "法律法规类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "legal"
+  },
+  {
+   "id": "D055",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/antibiotics12030602",
+    "title": "Antimicrobial Defined Daily Dose in Neonatal Population: Validation in the Clinical Practice",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D056",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "D057",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3389/fitd.2022.1050344",
+    "title": "Impact of antimicrobial stewardship interventions on days of therapy and guideline adherence: A comparative point-prevalence survey assessment",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D058",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3389/fbioe.2020.00236",
+    "title": "Two-Dimensional Transition Metal Dichalcogenides: Synthesis, Biomedical Applications and Biosafety Evaluation",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D059",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1002/smll.202400278",
+    "title": "Smart Energy Storage: W 18 O 49 NW/Ti 3 C 2 T x Composite‐Enabled All Solid State Flexible Electrochromic Supercapacitors",
+    "year": 2024,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D060",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3389/fimmu.2023.1277734",
+    "title": "Dupilumab and the potential risk of eosinophilic pneumonia: case report, literature review, and FAERS database analysis",
+    "year": 2024,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D061",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/polym14173498",
+    "title": "Dual-Functional Monomer MIPs and Their Comparison to Mono-Functional Monomer MIPs for SPE and as Sensors",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D062",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/app9122409",
+    "title": "Chitosan Nanocomposite Coatings for Food, Paints, and Water Treatment Applications",
+    "year": 2019,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D063",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/cells11193048",
+    "title": "Provisional Matrix Formation at Implant Surfaces—The Bridging Role of Calcium Ions",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D064",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/ma15020511",
+    "title": "Comparison between Early Loaded Single Implants with Internal Conical Connection or Implants with Transmucosal Neck Design: A Non-Randomized Controlled Trial with 1-Year Clinical, Aesthetics, and Radiographic Evaluation",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D065",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/biomedicines10050943",
+    "title": "Osseointegration of a New, Ultrahydrophilic and Nanostructured Dental Implant Surface: A Comparative In Vivo Study",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D066",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "D067",
+   "verdict": "unverifiable",
+   "summary": "引用的期刊在该年份不在开放数据库收录范围内，查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "D068",
+   "verdict": "unverifiable",
+   "summary": "标准类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "standard"
+  },
+  {
+   "id": "D069",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/bioengineering12030276",
+    "title": "Wearable Soft Robots: Case Study of Using Shape Memory Alloys in Rehabilitation",
+    "year": 2025,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D070",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/act10010006",
+    "title": "A Soft 3D-Printed Robotic Hand Actuated by Coiled SMA",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D071",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "D072",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/ijms17010124",
+    "title": "Molecular Regulation of Adipogenesis and Potential Anti-Adipogenic Bioactive Molecules",
+    "year": 2016,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D073",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D074",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "D075",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D076",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1360/tb-2022-0837",
+    "title": "The accuracy measurement of carrier mobility of cubic boron arsenide",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D077",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3788/lop54.030002",
+    "title": "Research Progress in Ultrafast Dynamics of Plasmonic Hot Electrons",
+    "year": 2017,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D078",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D079",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D080",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "D081",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D082",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D083",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D084",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1360/zd2010-40-6-768",
+    "title": "中国1990和2000基准年湿地变化遥感",
+    "year": 2010,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "D085",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D086",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D087",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D088",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D089",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D090",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "D091",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D092",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D093",
+   "verdict": "error",
+   "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+   "issues": [
+    "api.crossref.org 返回 429"
+   ],
+   "kind": "journal"
+  },
+  {
+   "id": "D094",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D095",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D096",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D097",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D098",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "D099",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D100",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D101",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "D102",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D103",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D104",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D105",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D106",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D107",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "D108",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  }
+ ]
+}

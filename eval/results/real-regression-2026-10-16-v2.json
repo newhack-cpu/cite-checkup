@@ -1,0 +1,179 @@
+{
+ "comparedAt": "2026-10-16",
+ "rules": "b4dd66d（修复 10-16 盲测集复核出的五类误报）",
+ "method": "dev、test 用 b4dd66d 的规则各全量运行一次（pnpm eval:real，OpenAlex 题名检索按条数给足），自建 29 条样例用 pnpm eval 运行一次，与 real-regression-2026-10-16.json 记录的 10-16 结果按条目编号逐条比较结论、摘要、问题、匹配 DOI 和文献类型（自建样例另比较提示）。改规则前，先用当时的代码把 blind-2026-10-16、dev、test、自建样例各跑一遍并录下全部数据库应答，改完后回放比较（只有改动后新发出的请求才联网），见 replayCheck。",
+ "network": "本机直连 api.crossref.org、api.openalex.org 超时，三项评测都设置 NODE_USE_ENV_PROXY=1 走 HTTPS_PROXY 代理；只影响连通，不影响核验逻辑",
+ "order": "三项评测依次运行，相互间隔 90 秒：dev 21:22–21:23、test 21:24–21:26、自建样例 21:27–21:28（本机时间，UTC-7）",
+ "openalex": "用单条 DOI 查询（不计费）读代理出口的剩余额度：dev 前 0.100、dev 后 0.098、test 后 0.095、自建样例后 0.089 美元，即 dev 约 2、test 约 3、自建样例约 6 次题名检索",
+ "curated": {
+  "old": "eval/results/curated-2026-10-16.json",
+  "new": "eval/results/curated-2026-10-16-v2.json",
+  "result": "29/29；编造 7/7；真实文献误判“不存在” 0/15",
+  "differences": 0,
+  "note": "29 条的结论、摘要、问题、提示和匹配 DOI 与 10-16 完全一致"
+ },
+ "dev": {
+  "old": "eval/results/real-dev-2026-10-16-rules.json",
+  "oldRanAt": "2026-10-17T00:07:48.574Z",
+  "new": "eval/results/real-dev-2026-10-16-v2-rules.json",
+  "newRanAt": "2026-10-17T04:23:10.011Z",
+  "oldCounts": {
+   "verified": 44,
+   "mismatch": 1,
+   "not_found": 0,
+   "retracted": 0,
+   "concern": 0,
+   "unverifiable": 61,
+   "error": 2
+  },
+  "newCounts": {
+   "verified": 45,
+   "mismatch": 1,
+   "not_found": 0,
+   "retracted": 0,
+   "concern": 0,
+   "unverifiable": 61,
+   "error": 1
+  },
+  "oldFalseAlarmsByScript": 0,
+  "newFalseAlarmsByScript": 0,
+  "verdictChanged": 3,
+  "detailOnly": 0,
+  "transitions": {
+   "error → verified": 1,
+   "error → unverifiable": 1,
+   "unverifiable → error": 1
+  },
+  "changes": [
+   {
+    "id": "D065",
+    "old": "error",
+    "new": "verified",
+    "note": "10-16 那次 Crossref 429，本次正常（已核实）"
+   },
+   {
+    "id": "D071",
+    "old": "error",
+    "new": "unverifiable",
+    "note": "10-16 那次 Crossref 429，本次正常（网页，无法核验）"
+   },
+   {
+    "id": "D093",
+    "old": "unverifiable",
+    "new": "error",
+    "note": "本次 Crossref 429；回放中改动前后都是无法核验（中文）"
+   }
+  ],
+  "summary": "自动统计误报仍为 0，D020 仍按标注判为信息有误（引文第一作者不在记录中）。结论变化 3 条，都是 Crossref 429 的进出，没有规则引起的变化。"
+ },
+ "test": {
+  "old": "eval/results/real-test-2026-10-16-rules.json",
+  "oldRanAt": "2026-10-17T00:10:06.734Z",
+  "new": "eval/results/real-test-2026-10-16-v2-rules.json",
+  "newRanAt": "2026-10-17T04:26:12.990Z",
+  "oldCounts": {
+   "verified": 46,
+   "mismatch": 3,
+   "not_found": 0,
+   "retracted": 0,
+   "concern": 0,
+   "unverifiable": 64,
+   "error": 6
+  },
+  "newCounts": {
+   "verified": 48,
+   "mismatch": 3,
+   "not_found": 0,
+   "retracted": 0,
+   "concern": 0,
+   "unverifiable": 64,
+   "error": 4
+  },
+  "oldFalseAlarmsByScript": 3,
+  "newFalseAlarmsByScript": 3,
+  "verdictChanged": 8,
+  "detailOnly": 0,
+  "transitions": {
+   "verified → error": 1,
+   "error → verified": 3,
+   "unverifiable → error": 2,
+   "error → unverifiable": 2
+  },
+  "changes": [
+   {
+    "id": "T035",
+    "old": "verified",
+    "new": "error",
+    "note": "本次 Crossref 429；回放中改动前后都是已核实"
+   },
+   {
+    "id": "T037",
+    "old": "error",
+    "new": "verified",
+    "note": "10-16 那次 Crossref 429，本次正常（已核实）"
+   },
+   {
+    "id": "T054",
+    "old": "error",
+    "new": "verified",
+    "note": "10-16 那次 Crossref 429，本次正常（已核实）"
+   },
+   {
+    "id": "T062",
+    "old": "unverifiable",
+    "new": "error",
+    "note": "本次 Crossref 429；回放中改动前后都是无法核验"
+   },
+   {
+    "id": "T064",
+    "old": "error",
+    "new": "verified",
+    "note": "10-16 那次 Crossref 429，本次正常（OpenAlex 已核实）"
+   },
+   {
+    "id": "T087",
+    "old": "error",
+    "new": "unverifiable",
+    "note": "10-16 那次 Crossref 429，本次正常（网页，无法核验）"
+   },
+   {
+    "id": "T101",
+    "old": "error",
+    "new": "unverifiable",
+    "note": "10-16 那次 Crossref 429，本次正常（中文，无法核验）"
+   },
+   {
+    "id": "T113",
+    "old": "unverifiable",
+    "new": "error",
+    "note": "本次 Crossref 429；回放中改动前后都是无法核验（学位论文）"
+   }
+  ],
+  "adjudicated": {
+   "flaggedByScript": 3,
+   "flagged": [
+    "T019",
+    "T023",
+    "T081"
+   ],
+   "trueErrors": 3,
+   "falseAlarms": 0,
+   "falseAlarmRate": "0.0%",
+   "errors": 4,
+   "errorCauses": [
+    "api.crossref.org 返回 429"
+   ],
+   "basis": "标出的条目与 eval/results/real-test-2026-10-15-adjudication.json 中判为 true_error 的 T019、T023、T081 相同，问题描述与 10-16 一致"
+  },
+  "summary": "仍只标出 3 条真实错误，复核后误报 0。结论变化 8 条，都是 Crossref 429 的进出（10-16 那次出错 6 条，本次 4 条）。"
+ },
+ "replayCheck": {
+  "what": "改规则前用当时的代码（64b4832）录下 blind-2026-10-16、dev、test、自建样例的全部数据库应答，改完后用同一批应答回放，逐条比较结论、摘要、问题、提示、类型、题名 / 作者 / 刊名猜测和匹配记录",
+  "blind-2026-10-16": "录制时标出 12 条（10 条复核误报 + B030 + 无法确认的 B077）；B030 在问号修复后不再出错，变成“疑似不存在”，是修复后暴露的新误报。回放后只剩 B077：B003、B030、B054、B056、B081 改为无法核验，B011、B015、B027、B074、B080、B084 改为已核实；另有 B010 的题名在 “, in:” 处截断（结论不变）",
+  "dev": "除 1 条 Crossref 429 恢复外，108 条完全一致",
+  "test": "除 1 条网络错误恢复外，结论都不变；T008 的题名不再带 “, in: K”，T091（Silverman 1986 的图书，记录是 2018 年重印）的提示改为“可能属于另一版本或转载”，不再直接建议补充重印本的 DOI",
+  "curated": "29/29，结论不变",
+  "errorsInFormalRun": "正式运行中因 429 出错的 D093、T035、T062、T113 四条，回放中改动前后结论相同（T035 已核实，其余三条无法核验）"
+ },
+ "parseCheck": "HEAD 与改动后的 extract.ts 对仓库中 447 条引文原文逐条比较类型、题名、作者段、刊名、年份和 DOI：10 条变化，9 条是 blind-2026-10-16 与 test 中的题名、类型修正（B003、B010、B011、B030、B056、B074、B080、B081、T008），1 条是新加的测试样例（E. coli），逐条检查都是改进"
+}

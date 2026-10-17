@@ -1,0 +1,1119 @@
+{
+ "name": "blind-2026-10-16b",
+ "description": "盲测集：与 dev、test 来自不同论文和不同的出版社组合；抽样后、规则定稿前不查看条目，只运行一次",
+ "createdAt": "2026-10-17T04:29:02.679Z",
+ "method": "Crossref /works?filter=member 或 prefix,has-references:true,from-pub-date:2023-01-01,type:journal-article&sample=40，按出版社各抽若干篇已发表论文（排除已有集合用过的源论文），每篇随机取至多 2 条 unstructured 原文。所有条目都出自已发表论文，视为真实存在的文献。",
+ "cases": [
+  {
+   "id": "B001",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.eswa.2025.128407",
+   "raw": "Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., Dehghani, M., Minderer, M., Heigold, G., Gelly, S. et al. (2020). An image is worth 16x16 words: Transformers for image recognition at scale. arXiv preprint arXiv:2010.11929.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B002",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.eswa.2025.128407",
+   "raw": "Xu, J., Li, H., Liang, Z., Zhang, D., & Zhang, L. (2018). Real-world noisy image denoising: A new benchmark. arXiv preprint arXiv:1804.026030.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B003",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.ces.2025.121893",
+   "raw": "Das, S., Gagandeep, Bhatia, R., 2022. Paper-based microfluidic devices: Fabrication, detection, and significant applications in various fields. Rev. Anal. Chem. 41, 112–136.",
+   "assertedDoi": "10.1515/revac-2022-0037",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B004",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.ces.2025.121893",
+   "raw": "Tandey, K., Shrivas, K., Sharma, A., Kant, T., Tejwani, A., Tikeshwari, Kanti Deb, M., Pervez, S., Ghosh, K.K., 2024. Nanomaterial-enabled portable paper-based colorimetric and fluorometric devices: Progress in point-of-care diagnosis. Coord. Chem. Rev.514, 215919.",
+   "assertedDoi": "10.1016/j.ccr.2024.215919",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B005",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.jhazmat.2023.132980",
+   "raw": "Hamelink, J., Landrum, P.F., Bergman, H., Benson, W.H., 1994. Bioavailability: physical, chemical, and biological interactions, CRC press.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B006",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.jhazmat.2023.132980",
+   "raw": "China National Environmental Monitoring Centre, 1990. China Soil Element Background Value.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B007",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.jhydrol.2023.129236",
+   "raw": "Zhao, R. J., Zuang, Y., Fang, L., Liu, X., Zhang, Q., 1980. The Xinanjiang model. Hydrological Forecasting Proceedings Oxford Symposium, IASH (129), 351–356.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B008",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.jhydrol.2023.129236",
+   "raw": "Gu, L., Chen, J., Yin, J., Xu, C. Y., Zhou, J., 2020a. Responses of precipitation and runoff to climate warming and implications for future drought changes in China. Earth's Future, 8(10), e2020EF001718.",
+   "assertedDoi": "10.1029/2020EF001718",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B009",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.apmrv.2023.04.001",
+   "raw": "Administrativa Especial de Macau (Imprensa Official of Governo da Região Administrativa Especial de Macau). https://www.io.gov.mo/cn/entities/assoc. Searched on 2021/7/26.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B010",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.matpr.2021.06.188",
+   "raw": "Vani yeri, Dr. Shubhangi DC, “IoT based Real Time Health Monitoring” in: Proceedings of the Second International Conference on Inventive Research in Computing Applications (ICIRCA-2020).",
+   "assertedDoi": "10.1109/ICIRCA48905.2020.9183194",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B011",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.matpr.2021.06.188",
+   "raw": "Md. Raseduzzaman Ruman, Amit Barua, Waladur Rahman, “IoT based Emergency Health Monitoring System” 2020 International Conference on Industry 4.0 Technology(14Tech).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B012",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.conbuildmat.2026.145764",
+   "raw": "Z. Wang, Integrated computational and experimental evaluation of electromagnetic energy-induced self-healing performance of bituminous composites, Ph.D. Dissertation, Michigan Technological University, USA, 2016.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B013",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1038/s41524-025-01570-0",
+   "raw": "Liu, Z., Ozeki, M., Asai, S., Itoh, S. & Masuda, T. Chiral split magnon in altermagnetic MnTe. Phys. Rev. Lett. 133, 156702 (2024).",
+   "assertedDoi": "10.1103/PhysRevLett.133.156702",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B014",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1038/s41524-025-01570-0",
+   "raw": "dos Santos, F. et al. Comparative study of magnetic-exchange parameters and magnon dispersions in NiO and MnO using first-principles methods, in preparation (2025).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B015",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s13193-023-01797-7",
+   "raw": "Rali P, O'Corragain O, Oresanya L et al (2021) Incidence of venous thromboembolism in coronavirus disease 2019: an experience from a single large academic center [published correction appears in J Vasc Surg Venous Lymphat Disord. 2022 May;10(3):799]. J Vasc Surg Venous Lymphat Disord 9(3):585–591.e2. https://doi.org/10.1016/j.jvsv.2020.09.006",
+   "assertedDoi": "10.1016/j.jvsv.2020.09.006",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B016",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s13193-023-01797-7",
+   "raw": "Al-Shamsi HO, Alhazzani W, Alhuraiji A et al (2020) A practical approach to the management of cancer patients during the novel coronavirus disease 2019 (COVID-19) pandemic: an International Collaborative Group. Oncologist 25(6):e936–e945. https://doi.org/10.1634/theoncologist.2020-0213",
+   "assertedDoi": "10.1634/theoncologist.2020-0213",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B017",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1038/s43247-025-02476-x",
+   "raw": "Gruber, A. et al. Validation practices for satellite soil moisture retrievals: What are (the) errors?. Remote Sens. Environ. 244, 111806 (2020).",
+   "assertedDoi": "10.1016/j.rse.2020.111806",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B018",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1038/s43247-025-02476-x",
+   "raw": "Xiao, J., Sun, F., Wang, T. & Wang, H. Estimation and validation of high-resolution evapotranspiration products for an arid river basin using multi-source remote sensing data. Agric. Water Manag. 298, 108864 (2024).",
+   "assertedDoi": "10.1016/j.agwat.2024.108864",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B019",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s00259-023-06453-4",
+   "raw": "Lewis P, Williams H, Pelopidas, Aghlani S. Too close for comfort, cases of near nuclear use and options for policy. Chatham House Report. 2014. https://www.chathamhouse.org/2014/04/too-close-comfort-cases-near-nuclear-use-and-options-policy (Accessed June 1, 2023).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B020",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s00259-023-06453-4",
+   "raw": "UN Office for Disarmament Affairs. Treaties database. Treaty on the prohibition of nuclear weapons, status of the treaty. 2023. https://treaties.unoda.org/t/tpnw (Accessed June 1, 2023).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B021",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s44163-026-00866-4",
+   "raw": "Cont R. Empirical properties of asset returns: stylized facts and statistical issues. Quant Finance. 2001;1(2):223–36.",
+   "assertedDoi": "10.1080/713665670",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B022",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s44163-026-00866-4",
+   "raw": "Barredo Arrieta A, et al. Explainable artificial intelligence (XAI): concepts, taxonomies, opportunities and challenges toward responsible AI. Inform Fusion. 2020;58:82–115.",
+   "assertedDoi": "10.1016/j.inffus.2019.12.012",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B023",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s10992-024-09773-4",
+   "raw": "Weyl, H. (1952). Symmetry. Princeton: Princeton University Press.",
+   "assertedDoi": "10.1515/9781400874347",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B024",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s10992-024-09773-4",
+   "raw": "Weatherall, J. (2018). Regarding the ‘Hole Argument’. The British Journal for the Philosophy of Science, 69, 329–350.",
+   "assertedDoi": "10.1093/bjps/axw012",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B025",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/nph.19146",
+   "raw": "TomizonoS.2013.Boxplot dbl: double box plot for two‐axes correlation. [WWW document] URLhttps://tomizonor.wordpress.com/2013/03/15/double‐box‐plot/[accessed 15 December 2019].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B026",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/ajo.13716",
+   "raw": "Choice by Choice.Evaluation Report ‐ The Compassionate Reproductive Health Care for Vulnerable People in Tasmania project. January 2023. Available online:https://www.childrenbychoice.org.au/wp‐content/uploads/2023/02/Tassie‐Evaluation‐2022.pdf.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B027",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/ajo.13716",
+   "raw": "Flowers.Late Termination of Pregnancy: An internationally comparative study of public health policy the law and the experiences of providers.2021https://www.sa.gov.au/__data/assets/pdf_file/0004/713290/Late‐Termination‐of‐Pregnancy‐CHS‐Report.pdf.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B028",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/ssm.18386",
+   "raw": "Emenaha Miles U. andJ.Gehrtz. in press.STEM Education and Critical Consciousness.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B029",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/ssm.18386",
+   "raw": "Marco Learning.2019.“Teacher Bias: The Elephant in the Classroom.”Marco Learning.https://marcolearning.com/teacher‐bias‐the‐elephant‐in‐the‐classroom/.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B030",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/tee.23880",
+   "raw": "“California Consumer Privacy Act (CCPA)|State of California – Department of Justice – Office of the Attorney General.”https://oag.ca.gov/privacy/ccpa. Accessed October 06 2022.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B031",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/tee.23880",
+   "raw": "“Hyperscan.io.”https://www.hyperscan.io/. Accessed December 26 2022.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B032",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/col.70077",
+   "raw": "DIN 67530 “Reflektometer Als Hilfsmittel zur Glanzbeurteilung an Ebenen Anstrich‐ und Kunststoffoberflächen (Reflectometer as a Means For Gloss Assessment of Plane Surfaces of Paint Coatings and Plastics) ”1982.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B033",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/col.70077",
+   "raw": "JIS Z 8741 “Method of Measurement for Specular Glossiness ”1997 http://www.jsajis.org/index.php?main_page=product_info&cPath=4&products_id=18566.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B034",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/eat.24187",
+   "raw": "US Food and Drug Administration. (2022).Master Protocols: Efficient Clinical Trial Design Strategies to Expedite Development of Oncology Drugs and Biologics: Guidance for Industry. Accessed: September 19 2023.https://www.fda.gov/regulatory-information/search-fda-guidance-documents/master-protocols-efficient-clinical-trial-design-strategies-expedite-development-oncology-drugs-and",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B035",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/advs.202521015",
+   "raw": "J.Gori “Development of a Prime Edited CD34+ cell Drug Product for the Treatment of P47phox Chronic Granulomatous Disease ” presented at27th ASGCT Annual Meeting Baltimore MD May 2024.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B036",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/advs.202521015",
+   "raw": "A. V.Anzalone “Developing Prime Editors to Treat Repeat Expansion Diseases ” presented atAIChE International Conference on CRISPR Technologies (Houston TX October 2023).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B037",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/10966218261494269",
+   "raw": "34.Furue H, , Niitani H, , Kurihara M, et al. Examination of the usefulness of LFP 83 for cancer pain: A comparative study with pentazocine using the envelope method. Jpn J Clin Exp Med 1989;66:2303–2311.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B038",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/10966218261494269",
+   "raw": "35.Taguchi T, , Ota J, , Yoshino K, et al. Clinical evaluation of LM-001 on cancer pain-Multicenter double-blind comparative study with pentazocine injection. Ther Res 1988;9:1033–1046.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B039",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/10451595241245146",
+   "raw": "Park S., Takahashi S. (2013). 90-day cycle handbook. Carnegie Foundation for the Advancement of Teaching. https://www.carnegiefoundation.org/wp-content/uploads/2014/09/90DC_Handbook_external_10_8.pdf",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B040",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/10451595241245146",
+   "raw": "Knowles M. S. (1988). The modern practice of adult education: From pedagogy to andragogy. The Adult Education Company.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B041",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/10732748231175240",
+   "raw": "Nussenblatt RB. National Institutes of Health Center for Human Immunology Conference, September 2009: Meeting the human immunology challenge. Annals of the New York Academy of Sciences; 2010:E1-E23.",
+   "assertedDoi": "10.1111/j.1749-6632.2010.05682.x",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B042",
+   "group": "SAGE",
+   "sourcePaper": "10.1089/dia.2022.0338",
+   "raw": "Albright AL. Exercise precautions and recommendations for patients with autonomic neuropathy. Diabetes Spectrum, 1998; 11(4):231.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B043",
+   "group": "SAGE",
+   "sourcePaper": "10.1089/dia.2022.0338",
+   "raw": "Riddell MC, , Zaharieva DP, , Tansey M, et al. Individual glucose responses to prolonged moderate intensity aerobic exercise in adolescents with type 1 diabetes: The higher they start, the harder they fall. Pediatr Diabetes, 2019; 20(1):99–106.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B044",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/11297298241282268",
+   "raw": "Zhang X, Qin Y, Chen Y, et al. Summary of the best evidence for blood collection via central venous access devices. Chin J Nurs 2022; 57(09): 1134–1140.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B045",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/11297298241282268",
+   "raw": "Xu M, Wang H. A study on the impact of benefit discovery education on nurses’ sense of professional benefit. Nursing Research 2019; 33(24): 4363–4365.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B046",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/00472395241254825",
+   "raw": "Montenegro E., Jankowski N. A. (2020). A new decade for assessment: Embedding equity into assessment praxis . Urbana, IL: University of Illinois and Indiana University, National Institute for Learning Outcomes Assessment (NILOA).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B047",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/00472395241254825",
+   "raw": "Dweck C. S., Walton G. M., Cohen G. L. (2014). Academic tenacity: Mindsets and skills that promote long-term learning. Bill & Melinda Gates Foundation. https://eric.ed.gov/?id=ED576649",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B048",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/1358863x251322182",
+   "raw": "Centers for Disease Control and Prevention. Prevalence of CKD in the healthcare system U.S. Department of Health & Human Services https://nccd.cdc.gov/ckd/Methods.aspx?Qnum=Q637 (2020 accessed Apr 5 2020).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B049",
+   "group": "IOP Publishing",
+   "sourcePaper": "10.1088/1361-6463/ad11bb",
+   "raw": "Sekachev B et al 2020 opencv/cvat: v1 1 v1.1.0 (Zenodo) https://doi.org/10.5281/zenodo.4009388",
+   "assertedDoi": "10.5281/zenodo.4009388",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B050",
+   "group": "IOP Publishing",
+   "sourcePaper": "10.1088/1538-3873/ae2b35",
+   "raw": "Rhodes B. 2019 Astrophysics Source Code Library ascl: 1907.024",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B051",
+   "group": "IOP Publishing",
+   "sourcePaper": "10.1088/1538-3873/ae2b35",
+   "raw": "Bradley L. Sipőcz B. Robitaille T. 2024 astropy/photutils: v2.0.2 Zenodo, doi: 10.5281/zenodo.13989456 10.5281/zenodo.13989456",
+   "assertedDoi": "10.5281/zenodo.13989456",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B052",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/fmp.2024.1",
+   "raw": "[50] Marcus, S. and Wise, J. , ‘Logarithmic compactification of the Abel–Jacobi section’, Preprint, 2017, arXiv:1708.04471",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B053",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/fmp.2024.1",
+   "raw": "[56] Maulik, D. and Ranganathan, D. , ‘Logarithmic enumerative geometry for curves and sheaves’, Preprint, 2023, arXiv:2311.14150.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B054",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/fas.2025.10027",
+   "raw": "Newsfilecorp (2025) Countdown to the longevity investors conference 2025: Where science, innovation, and investment meet in Gstaad. 2 September. https://www.newsfilecorp.com/release/264718/Countdown-to-the-Longevity-Investors-Conference-2025-Where-Science-Innovation-and-Investment-Meet-in-Gstaad. Accessed 11 November 2025.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B055",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/fas.2025.10027",
+   "raw": "Deep Longevity (2025) Upload Blood Reports and Psychological surveys to SenoClock® and uncover personalized insights to enhance longevity. https://deeplongevity.com/saas-platforms/senoclock/. Accessed 22 September 2025.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B056",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/mit.2023.65",
+   "raw": "Scandaliato, M. E. 2017. Gente di San Luca. Video online, available through: https://www.youtube.com/watch?v=GDTvDMBvGA0, accessed 20 Aug 2022.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B057",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/mit.2023.65",
+   "raw": "Phillips, A. 2017. ‘ Not the Mafia You Know: Cultural Representations of the ’Ndrangheta, 1955–2015 '. PhD diss., University of Bristol.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B058",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/dmp.2024.159",
+   "raw": "25. FEMA. FEMA’s Federal Insurance and Mitigation Administration Fact Sheet., Federal Emergency Management Agency; 2016.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B059",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/dmp.2024.159",
+   "raw": "23. Disaster Prevention and Mitigation. (Date modified: November 23, 2020). Public Safety Canada. Accessed May 30, 2024. https://www.publicsafety.gc.ca/cnt/mrgnc-mngmnt/dsstr-prvntn-mtgtn/index-en.aspx",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B060",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/eec.2025.10038",
+   "raw": "White, J. , Fu, Q. , Hays, S. , Sandborn, M. , Olea, C. , Gilbert, H. , Elnashar, A. , Spencer-Smith, J. , & Schmidt, D. C. (2023). A prompt pattern catalog to enhance prompt engineering with ChatGPT. arXiv preprint arXiv:2302.11382.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B061",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/eec.2025.10038",
+   "raw": "Guo, F. (2023). Gpt agents in game theory experiments. arXiv preprint arXiv:2305.05516.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B062",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/jfm.2026.11542",
+   "raw": "Diddens, C. , Dekker, P.J. & Lohse, D. 2025 Non-monotonic surface tension leads to spontaneous symmetry breaking in a binary evaporating drop. arXiv:2402.17452.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B063",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1086/740878",
+   "raw": "Misak, C. J. 1995. Verificationism: Its History and Prospects. Taylor & Francis.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B064",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/pr13051341",
+   "raw": "Kumar, A., Udugama, I.A., Gargalo, C.L., and Gernaey, K.V. (2020). Why is batch processing still dominating the biologics landscape? Towards an integrated continuous bioprocessing alternative. Processes, 8.",
+   "assertedDoi": "10.3390/pr8121641",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B065",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/pr13051341",
+   "raw": "Quiterio-Gutiérrez, T., González-Morales, S., González-Fuentes, J.A., Benavides-Mendoza, A., Fernández-Luqueño, F., Medrano-Macías, J., and Robledo-Olivo, A. (2023). Production of Kojic Acid by Aspergillus niger M4 with Different Concentrations of Yeast Extract as a Nitrogen Source. Processes, 11.",
+   "assertedDoi": "10.3390/pr11061724",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B066",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/nano13233003",
+   "raw": "Hanzawa, N., Saitoh, K., Sakamoto, T., Matsui, T., Tomita, S., and Koshiba, M. (2011, January 6–10). Demonstration of Mode-Division Multiplexing Transmission over 10 Km Two-Mode Fiber with Mode Coupler. Proceedings of the Optical Fiber Communication Conference/National Fiber Optic Engineers Conference, Los Angeles, CA, USA.",
+   "assertedDoi": "10.1364/OFC.2011.OWA4",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B067",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/nano13233003",
+   "raw": "Tong, L., and Sumetsky, M. (2010). Subwavelength and Nanometer Diameter Optical Fibers, Springer. [1st ed.]. Advanced Topics in Science and Technology in China.",
+   "assertedDoi": "10.1007/978-3-642-03362-9",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B068",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/polym15173545",
+   "raw": "Park, S., and Park, K.M. (2016). Engineered polymeric hydrogels for 3D tissue models. Polymers, 8.",
+   "assertedDoi": "10.3390/polym8010023",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B069",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/polym15173545",
+   "raw": "Palmqvist, N.G.M. (2017). Nanoparticles: Case Studies of their Synthesis, Properties and Biological Interaction. [Ph.D. Thesis, Swedish University of Agricultural Sciences].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B070",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/risks14010003",
+   "raw": "World Bank (2025, June 05). Mexico Overview: Development News, Research, Data. Available online: https://www.worldbank.org/en/country/mexico.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B071",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/risks14010003",
+   "raw": "Banjade, Dhruba (2020). Forecasting bitcoin price using artificial neural network. SSRN Electronic Journal.",
+   "assertedDoi": "10.2139/ssrn.3515702",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B072",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/en18051031",
+   "raw": "Jara-Rojas, R., Russy, S., Roco, L., Fleming-Muñoz, D., and Engler, A. (2020). Factors Affecting the Adoption of Agroforestry Practices: Insights from Silvopastoral Systems of Colombia. Forests, 11.",
+   "assertedDoi": "10.3390/f11060648",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B073",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/en18051031",
+   "raw": "Trypolska, G., Kyryziuk, S., Krupin, V., Wąs, A., and Podolets, R. (2021). Economic feasibility of agricultural biogas production by farms in Ukraine. Energies, 15.",
+   "assertedDoi": "10.3390/en15010087",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B074",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/en19030705",
+   "raw": "Hakyemez, T.C., and Adar, O. (2024). Testing the Efficacy of Hyperparameter Optimization Algorithms in Short-Term Load Forecasting. arXiv.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B075",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/en19030705",
+   "raw": "Al-Jamimi, H.A., BinMakhashen, G.M., Worku, M.Y., and Hassan, M.A. (2023). Advancements in Household Load Forecasting: Deep Learning Model with Hyperparameter Optimization. Electronics, 12.",
+   "assertedDoi": "10.3390/electronics12244909",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B076",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pcbi.1012798",
+   "raw": "Vowles DM. Interocular transfer, brain lesions, and maze learning in the wood ant, Formica rufa. In: Corning WC, Ratner SC, editors. Chemistry of learning: Invertebrate research. Boston, MA: Springer US; 1967. p. 425–47.",
+   "assertedDoi": "10.1007/978-1-4899-6565-3_26",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B077",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pcbi.1012798",
+   "raw": "Dewar A, Graham P, Nowotny T, Philippides A. Exploring the robustness of insect-inspired visual navigation for flying robots. MIT Press; 2020. p. 668–77.",
+   "assertedDoi": "10.1162/isal_a_00307",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B078",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pgen.1010929",
+   "raw": "Hormozdiari F, Kostem E, Kang EY, Pasaniuc B, Eskin E. Identifying causal variants at loci with multiple signals of association. In: Proceedings of the 5th ACM Conference on Bioinformatics, Computational Biology, and Health Informatics; 2014. p. 610–611.",
+   "assertedDoi": "10.1145/2649387.2660800",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B079",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0330696",
+   "raw": "TCCC. Combat casualty care: Hemorrhage control. Available from: https://tccc.org.ua/en/guide/cuf-hemorrhage-control",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B080",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pmed.1004495",
+   "raw": "Acute Kidney Injury (AKI)–KDIGO [Internet]. [accessed 2017 Aug 17]. Available from: http://kdigo.org/guidelines/acute-kidney-injury/.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B081",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pmed.1004495",
+   "raw": "Action [Internet]. International Society of Nephrology. [accessed 01/07/2024]. Available from: https://www.theisn.org/initiatives/the-0by25-initiative/projects/.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B082",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0303353",
+   "raw": "Clinical and Laboratory Standards Institute. Performance standards for antimicrobial susceptibility testing. M100 33th edition. CLSI. 2023.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B083",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0303353",
+   "raw": "European Committee on Antimicrobial Susceptibility Testing. The EUCAST guideline on detection of resistance mechanisms v 2.0. European Committee on Antimicrobial Susceptibility Testing. 2017. https://www.eucast.org/fileadmin/src/media/PDFs/EUCAST_files/Resistance_mechanisms/EUCAST_detection_of_resistance_mechanisms_170711.pdf.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B084",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pgph.0002829",
+   "raw": "KZN Department of Health. KZN Guidelines on the Integrated Management of Acute Malnutrition (IMAM), January 2014. http://www.kznhealth.gov.za/family/mcwh/kzn-imam-guidelines.pdf.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B085",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pgph.0002829",
+   "raw": "Stephen CR. Saving Children 2012–2013: An Eighth Survey of Child Healthcare in South Africa. Pretoria: Tshepesa Press, 2016. https://www.up.ac.za/media/shared/717/Child%20PIP/Saving%20children%20reports/saving-children-2012-2013.zp207156.pdf.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B086",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0282871",
+   "raw": "Generalitat de Catalunya. Dades obertes i COVID-19. 2022.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B087",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0282871",
+   "raw": "European Medicines Agency. Comirnaty COVID-19 vaccine: EMA recommends approval for children aged 5 to 11. Web 2021. https://www.ema.europa.eu/en/news/comirnaty-covid-19-vaccine-ema-recommends-approval-children-aged-5-11 (accessed February 1, 2022).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B088",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sst-2025-0125",
+   "raw": "Ding Y H, Wang Z Y, Song Y F, et al. Causes of the unprecedented freezing disaster in January 2008 and its possible association with global warming (in Chinese). Acta Meteorol Sin, 2008, 66: 808–825 [丁一汇, 王遵娅, 宋亚芳, 等. 中国南方2008年1月罕见低温雨雪冰冻灾害发生的原因及其与气候变暖的关系. 气象学报, 2008, 66: 808–825].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B089",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sst-2025-0125",
+   "raw": "National Energy Administration. Blue Book on the Development of New-Type Power SystemS (2024 edition) (in Chinese). Beijing: National Energy Administration, 2025, http://www.nea.gov.cn/ [国家能源局. 新型电力系统发展蓝皮书(2024版). 北京: 国家能源局, 2025, http://www.nea.gov.cn/].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B090",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssv-2025-0261",
+   "raw": "Zhang G Z, Ling G M, Ji C, et al. Path planning of mechanical harvesting considering the lodging and grain bin capacity for the ratoon rice in main season (in Chinese). Transact Chin Soc Agric Eng, 2024, 40: 33–45 [张国忠, 凌高旻, 季超, 等. 考虑倒伏与粮仓容积的再生稻头季机收路径规划. 农业工程学报, 2024, 40: 33–45].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B091",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssv-2025-0261",
+   "raw": "Li S M. Comparative analysis of yield and benefit of ratooning rice and double cropping rice (in Chinese). Southern Agr, 2019, 13: 43–45 [李世梅. 再生稻与双季稻的种植产量与效益比较分析. 南方农业, 2019, 13: 43–45].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B092",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sst-2025-0246",
+   "raw": "Dong D. Preparation and performance research of magnesium phosphate cement-based micro-crack repair materials (in Chinese). Dissertation for Master’s Degree. Jinan: Jinan University, 2023 [董栋. 磷酸镁水泥基微小裂缝修补材料的制备及性能研究. 硕士学位论文. 济南: 济南大学, 2023].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B093",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sst-2025-0246",
+   "raw": "Cui P. Research on reinforcing performance of magnesium phosphate cement and its fiber composite materials (in Chinese). Dissertation for Master’s Degree. Shenzhen: Shenzhen University, 2015 [崔棚. 磷酸镁水泥及其纤维复合材料补强性能研究. 硕士学位论文. 深圳: 深圳大学, 2015].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B094",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssc-2023-0109",
+   "raw": "Ma L D, Yang F J. Introduction to Synchronous Radiation Applications. Shanghai: Fudan University Press, 2001. 202 (in Chinese) [马礼敦, 杨福家. 同步辐射应用概论. 上海: 复旦大学出版社, 2001. 202].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B095",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssc-2023-0109",
+   "raw": "Zheng R, Zhang S, Sun K. Chin J Oncol, 2023, 45: 212–220 (in Chinese) [郑荣寿, 张思维, 孙可欣. 中华肿瘤杂志, 2023, 45: 212–220].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B096",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2024-0345",
+   "raw": "易桂喜, 龙锋, 梁明剑, 赵敏, 王思维, 宫悦, 乔慧珍, 苏金蓉. 2019. 2019年6月17日四川长宁MS6.0地震序列震源机制解与发震构造分析. 地球物理学报, 62: 3432–3447.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B097",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2024-0345",
+   "raw": "田晓, 郑洪艳, 李腊月, 张超. 2021. 川滇地区主要活动断裂运动特征及地震危险性分析. 大地测量与地球动力学, 41: 561-567.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B098",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2024-0103",
+   "raw": "袁红朝, 秦红灵, 刘守龙, 聂三安, 魏文学, 吴金水. 2011. 固碳微生物分子生态学研究. 中国农业科学, 44: 2951–2958.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B099",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2024-0103",
+   "raw": "刘亚龙, 王萍, 汪景宽. 2023. 土壤团聚体的形成和稳定机制: 研究进展与展望. 土壤学报, 60: 627–643.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B100",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.2097-4981.jecc-2026-0006",
+   "raw": "宋华, 韩梦玮. 助力农村新能源革命的多中心数字供应链生态之路：基于国家电投—兰考县域分布式光伏项目的案例研究[J]. 管理世界, 2026, 42(1): 84–104..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B101",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.2097-4981.jecc-2026-0006",
+   "raw": "张艳, 李丁. 论能源转型正义性的困境与实现[J]. 江淮论坛, 2024(6): 124–130..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B102",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.2096-9287.2025.20250074",
+   "raw": "裴照宇，王琼. 国际月球科研站资源利用发展路线战略构想[J]. 宇航学报，2024，45（4）：625-637..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B103",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.2096-9287.2025.20250074",
+   "raw": "王晓伟，詹亚锋，谢浩然，等. 通导一体化环月星座设计初探[J]. 系统工程与电子技术，2023，45（1）：241-249..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B104",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/sp.j.1249.2023.04494",
+   "raw": "崔佳旭，杨博．贝叶斯优化方法和应用综述［J］．软件学报，2018，29（10）：3068-3090．.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B105",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.1000-3045.20240606003",
+   "raw": "梁正, 李瑞. 数字时代的技术-经济新范式及全球竞争新格局. 科技导报, 2020, 38(14): 142-147..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B106",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.1000-3045.20240606003",
+   "raw": "胡新丽, 向恩利, 黄芙蓉. 基于PMC指数模型的长江经济带数字乡村政策评价. 统计与决策, 2023, 39(21): 80-84..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B107",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/1000-3207.2026.2026.0085",
+   "raw": "杨 雄, 金 生振, 肖 调义. 草鱼、赤眼鳟及杂交F1对嗜水气单胞菌、GCRV的抗性比较研究. 水产研究, 2018, 5: 64-75.",
+   "assertedDoi": "10.12677/OJFR.2018.52009",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B108",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/1000-3207.2026.2026.0085",
+   "raw": "王 强, 汪 开毓. 草鱼出血病及其疫苗研究进展. 南方农业, 2014, 8: 172-175.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B109",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/1000-3207.2026.2026.0071",
+   "raw": "王 凌宇, 齐 飘飘, 陈 敏. 性类固醇激素对黄颡鱼雌雄生长二态性的影响. 水生生物学报, 2020, 44: 379-388.",
+   "assertedDoi": "10.7541/2020.046",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B110",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/1000-3207.2026.2026.0071",
+   "raw": "沈志刚, 任旌雷, 陈玉佩. 马口鱼性别分子标记、引物、试剂盒、方法及应用: CN202410681502.9.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B111",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.1671-4342.20250111",
+   "raw": "鞠建东，林毅夫，王勇. 要素禀赋、专业化分工、贸易的理论与实证——与杨小凯、张永生商榷［J］. 经济学（季刊），2004（4）：27-54.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  }
+ ],
+ "notes": "IEEE 在 Crossref 登记的参考文献没有 unstructured 原文，抽到 0 条；IOP 只抽到 3 条。共 111 条（英文 87、中文 24），来自 62 篇论文，与 dev、test、blind-2026-10-16 的源论文没有重叠。抽样（--seed=2）在核验规则定稿（b4dd66d）之后，只输出了每组条数，运行前没有查看条目内容。"
+}

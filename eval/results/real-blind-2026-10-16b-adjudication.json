@@ -1,0 +1,205 @@
+{
+ "dataset": "blind-2026-10-16b",
+ "adjudicatedAt": "2026-10-16",
+ "run": {
+  "file": "eval/results/real-blind-2026-10-16b-rules.json",
+  "ranAt": "2026-10-17T04:32:43.883Z",
+  "localTime": "2026-10-16 21:31–21:32（UTC-7）",
+  "commit": "b4dd66d（修复 10-16 盲测集复核出的五类误报）。本机直连超时，设置 NODE_USE_ENV_PROXY=1 走代理运行",
+  "openalex": "运行前代理出口额度 0.089 美元，运行后 0.077 美元（约 12 次题名检索），没有因额度不足而跳过检索"
+ },
+ "method": "第三批盲测集 111 条（英文 87、中文 24，来自 62 篇源论文，与 dev、test、blind-2026-10-16 没有重叠）在规则定稿（b4dd66d）之后用 pnpm sample:real --seed=2 抽样，抽样只输出每组条数，运行前没有查看条目内容；定稿规则只运行一次，运行后没有为这批数字改规则或重跑。脚本把所有“信息有误 / 疑似不存在”都算作误报；对标出的 13 条逐条按数据库记录和原始出处复核，判为 false_alarm（系统误判）、true_error（引文确实写错）或 uncertain（无法确认哪方正确）。判为 true_error 要求系统报出的问题里至少有一条依据正确、且引文确实错在那里；引文另有小错、但系统报的问题依据错误或与之无关的（B007、B036），仍算误报，并在 reason 中注明。复核只改统计口径，不改代码。",
+ "summary": {
+  "total": 111,
+  "current": {
+   "verified": 37,
+   "flaggedByScript": 13,
+   "trueErrors": 0,
+   "uncertain": 0,
+   "falseAlarms": 13,
+   "falseAlarmRate": "11.7%",
+   "falseAlarmRate95CI": "7.0%–19.0%（Wilson）",
+   "notFoundFalseAlarms": 4,
+   "errors": 0
+  },
+  "byLanguage": {
+   "en": {
+    "total": 87,
+    "verified": 37,
+    "falseAlarms": 13,
+    "falseAlarmRate": "14.9%",
+    "unverifiable": 37,
+    "errors": 0
+   },
+   "zh": {
+    "total": 24,
+    "verified": 0,
+    "falseAlarms": 0,
+    "falseAlarmRate": "0%",
+    "unverifiable": 24,
+    "errors": 0
+   }
+  },
+  "falseAlarmCauses": {
+   "作者段格式切错（单名作者、空逗号）": [
+    "B004",
+    "B043"
+   ],
+   "会议报告没识别（“presented at”后面粘连）": [
+    "B035",
+    "B036"
+   ],
+   "非期刊文献配到别的记录或被当成期刊 / 会议论文（图书、报告、新闻稿、政府数据网页）": [
+    "B040",
+    "B046",
+    "B054",
+    "B086"
+   ],
+   "数据库记录本身有问题（OpenAlex 混合两条文献的记录、预印本并进改名后的会议论文）": [
+    "B007",
+    "B074"
+   ],
+   "题名中间的问号被当成题名结束": [
+    "B064"
+   ],
+   "英文转写的中文期刊论文，期刊 DOI 由 ISTIC 注册、不在开放数据库中": [
+    "B044",
+    "B045"
+   ]
+  },
+  "note": "13 条误报全部是英文条目；中文 24 条全部无法核验，是数据源覆盖问题。没有出错（无 429）。与前两次盲测相比：10-15 test 12/119（10.1%，5.9%–16.8%）、10-16 blind 10/110（9.1%，5.0%–15.9%），三个区间大幅重叠，按 10-16 修过的五类规则没有让新数据上的误报率降下来，剩下的误报又换成了新的格式问题和数据源问题。新规则在这批数据上只改变了 1 条的解析（B076 的刊名猜测，结论为已核实）。"
+ },
+ "items": [
+  {
+   "id": "B004",
+   "current": "mismatch",
+   "judgment": "false_alarm",
+   "reason": "Coord. Chem. Rev. 2024 年第 514 卷 215919，Crossref 记录的 9 位作者、题名、卷号、文章号都与引文一致。作者里有单名作者 “Tikeshwari”，作者段在这里中断，题名被切成 “Tikeshwari, Kanti Deb, M., …, 2024”，真正的题名被当成刊名，题名分数偏低，只给出“相近文献、信息有出入”",
+   "evidence": [
+    "https://doi.org/10.1016/j.ccr.2024.215919"
+   ]
+  },
+  {
+   "id": "B007",
+   "current": "mismatch",
+   "judgment": "false_alarm",
+   "reason": "新安江模型 1980 年原文（Hydrological Forecasting, Oxford 研讨会论文集，IAHS-AISH Publ. 129，351–356 页）有 5 位作者，与引文一致。系统配到的 OpenAlex 记录年份是 1980，作者却是 Zhao RJ、Liu XR、Singh VP（Singh 是 1995 年那本书的编者），是两条文献混在一起的记录；引文就算把所有作者都写对，也会被报“作者不符”。另：引文的 “Zuang” 在不同来源里有 Zhuang / Zuang 两种拼法，“IASH” 应为 IAHS；系统报的不是这两处",
+   "evidence": [
+    "https://openalex.org/W156907250",
+    "https://hydro-wiki.de/_media/de/hydro/inghy/xinanjiang-model-iahs_129_0351.pdf"
+   ]
+  },
+  {
+   "id": "B035",
+   "current": "not_found",
+   "judgment": "false_alarm",
+   "reason": "ASGCT 第 27 届年会（巴尔的摩，2024-05-07 至 11）的报告，Prime Medicine 2024-04-23 的新闻稿列出：Jennifer Gori，5 月 8 日，题名与引文逐字一致。原文 “presented at27th” 粘连，没有识别成会议报告，两个数据源都检索不到，被判为疑似不存在",
+   "evidence": [
+    "https://www.biospace.com/prime-medicine-to-present-preclinical-data-demonstrating-broad-potential-of-prime-editing-technology-at-upcoming-scientific-meetings"
+   ]
+  },
+  {
+   "id": "B036",
+   "current": "mismatch",
+   "judgment": "false_alarm",
+   "reason": "AIChE 第 6 届 CRISPR 技术国际会议（2023-10-17 至 19）上 Andrew Anzalone 的报告，Prime Medicine 公开的讲稿题名与引文一致。原文 “presented atAIChE” 粘连，没有识别成会议报告，配到 Springer 参考书里无关的词条《Repeat Expansion Diseases》。另：会议在波士顿举行，引文写成 Houston；系统报的不是这一处",
+   "evidence": [
+    "https://primemedicine.com/wp-content/uploads/2023/10/Anzalone-AIChE-CRISPR-10192023-ava.v5.pdf",
+    "https://www.aiche.org/sbe/conferences/international-conference-on-crispr-technologies/2023"
+   ]
+  },
+  {
+   "id": "B040",
+   "current": "mismatch",
+   "judgment": "false_alarm",
+   "reason": "Knowles 的图书：副标题 “From Pedagogy to Andragogy” 是 1980 年修订版（Cambridge, The Adult Education Co.，与引文的出版者一致），1988 年有 Cambridge Book Company 的修订版印次（ISBN 0842822135）。没有识别为图书，按期刊论文比年份；配到的 OpenAlex 记录写 1970 年（初版副标题是 “Andragogy versus Pedagogy”），误报年份不符",
+   "evidence": [
+    "https://openalex.org/W1556867390",
+    "https://ci.nii.ac.jp/ncid/BA00382308",
+    "https://doi.org/10.1080/00220612.1971.10671867",
+    "https://www.ebay.de/p/191046"
+   ]
+  },
+  {
+   "id": "B043",
+   "current": "mismatch",
+   "judgment": "false_alarm",
+   "reason": "Pediatr Diabetes 2019 年第 20 卷第 1 期 99–106 页（OpenAlex 卷期页、PubMed 30467929），与引文一致；Crossref 记录只登记了 2018 年的在线日期、没有卷期页。作者段里有空逗号（“Riddell MC, , Zaharieva DP, ,”），作者段只取到第一位，题名被切成 “Zaharieva DP, , Tansey M, et al”，只给出“相近文献”",
+   "evidence": [
+    "https://doi.org/10.1111/pedi.12799",
+    "https://pubmed.ncbi.nlm.nih.gov/30467929/",
+    "https://openalex.org/W2901365933"
+   ]
+  },
+  {
+   "id": "B044",
+   "current": "not_found",
+   "judgment": "false_alarm",
+   "reason": "英文转写的中文期刊论文（中华护理杂志 2022 年第 57 卷第 9 期 1134–1140 页）。该刊 DOI 由中国科技信息研究所（ISTIC）注册、落地万方医学，不在 Crossref / OpenAlex 中，Crossref 期刊目录也没有该刊，收录范围检查无从判断，结论成了疑似不存在。没能在线查到这篇的题录页，按数据集假设（取自已发表论文的参考文献）计为真实文献，口径同 10-15 复核的 T046",
+   "evidence": [
+    "https://doi.org/ra/10.3761/j.issn.0254-1769.2022.09.001",
+    "https://doi.org/10.1177/11297298241282268"
+   ]
+  },
+  {
+   "id": "B045",
+   "current": "not_found",
+   "judgment": "false_alarm",
+   "reason": "英文转写的中文期刊论文：“Nursing Research 2019; 33(24)” 应是半月刊《护理研究》2019 年第 33 卷第 24 期（DOI 由 ISTIC 注册，不在 Crossref / OpenAlex）。英文刊名与 LWW 的 Nursing Research 同名，后者 2019 年在 Crossref 有记录，收录范围检查以为覆盖了，结论成了疑似不存在。没能在线查到这篇的题录页，按数据集假设计为真实文献",
+   "evidence": [
+    "https://doi.org/ra/10.12102/j.issn.1009-6493.2019.24.001",
+    "https://doi.org/10.1177/11297298241282268"
+   ]
+  },
+  {
+   "id": "B046",
+   "current": "mismatch",
+   "judgment": "false_alarm",
+   "reason": "NILOA 2020 年 1 月的 Occasional Paper No. 42，作者、题名、年份与引文一致。OpenAlex 记录的题名多了丛书号 “Occasional Paper No. 42.”，题名分数低于同一篇的门槛；引文也没有识别成报告，只给出“相近文献”",
+   "evidence": [
+    "https://openalex.org/W3173100676",
+    "https://niloaweb.sitehost.iu.edu/wp-content/uploads/2020/01/A-New-Decade-for-Assessment.pdf",
+    "https://www.ideals.illinois.edu/items/117308"
+   ]
+  },
+  {
+   "id": "B054",
+   "current": "not_found",
+   "judgment": "false_alarm",
+   "reason": "Newsfile 2025-09-02 发布的新闻稿（来源 Longevity Investors AG），标题与网址都与引文一致。题名里有 “Conference”，在判断网页之前就被识别成会议论文，两个数据源检索不到，被判为疑似不存在",
+   "evidence": [
+    "https://www.newsfilecorp.com/release/264718/Countdown-to-the-Longevity-Investors-Conference-2025-Where-Science-Innovation-and-Investment-Meet-in-Gstaad"
+   ]
+  },
+  {
+   "id": "B064",
+   "current": "mismatch",
+   "judgment": "false_alarm",
+   "reason": "Processes 2020 年第 8 卷第 12 期 1641，Crossref 记录与引文一致。题名中间有问号、后面接副标题，题名在 “?” 处结束，副标题被并进刊名，误报期刊名不符",
+   "evidence": [
+    "https://doi.org/10.3390/pr8121641"
+   ]
+  },
+  {
+   "id": "B074",
+   "current": "mismatch",
+   "judgment": "false_alarm",
+   "reason": "arXiv:2410.15047（2024-10-19），DataCite 记录的题名、作者、年份与引文一致。引文只写 “arXiv.”、没有编号，系统不会去查 DataCite；OpenAlex 把这篇预印本并进了 2025 年改名的 IEEE 会议论文（W4404088302），Crossref 也只有会议版，于是只给出“相近文献、信息有出入”",
+   "evidence": [
+    "https://doi.org/10.48550/arXiv.2410.15047",
+    "https://openalex.org/W4404088302",
+    "https://doi.org/10.1109/icecer65523.2025.11400995"
+   ]
+  },
+  {
+   "id": "B086",
+   "current": "mismatch",
+   "judgment": "false_alarm",
+   "reason": "加泰罗尼亚政府的 COVID-19 开放数据（政府网页资源，引文没写网址）。机构名 “Generalitat de Catalunya” 没有识别为机构作者，配到 Brill 参考书里无关的词条《Dietari de la Generalitat de Catalunya》，给出“相近文献”。具体页面题名没能在线核对，但配到的候选肯定不是同一篇",
+   "evidence": [
+    "https://datos.gob.es/en/catalogo/a09002970-registro-de-defunciones-por-covid-19-en-catalunya-segregacion-por-sexo-y-comarca",
+    "https://fme.upc.edu/ca/la-facultat/activitats/2020-2021/Fitxers/ggimenez_preentacio-fn_def.pdf"
+   ]
+  }
+ ]
+}
