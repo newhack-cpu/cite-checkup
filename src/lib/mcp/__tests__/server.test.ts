@@ -80,6 +80,32 @@ describe("cite-checkup MCP server", () => {
     expect(text).toContain("查不到不等于编造");
   });
 
+  it("reports a near match as its own verdict, not as wrong information", async () => {
+    const near = { ...walters, DOI: "10.9999/near", title: ["Alpha beta gamma delta epsilon zeta eta theta"] };
+    vi.stubGlobal("fetch", async (input: string) => {
+      const url = new URL(input);
+      if (url.hostname === "api.crossref.org") return Response.json({ message: { items: url.pathname === "/works" ? [near] : [] } });
+      if (url.hostname === "api.openalex.org") return Response.json({ results: [] });
+      throw new Error(`Unexpected request: ${url.hostname}`);
+    });
+    const client = await connect();
+    const { tools } = await client.listTools();
+    expect(tools.find((t) => t.name === "verify_references")!.description).toContain("'near_match'");
+    const result = await client.callTool({
+      name: "verify_references",
+      arguments: { references: "Walters, W. H., & Wilder, E. I. (2023). Alpha beta gamma delta. Scientific Reports, 13, 14045." },
+    });
+    expect(result.isError).toBeFalsy();
+    const data = result.structuredContent as { counts: Record<string, number>; results: { verdict: string; matchStatus?: string; issues: string[] }[] };
+    expect(data.results[0]).toMatchObject({ verdict: "near_match", matchStatus: "candidate", issues: [] });
+    expect(data.counts).toMatchObject({ near_match: 1, mismatch: 0 });
+    const text = (result.content as { type: string; text: string }[])[0].text;
+    expect(text).toContain("相近候选 1");
+    expect(text).toContain("不算信息有误");
+    expect(text).toContain("[1] 相近候选：");
+    expect(text).toContain("相近候选（未确认同一篇）");
+  });
+
   it("returns a tool error instead of guessing when no reference can be recognised", async () => {
     const client = await connect();
     const result = await client.callTool({ name: "verify_references", arguments: { references: "references" } });

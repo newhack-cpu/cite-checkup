@@ -6,7 +6,7 @@ import type { CheckEvent, RefResult } from "../verify/types";
 const ref = parseReference("Miller, G. (1956). The magical number seven. Psychological Review.", 1);
 const result: RefResult = { index: 1, raw: ref.raw, parsed: ref, verdict: "verified", confidence: 0.9, summary: "已核实", issues: [], notes: [], fields: [], steps: [] };
 const meta: CheckEvent = { type: "meta", total: 1, refs: [ref] };
-const done: CheckEvent = { type: "done", stats: { total: 1, counts: { verified: 1, mismatch: 0, not_found: 0, retracted: 0, concern: 0, unverifiable: 0, error: 0 }, ms: 15 } };
+const done: CheckEvent = { type: "done", stats: { total: 1, counts: { verified: 1, mismatch: 0, near_match: 0, not_found: 0, retracted: 0, concern: 0, unverifiable: 0, error: 0 }, ms: 15 } };
 function stream(text: string, chunkSize = 7) {
   const bytes = new TextEncoder().encode(text);
   return new ReadableStream<Uint8Array>({ start(c) { for (let i = 0; i < bytes.length; i += chunkSize) c.enqueue(bytes.slice(i, i + chunkSize)); c.close(); } });
@@ -28,6 +28,18 @@ describe("readCheckStream", () => {
   it("rejects an incorrect count rather than presenting a complete report", async () => {
     const wrong = { ...done, stats: { ...done.stats, counts: { ...done.stats.counts, verified: 0, mismatch: 1 } } };
     await expect(readCheckStream(stream(lines(meta, { type: "result", result }, wrong)), () => {})).rejects.toThrow(/数量|统计/);
+  });
+  it("accepts near matches, and older servers that omit zero-count categories", async () => {
+    const near = { ...result, verdict: "near_match" as const };
+    const counted = { ...done, stats: { ...done.stats, counts: { ...done.stats.counts, verified: 0, near_match: 1 } } };
+    await expect(readCheckStream(stream(lines(meta, { type: "result", result: near }, counted)), () => {})).resolves.toBeUndefined();
+    const older = { ...done, stats: { ...done.stats, counts: { verified: 1, mismatch: 0, not_found: 0, retracted: 0, unverifiable: 0, error: 0 } } };
+    await expect(readCheckStream(stream(lines(meta, { type: "result", result }, older)), () => {})).resolves.toBeUndefined();
+  });
+  it("rejects a near match that the summary counts as wrong information", async () => {
+    const near = { ...result, verdict: "near_match" as const };
+    const wrong = { ...done, stats: { ...done.stats, counts: { ...done.stats.counts, verified: 0, mismatch: 1 } } };
+    await expect(readCheckStream(stream(lines(meta, { type: "result", result: near }, wrong)), () => {})).rejects.toThrow(/统计/);
   });
   it("rejects duplicated results and unknown reference indices", async () => {
     await expect(readCheckStream(stream(lines(meta, { type: "result", result }, { type: "result", result }, done)), () => {})).rejects.toThrow(/重复/);

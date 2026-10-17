@@ -4,7 +4,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { parseReference } from "../src/lib/verify/extract";
-import type { RefResult, Verdict } from "../src/lib/verify/types";
+import { VERDICTS, type RefResult, type Verdict } from "../src/lib/verify/types";
 import { verifyAll } from "../src/lib/verify/verify";
 
 try {
@@ -22,10 +22,10 @@ interface Case {
   synthetic?: boolean;
 }
 
-const VERDICTS: Verdict[] = ["verified", "mismatch", "not_found", "retracted", "concern", "unverifiable", "error"];
 const LABEL: Record<Verdict, string> = {
   verified: "已核实",
   mismatch: "信息有误",
+  near_match: "相近候选",
   not_found: "疑似不存在",
   retracted: "撤稿",
   concern: "关注声明",

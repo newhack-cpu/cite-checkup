@@ -5,7 +5,51 @@
 - 验收标准：原误判回归、真实DeepSeek/数据库链路、导入与证据边界、取消/未完成、桌面/手机、生产构建、技术PDF逐页渲染、5–8分钟1080p普通话MP4。
 - 约束：沿用项目纸张/印章风格；模型不能决定文献真实性；不伪造证据或秘密；保留用户模型设置；没有公网发布、正式提交或编造团队资料。
 
-## 2026-10-16 晚 修复新盲测集误报、第三批盲测（最新）
+## 2026-10-17 “相近候选”单列（最新）
+
+- 用户 10-16 夜在三个方案里选定 A：新增结论 `near_match`（相近候选），不再与确认有误的条目一起算“信息有误”。另两个方案（保持 mismatch、按 matchStatus 分组；并入“无法核验”）没有采用，评估记录在会话笔记里。
+- 引擎（`src/lib/verify/verify.ts` 的 `judgeNotSame`）：
+  - 只找到相近候选、没有 DOI 证据的条目，以及 OpenAlex 额度用完、又没有 DOI 问题的条目，判为相近候选：issues 为空，说明写在 notes 里，summary 为“找到相近文献，但不能确认是同一篇，请人工核对”。
+  - DOI 未注册或指向别的文献、另有相近候选的条目仍是信息有误（DOI 的错误是确定的）；额度用完时 summary 改为“DOI 有误；找到相近文献……”。
+  - Agent 对覆盖范围外类型的“同名记录有出入 → 无法核验 + 候选”不变。
+- 类型：`Verdict` 改由 `types.ts` 的 `VERDICTS` 常量派生；check-stream、agent-stream、MCP、`/api/check`、`eval`、`eval-real` 原来各写一份的结论列表都改为引用它。
+- 界面：
+  - 新印章、筛选标签和图例“相近候选”，新颜色 `--color-iris`（#6b4f8a，在卡片底色上对比度 6.4:1）；
+  - 健康度不计入相近候选；顶部在“发现 N 条需要处理”之外单列“M 条相近候选待核对”；
+  - 卡片默认展开，照样显示比对表、候选写法和“AI 继续查”；
+  - “信息有误”的图例改为“确认是同一篇，但……写错了；或引用的 DOI 未注册、指向别的文献”。
+- 报告：
+  - 修正版清单：相近候选保留原文并标【仅找到相近候选……】，DOI 写错又有候选的标【DOI 有误，仅找到相近候选……】；
+  - Markdown 报告：开头加“结论统计”，每条结论前加结论名（summary 本身以结论名开头的不重复）。
+- MCP：
+  - `verify_references` 的结论枚举加 `near_match`，工具说明写明它不是确认的错误；
+  - counts 多一个键，文字摘要单列相近候选；服务端版本 0.1.0 → 0.2.0。
+- 评测（`scripts/real-results.ts`）：
+  - `eval:real` 同时打印两种误报口径。旧口径（相近候选也算）写入 `falseAlarms`，与历史文件同义；新口径写入 `falseAlarmsNew`，另附 `calibers` 说明，每条结果多记 `matchStatus`。
+  - `eval:agent` 兼容旧结果文件（mismatch 且 summary 含“相近”）。
+  - 历史结果文件没有改写。
+  - 没有另抽新盲测集，不报新口径的效果；dev、test、blind、blind2 都已看过，不能拿来报新口径效果。
+- 测试：
+  - 新增 `verdict-meta.test.ts` 3 项和 `scripts/__tests__/real-results.test.ts` 6 项。后者有一项逐个核对 12 个历史结果文件，按旧口径重算的误报数与文件记录一致。
+  - verify（相近候选两种情况、DOI 写错三种情况）、report、check-stream、Agent 资格、MCP 用例都已更新或补充。
+  - `pnpm test` 36 个文件 509 项、typecheck、lint、build 通过。
+- 浏览器验证（生产构建，`cite-checkup-prod-local`）：
+  - 应用里的浏览器面板窗口被隐藏、截不了图，改用本机 Playwright 无头 Chromium（桌面 1440、手机 390）截图并逐张查看。
+  - 输入为“载入示例”的 11 条，加第三批盲测集 B004、B046 两条（只用来展示界面，这批数据已看过）。
+  - 结果：示例 11 条为已核实 5、信息有误 2、疑似不存在 2、撤稿 1、无法核验 1；两条加的为相近候选；健康度 60，相近候选不计入。
+  - 筛选、下载报告、修正版清单都正常，无横向溢出、无页面错误。手机上“发现 N 条需要处理”原来会断成两行，已改成整段换行。
+- 文档：
+  - README：七类结论、判定原则、两种口径、MCP、测试数；
+  - `DEFENSE_QA.md`：第 14、18 题，新增第 19 题；
+  - `SUBMISSION_CHECKLIST.md`、参赛材料 README；
+  - 讲稿：`narration.json` 第 03 段加一句相近候选，第 09 段测试数改为 509，第 10 段的“下一步”去掉已完成的单列；03 段 60 → 65 秒、10 段 40 → 35 秒，总长仍为 455 秒；`DEMO_SCRIPT.md` 时间表、演示输入（加 B004 作相近候选示例，当天先试）同步，脚本核对时间表首尾相接、与各段秒数一致。
+- 技术 PDF：`technical-content.json` 第 4、11、13 页和材料日期改为 10-17 后重建，仍为 14 页；validate 通过（`eval/results/technical-pdf-2026-10-17/`）。逐页看了 14 张渲染图，没有裁切、乱码；行首标点 0 处。
+- 待办：
+  - 新口径的效果要另抽新盲测集，规则定稿后只运行一次并逐条复核；
+  - 英文转写的中文期刊、未写编号的预印本改判为无法核验；
+  - 请第二人独立标注、扩大样本。
+
+## 2026-10-16 晚 修复新盲测集误报、第三批盲测
 
 - 规则（b4dd66d，`src/lib/verify` 下 extract / match / verify 三个文件）按 `real-blind-2026-10-16-adjudication.json` 的五类误报修改，详见 README“2026-10-16 晚修复新盲测集的误报”：
   - 非期刊文献配到别的记录（B027 / B054 / B056）：覆盖范围外类型年份差两年以上时，要求题名几乎一致且第一作者对得上；年份差只提示版本或转载、不直接建议补 DOI（记录是期刊论文时年份仍要对上）。机构署名的报告 / 宣言不与个人作者的收录记录配对；机构署名的期刊论文只跳过作者比对。
@@ -20,7 +64,7 @@
 - 逐条复核（`real-blind-2026-10-16b-adjudication.json`）：误报 13 条（11.7%，95% 区间 7.0%–19.0%），全部英文；真实错误 0、无法确认 0。原因：作者段格式（单名作者、空逗号）2、会议报告粘连未识别 2、非期刊文献配错或被当成期刊 / 会议 4、OpenAlex 记录有问题 2、题名中间的问号 1、英文转写的中文期刊（ISTIC 注册 DOI）2。另有 2 条引文自身有小错但系统报的不是这些错，按口径仍计误报。
 - 解读：三次盲测 10.1%、9.1%、11.7%，区间大幅重叠；逐类补规则在看过的集合上清零，在新数据上没有降低误报率。本轮没有为第三批数据改规则。
 - OpenAlex 用量（代理出口）：dev 约 2、test 约 3、自建样例约 6、第三批盲测约 12 次题名检索，复核又用了约 4 次；剩约 0.07 美元。
-- 待办：误报是长尾的，下一步考虑把“只找到相近候选”的条目（第三批 13 条里 6 条）与确认有误的分开呈现、英文转写的中文期刊和未写编号的预印本改判为无法核验，并请第二人独立标注、扩大样本；这些都还没做。第三批盲测集已经看过，再改规则要另抽新集。
+- 待办：误报是长尾的，下一步考虑把“只找到相近候选”的条目（第三批 13 条里 6 条）与确认有误的分开呈现、英文转写的中文期刊和未写编号的预印本改判为无法核验，并请第二人独立标注、扩大样本；这些都还没做。第三批盲测集已经看过，再改规则要另抽新集。（相近候选单列已于 10-17 完成，见“相近候选单列”一节。）
 
 ## 2026-10-16 运行新盲测集与全量回归
 
@@ -191,7 +235,7 @@
 - 第一阶段前快照：`D:\Darks\projects\cite-checkup\eval\improvement-2026-10-14\before-changes.zip`
 - 第二阶段前快照与任务约定：`D:\Darks\projects\cite-checkup\eval\phase-two-2026-10-14\before-phase-two.zip`、`BRIEF.md`
 - 参赛材料目录：`D:\Darks\projects\cite-checkup\docs\competition\README.md`
-- 技术说明PDF：`D:\Darks\projects\cite-checkup\docs\competition\output\pdf\引用体检-技术说明.pdf`（2026-10-16 版 14 页；逐页渲染与行首标点检查见 `eval/results/technical-pdf-2026-10-16/`；10-14 的 11 页版验收在 `eval/phase-two-2026-10-14/competition/`）
+- 技术说明PDF：`D:\Darks\projects\cite-checkup\docs\competition\output\pdf\引用体检-技术说明.pdf`（2026-10-17 版 14 页；逐页渲染与行首标点检查见 `eval/results/technical-pdf-2026-10-17/`；10-14 的 11 页版验收在 `eval/phase-two-2026-10-14/competition/`）
 - 可编辑内容源：`D:\Darks\projects\cite-checkup\docs\competition\technical-content.json`、`technical-report.html`；构建脚本`build_technical_report.py`。
 - 评分：`D:\Darks\projects\cite-checkup\docs\competition\REVIEW.md`，73/100模拟分，原版48/100，非官方成绩。
 - 分镜/普通话稿/答辩：同目录`DEMO_SCRIPT.md`、`narration.json`、`DEFENSE_QA.md`、`SUBMISSION_CHECKLIST.md`。

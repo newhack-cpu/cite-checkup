@@ -10,6 +10,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, dirname, join } from "node:path";
 import { runAgent } from "../src/lib/agent";
 import type { RefResult, Verdict } from "../src/lib/verify/types";
+import { agentEligibleRow } from "./real-results";
 
 try {
   process.loadEnvFile(".env.local");
@@ -18,7 +19,7 @@ try {
 }
 
 interface Case { id: string; raw: string; label: { lang: "zh" | "en"; kind?: string; acceptMismatch?: boolean } }
-interface Earlier { id: string; verdict: Verdict; summary: string }
+interface Earlier { id: string; verdict: Verdict; summary: string; matchStatus?: string }
 
 const args = process.argv.slice(2);
 const [datasetFile, rulesFile] = args.filter((a) => !a.startsWith("--"));
@@ -29,10 +30,8 @@ const limit = Number(option("limit") ?? Infinity);
 
 const { name, cases } = JSON.parse(readFileSync(datasetFile, "utf8")) as { name: string; cases: Case[] };
 const earlier = JSON.parse(readFileSync(rulesFile, "utf8")) as { results: Earlier[] };
-// 与界面一致：无法核验，或只找到相近候选（summary 里写明"相近"）的条目才交给 Agent
-const eligible = earlier.results
-  .filter((r) => r.verdict === "unverifiable" || (r.verdict === "mismatch" && r.summary.includes("相近")))
-  .slice(0, limit);
+// 与界面一致：无法核验、相近候选，以及 DOI 写错但另有相近候选的条目才交给 Agent（兼容 10-16 夜以前的结果文件）
+const eligible = earlier.results.filter(agentEligibleRow).slice(0, limit);
 const openalexStart = pool.left;
 
 interface Row {

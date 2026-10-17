@@ -270,6 +270,8 @@ describe("agent eligibility and DataCite records", () => {
   it("only offers AI search for unverifiable items and unconfirmed candidates", async () => {
     const { agentEligible } = await import("../../agent-stream");
     expect(agentEligible({ verdict: "unverifiable" })).toBe(true);
+    expect(agentEligible({ verdict: "near_match", matchStatus: "candidate" })).toBe(true);
+    // DOI 写错、另有相近候选：可以继续查那篇候选是不是同一篇
     expect(agentEligible({ verdict: "mismatch", matchStatus: "candidate" })).toBe(true);
     expect(agentEligible({ verdict: "mismatch", matchStatus: "confirmed" })).toBe(false);
     expect(agentEligible({ verdict: "not_found" })).toBe(false);

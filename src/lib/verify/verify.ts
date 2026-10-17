@@ -398,11 +398,14 @@ function judgeNotSame(ref: ParsedRef, best: Ranked | undefined, steps: CheckStep
     const issues: string[] = [];
     if (ref.doi && ev.registry?.exists === false) issues.push(`DOI ${ref.doi} 在 doi.org 查无注册记录`);
     else if (ev.doiRecord) issues.push(`DOI 指向《${short(ev.doiRecord.title)}》，与引用内容不符`);
+    // DOI 确认写错才算信息有误；只有相近候选时不能确认是同一篇，也就说不上哪里写错
     return {
       ...b, ...nearPart, issues,
-      verdict: near ? "mismatch" : "unverifiable", confidence: near ? 0.5 : 0,
+      verdict: near ? (issues.length ? "mismatch" : "near_match") : "unverifiable", confidence: near ? 0.5 : 0,
       notes: ["OpenAlex 检索额度已用完，本条的文献检索尚不完整，证据不足以判断文献不存在"],
-      summary: near ? "找到相近文献，但检索尚不完整，请人工核对" : "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+      summary: near
+        ? issues.length ? "DOI 有误；找到相近文献，但检索尚不完整，请人工核对" : "找到相近文献，但检索尚不完整，不能确认是同一篇，请人工核对"
+        : "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
     };
   }
 
@@ -464,11 +467,12 @@ function judgeNotSame(ref: ParsedRef, best: Ranked | undefined, steps: CheckStep
       summary: "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
     };
   }
+  // 只找到相近候选：哪项信息写错要以确认同一篇为前提，所以单列为"相近候选"，不算信息有误
   if (near) {
     return {
-      ...b, ...nearPart, verdict: "mismatch", confidence: 0.55,
-      issues: ["找到题名相近的文献，但题名或作者与引用有出入"],
-      summary: "找到相近文献，但信息有出入，请核对是否为同一篇",
+      ...b, ...nearPart, verdict: "near_match", confidence: 0.55,
+      notes: ["数据库中有一篇题名相近的记录，但题名、作者、年份或刊名没有吻合到能确认是同一篇；可能是引文格式特殊或数据库记录不全，也可能是引文写错了"],
+      summary: "找到相近文献，但不能确认是同一篇，请人工核对",
     };
   }
   const searched = steps.filter((s) => s.action === "crossref_search" || s.action === "openalex_search").length;

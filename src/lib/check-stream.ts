@@ -1,6 +1,5 @@
-import type { CheckEvent, Verdict } from "./verify/types";
+import { VERDICTS, type CheckEvent, type Verdict } from "./verify/types";
 
-const VERDICTS: Verdict[] = ["verified", "mismatch", "not_found", "retracted", "concern", "unverifiable", "error"];
 const malformed = () => new Error("核查响应格式不正确，请重试");
 
 /** A closed connection is not a completed report: require a consistent terminal frame. */
@@ -46,7 +45,7 @@ export async function readCheckStream(stream: ReadableStream<Uint8Array>, onEven
         if (!event.stats.counts || !Number.isFinite(event.stats.ms)) throw malformed();
         for (const verdict of VERDICTS) {
           const actual = [...received.values()].filter(v => v === verdict).length;
-          // Older servers may omit the newly introduced concern category when it is zero.
+          // Older servers may omit the newly introduced concern / near_match categories when they are zero.
           if ((event.stats.counts[verdict] ?? 0) !== actual) throw new Error("核查统计数量不一致，请重试");
         }
         completed = true;

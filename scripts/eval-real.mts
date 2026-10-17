@@ -1,5 +1,6 @@
 // 真实世界评测：数据集里的每条参考文献都出自已发表论文，视为真实存在。
 // 因此"疑似不存在"一律算误报；"信息有误"只在标注允许时算对（例如原文确有笔误）。
+// "相近候选"按两种口径报告（见 real-results.ts）：旧口径算误报、与此前的结果可比；新口径不算误报、单列条数。
 // 用法：pnpm eval:real eval/real-world/dev-2026-10-14.json [--ai] [--quiet] [--out=eval/results/xxx.json]
 //   --ai     先走 DeepSeek 字段补全（需要 .env.local 里的 DEEPSEEK_API_KEY），再查数据库
 //   --quiet  只打印汇总，不逐条列出被标为有问题的条目
@@ -10,8 +11,9 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, dirname, join } from "node:path";
 import { prepareAIReferences } from "../src/lib/ai";
 import { parseReference } from "../src/lib/verify/extract";
-import type { ParsedRef, RefResult, Verdict } from "../src/lib/verify/types";
+import { VERDICTS, type ParsedRef, type RefResult, type Verdict } from "../src/lib/verify/types";
 import { verifyAll } from "../src/lib/verify/verify";
+import { isFalseAlarm, type Caliber } from "./real-results";
 
 try {
   process.loadEnvFile(".env.local");
@@ -60,30 +62,29 @@ await verifyAll(refs, (r) => results.push(r), { concurrency: 3, openalexBudget: 
 results.sort((a, b) => a.index - b.index);
 const seconds = (Date.now() - started) / 1000;
 
-const VERDICTS: Verdict[] = ["verified", "mismatch", "not_found", "retracted", "concern", "unverifiable", "error"];
 const LABEL: Record<Verdict, string> = {
-  verified: "已核实", mismatch: "有误", not_found: "不存在", retracted: "撤稿", concern: "关注", unverifiable: "无法核验", error: "出错",
+  verified: "已核实", mismatch: "有误", near_match: "相近", not_found: "不存在", retracted: "撤稿", concern: "关注", unverifiable: "无法核验", error: "出错",
 };
 
-function isFalseAlarm(r: RefResult): boolean {
-  const c = cases[r.index - 1];
-  return r.verdict === "not_found" || (r.verdict === "mismatch" && !c.label.acceptMismatch);
-}
+const alarm = (r: RefResult, caliber: Caliber) =>
+  isFalseAlarm({ verdict: r.verdict, acceptMismatch: cases[r.index - 1].label.acceptMismatch }, caliber);
 
 function row(title: string, subset: RefResult[]) {
   const n = subset.length;
   const count = (v: Verdict) => subset.filter((r) => r.verdict === v).length;
-  const alarms = subset.filter(isFalseAlarm).length;
+  const old = subset.filter((r) => alarm(r, "old")).length;
+  const now = subset.filter((r) => alarm(r, "new")).length;
   const pct = (k: number) => (n ? `${((k / n) * 100).toFixed(0)}%` : "-");
   console.log(
     `${title.padEnd(22)}${String(n).padStart(4)}  ` +
       VERDICTS.map((v) => String(count(v)).padStart(6)).join("") +
-      `   误报 ${String(alarms).padStart(3)} (${pct(alarms)})  核实率 ${pct(count("verified"))}`,
+      `   误报 旧口径 ${String(old).padStart(3)} (${pct(old)}) / 新口径 ${String(now).padStart(3)} (${pct(now)})  核实率 ${pct(count("verified"))}`,
   );
 }
 
 console.log(`\n数据集 ${name}，${useAI ? "AI 辅助解析" : "标准规则"}模式，${cases.length} 条，用时 ${seconds.toFixed(1)}s`);
 if (useAI) console.log(`AI 批次失败后退回规则：${aiFallbackBatches} 批`);
+console.log("误报旧口径：信息有误、相近候选、疑似不存在都算（与此前的结果可比）；新口径：相近候选不算误报，见“相近”一列。");
 console.log("".padEnd(26) + VERDICTS.map((v) => LABEL[v].padStart(6 - (LABEL[v].length - 2))).join(""));
 row("合计", results);
 row("英文", results.filter((r) => cases[r.index - 1].label.lang === "en"));
@@ -91,9 +92,10 @@ row("中文", results.filter((r) => cases[r.index - 1].label.lang === "zh"));
 const kinds = [...new Set(cases.map((c) => c.label.kind).filter((k): k is string => !!k))];
 if (kinds.length > 1) for (const k of kinds) row(`类型 ${k}`, results.filter((r) => cases[r.index - 1].label.kind === k));
 
-const flagged = results.filter((r) => isFalseAlarm(r) || r.verdict === "error");
+// 按旧口径列出，相近候选也在里面，方便逐条复核
+const flagged = results.filter((r) => alarm(r, "old") || r.verdict === "error");
 if (!quiet && flagged.length) {
-  console.log(`\n被误标或出错的条目（${flagged.length}）：`);
+  console.log(`\n被误标或出错的条目（${flagged.length}，含相近候选）：`);
   for (const r of flagged) {
     const c = cases[r.index - 1];
     console.log(`${c.id} [${c.label.kind ?? "?"}/${c.label.lang}] ${LABEL[r.verdict]}：${r.summary}`);
@@ -116,10 +118,17 @@ writeFileSync(
       seconds,
       aiFallbackBatches: useAI ? aiFallbackBatches : undefined,
       counts: Object.fromEntries(VERDICTS.map((v) => [v, results.filter((r) => r.verdict === v).length])),
-      falseAlarms: results.filter(isFalseAlarm).length,
+      // falseAlarms 保持此前结果文件的口径（相近候选也算），falseAlarmsNew 是新口径
+      falseAlarms: results.filter((r) => alarm(r, "old")).length,
+      falseAlarmsNew: results.filter((r) => alarm(r, "new")).length,
+      calibers: {
+        falseAlarms: "旧口径：信息有误（标注允许的除外）、相近候选、疑似不存在都算误报，与 2026-10-16 及以前的结果文件同一口径",
+        falseAlarmsNew: "新口径：相近候选不算误报（只找到相近记录、没有确认是同一篇），条数见 counts.near_match",
+      },
       results: results.map((r) => ({
         id: cases[r.index - 1].id,
         verdict: r.verdict,
+        matchStatus: r.matchStatus,
         summary: r.summary,
         issues: r.issues,
         kind: r.parsed.kind,

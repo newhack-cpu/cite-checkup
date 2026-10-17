@@ -4,7 +4,7 @@ import { getAIStatus, prepareAIReferences } from "@/lib/ai";
 import { checkClientIp, createCheckLimits } from "@/lib/check-limits";
 import { CheckRequestError, MAX_CHECK_REFS, readCheckRequest } from "@/lib/check-request";
 import { parseReferenceList } from "@/lib/verify/extract";
-import type { CheckEvent, Verdict } from "@/lib/verify/types";
+import { VERDICTS, type CheckEvent, type Verdict } from "@/lib/verify/types";
 import { verifyAll } from "@/lib/verify/verify";
 
 // These limits are per process, not distributed quotas or an authentication layer.
@@ -70,7 +70,7 @@ export async function POST(request: Request) {
       // while model or database I/O is pending.
       void (async () => {
         const started = Date.now();
-        const counts: Record<Verdict, number> = { verified: 0, mismatch: 0, not_found: 0, retracted: 0, concern: 0, unverifiable: 0, error: 0 };
+        const counts = Object.fromEntries(VERDICTS.map((v) => [v, 0])) as Record<Verdict, number>;
         try {
           work.signal.throwIfAborted();
           let refs = standardRefs;

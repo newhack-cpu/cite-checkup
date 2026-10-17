@@ -113,13 +113,59 @@ describe("verified requires consistent cited fields", () => {
 });
 
 describe("candidate identity", () => {
-  it.each([20, 0])("marks a nearby record as an unconfirmed candidate with budget %s", async (budget) => {
-    fixture(record, { searchItems: [{ ...record, title: ["Alpha beta gamma delta epsilon zeta eta theta"] }] });
-    const result = await check("LeCun, Y., et al. (2015). Alpha beta gamma delta. Nature, 521(7553), 436-444.", budget);
-    expect(result.verdict).toBe("mismatch");
+  const NEAR = "LeCun, Y., et al. (2015). Alpha beta gamma delta. Nature, 521(7553), 436-444.";
+  const nearRecord = { ...record, title: ["Alpha beta gamma delta epsilon zeta eta theta"] };
+
+  /** 引文 DOI 的三种情况：Crossref 里是另一篇、doi.org 未注册；整条检索都返回同一篇相近候选 */
+  function doiFixture(doiRecord: CrossrefItem | undefined) {
+    vi.stubGlobal("fetch", async (input: string) => {
+      const url = new URL(input);
+      if (url.hostname === "api.crossref.org") {
+        if (url.pathname === "/journals") return Response.json({ message: { items: [] } });
+        if (url.pathname === "/works") return Response.json({ message: { items: [nearRecord] } });
+        return doiRecord ? Response.json({ message: doiRecord }) : new Response("Resource not found.", { status: 404 });
+      }
+      if (url.hostname === "doi.org") return Response.json([{ DOI: "10.9999/missing", status: "DOI does not exist" }]);
+      if (url.hostname === "api.openalex.org") return Response.json({ results: [] });
+      throw new Error(`Unexpected fixture request: ${url.hostname}`);
+    });
+  }
+
+  it.each([20, 0])("reports a nearby record as a near match, not as wrong information (budget %s)", async (budget) => {
+    fixture(record, { searchItems: [nearRecord] });
+    const result = await check(NEAR, budget);
+    expect(result.verdict).toBe("near_match");
     expect(result.matchStatus).toBe("candidate");
+    expect(result.issues).toEqual([]);
+    expect(result.summary).toContain("不能确认是同一篇");
     expect(result.match?.title).toBe("Alpha beta gamma delta epsilon zeta eta theta");
     expect(result.suggestion).toContain("Alpha beta gamma delta epsilon zeta eta theta");
+  });
+
+  it("keeps an unregistered DOI as wrong information even when a near candidate exists", async () => {
+    doiFixture(undefined);
+    const result = await check(`${NEAR} https://doi.org/10.9999/missing`);
+    expect(result.verdict).toBe("mismatch");
+    expect(result.matchStatus).toBe("candidate");
+    expect(result.issues.join("")).toContain("查无注册记录");
+    expect(result.summary).toContain("DOI 不存在");
+  });
+
+  it("keeps a DOI that points to another work as wrong information even when a near candidate exists", async () => {
+    doiFixture({ ...record, DOI: "10.9999/other", title: ["Soil microbial respiration under drought"], author: [{ family: "Okafor", given: "Chidi" }] });
+    const result = await check(`${NEAR} https://doi.org/10.9999/other`);
+    expect(result.verdict).toBe("mismatch");
+    expect(result.matchStatus).toBe("candidate");
+    expect(result.issues.join("")).toContain("实际指向");
+    expect(result.summary).toContain("张冠李戴");
+  });
+
+  it("keeps a wrong DOI as wrong information when the search was cut short", async () => {
+    doiFixture(undefined);
+    const result = await check(`${NEAR} https://doi.org/10.9999/missing`, 0);
+    expect(result.verdict).toBe("mismatch");
+    expect(result.summary).toContain("DOI 有误");
+    expect(result.notes.join("")).toContain("额度已用完");
   });
 
   it("marks a verified record as confirmed", async () => {

@@ -9,10 +9,8 @@ import { createClaimLimits } from "../claims/limits";
 import { ClaimRequestError, MAX_CLAIM_CHARS, MAX_EVIDENCE_CHARS } from "../claims/request";
 import { VERDICT_META } from "../verdict-meta";
 import { parseReferenceList } from "../verify/extract";
-import type { RefResult, Verdict } from "../verify/types";
+import { VERDICTS, type RefResult, type Verdict } from "../verify/types";
 import { verifyAll } from "../verify/verify";
-
-const VERDICTS = ["verified", "mismatch", "not_found", "retracted", "concern", "unverifiable", "error"] as const;
 
 const referenceResult = z.object({
   index: z.number().int(),
@@ -46,7 +44,8 @@ const failure = (text: string): CallToolResult => ({ isError: true, content: [{ 
 /** 给调用方模型看的纯文本：每条一行结论，问题和规范写法附在下面 */
 function referenceReport(results: RefResult[], counts: Record<Verdict, number>): string {
   const head = VERDICTS.filter((v) => counts[v]).map((v) => `${VERDICT_META[v].label} ${counts[v]}`).join("，");
-  const lines = [`共 ${results.length} 条：${head}。结论来自 Crossref / doi.org / OpenAlex 的逐字段比对；查不到不等于编造。`];
+  const lines = [`共 ${results.length} 条：${head}。结论来自 Crossref / doi.org / OpenAlex 的逐字段比对；查不到不等于编造。`
+    + (counts.near_match ? "相近候选只是找到了相近的记录、未能确认是同一篇，不算信息有误，需要人工核对。" : "")];
   for (const r of results) {
     const label = VERDICT_META[r.verdict].label;
     lines.push("", `[${r.index}] ${r.summary.startsWith(label) ? r.summary : `${label}：${r.summary}`}`);
@@ -63,7 +62,8 @@ export interface ServerOptions {
 }
 
 export function createCiteCheckupServer(options: ServerOptions = {}): McpServer {
-  const server = new McpServer({ name: "cite-checkup", version: "0.1.0" });
+  // 0.2.0：结论新增 near_match（只找到相近候选，不算信息有误）
+  const server = new McpServer({ name: "cite-checkup", version: "0.2.0" });
   // 论断核查要调用模型，和网页接口一样限次，防止客户端模型反复调用
   const claimLimits = createClaimLimits();
 
@@ -71,10 +71,13 @@ export function createCiteCheckupServer(options: ServerOptions = {}): McpServer 
     title: "核验参考文献",
     description:
       "Check a bibliographic reference list against Crossref, doi.org and OpenAlex. For each entry it returns a rule-based verdict " +
-      "(verified, mismatch, not_found, retracted, concern, unverifiable, error), the problems found, the matched database record " +
+      "(verified, mismatch, near_match, not_found, retracted, concern, unverifiable, error), the problems found, the matched database record " +
       "and a citation generated only from that record. Verdicts come from database lookups and field-by-field comparison, never from " +
-      "a language model; 'not_found' or 'unverifiable' is not proof of fabrication (books, theses, web pages and Chinese journals are " +
-      `poorly covered). Accepts GB/T 7714, APA, IEEE and similar styles, at most ${MAX_CHECK_REFS} entries. Summaries are in Simplified Chinese.`,
+      "a language model. 'mismatch' means the same work was confirmed but some fields are wrong, or the cited DOI is unregistered or points " +
+      "to another work. 'near_match' means only a similar record was found and it could not be confirmed as the same work: it is not a " +
+      "confirmed error, and its citation must not replace the original until a person has checked it. 'not_found' or 'unverifiable' is " +
+      "not proof of fabrication (books, theses, web pages and Chinese journals are poorly covered). " +
+      `Accepts GB/T 7714, APA, IEEE and similar styles, at most ${MAX_CHECK_REFS} entries. Summaries are in Simplified Chinese.`,
     inputSchema: {
       references: z.string().min(1).max(MAX_CHECK_CHARS)
         .describe("The reference list: one entry per line, or numbered like [1] ... [2] ... or 1. ... 2. ..."),

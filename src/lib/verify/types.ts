@@ -76,14 +76,16 @@ export interface WorkRecord {
 /**
  * 核验结论：
  * - verified：找到同一篇文献，信息一致
- * - mismatch：文献存在，但作者 / 年份 / 期刊 / DOI 等信息有误
+ * - mismatch：确认是同一篇，但作者 / 年份 / 期刊 / DOI 等信息有误；或引用的 DOI 未注册、指向别的文献（即使另有相近候选）
+ * - near_match：只找到相近的记录，不能确认是同一篇，也没有哪项信息被确认写错，需要人工核对
  * - not_found：有较强证据表明文献不存在（DOI 未注册、DOI 指向别的文献、英文期刊论文在库中查无此文）
  * - retracted：文献存在但已撤稿 / 撤回
  * - concern：期刊发布关注声明，不等于已撤稿
  * - unverifiable：不在开放数据库的覆盖范围内（图书、学位论文、网页、无 DOI 的中文文献等），查不到不代表有问题
  * - error：核验过程出错（网络、限流等）
  */
-export type Verdict = "verified" | "mismatch" | "not_found" | "retracted" | "concern" | "unverifiable" | "error";
+export const VERDICTS = ["verified", "mismatch", "near_match", "not_found", "retracted", "concern", "unverifiable", "error"] as const;
+export type Verdict = (typeof VERDICTS)[number];
 
 export type FieldName = "title" | "authors" | "year" | "venue" | "doi";
 

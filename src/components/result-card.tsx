@@ -170,7 +170,8 @@ export function ResultCard({
   agent?: { state?: AgentRunState; onRun?: () => void };
 }) {
   const verdict = result?.verdict;
-  const problem = verdict === "mismatch" || verdict === "not_found" || verdict === "retracted" || verdict === "concern";
+  // 相近候选也默认展开：要对照比对表才能判断是不是同一篇
+  const problem = verdict === "mismatch" || verdict === "near_match" || verdict === "not_found" || verdict === "retracted" || verdict === "concern";
   const [open, setOpen] = useState<boolean | null>(null);
   const expanded = open ?? problem;
   const meta = verdict ? VERDICT_META[verdict] : undefined;

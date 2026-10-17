@@ -36,6 +36,8 @@ export function ReportSummary({
   const scoreColor =
     score === undefined ? "var(--color-ink-faint)" : score >= 85 ? "var(--color-jade)" : score >= 60 ? "var(--color-amber)" : "var(--color-seal)";
   const flagged = (counts.not_found ?? 0) + (counts.retracted ?? 0) + (counts.concern ?? 0) + (counts.mismatch ?? 0);
+  // 相近候选没有确认哪里写错，不算"需要处理"，单独提示人工核对
+  const near = counts.near_match ?? 0;
 
   function download() {
     const url = URL.createObjectURL(new Blob([buildReportMarkdown(refs, results, complete)], { type: "text/markdown;charset=utf-8" }));
@@ -64,7 +66,13 @@ export function ReportSummary({
             {!running && flagged > 0 && (
               <>
                 <span className="mx-2 text-rule">|</span>
-                <span className="text-seal">发现 {flagged} 条需要处理</span>
+                <span className="whitespace-nowrap text-seal">发现 {flagged} 条需要处理</span>
+              </>
+            )}
+            {!running && near > 0 && (
+              <>
+                <span className="mx-2 text-rule">|</span>
+                <span className="whitespace-nowrap" style={{ color: VERDICT_META.near_match.color }}>{near} 条相近候选待核对</span>
               </>
             )}
           </p>
@@ -89,7 +97,7 @@ export function ReportSummary({
         <button type="button" onClick={download} disabled={running} className="rounded-sm border border-ink/25 px-4 py-2 text-[14px] text-ink hover:border-seal hover:text-seal disabled:opacity-40">下载核查报告</button>
         </div>
       </div>
-      <p className="mt-3 text-[12.5px] leading-6 text-ink-faint">健康度只计算有明确结论的条目；待人工与关注声明不计入分母。{!finished && "本次核查未全部完成，暂不显示健康度或提供修正版清单。"}</p>
+      <p className="mt-3 text-[12.5px] leading-6 text-ink-faint">健康度只计算有明确结论的条目；相近候选、待人工与关注声明不计入分母。{!finished && "本次核查未全部完成，暂不显示健康度或提供修正版清单。"}</p>
       {copyError && <p role="alert" className="mt-2 text-sm text-seal">浏览器未允许复制，请下载核查报告。</p>}
 
       {/* 墨条：各结论占比，未完成部分用斜线表示 */}
