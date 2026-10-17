@@ -43,10 +43,11 @@ export function splitReferences(text: string): string[] {
 
 /**
  * 提取 DOI。DOI 只取 ASCII 字符，粘在后面的全角括号、中文标点（〉》，。）自然被排除；
- * 再去掉末尾标点（括号只在不配对时才去掉，因为有的 DOI 本身带括号）。
+ * 排版软件换进去的 Unicode 连字符（U+2010、U+2011，Wiley 的 "10.2514/6.2009‐949"）先换回 "-"，软连字符删掉，
+ * 否则 DOI 会在这里被截断；再去掉末尾标点（括号只在不配对时才去掉，因为有的 DOI 本身带括号）。
  */
 export function extractDoi(s: string): string | undefined {
-  const m = s.match(/\b(10\.\d{4,9}\/[^\s"<>\u0080-￿]+)/i);
+  const m = s.replace(/\u00ad/g, "").replace(/[\u2010\u2011]/g, "-").match(/\b(10\.\d{4,9}\/[^\s"<>\u0080-￿]+)/i);
   if (!m) return undefined;
   let doi = m[1];
   for (;;) {
@@ -171,9 +172,16 @@ const PRESENTATION_RE =
 // 出版社名紧跟分号、冒号或逗号（ACS："Indoles; Elsevier, 1996"；Vancouver 章节："... Degeneration: Springer; 2008"）
 const PUBLISHER_RE =
   /\b(?:Springer(?:-Verlag)?|Elsevier|Wiley(?:-VCH|-Blackwell|-Interscience)?|John Wiley|Routledge|SAGE|Taylor (?:&|and) Francis|Chapman (?:&|and) Hall(?:\/CRC)?|CRC|Pergamon|Butterworth(?:-Heinemann)?|Birkh[aä]user|De Gruyter|Palgrave(?: Macmillan)?|Macmillan|World Scientific|Humana|Thieme|Karger|Mosby|Saunders|Lippincott|McGraw[- ]Hill|Pearson|Prentice[- ]Hall|Addison[- ]Wesley|Marcel Dekker|Kluwer|Nova Science|IGI Global|Woodhead)\b\s*(?:[;:,]|\.?\s*$)/;
-// 机构作者：开头就是部委、机构、协会这类名称
+// 机构作者：开头就是部委、机构、协会这类名称；或是全大写的机构缩写，后面紧跟年份或句号（"IHO (2000)." "IMO (2006)." "WHO. Global ..."）。
+// 个人姓氏全大写时后面跟的是名的缩写（"LECUN Y," "SILVA, J."），不会被当成机构
 const ORG_AUTHOR_RE =
-  /^(?:the\s+)?(?:[A-Z][\w&'’.-]*\s+){0,4}(?:Organi[sz]ation|Department|Ministry|Office|Agency|Bureau|Council|Commission|Parliament|Institute|Center|Centre|Association|Foundation|Society|Administration|Authority|Board|Committee|Union|Bank|Fund|Programme|Program|Service)\b/;
+  /^(?:the\s+)?(?:[A-Z][\w&'’.-]*\s+){0,4}(?:Organi[sz]ation|Department|Ministry|Office|Agency|Bureau|Council|Commission|Parliament|Institute|Center|Centre|Association|Foundation|Society|Administration|Authority|Board|Committee|Union|Bank|Fund|Programme|Program|Service)\b|^[A-Z]{2,6}(?:\s*\(\s*(?:18|19|20)\d{2}[a-z]?\s*\)|\.\s+(?:(?:18|19|20)\d{2}\b|\p{Lu}))/u;
+// 档案、手稿：叶码（"fol. 3r" "ff. 12v"）、带图书馆或档案馆名称的馆藏号（"Nationalbibliothek … Cod. 11158" "British Library MS 123"），
+// 以及未发表的手稿（APA 的 "Unpublished manuscript" "Manuscript in preparation" "Manuscript submitted for publication"）
+const ARCHIVE_RE =
+  /\bf(?:ol)?s?\.\s*\d+\s*[rv]\b|\bff\.\s*\d+\s*[rv]\b|\b(?:unpublished\s+manuscript|manuscript\s+(?:in\s+preparation|submitted)|handschrift|nachlass)\b/i;
+const SHELFMARK_RE = /\b(?:Cod(?:ex)?|MSS?|Ms)\.?\s+(?:\p{Lu}[\p{L}]*\.\s*){0,3}\d+/u;
+const LIBRARY_RE = /bibliothek|librar(?:y|ies)|biblioth[eè]que|biblioteca|archiv|archives?\b|staatsarchiv|record office/i;
 // 访问日期（"Accessed on 31 August, 2023" "[cited 2023 Aug 31]"）里的年份不是卷号
 const ACCESS_DATE_RE = /\b(?:accessed|retrieved|last\s+(?:accessed|visited|viewed))\b[^.;]{0,40}?\b(?:18|19|20)\d{2}\b|\[cited\b[^\]]{0,30}\]/gi;
 
@@ -205,6 +213,7 @@ export function detectKind(s: string): RefKind {
   // 期刊特征只在去掉普通网址和访问日期后找：新闻网页末尾的 "Accessed on 31 August, 2023." 会被当成 "刊名, 卷号."
   const core = t.replace(/https?:\/\/(?!(?:dx\.)?doi\.org\/)\S+/gi, " ").replace(ACCESS_DATE_RE, " ");
   if (JOURNAL_PATTERNS.some((re) => re.test(core))) return "journal";
+  if (ARCHIVE_RE.test(t) || (SHELFMARK_RE.test(t) && LIBRARY_RE.test(t))) return "archive";
   if (STANDARD_CODE_RE.test(t) || STANDARD_WORD_RE.test(t)) return "standard";
   if (PATENT_RE.test(t)) return "patent";
   if (LEGAL_RE.test(t)) return "legal";
@@ -287,7 +296,8 @@ function leadingNames(t: string): Span | undefined {
   let real = 0;
   for (let i = 0; i < segs.length && i < 160; i++) {
     const seg = segs[i].text.replace(/^\s*(?:and|&)\s+/i, "").trim();
-    if (!seg) break;
+    // 作者之间多出来的空逗号（"Wang X, , Zhang C, and Bao N."）不是作者段的结束
+    if (!seg) continue;
     const next = segs[i + 1]?.text.trim();
     // APA 的 "Surname, I." 被逗号拆成了两段
     if (next && SURNAME_ONLY_RE.test(seg) && INITIALS_ONLY_RE.test(next)) {
@@ -380,14 +390,18 @@ function untilTitleEnd(s: string, min: number, max = 400): string | undefined {
   return undefined;
 }
 
-/** 题名候选的基本检查：有足够的文字，不能是 "19, 3942 (2022)" 这种刊名卷页 */
+/**
+ * 题名候选的基本检查：有足够的文字，不能是 "19, 3942 (2022)" 这种刊名卷页，也不能是网址；
+ * 只由一两个字母的碎片组成的（"Journal Pre-proof" 水印的残字 "l P re of"）不是题名
+ */
 function plausibleTitle(x: string): boolean {
   const s = x.trim();
   if (/^\d/.test(s)) return false;
   if (/\(\s*(?:18|19|20)\d{2}\s*\)|\b\d{1,4}\s*,\s*\d+\s*$/.test(s)) return false;
+  if (/^(?:https?:\/\/|www\.)/i.test(s)) return false;
   const words = s.match(/\p{L}{2,}/gu) ?? [];
   const han = s.match(/\p{Script=Han}/gu)?.length ?? 0;
-  return words.length >= 3 || han >= 6;
+  return (words.length >= 3 && words.some((w) => w.length >= 3)) || han >= 6;
 }
 
 /** 启发式猜题名。猜不准没关系，后面的匹配主要拿数据库题名去原文里找 */
@@ -418,13 +432,18 @@ function rawTitle(s: string): string | undefined {
     // GB/T 类型标识 [J] [M] 也是题名的结束
     const marker = rest.search(/\s*\[[A-Z]{1,2}(?:\/[A-Z]{2})?\]/);
     if (marker >= 6 && marker <= 400 && (title === undefined || marker < title.length)) title = rest.slice(0, marker);
-    // ACS："Density Estimation ...; Chapman & Hall/CRC: 1986"，分号后面是出版社；"In 书名; ..." 是所在的书，不是本文题名
-    title = title?.split(/;\s/)[0].replace(/^\(?eds?\.?\)?\s+/i, "");
+    // ACS："Density Estimation ...; Chapman & Hall/CRC: 1986"，分号后面是出版社；"In 书名; ..." 是所在的书，不是本文题名；
+    // Vancouver 的软件、网页："Maps: Draw Geographical Maps; 2022."。分号后面紧跟小写字母时是题名里的标点
+    // （"oral squamous cell carcinoma; a preliminary report"，B014），不在这里截断
+    title = title?.split(/;\s(?!\p{Ll})/u)[0].replace(/^\(?eds?\.?\)?\s+/i, "");
     if (title && /^in:?\s/i.test(title)) title = undefined;
     if (title && plausibleTitle(title)) return title.trim();
   }
   return undefined;
 }
+
+const BIBLIO_ABBREVIATION_RE = /^(?:no|nos|vol|vols|pp?|art|ed|eds|suppl|iss|issue|ch|chap)$/i;
+const JOURNAL_WORD_RE = /\b(?:journal|review|letters|annals|transactions|bulletin|quarterly|magazine|acta)\b/i;
 
 /** 启发式猜期刊名：GB/T 取 [J]. 之后到逗号；其他格式取题名之后到卷号前 */
 export function guessVenue(s: string, titleGuess?: string): string | undefined {
@@ -441,11 +460,12 @@ export function guessVenue(s: string, titleGuess?: string): string | undefined {
         .replace(/^\s*[,.;:?!”"．。]+\s*/, "");
       if (/^(in:?\s|proceedings|proc\.|https?:)/i.test(rest)) return undefined;
       const m = rest.match(/^([^,，(\d]{2,}?)\s*(?:[,，]|\(|\d)/);
-      if (m) return m[1].replace(/[.\s]+$/, "").trim() || undefined;
-      // 刊名缩写在引文末尾、后面没有卷期页码（"... Songliao Basin. Earth Sci. Front."）；
-      // 要求中间有 "Sci. " 这样的缩写词，避免把末尾的出版社名（Springer Nature）当成刊名
+      // "no. 2012" "vol. 3" 这类书目缩写不是刊名
+      if (m) return m[1].replace(/[.\s]+$/, "").trim().replace(BIBLIO_ABBREVIATION_RE, "") || undefined;
+      // 刊名在引文末尾、后面没有卷期页码（"... Songliao Basin. Earth Sci. Front." "... Journal of Artificial Intelligence Research."）；
+      // 要求中间有 "Sci. " 这样的缩写词或 Journal、Review 这类刊名用词，避免把末尾的出版社名（Springer Nature）、机构名当成刊名
       const tail = rest.match(/^(\p{Lu}[^,，()\d\[\]]{1,80}?)[.。．\s]*$/u)?.[1].trim();
-      if (tail && /\b\p{Lu}\p{Ll}{0,8}\.\s/u.test(tail)) return tail;
+      if (tail && (/\b\p{Lu}\p{Ll}{0,8}\.\s/u.test(tail) || JOURNAL_WORD_RE.test(tail))) return tail;
     }
   }
   return undefined;

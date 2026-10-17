@@ -126,7 +126,10 @@ export function alnum(s: string): string {
 /**
  * 拆开粘连的姓名缩写，只用于作者比对：VizioliL → Vizioli L，MarkiewiczCJ → Markiewicz CJ，AdamsB(2018) → Adams B(2018)。
  * 要求大写缩写后面紧跟分隔符或括号，所以 McDonald、LeCun 这类姓不受影响。
+ * 小写的姓氏前缀与姓粘在一起（Wiley 的 "van derValk T."）也拆开：derValk → der Valk。
  */
 export function deglueNames(s: string): string {
-  return s.replace(/(\p{Lu}[\p{Ll}'’-]+)(\p{Lu}{1,3})(?=[\s,.;:(]|$)/gu, "$1 $2");
+  return s
+    .replace(/(^|[\s,.;:(])(van|von|de|der|den|del|della|di|du|da|dos|das|la|le|ten|ter|zu|zur|vom)(?=\p{Lu}\p{Ll})/gu, "$1$2 ")
+    .replace(/(\p{Lu}[\p{Ll}'’-]+)(\p{Lu}{1,3})(?=[\s,.;:(]|$)/gu, "$1 $2");
 }

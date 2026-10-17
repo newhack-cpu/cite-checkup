@@ -1,0 +1,521 @@
+{
+ "comparedAt": "2026-10-17",
+ "rules": "改规则前 0cd615a 与改后工作区（本文件随规则一同提交）",
+ "method": "改规则前，用 0cd615a 的代码把六个集合各跑一遍，包装 fetch 录下全部 Crossref、doi.org、OpenAlex 应答（只记 200 / 404；第一遍 7 条 Crossref 429，第二遍补齐），缓存只在本机临时目录。改前代码纯回放与录制结果逐条一致、缺失 0，作为基线。改后的代码先回放，只有改动后新发出的 3 个请求联网（Crossref 按 DOI 查 10.2514/6.2009-949、OpenAlex 按 DOI 查两条，都不计费），再整体纯回放（缺失 0），与基线按条目编号比较结论、摘要和问题。这六个集合都已看过，只能做回归，不能报效果。",
+ "network": "本机直连 Crossref / OpenAlex 超时，录制与补录都设 NODE_USE_ENV_PROXY=1 走代理",
+ "openalex": "单条 DOI 查询读代理出口额度：录制前 0.051 美元，录完 0.007（dev 2、test 3、blind-10-16 7、blind-10-16b 12、blind-10-17 14、自建 6 次题名检索）。另为评估 B040 的方案试了 1 次 OpenAlex 期刊库检索（0.001 美元）和 4 次期刊名自动补全（不计费）",
+ "b040": "曾拟“Crossref 期刊目录没有该刊时再查 OpenAlex 期刊库，两边都没有才判无法核验”。实测 Crossref 期刊目录、Crossref 按刊名检索文献、OpenAlex 期刊库检索与自动补全都认不出 “J Surg Oncol”“N Engl J Med”“J Artif Intell Res” 这类缩写（返回 0 条或别的刊），按此放行会把配了缩写刊名的编造文献一起改判成无法核验，所以没有改 B040",
+ "sets": {
+  "dev-2026-10-14": {
+   "oldCounts": {
+    "verified": 45,
+    "mismatch": 1,
+    "near_match": 0,
+    "not_found": 0,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 62,
+    "error": 0
+   },
+   "newCounts": {
+    "verified": 45,
+    "mismatch": 1,
+    "near_match": 0,
+    "not_found": 0,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 62,
+    "error": 0
+   },
+   "oldFalseAlarmsByScript": 0,
+   "newFalseAlarmsByScript": 0,
+   "oldFalseAlarmsNewByScript": 0,
+   "newFalseAlarmsNewByScript": 0,
+   "verdictChanged": 0,
+   "detailOnly": 0,
+   "changes": []
+  },
+  "test-2026-10-14": {
+   "oldCounts": {
+    "verified": 50,
+    "mismatch": 3,
+    "near_match": 0,
+    "not_found": 0,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 66,
+    "error": 0
+   },
+   "newCounts": {
+    "verified": 50,
+    "mismatch": 3,
+    "near_match": 0,
+    "not_found": 0,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 66,
+    "error": 0
+   },
+   "oldFalseAlarmsByScript": 3,
+   "newFalseAlarmsByScript": 3,
+   "oldFalseAlarmsNewByScript": 3,
+   "newFalseAlarmsNewByScript": 3,
+   "verdictChanged": 0,
+   "detailOnly": 13,
+   "changes": [
+    {
+     "id": "T029",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查"
+    },
+    {
+     "id": "T030",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查"
+    },
+    {
+     "id": "T031",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查"
+    },
+    {
+     "id": "T041",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查"
+    },
+    {
+     "id": "T045",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查"
+    },
+    {
+     "id": "T061",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查"
+    },
+    {
+     "id": "T062",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查"
+    },
+    {
+     "id": "T065",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查"
+    },
+    {
+     "id": "T068",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查"
+    },
+    {
+     "id": "T069",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查"
+    },
+    {
+     "id": "T070",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查"
+    },
+    {
+     "id": "T088",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查"
+    },
+    {
+     "id": "T089",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查"
+    }
+   ]
+  },
+  "blind-2026-10-16": {
+   "oldCounts": {
+    "verified": 54,
+    "mismatch": 1,
+    "near_match": 0,
+    "not_found": 0,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 55,
+    "error": 0
+   },
+   "newCounts": {
+    "verified": 54,
+    "mismatch": 1,
+    "near_match": 0,
+    "not_found": 0,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 55,
+    "error": 0
+   },
+   "oldFalseAlarmsByScript": 1,
+   "newFalseAlarmsByScript": 1,
+   "oldFalseAlarmsNewByScript": 1,
+   "newFalseAlarmsNewByScript": 1,
+   "verdictChanged": 0,
+   "detailOnly": 2,
+   "changes": [
+    {
+     "id": "B009",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查"
+    },
+    {
+     "id": "B029",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+     "newSummary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查"
+    }
+   ]
+  },
+  "blind-2026-10-16b": {
+   "oldCounts": {
+    "verified": 37,
+    "mismatch": 3,
+    "near_match": 5,
+    "not_found": 5,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 61,
+    "error": 0
+   },
+   "newCounts": {
+    "verified": 38,
+    "mismatch": 3,
+    "near_match": 4,
+    "not_found": 5,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 61,
+    "error": 0
+   },
+   "oldFalseAlarmsByScript": 13,
+   "newFalseAlarmsByScript": 12,
+   "oldFalseAlarmsNewByScript": 8,
+   "newFalseAlarmsNewByScript": 8,
+   "verdictChanged": 1,
+   "detailOnly": 1,
+   "changes": [
+    {
+     "id": "B043",
+     "old": "near_match",
+     "new": "verified",
+     "oldSummary": "找到相近文献，但不能确认是同一篇，请人工核对",
+     "newSummary": "已核实：与数据库记录一致（来源：Crossref）",
+     "note": "作者段的空逗号不再截断作者段（第三批复核里同一类）"
+    },
+    {
+     "id": "B057",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查",
+     "note": "原为“检索覆盖不完整”，现说明引文没写期刊、会议或 DOI"
+    }
+   ]
+  },
+  "blind-2026-10-17": {
+   "oldCounts": {
+    "verified": 30,
+    "mismatch": 11,
+    "near_match": 3,
+    "not_found": 9,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 58,
+    "error": 0
+   },
+   "newCounts": {
+    "verified": 36,
+    "mismatch": 5,
+    "near_match": 3,
+    "not_found": 1,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 66,
+    "error": 0
+   },
+   "oldFalseAlarmsByScript": 23,
+   "newFalseAlarmsByScript": 9,
+   "oldFalseAlarmsNewByScript": 20,
+   "newFalseAlarmsNewByScript": 6,
+   "verdictChanged": 14,
+   "detailOnly": 4,
+   "changes": [
+    {
+     "id": "B002",
+     "old": "not_found",
+     "new": "verified",
+     "oldSummary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+     "newSummary": "已核实：与数据库记录一致（来源：Crossref）",
+     "oldIssues": [
+      "DOI 10.1016/j.jphotochem.2020.112657 实际指向《A ratiometric and colorimetric fluorescent probe for the det…》（Zhu Z, Ding H, Wang Y 等，2020），与引用内容不符",
+      "检索不到与引用题名、作者相符的文献"
+     ],
+     "newIssues": [],
+     "note": "“Journal Pre-proof”水印残字不再当题名，按作者、刊名、文章号与 DOI 记录核对"
+    },
+    {
+     "id": "B014",
+     "old": "mismatch",
+     "new": "verified",
+     "oldSummary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+     "newSummary": "已核实：与数据库记录一致（来源：Crossref）",
+     "oldIssues": [
+      "期刊名不符：引用写「a preliminary report. J Surg Oncol」，数据库记录为「Journal of Surgical Oncology」"
+     ],
+     "newIssues": [],
+     "note": "题名里分号后接小写词，不再在分号处截断"
+    },
+    {
+     "id": "B019",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "引文只写了名称，没有作者、年份或 DOI，信息不足以核验，请补全后再查",
+     "newSummary": "档案 / 手稿类文献不在开放学术数据库的覆盖范围内，请人工核查",
+     "note": "“Ibid., fol. 3v”识别为档案手稿；原为“信息不足”，仍是无法核验"
+    },
+    {
+     "id": "B020",
+     "old": "not_found",
+     "new": "unverifiable",
+     "oldSummary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+     "newSummary": "档案 / 手稿类文献不在开放学术数据库的覆盖范围内，请人工核查",
+     "oldIssues": [
+      "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+     ],
+     "newIssues": [],
+     "note": "馆藏号、叶码识别为档案手稿"
+    },
+    {
+     "id": "B025",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查"
+    },
+    {
+     "id": "B028",
+     "old": "mismatch",
+     "new": "verified",
+     "oldSummary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+     "newSummary": "已核实：与数据库记录一致（来源：Crossref）",
+     "oldIssues": [
+      "第一作者不符，数据库第一作者为 van der Valk T"
+     ],
+     "newIssues": [],
+     "note": "拆开粘连的姓氏前缀 “van derValk”"
+    },
+    {
+     "id": "B029",
+     "old": "mismatch",
+     "new": "verified",
+     "oldSummary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+     "newSummary": "已核实：与数据库记录一致（来源：Crossref）",
+     "oldIssues": [
+      "作者与数据库记录不符，数据库作者为 IUCN"
+     ],
+     "newIssues": [],
+     "note": "记录的作者只有机构缩写 IUCN，不再比作者"
+    },
+    {
+     "id": "B036",
+     "old": "mismatch",
+     "new": "verified",
+     "oldSummary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+     "newSummary": "已核实：与数据库记录一致（来源：Crossref）",
+     "oldIssues": [
+      "引用中的 DOI 10.2514/6.2009 并不存在，正确 DOI 应为 10.2514/6.2009-949"
+     ],
+     "newIssues": [],
+     "note": "DOI 里的 U+2010 连字符换回 “-”，不再被截断"
+    },
+    {
+     "id": "B047",
+     "old": "mismatch",
+     "new": "verified",
+     "oldSummary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+     "newSummary": "已核实：与数据库记录一致（来源：Crossref）",
+     "oldIssues": [
+      "期刊名不符：引用写「Molecular mechanism of palmitic acid and its derivatives in tumor progression. Front Oncol」，数据库记录为「Frontiers in Oncology」"
+     ],
+     "newIssues": [],
+     "note": "空逗号"
+    },
+    {
+     "id": "B048",
+     "old": "mismatch",
+     "new": "mismatch",
+     "oldIssues": [
+      "期刊名不符：引用写「Crosstalk between podocytes and tubular epithelial cells. Cell Biol Pathol Podocytes」，数据库记录为「Contributions to Nephrology」"
+     ],
+     "newIssues": [
+      "期刊名不符：引用写「Cell Biol Pathol Podocytes」，数据库记录为「Contributions to Nephrology」"
+     ],
+     "note": "空逗号修好后报的是引文出处写错（“Cell Biol Pathol Podocytes”不是书名，实为 Contributions to Nephrology），按复核标准属于真实错误"
+    },
+    {
+     "id": "B054",
+     "old": "not_found",
+     "new": "unverifiable",
+     "oldSummary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查",
+     "oldIssues": [
+      "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+     ],
+     "newIssues": [],
+     "note": "没写期刊、会议或 DOI，查不到改判无法核验"
+    },
+    {
+     "id": "B055",
+     "old": "not_found",
+     "new": "unverifiable",
+     "oldSummary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查",
+     "oldIssues": [
+      "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+     ],
+     "newIssues": [],
+     "note": "同上"
+    },
+    {
+     "id": "B056",
+     "old": "not_found",
+     "new": "unverifiable",
+     "oldSummary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+     "newSummary": "预印本没有写 arXiv 编号或 DOI，开放数据库未必收录，查不到不代表不存在，请人工核查",
+     "oldIssues": [
+      "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+     ],
+     "newIssues": [],
+     "note": "没写编号的预印本；网址不再当题名"
+    },
+    {
+     "id": "B059",
+     "old": "not_found",
+     "new": "unverifiable",
+     "oldSummary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查",
+     "oldIssues": [
+      "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+     ],
+     "newIssues": [],
+     "note": "没写期刊、会议或 DOI（引文只写了“USA.”）"
+    },
+    {
+     "id": "B060",
+     "old": "not_found",
+     "new": "unverifiable",
+     "oldSummary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+     "newSummary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+     "oldIssues": [
+      "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+     ],
+     "newIssues": [],
+     "note": "“IHO (2000).”认作机构署名，按报告处理"
+    },
+    {
+     "id": "B061",
+     "old": "mismatch",
+     "new": "unverifiable",
+     "oldSummary": "文献存在，但有 3 处信息与数据库记录不一致（来源：Crossref）",
+     "newSummary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+     "oldIssues": [
+      "作者与数据库记录不符，数据库作者为 Weintrit A",
+      "年份不符：引用写 2006，数据库记录为 2009 / 2010",
+      "期刊名不符：引用写「London: International Maritime Organization. MSC」，数据库记录为「The Electronic Chart Display and Information System (ECDIS)」"
+     ],
+     "newIssues": [],
+     "note": "“IMO (2006).”认作机构署名，不再与转载它的图书附录比作者、年份"
+    },
+    {
+     "id": "B079",
+     "old": "not_found",
+     "new": "unverifiable",
+     "oldSummary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查",
+     "oldIssues": [
+      "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+     ],
+     "newIssues": [],
+     "note": "期刊名不再取 “no”，没写期刊、会议或 DOI"
+    },
+    {
+     "id": "B087",
+     "old": "unverifiable",
+     "new": "unverifiable",
+     "oldSummary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+     "newSummary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查"
+    }
+   ]
+  },
+  "curated": {
+   "old": "29/29",
+   "new": "29/29",
+   "fabricatedCaught": "7/7",
+   "genuineFalseAlarm": "0/15",
+   "verdictChanged": 0,
+   "detailOnly": 0,
+   "changes": []
+  }
+ },
+ "checks": {
+  "newlyFlagged": 0,
+  "realErrorsStillFlagged": {
+   "test T019 / T023 / T081": [
+    "T019 mismatch → mismatch",
+    "T023 mismatch → mismatch",
+    "T081 mismatch → mismatch"
+   ],
+   "blind-2026-10-17 B003 / B037 / B038": [
+    "B003 mismatch → mismatch",
+    "B037 mismatch → mismatch",
+    "B038 mismatch → mismatch"
+   ]
+  },
+  "stillFlaggedInBlind4": [
+   "B003 mismatch",
+   "B034 near_match",
+   "B035 near_match",
+   "B037 mismatch",
+   "B038 mismatch",
+   "B040 not_found",
+   "B048 mismatch",
+   "B057 mismatch",
+   "B070 near_match"
+  ],
+  "summary": "六个集合没有新增标出；dev、test、blind-2026-10-16 的结论逐条不变（只有无法核验条目的说明文字变了）；test 的 T019 / T023 / T081 和第四批的 B003 / B037 / B038 仍标为信息有误；自建样例 29/29。第四批旧口径自动统计 23 → 9（其中 B003、B037、B038、B048 为真实错误），第三批 13 → 12。这些集合都已看过，数字只说明规则按预期生效、没有退步，不代表新数据上的效果。"
+ }
+}

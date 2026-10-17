@@ -50,6 +50,7 @@ const OUT_OF_SCOPE: Partial<Record<RefKind, string>> = {
   web: "网页 / 电子资源",
   legal: "法律法规",
   presentation: "会议报告 / 海报",
+  archive: "档案 / 手稿",
   software: "软件 / 数据集",
 };
 
@@ -287,7 +288,11 @@ function sameJournal(cited: string, title: string): boolean {
   return venueSimilarity(cited, title) >= 0.9 && fuzzyRecall(title.replace(/\bjournal\b/gi, " "), cited) >= 0.9;
 }
 
-/** 下"查无此文"的结论前，确认引文写的期刊在该年份是否在 Crossref 收录范围内 */
+/**
+ * 下"查无此文"的结论前，确认引文写的期刊在该年份是否在 Crossref 收录范围内。
+ * 期刊目录里没有同名期刊时不算缺口：Crossref 期刊目录、OpenAlex 期刊库都认不出 "J Surg Oncol" "N Engl J Med" 这类缩写
+ * （2026-10-17 实测），据此放行会把配了缩写刊名的编造文献也改判成无法核验
+ */
 async function coverageGap(venue: string, year: number, steps: CheckStep[], ctx: VerifyContext): Promise<string | undefined> {
   try {
     const { journals } = await step(steps, "crossref_journal", () => crossrefJournals(venue, ctx.signal), (r) => {
@@ -473,6 +478,20 @@ function judgeNotSame(ref: ParsedRef, best: Ranked | undefined, steps: CheckStep
       ...b, ...nearPart, verdict: "near_match", confidence: 0.55,
       notes: ["数据库中有一篇题名相近的记录，但题名、作者、年份或刊名没有吻合到能确认是同一篇；可能是引文格式特殊或数据库记录不全，也可能是引文写错了"],
       summary: "找到相近文献，但不能确认是同一篇，请人工核对",
+    };
+  }
+  // 题名检索查不到，只对看得出是期刊、会议论文的引文才算证据（not_found 的定义）。没写编号的预印本（B056），
+  // 以及类型认不出、又没写期刊名的引文（报告、法院文件、专利的写法五花八门：B054 / B055 / B059）可能根本不在收录范围内
+  if (!ref.doi && ref.kind === "preprint") {
+    return {
+      ...b, verdict: "unverifiable", confidence: 0,
+      summary: "预印本没有写 arXiv 编号或 DOI，开放数据库未必收录，查不到不代表不存在，请人工核查",
+    };
+  }
+  if (!ref.doi && ref.kind === "unknown" && !ref.venueGuess) {
+    return {
+      ...b, verdict: "unverifiable", confidence: 0,
+      summary: "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查",
     };
   }
   const searched = steps.filter((s) => s.action === "crossref_search" || s.action === "openalex_search").length;

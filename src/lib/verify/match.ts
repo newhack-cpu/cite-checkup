@@ -168,13 +168,16 @@ function leftoverWords(plain: string, rec: WorkRecord): number {
 const ORGANIZATION_RE =
   /\b(?:committee|council|commission|organi[sz]ation|association|society|institute|agency|department|ministry|office|bureau|centre|center|foundation|consortium|board|administration|authority|corporation|international|inc|ltd|gmbh|team|group)\b|委员会|协会|学会|研究院|研究所|中心|组织/i;
 
-/** 记录里的作者全是机构名（没有名、名称里有 Committee、Society 等） */
+/**
+ * 记录里的作者全是机构名（没有名、名称里有 Committee、Society 等，或是 IUCN 这样的全大写缩写）。
+ * IUCN 红色名录的记录把机构登记为作者、评估人写在题名里（B029），按姓氏比对没有意义
+ */
 export function isOrganizationList(authors: Author[]): boolean {
-  return authors.length > 0 && authors.every((a) => !a.given && ORGANIZATION_RE.test(a.family));
+  return authors.length > 0 && authors.every((a) => !a.given && (ORGANIZATION_RE.test(a.family) || /^[A-Z]{3,10}$/.test(a.family.trim())));
 }
 
 // 开放数据库覆盖不足的文献类型（与 verify.ts 的 OUT_OF_SCOPE 相同）：数据库里查到的常是它的另一版本、转载或同名的其他作品
-const VERSIONED_KINDS = new Set<ParsedRef["kind"]>(["book", "thesis", "standard", "patent", "report", "newspaper", "web", "legal", "presentation", "software"]);
+const VERSIONED_KINDS = new Set<ParsedRef["kind"]>(["book", "thesis", "standard", "patent", "report", "newspaper", "web", "legal", "presentation", "archive", "software"]);
 const VERSIONED_TYPE_RE = /^(?:book|edited-book|monograph|reference-book|book-set|book-series|dissertation|dataset|software|database)$/i;
 const JOURNAL_TYPE_RE = /^(?:journal-article|article|review|proceedings-article)$/i;
 
