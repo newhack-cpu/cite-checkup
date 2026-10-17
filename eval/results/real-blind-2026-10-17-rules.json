@@ -1,0 +1,1150 @@
+{
+ "ranAt": "2026-10-17T09:11:53.695Z",
+ "dataset": "blind-2026-10-17",
+ "mode": "rules",
+ "total": 111,
+ "seconds": 79.006,
+ "counts": {
+  "verified": 30,
+  "mismatch": 11,
+  "near_match": 3,
+  "not_found": 9,
+  "retracted": 0,
+  "concern": 0,
+  "unverifiable": 58,
+  "error": 0
+ },
+ "falseAlarms": 23,
+ "falseAlarmsNew": 20,
+ "calibers": {
+  "falseAlarms": "旧口径：信息有误（标注允许的除外）、相近候选、疑似不存在都算误报，与 2026-10-16 及以前的结果文件同一口径",
+  "falseAlarmsNew": "新口径：相近候选不算误报（只找到相近记录、没有确认是同一篇），条数见 counts.near_match"
+ },
+ "results": [
+  {
+   "id": "B001",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B002",
+   "verdict": "not_found",
+   "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+   "issues": [
+    "DOI 10.1016/j.jphotochem.2020.112657 实际指向《A ratiometric and colorimetric fluorescent probe for the det…》（Zhu Z, Ding H, Wang Y 等，2020），与引用内容不符",
+    "检索不到与引用题名、作者相符的文献"
+   ],
+   "kind": "unknown"
+  },
+  {
+   "id": "B003",
+   "verdict": "mismatch",
+   "matchStatus": "confirmed",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "作者与数据库记录不符，数据库作者为 Wang D, Hu B, Hu C, Zhu F, Liu X, Zhang J 等"
+   ],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1001/jama.2020.1585",
+    "title": "Clinical Characteristics of 138 Hospitalized Patients With 2019 Novel Coronavirus–Infected Pneumonia in Wuhan, China",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B004",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B005",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B006",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B007",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1016/j.rser.2024.114372",
+    "title": "Solar photovoltaic cooling using Paraffin phase change material: Comprehensive assessment",
+    "year": 2024,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B008",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：OpenAlex）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.48550/arxiv.1609.00288",
+    "title": "A Unified View of Multi-Label Performance Measures",
+    "year": 2016,
+    "source": "openalex"
+   }
+  },
+  {
+   "id": "B009",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1145/2983323.2983762",
+    "title": "Supervised Feature Selection by Preserving Class Correlation",
+    "year": 2016,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B010",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：OpenAlex）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "title": "Vibration analysis of a UAV multirotor frame",
+    "year": 2016,
+    "source": "openalex"
+   }
+  },
+  {
+   "id": "B011",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1140/epjst/e2019-800128-3",
+    "title": "Performance assessment of an energy harvesting system located on a copter",
+    "year": 2019,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B012",
+   "verdict": "unverifiable",
+   "summary": "会议报告 / 海报类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "presentation"
+  },
+  {
+   "id": "B013",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1371/journal.pone.0207959",
+    "title": "Quantitative image analysis using chest computed tomography in the evaluation of lymph node involvement in pulmonary sarcoidosis and tuberculosis",
+    "year": 2018,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B014",
+   "verdict": "mismatch",
+   "matchStatus": "confirmed",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "期刊名不符：引用写「a preliminary report. J Surg Oncol」，数据库记录为「Journal of Surgical Oncology」"
+   ],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1002/jso.21034",
+    "title": "A prospective study of surgical margin status in oral squamous cell carcinoma: A preliminary report",
+    "year": 2008,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B015",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "book",
+   "match": {
+    "doi": "10.1515/9781501509179-006",
+    "title": "Chapter 4. MINERALOGY AND COMPOSITION OF THE UPPER MANTLE",
+    "year": 1998,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B016",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1021/acs.inorgchem.9b03545",
+    "title": "Distinguishing the Intrinsic Antiferromagnetism in Polycrystalline LiCoPO 4 and LiMnPO 4 Olivines",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B017",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1287/mnsc.43.1.80",
+    "title": "The Lagged PSA for Estimating Peak Congestion in Multiserver Markovian Queues with Periodic Arrival Rates",
+    "year": 1997,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B018",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1097/00000542-200405000-00032",
+    "title": "Queuing Theory Accurately Models the Need for Critical Care Resources",
+    "year": 2004,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B019",
+   "verdict": "unverifiable",
+   "summary": "引文只写了名称，没有作者、年份或 DOI，信息不足以核验，请补全后再查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B020",
+   "verdict": "not_found",
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "issues": [
+    "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+   ],
+   "kind": "unknown"
+  },
+  {
+   "id": "B021",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/e24060786",
+    "title": "Discrete Memristor and Discrete Memristive Systems",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B022",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/electronics14173374",
+    "title": "Dynamic Analysis of a Novel Chaotic Map Based on a Non-Locally Active Memristor and a Locally Active Memristor and Its STM32 Implementation",
+    "year": 2025,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B023",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1258/135763303771005207",
+    "title": "The socio-economic impact of telehealth: A systematic review",
+    "year": 2003,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B024",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1186/1748-5908-4-50",
+    "title": "Fostering implementation of health services research findings into practice: a consolidated framework for advancing implementation science",
+    "year": 2009,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B025",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B026",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：OpenAlex）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "title": "Farming the tarmac: rootedness and longing for the world in post-war Northern Uganda",
+    "year": 2018,
+    "source": "openalex"
+   }
+  },
+  {
+   "id": "B027",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B028",
+   "verdict": "mismatch",
+   "matchStatus": "confirmed",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "第一作者不符，数据库第一作者为 van der Valk T"
+   ],
+   "kind": "preprint",
+   "match": {
+    "doi": "10.1101/696831",
+    "title": "Estimates of genetic load suggest frequent purging of deleterious alleles in small populations",
+    "year": 2019,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B029",
+   "verdict": "mismatch",
+   "matchStatus": "confirmed",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "作者与数据库记录不符，数据库作者为 IUCN"
+   ],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.2305/iucn.uk.2018-1.rlts.t867a3146005.en",
+    "title": "Alligator sinensis: Jiang, H. & Wu, X.",
+    "year": 2017,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B030",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1051/epjconf/202023701010",
+    "title": "Initial Assessment of the Performance of the First Wind Lidar in Space on Aeolus",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B031",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B032",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：DOI 注册机构）",
+   "issues": [],
+   "kind": "preprint",
+   "match": {
+    "doi": "10.48550/arxiv.1712.07557",
+    "title": "Differentially Private Federated Learning: A Client Level Perspective",
+    "year": 2017,
+    "source": "doi-csl"
+   }
+  },
+  {
+   "id": "B033",
+   "verdict": "unverifiable",
+   "summary": "引文只写了名称，没有作者、年份或 DOI，信息不足以核验，请补全后再查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B034",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "找到相近文献，但不能确认是同一篇，请人工核对",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1163/1872-9037_afco_asc_1469",
+    "title": "University of Pretoria, University Library",
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B035",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "找到相近文献，但不能确认是同一篇，请人工核对",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.18356/9789210018777c013",
+    "title": "Mid-year population, United Nations estimates: 2012 - 2021",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B036",
+   "verdict": "mismatch",
+   "matchStatus": "confirmed",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "引用中的 DOI 10.2514/6.2009 并不存在，正确 DOI 应为 10.2514/6.2009-949"
+   ],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.2514/6.2009-949",
+    "title": "Curved Mesh Generation and Mesh Refinement using Lagrangian Solid Mechanics",
+    "year": 2009,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B037",
+   "verdict": "mismatch",
+   "matchStatus": "confirmed",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "作者与数据库记录不符，数据库作者为 Han L, Jiang C"
+   ],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1016/j.apsb.2020.11.023",
+    "title": "Evolution of blood–brain barrier in brain diseases and related systemic nanoscale brain-targeting drug delivery strategies",
+    "year": 2021,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B038",
+   "verdict": "mismatch",
+   "matchStatus": "confirmed",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "作者与数据库记录不符，数据库作者为 Gong L, Zhang X, Ge K, Yin Y, Machuki JO, Yang Y 等"
+   ],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1016/j.biomaterials.2020.120483",
+    "title": "Carbon nitride-based nanocaptor: An intelligent nanosystem with metal ions chelating eﬀect for enhanced magnetic targeting phototherapy of Alzheimer's disease",
+    "year": 2021,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B039",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B040",
+   "verdict": "not_found",
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "issues": [
+    "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+   ],
+   "kind": "journal"
+  },
+  {
+   "id": "B041",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B042",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "B043",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "book",
+   "match": {
+    "doi": "10.1007/978-1-4899-7560-7",
+    "title": "Rigid Body Dynamics Algorithms",
+    "year": 2008,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B044",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1016/0005-1098(90)90022-a",
+    "title": "Fuzzy control theory: A nonlinear case",
+    "year": 1990,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B045",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "conference"
+  },
+  {
+   "id": "B046",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B047",
+   "verdict": "mismatch",
+   "matchStatus": "confirmed",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "期刊名不符：引用写「Molecular mechanism of palmitic acid and its derivatives in tumor progression. Front Oncol」，数据库记录为「Frontiers in Oncology」"
+   ],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3389/fonc.2023.1224125",
+    "title": "Molecular mechanism of palmitic acid and its derivatives in tumor progression",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B048",
+   "verdict": "mismatch",
+   "matchStatus": "confirmed",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "期刊名不符：引用写「Crosstalk between podocytes and tubular epithelial cells. Cell Biol Pathol Podocytes」，数据库记录为「Contributions to Nephrology」"
+   ],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1159/000359928",
+    "title": "Crosstalk between Podocytes and Tubular Epithelial Cells",
+    "year": 2014,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B049",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B050",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B051",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1103/physrevaccelbeams.23.122003",
+    "title": "750 MHz radio frequency quadrupole with trapezoidal vanes for carbon ion therapy",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B052",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B053",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B054",
+   "verdict": "not_found",
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "issues": [
+    "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+   ],
+   "kind": "unknown"
+  },
+  {
+   "id": "B055",
+   "verdict": "not_found",
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "issues": [
+    "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+   ],
+   "kind": "unknown"
+  },
+  {
+   "id": "B056",
+   "verdict": "not_found",
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "issues": [
+    "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+   ],
+   "kind": "preprint"
+  },
+  {
+   "id": "B057",
+   "verdict": "mismatch",
+   "matchStatus": "confirmed",
+   "summary": "文献存在，但有 2 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "第一作者不符，数据库第一作者为 Elliott G",
+    "年份不符：引用写 2020，数据库记录为 2016"
+   ],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1090/conm/671/13506",
+    "title": "On the classification of simple amenable C*-algebras with finite decomposition rank",
+    "year": 2016,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B058",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B059",
+   "verdict": "not_found",
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "issues": [
+    "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+   ],
+   "kind": "unknown"
+  },
+  {
+   "id": "B060",
+   "verdict": "not_found",
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "issues": [
+    "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+   ],
+   "kind": "unknown"
+  },
+  {
+   "id": "B061",
+   "verdict": "mismatch",
+   "matchStatus": "confirmed",
+   "summary": "文献存在，但有 3 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "作者与数据库记录不符，数据库作者为 Weintrit A",
+    "年份不符：引用写 2006，数据库记录为 2009 / 2010",
+    "期刊名不符：引用写「London: International Maritime Organization. MSC」，数据库记录为「The Electronic Chart Display and Information System (ECDIS)」"
+   ],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1201/9781439847640-a9",
+    "title": "Revised Performance Standards for Electronic Chart Display and Information Systems (ECDIS) MSC.232(82)",
+    "year": 2009,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B062",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B063",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：OpenAlex）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "title": "AN INTRODUCTION TO INFLOW AVALANCHE DYNAMICS MEASUREMENTS USING THE SNOWBALL DEVICE",
+    "year": 2010,
+    "source": "openalex"
+   }
+  },
+  {
+   "id": "B064",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1016/j.biortech.2022.128013",
+    "title": "Emerging innovations for sustainable production of bioethanol and other mercantile products from circular economy perspective",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B065",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1016/j.biortech.2023.128582",
+    "title": "Biofuel production from Euglena: Current status and techno-economic perspectives",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B066",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "B067",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/met14121338",
+    "title": "An Inherent Strain Method Using Progressive Element Activation for Fast Distortion Calculation in Directed Energy Deposition",
+    "year": 2024,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B068",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B069",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/ijerph17186611",
+    "title": "The Predictors of Obesity among Urban Girls and Boys Aged 8–10 Years—A Cross-Sectional Study in North-Western Poland",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B070",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "找到相近文献，但不能确认是同一篇，请人工核对",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1609/aaai.v35i9.16988",
+    "title": "GLISTER: Generalization based Data Subset Selection for Efficient and Robust Learning",
+    "year": 2021,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B071",
+   "verdict": "unverifiable",
+   "summary": "软件 / 数据集类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "software"
+  },
+  {
+   "id": "B072",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B073",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.5860/choice.41-6846",
+    "title": "Emotional design: why we love (or hate) everyday things",
+    "year": 2004,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B074",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B075",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B076",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B077",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B078",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B079",
+   "verdict": "not_found",
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "issues": [
+    "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+   ],
+   "kind": "unknown"
+  },
+  {
+   "id": "B080",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B081",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：OpenAlex）",
+   "issues": [],
+   "kind": "preprint",
+   "match": {
+    "doi": "10.48550/arxiv.1207.3907",
+    "title": "Haplotype-based variant detection from short-read sequencing",
+    "year": 2012,
+    "source": "openalex"
+   }
+  },
+  {
+   "id": "B082",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "software",
+   "match": {
+    "doi": "10.32614/cran.package.maps",
+    "title": "maps: Draw Geographical Maps",
+    "year": 2003,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B083",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1016/j.jacep.2016.01.013",
+    "title": "Simultaneous Amplitude Frequency Electrogram Transformation (SAFE-T) Mapping to Identify Ventricular Tachycardia Arrhythmogenic Potentials in Sinus Rhythm",
+    "year": 2016,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B084",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.22489/cinc.2022.382",
+    "title": "Exploring Transfer Learning for Ventricular Tachycardia Electrophysiology Studies",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B085",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B086",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B087",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B088",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B089",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B090",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B091",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B092",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B093",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B094",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B095",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B096",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B097",
+   "verdict": "unverifiable",
+   "summary": "专利类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "patent"
+  },
+  {
+   "id": "B098",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B099",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B100",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "B101",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B102",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B103",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B104",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B105",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B106",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B107",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B108",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B109",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B110",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B111",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  }
+ ]
+}

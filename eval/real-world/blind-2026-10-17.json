@@ -1,0 +1,1118 @@
+{
+ "name": "blind-2026-10-17",
+ "description": "盲测集：与 dev、test 来自不同论文和不同的出版社组合；抽样后、规则定稿前不查看条目，只运行一次",
+ "createdAt": "2026-10-17T09:07:41.964Z",
+ "method": "Crossref /works?filter=member 或 prefix,has-references:true,from-pub-date:2023-01-01,type:journal-article&sample=40，按出版社各抽若干篇已发表论文（排除已有集合用过的源论文），每篇随机取至多 2 条 unstructured 原文。所有条目都出自已发表论文，视为真实存在的文献。",
+ "cases": [
+  {
+   "id": "B001",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.rechem.2024.101591",
+   "raw": "Raghu, S. V.; Patil, R. GAL4-UAS system for genetic labeling and visualization of specific regions of brain. In Vol. 1. Experiments with Drosophila for Biology Courses; Indian Academy of Sciences, 2021; ISBN 9788195066421.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B002",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.rechem.2024.101591",
+   "raw": "Zhu, Z.; Ding, H.; Wang, Y.; Fan, C.; Tu, Y.; Liu, G.; Pu, S. l P re of. “Journal Photochem. Photobiol. A Chem. 2020, 112657, doi:10.1016/j.jphotochem.2020.112657.",
+   "assertedDoi": "10.1016/j.jphotochem.2020.112657",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B003",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.preghy.2023.10.006",
+   "raw": "Outcomes M. Clinical Characteristics of 138 Hospitalized Patients With 2019 Novel Coronavirus–Infected Pneumonia in Wuhan, China. 2020;323(11):10611069.doi:10.1001/jama.2020.1585.",
+   "assertedDoi": "10.1001/jama.2020.1585",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B004",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.preghy.2023.10.006",
+   "raw": "World Health Organization. Coronavirus Disease 2019 (COVID-19) - Situation Report - 51.; 2020.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B005",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.clinthera.2026.06.023",
+   "raw": "Sherer, S. Federal guidance needed: ag order no. 6754-2026: rationale for immediate action. 2026. Americans for Safe Access (ASA). Washington, DC, 2026. Accessed June 19, 2026. https://assets.nationbuilder.com/americansforsafeaccess/pages/40785/attachments/original/1779949493/AG_Order_No._6754-2026_Rationale_for_Immediate_Action.pdf?1779949493.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B006",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.clinthera.2026.06.023",
+   "raw": "National Conferences of State Legislatures. Cannabis Review. Denver, CO. Updated June 20, 2024. Accessed June 19, 2026. https://www.ncsl.org/civil-and-criminal-justice/cannabis-overview.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B007",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.solener.2025.114234",
+   "raw": "P. B, V.A. A, G. P, A.M.M.S. A, A. T, Solar photovoltaic cooling using Paraffin phase change material: Comprehensive assessment, Renewable and Sustainable Energy Reviews 197 (2024).",
+   "assertedDoi": "10.1016/j.rser.2024.114372",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B008",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.eswa.2022.118861",
+   "raw": "Wu, X., & Zhou, Z. (2017). A unified view of multi-label performance measures. In Proceedings of the 34th international conference on machine learning (pp. 3780–3788).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B009",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.eswa.2022.118861",
+   "raw": "Wang, J., Wei, J., & Yang, Z. (2016). Supervised feature selection by preserving class correlation. In Proceedings of the 25th ACM International conference on information and knowledge management (pp. 1613–1622).",
+   "assertedDoi": "10.1145/2983323.2983762",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B010",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.nanoen.2024.110012",
+   "raw": "J. Verbeke, S. Debruyne, Vibration analysis of a UAV multirotor frame, in: 2016.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B011",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.nanoen.2024.110012",
+   "raw": "A. Koszewnik, D. Oldziej, Performance assessment of an energy harvesting system located on a copter, The European Physical Journal Special Topics (n.d.).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B012",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.ajpath.2026.07.002",
+   "raw": "Nazem A, Li X, Yin F, et al. Evaluating open-source Med-VLMs for histopathologic interpretation with clinical context. Posted presented at: MIDL 2026—Medical Imaging with Deep Learning; July 8-10, 2026; Taipei, Taiwan. Accessed May 26, 2026. https://openreview.net/forum?id=lyrOO21Y5F",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B013",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1186/s12903-024-04741-5",
+   "raw": "Lee CU, Chong S, Choi HW, Choi JC. Quantitative image analysis using chest computed tomography in the evaluation of lymph node involvement in pulmonary sarcoidosis and tuberculosis. PLoS ONE. 2018;13:e0207959. https://doi.org/10.1371/journal.pone.0207959.",
+   "assertedDoi": "10.1371/journal.pone.0207959",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B014",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1186/s12903-024-04741-5",
+   "raw": "Yahalom R, Dobriyan A, Vered M, Talmi YP, Teicher S, Bedrin L. A prospective study of surgical margin status in oral squamous cell carcinoma; a preliminary report. J Surg Oncol. 2008;98:572–8. https://doi.org/10.1002/jso.21034.",
+   "assertedDoi": "10.1002/jso.21034",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B015",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s00269-025-01333-9",
+   "raw": "McDonough WF, Rudnick RL (1998) Chap. 4. MINERALOGY AND COMPOSITION OF THE UPPER MANTLE. In: Hemley RJ (ed) Ultrahigh Pressure Mineralogy. De Gruyter, pp 139–164",
+   "assertedDoi": "10.1515/9781501509179-006",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B016",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s00269-025-01333-9",
+   "raw": "Gnewuch S, Rodriguez EE (2020) Distinguishing the intrinsic antiferromagnetism in polycrystalline LiCoPO4 and LiMnPO4 olivines. Inorg Chem 59:5883–5895. https://doi.org/10.1021/acs.inorgchem.9b03545",
+   "assertedDoi": "10.1021/acs.inorgchem.9b03545",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B017",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s10729-023-09632-9",
+   "raw": "Green L V, Kolesar P J (1997) The lagged PSA for estimating peak congestion in multiserver Markovian queues with periodic arrival rates. Manag Sci 43(1):80–87. https://doi.org/10.1287/mnsc.43.1.80",
+   "assertedDoi": "10.1287/mnsc.43.1.80",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B018",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s10729-023-09632-9",
+   "raw": "McManus M L, Long M C, Cooper A, Litvak E (2004) Queuing theory accurately models the need for critical care resources. Anesthesiol 100(5):1271–1276. https://doi.org/10.1097/00000542-200405000-00032",
+   "assertedDoi": "10.1097/00000542-200405000-00032",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B019",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s10354-023-01022-8",
+   "raw": "Ibid., fol. 3v: „timiditas, […], mansuetudo, pietas“.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B020",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s10354-023-01022-8",
+   "raw": "Gallo A. Commentarii ad […] regem Maximilianum de tremore cordis […] in duosque tractatus coacti et descripti a doctore Georgio Handschio. Wien: Österreichische Nationalbibliothek (ÖNB) Cod. 11158; 1555: fol. 3r: „parvitas, raritas & tarditas pulsus“.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B021",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1140/epjp/s13360-026-07618-4",
+   "raw": "S. He, D. Zhan, H. Wang et al., Discrete memristor and discrete memristive systems[J]. Entropy 24(6), 786–810 (2022)",
+   "assertedDoi": "10.3390/e24060786",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B022",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1140/epjp/s13360-026-07618-4",
+   "raw": "H. Sang, Q. Wang, K. Li et al., Dynamic analysis of a novel chaotic map based on a non-locally active memristor and a locally active memristor and its STM32 implementation. Electronics 14(17), 3374 (2025)",
+   "assertedDoi": "10.3390/electronics14173374",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B023",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1186/s44247-025-00216-x",
+   "raw": "Jennett PA, Affleck Hall L, Hailey D, Ohinmaa A, Anderson C, Thomas R, et al. The socio-economic impact of telehealth: a systematic review. J Telemed Telecare. 2003;9(6):311–20. https://doi.org/10.1258/135763303771005207.",
+   "assertedDoi": "10.1258/135763303771005207",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B024",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1186/s44247-025-00216-x",
+   "raw": "Damschroder LJ, Aron DC, Keith RE, Kirsh SR, Alexander JA, Lowery JC. Fostering implementation of health services research findings into practice: a consolidated framework for advancing implementation science. Implement Sci. 2009;4:50. https://doi.org/10.1186/1748-5908-4-50.",
+   "assertedDoi": "10.1186/1748-5908-4-50",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B025",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/1755-6724.15164",
+   "raw": "Wang G.Z. Wang C.S. Zeng Y.F. andZhao X.K. 2000. The uplift of the western Yunnan plateau and the sedimentary response of the Yinggehai Basin. Acta Sedimentologica Sinica (2):234–240 (in Chinese with English abstract).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B026",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/ciso.70003",
+   "raw": "Lagace M.2018.“Farming the Tarmac: Rootedness and Longing for the World in Post‐War Northern Uganda.” PhD diss.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B027",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/ciso.70003",
+   "raw": "McKittrick K. andC.Woods.2007.“Black Geographies and the Politics of Place.”https://www.akpress.org/black‐geographies‐and‐the‐politics‐of‐place.html.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B028",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/1749-4877.70194",
+   "raw": "van derValk T. M.Manuel T.Marques‐Bonet andK.Guschanski.2019. “Estimates of Genetic Load Suggest Frequent Purging of Deleterious Alleles in Small Populations.” Preprint BioRxiv July 21. 696831.https://doi.org/10.1101/696831.",
+   "assertedDoi": "10.1101/696831",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B029",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/1749-4877.70194",
+   "raw": "Jiang H. andX.Wu.2018. “Alligator sinensis.”The IUCN Red List of Threatened Species2018: e.T867A3146005.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B030",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/qj.4600",
+   "raw": "Reitebuch O. Lemmerz C. Lux O. Marksteiner U. Rahm S. Weiler F.et al. (2020a)Initial assessment of the performance of the first wind lidar in space on Aeolus. EPJ Web of Conferences.https://doi.org/10.1051/epjconf/202023701010",
+   "assertedDoi": "10.1051/epjconf/202023701010",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B031",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/qj.4600",
+   "raw": "Kleist D.T. Treadon R. Thomas C. Liu H. Bathmann K. Merkova D.et al. (2021)NCEP operational global data assimilation upgrades: from versions 15 through 16. In101st American Meteorological Society Annual Meeting. Available from:https://ams.confex.com/ams/101ANNUAL/meetingapp.cgi/Paper/378554",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B032",
+   "group": "Wiley",
+   "sourcePaper": "10.1155/dsn/2776356",
+   "raw": "GeyerR. C. KleinT. andNabiM. Differentially Private Federated Learning: A Client Level Perspective 2017 https://arxiv.org/abs/1712.07557.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B033",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/cctc.202400400",
+   "raw": "G. M. Lampman D. L. Pavia G. S. Kriz J. R. Vyvyan INTRODUÇAO A ESPECTROSCOPIA CENGAGE.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B034",
+   "group": "Wiley",
+   "sourcePaper": "10.1155/vmi/4755096",
+   "raw": "SimbiziV. A Unique Cost-Effective Disease Surveillance Model for Southern African Village Pigs and Chickens 2023 University of Pretoria and James Cook University.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B035",
+   "group": "Wiley",
+   "sourcePaper": "10.1155/vmi/4755096",
+   "raw": "Stats Statistical Release: Mid-year Population Estimates 2021 2021.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B036",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/nme.7379",
+   "raw": "PerssonPO PeraireJ.Curved mesh generation and mesh refinement using Lagrangian solid mechanics. 47th AIAA Aerospace Sciences Meeting Including the New Horizons Forum and Aerospace Exposition.2009:949. doi:10.2514/6.2009‐949",
+   "assertedDoi": "10.2514/6.2009-949",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B037",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/13872877251374149",
+   "raw": "Liang H, Chen J. Evolution of blood–brain barrier in brain diseases and related systemic nanoscale brain-targeting drug delivery strategies. Acta Pharm Sin B 2020; 11: 2306–2325.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B038",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/13872877251374149",
+   "raw": "Ling G, Xing Z, Kezhen G, et al. Carbon nitride-based nanocaptor: an intelligent nanosystem with metal ions chelating effect for enhanced magnetic targeting phototherapy of Alzheimer's disease. Biomaterials 2020; 267: 120483.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B039",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/00368504241264993",
+   "raw": "Tranexel 250 mg/5 mL IV Solution for Injection Instructions for Use. Accessed February 23, 2023. https://titck.gov.tr/storage/Archive/2020/kubKtAttachments/TTCKONAYLIKTTRANEXEL_b7199221-95ab-4caa-980c-66a9f87f357d.pdf.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B040",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/03064190241227528",
+   "raw": "Pappalardo D. Hypersonic: Between rhetoric and reality. Vortex: Stud on air and Space Power 2022; 3: 37–48.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B041",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/03064190241227528",
+   "raw": "Erwin S. Acquisition of Orbital ATK approved company renamed Northrop Grumman Innovation Systems. SpaceNews https://spacenews.com/acquisition-of-orbital-atk-approved-company-renamed-northrop-grumman-innovation-systems/ (2023 accessed 15 December 2023).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B042",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/02783649261431352",
+   "raw": "Gunn C (2011) Geometry, Kinematics, and Rigid Body Mechanics in Cayley-Klein Geometries. Doctoral Thesis. Technische Universität Berlin, Fakultät II - Mathematik und Naturwissenschaften.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B043",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/02783649261431352",
+   "raw": "Featherstone R (2007) Rigid Body Dynamics Algorithms. Springer.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B044",
+   "group": "SAGE",
+   "sourcePaper": "10.3233/jifs-231866",
+   "raw": "Ying H. , Siler W. and Buckley J.J. , Fuzzy control theory: A nonlinear case. Automatica, 26(3) (1990), 513–520.",
+   "assertedDoi": "10.1016/0005-1098(90)90022-A",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B045",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/15589447231210948",
+   "raw": "National Conference of State Legislatures. State medical cannabis laws. Accessed June 16 2022. https://www.ncsl.org/research/health/state-medical-marijuana-laws.aspx.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B046",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/15589447231210948",
+   "raw": "Centers for Disease Control Prevention. Data and statistics: marijuana and public health. Published 2021. Accessed June 16 2022. https://www.cdc.gov/marijuana/data-statistics.htm.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B047",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/22313354261464247",
+   "raw": "Wang X, , Zhang C, and Bao N. Molecular mechanism of palmitic acid and its derivatives in tumor progression. Front Oncol, 2023; 13: 1–10. DOI: 10.3389/fonc.2023.1224125.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B048",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/22313354261464247",
+   "raw": "Leung JCK, , Lai KN, and Tang SCW. Crosstalk between podocytes and tubular epithelial cells. Cell Biol Pathol Podocytes, 2014; 183: 54–63. DOI: 10.1159/000359928.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B049",
+   "group": "IOP Publishing",
+   "sourcePaper": "10.1088/2752-5295/ae71fa",
+   "raw": "Liberoff A Pessacg N Flaherty S Goye M S Svoboda A Banegas A 2023c Un río, todas las aguas: río Chubut en foco. Herramienta pedagógica para docentes de Educación Secundaria: actividad didáctica Repository (available at: www.unriotodaslasaguas.com.ar )",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B050",
+   "group": "IOP Publishing",
+   "sourcePaper": "10.1088/2752-5295/ae71fa",
+   "raw": "Liberoff A Pessacg N Díaz L Raguileo D Goye M S Svoboda A Banegas A 2023b Un río, todas las aguas: río Chubut en foco. Herramienta pedagógica para docentes de nivel secundario: material informativo Repository (available at: www.unriotodaslasaguas.com.ar )",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B051",
+   "group": "IOP Publishing",
+   "sourcePaper": "10.1088/1402-4896/ad9e37",
+   "raw": "Bencini V Pommerenke H W Grudiev A Lombardi A M 2020 Phys. Rev. Accel. Beams 23 122003 10.1103/PhysRevAccelBeams.23.122003",
+   "assertedDoi": "10.1103/PhysRevAccelBeams.23.122003",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B052",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/beq.2022.30",
+   "raw": "Irish Council for Civil Liberties. 2021. Europe’s enforcement paralysis: ICCL’s 2021 report on the enforcement capacity of data protection authorities. https://www.iccl.ie/wp-content/uploads/2021/09/Europes-enforcement-paralysis-2021-ICCL-report-on-GDPR-enforcement.pdf.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B053",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/beq.2022.30",
+   "raw": "European Commission. 2016. General data protection regulation GDPR. https://gdpr-info.eu/.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B054",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s147567652610173x",
+   "raw": "Ekardt, F. and Sund, L. (2021) Die Bundestags-Wahlprogramme der Parteien – gemessen am Pariser 1,5-Grad-Ziel, dem Klima-Beschluss des BVerfG und der EU-Klimapolitik. Forschungsstelle Nachhaltigkeit und Klimapolitik.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B055",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s147567652610173x",
+   "raw": "Bundesverfassungsgericht (2022) Erfolgreiche Verfassungsbeschwerde gegen das ausnahmslose Verbot von Windenergieanlagen in Waldgebieten. 1 BvR 2661/21.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B056",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s0010437x26102899",
+   "raw": "Kir94 Kirchberg, E. , The classification of purely infinite C Superscript asterisk ∗ $^*$ -algebras using Kasparov’s theory. Preprint (1994), https://ivv5hpp.uni-muenster.de/u/echters/ekneu1.pdf.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B057",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s0010437x26102899",
+   "raw": "GLN20b Gong, G. , Lin, H. and Niu, Z. , Classification of finite simple amenable script upper Z Z $\\mathcal{Z}$ -stable C Superscript asterisk ∗ $^*$ -algebras, II. C Superscript asterisk ∗ $^*$ -algebras with rational generalized tracial rank one. C. R. Math. Acad. Sci. Soc. R. Can. 42 (2020), 451–539.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B058",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/cts.2025.10119",
+   "raw": "8. NIH. Research condition and diseases categorization inclusion statistics report 2021. https://report.nih.gov/RISR/#/rcdc?rcdcCategory=Parkinson%27s%20Disease. Accessed September 1, 2024.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B059",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/qrd.2025.3",
+   "raw": "Hoberman, C (1988) Reversibly expandable doubly-curved truss structure. USA.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B060",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s0373463324000201",
+   "raw": "IHO (2000). IHO Transfer Standard for Digital Hydrographic Data-S57 (3.1). Monaco: International Hydrographic Bureau.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B061",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s0373463324000201",
+   "raw": "IMO (2006). Revised Performance Standards for Electronic Chart Display and Information Systems (ECDIS). London: International Maritime Organization. MSC.232(82).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B062",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/aog.2024.5",
+   "raw": "Canadian Avalanche Association (2016) Observation guidelines and recording standards for weather snowpack and avalanches. Technical report, Canadian Avalanche Association, Revelstoke, BC, Canada.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B063",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/aog.2024.5",
+   "raw": "Fischer, JT and Rammer, L (2010) An introduction to inflow avalanche dynamics measurements using the SNOWBALL device. In International Snow Science Workshop 2010, Squaw Valley, California, USA.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B064",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/app14010005",
+   "raw": "Althuri, A., and Venkata Mohan, S. (2022). Emerging Innovations for Sustainable Production of Bioethanol and Other Mercantile Products from Circular Economy Perspective. Bioresour. Technol., 363.",
+   "assertedDoi": "10.1016/j.biortech.2022.128013",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B065",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/app14010005",
+   "raw": "Kim, S., Im, H., Yu, J., Kim, K., Kim, M., and Lee, T. (2023). Biofuel Production from Euglena: Current Status and Techno-Economic Perspectives. Bioresour. Technol., 371.",
+   "assertedDoi": "10.1016/j.biortech.2023.128582",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B066",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/ma18194588",
+   "raw": "Wu, S. (2020). Structural Lightweight Design and Support Addition Based on Selective Laser Melting Technology. [Master’s Thesis, Jiangsu University of Science and Technology].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B067",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/ma18194588",
+   "raw": "Seitz, G., Bantle, P., Biegler, M., Elsner, B.A.M., and Rethmeier, M. (2024). An Inherent Strain Method using Progressive Element Activation for Fast Distortion Calculation in Directed Energy Deposition. Metals, 14.",
+   "assertedDoi": "10.3390/met14121338",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B068",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/jcm13237478",
+   "raw": "Meyer, H.E. (2024, January 20). Overweight and Obesity in Norway. Available online: https://www.fhi.no/en/op/hin/health-disease/overweight-and-obesity-in-norway---/.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B069",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/jcm13237478",
+   "raw": "Ratajczak, J., and Petriczko, E. (2020). The Predictors of Obesity among Urban Girls and Boys Aged 8–10 Years—A Cross-Sectional Study in North-Western Poland. Int. J. Environ. Res. Public Health, 17.",
+   "assertedDoi": "10.3390/ijerph17186611",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B070",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/math14142457",
+   "raw": "Killamsetty, K., Durga, S., Ramakrishnan, G., De, A., and Iyer, R. (March, January 26). Grad-match: Gradient matching based data subset selection for efficient deep model training. Proceedings of the International Conference on Machine Learning, Shenzhen, China.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B071",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/math14142457",
+   "raw": "Cavalab (2026, March 29). Github, Mimic-Chief-Complaint. Available online: https://github.com/cavalab/mimic-iv-ed-epi/blob/main/mimic-chief-complaint.r.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B072",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/buildings16142823",
+   "raw": "Thomson, G. (1986). The Museum Environment, Butterworth-Heinemann. [2nd ed.].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B073",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/buildings16142823",
+   "raw": "Norman, D.A. (2004). Emotional Design: Why We Love (or Hate) Everyday Things, Basic Books.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B074",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/pharmaceutics15051423",
+   "raw": "ICH (2022, March 07). Validation of Analytical Procedures: Text and Methodology Q2(R1). Available online: https://database.ich.org/sites/default/files/Q2%28R1%29%20Guideline.pdf.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B075",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/pharmaceutics15051423",
+   "raw": "Sarmento, B. (2015). Concepts and Models for Drug Permeability Studies, Woodhead Publishing.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B076",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0322133",
+   "raw": "Matjaz Hren, Biosistemika, Ljubljana, Slovenia. Gene expression signature in peripheral blood as a marker of Parkinson’s disease. Application Note TRANS0114. Available from: Gene_Expression_Signature_in_Peripheral_Blood_as_a_Marker_of_Parkinsons_Disease_EN.pdf",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B077",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0330210",
+   "raw": "World Health Organization. Global health sector strategies on, respectively, HIV, viral hepatitis and sexually transmitted infections for the period 2022-2030. 2022. https://www.who.int/publications/i/item/9789240053779",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B078",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0330210",
+   "raw": "Republican Center for Viral Hepatitis und HIV/AIDS Control at the Ministry of Health of the Kyrgyz Republic. Biobehavioral survey of men who have sex with men in the Kyrgyz Republic 2021 [Available from: https://aidscenter.kg/wp-content/uploads/2023/07/IBBS_report_01.06.23.pdf.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B079",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0286866",
+   "raw": "J. Project and B. Note, “Federal Democratic Republic of Ethiopia The Project for Rural Water Supply, Sanitation and Livelihood Improvement through Dissemination of Rope Pumps (RPs) for Drinking Water (WAS-RoPSS),” no. 2012, 2016.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B080",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0286866",
+   "raw": "Ethiopian Public Health Institute (EPHI) and ICF, Ethiopia Mini Demographic and Health Survey 2019: Final Report. 2021. [Online]. https://dhsprogram.com/pubs/pdf/FR363/FR363.pdf",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B081",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pgen.1010883",
+   "raw": "Garrison E, Marth G. Haplotype-Based Variant Detection from Short-Read Sequencing. arXiv:12073907 [q-bio]. 2012;.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B082",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pgen.1010883",
+   "raw": "Deckmyn A, Minka TP, Becker RA, Wilks AR, Brownrigg R. Maps: Draw Geographical Maps; 2022. Available from: https://cran.r-project.org/web/packages/maps/.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B083",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0350993",
+   "raw": "Lin CY, Silberbauer J, Lin YJ, Lo MT, Lin C, Chang HC. Simultaneous Amplitude Frequency Electrogram Transformation (SAFE-T) Mapping to Identify Ventricular Tachycardia Arrhythmogenic Potentials in Sinus Rhythm. 2016.",
+   "assertedDoi": "10.1016/j.jacep.2016.01.013",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B084",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0350993",
+   "raw": "Pitzus A, Baldazzi G, Orrù M, Rey AV, Viola G, Raffo L, et al. Exploring transfer learning for ventricular tachycardia electrophysiology studies. In: Computing in Cardiology (CinC), 2022. 1–4. doi: 10.22489/CinC.2022.382",
+   "assertedDoi": "10.22489/CinC.2022.382",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B085",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pgph.0001199",
+   "raw": "Statista. Population that received social grants, relief assistance or social relief in South Africa in 2019, by population group. 2023 [cited 2023 Apr 26]. Accessed on May 2023, https://www.statista.com/statistics/1116080/population-receiving-social-grants-in-south-africa-by-population-group/",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B086",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pgph.0001199",
+   "raw": "International Labour Office. Domestic Work Policy Brief 10: Formalizing domestic work. 2015(204):1–9. Accessed on May 2023, http://www.ilo.org/wcmsp5/groups/public/—ed_protect/—protrav/—travail/documents/publication/wcms_559854.pdf",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B087",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0287724",
+   "raw": "Oshi M, Sarkar J, Wu R, Tokumaru Y, Yan L, Nakagawa K, et al. Intratumoral density of regulatory T cells is a predictor of host immune response and chemotherapy response in colorectal cancer.: 14.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B088",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sspma-2024-0383",
+   "raw": "Xiao Y Z, Chen J Z. Autonomous situation awareness of GEO objects based on orbital maneuver (in Chinese). Spacecr Recov Remote Sens, 2021, 42: 1–10 [肖余之, 陈记争. 基于轨道机动的高轨目标自主感知技术. 航天返回与遥感, 2021, 42: 1–10].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B089",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sspma-2024-0383",
+   "raw": "Gong J G, Ning Y, Lyu N. Development and enlightenment of space based situational awareness technology for high orbit in the United States (in Chinese). Aerosp Control Appl, 2021, 47: 1–7 [宫经刚, 宁宇, 吕楠. 美国高轨天基态势感知技术发展与启示. 空间控制技术与应用, 2021, 47: 1–7].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B090",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/tb-2025-0053",
+   "raw": "Yang X, Nie W, Zhang Z, et al. Microparticle-based drug delivery systems and their applications in disease treatment (in Chinese). Chin Sci Bull, 2024, 69: 1777–1793 [杨心远, 聂卫敏, 张倬豪, 等. 微球递药系统的开发及其疾病治疗应用. 科学通报, 2024, 69: 1777–1793].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B091",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2023-0187",
+   "raw": "2021~2030地球科学发展战略研究组. 2021. 2021~2030地球科学发展战略——宜居地球的过去、现在与未来. 北京: 科学出版社.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B092",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2023-0187",
+   "raw": "孔维刚, 郑绵平. 2017. 火星盐类研究进展. 科技导报, 35: 84–87.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B093",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/tb-2023-1352",
+   "raw": "Xie X, Kong B H, Duan T, et al. Obstetrics and Gynecology (in Chinese). Beijing: People’s Medical Publishing House, 2018 [谢幸, 孔北华, 段涛, 等. 妇产科学. 北京: 人民卫生出版社, 2018].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B094",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/tb-2023-1352",
+   "raw": "Cai W J, Zhang C, Zhang S H, et al. Seizing the window of opportunity to mitigate the impact of climate change on the health of Chinese residents (in Chinese). Chin Sci Bull, 2023, 68: 1899–1905 [蔡闻佳, 张弛, 张诗卉, 等. 把握机会窗口期减缓气候变化对中国居民健康影响. 科学通报, 2023, 68: 1899–1905].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B095",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssv-2021-0412",
+   "raw": "He H H, Zeng N, Liao R, et al. Research progress of polarized light imaging technology in the detection of tumor lesions (in Chinese). Prog Biochem Biophys, 2015, 42: 419–433 [何宏辉, 曾楠, 廖然, 等. 偏振光成像技术用于肿瘤病变检测的研究进展. 生物化学与生物物理进展, 2015, 42: 419–433].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B096",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssv-2021-0412",
+   "raw": "Liang Q T. Physical Optics (in Chinese). Beijing: China Machine Press, 1983 [梁铨廷. 物理光学. 北京: 机械工业出版社, 1983].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B097",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sst-2022-0096",
+   "raw": "Li Q Z, Wu B, Guo K, et al. A motor vehicle power supply transmission system, AC-DC-AC converter and control method (in Chinese). China Patent, 202111372257.6, 2021-12-17 [李群湛, 吴波, 郭锴, 等. 一种动车供电传动系统、交直交变流器及其控制方法. 中国专利, 202111372257.6, 2021-12-17].",
+   "assertedDoi": "10.12677/SG.2022.122003",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B098",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sst-2022-0096",
+   "raw": "Li Q Z. On new generation traction power supply system and its key technologies for electrification railway (in Chinese). J Southwest Jiaotong Univ, 2014, 49: 559–568 [李群湛. 论新一代牵引供电系统及其关键技术. 西南交通大学学报, 2014, 49: 559–568].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B099",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/csb-2026-0661",
+   "raw": "Xu P, Liu K, Ying C P, et al. Conservation progress and future prospects for the Yangtze finless porpoise (in Chinese). Acta Hydrobiol Sin, 2024, 48: 1077–1084 [徐跑, 刘凯, 应聪萍, 等. 长江江豚保护进展与工作展望. 水生生物学报, 2024, 48: 1077–1084].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B100",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/sp.j.1006.2024.34118",
+   "raw": "宋兴虎. 氮肥用量对夏直播棉花产量形成和养分利用的影响. 华中农业大学硕士学位论文, 湖北武汉, 2017..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B101",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/sp.j.1006.2024.34118",
+   "raw": "鲍士旦. 土壤农化分析. 北京: 中国农业出版社, 2005. pp 42-106..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B102",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/aauj.2024097",
+   "raw": "王 楷, 王 克如, 王 永宏. 密度对玉米产量（&gt;15 000 kg·hm-2）及其产量构成因子的影响. 中国农业科学, 2012, 45: 3437-3445.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B103",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/aauj.2024097",
+   "raw": "李 腾飞, 曾 伟. 农业强国背景下新一轮粮食产能提升潜力与实施路径研究. 经济纵横, 2023, 48-55.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B104",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/sp.j.1006.2026.54135",
+   "raw": "梁芳, 郑成淑, 孙宪芝, 等. 低温弱光胁迫及恢复对切花菊光合作用和叶绿素荧光参数的影响. 应用生态学报, 2010, 21: 29-35..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B105",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/sp.j.1006.2026.54135",
+   "raw": "杨晓光, 李勇, 代姝玮, 等. 气候变化背景下中国农业气候资源变化: IX. 中国农业气候资源时空变化特征. 应用生态学报, 2011, 22: 3177-3188..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B106",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.2097-4981.jecc-2024-0024",
+   "raw": "中国电力企业联合会. 电力工业统计资料汇编[EB/OL]. 2022. [2024-11-04]. https://data.cnki.net/yearBook/single?id=N2023040054&pinyinCode=YDLGT.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B107",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.2097-4981.jecc-2024-0024",
+   "raw": "中国电力企业联合会. 中国电力行业年度发展报告2024[R]. 2024..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B108",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.1671-4342.20260024",
+   "raw": "辛兵. 我国科普场馆教育的“地平线”——《新媒体联盟地平线报告》（博物馆版）的启发［J］. 现代教育技术，2015，25（3）：5-10.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B109",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.1671-4342.20260024",
+   "raw": "唐剑波，赵然子. 科普场馆特效影院弘扬科学家精神的实践与思考——以科学家精神主题电影展映等活动为例［J］. 今日科苑，2022（4）：60-66.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B110",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.2096-9287.2026.20250136",
+   "raw": "周 文艳, 高 博宇, 董 畑姗. 鹊桥二号轨道与嫦娥六号任务匹配性设计和飞行实践. 中国空间科学技术, 2024, 44: 16-22.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B111",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.2096-9287.2026.20250136",
+   "raw": "徐 茂格, 施 为华. 深空微波测距测速现状及发展建议. 深空探测学报（中英文）, 2018, 5: 140-146.",
+   "assertedDoi": "10.15982/j.issn.2095-7777.2018.02.005",
+   "label": {
+    "lang": "zh"
+   }
+  }
+ ]
+}

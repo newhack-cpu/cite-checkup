@@ -1,0 +1,387 @@
+{
+ "dataset": "blind-2026-10-17",
+ "adjudicatedAt": "2026-10-17",
+ "run": {
+  "file": "eval/results/real-blind-2026-10-17-rules.json",
+  "ranAt": "2026-10-17T09:11:53.695Z",
+  "localTime": "2026-10-17 02:10–02:12（UTC-7）",
+  "commit": "81f6f67（“相近候选”单列）。运行前确认 src、scripts 与 HEAD 一致；本机直连超时，设置 NODE_USE_ENV_PROXY=1 走代理运行；与抽样隔开约 3 分钟，避免 Crossref 429",
+  "openalex": "运行前代理出口额度 0.065 美元，运行后 0.051 美元（约 14 次题名检索），没有因额度不足而跳过检索"
+ },
+ "method": "第四批盲测集 111 条（英文 87、中文 24，来自 63 篇源论文，与 dev、test、blind-2026-10-16、blind-2026-10-16b 的源论文和原文重叠都是 0）在规则定稿（81f6f67，“相近候选”单列之后）用 pnpm sample:real --seed=3 抽样，抽样只输出每组条数，运行前没有查看条目内容；定稿规则只运行一次，运行后没有为这批数据改规则或重跑。脚本按两种口径统计误报：旧口径把信息有误、相近候选、疑似不存在都算误报（falseAlarms，与此前各复核文件同一口径）；新口径不算相近候选（falseAlarmsNew），相近候选单列条数。对旧口径标出的 23 条逐条按数据库记录（Crossref、PubMed、DataCite）和原始出处复核，判为 false_alarm（系统误判）、true_error（引文确实写错）或 uncertain（无法确认哪方正确），判定标准与 blind-2026-10-16b 相同：判为 true_error 要求系统报出的问题里至少有一条依据正确、且引文确实错在那里；引文另有小错、但系统报的问题依据错误或与之无关的，仍算误报，并在 reason 中注明。相近候选在旧口径下按同样标准判，新口径不计入误报。复核只改统计口径，不改代码。",
+ "summary": {
+  "total": 111,
+  "counts": {
+   "verified": 30,
+   "mismatch": 11,
+   "near_match": 3,
+   "not_found": 9,
+   "retracted": 0,
+   "concern": 0,
+   "unverifiable": 58,
+   "error": 0
+  },
+  "current": {
+   "verified": 30,
+   "flaggedByScript": 23,
+   "flaggedByScriptNew": 20,
+   "nearMatch": 3,
+   "trueErrors": 3,
+   "uncertain": 0,
+   "falseAlarms": 20,
+   "falseAlarmRate": "18.0%",
+   "falseAlarmRate95CI": "12.0%–26.2%（Wilson）",
+   "falseAlarmsNew": 17,
+   "falseAlarmRateNew": "15.3%",
+   "falseAlarmRateNew95CI": "9.8%–23.2%（Wilson）",
+   "notFoundFalseAlarms": 9,
+   "errors": 0
+  },
+  "calibers": {
+   "falseAlarms": "旧口径：信息有误、相近候选、疑似不存在中复核为误报的都算，与此前各复核文件可比",
+   "falseAlarmsNew": "新口径：相近候选不算误报（只找到相近记录、没有断言引文写错），条数见 nearMatch"
+  },
+  "byLanguage": {
+   "en": {
+    "total": 87,
+    "verified": 30,
+    "nearMatch": 3,
+    "falseAlarms": 20,
+    "falseAlarmRate": "23.0%",
+    "falseAlarmsNew": 17,
+    "falseAlarmRateNew": "19.5%",
+    "trueErrors": 3,
+    "unverifiable": 34,
+    "errors": 0
+   },
+   "zh": {
+    "total": 24,
+    "verified": 0,
+    "nearMatch": 0,
+    "falseAlarms": 0,
+    "falseAlarmRate": "0%",
+    "falseAlarmsNew": 0,
+    "falseAlarmRateNew": "0%",
+    "trueErrors": 0,
+    "unverifiable": 24,
+    "errors": 0
+   }
+  },
+  "byGroup": {
+   "Elsevier": {
+    "total": 12,
+    "falseAlarms": 1,
+    "falseAlarmsNew": 1,
+    "sourcePapersWithFalseAlarm": 1
+   },
+   "Springer Nature": {
+    "total": 12,
+    "falseAlarms": 2,
+    "falseAlarmsNew": 2,
+    "sourcePapersWithFalseAlarm": 2
+   },
+   "Wiley": {
+    "total": 12,
+    "falseAlarms": 5,
+    "falseAlarmsNew": 3,
+    "sourcePapersWithFalseAlarm": 3
+   },
+   "SAGE": {
+    "total": 12,
+    "falseAlarms": 3,
+    "falseAlarmsNew": 3,
+    "sourcePapersWithFalseAlarm": 2
+   },
+   "IOP Publishing": {
+    "total": 3,
+    "falseAlarms": 0,
+    "falseAlarmsNew": 0,
+    "sourcePapersWithFalseAlarm": 0
+   },
+   "Cambridge University Press": {
+    "total": 12,
+    "falseAlarms": 7,
+    "falseAlarmsNew": 7,
+    "sourcePapersWithFalseAlarm": 4
+   },
+   "MDPI": {
+    "total": 12,
+    "falseAlarms": 1,
+    "falseAlarmsNew": 0,
+    "sourcePapersWithFalseAlarm": 1
+   },
+   "PLOS": {
+    "total": 12,
+    "falseAlarms": 1,
+    "falseAlarmsNew": 1,
+    "sourcePapersWithFalseAlarm": 1
+   },
+   "中国科学（中文参考文献）": {
+    "total": 12,
+    "falseAlarms": 0,
+    "falseAlarmsNew": 0,
+    "sourcePapersWithFalseAlarm": 0
+   },
+   "科学出版社 10.3724（中文参考文献）": {
+    "total": 12,
+    "falseAlarms": 0,
+    "falseAlarmsNew": 0,
+    "sourcePapersWithFalseAlarm": 0
+   }
+  },
+  "falseAlarmCauses": {
+   "开放数据库覆盖不到、类型又没识别出来的文献，被判“疑似不存在”（手稿、德语报告、法院裁定新闻稿、未写编号的预印本、专利、标准、项目简报）": [
+    "B020",
+    "B054",
+    "B055",
+    "B056",
+    "B059",
+    "B060",
+    "B079"
+   ],
+   "刊物不在 Crossref、OpenAlex 中，收录范围检查没有拦住": [
+    "B040"
+   ],
+   "引文格式解析错（“Journal Pre-proof” 水印残字当题名、题名中的分号、空逗号、粘连的 “van derValk”、DOI 里的 U+2010 连字符）": [
+    "B002",
+    "B014",
+    "B028",
+    "B036",
+    "B047",
+    "B048"
+   ],
+   "配到另一篇或转载的记录（数学论文配到同组作者的另一篇、IMO 决议配到图书附录里的转载）": [
+    "B057",
+    "B061"
+   ],
+   "数据库记录把机构登记为作者（IUCN 红色名录，评估人写在题名里）": [
+    "B029"
+   ],
+   "只找到相近候选（旧口径算误报，新口径不算）": [
+    "B034",
+    "B035",
+    "B070"
+   ]
+  },
+  "note": "旧口径 20 条误报全部是英文条目，来自 14 篇源论文；Cambridge 一组 12 条里有 7 条（4 篇源论文，引的是法律政策文件、数学论文、专利、航海标准）。中文 24 条全部无法核验，是数据源覆盖问题。没有出错（无 429）。新口径去掉 3 条相近候选后为 17 条。与前三次盲测的旧口径（10-15 test 12/119 = 10.1%，5.9%–16.8%；10-16 blind 10/110 = 9.1%，5.0%–15.9%；10-16b 13/111 = 11.7%，7.0%–19.0%）相比，这批 18.0% 更高，区间与第三批部分重叠。误报以开放数据库覆盖不到、类型又没识别出来的文献为主（8 条“疑似不存在”），其次是引文格式解析（6 条）。真实错误 3 条，都是作者写错，系统都标了出来。Wilson 区间按条目独立计算；被标出的 23 条里有 7 对来自同一篇源论文，同一篇论文的条目往往一起出错，实际不确定性比区间显示的更大。"
+ },
+ "items": [
+  {
+   "id": "B002",
+   "current": "not_found",
+   "judgment": "false_alarm",
+   "reason": "J. Photochem. Photobiol. A Chem. 2020 年第 400 卷 112657，Crossref 记录的 7 位作者与引文逐个一致，刊名、年份、文章号、DOI 都对。引文没写题名，“l P re of.” 是 “Journal Pre-proof” 水印的残字，被当成题名；与 DOI 记录比对题名不符，判“DOI 指向的是另一篇文献，引用内容疑似编造”。这是本批唯一一条把真实引文说成疑似编造的",
+   "evidence": [
+    "https://doi.org/10.1016/j.jphotochem.2020.112657"
+   ]
+  },
+  {
+   "id": "B003",
+   "current": "mismatch",
+   "judgment": "true_error",
+   "reason": "JAMA 2020 年第 323 卷第 11 期 1061–1069 页那篇，Crossref 与 PubMed（PMID 32031570）都记为 Wang D、Hu B 等 14 位作者。引文的作者写成 “Outcomes M.”，不是作者名，也没写刊名。系统报“作者与数据库记录不符”，依据正确，引文确实错在作者（引文错乱，同 T081）",
+   "evidence": [
+    "https://doi.org/10.1001/jama.2020.1585",
+    "https://pubmed.ncbi.nlm.nih.gov/32031570/"
+   ]
+  },
+  {
+   "id": "B014",
+   "current": "mismatch",
+   "judgment": "false_alarm",
+   "reason": "J Surg Oncol 2008 年第 98 卷 572–578 页，Crossref 记录的 6 位作者、题名、卷、页都与引文一致。引文把题名中的冒号写成分号（“carcinoma; a preliminary report”），分号被当成题名结束，后半段并进刊名，报期刊名不符",
+   "evidence": [
+    "https://doi.org/10.1002/jso.21034"
+   ]
+  },
+  {
+   "id": "B020",
+   "current": "not_found",
+   "judgment": "false_alarm",
+   "reason": "1555 年御医 Andrea Gallo 为马克西米利安（二世）写的心悸会诊意见，手稿在奥地利国家图书馆 Cod. 11158（manuscripta.at 有这个馆藏号的记录）。源论文（Wien Med Wochenschr 2023，开放获取）摘要写明主要依据这份 1555 年的会诊意见。手稿不在开放数据库覆盖范围内，类型没识别出来，被判疑似不存在。手稿内容没有逐页核对，按数据集假设计为真实文献",
+   "evidence": [
+    "https://manuscripta.at/?ID=18979",
+    "https://europepmc.org/article/PMC/PMC11424730"
+   ]
+  },
+  {
+   "id": "B028",
+   "current": "mismatch",
+   "judgment": "false_alarm",
+   "reason": "bioRxiv 预印本 10.1101/696831，Crossref 记录的第一作者为 van der Valk, Tom，题名、年份、DOI 与引文一致。Wiley 参考文献的粘连写法 “van derValk T.” 就是 van der Valk, T.，姓氏前缀与姓粘连没认出来，报第一作者不符。另：第二作者 de Manuel 被写成 “M.Manuel”，系统报的不是这处",
+   "evidence": [
+    "https://doi.org/10.1101/696831"
+   ]
+  },
+  {
+   "id": "B029",
+   "current": "mismatch",
+   "judgment": "false_alarm",
+   "reason": "IUCN 红色名录评估。Crossref 记录（类型 dataset）把作者登记为机构 “IUCN”，评估人 “Jiang, H. & Wu, X.” 写在题名里，与引文的作者一致；系统按记录的作者比对，报作者不符。另：记录年份为 2017，引文写 2018，系统没有报这处",
+   "evidence": [
+    "https://doi.org/10.2305/IUCN.UK.2018-1.RLTS.T867A3146005.en"
+   ]
+  },
+  {
+   "id": "B034",
+   "current": "near_match",
+   "judgment": "false_alarm",
+   "reason": "James Cook 大学与比勒陀利亚大学联合培养的 2023 年博士论文，DataCite DOI 10.25903/hcx0-k114（作者 Simbizi, Vincent），两校知识库都有记录。系统只找到非洲研究手册里的 “University of Pretoria, University Library” 条目，给出相近候选。旧口径计误报，新口径不计",
+   "evidence": [
+    "https://doi.org/10.25903/hcx0-k114",
+    "https://www.repository.up.ac.za/handle/2263/98492"
+   ]
+  },
+  {
+   "id": "B035",
+   "current": "near_match",
+   "judgment": "false_alarm",
+   "reason": "南非统计局 2021-07-19 发布的统计公报 P0302《Mid-year population estimates 2021》。系统只找到联合国人口年鉴里的年中人口表，给出相近候选。旧口径计误报，新口径不计",
+   "evidence": [
+    "https://www.statssa.gov.za/?p=14582"
+   ]
+  },
+  {
+   "id": "B036",
+   "current": "mismatch",
+   "judgment": "false_alarm",
+   "reason": "AIAA 2009 年会论文，Crossref 有 10.2514/6.2009-949，作者、题名、会议都与引文一致。引文 DOI 里的连字符是 U+2010（同一篇 Wiley 源论文的参考文献都这样排），DOI 提取只取 ASCII 字符，在这里截断成 10.2514/6.2009，报“DOI 不存在”。引文写的 DOI 本身没错",
+   "evidence": [
+    "https://doi.org/10.2514/6.2009-949"
+   ]
+  },
+  {
+   "id": "B037",
+   "current": "mismatch",
+   "judgment": "true_error",
+   "reason": "Acta Pharm Sin B 第 11 卷 2306–2325 页，Crossref 与 PubMed（PMID 34522589）都记为 Han L、Jiang C。引文把名当成姓，写成 “Liang H, Chen J”。系统报作者不符，依据正确，引文确实错在作者",
+   "evidence": [
+    "https://doi.org/10.1016/j.apsb.2020.11.023",
+    "https://pubmed.ncbi.nlm.nih.gov/34522589/"
+   ]
+  },
+  {
+   "id": "B038",
+   "current": "mismatch",
+   "judgment": "true_error",
+   "reason": "与 B037 同一篇源论文、同样的错误：Biomaterials 第 267 卷 120483，Crossref 与 PubMed（PMID 33129186）都记为 Gong L、Zhang X、Ge K 等 9 位，引文写成 “Ling G, Xing Z, Kezhen G, et al.”。系统报作者不符，依据正确",
+   "evidence": [
+    "https://doi.org/10.1016/j.biomaterials.2020.120483",
+    "https://pubmed.ncbi.nlm.nih.gov/33129186/"
+   ]
+  },
+  {
+   "id": "B040",
+   "current": "not_found",
+   "judgment": "false_alarm",
+   "reason": "法国空天军战略研究中心（CESA）的刊物 Vortex: Studies on Air and Space Power 第 3 期（2022 年 6 月），David Pappalardo 上校的 “Hypersonics: Between Rhetoric and Reality”；美国空军大学期刊转载时注明首发于该期。这个刊物不在 Crossref、OpenAlex 中，判“疑似不存在”前的收录范围检查没有拦住",
+   "evidence": [
+    "https://www.airuniversity.af.edu/Portals/10/ASOR/Journals/Volume-1_Number-4/Pappalardo.pdf"
+   ]
+  },
+  {
+   "id": "B047",
+   "current": "mismatch",
+   "judgment": "false_alarm",
+   "reason": "Front Oncol 2023 年第 13 卷 1224125，Crossref 记录的 3 位作者、题名、DOI 都与引文一致。作者之间的空逗号 “Wang X, , Zhang C” 让作者段提前结束，题名并进刊名，报期刊名不符（与第三批 B043 同一类）",
+   "evidence": [
+    "https://doi.org/10.3389/fonc.2023.1224125"
+   ]
+  },
+  {
+   "id": "B048",
+   "current": "mismatch",
+   "judgment": "false_alarm",
+   "reason": "与 B047 同一篇源论文、同样的空逗号，题名并进刊名，报期刊名不符。Crossref 与 Karger：《Podocytopathy》（Contrib Nephrol 第 183 卷，2014）54–63 页，3 位作者、题名、DOI 与引文一致。另：引文写的出处 “Cell Biol Pathol Podocytes” 不是书名，出处写得不准；但系统报的是把题名并进刊名后的比对（同样写法、刊名正确的 B047 也被报），依据错误，按口径仍计误报",
+   "evidence": [
+    "https://doi.org/10.1159/000359928",
+    "https://karger.com/books/book/183/chapter-abstract/5121593/Crosstalk-between-Podocytes-and-Tubular-Epithelial"
+   ]
+  },
+  {
+   "id": "B054",
+   "current": "not_found",
+   "judgment": "false_alarm",
+   "reason": "Ekardt、Sund 的工作论文（2021-09-01，10-07 更新，Generationen Stiftung 资助），全文在 Ekardt 研究机构的网站上；该机构项目页也列有这个项目。德语报告的类型没识别出来，两个数据源都检索不到，被判疑似不存在",
+   "evidence": [
+    "https://www.sustainability-justice-climate.eu/files/texts/Paris-Generationenstiftung-Studie.pdf",
+    "http://www.felix-ekardt.eu/de/projekte.html"
+   ]
+  },
+  {
+   "id": "B055",
+   "current": "not_found",
+   "judgment": "false_alarm",
+   "reason": "联邦宪法法院 2022-09-27 的裁定（1 BvR 2661/21），新闻稿 88/2022（2022-11-10）的标题与引文逐字一致。法院裁定 / 新闻稿的类型没识别出来，被判疑似不存在",
+   "evidence": [
+    "https://www.bundesverfassungsgericht.de/SharedDocs/Pressemitteilungen/DE/2022/bvg22-088.html"
+   ]
+  },
+  {
+   "id": "B056",
+   "current": "not_found",
+   "judgment": "false_alarm",
+   "reason": "Kirchberg 1994 年未正式发表的预印本（纯无限 C*-代数分类）。引文给出的明斯特大学网址可以访问（HEAD 请求返回 200，application/pdf）。解析认出了预印本，但没有编号，仍去两个数据源检索后判疑似不存在（第三批待办里的“未写编号的预印本”）",
+   "evidence": [
+    "https://ivv5hpp.uni-muenster.de/u/echters/ekneu1.pdf"
+   ]
+  },
+  {
+   "id": "B057",
+   "current": "mismatch",
+   "judgment": "false_alarm",
+   "reason": "Gong、Lin、Niu 的论文确实发表在 C. R. Math. Rep. Acad. Sci. Canada 第 42 卷第 4 期（2020）451–539 页（arXiv:1909.13382）。系统把 Elliott、Niu 2016 年 Contemp. Math. 第 671 卷的另一篇当成同一篇，报第一作者、年份不符。引文题名里夹着 LaTeX 转写残留（“script upper Z Z $\\mathcal{Z}$”“C Superscript asterisk ∗ $^*$”）",
+   "evidence": [
+    "https://arxiv.org/abs/1909.13382",
+    "https://doi.org/10.1090/conm/671/13506"
+   ]
+  },
+  {
+   "id": "B059",
+   "current": "not_found",
+   "judgment": "false_alarm",
+   "reason": "Hoberman 的美国专利 US 4,942,700《Reversibly expandable doubly-curved truss structure》，1988-10-27 申请。专利的类型没识别出来，被判疑似不存在",
+   "evidence": [
+    "https://patents.google.com/patent/US4942700A"
+   ]
+  },
+  {
+   "id": "B060",
+   "current": "not_found",
+   "judgment": "false_alarm",
+   "reason": "国际海道测量组织 S-57 标准第 3.1 版（2000 年 11 月，摩纳哥国际海道测量局）。标准的类型没识别出来，被判疑似不存在",
+   "evidence": [
+    "https://legacy.iho.int/mtg_docs/circular_letters/english/2000/Cl52e.pdf",
+    "https://www.ocsdev.noaa.gov/RNC2.0/S-57.pdf"
+   ]
+  },
+  {
+   "id": "B061",
+   "current": "mismatch",
+   "judgment": "false_alarm",
+   "reason": "国际海事组织海上安全委员会决议 MSC.232(82)，2006-12-05 通过（IMO 网站的决议文本首页）。系统配到 Weintrit 2009 年 ECDIS 专著（CRC Press）里转载这份决议的附录，按转载本比对，报作者、年份、出处 3 处不符",
+   "evidence": [
+    "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.232(82).pdf",
+    "https://doi.org/10.1201/9781439847640-a9"
+   ]
+  },
+  {
+   "id": "B070",
+   "current": "near_match",
+   "judgment": "false_alarm",
+   "reason": "ICML 2021 论文（PMLR 第 139 卷 5464–5474 页）。系统只找到同一团队的另一篇 GLISTER（AAAI 2021），给出相近候选。旧口径计误报，新口径不计。另：引文的日期 “(March, January 26)” 和地点 “Shenzhen, China” 是错的，系统没有报这些",
+   "evidence": [
+    "https://proceedings.mlr.press/v139/killamsetty21a.html"
+   ]
+  },
+  {
+   "id": "B079",
+   "current": "not_found",
+   "judgment": "false_alarm",
+   "reason": "JICA 埃塞俄比亚绳索泵项目（WAS-RoPSS）的 Project Brief Note（2016 年 12 月）。引文把 “JICA Project Brief Note” 拆成了作者 “J. Project and B. Note”，系统检索不到，判疑似不存在。引文的作者项确实写错，但系统说的是文献不存在，按口径计误报",
+   "evidence": [
+    "https://www.jica.go.jp/project/english/ethiopia/004/materials/c8h0vm0000aukghu-att/materials_27.pdf"
+   ]
+  }
+ ]
+}
