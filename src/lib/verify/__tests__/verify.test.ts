@@ -243,6 +243,54 @@ describe("incomplete evidence is not absence", () => {
   });
 });
 
+describe("upstream failure wording", () => {
+  it.each([400, 401, 403])("says the data source rejected the query on HTTP %s instead of suggesting a retry", async (status) => {
+    vi.stubGlobal("fetch", async () => new Response("{}", { status }));
+    const result = await check(raw("upstream-403-becomes-not-found"));
+    expect(result.verdict).toBe("error");
+    expect(result.summary).toBe(`查询被数据源拒绝（HTTP ${status}），本条未完成核验，请人工核查`);
+  });
+
+  it.each([429, 503])("keeps the retry hint for HTTP %s", async (status) => {
+    vi.stubGlobal("fetch", async () => new Response("{}", { status }));
+    const { verifyReference } = await import("../verify");
+    vi.useFakeTimers({ toFake: ["setTimeout"] });
+    const pending = verifyReference(parseReference(raw("upstream-403-becomes-not-found"), 1), { openalexBudget: { left: 20 } });
+    await vi.runAllTimersAsync();
+    const result = await pending;
+    vi.useRealTimers();
+    expect(result.verdict).toBe("error");
+    expect(result.summary).toBe("数据源暂时不可用（可能被限流），请稍后重试");
+  });
+});
+
+describe("OpenAlex wildcard characters", () => {
+  it("searches a title containing a question mark instead of ending in an error", async () => {
+    const filters: string[] = [];
+    vi.stubGlobal("fetch", async (input: string) => {
+      const url = new URL(input);
+      if (url.hostname === "api.crossref.org") return Response.json({ message: { items: [] } });
+      if (url.hostname === "api.openalex.org" && url.pathname === "/works") {
+        const filter = url.searchParams.get("filter") ?? "";
+        filters.push(filter);
+        // 与 OpenAlex 的实际行为一致：title.search 里有 ? 或 * 就返回 400
+        if (/[?*]/.test(filter)) return Response.json({ error: "Invalid query parameters error." }, { status: 400 });
+        return Response.json({ results: [{
+          id: "https://openalex.org/W9", doi: "https://doi.org/10.9999/bigger", title: "Is bigger always better? Scaling laws for small language models",
+          publication_year: 2021, authorships: [{ author: { display_name: "Kyung Lee" } }, { author: { display_name: "Jisoo Park" } }],
+          primary_location: { source: { display_name: "Journal of Model Studies", type: "journal" } }, is_retracted: false, type: "article",
+          biblio: { volume: "4", issue: "2", first_page: "11", last_page: "19" },
+        }] });
+      }
+      throw new Error(`Unexpected fixture request: ${url.hostname}${url.pathname}`);
+    });
+    const result = await check('K. Lee and J. Park, "Is bigger always better? Scaling laws for small language models," Journal of Model Studies, vol. 4, no. 2, pp. 11-19, 2021.');
+    expect(filters).toEqual(["title.search:Is bigger always better Scaling laws for small language models"]);
+    expect(result.verdict).toBe("verified");
+    expect(result.match?.source).toBe("openalex");
+  });
+});
+
 describe("request cancellation", () => {
   it("does not schedule any references when cancelled before verification", async () => {
     const calls = fixture();

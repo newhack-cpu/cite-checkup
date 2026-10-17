@@ -111,6 +111,14 @@ function rank(ref: ParsedRef, candidates: WorkRecord[]): Ranked[] {
   return list.sort((a, b) => Number(b.score.same) - Number(a.score.same) || b.score.composite - a.score.composite);
 }
 
+/** 4xx（429 除外）是数据源拒绝了这次查询本身，不是限流；429、5xx 和网络错误才可能是暂时的 */
+function upstreamSummary(err: UpstreamError): string {
+  const status = err.status ?? 0;
+  return status >= 400 && status < 500 && status !== 429
+    ? `查询被数据源拒绝（HTTP ${status}），本条未完成核验，请人工核查`
+    : "数据源暂时不可用（可能被限流），请稍后重试";
+}
+
 export async function verifyReference(ref: ParsedRef, ctx: VerifyContext, extra?: ExtraEvidence): Promise<RefResult> {
   const steps: CheckStep[] = [];
   const candidates: WorkRecord[] = [];
@@ -230,7 +238,7 @@ export async function verifyReference(ref: ParsedRef, ctx: VerifyContext, extra?
       ...base(ref, steps),
       verdict: "error",
       confidence: 0,
-      summary: err instanceof UpstreamError ? "数据源暂时不可用（可能被限流），请稍后重试" : "核验过程出错",
+      summary: err instanceof UpstreamError ? upstreamSummary(err) : "核验过程出错",
       issues: [String((err as Error)?.message ?? err)],
     };
   }

@@ -94,8 +94,8 @@ export async function openalexSearchTitle(
   signal?: AbortSignal,
   year?: number,
 ): Promise<{ records: WorkRecord[]; ms: number }> {
-  // filter 的值里逗号、竖线、冒号有特殊含义，统一换成空格
-  const q = title.replace(/[,|:：，]/g, " ").replace(/\s+/g, " ").trim().slice(0, 250);
+  // filter 的值里逗号、竖线、冒号有特殊含义；问号、星号是通配符，title.search 遇到就返回 400。统一换成空格
+  const q = title.replace(/[,|:：，?*]/g, " ").replace(/\s+/g, " ").trim().slice(0, 250);
   const filter = year ? `title.search:${q},publication_year:${year - 1}-${year + 1}` : `title.search:${q}`;
   const params = withKey(new URLSearchParams({ filter, "per-page": String(rows), select: SELECT }));
   const res = await getJson(`${BASE}/works?${params}`, {

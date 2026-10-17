@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { MAX_CALLS_PER_TURN, parseAssistantTurn } from "../model";
 import { parseToolCall, ToolArgumentError } from "../tools";
+import { parseReference } from "../../verify/extract";
 import type { CheckStep } from "../../verify/types";
 
 const BOOK = "Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep learning. MIT Press.";
@@ -234,6 +235,24 @@ describe("AI search agent", () => {
     expect(result.verdict).toBe("verified");
     expect(result.agent).toMatchObject({ toolCalls: 0, rounds: 0, note: expect.stringContaining("无需 AI 检索") });
     expect(world.calls.some((c) => c.startsWith("api.deepseek.com"))).toBe(false);
+  });
+});
+
+describe("search_openalex tool", () => {
+  it("sends the model's title to OpenAlex without wildcard characters", async () => {
+    const filters: string[] = [];
+    vi.stubGlobal("fetch", async (input: string) => {
+      const filter = new URL(input).searchParams.get("filter") ?? "";
+      filters.push(filter);
+      // 与 OpenAlex 的实际行为一致：title.search 里有 ? 或 * 就返回 400
+      return /[?*]/.test(filter) ? Response.json({ error: "Invalid query parameters error." }, { status: 400 }) : Response.json({ results: [] });
+    });
+    const args = parseToolCall("search_openalex", JSON.stringify({ title: "How Many Crits Were Rolled This Year? Check Out 2022 Unrolled!", year: 2022, reason: "查网页文章" }));
+    if (args.name !== "search_openalex") throw new Error("unexpected tool");
+    const { runTool } = await import("../tools");
+    const outcome = await runTool(args, { ref: parseReference(BOOK, 1), knownDois: new Set(), openalexLeft: { left: 1 }, nextId: { n: 1 } });
+    expect(filters).toEqual(["title.search:How Many Crits Were Rolled This Year Check Out 2022 Unrolled!,publication_year:2021-2023"]);
+    expect(outcome.detail).toMatch(/^OpenAlex 题名检索.*没有结果$/);
   });
 });
 
