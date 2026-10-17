@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import type { AgentEvent } from "@/lib/agent-stream";
 import type { RefResult } from "@/lib/verify/types";
 
@@ -29,6 +29,11 @@ async function events(response: Response): Promise<AgentEvent[]> {
   expect(response.status).toBe(200);
   return (await response.text()).trim().split("\n").filter(Boolean).map((line) => JSON.parse(line));
 }
+
+// The first import has Vite transform the route's whole dependency graph; under a busy parallel run that can exceed the default 5 s.
+// Load it once up front with a longer limit; each test's re-import after vi.resetModules() then reuses the transformed code.
+const IMPORT_TIMEOUT = 30_000;
+beforeAll(async () => { await routes(); }, IMPORT_TIMEOUT);
 
 beforeEach(() => {
   vi.resetModules();

@@ -1,6 +1,6 @@
 // test 集（eval/real-world/test-2026-10-14.json）盲测后剩下的误报，以及图片评测里发现的一条（宫鹏 2010）。
 // 这些文献都真实存在；括号里是条目编号。数据库记录按当时 Crossref / OpenAlex 返回的内容简化而来。
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { detectKind, guessAuthors, guessTitle, guessVenue, parseReference, splitReferences } from "../extract";
 import { scoreCandidate } from "../match";
 import type { Author, WorkRecord } from "../types";
@@ -126,6 +126,11 @@ async function verify(raw: string) {
   const { verifyReference } = await import("../verify");
   return verifyReference(parseReference(raw, 1), { openalexBudget: { left: 5 } });
 }
+
+// The first import has Vite transform the engine's whole dependency graph; under a busy parallel run that can exceed the default 5 s.
+// Load it once up front with a longer limit; each test's re-import after vi.resetModules() then reuses the transformed code.
+const IMPORT_TIMEOUT = 30_000;
+beforeAll(async () => { await import("../verify"); }, IMPORT_TIMEOUT);
 
 beforeEach(() => vi.resetModules());
 afterEach(() => vi.unstubAllGlobals());

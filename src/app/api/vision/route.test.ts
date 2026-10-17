@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 const vision = vi.hoisted(() => ({ transcribe: vi.fn(), status: vi.fn() }));
 vi.mock("@/lib/vision", async (importOriginal) => ({
@@ -18,6 +18,11 @@ function upload(files: { name: string; bytes: Uint8Array<ArrayBuffer>; field?: s
 async function routes() {
   return import("./route");
 }
+
+// The first import has Vite transform the route's whole dependency graph; under a busy parallel run that can exceed the default 5 s.
+// Load it once up front with a longer limit; each test's re-import after vi.resetModules() then reuses the transformed code.
+const IMPORT_TIMEOUT = 30_000;
+beforeAll(async () => { await routes(); }, IMPORT_TIMEOUT);
 
 beforeEach(() => {
   vi.resetModules();

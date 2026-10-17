@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { MAX_CALLS_PER_TURN, parseAssistantTurn } from "../model";
 import { parseToolCall, ToolArgumentError } from "../tools";
 import { parseReference } from "../../verify/extract";
@@ -67,6 +67,11 @@ function serve(world: World) {
 async function agent() {
   return import("../index");
 }
+
+// The first import has Vite transform the agent's whole dependency graph; under a busy parallel run that can exceed the default 5 s.
+// Load it once up front with a longer limit; each test's re-import after vi.resetModules() then reuses the transformed code.
+const IMPORT_TIMEOUT = 30_000;
+beforeAll(async () => { await agent(); }, IMPORT_TIMEOUT);
 
 beforeEach(() => {
   vi.resetModules();

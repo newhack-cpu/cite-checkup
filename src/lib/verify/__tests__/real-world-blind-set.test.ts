@@ -1,7 +1,7 @@
 // 新盲测集（eval/real-world/blind-2026-10-16.json）运行一次后复核出的误报，见 eval/results/real-blind-2026-10-16-adjudication.json。
 // 这些文献都真实存在；括号里是条目编号。数据库记录按当时 Crossref / OpenAlex 返回的内容简化而来。
 // 用这批条目改过规则后，blind-2026-10-16 不再算盲测。
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { detectKind, guessTitle, guessVenue, parseReference } from "../extract";
 import { fieldChecks, scoreCandidate } from "../match";
 import type { CrossrefItem } from "../sources/crossref";
@@ -51,6 +51,11 @@ async function verify(raw: string) {
   const { verifyReference } = await import("../verify");
   return verifyReference(parseReference(raw, 1), { openalexBudget: { left: 5 } });
 }
+
+// The first import has Vite transform the engine's whole dependency graph; under a busy parallel run that can exceed the default 5 s.
+// Load it once up front with a longer limit; each test's re-import after vi.resetModules() then reuses the transformed code.
+const IMPORT_TIMEOUT = 30_000;
+beforeAll(async () => { await import("../verify"); }, IMPORT_TIMEOUT);
 
 beforeEach(() => vi.resetModules());
 afterEach(() => vi.unstubAllGlobals());

@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import audit from "../../../../eval/competition-review-2026-10-14/code-audit/edge-case-results.json";
 import { parseReference } from "../extract";
 import type { CrossrefItem } from "../sources/crossref";
@@ -53,6 +53,11 @@ async function check(text: string, budget = 20) {
   const { verifyReference } = await import("../verify");
   return verifyReference(parseReference(text, 1), { openalexBudget: { left: budget } });
 }
+
+// The first import has Vite transform the engine's whole dependency graph; under a busy parallel run that can exceed the default 5 s.
+// Load it once up front with a longer limit; each test's re-import after vi.resetModules() then reuses the transformed code.
+const IMPORT_TIMEOUT = 30_000;
+beforeAll(async () => { await import("../verify"); }, IMPORT_TIMEOUT);
 
 beforeEach(() => vi.resetModules());
 afterEach(() => vi.unstubAllGlobals());

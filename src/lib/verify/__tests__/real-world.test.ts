@@ -1,6 +1,6 @@
 // 真实论文参考文献的回归样例，取自 eval/real-world/dev-2026-10-14.json（括号里是条目编号）。
 // 这些文献都真实存在，改动前会被误判为"信息有误"、"疑似不存在"或"出错"。
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { detectKind, extractDoi, extractYear, guessAuthors, guessTitle, guessVenue, parseReference } from "../extract";
 import { fieldChecks, scoreCandidate, venueSimilarity } from "../match";
 import type { WorkRecord } from "../types";
@@ -235,6 +235,11 @@ async function verify(raw: string) {
   const { verifyReference } = await import("../verify");
   return verifyReference(parseReference(raw, 1), { openalexBudget: { left: 5 } });
 }
+
+// The first import has Vite transform the engine's whole dependency graph; under a busy parallel run that can exceed the default 5 s.
+// Load it once up front with a longer limit; each test's re-import after vi.resetModules() then reuses the transformed code.
+const IMPORT_TIMEOUT = 30_000;
+beforeAll(async () => { await import("../verify"); }, IMPORT_TIMEOUT);
 
 beforeEach(() => vi.resetModules());
 afterEach(() => vi.unstubAllGlobals());
