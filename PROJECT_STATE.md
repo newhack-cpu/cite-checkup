@@ -29,6 +29,7 @@
 - 检查：`pnpm test` 默认并发下 33 个文件 462 项通过（17f71ef 修了 PDF 测试超时），typecheck、lint、build 通过。
 - 文档同步（10-16 晚补做）：`DEFENSE_QA.md` 第 14、18 题改为新盲测结果（64 篇、9.1%、与上次相当）和新的下一步；`SUBMISSION_CHECKLIST.md` 勾选盲测项、测试数改为 462；`narration.json` 第 03、09、10 段和 `DEMO_SCRIPT.md` 同步盲测结论与 462 项测试，讲稿字数基本不变；README 的测试数补到 462。
 - 讲稿删减（10-16 晚）：`narration.json` 从 2059 字删到 1710 字，每章删 14%–20%；10 章结构、id、动作和演示顺序不变，边界说法和数字不变。各段按约 250 字/分钟加操作停顿重估，总时长由 7 分 15 秒改为 7 分 35 秒；`DEMO_SCRIPT.md` 时间表、`SUBMISSION_CHECKLIST.md` 和参赛材料 README 已同步。
+- 问号修复后的文档同步（10-16 晚）：774969e 新增 9 项测试，`pnpm test` 为 33 个文件 471 项通过。README、`SUBMISSION_CHECKLIST.md`、`DEMO_SCRIPT.md`、`narration.json` 第 09 段和技术说明第 10 页的测试数改为 471；`DEFENSE_QA.md` 第 14 题和技术说明第 12 页的“下一步”去掉已修的问号缺陷；技术 PDF 重建并验收。
 - 待办：上面列的几类新误报（题名问号检索出错已修）。修完要再抽一批新盲测集检验，不能拿这批数据当验证集。
 
 ## 2026-10-16 更新技术说明 PDF 与视频讲稿

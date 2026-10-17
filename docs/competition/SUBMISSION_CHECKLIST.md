@@ -10,7 +10,7 @@
 - [x] 技术说明 PDF 已更新到 2026-10-16 版本，共 14 页，逐页渲染检查无裁切、乱码和行首标点（验收记录 `eval/results/technical-pdf-2026-10-16/`）；团队信息明确待本人补充。
 - [ ] 重录正式视频：10-14 的 6 分 39 秒成片没有拍照识别、AI 检索 Agent、隐藏提示词、开放全文论断核查和 MCP；按新的 `DEMO_SCRIPT.md` 与 `narration.json`（约 7 分 35 秒）由本人录制普通话讲解，录制当天逐项跑通演示输入。
 - [ ] 新视频中的判断来自最终生产版本真实运行；合成演示材料和测试 PDF 在画面和讲解中明确标注。
-- [x] PDF 与本地验收证据一致：462 项测试、deepseek-flash、开放全文 + 混合检索、图片识别与隐藏提示词的范围和局限明确。
+- [x] PDF 与本地验收证据一致：471 项测试、deepseek-flash、开放全文 + 混合检索、图片识别与隐藏提示词的范围和局限明确。
 - [ ] 新视频核对：功能、测试数字、模型与 PDF / README 的限制一致。
 - [x] 在新盲测集 `eval/real-world/blind-2026-10-16.json` 上运行一次（10-16 17:04）：逐条复核误报 10/110（9.1%），与上次盲测相当；结果已补进 README、技术 PDF、答辩问答和讲稿（复核记录 `eval/results/real-blind-2026-10-16-adjudication.json`）。
 - [ ] 本人在 `.env.local` 填写 `CROSSREF_MAILTO`（Crossref 礼貌池）和 `OPENALEX_API_KEY`（openalex.org 免费申请）；不代填。
