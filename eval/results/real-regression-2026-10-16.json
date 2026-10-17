@@ -1,0 +1,293 @@
+{
+ "comparedAt": "2026-10-16",
+ "rules": "d237da2 的核验规则（运行时 HEAD 为 17f71ef，src/lib/verify 与 scripts/eval-real.mts 未变）",
+ "method": "dev、test 用 10-16 规则各全量运行一次（OpenAlex 题名检索不限次数，按条数给足），与 10-15 的结果按条目编号逐条比较结论、摘要、问题、匹配 DOI 和文献类型。test 在 10-16 修规则时已查看过，这次结果不再算盲测。",
+ "order": "三项评测依次运行，没有并发：盲测 17:02–17:04、dev 17:06–17:07、test 17:08–17:10（本机时间，UTC-7）",
+ "openalex": "用单条 DOI 查询（不计费）读剩余额度：盲测前 0.100、盲测后 0.092、dev 后 0.090、test 后 0.088 美元，即 dev、test 各约 2 次题名检索",
+ "curated": {
+  "old": "eval/results/curated-2026-10-15-v2.json",
+  "new": "eval/results/curated-2026-10-16.json",
+  "result": "29/29；编造 7/7；真实文献误判“不存在” 0/15",
+  "differences": 0,
+  "note": "29 条的结论、摘要、问题和匹配 DOI 与 10-15 完全一致"
+ },
+ "dev": {
+  "old": "eval/results/real-dev-2026-10-15-rules.json",
+  "oldRanAt": "2026-10-15T15:28:36.601Z",
+  "new": "eval/results/real-dev-2026-10-16-rules.json",
+  "newRanAt": "2026-10-17T00:07:48.574Z",
+  "oldCounts": {
+   "verified": 44,
+   "mismatch": 2,
+   "not_found": 0,
+   "retracted": 0,
+   "concern": 0,
+   "unverifiable": 61,
+   "error": 1
+  },
+  "newCounts": {
+   "verified": 44,
+   "mismatch": 1,
+   "not_found": 0,
+   "retracted": 0,
+   "concern": 0,
+   "unverifiable": 61,
+   "error": 2
+  },
+  "oldFalseAlarmsByScript": 0,
+  "newFalseAlarmsByScript": 0,
+  "verdictChanged": 4,
+  "detailOnly": 0,
+  "transitions": {
+   "verified → error": 1,
+   "unverifiable → error": 1,
+   "error → unverifiable": 1,
+   "mismatch → verified": 1
+  },
+  "changes": [
+   {
+    "id": "D065",
+    "old": "verified",
+    "new": "error",
+    "note": "本次 Crossref 429"
+   },
+   {
+    "id": "D071",
+    "old": "unverifiable",
+    "new": "error",
+    "note": "本次 Crossref 429"
+   },
+   {
+    "id": "D083",
+    "old": "error",
+    "new": "unverifiable",
+    "note": "10-15 那次 Crossref 429，本次正常（中文，无法核验）"
+   },
+   {
+    "id": "D084",
+    "old": "mismatch",
+    "new": "verified",
+    "note": "宫鹏等 2010（标注允许信息有误，待确认哪方有误）。10-16 修复后识别为 Crossref 中文记录作者顺序登记错，改为已核实并提示，引文本身没有写错"
+   }
+  ],
+  "summary": "自动统计误报仍为 0。结论变化 4 条：3 条是 Crossref 429 的进出（D065、D071 本次出错，D083 本次恢复），1 条是宫鹏 2010（D084）由信息有误改为已核实。D020 仍按标注判为信息有误（引文第一作者不在记录中）。"
+ },
+ "test": {
+  "old": "eval/results/real-test-2026-10-15-rules.json",
+  "oldRanAt": "2026-10-15T15:37:07.221Z",
+  "new": "eval/results/real-test-2026-10-16-rules.json",
+  "newRanAt": "2026-10-17T00:10:06.734Z",
+  "oldCounts": {
+   "verified": 45,
+   "mismatch": 12,
+   "not_found": 4,
+   "retracted": 0,
+   "concern": 0,
+   "unverifiable": 56,
+   "error": 2
+  },
+  "newCounts": {
+   "verified": 46,
+   "mismatch": 3,
+   "not_found": 0,
+   "retracted": 0,
+   "concern": 0,
+   "unverifiable": 64,
+   "error": 6
+  },
+  "oldFalseAlarmsByScript": 16,
+  "newFalseAlarmsByScript": 3,
+  "verdictChanged": 21,
+  "detailOnly": 2,
+  "transitions": {
+   "mismatch → unverifiable": 4,
+   "not_found → unverifiable": 4,
+   "error → unverifiable": 2,
+   "verified → error": 4,
+   "mismatch → verified": 5,
+   "unverifiable → error": 2
+  },
+  "changes": [
+   {
+    "id": "T004",
+    "old": "mismatch",
+    "new": "unverifiable",
+    "adjudication1015": "false_alarm",
+    "note": "ASTM 标准，现识别为标准，不再比对机构作者"
+   },
+   {
+    "id": "T006",
+    "old": "not_found",
+    "new": "unverifiable",
+    "kind": "unknown → report",
+    "adjudication1015": "false_alarm",
+    "note": "德国政府研究报告，现识别为报告"
+   },
+   {
+    "id": "T007",
+    "old": "mismatch",
+    "new": "unverifiable",
+    "kind": "unknown → report",
+    "adjudication1015": "false_alarm_regression",
+    "note": "题名不再在“: 2.”处截断，识别为报告"
+   },
+   {
+    "id": "T019",
+    "old": "mismatch",
+    "new": "mismatch",
+    "adjudication1015": "true_error",
+    "note": "复姓误判消失，只剩真实的年份错误"
+   },
+   {
+    "id": "T029",
+    "old": "error",
+    "new": "unverifiable",
+    "adjudication1015": "transient",
+    "note": "10-15 那次 Crossref 429，本次给出“检索覆盖不完整”"
+   },
+   {
+    "id": "T037",
+    "old": "verified",
+    "new": "error",
+    "note": "本次 Crossref 429"
+   },
+   {
+    "id": "T038",
+    "old": "mismatch",
+    "new": "verified",
+    "adjudication1015": "false_alarm_regression",
+    "note": "复姓缩写 Patil MU ↔ Uttam Patil M 不再误判"
+   },
+   {
+    "id": "T046",
+    "old": "not_found",
+    "new": "unverifiable",
+    "adjudication1015": "false_alarm",
+    "note": "期刊在 Crossref 开始注册 DOI 的年份晚于引文年份，查不到不算证据"
+   },
+   {
+    "id": "T050",
+    "old": "not_found",
+    "new": "unverifiable",
+    "kind": "unknown → report",
+    "adjudication1015": "false_alarm",
+    "note": "FAO 报告，现识别为报告"
+   },
+   {
+    "id": "T051",
+    "old": "verified",
+    "new": "error",
+    "note": "本次 Crossref 429"
+   },
+   {
+    "id": "T054",
+    "old": "verified",
+    "new": "error",
+    "note": "本次 Crossref 429"
+   },
+   {
+    "id": "T064",
+    "old": "verified",
+    "new": "error",
+    "adjudication1015": "false_alarm_fixed",
+    "note": "本次 Crossref 429"
+   },
+   {
+    "id": "T066",
+    "old": "mismatch",
+    "new": "unverifiable",
+    "adjudication1015": "false_alarm",
+    "note": "只有名称的条目判为信息不足"
+   },
+   {
+    "id": "T072",
+    "old": "mismatch",
+    "new": "verified",
+    "kind": "unknown → book",
+    "adjudication1015": "false_alarm_regression",
+    "note": "题名里的“Dr.”不再当成句号，识别为图书章节后核实"
+   },
+   {
+    "id": "T073",
+    "old": "verified",
+    "new": "verified",
+    "kind": "unknown → book",
+    "note": "类型识别为图书，结论不变"
+   },
+   {
+    "id": "T075",
+    "old": "not_found",
+    "new": "unverifiable",
+    "kind": "conference → presentation",
+    "adjudication1015": "false_alarm_regression",
+    "note": "识别为会议报告"
+   },
+   {
+    "id": "T087",
+    "old": "unverifiable",
+    "new": "error",
+    "note": "本次 Crossref 429"
+   },
+   {
+    "id": "T091",
+    "old": "mismatch",
+    "new": "verified",
+    "kind": "unknown → book",
+    "adjudication1015": "false_alarm",
+    "note": "1986 年原版图书配到 2018 年重印本，按图书多版本处理：核实并提示核对所引版本"
+   },
+   {
+    "id": "T095",
+    "old": "mismatch",
+    "new": "unverifiable",
+    "kind": "unknown → book",
+    "adjudication1015": "false_alarm",
+    "note": "引文末尾写了出版社，按图书处理"
+   },
+   {
+    "id": "T096",
+    "old": "mismatch",
+    "new": "verified",
+    "adjudication1015": "uncertain",
+    "note": "中文记录作者顺序不同，只提示、不判错"
+   },
+   {
+    "id": "T098",
+    "old": "error",
+    "new": "unverifiable",
+    "adjudication1015": "transient",
+    "note": "10-15 那次 Crossref 429，本次正常"
+   },
+   {
+    "id": "T101",
+    "old": "unverifiable",
+    "new": "error",
+    "note": "本次 Crossref 429"
+   },
+   {
+    "id": "T117",
+    "old": "mismatch",
+    "new": "verified",
+    "adjudication1015": "false_alarm",
+    "note": "汉字作者与拼音记录跨文字比对"
+   }
+  ],
+  "adjudicated": {
+   "flaggedByScript": 3,
+   "flagged": [
+    "T019",
+    "T023",
+    "T081"
+   ],
+   "trueErrors": 3,
+   "falseAlarms": 0,
+   "falseAlarmRate": "0.0%",
+   "errors": 6,
+   "errorCauses": [
+    "api.crossref.org 返回 429"
+   ],
+   "basis": "标出的条目与 eval/results/real-test-2026-10-15-adjudication.json 中判为 true_error 的 T019、T023、T081 相同"
+  },
+  "summary": "10-15 复核的 12 条误报全部消失（4 条“信息有误”和 4 条“疑似不存在”改为无法核验，5 条改为已核实），1 条无法确认的（T096）改为已核实；3 条真实错误仍被标出。新增 6 条出错均为 Crossref 429（紧接着 dev 运行），10-15 那次是 2 条。"
+ }
+}

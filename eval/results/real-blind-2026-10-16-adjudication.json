@@ -1,0 +1,95 @@
+{
+  "dataset": "blind-2026-10-16",
+  "adjudicatedAt": "2026-10-16",
+  "run": {
+    "file": "eval/results/real-blind-2026-10-16-rules.json",
+    "ranAt": "2026-10-17T00:04:42.853Z",
+    "localTime": "2026-10-16 17:04（UTC-7）",
+    "commit": "17f71ef。核验规则（src/lib/verify）、scripts/eval-real.mts 和数据集与 d237da2 相同，之后的提交只改了论断模块、测试和文档",
+    "openalex": "运行前当日额度 0.100 美元，运行后 0.092 美元（约 8 次题名检索），没有因额度不足而跳过检索"
+  },
+  "method": "盲测集 110 条（英文 86、中文 24，来自 64 篇源论文）在 d237da2 抽样，抽样只输出每组条数。规则定稿前后都没有查看条目内容，运行一次后也没有为这批数字改规则。脚本把所有“信息有误 / 疑似不存在”都算作误报；盲测集没有标注源论文本身写错的条目，所以对标出的 11 条逐条按数据库记录（Crossref、OpenAlex、DOI 注册机构）和原始出处复核，判为 false_alarm（系统误判）、true_error（引文确实写错）或 uncertain（无法确认哪方正确）。2 条出错分为 transient（限流，重试可恢复）和 persistent_error（可稳定复现的程序缺陷）。复核只改统计口径，不改代码。",
+  "summary": {
+    "total": 110,
+    "current": { "verified": 47, "flaggedByScript": 11, "trueErrors": 0, "uncertain": 1, "falseAlarms": 10, "falseAlarmRate": "9.1%", "falseAlarmRate95CI": "5.0%–15.9%（Wilson）", "notFoundFalseAlarms": 2, "errors": 2 },
+    "byLanguage": {
+      "en": { "total": 86, "verified": 44, "falseAlarms": 10, "falseAlarmRate": "11.6%", "uncertain": 1, "unverifiable": 30, "errors": 1 },
+      "zh": { "total": 24, "verified": 3, "falseAlarms": 0, "falseAlarmRate": "0%", "unverifiable": 20, "errors": 1 }
+    },
+    "falseAlarmCauses": {
+      "非期刊文献被配到另一条记录（SSRN 转载、同作者的另一篇、书中章节）": ["B027", "B054", "B056"],
+      "软件未识别（R 包版本、R 软件）": ["B080", "B081"],
+      "题名边界切错（“, in:” 未截断、植物命名人“D. Don”被当成句号）": ["B011", "B074"],
+      "带网址的新闻网页被当成期刊论文": ["B003"],
+      "数据库记录本身有差异（Crossref 年份登记为 2020、配到首字母不全的机构库记录）": ["B015", "B084"]
+    },
+    "note": "uncertain 计入误报时为 11 条（10.0%）。10 条误报全部是英文条目；中文 24 条中 20 条无法核验，是数据源覆盖问题。2 条出错：B097 是 Crossref 429（暂时性）；B030 是 OpenAlex 返回 400，题名中间的“?”被当成通配符，可稳定复现，属于程序缺陷，不计入误报。与 10-15 的 test 盲测（12/119 = 10.1%，计入 uncertain 为 10.9%）水平相当。"
+  },
+  "items": [
+    {
+      "id": "B003", "current": "not_found", "judgment": "false_alarm",
+      "reason": "Chemistry World 新闻网页（Maria Burke，2022-10-18 发布），引文带网址和访问日期，却被识别为期刊论文；页面存在，题名、作者、年份与引文一致",
+      "evidence": ["https://www.chemistryworld.com/news/what-next-for-scientific-collaboration-as-stand-off-between-china-and-the-west-heats-up/4016361.article"]
+    },
+    {
+      "id": "B011", "current": "not_found", "judgment": "false_alarm",
+      "reason": "ICLR 2021 的 ViT 论文（arXiv:2010.11929，OpenAlex 有记录）。题名没有在“, in:”处截断，会议名和年份混进题名，Crossref 和 OpenAlex 都没配上",
+      "evidence": ["https://doi.org/10.48550/arXiv.2010.11929", "https://openalex.org/W3094502228"]
+    },
+    {
+      "id": "B015", "current": "mismatch", "judgment": "false_alarm",
+      "reason": "Crossref 记录的 issued / 在线年份登记为 2020，但这是 2014 年第 48 卷第 5 期 500–506 页（记录创建于 2014，OpenAlex 为 2014，DOI 中也是 2014）；引文写的 2014 正确",
+      "evidence": ["https://doi.org/10.3944/AOTT.2014.14.0020", "https://openalex.org/W2036922330"]
+    },
+    {
+      "id": "B027", "current": "mismatch", "judgment": "false_alarm",
+      "reason": "2008 年的比特币白皮书（网页），被配到 2019 年 SSRN 上的转载版，误报年份不符",
+      "evidence": ["https://bitcoin.org/bitcoin.pdf", "https://doi.org/10.2139/ssrn.3440802"]
+    },
+    {
+      "id": "B030", "current": "error", "judgment": "persistent_error",
+      "reason": "D&D Beyond 网页文章。题名中间的“?”被 OpenAlex 当成通配符，title.search 返回 400（复核时用同样的请求复现）；不是限流，也不是误报，但界面提示“数据源暂时不可用”不准确",
+      "evidence": ["https://api.openalex.org/works?filter=title.search:How+Many+Crits+Were+Rolled+This+Year%3F+Check+Out+2022+Unrolled%21"]
+    },
+    {
+      "id": "B054", "current": "mismatch", "judgment": "false_alarm",
+      "reason": "引文是 IUCN 2000 年《Evaluating Effectiveness》第 1 版（Crossref 有记录，但题名只登记了前半句、没有作者，没排进检索前列）；系统配到同三位作者 2004 年在 J Environ Policy Plan 发表的另一篇文章（题名不同），误报年份不符。另：引文的网址 pag-014 指向 2006 年第 2 版，与所写年份不一致，系统没有报出这一点",
+      "evidence": ["https://doi.org/10.2305/IUCN.CH.2000.PAG.6.en", "https://doi.org/10.1080/1523908042000320731", "https://doi.org/10.2305/IUCN.CH.2006.PAG.14.en"]
+    },
+    {
+      "id": "B056", "current": "mismatch", "judgment": "false_alarm",
+      "reason": "世卫组织 1978 年《阿拉木图宣言》（机构文件），被配到 Pannenborg 所著《A New International Health Order》中的同名章节（Brill 的 DOI 于 2024 年登记），误报作者不符",
+      "evidence": ["https://doi.org/10.1163/9789004635753_019"]
+    },
+    {
+      "id": "B074", "current": "mismatch", "judgment": "false_alarm",
+      "reason": "题名在植物命名人“D. Don”处被截断，后半段被当成刊名；引文的刊名缩写 N. Z. J. For. Sci. 与记录（New Zealand Journal of Forestry Science 第 49 卷）一致。引文本身格式混乱（第二作者“Mitchell R 2019”混进题名，题名缺逗号和 and），但报出的“期刊名不符”是误判",
+      "evidence": ["https://doi.org/10.33494/nzjfs492019x37x"]
+    },
+    {
+      "id": "B077", "current": "mismatch", "judgment": "uncertain",
+      "reason": "数据库里只有 2025 年的 SSRN 预印本（题名与引文逐字相同），正式版发表于 Lancet Microbe 2026 年第 7 卷 101330；研究入组时间为 2023-06-26 至 2024-02-15，2023 年还不可能有完整结果，引文年份很可能写错，但无法排除 2023 年有未收录的会议报告",
+      "evidence": ["https://doi.org/10.2139/ssrn.5087375", "https://doi.org/10.1016/j.lanmic.2025.101330", "https://openalex.org/W7161267493"]
+    },
+    {
+      "id": "B080", "current": "mismatch", "judgment": "false_alarm",
+      "reason": "R 包 vegan 2.4-2（2017-01-17）DESCRIPTION 中的作者依次为 Oksanen、Blanchet、Friendly、Kindt、Legendre、McGlinn……，与引文一致；数据库记录是 CRAN 的包级 DOI（首发 2001 年、现任作者名单）。软件包没有识别为软件，误报作者和年份",
+      "evidence": ["https://doi.org/10.32614/CRAN.package.vegan", "https://raw.githubusercontent.com/vegandevs/vegan/v2.4-2/DESCRIPTION"]
+    },
+    {
+      "id": "B081", "current": "mismatch", "judgment": "false_alarm",
+      "reason": "R 软件（R Core Team，2015），没有识别为软件，被配到核医学专著中无关的章节《Statistical computing》（2014），给出“相近文献、信息有出入”",
+      "evidence": ["https://doi.org/10.1201/b17972-15"]
+    },
+    {
+      "id": "B084", "current": "mismatch", "judgment": "false_alarm",
+      "reason": "OpenAlex 有两条记录：期刊记录署名 Mackay AD、Scobie DR、Rhodes TR、Devantier BP，与引文一致；系统配到的是 Figshare 机构库记录（署名 Tim Rhodes，只有一个首字母），误报“Rhodes TR”姓名不符",
+      "evidence": ["https://openalex.org/W2954825301", "https://openalex.org/W3209656276"]
+    },
+    {
+      "id": "B097", "current": "error", "judgment": "transient",
+      "reason": "Crossref 429 限流。Crossref 记录与引文的作者、年份、卷期页一致",
+      "evidence": ["https://doi.org/10.1360/N072017-00235"]
+    }
+  ]
+}

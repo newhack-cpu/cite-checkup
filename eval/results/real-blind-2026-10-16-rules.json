@@ -1,0 +1,1148 @@
+{
+ "ranAt": "2026-10-17T00:04:42.853Z",
+ "dataset": "blind-2026-10-16",
+ "mode": "rules",
+ "total": 110,
+ "seconds": 142.86,
+ "counts": {
+  "verified": 47,
+  "mismatch": 9,
+  "not_found": 2,
+  "retracted": 0,
+  "concern": 0,
+  "unverifiable": 50,
+  "error": 2
+ },
+ "falseAlarms": 11,
+ "results": [
+  {
+   "id": "B001",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.65109/waau9087",
+    "title": "Committee Selection using Attribute Approvals",
+    "year": 2021,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B002",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：OpenAlex）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.5591/978-1-57735-516-8/ijcai11-057",
+    "title": "Budgeted social choice: from consensus to personalized decision making",
+    "year": 2011,
+    "source": "openalex"
+   }
+  },
+  {
+   "id": "B003",
+   "verdict": "not_found",
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "issues": [
+    "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+   ],
+   "kind": "journal"
+  },
+  {
+   "id": "B004",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B005",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B006",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1002/adfm.201909265",
+    "title": "Porous Carbons: Structure‐Oriented Design and Versatile Applications",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B007",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1016/j.microc.2022.108120",
+    "title": "Magnetic deep eutectic solvent-based microextraction for determination of organophosphorus flame retardants in aqueous samples: One step closer to green chemistry",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B008",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1029/jd092id09p10999",
+    "title": "Chemical composition of fresh snow on Mount Everest",
+    "year": 1987,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B009",
+   "verdict": "unverifiable",
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B010",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1109/iccv.2017.74",
+    "title": "Grad-CAM: Visual Explanations from Deep Networks via Gradient-Based Localization",
+    "year": 2017,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B011",
+   "verdict": "not_found",
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "issues": [
+    "在 Crossref 和 OpenAlex 中都检索不到题名、作者相符的文献"
+   ],
+   "kind": "conference"
+  },
+  {
+   "id": "B012",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1002/btm2.70025",
+    "title": "Engineering biomimetic nanovesicles for PEBP1 mRNA delivery to inhibit ferroptosis in abdominal aortic aneurysm",
+    "year": 2025,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B013",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1038/nature14661",
+    "title": "Structural basis of JAZ repression of MYC transcription factors in jasmonate signalling",
+    "year": 2015,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B014",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1104/pp.112.202697",
+    "title": "MEDIATOR25 Acts as an Integrative Hub for the Regulation of Jasmonate-Responsive Gene Expression in Arabidopsis",
+    "year": 2012,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B015",
+   "verdict": "mismatch",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "年份不符：引用写 2014，数据库记录为 2020"
+   ],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3944/aott.2014.14.0020",
+    "title": "Effect of adjuvant therapies on recurrence in aneurysmal bone cysts",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B016",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1016/j.jbo.2021.100384",
+    "title": "Current strategies for the treatment of solitary and aneurysmal bone cysts: A review of the literature",
+    "year": 2021,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B017",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1016/j.ccell.2015.04.002",
+    "title": "Molecular Classification of Ependymal Tumors across All CNS Compartments, Histopathological Grades, and Age Groups",
+    "year": 2015,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B018",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1007/s00247-016-3607-x",
+    "title": "Neuroradiologic characteristics of astroblastoma and systematic review of the literature: 2 new cases and 125 cases reported in 59 publications",
+    "year": 2016,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B019",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.2174/092986711797535245",
+    "title": "Multi-Target-Directed Ligands in Alzheimer's Disease Treatment",
+    "year": 2011,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B020",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1038/s41598-025-88944-y",
+    "title": "CADD based designing and biological evaluation of novel triazole based thiazolidinedione coumarin hybrids as antidiabetic agent",
+    "year": 2025,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B021",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1016/j.chest.2025.11.005",
+    "title": "A 49-Year-Old Woman With Trastuzumab-Deruxtecan-Induced Pneumonitis Responsive to IV Immunoglobulin Therapy After Failed Steroid Treatment",
+    "year": 2026,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B022",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.2174/1573402115666190416161116",
+    "title": "Secondary Hypertension: Novel Insights",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B023",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1152/ajprenal.00061.2002",
+    "title": "Mechanisms of secondary hyperparathyroidism",
+    "year": 2002,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B024",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1088/1755-1315/343/1/012044",
+    "title": "Local community’s perception, attitude, and participation towards different level management of geopark: A comparison Geosite case study, between Muroto Cape and Rammang-rammang Geosite",
+    "year": 2019,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B025",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B026",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B027",
+   "verdict": "mismatch",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "年份不符：引用写 2008，数据库记录为 2019"
+   ],
+   "kind": "web",
+   "match": {
+    "doi": "10.2139/ssrn.3440802",
+    "title": "Bitcoin: A Peer-to-Peer Electronic Cash System",
+    "year": 2019,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B028",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：OpenAlex）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "title": "Prospects for blockchain-based settlement frameworks as a resolution to the threat of de-risking to Caribbean financial systems",
+    "year": 2017,
+    "source": "openalex"
+   }
+  },
+  {
+   "id": "B029",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B030",
+   "verdict": "error",
+   "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+   "issues": [
+    "api.openalex.org 返回 400，无法完成查询"
+   ],
+   "kind": "unknown"
+  },
+  {
+   "id": "B031",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B032",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B033",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B034",
+   "verdict": "unverifiable",
+   "summary": "软件 / 数据集类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "software"
+  },
+  {
+   "id": "B035",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B036",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：OpenAlex）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "title": "Overall evaluations of carcinogenicity: an updating of IARC Monographs volumes 1 to 42.",
+    "year": 1987,
+    "source": "openalex"
+   }
+  },
+  {
+   "id": "B037",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B038",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B039",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "web",
+   "match": {
+    "doi": "10.7767/9783205213697.399",
+    "title": "Karl Renner – auch nur ein Mensch",
+    "year": 2021,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B040",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1177/20563051231186365",
+    "title": "“#schleichdiduoaschloch” Terror, Collective Memory, and Social Media",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B041",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "B042",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1158/1535-7163.targ-19-a088",
+    "title": "Abstract A088: Novel anti-EGFR antibody-drug conjugate AVID100: A phase 2a trial in patients with EGFR-overexpressing advanced solid tumors",
+    "year": 2019,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B043",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "book",
+   "match": {
+    "doi": "10.1017/9781009052290",
+    "title": "When Politics Becomes Personal",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B044",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "book",
+   "match": {
+    "doi": "10.5860/choice.44-3551",
+    "title": "Polarized America: the dance of ideology and unequal riches",
+    "year": 2007,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B045",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B046",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B047",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：OpenAlex）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "title": "Takeover Times in Highly Automated Driving (Level 3)",
+    "year": 2017,
+    "source": "openalex"
+   }
+  },
+  {
+   "id": "B048",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1080/13670050.2015.1080658",
+    "title": "A language support program for English-medium instruction courses: Its development and evaluation in an EFL setting",
+    "year": 2015,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B049",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B050",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B051",
+   "verdict": "unverifiable",
+   "summary": "引文只写了名称，没有作者、年份或 DOI，信息不足以核验，请补全后再查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B052",
+   "verdict": "unverifiable",
+   "summary": "引文只写了名称，没有作者、年份或 DOI，信息不足以核验，请补全后再查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B053",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "B054",
+   "verdict": "mismatch",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "年份不符：引用写 2000，数据库记录为 2004"
+   ],
+   "kind": "web",
+   "match": {
+    "doi": "10.1080/1523908042000320731",
+    "title": "Management Effectiveness: Assessing Management of Protected Areas?",
+    "year": 2004,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B055",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B056",
+   "verdict": "mismatch",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "作者与数据库记录不符，数据库作者为 Pannenborg CO"
+   ],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1163/9789004635753_019",
+    "title": "International Conference on Primary Health Care Alma-Ata, USSR, 6-12 September 1978",
+    "year": 1978,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B057",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B058",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "web",
+   "match": {
+    "doi": "10.1093/oso/9780195108088.001.0001",
+    "title": "Lectures on Geophysical Fluid Dynamics",
+    "year": 1998,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B059",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：DOI 注册机构）",
+   "issues": [],
+   "kind": "preprint",
+   "match": {
+    "doi": "10.48550/arxiv.1904.08240",
+    "title": "Quotients of numerical semigroups generated by two numbers",
+    "year": 2019,
+    "source": "doi-csl"
+   }
+  },
+  {
+   "id": "B060",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "web",
+   "match": {
+    "doi": "10.21608/ejnhs.2023.318998",
+    "title": "First WHO report details the devastating impact of hypertension and ways to stop it",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B061",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B062",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B063",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1109/sii.2011.6147611",
+    "title": "Hybrid Artificial Neural Networks for TBM performance prediction in complex underground conditions",
+    "year": 2011,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B064",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B065",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1371/journal.pone.0113686",
+    "title": "The Lineage-Specific Evolution of Aquaporin Gene Clusters Facilitated Tetrapod Terrestrial Adaptation",
+    "year": 2014,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B066",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "book",
+   "match": {
+    "doi": "10.1201/9780203491317",
+    "title": "Biology of Sharks and Their Relatives",
+    "year": 2004,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B067",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/en12183457",
+    "title": "3D Solar Potential in the Urban Environment: A Case Study in Lisbon",
+    "year": 2019,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B068",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1109/cvprw.2018.00045",
+    "title": "Building Extraction from Satellite Images Using Mask R-CNN with Building Boundary Regularization",
+    "year": 2018,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B069",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/w12020605",
+    "title": "Flood Routing Process and High Dam Interception of Natural Discharge from the 2018 Baige Landslide-Dammed Lake",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B070",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/ijgi8050210",
+    "title": "Hazard Assessment of Earthquake Disaster Chains Based on a Bayesian Network Model and ArcGIS",
+    "year": 2019,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B071",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/diagnostics12071635",
+    "title": "Cellular Prion Protein Is Closely Associated with Early Recurrence and Poor Survival in Patients with Hepatocellular Carcinoma",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B072",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1371/journal.pone.0048146",
+    "title": "Silencing Prion Protein in MDA-MB-435 Breast Cancer Cells Leads to Pleiotropic Cellular Responses to Cytotoxic Stimuli",
+    "year": 2012,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B073",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3390/microorganisms10101996",
+    "title": "The SARS-CoV-2 S1 Spike Protein Promotes MAPK and NF-kB Activation in Human Lung Cells and Inflammatory Cytokine Production in Human Lung and Intestinal Epithelial Cells",
+    "year": 2022,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B074",
+   "verdict": "mismatch",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "期刊名不符：引用写「Don final harvest in Western Australia. N. Z. J. For. Sci」，数据库记录为「New Zealand Journal of Forestry Science」"
+   ],
+   "kind": "journal",
+   "match": {
+    "doi": "10.33494/nzjfs492019x37x",
+    "title": "Comparison of cost, productivity and residue yield of cut-to-length and fuel-adapted harvesting in a <i>Pinus radiata</i> D.Don final harvest in Western Australia",
+    "year": 2019,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B075",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B076",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B077",
+   "verdict": "mismatch",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：OpenAlex）",
+   "issues": [
+    "年份不符：引用写 2023，数据库记录为 2025"
+   ],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.2139/ssrn.5087375",
+    "title": "Diagnostic Accuracy of Tongue Swabs for Tuberculosis Using a Common Protocol for Xpert MTB/RIF Ultra Testing: A Multi-Country Assessment",
+    "year": 2025,
+    "source": "openalex"
+   }
+  },
+  {
+   "id": "B078",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "book",
+   "match": {
+    "doi": "10.1017/cbo9780511625817.006",
+    "title": "Valuing health care benefits in money terms",
+    "year": 1995,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B079",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B080",
+   "verdict": "mismatch",
+   "summary": "文献存在，但有 2 处信息与数据库记录不一致（来源：Crossref）",
+   "issues": [
+    "引用中有作者姓名与数据库记录不符，数据库作者为 Oksanen J, Simpson GL, Blanchet FG, Kindt R, Legendre P, Minchin PR 等",
+    "年份不符：引用写 2017，数据库记录为 2001"
+   ],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.32614/cran.package.vegan",
+    "title": "vegan: Community Ecology Package",
+    "year": 2001,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B081",
+   "verdict": "mismatch",
+   "summary": "找到相近文献，但信息有出入，请核对是否为同一篇",
+   "issues": [
+    "找到题名相近的文献，但题名或作者与引用有出入"
+   ],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1201/b17972-15",
+    "title": "Statistical computing",
+    "year": 2014,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B082",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "conference",
+   "match": {
+    "doi": "10.1088/1757-899x/722/1/012034",
+    "title": "A literature review on reducing carbon emission from supply chain system: drivers, barriers, performance indicators, and practices",
+    "year": 2020,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B083",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B084",
+   "verdict": "mismatch",
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：OpenAlex）",
+   "issues": [
+    "引用中有作者姓名与数据库记录不符，数据库作者为 Mackay AD, Scobie DR, Rhodes T, Devantier BP"
+   ],
+   "kind": "journal",
+   "match": {
+    "title": "Has progress been made in increasing the eco-efficiency of livestock systems?",
+    "year": 2019,
+    "source": "openalex"
+   }
+  },
+  {
+   "id": "B085",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.3389/fpsyg.2024.1330720",
+    "title": "Social support and mental health: the mediating role of perceived stress",
+    "year": 2024,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B086",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "web",
+   "match": {
+    "doi": "10.1016/j.apnu.2016.07.019",
+    "title": "Caregiver Burden Among Caregivers of Individuals With Severe Mental Illness: Testing the Moderation and Mediation Models of Resilience",
+    "year": 2017,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B087",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B088",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B089",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B090",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B091",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B092",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1360/n072022-0210",
+    "title": "青藏高原碳汇现状及其未来趋势",
+    "year": 2023,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B093",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "B094",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B095",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B096",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B097",
+   "verdict": "error",
+   "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+   "issues": [
+    "api.crossref.org 返回 429"
+   ],
+   "kind": "journal"
+  },
+  {
+   "id": "B098",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1360/sste-2025-0334",
+    "title": "地幔地球化学的建立和发展",
+    "year": 2026,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B099",
+   "verdict": "verified",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "match": {
+    "doi": "10.1360/csb1980-25-2-85",
+    "title": "单斜蓝硒铜矿——一种新的亚硒酸盐矿物",
+    "year": 1980,
+    "source": "crossref"
+   }
+  },
+  {
+   "id": "B100",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B101",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B102",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B103",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B104",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B105",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B106",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B107",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B108",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B109",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B110",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  }
+ ]
+}
