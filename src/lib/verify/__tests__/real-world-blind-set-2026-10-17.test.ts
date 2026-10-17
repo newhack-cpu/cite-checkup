@@ -16,6 +16,7 @@ const RAW = {
   B028: "van derValk T. M.Manuel T.Marques‐Bonet andK.Guschanski.2019. “Estimates of Genetic Load Suggest Frequent Purging of Deleterious Alleles in Small Populations.” Preprint BioRxiv July 21. 696831.https://doi.org/10.1101/696831.",
   B029: "Jiang H. andX.Wu.2018. “Alligator sinensis.”The IUCN Red List of Threatened Species2018: e.T867A3146005.",
   B036: "PerssonPO PeraireJ.Curved mesh generation and mesh refinement using Lagrangian solid mechanics. 47th AIAA Aerospace Sciences Meeting Including the New Horizons Forum and Aerospace Exposition.2009:949. doi:10.2514/6.2009‐949",
+  B040: "Pappalardo D. Hypersonic: Between rhetoric and reality. Vortex: Stud on air and Space Power 2022; 3: 37–48.",
   B037: "Liang H, Chen J. Evolution of blood–brain barrier in brain diseases and related systemic nanoscale brain-targeting drug delivery strategies. Acta Pharm Sin B 2020; 11: 2306–2325.",
   B047: "Wang X, , Zhang C, and Bao N. Molecular mechanism of palmitic acid and its derivatives in tumor progression. Front Oncol, 2023; 13: 1–10. DOI: 10.3389/fonc.2023.1224125.",
   B048: "Leung JCK, , Lai KN, and Tang SCW. Crosstalk between podocytes and tubular epithelial cells. Cell Biol Pathol Podocytes, 2014; 183: 54–63. DOI: 10.1159/000359928.",
@@ -150,6 +151,16 @@ describe("citations outside database coverage (category 1)", () => {
     const result = await verify("Smith J, Brown K. Machine learning detection of fabricated surgical margins. J Surg Oncol. 2019;120(3):345-52.");
     expect(result.parsed.kind).toBe("journal");
     expect(result.verdict).toBe("not_found");
+  });
+
+  it("keeps calling a citation non-existent when its journal is in neither directory (B040 stays a known false alarm)", async () => {
+    // 期刊目录里查不到，既可能是没收录的刊物（法国空天军的 Vortex），也可能是缩写或编造的刊名，现有数据源区分不了；
+    // 改判无法核验会连带放过配缩写刊名的编造文献，所以维持疑似不存在，编造的刊名也照样标出
+    const calls = serve(nothingFound);
+    expect((await verify(RAW.B040)).verdict).toBe("not_found");
+    vi.resetModules();
+    expect((await verify("Chen Y, Li X. Graph attention for citation screening. J Fake Comput Stud. 2021;7(2):101-9.")).verdict).toBe("not_found");
+    expect(calls.filter((c) => c.startsWith("api.openalex.org/sources"))).toEqual([]);
   });
 
   it("still calls a fabricated article non-existent when only the journal name follows the title", async () => {
