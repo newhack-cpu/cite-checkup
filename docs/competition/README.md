@@ -10,8 +10,8 @@
 | `technical-content.json` | 结构化正式内容源；应从此修改内容后重新构建 PDF/HTML |
 | `build_technical_report.py` | 使用 ReportLab 的本地构建脚本，不调用模型或网络 |
 | `validate_technical_report.py` | Poppler 渲染与页面 / 文本 / 页码检查，结果写入 `eval/results/technical-pdf-<日期>/`，不覆盖旧版验收；视觉验收另行实际查看 |
-| `narration.json` | 2026-10-16 重写：10 章、约 7 分 15 秒的普通话讲解稿与动作，由本人录制 |
-| `DEMO_SCRIPT.md` | 正式约 7 分 15 秒分镜、4 分钟快版、录制前逐项准备的演示输入和异常分支 |
+| `narration.json` | 2026-10-16 重写，当晚删到约 1700 字：10 章、约 7 分 35 秒的普通话讲解稿与动作，由本人录制 |
+| `DEMO_SCRIPT.md` | 正式约 7 分 35 秒分镜、4 分钟快版、录制前逐项准备的演示输入和异常分支 |
 | `DEFENSE_QA.md` | 如实说明技术价值、范围和局限的答辩问答 |
 | `SUBMISSION_CHECKLIST.md` | 正式提交前需本人补充/核对的事项 |
 | `REVIEW.md` | 10-14 的 73/100 模拟复评和扣分依据；之后加入的功能未重新评分，不是官方成绩 |

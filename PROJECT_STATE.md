@@ -28,6 +28,7 @@
 - 技术 PDF：重建为 14 页，`validate_technical_report.py` 通过（文字可选、页码齐全、无出界）。逐页查看 14 张渲染图，没有裁切、乱码或行首标点。
 - 检查：`pnpm test` 默认并发下 33 个文件 462 项通过（17f71ef 修了 PDF 测试超时），typecheck、lint、build 通过。
 - 文档同步（10-16 晚补做）：`DEFENSE_QA.md` 第 14、18 题改为新盲测结果（64 篇、9.1%、与上次相当）和新的下一步；`SUBMISSION_CHECKLIST.md` 勾选盲测项、测试数改为 462；`narration.json` 第 03、09、10 段和 `DEMO_SCRIPT.md` 同步盲测结论与 462 项测试，讲稿字数基本不变；README 的测试数补到 462。
+- 讲稿删减（10-16 晚）：`narration.json` 从 2059 字删到 1710 字，每章删 14%–20%；10 章结构、id、动作和演示顺序不变，边界说法和数字不变。各段按约 250 字/分钟加操作停顿重估，总时长由 7 分 15 秒改为 7 分 35 秒；`DEMO_SCRIPT.md` 时间表、`SUBMISSION_CHECKLIST.md` 和参赛材料 README 已同步。
 - 待办：上面列的几类新误报（题名问号检索出错已修）。修完要再抽一批新盲测集检验，不能拿这批数据当验证集。
 
 ## 2026-10-16 更新技术说明 PDF 与视频讲稿
@@ -177,7 +178,7 @@
 - 评分：`D:\Darks\projects\cite-checkup\docs\competition\REVIEW.md`，73/100模拟分，原版48/100，非官方成绩。
 - 分镜/普通话稿/答辩：同目录`DEMO_SCRIPT.md`、`narration.json`、`DEFENSE_QA.md`、`SUBMISSION_CHECKLIST.md`。
 - 视频源与实际响应：`D:\Darks\projects\cite-checkup\docs\competition\media`；root独占。`rehearsal`明确为回放彩排，不算真实调用证据。
-- 正式视频：`D:\Darks\projects\cite-checkup\docs\competition\output\video\引用体检-完整演示-1080p.mp4`；6分39秒、1920×1080、25fps、H264/AAC、普通话合成讲解，是 10-14 的旧版，不含之后的新功能。规格与验收见同目录`video-verification.json`。新讲稿（10 章约 7 分 15 秒）见 `DEMO_SCRIPT.md`、`narration.json`，由用户本人录制。
+- 正式视频：`D:\Darks\projects\cite-checkup\docs\competition\output\video\引用体检-完整演示-1080p.mp4`；6分39秒、1920×1080、25fps、H264/AAC、普通话合成讲解，是 10-14 的旧版，不含之后的新功能。规格与验收见同目录`video-verification.json`。新讲稿（10 章、约 1700 字、约 7 分 35 秒）见 `DEMO_SCRIPT.md`、`narration.json`，由用户本人录制。
 
 ## 已完成
 
