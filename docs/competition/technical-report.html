@@ -8,9 +8,9 @@
 <table><thead><tr><th>项目项</th><th>当前信息</th></tr></thead><tbody>
 <tr><td>参赛方向</td><td>第九届传智杯 · AI WEB 网页开发挑战赛</td></tr>
 <tr><td>运行形态</td><td>Next.js 16 Web 应用 + stdio MCP Server；本地生产预览；未声明公网部署</td></tr>
-<tr><td>AI 提供方</td><td>DeepSeek（deepseek-flash）：函数调用、多轮工具调用、图片输入</td></tr>
+<tr><td>AI 提供方</td><td>DeepSeek（deepseek-flash）：函数调用、多轮工具调用、图片输入；Search 接口用于中文期刊检索</td></tr>
 <tr><td>材料日期</td><td>2026-10-17；本地技术验收版</td></tr>
-<tr><td>代码仓库</td><td>GitHub 私有仓库，保留真实提交历史；正式提交前公开或授权评审访问</td></tr>
+<tr><td>代码仓库</td><td>GitHub 公开仓库，保留真实提交历史</td></tr>
 <tr><td>学校、队伍与成员</td><td>待本人补充真实身份及分工；本材料不编造团队信息</td></tr>
 </tbody></table>
 <p class="small">文档范围：项目概述、需求分析、架构、AI 技术、核心实现、测试与部署、创新和展望。本文不构成官方成绩、临床或学术结论认证。</p>
@@ -64,17 +64,18 @@
 <footer>本地技术验收版 · 2026-10-17 · 团队身份信息待补充 · 04 / 14</footer></article>
 <article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>04 AI 检索 Agent：模型规划检索，规则判定结论</h1>
 <p>对“无法核验 / 只找到相近候选”的条目，用户可点“AI 继续查”。DeepSeek 阅读原文、已解析字段和已经查过的路径，自己决定下一步调用哪个工具，每一步实时显示在卡片上。</p>
-<div class="lane"><div class="node">阅读引文与已查路径<br>规划下一步</div><div class="node">调用工具<br>Crossref / OpenAlex / DataCite / DOI</div><div class="node">结果 + 规则比对提示<br>回传模型</div></div>
+<div class="lane"><div class="node">阅读引文与已查路径<br>规划下一步</div><div class="node">调用工具：Crossref / OpenAlex<br>DataCite / DOI / 中文期刊搜索</div><div class="node">结果 + 规则比对提示<br>回传模型</div></div>
 <div class="lane"><div class="node">规则确认同一篇即停<br>每条最多 4 次检索</div><div class="node">全部候选交给规则<br>逐字段复核</div><div class="node">展示每一步理由<br>与追查前的结论</div></div>
 <table><thead><tr><th>约束</th><th>做法</th></tr></thead><tbody>
-<tr><td>工具白名单</td><td>search_crossref、search_openalex（每条最多 1 次）、search_datacite、lookup_doi、finish</td></tr>
+<tr><td>工具白名单</td><td>search_crossref、search_openalex（每条最多 1 次）、search_datacite、lookup_doi、search_cn_journals、finish</td></tr>
 <tr><td>参数校验</td><td>工具名、字段、长度、年份范围、DOI 格式；DOI 只能查引文或检索结果中出现过的</td></tr>
 <tr><td>不能下结论</td><td>模型不能指定哪一篇算数，不能制造“疑似不存在”；含真伪判断词的小结不显示</td></tr>
+<tr><td>中文期刊</td><td>DeepSeek 搜索接口按题名查知网、万方、维普的论文页，站点由服务端限定；没有作者的结果不确认同一篇，只给带链接的相近候选</td></tr>
 <tr><td>预算与失败</td><td>每条最多 4 次检索、4 轮模型调用、80 秒；失败或超时保持原结论并如实说明</td></tr>
 </tbody></table>
 <h2>评测与复核</h2>
 <p>dev 61 条可追查：确认 3 条，均为已核实。test 58 条是 Agent 的盲测：确认 7 条（4 条已核实、3 条信息有误），没有失败，也没有变成“疑似不存在”；每条平均约 3 次检索、5.5–5.8 千 token、10–12 秒。</p>
-<p>盲测 7 条逐条复核：1 条匹配到同一作者的新文章，1 条是报告的旧版本，据此补了两条保守规则。52 条中文条目 Agent 一条也没找到，其中 47 条是因为 OpenAlex 检索次数用完；10-17 只跑中文、额度给足重测 53 条，仍是 0 条，说明 Crossref、OpenAlex、DataCite 确实收录不到这些中文期刊文章，知网、万方又没有开放接口。</p>
+<p>盲测 7 条逐条复核：1 条匹配到同一作者的新文章，1 条是报告的旧版本，据此补了两条保守规则。中文条目原来一条也找不到：10-17 额度给足重测 53 条，仍是 0 条。加上中文期刊联网搜索后，dev、test 和只运行一次的第五批共 75 条中文条目，找到三站论文页 33 条：维普带作者、规则确认 1 条；题名、年份等一致、只差作者 26 条；没有一条变成“疑似不存在”，也没有把别的文章确认成同一篇。</p>
 <footer>本地技术验收版 · 2026-10-17 · 团队身份信息待补充 · 05 / 14</footer></article>
 <article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>05 论断：开放全文、混合检索与带引句判断</h1>
 <p>论断接口每次接收一条论断，使用 DOI 或用户文本中的一种。DOI 优先读取开放获取全文，只访问固定的白名单数据源，不接受模型或用户指定的任意地址。</p>
@@ -148,21 +149,21 @@
 <article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>10 验证方法与实测结果</h1>
 <p>以下记录区分离线固定响应、真实网络与浏览器操作。测试通过只覆盖列出的样本和版本，不推导真实世界总体准确率。</p>
 <table><thead><tr><th>层级</th><th>实测记录</th><th>解释范围</th></tr></thead><tbody>
-<tr><td>自动测试</td><td>37 个文件 556 项；lint、类型检查、生产构建通过</td><td>固定上游响应，覆盖边界与回归</td></tr>
+<tr><td>自动测试</td><td>38 个文件 582 项；lint、类型检查、生产构建通过</td><td>固定上游响应，覆盖边界与回归</td></tr>
 <tr><td>自建文献样例</td><td>29/29；编造 7/7；真实文献误判“不存在” 0/15</td><td>真实联网，自建小样本</td></tr>
 <tr><td>真实论文参考文献</td><td>test 119 条盲测：误报 16.0% → 10.1%（逐条复核）</td><td>10-15 盲测一次</td></tr>
 <tr><td>10-16 两轮修复</td><td>test 误报 12 → 0、第二批盲测 10 → 0；dev 仍为 0，3 条真实错误仍被标出</td><td>修过的集合不再算盲测</td></tr>
 <tr><td>第二、三批盲测</td><td>逐条复核误报 10/110（9.1%）、13/111（11.7%）</td><td>10-16、10-16 晚各盲测一次</td></tr>
 <tr><td>第四批盲测</td><td>误报 20 条，占 18.0%；不算相近候选 17 条，占 15.3%；另标出 3 条真实错误</td><td>10-17 盲测一次，111 条、63 篇论文</td></tr>
 <tr><td>第五批盲测</td><td>误报 6 条（5.6%）；不算相近候选 4.6%；另标出 1 条真实错误</td><td>10-17 晚盲测一次，108 条、63 篇论文</td></tr>
-<tr><td>AI 检索 Agent</td><td>test 58 条：确认 7 条，没有失败，也没有判为疑似不存在</td><td>Agent 的首次盲测</td></tr>
+<tr><td>AI 检索 Agent</td><td>test 58 条：确认 7 条，没有判为疑似不存在；中文期刊搜索：75 条找到论文页 33 条，确认 1 条</td><td>test 为首次盲测；中文含第五批 22 条，只运行一次</td></tr>
 <tr><td>图片识别</td><td>16/16 逐字一致，字符错误率 0%</td><td>合成印刷体样本</td></tr>
 <tr><td>论断检索</td><td>前 6 段命中率 75% → 100%，MRR 0.61 → 0.98</td><td>24 条，评测者编写</td></tr>
 <tr><td>隐藏提示词</td><td>夹具中 PDF 6 处、DOCX 4 处、TXT 1 处全部检出；自家 PDF 无误报</td><td>合成夹具 + 真实 PDF</td></tr>
 <tr><td>MCP 与真实模型</td><td>两个工具真实调用通过；论断冒烟 4/4</td><td>流程可用，不是准确率</td></tr>
 </tbody></table>
 <h2>评测限制</h2>
-<p>自建样本量小且有选样偏差；合成材料只检查行为，不是真实研究结果。没有跨领域大样本的判断准确率、标注一致性、用户效率或商业转化研究。后四批盲测各约 110 条，误报的 95% 区间在 2.6%–26.2% 之间，同一篇源论文的条目常一起出错；复核由开发方完成，没有独立标注；中文条目多数无法核验。表中盲测误报都按原口径计（相近候选也算）。</p>
+<p>自建样本量小且有选样偏差；合成材料只检查行为，不是真实研究结果。没有跨领域大样本的判断准确率、标注一致性、用户效率或商业转化研究。后四批盲测各约 110 条，误报的 95% 区间在 2.6%–26.2% 之间，同一篇源论文的条目常一起出错；复核由开发方完成，没有独立标注。表中盲测误报都按原口径计（相近候选也算）。</p>
 <footer>本地技术验收版 · 2026-10-17 · 团队身份信息待补充 · 11 / 14</footer></article>
 <article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>11 运行、配置与复现</h1>
 <p>当前交付为本地源码与验收材料，不等于已完成公网部署或正式赛事提交。评审应使用自己的服务端密钥，复现时保留时间、输入、模型名称与结果。</p>
@@ -186,14 +187,14 @@
 <table><thead><tr><th>层面</th><th>当前设计价值</th><th>尚缺证据</th></tr></thead><tbody>
 <tr><td>应用</td><td>文献事实与正文证据分开；从格式走向可复核判断</td><td>真实用户规模和效率改善</td></tr>
 <tr><td>技术</td><td>Agent 只找证据、规则下结论；开放全文 + 跨语言混合检索；隐藏提示词检测</td><td>跨模型比较与长文档检索消融</td></tr>
-<tr><td>交互</td><td>保留错误原文、来源范围、失败状态与 Agent 的检索理由</td><td>系统可用性研究与无障碍完整评估</td></tr>
+<tr><td>交互</td><td>保留错误原文、来源范围、失败状态和 Agent 检索理由</td><td>系统可用性研究与无障碍完整评估</td></tr>
 <tr><td>社会价值</td><td>帮写作者发现引用问题，识别写给 AI 的隐藏指令</td><td>真实教学或学术场景的效果研究</td></tr>
 <tr><td>商业</td><td>图书馆、写作中心、期刊投稿前检查</td><td>付费意愿、单位成本、转化及留存</td></tr>
 </tbody></table>
 <h2>已经明确的局限</h2>
-<p>开放数据库覆盖不完整，知网、万方没有开放接口，中文条目 Agent 在额度给足时也找不到（0/53）；中文题名对英文元数据仍无法比对。开放全文只覆盖 Europe PMC 开放获取子集和 arXiv，预印本可能与正式版本不同。图片识别只转写参考文献，未覆盖手写、强反光和严重透视。隐藏文字检测不覆盖被图片盖住、透明、裁剪或批注里的文字。没有账户、计费与公网运营。</p>
+<p>开放数据库覆盖不完整，知网、万方没有开放接口；联网搜索在 75 条中文条目里找到 33 条的论文页，但知网、万方的结果没有作者，多数只能给带链接的相近候选；中文题名对英文元数据仍无法比对。开放全文只覆盖 Europe PMC 开放获取子集和 arXiv，预印本可能与正式版本不同。图片识别只转写参考文献，未覆盖手写、强反光和严重透视。隐藏文字检测不覆盖被图片盖住、透明、裁剪或批注里的文字。没有账户、计费与公网运营。</p>
 <h2>下一阶段优先级</h2>
-<p>前三次盲测的误报在 9%–12%，第四批为 18.0%；按第四批的原因修过之后，第五批为 5.6%，但区间与前几批重叠，误报仍是长尾。下一步用 DeepSeek 的联网搜索接口补中文覆盖（10 条中文期刊引文的小探针找到 7 条，6 条命中知网、万方、维普的论文页），请第二人独立标注、扩大样本；在长文档上做检索消融；找真实写作者试用，测量复核时间与误报成本；再决定公网部署、远程 MCP 与机构试点是否值得投入。</p>
+<p>前三次盲测的误报在 9%–12%，第四批为 18.0%；按第四批的原因修过之后，第五批为 5.6%，但区间与前几批重叠，误报仍是长尾。中文期刊下一步要找能拿到作者的合规数据源；请第二人独立标注、扩大样本；在长文档上做检索消融；找真实写作者试用，测量复核时间与误报成本；再决定公网部署、远程 MCP 与机构试点是否值得投入。</p>
 <footer>本地技术验收版 · 2026-10-17 · 团队身份信息待补充 · 13 / 14</footer></article>
 <article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>13 证据索引与提交对应</h1>
 <p>本地路径以下按项目根目录 D:/Darks/projects/cite-checkup 表示。复核时先查看最终状态文件，再核对实际文件，避免把旧版本验收当成新版本。</p>
@@ -201,7 +202,7 @@
 <tr><td>最终项目状态</td><td>PROJECT_STATE.md；作为索引，关键结果需核对实际文件</td></tr>
 <tr><td>真实论文参考文献</td><td>eval/real-world/（dev、test 和五批 blind 盲测集）；eval/results/real-*.json（含盲测复核与逐条对比）、ai-parsing-ab-2026-10-17.json</td></tr>
 <tr><td>自建文献回归</td><td>eval/results/curated-2026-10-16-v2.json</td></tr>
-<tr><td>AI 检索 Agent</td><td>eval/results/agent-*-2026-10-15.json、agent-*-2026-10-17-zh.json、deepseek-search-probe-2026-10-17.json</td></tr>
+<tr><td>AI 检索 Agent</td><td>eval/results/agent-*-2026-10-15.json、agent-*-2026-10-17-zh.json、agent-*-zh-cnweb.json、deepseek-search-probe-2026-10-17.json</td></tr>
 <tr><td>图片识别</td><td>eval/vision/cases.json；eval/results/vision-2026-10-16.json</td></tr>
 <tr><td>论断检索</td><td>eval/claims-retrieval/cases.json；eval/results/retrieval-2026-10-16.json</td></tr>
 <tr><td>隐藏提示词</td><td>src/lib/documents/__tests__/fixtures/generate_hidden.py、generate_ocr.py 及生成的夹具</td></tr>

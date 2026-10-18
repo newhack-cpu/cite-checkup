@@ -17,7 +17,7 @@
 **硬性要求：**
 
 1. 只录最终生产构建的真实运行：`pnpm build` 后启动 3210 端口的生产服务。本机访问 Crossref / OpenAlex 要走代理：用 `.claude/launch.json` 里的 `cite-checkup-prod-local`，或启动前设置 `NODE_USE_ENV_PROXY=1`、`HTTPS_PROXY`、`HTTP_PROXY`（`NO_PROXY=localhost,127.0.0.1,::1`）。不拦截、不回放模型和数据库响应；`DEMO_REHEARSAL=1` 只能彩排，不能导出正式片。
-2. 录制当天先跑 `pnpm test`、`pnpm smoke:ai`、`pnpm smoke:claims`、`pnpm smoke:mcp`，确认模型和数据源可用。当天不要先跑评测，免得用掉 OpenAlex 的每日额度。
+2. 录制当天先跑 `pnpm test`、`pnpm smoke:ai`、`pnpm smoke:claims`、`pnpm smoke:mcp`，确认模型和数据源可用；第 04 段的中文期刊检索要用 DeepSeek 的 Search 接口，账户需要有余额，先用 `DEMO_SCRIPT.md` 里的中文引文试一次。当天不要先跑评测，免得用掉 OpenAlex 的每日额度。
 3. 每段先跑通再录。外部数据会变：跑不出 `DEMO_SCRIPT.md` 写的结果，就如实录真实结果，并改对应那段讲稿。不在失败画面上配“成功”的旁白，不在后期用字幕伪造结论。
 4. 讲稿要与画面一致。讲稿里的数字（测试数、盲测结果）以仓库当前的 `README.md` 和技术说明 PDF 为准；对不上就先改 `narration.json` 再录，并把改动告诉我。
 5. 旁白：
@@ -25,7 +25,7 @@
    - 否则用合成音，但不要再用 Windows 慧慧。改用自然的中文神经网络音色（例如 edge-tts 的 `zh-CN-YunxiNeural` 或 `zh-CN-XiaoxiaoNeural`），用之前先问我选哪个，并在 `docs/competition/media/README.md` 里写明是合成音。
    - 不使用任何 MiniMax 的工具或服务。
 6. 加中文字幕：由 `narration.json` 生成 SRT 并烧录进画面，字号适中，不遮挡操作区域。
-7. 画面 1920×1080，H.264 + AAC 的 MP4，总时长 5:00–8:00，目标约 7:30。长等待可以剪短，但要在画面上标“等待已缩短”；不能用静止画面或循环画面凑时长。
+7. 画面 1920×1080，H.264 + AAC 的 MP4，总时长 5:00–8:00，目标约 7:40，不要超过 8:00。长等待可以剪短，但要在画面上标“等待已缩短”；不能用静止画面或循环画面凑时长。
 8. 画面里不能出现：API 密钥、`.env.local`、环境变量、终端、浏览器密码界面、个人邮箱。MCP 一段只展示客户端里的调用和结果。合成的演示材料（测试 PDF、合成证据）要在画面或旁白里标明是合成的。
 9. 验收：
    - 用 ffprobe 检查分辨率、时长和音轨；

@@ -5,7 +5,7 @@
 | 文件 | 用途 |
 |---|---|
 | `OFFICIAL_REQUIREMENTS.md` | 2026-10-14 实时核对的官方材料要求及评分口径 |
-| `output/pdf/引用体检-技术说明.pdf` | 2026-10-17 晚版，14 页（加入第五批盲测、AI 辅助解析对照和 Agent 中文重测）：加入 AI 检索 Agent、拍照 / 截图识别、隐藏提示词检测、开放全文 + 混合检索和 MCP，“相近候选”单列；逐页验收见 `eval/results/technical-pdf-2026-10-17/` |
+| `output/pdf/引用体检-技术说明.pdf` | 2026-10-17 晚版，14 页（加入第五批盲测、AI 辅助解析对照、Agent 中文重测和中文期刊联网检索）：加入 AI 检索 Agent、拍照 / 截图识别、隐藏提示词检测、开放全文 + 混合检索和 MCP，“相近候选”单列；逐页验收见 `eval/results/technical-pdf-2026-10-17/` |
 | `technical-report.html` | 自含 HTML 阅读/编辑源；修改后需另存，浏览器改动不会自动回写 JSON |
 | `technical-content.json` | 结构化正式内容源；应从此修改内容后重新构建 PDF/HTML |
 | `build_technical_report.py` | 使用 ReportLab 的本地构建脚本，不调用模型或网络 |

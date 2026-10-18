@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-10-18T00:39:17.848966+00:00",
+  "checkedAt": "2026-10-18T02:17:52.838582+00:00",
   "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\output\\pdf\\引用体检-技术说明.pdf",
-  "sha256": "f3392b1ba9615e1b8aa534bda13b779d3a551e2b046ff4167cb31de414a40661",
+  "sha256": "4d6e158a0fc7c7c7e611f68175ae8397f8f0eb8edf9713ed6903be154799b647",
   "pages": 14,
   "maxPages": 30,
   "textSelectable": true,
@@ -12,7 +12,7 @@
   "pageDetails": [
     {
       "page": 1,
-      "textCharacters": 771,
+      "textCharacters": 775,
       "pageNumber": true,
       "outOfPageText": [],
       "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-17\\render\\page-01.png"
@@ -40,7 +40,7 @@
     },
     {
       "page": 5,
-      "textCharacters": 876,
+      "textCharacters": 991,
       "pageNumber": true,
       "outOfPageText": [],
       "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-17\\render\\page-05.png"
@@ -82,7 +82,7 @@
     },
     {
       "page": 11,
-      "textCharacters": 1025,
+      "textCharacters": 1054,
       "pageNumber": true,
       "outOfPageText": [],
       "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-17\\render\\page-11.png"
@@ -96,14 +96,14 @@
     },
     {
       "page": 13,
-      "textCharacters": 812,
+      "textCharacters": 790,
       "pageNumber": true,
       "outOfPageText": [],
       "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-17\\render\\page-13.png"
     },
     {
       "page": 14,
-      "textCharacters": 1451,
+      "textCharacters": 1473,
       "pageNumber": true,
       "outOfPageText": [],
       "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-17\\render\\page-14.png"
