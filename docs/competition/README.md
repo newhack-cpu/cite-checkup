@@ -5,13 +5,13 @@
 | 文件 | 用途 |
 |---|---|
 | `OFFICIAL_REQUIREMENTS.md` | 2026-10-14 实时核对的官方材料要求及评分口径 |
-| `output/pdf/引用体检-技术说明.pdf` | 2026-10-17 晚版，14 页（加入第五批盲测、AI 辅助解析对照、Agent 中文重测和中文期刊联网检索）：加入 AI 检索 Agent、拍照 / 截图识别、隐藏提示词检测、开放全文 + 混合检索和 MCP，“相近候选”单列；逐页验收见 `eval/results/technical-pdf-2026-10-17/` |
+| `output/pdf/引用体检-技术说明.pdf` | 2026-10-17 晚版，14 页（加入第五批盲测、AI 辅助解析对照、Agent 中文重测和中文期刊联网检索）：加入 AI 检索 Agent、拍照 / 截图识别、隐藏提示词检测、开放全文 + 混合检索和 MCP，“相近候选”单列；逐页验收见 `eval/results/technical-pdf-2026-10-17/`（10-18 只改第 11 页测试数，重验见 `eval/results/technical-pdf-2026-10-18/`） |
 | `technical-report.html` | 自含 HTML 阅读/编辑源；修改后需另存，浏览器改动不会自动回写 JSON |
 | `technical-content.json` | 结构化正式内容源；应从此修改内容后重新构建 PDF/HTML |
 | `build_technical_report.py` | 使用 ReportLab 的本地构建脚本，不调用模型或网络 |
 | `validate_technical_report.py` | Poppler 渲染与页面 / 文本 / 页码检查，结果写入 `eval/results/technical-pdf-<日期>/`，不覆盖旧版验收；视觉验收另行实际查看 |
-| `narration.json` | 2026-10-16 重写，当晚删到约 1700 字：10 章、约 7 分 35 秒的普通话讲解稿与动作，由本人录制 |
-| `DEMO_SCRIPT.md` | 正式约 7 分 35 秒分镜、4 分钟快版、录制前逐项准备的演示输入和异常分支 |
+| `narration.json` | 2026-10-16 重写，当晚删到约 1700 字：10 章、约 7 分 40 秒的普通话讲解稿与动作；普通话讲解用本人录音；没有录音时按 `VIDEO_PROMPT.md` 用合成音，并在材料中注明 |
+| `DEMO_SCRIPT.md` | 正式约 7 分 40 秒分镜、4 分钟快版、录制前逐项准备的演示输入和异常分支 |
 | `VIDEO_PROMPT.md` | 交给 GPT 重做正式视频的任务说明（真实运行、讲稿与画面一致、字幕、验收），视频前的改动提交后再用 |
 | `TRIAL_GUIDE.md` | 请老师试用的指南：启动方式、三分钟讲解、试用流程和记录表 |
 | `DEFENSE_QA.md` | 如实说明技术价值、范围和局限的答辩问答 |
