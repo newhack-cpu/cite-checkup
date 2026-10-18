@@ -110,14 +110,18 @@ describe("DeepSeek Search client", () => {
     vi.unstubAllEnvs();
   });
 
-  function serve(...responses: SearchHit[][]) {
+  const api = (h: SearchHit) => ({ title: h.title, url: h.url, snippet: h.snippet, summary: h.summary, date: h.date, site_name: h.siteName });
+
+  /** 依次返回各次搜索的结果；数字表示这次返回该 HTTP 状态码 */
+  function serve(...responses: (SearchHit[] | number)[]) {
     const bodies: { query: string; count: number }[] = [];
     const urls: string[] = [];
     vi.stubGlobal("fetch", async (input: string, init?: RequestInit) => {
       urls.push(input);
       bodies.push(JSON.parse(String(init?.body)));
-      const hits = responses.shift() ?? [];
-      return Response.json({ results: hits.map((h) => ({ title: h.title, url: h.url, snippet: h.snippet, summary: h.summary, date: h.date, site_name: h.siteName })) });
+      const next = responses.shift() ?? [];
+      if (typeof next === "number") return new Response("{}", { status: next });
+      return Response.json({ results: next.map(api) });
     });
     return { bodies, urls };
   }
@@ -130,6 +134,41 @@ describe("DeepSeek Search client", () => {
     expect(bodies[0].query).toBe("城市绿地降温效应的多尺度研究 site:cnki.net OR site:wanfangdata.com.cn OR site:cqvip.com");
     expect(bodies[1].query).toBe("城市绿地降温效应的多尺度研究 site:cqvip.com");
     expect(records.map((r) => r.site)).toEqual(["维普", "知网", "万方"]);
+  });
+
+  it.each([[429, /频繁/], [402, /余额不足/], [503, /暂时不可用/]])("keeps the first search's records when the CQVIP follow-up gets HTTP %s", async (status, message) => {
+    serve([cnki, wanfang], status);
+    const { records, searches, supplementError } = await cnJournalSearch("城市绿地降温效应的多尺度研究");
+    expect(records.map((r) => r.site)).toEqual(["知网", "万方"]);
+    expect(searches).toBe(2);
+    expect(supplementError).toMatch(message);
+  });
+
+  it("keeps the first search's records when the CQVIP follow-up cannot connect", async () => {
+    let n = 0;
+    vi.stubGlobal("fetch", async () => {
+      if (n++ === 0) return Response.json({ results: [api(cnki)] });
+      throw new TypeError("fetch failed");
+    });
+    const { records, supplementError } = await cnJournalSearch("城市绿地降温效应的多尺度研究");
+    expect(records.map((r) => r.site)).toEqual(["知网"]);
+    expect(supplementError).toMatch(/连接失败/);
+  });
+
+  it("still stops when the check is cancelled during the CQVIP follow-up", async () => {
+    const controller = new AbortController();
+    let n = 0;
+    vi.stubGlobal("fetch", async () => {
+      if (n++ === 0) return Response.json({ results: [api(cnki)] });
+      controller.abort();
+      throw new DOMException("The operation was aborted.", "AbortError");
+    });
+    await expect(cnJournalSearch("城市绿地降温效应的多尺度研究", controller.signal)).rejects.toMatchObject({ name: "AbortError" });
+  });
+
+  it("reports a failed first search as an unavailable source", async () => {
+    serve(429);
+    await expect(cnJournalSearch("城市绿地降温效应的多尺度研究")).rejects.toMatchObject({ message: expect.stringMatching(/频繁/), status: 429 });
   });
 
   it("does not search again when a matching page already has authors", async () => {

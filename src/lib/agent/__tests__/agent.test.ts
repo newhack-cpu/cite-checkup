@@ -31,8 +31,8 @@ interface World {
   crossrefAgentItems?: unknown[];
   datacite?: unknown[];
   deepseekStatus?: number;
-  /** DeepSeek Search（/v1/tools/search）依次返回的结果 */
-  search?: unknown[][];
+  /** DeepSeek Search（/v1/tools/search）依次返回的结果；数字表示这次返回该 HTTP 状态码 */
+  search?: (unknown[] | number)[];
 }
 
 function serve(world: World) {
@@ -42,7 +42,9 @@ function serve(world: World) {
     const url = new URL(input);
     calls.push(url.hostname + decodeURIComponent(url.pathname));
     if (url.hostname === "api.deepseek.com" && url.pathname === "/v1/tools/search") {
-      return Response.json({ results: world.search?.shift() ?? [] });
+      const next = world.search?.shift() ?? [];
+      if (typeof next === "number") return new Response("{}", { status: next });
+      return Response.json({ results: next });
     }
     if (url.hostname === "api.deepseek.com") {
       bodies.push(JSON.parse(String(init?.body)));
@@ -342,6 +344,15 @@ describe("Chinese journal search (DeepSeek Search over CNKI, Wanfang and CQVIP)"
     expect(result.agent?.outcome).toBe("unchanged");
     // 没有作者的记录拼不出完整写法，不给规范写法
     expect(result.suggestion).toBeUndefined();
+  });
+
+  it("keeps the CNKI candidate when the CQVIP follow-up search fails", async () => {
+    const steps: CheckStep[] = [];
+    serve({ turns: [searchCn], search: [[cnkiHit], 429] });
+    const result = await (await agent()).runAgent(CN, 1, { onStep: (s) => steps.push(s) });
+    expect(result.verdict).toBe("near_match");
+    expect(result.match).toMatchObject({ site: "知网", url: cnkiHit.url });
+    expect(steps[0]).toMatchObject({ ok: true, detail: expect.stringContaining("补查维普作者未完成（DeepSeek 联网搜索请求过于频繁）") });
   });
 
   it("reports invented authors on a real Chinese title as an error, not as verified", async () => {

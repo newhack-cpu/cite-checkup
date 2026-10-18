@@ -270,8 +270,15 @@ export async function runTool(args: SearchArgs, ctx: ToolContext): Promise<ToolO
       return searchOutcome(ctx, `DataCite 检索「${short(args.query, 30)}」`, records);
     }
     case "search_cn_journals": {
-      const { records } = await cnJournalSearch(args.title, signal);
-      return searchOutcome(ctx, `中文期刊检索（知网、万方、维普）「${short(args.title, 30)}」`, records);
+      const { records, supplementError } = await cnJournalSearch(args.title, signal);
+      const outcome = searchOutcome(ctx, `中文期刊检索（知网、万方、维普）「${short(args.title, 30)}」`, records);
+      if (!supplementError) return outcome;
+      // 首轮候选照常交给规则；只说明维普补查没完成，所以这些候选的作者仍然缺着
+      return {
+        ...outcome,
+        detail: `${outcome.detail}；补查维普作者未完成（${supplementError}）`,
+        forModel: { ...outcome.forModel, warning: "The follow-up CQVIP search for authors failed; the candidates come from the first search only." },
+      };
     }
     case "lookup_doi": {
       const doi = args.doi;

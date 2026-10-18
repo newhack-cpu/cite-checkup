@@ -197,17 +197,26 @@ export function sameTitle(a: string, b: string): boolean {
 /**
  * 按题名在知网、万方、维普三站检索，返回解析出的期刊论文记录（有作者的排在前面）。
  * 命中的同题名记录都没有作者时，再只查一次维普，补上带作者的记录。
+ * 补查遇到数据源故障时保留首轮结果，在 supplementError 里说明；取消和总时限到了照常抛出。
  */
-export async function cnJournalSearch(title: string, signal?: AbortSignal): Promise<{ records: WorkRecord[]; searches: number }> {
+export async function cnJournalSearch(
+  title: string, signal?: AbortSignal,
+): Promise<{ records: WorkRecord[]; searches: number; supplementError?: string }> {
   const query = clean(title).slice(0, MAX_QUERY - SITES.length - 1);
   const records = parseHits(await deepseekSearch(`${query} ${SITES}`, 8, signal));
   let searches = 1;
+  let supplementError: string | undefined;
   const strong = records.filter((rec) => sameTitle(rec.title, title));
   if (strong.length && !strong.some((rec) => rec.authors.length)) {
-    const extra = parseHits(await deepseekSearch(`${query} site:cqvip.com`, 5, signal));
     searches++;
-    for (const rec of extra) if (!records.some((r) => r.url === rec.url)) records.push(rec);
+    try {
+      const extra = parseHits(await deepseekSearch(`${query} site:cqvip.com`, 5, signal));
+      for (const rec of extra) if (!records.some((r) => r.url === rec.url)) records.push(rec);
+    } catch (error) {
+      if (signal?.aborted || !(error instanceof UpstreamError)) throw error;
+      supplementError = error.message;
+    }
   }
   records.sort((a, b) => Number(b.authors.length > 0) - Number(a.authors.length > 0));
-  return { records, searches };
+  return { records, searches, supplementError };
 }
