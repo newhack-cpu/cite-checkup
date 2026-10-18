@@ -77,15 +77,20 @@ function untitledWork(value: unknown): boolean {
     && (work.is_retracted === undefined || typeof work.is_retracted === "boolean");
 }
 
-export async function openalexByDoi(doi: string, signal?: AbortSignal): Promise<{ record?: WorkRecord; ms: number }> {
+/**
+ * 按 DOI 查一条记录。OpenAlex 会把同一作品的多个 DOI 合并成一条，这时返回的记录登记的是另一个 DOI
+ * （2026-10-17 实测：arXiv 的 10.48550/arxiv.1706.03762 归在 W2626778328 下，登记 DOI 为 10.65215/2q58a426）。
+ * DOI 一致的放在 record；不一致的放在 merged，由调用方核对是不是同一篇，不能直接当作这个 DOI 的记录。
+ */
+export async function openalexByDoi(doi: string, signal?: AbortSignal): Promise<{ record?: WorkRecord; merged?: WorkRecord; ms: number }> {
   const params = withKey(new URLSearchParams({ select: SELECT }));
   const res = await getJson(`${BASE}/works/doi:${doiPath(doi)}?${params}`, {
     signal,
-    validate: (json) => validWork(json) && typeof json.is_retracted === "boolean" && typeof json.doi === "string"
-      && json.doi.replace(/^https?:\/\/doi\.org\//i, "").toLowerCase() === doi.toLowerCase(),
+    validate: (json) => validWork(json) && typeof json.is_retracted === "boolean" && typeof json.doi === "string",
   });
   if (res.status !== 200 || !res.json) return { ms: res.ms };
-  return { record: mapOpenAlex(res.json as OpenAlexWork), ms: res.ms };
+  const record = mapOpenAlex(res.json as OpenAlexWork);
+  return record.doi === doi.toLowerCase() ? { record, ms: res.ms } : { merged: record, ms: res.ms };
 }
 
 export async function openalexSearchTitle(

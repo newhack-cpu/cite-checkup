@@ -1,7 +1,8 @@
 // Server-side only: callers must use this from API routes, never client components.
 // The model supplies extraction arguments; only the deterministic engine may issue verdicts.
 import { unwrapToolArguments } from "../tool-args";
-import { extractDoi, parseReference, splitReferences } from "../verify/extract";
+import { extractDoi, nameOnly, parseReference, splitReferences } from "../verify/extract";
+import { alnum } from "../verify/normalize";
 import type { ParsedRef } from "../verify/types";
 
 const MAX_INPUT_CHARS = 60_000;
@@ -121,10 +122,14 @@ function keysAllowed(value: Record<string, unknown>, allowed: string[]) {
   }
 }
 
+const NUMBER_PREFIX = /^\s*(?:[[［]\s*\d{1,3}\s*[\]］]|[(（]\s*\d{1,3}\s*[)）]|\d{1,3}\s*[.、)）](?!\d))\s*/;
+
 function withoutLayout(text: string): string {
   return text.replace(/\r\n?/g, "\n").split("\n")
     .filter((line) => !/^\s*(参考文献|参考资料|references?|bibliography|works cited)\s*[:：]?\s*$/i.test(line))
-    .map((line) => line.replace(/^\s*(?:[[［]\s*\d{1,3}\s*[\]］]|[(（]\s*\d{1,3}\s*[)）]|\d{1,3}\s*[.、)）](?!\d))\s*/, ""))
+    // splitReferences strips a number marker twice, so "[20] 20. U.S. Department ..." must lose both here too
+    // (the 10-17 blind-set run lost a whole batch to this check)
+    .map((line) => line.replace(NUMBER_PREFIX, "").replace(NUMBER_PREFIX, ""))
     .join(" ").replace(/\s+/g, " ").trim();
 }
 
@@ -154,51 +159,100 @@ function completeAuthorSupplement(authors: string | undefined, parsed: ParsedRef
   return authors;
 }
 
-function validateReferences(args: unknown, originals: string[]): ParsedRef[] {
+/**
+ * 校验一条返回结果，得到可以补上的字段。任何一项缺原文依据就整条作废（抛错），不会只补一半。
+ * 只补规则没解析出的字段：模型不能覆盖、缩短规则得到的证据。
+ */
+function entrySupplement(entry: Record<string, unknown>, parsed: ParsedRef): Partial<Pick<ParsedRef, "titleGuess" | "authorsGuess" | "venueGuess" | "year" | "doi">> {
+  keysAllowed(entry, ["sourceIndex", "raw", "title", "authors", "venue", "year", "doi"]);
+  const raw = parsed.raw;
+  if (entry.raw !== raw) throw new AIError("AI 改写了参考文献原文");
+  const title = sourceTextField(entry.title, raw);
+  const authors = sourceTextField(entry.authors, raw);
+  // Checked against the source like the other fields, but never applied (see below).
+  sourceTextField(entry.venue, raw);
+  const patch: ReturnType<typeof entrySupplement> = {};
+  if (entry.year !== undefined && entry.year !== null) {
+    const year = entry.year;
+    const withoutIdentifiers = raw.replace(/https?:\/\/\S+/gi, " ").replace(/\b10\.\d{4,9}\/\S+/gi, " ");
+    if (typeof year !== "number" || !Number.isInteger(year) || year < 1800 || year > new Date().getFullYear() + 1 ||
+        !new RegExp(`(?<!\\d)${year}(?!\\d)`).test(withoutIdentifiers)) {
+      throw new AIError("AI 解析的年份缺少原文依据");
+    }
+    if (parsed.year === undefined) patch.year = year;
+  }
+  if (entry.doi !== undefined && entry.doi !== null) {
+    if (typeof entry.doi !== "string" || entry.doi.length > 2_048 ||
+        extractDoi(raw) !== entry.doi.toLowerCase() || extractDoi(entry.doi) !== entry.doi.toLowerCase()) {
+      throw new AIError("AI 解析的 DOI 缺少原文依据");
+    }
+    if (parsed.doi === undefined) patch.doi = entry.doi.toLowerCase();
+  }
+  // Substring evidence alone does not prove completeness: e.g. "Nature" appears
+  // inside "Nature Medicine", and a valid author may precede an invented coauthor.
+  // AI can fill gaps, but must never erase independently extracted evidence.
+  // A "title" that is nearly the whole citation adds nothing: the entry is still just a name
+  // ("Nutrition landscape information system (NLiS)" became a near match in the 10-17 test-set comparison, T066).
+  if (parsed.titleGuess === undefined && title && alnum(title).length < alnum(raw).length * 0.9) patch.titleGuess = title;
+  // The boundary that proves the author segment complete must come from the rules, never from the model's title.
+  if (parsed.authorsGuess === undefined) {
+    const complete = completeAuthorSupplement(authors, parsed);
+    if (complete) patch.authorsGuess = complete;
+  }
+  // The venue is still checked against the source, but never used for comparison: in the 10-17 test-set comparison the
+  // model took a chapter title for the book title and produced a false "venue mismatch" (T092), and on dev and test
+  // a model-supplied venue never helped confirm a work.
+  return patch;
+}
+
+const FIELD_OF = { titleGuess: "title", authorsGuess: "authors", venueGuess: "venue", year: "year", doi: "doi" } as const;
+
+/**
+ * 逐条校验模型的返回：没通过原文校验、序号重复或漏返回的条目各自退回规则解析，不影响同批其他条目。
+ * 只有整个工具参数不成形时才整体作废。
+ */
+function supplementReferences(args: unknown, parsed: ParsedRef[], sent: ParsedRef[]): { refs: ParsedRef[]; supplemented: number; rejected: number } {
   if (!record(args)) throw new AIError("AI 工具参数格式不正确");
   keysAllowed(args, ["references"]);
-  if (!Array.isArray(args.references) || args.references.length !== originals.length) {
-    throw new AIError("AI 未完整保留输入条目");
-  }
-  const refs = new Map<number, ParsedRef>();
+  if (!Array.isArray(args.references) || args.references.length === 0) throw new AIError("AI 未返回任何条目");
+  const targets = new Map(sent.map((ref) => [ref.index, ref]));
+  const entries = new Map<number, Record<string, unknown>>();
+  const duplicated = new Set<number>();
   for (const entry of args.references) {
-    if (!record(entry)) throw new AIError("AI 条目格式不正确");
-    keysAllowed(entry, ["sourceIndex", "raw", "title", "authors", "venue", "year", "doi"]);
-    const index = entry.sourceIndex;
-    if (typeof index !== "number" || !Number.isInteger(index) || index < 1 || index > originals.length || refs.has(index)) {
-      throw new AIError("AI 返回的条目序号重复或不完整");
-    }
-    const raw = originals[index - 1];
-    if (entry.raw !== raw) throw new AIError("AI 改写了参考文献原文");
-    const parsed = parseReference(raw, index);
-    const title = sourceTextField(entry.title, raw);
-    const authors = sourceTextField(entry.authors, raw);
-    const venue = sourceTextField(entry.venue, raw);
-    // Substring evidence alone does not prove completeness: e.g. "Nature" appears
-    // inside "Nature Medicine", and a valid author may precede an invented coauthor.
-    // AI can fill gaps, but must never erase independently extracted evidence.
-    parsed.authorsGuess ??= completeAuthorSupplement(authors, parsed);
-    parsed.titleGuess ??= title;
-    parsed.venueGuess ??= venue;
-    if (entry.year !== undefined && entry.year !== null) {
-      const year = entry.year;
-      const withoutIdentifiers = raw.replace(/https?:\/\/\S+/gi, " ").replace(/\b10\.\d{4,9}\/\S+/gi, " ");
-      if (typeof year !== "number" || !Number.isInteger(year) || year < 1800 || year > new Date().getFullYear() + 1 ||
-          !new RegExp(`(?<!\\d)${year}(?!\\d)`).test(withoutIdentifiers)) {
-        throw new AIError("AI 解析的年份缺少原文依据");
-      }
-      parsed.year ??= year;
-    }
-    if (entry.doi !== undefined && entry.doi !== null) {
-      if (typeof entry.doi !== "string" || entry.doi.length > 2_048 ||
-          extractDoi(raw) !== entry.doi.toLowerCase() || extractDoi(entry.doi) !== entry.doi.toLowerCase()) {
-        throw new AIError("AI 解析的 DOI 缺少原文依据");
-      }
-      parsed.doi ??= entry.doi.toLowerCase();
-    }
-    refs.set(index, parsed);
+    if (!record(entry) || typeof entry.sourceIndex !== "number" || !targets.has(entry.sourceIndex)) continue;
+    if (entries.has(entry.sourceIndex)) duplicated.add(entry.sourceIndex);
+    else entries.set(entry.sourceIndex, entry);
   }
-  return [...refs.values()].sort((a, b) => a.index - b.index);
+  const refs = parsed.map((ref) => ({ ...ref }));
+  let supplemented = 0;
+  let rejected = 0;
+  for (const target of sent) {
+    const entry = entries.get(target.index);
+    if (!entry || duplicated.has(target.index)) { rejected++; continue; }
+    let patch: ReturnType<typeof entrySupplement>;
+    try {
+      patch = entrySupplement(entry, target);
+    } catch (error) {
+      if (!(error instanceof AIError)) throw error;
+      rejected++;
+      continue;
+    }
+    const keys = Object.keys(patch) as (keyof typeof patch)[];
+    if (!keys.length) continue;
+    const ref = refs[target.index - 1];
+    Object.assign(ref, patch);
+    ref.aiFields = keys.map((key) => FIELD_OF[key]);
+    supplemented++;
+  }
+  return { refs, supplemented, rejected };
+}
+
+/**
+ * 规则没解析出题名、类型又在开放数据库覆盖范围内（期刊、会议、预印本或认不出类型）的条目，才交给模型补字段。
+ * 规则已解析出题名的条目不发送：dev 集对照显示，整批交给模型不多核实一条，反而多一条误报（2026-10-16）。
+ */
+export function needsAIFields(ref: ParsedRef): boolean {
+  return ref.titleGuess === undefined && ["journal", "conference", "preprint", "unknown"].includes(ref.kind) && !nameOnly(ref);
 }
 
 function completionArguments(value: unknown): unknown {
@@ -265,10 +319,21 @@ async function readResponse(response: Response, signal: AbortSignal): Promise<un
   }
 }
 
+export interface AIPreparation {
+  refs: ParsedRef[];
+  model: string;
+  /** 交给模型补字段的条目数（见 needsAIFields）；0 表示没有调用模型 */
+  sent: number;
+  /** 补上了至少一个字段的条目数 */
+  supplemented: number;
+  /** 返回内容没通过原文校验、序号重复或漏返回，退回规则解析的条目数 */
+  rejected: number;
+}
+
 export async function prepareAIReferences(
   text: string,
   options: AIOptions = {},
-): Promise<{ refs: ParsedRef[]; model: string }> {
+): Promise<AIPreparation> {
   if (options.signal?.aborted) throw new DOMException("核验已取消", "AbortError");
   const config = configuration();
   if (!config.apiKey || !config.endpoint) throw new AIError("DeepSeek 服务端密钥或地址尚未正确配置", "CONFIGURATION");
@@ -278,6 +343,12 @@ export async function prepareAIReferences(
   if (originals.length === 0 || originals.length > MAX_REFERENCES) throw new AIError("AI 解析需包含 1 至 80 条文献", "INVALID_INPUT");
   if (withoutLayout(text) !== withoutLayout(originals.join("\n"))) {
     throw new AIError("无法完整切分输入条目，请检查参考文献的换行和序号", "INVALID_INPUT");
+  }
+  const parsed = originals.map((raw, i) => parseReference(raw, i + 1));
+  const sent = parsed.filter(needsAIFields);
+  if (!sent.length) {
+    options.onProgress?.(`规则已解析出 ${parsed.length} 条引文的题名，无需 AI 补充，未调用 DeepSeek`);
+    return { refs: parsed, model: config.model, sent: 0, supplemented: 0, rejected: 0 };
   }
 
   const controller = new AbortController();
@@ -291,13 +362,13 @@ export async function prepareAIReferences(
     controller.signal.addEventListener("abort", abortHandler, { once: true });
   });
   try {
-    options.onProgress?.(`DeepSeek 正在解析 ${originals.length} 条引文中的原文字段`);
+    options.onProgress?.(`规则没解析出 ${sent.length} 条引文的题名，DeepSeek 正在从原文中摘取字段`);
     const payload = {
       model: config.model, stream: false, temperature: 0,
       thinking: { type: "disabled" }, max_tokens: 16_384,
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
-        { role: "user", content: JSON.stringify({ references: originals.map((raw, i) => ({ sourceIndex: i + 1, raw })) }) },
+        { role: "user", content: JSON.stringify({ references: sent.map((ref) => ({ sourceIndex: ref.index, raw: ref.raw })) }) },
       ],
       tools: [TOOL], tool_choice: { type: "function", function: { name: "verify_references" } },
     };
@@ -328,9 +399,9 @@ export async function prepareAIReferences(
     };
     const response = await Promise.race([responseTask(), interrupted]);
     controller.signal.throwIfAborted();
-    const refs = validateReferences(completionArguments(response), originals);
-    options.onProgress?.(`已校验 ${refs.length} 条解析结果的原文依据，准备查询文献数据库`);
-    return { refs, model: config.model };
+    const { refs, supplemented, rejected } = supplementReferences(completionArguments(response), parsed, sent);
+    options.onProgress?.(`已逐条校验 ${sent.length} 条 AI 解析结果的原文依据，准备查询文献数据库`);
+    return { refs, model: config.model, sent: sent.length, supplemented, rejected };
   } catch (error) {
     if (options.signal?.aborted) throw new DOMException("核验已取消", "AbortError");
     const safe = timedOut ? new AIError("DeepSeek 解析超时", "TIMEOUT") : error instanceof AIError ? error :

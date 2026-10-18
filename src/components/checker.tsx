@@ -226,7 +226,7 @@ export function Checker() {
               <label className="flex cursor-pointer items-center gap-2"><input type="radio" name="mode" value="standard" checked={mode === "standard"} onChange={() => setMode("standard")} className="accent-seal" />标准核验</label>
               <label className="flex cursor-pointer items-center gap-2"><input type="radio" name="mode" value="ai" checked={mode === "ai"} onChange={() => setMode("ai")} className="accent-seal" />AI 辅助解析</label>
             </div>
-            <p className="mt-2 text-[12px] leading-5 text-ink-faint">{mode === "standard" ? "直接检索数据库，不调用大模型。" : aiStatus?.available ? "DeepSeek 提取原文中的字段，数据库负责核验。" : "AI 服务尚未就绪，本次将明确回退标准核验。"}</p>
+            <p className="mt-2 text-[12px] leading-5 text-ink-faint">{mode === "standard" ? "直接检索数据库，不调用大模型。" : aiStatus?.available ? "规则没解析出题名的条目交给 DeepSeek 从原文摘取字段，逐条核对确是原文片段；其余条目不发送，结论仍由数据库核验。" : "AI 服务尚未就绪，本次将明确回退标准核验。"}</p>
           </fieldset>
           <label htmlFor="refs" className="sr-only">
             参考文献列表
@@ -279,7 +279,7 @@ export function Checker() {
         </div>
         <p className="mt-4 flex gap-2 text-[12.5px] leading-6 text-ink-faint">
           <span aria-hidden>⚿</span>
-          {mode === "ai" ? "AI 辅助模式会将参考文献条目发送给 DeepSeek 解析，再查询公开数据库。请勿粘贴未公开论文正文或敏感信息。" : "只把参考文献条目发送给 Crossref、OpenAlex、doi.org 检索，不上传论文正文。"}
+          {mode === "ai" ? "AI 辅助模式会把规则没解析出题名的参考文献条目发送给 DeepSeek 解析，再查询公开数据库。请勿粘贴未公开论文正文或敏感信息。" : "只把参考文献条目发送给 Crossref、OpenAlex、doi.org 检索，不上传论文正文。"}
           {agentAvailable && "点击「AI 继续查」时，该条引文会发送给 DeepSeek 规划检索，并查询 DataCite 等数据源。"}查不到不等于一定是编造，结果供人工复核参考。
         </p>
       </section>
@@ -340,7 +340,7 @@ function EmptyState({ waiting }: { waiting: boolean }) {
   return (
     <section className="sheet animate-rise rounded-sm border border-rule/80 p-6 [animation-delay:220ms] sm:p-8">
       <p className="text-[12px] tracking-[0.4em] text-ink-faint">{waiting ? "正 在 送 检" : "尚 未 送 检"}</p>
-      <h2 className="mt-2 font-serif text-[26px] font-black leading-snug sm:text-[30px]">三道检查，逐条过关</h2>
+      <h2 className="mt-2 font-serif text-[26px] font-black leading-snug sm:text-[30px]">三道检查，查不到再交给 AI</h2>
       <ol className="mt-6 space-y-5">
         {checks.map((c) => (
           <li key={c.n} className="grid grid-cols-[2.75rem_1fr] gap-4">

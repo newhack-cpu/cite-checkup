@@ -115,14 +115,16 @@ export function createCiteCheckupServer(options: ServerOptions = {}): McpServer 
   server.registerTool("check_claim", {
     title: "核查论断证据",
     description:
-      "Assess whether ONE claim from a manuscript is supported by ONE specific source: either the abstract of a DOI (fetched from " +
-      "Crossref/OpenAlex) or source text you provide. Relevant passages are retrieved with BM25, then DeepSeek returns supported, " +
-      "partially_supported, contradicted or insufficient_evidence; every quotation is verified verbatim against the retrieved passages. " +
-      "It does not establish scientific truth, and an abstract is not the full paper. Provide exactly one of doi or evidence_text. " +
-      "The explanation is in Simplified Chinese.",
+      "Assess whether ONE claim from a manuscript is supported by ONE specific source: a DOI, or source text you provide. For a DOI " +
+      "it reads the open-access full text from Europe PMC (JATS) or arXiv when available, otherwise the Crossref/OpenAlex abstract; " +
+      "source.scope in the result says which was used. Short material is searched with BM25; long material with BM25 plus " +
+      "model-expanded Chinese/English query terms, merged by reciprocal rank fusion and reranked by the model to 6 passages. " +
+      "DeepSeek then returns supported, partially_supported, contradicted or insufficient_evidence, and every quotation is verified " +
+      "verbatim against the retrieved passages. Only the retrieved passages are judged, not the whole paper; it does not establish " +
+      "scientific truth. Provide exactly one of doi or evidence_text. The explanation is in Simplified Chinese.",
     inputSchema: {
       claim: z.string().min(1).max(MAX_CLAIM_CHARS).describe("One claim sentence from the manuscript."),
-      doi: z.string().max(2_048).optional().describe("DOI or doi.org link of the cited work; its abstract is used as evidence."),
+      doi: z.string().max(2_048).optional().describe("DOI or doi.org link of the cited work; its open-access full text is used when available, otherwise its abstract."),
       evidence_text: z.string().max(MAX_EVIDENCE_CHARS).optional().describe("Source text to check against, instead of a DOI."),
       evidence_label: z.string().max(200).optional().describe("Optional short name of the provided source text."),
     },

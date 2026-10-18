@@ -110,6 +110,12 @@ const ZH_PATTERNS = [
   /(给|为)(本文|这篇论文|该论文|本论文)(打|评)(满分|高分|\d+分)/,
 ];
 
+/** 传给 PDF 解析 worker 的同一套指令规则：扫描件 OCR 文字层里像指令的行仍要报告，worker 按与 looksLikeInstruction 相同的方式匹配 */
+export const INSTRUCTION_WORKER_DATA = {
+  en: EN_PATTERNS.map(re => [re.source, re.flags]),
+  zh: ZH_PATTERNS.map(re => [re.source, re.flags]),
+} as const;
+
 /** 片段像不像写给 AI 的指令（只对隐藏文字使用，不对正文做判断） */
 export function looksLikeInstruction(text: string): boolean {
   const s = squash(text);

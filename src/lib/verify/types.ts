@@ -36,6 +36,8 @@ export interface ParsedRef {
   venueGuess?: string;
   kind: RefKind;
   lang: "zh" | "en";
+  /** AI 辅助解析补上的字段：规则没解析出、由模型从原文逐字摘出并核对过是原文片段 */
+  aiFields?: FieldName[];
 }
 
 export interface Author {

@@ -7,6 +7,21 @@ afterEach(() => vi.unstubAllGlobals());
 const crossrefWork = { DOI: "10.1111/j.2517-6161.1995.tb02031.x", title: ["Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing"] };
 const openalexWork = { id: "https://openalex.org/W123", doi: "https://doi.org/10.9999/work", title: "A matchable work", is_retracted: false };
 
+describe("OpenAlex DOI lookup", () => {
+  it("separates a merged record registered under another DOI from a record of this DOI", async () => {
+    vi.stubGlobal("fetch", async (input: string) => Response.json(new URL(input).pathname.includes("10.48550")
+      ? { ...openalexWork, doi: "https://doi.org/10.65215/2q58a426" }
+      : { ...openalexWork, doi: "https://doi.org/10.9999/WORK" }));
+    const { openalexByDoi } = await import("../sources/openalex");
+    const merged = await openalexByDoi("10.48550/arxiv.1706.03762");
+    expect(merged.record).toBeUndefined();
+    expect(merged.merged?.doi).toBe("10.65215/2q58a426");
+    const same = await openalexByDoi("10.9999/Work");
+    expect(same.record?.doi).toBe("10.9999/work");
+    expect(same.merged).toBeUndefined();
+  });
+});
+
 describe("search results with incomplete records", () => {
   it("preserves the real Benjamini search results alongside an untitled journal issue", async () => {
     vi.stubGlobal("fetch", async () => Response.json(v6Response));

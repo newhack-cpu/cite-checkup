@@ -6,7 +6,8 @@
 
 import { suggestCitation } from "./format";
 import { UpstreamError } from "./http";
-import { tokenCount } from "./normalize";
+import { nameOnly } from "./extract";
+import { dice, normalizeText, stripRetractionPrefix } from "./normalize";
 import {
   fieldChecks,
   formatAuthorsShort,
@@ -98,6 +99,40 @@ async function step<T>(
     steps.push({ action, detail: err instanceof Error ? err.message : "查询失败", ok: false, ms: Date.now() - t });
     throw err;
   }
+}
+
+/**
+ * OpenAlex 合并记录是不是已确认的这一篇：题名基本一致、第一作者姓氏相同。
+ * 合并记录的年份、期刊可能取自别的版本（W2626778328 登记为 2025 年），所以不比这两项。
+ */
+function sameMergedWork(rec: WorkRecord, merged: WorkRecord): boolean {
+  const titles = (r: WorkRecord) => [r.title, r.subtitle ? `${r.title} ${r.subtitle}` : ""].filter(Boolean).map(stripRetractionPrefix);
+  const similarity = Math.max(...titles(rec).flatMap((a) => titles(merged).map((b) => dice(a, b))));
+  const first = (r: WorkRecord) => normalizeText(r.authors[0]?.family ?? "");
+  return similarity >= 0.9 && !!first(rec) && first(rec) === first(merged);
+}
+
+/**
+ * OpenAlex 把这个 DOI 归到登记了另一个 DOI 的记录：是同一篇且没有撤稿标记，就算交叉核验完成；
+ * 其余情况只提示人工核对——合并记录里的撤稿标记可能属于另一个登记号（比如转载或重复登记），不据此判撤稿。
+ */
+function mergedLookup(rec: WorkRecord, merged: WorkRecord): { detail: string; ok: boolean; note?: string } {
+  const doi = merged.doi ?? "未知";
+  if (!sameMergedWork(rec, merged)) {
+    return {
+      detail: `OpenAlex 把该 DOI 归到另一条记录《${short(merged.title)}》（登记 DOI ${doi}），撤稿状态交叉核验未完成`,
+      ok: false,
+      note: `OpenAlex 把该 DOI 归到另一条记录（登记 DOI ${doi}），无法确认是同一篇，撤稿状态交叉核验未完成；请人工核对出版社页面`,
+    };
+  }
+  if (merged.retraction) {
+    return {
+      detail: `OpenAlex：该 DOI 归在合并记录下（登记 DOI ${doi}），该记录带撤稿标记，需人工核对`,
+      ok: false,
+      note: `OpenAlex 把该 DOI 与登记 DOI 为 ${doi} 的记录合并，该记录带撤稿标记；无法确认被撤稿的是不是这一版本，撤稿状态交叉核验未完成，请人工核对出版社页面`,
+    };
+  }
+  return { detail: `OpenAlex：该 DOI 归在合并记录下（登记 DOI ${doi}），题名、第一作者一致，未发现撤稿标记`, ok: true };
 }
 
 function rank(ref: ParsedRef, candidates: WorkRecord[]): Ranked[] {
@@ -205,10 +240,17 @@ export async function verifyReference(ref: ParsedRef, ctx: VerifyContext, extra?
       if (rec.doi && rec.source !== "openalex" && rec.retraction?.status !== "retracted" && rec.retraction?.status !== "withdrawn") {
         const doi = rec.doi;
         try {
-          const oa = await step(steps, "openalex_lookup", () => openalexByDoi(doi, ctx.signal), (r) => ({
-            detail: r.record ? (r.record.retraction ? "OpenAlex：该文献已被标记撤稿" : "OpenAlex：未发现撤稿标记") : "OpenAlex 中没有该 DOI，撤稿状态交叉核验未完成",
-            ok: !!r.record,
-          }));
+          const matched = rec;
+          const oa = await step(steps, "openalex_lookup", () => openalexByDoi(doi, ctx.signal), (r) => {
+            if (r.merged) {
+              const { detail, ok } = mergedLookup(matched, r.merged);
+              return { detail, ok };
+            }
+            return {
+              detail: r.record ? (r.record.retraction ? "OpenAlex：该文献已被标记撤稿" : "OpenAlex：未发现撤稿标记") : "OpenAlex 中没有该 DOI，撤稿状态交叉核验未完成",
+              ok: !!r.record,
+            };
+          });
           if (oa.record?.retraction) rec = { ...rec, retraction: oa.record.retraction };
           // 两个数据库登记的出版年份不同、引文与 OpenAlex 一致时，不算引文写错（Crossref 把 2014 年的论文登记成 2020 年，B015）
           const oaYear = oa.record?.year;
@@ -217,7 +259,10 @@ export async function verifyReference(ref: ParsedRef, ctx: VerifyContext, extra?
             rec = { ...rec, years: [...(rec.years ?? []), oaYear] };
             score = { ...score, yearDiff: Math.abs(ref.year - oaYear) };
           }
-          if (!oa.record) extraNotes.push("OpenAlex 未收录该 DOI，撤稿状态交叉核验未完成；已保留数据库中的文献信息，请人工核对出版社页面");
+          if (oa.merged) {
+            const note = mergedLookup(matched, oa.merged).note;
+            if (note) extraNotes.push(note);
+          } else if (!oa.record) extraNotes.push("OpenAlex 未收录该 DOI，撤稿状态交叉核验未完成；已保留数据库中的文献信息，请人工核对出版社页面");
         } catch {
           ctx.signal?.throwIfAborted();
           extraNotes.push("OpenAlex 暂时不可用，撤稿状态交叉核验未完成；已保留数据库中的文献信息，请稍后重试或核对出版社页面");
@@ -458,9 +503,7 @@ function judgeNotSame(ref: ParsedRef, best: Ranked | undefined, steps: CheckStep
       summary: `${scope}类文献不在开放学术数据库的覆盖范围内，请人工核查`,
     };
   }
-  // 只有一个名称、没有作者、年份和 DOI 的条目（"Nutrition landscape information system (NLiS)"）：
-  // 相近的候选和查不到都说明不了什么
-  if (!ref.year && !ref.authorsGuess && !ref.doi && tokenCount(ref.raw) <= 8) {
+  if (nameOnly(ref)) {
     return {
       ...b, verdict: "unverifiable", confidence: 0,
       summary: "引文只写了名称，没有作者、年份或 DOI，信息不足以核验，请补全后再查",
@@ -500,6 +543,15 @@ function judgeNotSame(ref: ParsedRef, best: Ranked | undefined, steps: CheckStep
       ...b, verdict: "unverifiable", confidence: 0,
       notes: ["未完成两个数据源的题名检索，证据不足以判断文献不存在"],
       summary: "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+    };
+  }
+  // AI 辅助解析摘出的题名只用来找候选，查不到时不作为“疑似不存在”的依据（与 AI 检索 Agent 同一原则）。
+  // 10-17 第五批盲测：加拿大语言学会年会论文（B052）没有 DOI、不在两个库里，题名由模型摘出后被判成了疑似不存在
+  if (ref.aiFields?.includes("title")) {
+    return {
+      ...b, verdict: "unverifiable", confidence: 0,
+      notes: ["题名是 AI 从原文中摘出的（规则没解析出来），只用于检索候选；两个数据库都查不到时，不据此判断文献不存在"],
+      summary: "按 AI 摘出的题名仍未检索到，查不到不代表不存在，请人工核查",
     };
   }
   return {

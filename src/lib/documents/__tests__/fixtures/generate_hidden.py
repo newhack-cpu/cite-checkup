@@ -1,7 +1,8 @@
 """Synthetic fixtures for hidden-text detection. Every hidden sentence is invented for tests.
 
 Run: python src/lib/documents/__tests__/fixtures/generate_hidden.py
-Only writes hidden-*.pdf/docx/txt and ocr-layer.pdf; the other fixtures come from generate.py.
+Only writes hidden-*.pdf/docx/txt and ocr-layer.pdf; ocr-scan.pdf and invisible-majority.pdf come from generate_ocr.py,
+the other fixtures from generate.py.
 """
 from pathlib import Path
 

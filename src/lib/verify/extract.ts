@@ -2,7 +2,7 @@
 // 这一步不调用任何外部服务，前端也会用它实时显示"识别到 N 条文献"。
 
 import type { ParsedRef, RefKind } from "./types";
-import { cjkRatio } from "./normalize";
+import { cjkRatio, tokenCount } from "./normalize";
 
 const HEADER_RE = /^\s*(参考文献|参考资料|references?|bibliography|works cited)\s*[:：]?\s*$/i;
 // 行首序号：[1] ［1］ 1. 1、 1) (1) （1）
@@ -493,4 +493,12 @@ export function parseReference(raw: string, index: number): ParsedRef {
 
 export function parseReferenceList(text: string): ParsedRef[] {
   return splitReferences(text).map((raw, i) => parseReference(raw, i + 1));
+}
+
+/**
+ * 只有一个名称、没有作者、年份和 DOI 的条目（"Nutrition landscape information system (NLiS)"）：
+ * 相近的候选和查不到都说明不了什么，核验引擎直接判无法核验，AI 辅助解析也不发送这类条目。
+ */
+export function nameOnly(ref: ParsedRef): boolean {
+  return !ref.year && !ref.authorsGuess && !ref.doi && tokenCount(ref.raw) <= 8;
 }

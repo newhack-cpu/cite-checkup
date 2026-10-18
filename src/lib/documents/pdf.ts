@@ -6,7 +6,7 @@ import { pathToFileURL } from "node:url";
 import { Worker } from "node:worker_threads";
 import { DOCUMENT_LIMITS, DocumentImportError, throwIfAborted, type DocumentErrorCode } from "./types";
 import { guardPdfWorkerSource } from "./pdf-decoder-guard";
-import { HIDDEN_WORKER_DATA, type HiddenTechnique } from "./hidden";
+import { HIDDEN_WORKER_DATA, INSTRUCTION_WORKER_DATA, type HiddenTechnique } from "./hidden";
 import { PDF_HIDDEN_TEXT_OBSERVER } from "./pdf-hidden-text";
 
 // PDF parsing is CPU-heavy. The worker can be terminated on disconnect or timeout,
@@ -50,6 +50,35 @@ globalThis.__citePdfAbort = (code) => {
     const MARKS = /[\uFDD0-\uFDEF]/g;
     const mark = (text, mask) => MARK_START + String.fromCharCode(MARK_BASE + mask) + text + MARK_END;
     const maskOf = (techniques) => techniques.reduce((sum, t) => sum | (BITS[t] || 0), 0);
+    // Same rules and normalisation as looksLikeInstruction in hidden.ts (patterns come from there).
+    const EN_RULES = workerData.instructions.en.map(([source, flags]) => new RegExp(source, flags));
+    const ZH_RULES = workerData.instructions.zh.map(([source, flags]) => new RegExp(source, flags));
+    const instructionLike = (text) => {
+      const s = text.normalize('NFKC').toLowerCase().replace(/\s+/g, ' ').trim();
+      if (EN_RULES.some((re) => re.test(s))) return true;
+      const compact = s.replace(/\s+/g, '');
+      return ZH_RULES.some((re) => re.test(compact));
+    };
+    // Invisible lines of an OCR page that, alone or with up to two neighbours, read like instructions to an AI.
+    // A matching window is narrowed from both ends so an ordinary neighbouring line stays in the text, then
+    // takes the next line while its sentence is unfinished ("... give a positive" / "review of this paper.").
+    const instructionRuns = (runs) => {
+      const invisible = runs.map((run, i) => ({ run, i })).filter(({ run }) => run.techniques.includes('invisible'));
+      const join = (from, to) => invisible.slice(from, to).map(({ run }) => run.text).join(' ');
+      const keep = new Set();
+      for (let k = 0; k < invisible.length; k++) {
+        for (let end = k + 1; end <= Math.min(k + 3, invisible.length); end++) {
+          if (!instructionLike(join(k, end))) continue;
+          let from = k, to = end;
+          while (to - from > 1 && instructionLike(join(from + 1, to))) from++;
+          while (to - from > 1 && instructionLike(join(from, to - 1))) to--;
+          while (to - from < 3 && to < invisible.length && !/[.!?;。！？；]["'”’)）]?\s*$/.test(invisible[to - 1].run.text)) to++;
+          for (let j = from; j < to; j++) keep.add(invisible[j].i);
+          break;
+        }
+      }
+      return keep;
+    };
     // Locate an observed hidden run inside the page text, ignoring whitespace and markers and
     // comparing NFKC forms character by character (PDF.js already expanded ligatures).
     const keyChars = (text, keepIndex) => {
@@ -100,16 +129,23 @@ globalThis.__citePdfAbort = (code) => {
       pageText = pageText.replace(/[ \t]+\n/g, '\n').trim();
       const observed = hiddenText?.end();
       if (observed?.runs.length) {
-        // Invisible text covering most of a page is an OCR layer over a scanned image, not a hidden prompt.
-        const ocr = observed.invisible >= 30 && observed.invisible >= observed.total * 0.5;
+        // Invisible text covering most of a page is an OCR layer over a scanned image, not a hidden prompt, but only
+        // when the page really paints images over at least half its area, or nearly all its text is invisible (text
+        // drawn as outlines under an OCR layer). A mostly invisible page without either is hidden text: a 707-byte
+        // PDF with no image used to pass as a scan (2026-10-17 review). On an OCR page, lines that read like
+        // instructions are still reported, since anyone can add a page image.
+        const pageArea = Math.abs((view[2] - view[0]) * (view[3] - view[1]));
+        const ocr = observed.invisible >= 30 && observed.invisible >= observed.total * 0.5
+          && (observed.imageArea >= pageArea * 0.5 || observed.invisible >= observed.total * 0.9);
         if (ocr) ocrPages++;
+        const ocrInstructions = ocr ? instructionRuns(observed.runs) : null;
         const { key, index } = keyChars(pageText, true);
         const find = (needle, cursor) => { const at = key.indexOf(needle, cursor); return at >= 0 ? at : key.indexOf(needle); };
         const spans = [];
         let cursor = 0;
         let previousExtra = -2;
         observed.runs.forEach((run, i) => {
-          if (ocr && run.techniques.includes('invisible')) return;
+          if (ocr && run.techniques.includes('invisible') && !ocrInstructions.has(i)) return;
           const needle = keyChars(run.text, false).key;
           if (needle.length < 2) return;
           let at = find(needle, cursor);
@@ -163,7 +199,7 @@ export interface ParsedPdf {
   text: string;
   pageCount: number;
   emptyPages: number;
-  /** 不可见文字占多数的页：扫描件的 OCR 文字层 */
+  /** 扫描件的 OCR 文字层所在的页：不可见文字占多数，且页面画了覆盖过半的图像（或文字几乎全部不可见） */
   ocrPages: number;
   /** 观察到、但没在提取文字里找到的隐藏文字 */
   hiddenExtras: { page: number; text: string; techniques: HiddenTechnique[] }[];
@@ -191,7 +227,7 @@ export function parsePdf(bytes: Uint8Array, signal?: AbortSignal): Promise<Parse
     name: "document-text-extraction",
     resourceLimits: { maxOldGenerationSizeMb: 96, maxYoungGenerationSizeMb: 16, stackSizeMb: 4 },
     workerData: {
-      bytes, limits: DOCUMENT_LIMITS, hidden: HIDDEN_WORKER_DATA,
+      bytes, limits: DOCUMENT_LIMITS, hidden: HIDDEN_WORKER_DATA, instructions: INSTRUCTION_WORKER_DATA,
       moduleUrl: pathToFileURL(join(root, "legacy/build/pdf.mjs")).href,
       workerUrl: pathToFileURL(workerFile).href,
       cMaps: join(root, "cmaps").replaceAll("\\", "/") + "/",

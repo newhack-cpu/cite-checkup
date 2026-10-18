@@ -2,6 +2,7 @@ import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vite
 import audit from "../../../../eval/competition-review-2026-10-14/code-audit/edge-case-results.json";
 import { parseReference } from "../extract";
 import type { CrossrefItem } from "../sources/crossref";
+import type { ParsedRef } from "../types";
 import v6Response from "./fixtures/crossref-v6-2026-10-14.json";
 
 const authors = [
@@ -235,6 +236,48 @@ describe("retraction evidence", () => {
     expect(result.notes.some((i) => /撤稿.*未完成/.test(i))).toBe(true);
   });
 
+  // 2026-10-17：OpenAlex 把 arXiv 的 10.48550/arxiv.1706.03762 归在登记 DOI 为 10.65215/2q58a426 的合并记录下（年份写成 2025）
+  function mergedFixture(merged: Record<string, unknown>) {
+    vi.stubGlobal("fetch", async (input: string) => new URL(input).hostname === "api.crossref.org"
+      ? Response.json({ message: record })
+      : Response.json({
+        id: "https://openalex.org/W2626778328", doi: "https://doi.org/10.65215/2q58a426", title: "Deep learning",
+        authorships: [{ author: { display_name: "Yann LeCun" } }], publication_year: 2025, is_retracted: false, ...merged,
+      }));
+  }
+  const cited = "LeCun, Y., et al. (2015). Deep learning. Nature, 521(7553), 436-444. DOI: 10.9999/regression";
+
+  it("completes the retraction check through an OpenAlex merged record of the same work", async () => {
+    mergedFixture({});
+    const result = await check(cited);
+    expect(result.verdict).toBe("verified");
+    expect(result.summary).not.toContain("未完成");
+    expect(result.notes.join("\n")).not.toMatch(/撤稿|2025/);
+    const lookup = result.steps.find((s) => s.action === "openalex_lookup");
+    expect(lookup).toMatchObject({ ok: true });
+    expect(lookup?.detail).toContain("10.65215/2q58a426");
+    expect(lookup?.detail).not.toContain("无法识别");
+  });
+
+  it("does not mark a work retracted from a merged record registered under another DOI", async () => {
+    mergedFixture({ is_retracted: true });
+    const result = await check(cited);
+    expect(result.verdict).toBe("verified");
+    expect(result.match?.retraction).toBeUndefined();
+    expect(result.notes.some((n) => n.includes("带撤稿标记") && n.includes("撤稿状态交叉核验未完成"))).toBe(true);
+    expect(result.summary).toMatch(/撤稿状态交叉核验未完成$/);
+  });
+
+  it("does not ask to retry when OpenAlex files the DOI under a different work", async () => {
+    mergedFixture({ title: "Another work", authorships: [{ author: { display_name: "Ann Other" } }] });
+    const result = await check(cited);
+    expect(result.verdict).toBe("verified");
+    const note = result.notes.find((n) => n.includes("撤稿状态交叉核验未完成"));
+    expect(note).toContain("10.65215/2q58a426");
+    expect(note).not.toMatch(/暂时不可用|稍后重试/);
+    expect(result.steps.find((s) => s.action === "openalex_lookup")).toMatchObject({ ok: false });
+  });
+
   it("does not treat an omitted retraction status as a negative retraction check", async () => {
     vi.stubGlobal("fetch", async (input: string) => new URL(input).hostname === "api.crossref.org"
       ? Response.json({ message: record })
@@ -242,6 +285,30 @@ describe("retraction evidence", () => {
     const result = await check("LeCun, Y., et al. (2015). Deep learning. Nature, 521(7553), 436-444. DOI: 10.9999/regression");
     expect(result.verdict).toBe("verified");
     expect(result.notes.some((i) => /撤稿.*未完成/.test(i))).toBe(true);
+  });
+});
+
+// 10-17 blind set B052: a proceedings paper without a DOI, whose title only the model could extract
+describe("AI-extracted titles", () => {
+  const raw = "Smith, Jane and Doe, John . 2021. Grammar shapes the way robots talk to themselves. In Lee, Ann and Park, Bo , (eds.), Proceedings of the 2021 Annual Conference of the Example Linguistic Association.";
+  const title = "Grammar shapes the way robots talk to themselves";
+  async function verify(ref: ParsedRef) {
+    const { verifyReference } = await import("../verify");
+    return verifyReference(ref, { openalexBudget: { left: 20 } });
+  }
+
+  it("does not call a work nonexistent when only an AI-extracted title found nothing", async () => {
+    fixture(record, { searchItems: [] });
+    const result = await verify({ ...parseReference(raw, 1), titleGuess: title, aiFields: ["title"] });
+    expect(result.verdict).toBe("unverifiable");
+    expect(result.notes.join("")).toContain("AI");
+    expect(result.steps.some((s) => s.action === "openalex_search")).toBe(true);
+  });
+
+  it("still reports a conference paper with a rule-parsed title that neither database has", async () => {
+    fixture(record, { searchItems: [] });
+    const result = await verify({ ...parseReference(raw, 1), titleGuess: title });
+    expect(result.verdict).toBe("not_found");
   });
 });
 

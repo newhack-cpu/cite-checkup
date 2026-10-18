@@ -3,6 +3,8 @@
 // text rendering mode of the current graphics state, and records text shown where a reader cannot
 // see it: white / near-white fill, rendering modes 3 (invisible) and 7 (clip only), or an origin
 // outside the page (PDF.js drops such glyphs from the text layer, so only this observer sees them).
+// It also sums the page area covered by painted images, so pdf.ts can tell an OCR layer over a scan
+// from a page of hidden text.
 // It only observes: it never changes what PDF.js extracts, never decodes extra streams, and swallows
 // its own errors. Font-size checks use the text items in pdf.ts.
 export const PDF_HIDDEN_TEXT_OBSERVER = String.raw`
@@ -37,9 +39,9 @@ export const PDF_HIDDEN_TEXT_OBSERVER = String.raw`
     return gaps;
   };
   globalThis.__citeHiddenText = {
-    begin(view) { scan = { view, runs: [], total: 0, invisible: 0, state: null, gaps: null, gapIndex: 0, lineBreak: false, open: false }; },
+    begin(view) { scan = { view, runs: [], total: 0, invisible: 0, imageArea: 0, state: null, gaps: null, gapIndex: 0, lineBreak: false, open: false }; },
     end() {
-      const result = scan && { runs: scan.runs.map(({ techniques, text }) => ({ techniques, text })), total: scan.total, invisible: scan.invisible };
+      const result = scan && { runs: scan.runs.map(({ techniques, text }) => ({ techniques, text })), total: scan.total, invisible: scan.invisible, imageArea: scan.imageArea };
       scan = null;
       return result;
     },
@@ -64,6 +66,14 @@ export const PDF_HIDDEN_TEXT_OBSERVER = String.raw`
         case OPS.showText: scan.gaps = null; break;
         case OPS.nextLineShowText: case OPS.nextLineSetSpacingShowText: scan.gaps = null; scan.lineBreak = true; break;
         case OPS.beginText: case OPS.moveText: case OPS.setLeadingMoveText: case OPS.nextLine: case OPS.setTextMatrix: scan.lineBreak = true; break;
+        // XObject (image or form) and inline image: an image fills the unit square under the CTM, so |det| is its
+        // area on the page. Forms are placed with roughly unit scale and add almost nothing. The text pass never
+        // decodes images; only the area is recorded, to tell a scanned page from a page of hidden text.
+        case OPS.paintXObject: case OPS.endInlineImage: {
+          const c = state.ctm;
+          if (c) { const area = Math.abs(c[0] * c[3] - c[1] * c[2]); if (Number.isFinite(area)) scan.imageArea += area; }
+          break;
+        }
       }
     } catch { /* Observation must never affect extraction. */ }
   };

@@ -4,6 +4,7 @@
 //         [--openalex=20] [--limit=N] [--out=eval/results/xxx.json]
 //   --openalex  本次评测最多发起几次 OpenAlex 题名检索（无 key 时每天额度很少），默认 20
 //   --limit     只跑前 N 条，用于试跑
+//   --lang=zh   只跑中文（或 en）条目：OpenAlex 额度按条目顺序共用，混跑时排在后面的中文条目会分不到（10-15 两轮 52 条中文里 47 条如此）
 // 需要 .env.local 里的 DEEPSEEK_API_KEY；网络需要代理时先设置 NODE_USE_ENV_PROXY=1。
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -31,7 +32,11 @@ const limit = Number(option("limit") ?? Infinity);
 const { name, cases } = JSON.parse(readFileSync(datasetFile, "utf8")) as { name: string; cases: Case[] };
 const earlier = JSON.parse(readFileSync(rulesFile, "utf8")) as { results: Earlier[] };
 // 与界面一致：无法核验、相近候选，以及 DOI 写错但另有相近候选的条目才交给 Agent（兼容 10-16 夜以前的结果文件）
-const eligible = earlier.results.filter(agentEligibleRow).slice(0, limit);
+const lang = option("lang");
+if (lang !== undefined && lang !== "zh" && lang !== "en") throw new Error("--lang 只能是 zh 或 en");
+const eligible = earlier.results.filter(agentEligibleRow)
+  .filter((row) => !lang || cases.find((c) => c.id === row.id)?.label.lang === lang)
+  .slice(0, limit);
 const openalexStart = pool.left;
 
 interface Row {
@@ -107,5 +112,5 @@ console.log(`平均每条 ${summary.avgToolCalls} 次工具调用、${summary.av
 
 const out = option("out") || join("eval", "results", `agent-${basename(datasetFile, ".json")}.json`);
 mkdirSync(dirname(out), { recursive: true });
-writeFileSync(out, JSON.stringify({ ranAt: new Date().toISOString(), dataset: name, rulesFile, summary, rows }, null, 1));
+writeFileSync(out, JSON.stringify({ ranAt: new Date().toISOString(), dataset: name, rulesFile, lang, summary, rows }, null, 1));
 console.log(`明细已写入 ${out}`);

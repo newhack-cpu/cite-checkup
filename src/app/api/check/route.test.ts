@@ -101,14 +101,26 @@ describe("/api/check AI orchestration", () => {
 
   it("executes AI-selected validated references through the real verification engine", async () => {
     const refs: ParsedRef[] = [{ ...parseReferenceList(citation)[0], venueGuess: undefined }];
-    ai.prepare.mockResolvedValue({ refs, model: "fixture-model" });
+    ai.prepare.mockResolvedValue({ refs, model: "fixture-model", sent: 1, supplemented: 1, rejected: 0 });
     const output = await events(await (await routes()).POST(request({ text: citation, mode: "ai" })));
+    expect(output.find((event) => event.type === "notice")).toMatchObject({ message: expect.stringMatching(/1 条交给 DeepSeek.*1 条补上了字段/) });
+    expect(output.find((event) => event.type === "notice")).toMatchObject({ message: expect.not.stringContaining("其余") });
     expect(output.find((event) => event.type === "meta")).toMatchObject({ refs: [{ index: 1, raw: citation }] });
     expect(output.find((event) => event.type === "result")).toMatchObject({ result: { verdict: "verified", match: { doi: "10.1037/h0043158" } } });
     const resultEvent = output.find((event) => event.type === "result");
     expect(resultEvent?.type === "result" && resultEvent.result.parsed.venueGuess).toBeUndefined();
     expect(output.some((event) => event.type === "phase" && event.phase === "extract")).toBe(true);
     expect(output.at(-1)).toMatchObject({ type: "done", stats: { counts: { verified: 1, concern: 0 } } });
+  });
+
+  it.each([
+    [{ sent: 0, supplemented: 0, rejected: 0 }, /全部 1 条的题名.*未调用 DeepSeek/],
+    [{ sent: 1, supplemented: 0, rejected: 1 }, /1 条的返回内容没通过原文校验，仍按规则解析/],
+  ])("tells the user what AI-assisted parsing did: %j", async (stats, message) => {
+    ai.prepare.mockResolvedValue({ refs: parseReferenceList(citation), model: "fixture-model", ...stats });
+    const output = await events(await (await routes()).POST(request({ text: citation, mode: "ai" })));
+    expect(output.find((event) => event.type === "notice")).toMatchObject({ message: expect.stringMatching(message) });
+    expect(output.at(-1)).toMatchObject({ type: "done" });
   });
 
   it.each(["missing-key", "provider-error", "rejected-tool"])("explicitly falls back for %s", async (reason) => {

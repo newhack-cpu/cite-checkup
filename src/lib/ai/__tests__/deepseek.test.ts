@@ -1,8 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { getAIStatus, prepareAIReferences } from "../index";
+import { getAIStatus, needsAIFields, prepareAIReferences } from "../index";
+import { parseReference } from "../../verify/extract";
 import { scoreCandidate } from "../../verify/match";
 
+// Rules cannot find a title in this pipe-separated format, so the entry is sent to the model
 const raw = "Smith, J. | 2020 | A difficult citation format | Journal of Examples | 10.1234/example.5";
+const other = "Wang, L. | 2021 | Another difficult format | Journal of Tests";
+// The rules parse this GB/T 7714 entry completely, so it is never sent
 const second = "张三. 引文核验方法[J]. 信息科学, 2022, 5(1): 1-8.";
 const reference = {
   sourceIndex: 1,
@@ -58,10 +62,10 @@ describe("DeepSeek extraction contract", () => {
     respond(completion());
     const progress: string[] = [];
     const result = await prepareAIReferences(raw, { onProgress: (message) => progress.push(message) });
-    expect(result).toEqual({ model: "deepseek-flash", refs: [{
+    expect(result).toEqual({ model: "deepseek-flash", sent: 1, supplemented: 1, rejected: 0, refs: [{
       index: 1, raw, doi: "10.1234/example.5", arxivId: undefined, year: 2020,
       titleGuess: "A difficult citation format", authorsGuess: "Smith, J.",
-      venueGuess: "Journal of Examples", kind: "unknown", lang: "en",
+      venueGuess: undefined, kind: "unknown", lang: "en", aiFields: ["title", "authors"],
     }] });
     expect(progress.length).toBeGreaterThan(0);
     const [url, init] = vi.mocked(fetch).mock.calls[0];
@@ -117,10 +121,12 @@ describe("DeepSeek extraction contract", () => {
     expect(refs[0].titleGuess).toBe("Deep learning with fabricated conclusions");
   });
 
-  it.each(["LeCun Y", "Counterfeit X"])("does not accept an incomplete new author segment: %s", async (authors) => {
+  it.each(["LeCun Y", "Counterfeit X"])("drops an entry whose new author segment is incomplete: %s", async (authors) => {
     const citation = "LeCun Y, Counterfeit X | 2015 | Deep learning | Nature";
     respond(completion([{ sourceIndex: 1, raw: citation, authors, title: "Deep learning" }]));
-    await expect(prepareAIReferences(citation)).rejects.toThrow(/作者.*完整/);
+    const result = await prepareAIReferences(citation);
+    expect(result).toMatchObject({ sent: 1, supplemented: 0, rejected: 1 });
+    expect(result.refs[0]).toEqual(parseReference(citation, 1));
   });
 
   it("accepts a complete original author segment when rules could not extract it", async () => {
@@ -153,30 +159,107 @@ describe("DeepSeek extraction contract", () => {
     ["venue", "Fabricated Journal"], ["year", 2024], ["doi", "10.1234/fabricated"],
     ["year", "2020"], ["raw", raw + " invented"], ["verdict", "verified"],
     ["url", "https://attacker.invalid/execute"],
-  ])("rejects unsupported or ungrounded %s", async (field, value) => {
+  ])("drops the whole entry with unsupported or ungrounded %s and keeps the rule parse", async (field, value) => {
     respond(completion([{ ...reference, [field]: value }]));
-    await expect(prepareAIReferences(raw)).rejects.toThrow(/原文|字段|格式/);
+    const result = await prepareAIReferences(raw);
+    expect(result).toMatchObject({ sent: 1, supplemented: 0, rejected: 1 });
+    expect(result.refs[0]).toEqual(parseReference(raw, 1));
   });
 
-  it("rejects a year copied only from a DOI", async () => {
+  it("drops a year copied only from a DOI", async () => {
     const doiOnly = "Smith, J. A difficult citation format. DOI: 10.1234/2020.example";
     respond(completion([{ sourceIndex: 1, raw: doiOnly, year: 2020 }]));
-    await expect(prepareAIReferences(doiOnly)).rejects.toThrow(/原文|年份/);
+    const result = await prepareAIReferences(doiOnly);
+    expect(result.rejected).toBe(1);
+    expect(result.refs[0].year).toBeUndefined();
   });
 
-  it("rejects a DOI borrowed from another entry", async () => {
-    respond(completion([reference, { sourceIndex: 2, raw: second, doi: reference.doi }]));
-    await expect(prepareAIReferences(`${raw}\n${second}`)).rejects.toThrow(/原文|DOI/);
+  it("drops only the entry that borrows a DOI from another entry", async () => {
+    respond(completion([reference, { sourceIndex: 2, raw: other, title: "Another difficult format", doi: reference.doi }]));
+    const result = await prepareAIReferences(`${raw}\n${other}`);
+    expect(result).toMatchObject({ sent: 2, supplemented: 1, rejected: 1 });
+    expect(result.refs[0].titleGuess).toBe("A difficult citation format");
+    expect(result.refs[1]).toEqual(parseReference(other, 2));
   });
 
+  const otherEntry = { sourceIndex: 2, raw: other, title: "Another difficult format" };
   it.each([
-    ["missing", [reference]],
-    ["duplicate source index", [reference, reference]],
-    ["invented source index", [reference, { sourceIndex: 3, raw: second }]],
-    ["wrong original entry", [reference, { sourceIndex: 2, raw }]],
-  ])("rejects %s references", async (_name, refs) => {
-    respond(completion(refs));
-    await expect(prepareAIReferences(`${raw}\n${second}`)).rejects.toThrow(/条目|原文/);
+    ["a missing", [reference], 1, 1],
+    ["a duplicated", [reference, reference, otherEntry], 1, 1],
+    ["an invented", [reference, otherEntry, { sourceIndex: 3, raw: second }], 2, 0],
+    ["a rewritten", [reference, { sourceIndex: 2, raw }], 1, 1],
+  ] as const)("handles %s entry on its own, without discarding the batch", async (_name, refs, supplemented, rejected) => {
+    respond(completion([...refs]));
+    const result = await prepareAIReferences(`${raw}\n${other}`);
+    expect(result).toMatchObject({ sent: 2, supplemented, rejected });
+    expect(result.refs.map((ref) => ref.raw)).toEqual([raw, other]);
+  });
+
+  it("sends only the entries whose titles the rules could not parse", async () => {
+    respond(completion([{ ...reference, sourceIndex: 2 }]));
+    const result = await prepareAIReferences(`[1] ${second}\n[2] ${raw}`);
+    const body = JSON.parse(vi.mocked(fetch).mock.calls[0][1]?.body as string);
+    expect(JSON.parse(body.messages[1].content).references).toEqual([{ sourceIndex: 2, raw }]);
+    expect(result).toMatchObject({ sent: 1, supplemented: 1, rejected: 0 });
+    expect(result.refs[0]).toEqual(parseReference(second, 1));
+    expect(result.refs[1]).toMatchObject({ titleGuess: "A difficult citation format", aiFields: ["title", "authors"] });
+  });
+
+  // 10-17 test-set comparison: T092 got a false "venue mismatch" from a model-supplied book title
+  it("checks a model-supplied venue against the source but never uses it for comparison", async () => {
+    const chapter = "Flajs, V. C.; MacNeil, J. D. In Sedatives and Tranquilizers; John Wiley & Sons, Inc.: Hoboken, NJ, 2017; pp 311–381.";
+    expect(needsAIFields(parseReference(chapter, 1))).toBe(true);
+    respond(completion([{ sourceIndex: 1, raw: chapter, venue: "Sedatives and Tranquilizers" }]));
+    const kept = await prepareAIReferences(chapter);
+    expect(kept).toMatchObject({ supplemented: 0, rejected: 0 });
+    expect(kept.refs[0].venueGuess).toBeUndefined();
+    respond(completion([{ sourceIndex: 1, raw: chapter, venue: "Journal of Veterinary Drugs" }]));
+    expect(await prepareAIReferences(chapter)).toMatchObject({ supplemented: 0, rejected: 1 });
+  });
+
+  // 10-17 test-set comparison: T066 is only a name, and taking all of it as the title turned it into a near match
+  it("does not send a citation that is only a name", async () => {
+    const name = "Nutrition landscape information system (NLiS)";
+    respond(completion([{ sourceIndex: 1, raw: name, title: "Nutrition landscape information system" }]));
+    const result = await prepareAIReferences(name);
+    expect(fetch).not.toHaveBeenCalled();
+    expect(result).toMatchObject({ sent: 0, supplemented: 0, rejected: 0 });
+    expect(result.refs[0]).toEqual(parseReference(name, 1));
+  });
+
+  it("does not take a title that is nearly the whole citation", async () => {
+    const citation = "Smith J 2020 A citation written as one long title";
+    expect(needsAIFields(parseReference(citation, 1))).toBe(true);
+    respond(completion([{ sourceIndex: 1, raw: citation, title: citation }]));
+    const result = await prepareAIReferences(citation);
+    expect(result).toMatchObject({ sent: 1, supplemented: 0, rejected: 0 });
+    expect(result.refs[0].titleGuess).toBeUndefined();
+  });
+
+  it("does not call DeepSeek when the rules parsed every title", async () => {
+    respond(completion());
+    const progress: string[] = [];
+    const result = await prepareAIReferences(second, { onProgress: (message) => progress.push(message) });
+    expect(fetch).not.toHaveBeenCalled();
+    expect(result).toMatchObject({ sent: 0, supplemented: 0, rejected: 0 });
+    expect(result.refs).toEqual([parseReference(second, 1)]);
+    expect(progress.join("")).toContain("未调用 DeepSeek");
+  });
+
+  it("leaves out-of-scope types such as web pages to the rules even without a title", () => {
+    const web = "MathWorks, 2023. Surrogate Optimization Algorithm [WWW Document]. URL https://www.mathworks.com/help/gads/surrogate-optimization.html";
+    expect(parseReference(web, 1)).toMatchObject({ kind: "web", titleGuess: undefined });
+    expect(needsAIFields(parseReference(web, 1))).toBe(false);
+    expect(needsAIFields(parseReference(raw, 1))).toBe(true);
+    expect(needsAIFields(parseReference(second, 1))).toBe(false);
+  });
+
+  // 10-17 blind-set run: "[20] 20. U.S. Department ..." made the layout check reject a whole batch
+  it("accepts entries that keep their own number after the list marker", async () => {
+    respond(completion([reference, { sourceIndex: 2, raw: other, title: "Another difficult format" }]));
+    const result = await prepareAIReferences(`[1] 1. ${raw}\n[2] 2. ${other}`);
+    expect(result).toMatchObject({ sent: 2, supplemented: 2, rejected: 0 });
+    expect(result.refs.map((ref) => ref.raw)).toEqual([raw, other]);
   });
 
   it("rejects ignored short input fragments instead of silently losing input", async () => {
@@ -335,7 +418,8 @@ describe("bounded transport recovery", () => {
 
   it("does not repeat a paid completion whose returned fields fail validation", async () => {
     respond(completion([{ ...reference, title: "Fabricated title" }]));
-    await expect(prepareAIReferences(raw)).rejects.toMatchObject({ code: "INVALID_RESPONSE" });
+    const result = await prepareAIReferences(raw);
+    expect(result.rejected).toBe(1);
     expect(fetch).toHaveBeenCalledTimes(1);
   });
 

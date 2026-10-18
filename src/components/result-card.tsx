@@ -32,7 +32,7 @@ function FieldValue({ field, value }: { field: FieldCheck["field"]; value?: stri
 }
 
 /** 比对表：卡片够宽时四列并排，窄的时候"引用 / 数据库"上下排（按卡片宽度而不是屏幕宽度切换） */
-function FieldTable({ fields }: { fields: FieldCheck[] }) {
+function FieldTable({ fields, aiFields = [] }: { fields: FieldCheck[]; aiFields?: FieldCheck["field"][] }) {
   const row = "grid grid-cols-[4.5rem_minmax(0,1fr)_auto] gap-x-3 @lg:grid-cols-[5rem_minmax(0,1fr)_minmax(0,1fr)_5rem]";
   return (
     <div className="@container text-[13.5px]">
@@ -50,6 +50,14 @@ function FieldTable({ fields }: { fields: FieldCheck[] }) {
             <span className="col-start-2 row-start-1 min-w-0 break-words text-ink-soft">
               <span className="mr-1.5 text-[11.5px] text-ink-faint @lg:hidden">引用</span>
               <FieldValue field={f.field} value={f.cited} />
+              {aiFields.includes(f.field) && f.cited && (
+                <span
+                  className="ml-1.5 whitespace-nowrap rounded-sm border border-ink/20 px-1 text-[11px] text-ink-faint"
+                  title="规则没解析出这一项，由 DeepSeek 从引文原文中逐字摘出，已核对确是原文片段"
+                >
+                  AI 摘出
+                </span>
+              )}
             </span>
             <span className="col-start-2 row-start-2 min-w-0 break-words text-ink @lg:col-start-3 @lg:row-start-1">
               <span className="mr-1.5 text-[11.5px] text-ink-faint @lg:hidden">数据库</span>
@@ -255,7 +263,7 @@ export function ResultCard({
                 ))}
               </ul>
             )}
-            {result.fields.length > 0 && <FieldTable fields={result.fields} />}
+            {result.fields.length > 0 && <FieldTable fields={result.fields} aiFields={result.parsed.aiFields} />}
             {result.suggestion && <Suggestion text={result.suggestion} candidate={result.matchStatus === "candidate"} />}
             {result.steps.length > 0 && (
               <div>

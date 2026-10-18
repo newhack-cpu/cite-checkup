@@ -2,7 +2,8 @@
 // 因此"疑似不存在"一律算误报；"信息有误"只在标注允许时算对（例如原文确有笔误）。
 // "相近候选"按两种口径报告（见 real-results.ts）：旧口径算误报、与此前的结果可比；新口径不算误报、单列条数。
 // 用法：pnpm eval:real eval/real-world/dev-2026-10-14.json [--ai] [--quiet] [--out=eval/results/xxx.json]
-//   --ai     先走 DeepSeek 字段补全（需要 .env.local 里的 DEEPSEEK_API_KEY），再查数据库
+//   --ai     先走 DeepSeek 字段补全（需要 .env.local 里的 DEEPSEEK_API_KEY），再查数据库；只发送规则没解析出题名的期刊 / 会议等条目
+//   --openalex=N  OpenAlex 题名检索最多 N 次（默认按条数给足；额度紧时用来封顶，结果文件会记下）
 //   --quiet  只打印汇总，不逐条列出被标为有问题的条目
 //   --out    明细写到指定文件（默认 eval/results/real-<数据集>-<模式>.json，会覆盖上一次的结果）
 // 网络需要代理时，可先设置环境变量 NODE_USE_ENV_PROXY=1，让 Node 使用 HTTPS_PROXY。
@@ -38,14 +39,18 @@ const { name, cases } = JSON.parse(readFileSync(file, "utf8")) as { name: string
 
 const AI_BATCH = 40;
 let aiFallbackBatches = 0;
+const aiStats = { sent: 0, supplemented: 0, rejected: 0 };
 let refs: ParsedRef[] = cases.map((c, i) => parseReference(c.raw, i + 1));
 if (useAI) {
   const prepared: ParsedRef[] = [];
   for (let start = 0; start < cases.length; start += AI_BATCH) {
     const chunk = cases.slice(start, start + AI_BATCH);
     try {
-      const { refs: got } = await prepareAIReferences(chunk.map((c, i) => `[${i + 1}] ${c.raw}`).join("\n"));
+      const { refs: got, sent, supplemented, rejected } = await prepareAIReferences(chunk.map((c, i) => `[${i + 1}] ${c.raw}`).join("\n"));
       for (const r of got) prepared.push({ ...r, index: start + r.index });
+      aiStats.sent += sent;
+      aiStats.supplemented += supplemented;
+      aiStats.rejected += rejected;
     } catch (error) {
       aiFallbackBatches++;
       console.log(`AI 第 ${start / AI_BATCH + 1} 批失败（${(error as Error).message}），该批退回规则解析`);
@@ -58,7 +63,10 @@ if (useAI) {
 const started = Date.now();
 const results: RefResult[] = [];
 // 预算按条数给足，避免评测结果受条目顺序影响；线上默认每次请求 20 次。
-await verifyAll(refs, (r) => results.push(r), { concurrency: 3, openalexBudget: cases.length });
+const openalexArg = args.find((a) => a.startsWith("--openalex="));
+const openalexBudget = openalexArg ? Number(openalexArg.slice("--openalex=".length)) : cases.length;
+if (!Number.isInteger(openalexBudget) || openalexBudget < 0) throw new Error("--openalex= 需要非负整数");
+await verifyAll(refs, (r) => results.push(r), { concurrency: 3, openalexBudget });
 results.sort((a, b) => a.index - b.index);
 const seconds = (Date.now() - started) / 1000;
 
@@ -83,7 +91,7 @@ function row(title: string, subset: RefResult[]) {
 }
 
 console.log(`\n数据集 ${name}，${useAI ? "AI 辅助解析" : "标准规则"}模式，${cases.length} 条，用时 ${seconds.toFixed(1)}s`);
-if (useAI) console.log(`AI 批次失败后退回规则：${aiFallbackBatches} 批`);
+if (useAI) console.log(`AI 发送 ${aiStats.sent} 条，补上字段 ${aiStats.supplemented} 条，逐条校验退回 ${aiStats.rejected} 条；整批失败退回规则 ${aiFallbackBatches} 批`);
 console.log("误报旧口径：信息有误、相近候选、疑似不存在都算（与此前的结果可比）；新口径：相近候选不算误报，见“相近”一列。");
 console.log("".padEnd(26) + VERDICTS.map((v) => LABEL[v].padStart(6 - (LABEL[v].length - 2))).join(""));
 row("合计", results);
@@ -117,6 +125,8 @@ writeFileSync(
       total: cases.length,
       seconds,
       aiFallbackBatches: useAI ? aiFallbackBatches : undefined,
+      ai: useAI ? aiStats : undefined,
+      openalexBudget: openalexArg ? openalexBudget : undefined,
       counts: Object.fromEntries(VERDICTS.map((v) => [v, results.filter((r) => r.verdict === v).length])),
       // falseAlarms 保持此前结果文件的口径（相近候选也算），falseAlarmsNew 是新口径
       falseAlarms: results.filter((r) => alarm(r, "old")).length,
@@ -132,6 +142,7 @@ writeFileSync(
         summary: r.summary,
         issues: r.issues,
         kind: r.parsed.kind,
+        aiFields: r.parsed.aiFields,
         match: r.match ? { doi: r.match.doi, title: r.match.title, year: r.match.year, source: r.match.source } : undefined,
       })),
     },

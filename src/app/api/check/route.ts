@@ -18,6 +18,15 @@ function isAbort(error: unknown): boolean {
   return error instanceof Error && error.name === "AbortError";
 }
 
+/** AI 辅助解析做了什么：只发送规则没解析出题名的条目，逐条校验 */
+function aiNotice({ refs, sent, supplemented, rejected }: { refs: unknown[]; sent: number; supplemented: number; rejected: number }): string {
+  if (!sent) return `规则已解析出全部 ${refs.length} 条的题名，没有需要 AI 补充的字段，未调用 DeepSeek。`;
+  const parts = [`规则没解析出题名的 ${sent} 条交给 DeepSeek 从原文中摘取字段`, `${supplemented} 条补上了字段（详情的比对表中标“AI 摘出”）`];
+  if (rejected) parts.push(`${rejected} 条的返回内容没通过原文校验，仍按规则解析`);
+  if (refs.length > sent) parts.push(`其余 ${refs.length - sent} 条规则已解析出题名，未发送`);
+  return `${parts.join("；")}。`;
+}
+
 export async function GET() {
   const { available, provider, model } = getAIStatus();
   return Response.json({ available, provider, model }, { headers: { "Cache-Control": "no-store" } });
@@ -91,6 +100,7 @@ export async function POST(request: Request) {
                   work.signal.throwIfAborted();
                   if (!prepared.refs.length || prepared.refs.length > MAX_CHECK_REFS) throw new Error("Invalid extraction size");
                   refs = prepared.refs;
+                  send({ type: "notice", message: aiNotice(prepared) });
                 } catch (error) {
                   if (work.signal.aborted || isAbort(error)) throw error;
                   send({ type: "notice", message: "AI 解析调用失败或返回内容未通过校验，本次已改用标准规则核验。" });
