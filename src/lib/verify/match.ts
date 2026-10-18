@@ -349,6 +349,8 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
     // 长题名几乎逐字一致时，即使作者写错也认定为同一篇（大模型常把真题名配上假作者）
     same = (strongTitle && (authorOk || (yearOk && venueOk))) || (titleScore >= 0.92 && tokenCount(main) >= 6);
   }
+  // 知网、万方的网页结果没有作者：大模型常把真题名配上假作者，作者核对不了就不能认定是同一篇，最多是相近候选
+  if (rec.source === "web" && noAuthors) same = false;
   const partial = !same && !reprint && titleScore >= 0.6 && (authorOk || noAuthors) && (yearDiff === undefined || yearDiff <= 2);
 
   return {

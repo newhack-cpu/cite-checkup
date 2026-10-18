@@ -65,6 +65,7 @@ const SOURCE_LABEL: Record<WorkRecord["source"], string> = {
   "doi-csl": "DOI 注册机构",
   openalex: "OpenAlex",
   datacite: "DataCite",
+  web: "中文学术网页",
 };
 
 /** AI 检索 Agent 追加的候选和检索步骤；候选一样要经过规则逐字段比对 */
@@ -140,7 +141,8 @@ function rank(ref: ParsedRef, candidates: WorkRecord[]): Ranked[] {
   const list: Ranked[] = [];
   for (const rec of candidates) {
     if (!rec.title) continue;
-    const key = rec.doi ?? rec.title.toLowerCase();
+    // 知网、维普同一篇文章的两条网页结果题名相同，按链接区分，否则带作者的维普记录会被去重掉
+    const key = rec.doi ?? (rec.source === "web" && rec.url ? rec.url : rec.title.toLowerCase());
     if (seen.has(key)) continue;
     seen.add(key);
     list.push({ rec, score: scoreCandidate(ref, rec) });
@@ -425,7 +427,7 @@ function judgeSame(ref: ParsedRef, rec: WorkRecord, s: MatchScore, steps: CheckS
   }
 
   const confidence = Math.min(0.98, 0.55 + s.composite * 0.45);
-  const src = `（来源：${SOURCE_LABEL[rec.source]}）`;
+  const src = `（来源：${rec.source === "web" && rec.site ? rec.site : SOURCE_LABEL[rec.source]}）`;
   if (issues.length) {
     return { ...common, verdict: "mismatch", confidence, summary: `文献存在，但有 ${issues.length} 处信息与数据库记录不一致${src}` };
   }
@@ -440,7 +442,8 @@ function judgeNotSame(ref: ParsedRef, best: Ranked | undefined, steps: CheckStep
         match: near.rec,
         matchStatus: "candidate" as const,
         fields: fieldChecks(ref, near.rec, near.score),
-        suggestion: suggestCitation(near.rec, ref.raw),
+        // 知网、万方的网页记录没有作者，拼出的写法缺作者，复制过去反而丢信息，不给
+        suggestion: near.rec.source === "web" && near.rec.authors.length === 0 ? undefined : suggestCitation(near.rec, ref.raw),
       }
     : {};
 
@@ -507,6 +510,29 @@ function judgeNotSame(ref: ParsedRef, best: Ranked | undefined, steps: CheckStep
     return {
       ...b, verdict: "unverifiable", confidence: 0,
       summary: "引文只写了名称，没有作者、年份或 DOI，信息不足以核验，请补全后再查",
+    };
+  }
+  // AI 检索在知网、万方、维普找到题名相近的文章、但不能确认是同一篇：给出候选和来源链接，请人工核对。
+  // 知网、万方的结果页没有作者，最常见的就是这种情况
+  if (near?.rec.source === "web") {
+    const site = near.rec.site ?? "中文学术网站";
+    const s = near.score;
+    // 题名、年份一致，记录有刊名时刊名也一致：多半就是这一篇，只差作者核对不了
+    const consistent = s.titleScore >= 0.9 && s.yearDiff === 0 && (!near.rec.venue || (s.venueScore ?? 0) >= 0.6);
+    const what = `题名、${near.rec.venue ? "刊名、" : ""}年份`;
+    if (near.rec.authors.length === 0) {
+      return {
+        ...b, ...nearPart, verdict: "near_match", confidence: 0.5,
+        notes: [`${site}的搜索结果没有作者信息，无法确认是不是同一篇；请打开来源页面核对作者`],
+        summary: consistent
+          ? `在${site}找到${what}一致的文章，但没有作者信息，请打开链接核对作者`
+          : `在${site}找到相近文章，但没有作者信息，不能确认是同一篇，请人工核对`,
+      };
+    }
+    return {
+      ...b, ...nearPart, verdict: "near_match", confidence: 0.5,
+      notes: [`${site}上有题名相近的文章，但作者、年份或刊名没有吻合到能确认是同一篇；请打开来源页面核对`],
+      summary: `在${site}找到相近文章，但不能确认是同一篇，请人工核对`,
     };
   }
   if (ref.lang === "zh") {

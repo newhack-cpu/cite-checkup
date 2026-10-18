@@ -46,6 +46,7 @@ interface Row {
   before: Verdict;
   after: Verdict | "failed";
   matchStatus?: string;
+  summary?: string;
   outcome?: string;
   toolCalls: number;
   rounds: number;
@@ -53,7 +54,9 @@ interface Row {
   ms: number;
   steps: { reason?: string; detail: string; ok: boolean }[];
   note?: string;
-  match?: { doi?: string; title: string; year?: number; source: string };
+  match?: { doi?: string; title: string; year?: number; source: string; site?: string; url?: string };
+  /** 只找到相近候选时的那条记录（便于人工核对） */
+  candidate?: { title: string; year?: number; venue?: string; source: string; site?: string; url?: string };
   issues: string[];
   error?: string;
 }
@@ -69,11 +72,14 @@ async function worker() {
     try {
       const r: RefResult = await runAgent(c.raw, 1, { openalexPool: pool });
       rows.push({
-        id: c.id, lang: c.label.lang, kind: c.label.kind, before: item.verdict, after: r.verdict, matchStatus: r.matchStatus,
+        id: c.id, lang: c.label.lang, kind: c.label.kind, before: item.verdict, after: r.verdict, matchStatus: r.matchStatus, summary: r.summary,
         outcome: r.agent?.outcome, toolCalls: r.agent?.toolCalls ?? 0, rounds: r.agent?.rounds ?? 0, tokens: r.agent?.tokens ?? 0,
         ms: Date.now() - t, note: r.agent?.note, issues: r.issues,
         steps: r.steps.filter((s) => s.action === "agent_search").map((s) => ({ reason: s.reason, detail: s.detail, ok: s.ok })),
-        match: r.matchStatus === "confirmed" && r.match ? { doi: r.match.doi, title: r.match.title, year: r.match.year, source: r.match.source } : undefined,
+        match: r.matchStatus === "confirmed" && r.match
+          ? { doi: r.match.doi, title: r.match.title, year: r.match.year, source: r.match.source, site: r.match.site, url: r.match.url } : undefined,
+        candidate: r.matchStatus === "candidate" && r.match
+          ? { title: r.match.title, year: r.match.year, venue: r.match.venue, source: r.match.source, site: r.match.site, url: r.match.url } : undefined,
       });
       process.stdout.write(`${c.id} ${item.verdict} → ${r.verdict}${r.agent?.outcome === "confirmed" ? "（确认）" : ""} ${r.agent?.toolCalls ?? 0} 次 ${((Date.now() - t) / 1000).toFixed(1)}s\n`);
     } catch (error) {
@@ -95,6 +101,12 @@ const summary = {
   failed: rows.filter((r) => r.after === "failed").length,
   // 数据集里的文献都真实存在：Agent 不能制造"查无此文"，确认后的"信息有误"需要逐条看是否真的写错
   becameNotFound: rows.filter((r) => r.after === "not_found").length,
+  // 只找到相近候选（如知网、万方没有作者的同题名文章）：给了可核对的链接，但没有确认
+  becameNearMatch: rows.filter((r) => r.after === "near_match" && r.before !== "near_match").length,
+  // 中文期刊联网检索（知网、万方、维普）给出的候选被规则确认 / 列为相近候选的条数
+  webConfirmed: confirmed.filter((r) => r.match?.source === "web").length,
+  // 在知网、万方、维普找到题名、（刊名、）年份都一致的文章，只差作者核对不了
+  webConsistent: rows.filter((r) => r.after === "near_match" && r.candidate?.source === "web" && /一致的文章/.test(r.summary ?? "")).length,
   avgToolCalls: rows.length ? +(sum((r) => r.toolCalls) / rows.length).toFixed(2) : 0,
   avgTokens: rows.length ? Math.round(sum((r) => r.tokens) / rows.length) : 0,
   avgSeconds: rows.length ? +(sum((r) => r.ms) / rows.length / 1000).toFixed(1) : 0,
@@ -103,11 +115,12 @@ const summary = {
   byLanguage: Object.fromEntries(["en", "zh"].map((lang) => [lang, {
     eligible: rows.filter((r) => r.lang === lang).length,
     confirmed: confirmed.filter((r) => r.lang === lang).length,
+    becameNearMatch: rows.filter((r) => r.lang === lang && r.after === "near_match" && r.before !== "near_match").length,
   }])),
 };
 
 console.log(`\n数据集 ${name}：可交给 Agent 的 ${summary.eligible} 条，规则确认找到 ${summary.confirmed} 条，结论不变 ${summary.unchanged} 条，失败 ${summary.failed} 条`);
-console.log(`确认后的结论：${JSON.stringify(summary.confirmedVerdicts)}；变成"疑似不存在"：${summary.becameNotFound} 条`);
+console.log(`确认后的结论：${JSON.stringify(summary.confirmedVerdicts)}（其中来自知网、万方、维普 ${summary.webConfirmed} 条）；变成相近候选 ${summary.becameNearMatch} 条（其中题名、年份等一致、只缺作者 ${summary.webConsistent} 条）；变成"疑似不存在"：${summary.becameNotFound} 条`);
 console.log(`平均每条 ${summary.avgToolCalls} 次工具调用、${summary.avgTokens} token、${summary.avgSeconds} 秒；OpenAlex 用了 ${summary.openalexSearchesUsed} 次；总用时 ${((Date.now() - started) / 1000).toFixed(0)} 秒`);
 
 const out = option("out") || join("eval", "results", `agent-${basename(datasetFile, ".json")}.json`);

@@ -56,7 +56,10 @@ export interface RetractionInfo {
 
 /** 各数据源返回的元数据统一成这个结构 */
 export interface WorkRecord {
-  source: "crossref" | "doi-csl" | "openalex" | "datacite";
+  /** web：AI 检索用 DeepSeek 联网搜索在知网、万方、维普找到的期刊论文页，元数据从搜索结果解析 */
+  source: "crossref" | "doi-csl" | "openalex" | "datacite" | "web";
+  /** source 为 web 时的站点名（知网、万方、维普），用于显示来源；链接在 url */
+  site?: string;
   doi?: string;
   title: string;
   subtitle?: string;

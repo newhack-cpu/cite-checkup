@@ -95,13 +95,17 @@ function configuration() {
   const apiKey = process.env.DEEPSEEK_API_KEY?.trim() ?? "";
   const model = process.env.DEEPSEEK_MODEL?.trim() || "deepseek-flash";
   let endpoint: string | undefined;
+  let searchEndpoint: string | undefined;
   try {
     const base = new URL(process.env.DEEPSEEK_BASE_URL?.trim() || "https://api.deepseek.com");
     if (base.protocol === "https:" && !base.username && !base.password && !base.search && !base.hash) {
-      endpoint = `${base.origin}${base.pathname.replace(/\/+$/, "")}/chat/completions`;
+      const path = base.pathname.replace(/\/+$/, "");
+      endpoint = `${base.origin}${path}/chat/completions`;
+      // The search tool lives under /v1/tools whether or not the configured base already ends in /v1
+      searchEndpoint = `${base.origin}${path.replace(/\/v1$/, "")}/v1/tools/search`;
     }
   } catch { /* Public status exposes availability, never a private URL. */ }
-  return { apiKey, model, endpoint };
+  return { apiKey, model, endpoint, searchEndpoint };
 }
 
 /** 服务端 DeepSeek 配置，供 AI 检索 Agent 复用；密钥和地址都不能返回给前端。 */

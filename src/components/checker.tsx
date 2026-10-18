@@ -280,7 +280,7 @@ export function Checker() {
         <p className="mt-4 flex gap-2 text-[12.5px] leading-6 text-ink-faint">
           <span aria-hidden>⚿</span>
           {mode === "ai" ? "AI 辅助模式会把规则没解析出题名的参考文献条目发送给 DeepSeek 解析，再查询公开数据库。请勿粘贴未公开论文正文或敏感信息。" : "只把参考文献条目发送给 Crossref、OpenAlex、doi.org 检索，不上传论文正文。"}
-          {agentAvailable && "点击「AI 继续查」时，该条引文会发送给 DeepSeek 规划检索，并查询 DataCite 等数据源。"}查不到不等于一定是编造，结果供人工复核参考。
+          {agentAvailable && "点击「AI 继续查」时，该条引文会发送给 DeepSeek 规划检索，并用 DeepSeek 联网搜索查询知网、万方、维普的论文页，以及 DataCite 等数据源。"}查不到不等于一定是编造，结果供人工复核参考。
         </p>
       </section>
 
@@ -335,7 +335,7 @@ function EmptyState({ waiting }: { waiting: boolean }) {
     { n: "壹", title: "DOI 是否真实注册", body: "通过 doi.org 查询，覆盖 Crossref、DataCite、中文 DOI 等所有注册机构。大模型编造的 DOI 在这一步就会露馅。" },
     { n: "贰", title: "题名、作者、年份、期刊是否对得上", body: "用整条引文到 Crossref 检索，必要时用 OpenAlex 兜底，再逐字段比对。真题名配假作者、DOI 张冠李戴都能识别。" },
     { n: "叁", title: "是否已被撤稿", body: "读取 Crossref 中的 Retraction Watch 撤稿数据，提醒你别把已撤稿的研究当论据。" },
-    { n: "肆", title: "查不到的，交给 AI 继续查", body: "对无法核验或只找到相近候选的条目，DeepSeek 规划检索策略，换着方式查 Crossref、OpenAlex、DataCite，每一步都摆在你眼前；找到的候选仍由规则逐字段确认。" },
+    { n: "肆", title: "查不到的，交给 AI 继续查", body: "对无法核验或只找到相近候选的条目，DeepSeek 规划检索策略，换着方式查 Crossref、OpenAlex、DataCite，中文期刊还会联网搜索知网、万方、维普，每一步都摆在你眼前；找到的候选仍由规则逐字段确认。" },
   ];
   return (
     <section className="sheet animate-rise rounded-sm border border-rule/80 p-6 [animation-delay:220ms] sm:p-8">

@@ -3,6 +3,7 @@
 import { unwrapToolArguments } from "../tool-args";
 import { extractDoi } from "../verify/extract";
 import { formatAuthorsShort, scoreCandidate } from "../verify/match";
+import { cnJournalSearch } from "../verify/sources/cnweb";
 import { crossrefByDoi, crossrefFieldSearch } from "../verify/sources/crossref";
 import { dataciteSearch } from "../verify/sources/datacite";
 import { doiCsl, doiRegistry } from "../verify/sources/doi";
@@ -59,6 +60,17 @@ export const AGENT_TOOLS = [
   {
     type: "function",
     function: {
+      name: "search_cn_journals",
+      description: "Web search restricted to the Chinese journal databases CNKI, Wanfang and CQVIP, by Chinese title. Use it for Chinese journal articles, which Crossref and OpenAlex rarely index. Results are parsed article pages; a page without authors cannot confirm the work on its own.",
+      parameters: {
+        type: "object", additionalProperties: false, required: ["title", "reason"],
+        properties: { title: string("Chinese title copied from the citation, without author, journal or year. At most 60 characters."), reason },
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
       name: "lookup_doi",
       description: "Resolve a DOI that literally appears in the citation or in an earlier tool result. Never guess a DOI.",
       parameters: {
@@ -84,6 +96,7 @@ export type ToolArgs =
   | { name: "search_crossref"; query: string; author?: string; year?: number; reason: string }
   | { name: "search_openalex"; title: string; year?: number; reason: string }
   | { name: "search_datacite"; query: string; reason: string }
+  | { name: "search_cn_journals"; title: string; reason: string }
   | { name: "lookup_doi"; doi: string; reason: string }
   | { name: "finish"; note: string };
 
@@ -101,6 +114,7 @@ const ALLOWED_KEYS: Record<ToolArgs["name"], string[]> = {
   search_crossref: ["query", "author", "year", "reason"],
   search_openalex: ["title", "year", "reason"],
   search_datacite: ["query", "reason"],
+  search_cn_journals: ["title", "reason"],
   lookup_doi: ["doi", "reason"],
   finish: ["note"],
 };
@@ -155,6 +169,8 @@ export function parseToolCall(name: string, argumentsJson: string): ToolArgs {
       return { name: "search_openalex", title: required(args, "title", 300), year: year(args), reason: why };
     case "search_datacite":
       return { name: "search_datacite", query: required(args, "query", 300), reason: why };
+    case "search_cn_journals":
+      return { name: "search_cn_journals", title: required(args, "title", 120), reason: why };
     case "lookup_doi": {
       const doi = required(args, "doi", 200).toLowerCase().replace(/^(?:https?:\/\/(?:dx\.)?doi\.org\/|doi:\s*)/, "");
       if (!/^10\.\d{4,9}\/[^\s"<>]+$/.test(doi)) throw new ToolArgumentError("参数 doi 不是有效的 DOI");
@@ -208,6 +224,7 @@ function summarize(ctx: ToolContext, records: WorkRecord[]) {
     venue: rec.venue ? short(rec.venue, 120) : null,
     doi: rec.doi ?? null,
     type: rec.type ?? null,
+    ...(rec.site ? { site: rec.site } : {}),
     fit: fit(ctx.ref, rec),
   }));
 }
@@ -220,7 +237,9 @@ function closest(ref: ParsedRef, records: WorkRecord[]): WorkRecord | undefined 
 function searchOutcome(ctx: ToolContext, label: string, records: WorkRecord[]): ToolOutcome {
   for (const rec of records) if (rec.doi) ctx.knownDois.add(rec.doi.toLowerCase());
   const best = closest(ctx.ref, records);
-  const authors = best?.authors.length ? `（${formatAuthorsShort(best.authors, 2)}${best.year ? `，${best.year}` : ""}）` : "";
+  const facts = [best?.site, best?.authors.length ? formatAuthorsShort(best.authors, 2) : undefined, best?.venue && best.source === "web" ? `《${short(best.venue, 20)}》` : undefined, best?.year]
+    .filter(Boolean).join("，");
+  const authors = facts ? `（${facts}）` : "";
   return {
     records,
     ok: records.length > 0,
@@ -249,6 +268,10 @@ export async function runTool(args: SearchArgs, ctx: ToolContext): Promise<ToolO
     case "search_datacite": {
       const { records } = await dataciteSearch(args.query, 5, signal);
       return searchOutcome(ctx, `DataCite 检索「${short(args.query, 30)}」`, records);
+    }
+    case "search_cn_journals": {
+      const { records } = await cnJournalSearch(args.title, signal);
+      return searchOutcome(ctx, `中文期刊检索（知网、万方、维普）「${short(args.title, 30)}」`, records);
     }
     case "lookup_doi": {
       const doi = args.doi;

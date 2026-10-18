@@ -1,0 +1,717 @@
+{
+ "ranAt": "2026-10-18T01:26:13.855Z",
+ "dataset": "blind-2026-10-17b",
+ "rulesFile": "eval/results/real-blind-2026-10-17b-rules.json",
+ "lang": "zh",
+ "summary": {
+  "eligible": 22,
+  "confirmed": 0,
+  "confirmedVerdicts": {},
+  "unchanged": 22,
+  "failed": 0,
+  "becameNotFound": 0,
+  "becameNearMatch": 7,
+  "webConfirmed": 0,
+  "webConsistent": 6,
+  "avgToolCalls": 2.5,
+  "avgTokens": 5768,
+  "avgSeconds": 7.5,
+  "totalTokens": 126897,
+  "openalexSearchesUsed": 0,
+  "byLanguage": {
+   "en": {
+    "eligible": 0,
+    "confirmed": 0,
+    "becameNearMatch": 0
+   },
+   "zh": {
+    "eligible": 22,
+    "confirmed": 0,
+    "becameNearMatch": 7
+   }
+  }
+ },
+ "rows": [
+  {
+   "id": "B085",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 3,
+   "tokens": 6726,
+   "ms": 10505,
+   "note": "在中文期刊库按中文标题检索到标题与年份均吻合的《青藏高原东南缘地震各向异性及其深部构造意义》（地球物理学报，2020），但结果页未显示作者；Crossref 中文检索未获匹配记录。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按中文标题检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「青藏高原东南缘地震各向异性及其深部构造意义」：5 条候选，最接近《青藏高原东南缘地震各向异性及其深部构造意义》（知网，《地球物理学报》，2020）",
+     "ok": true
+    },
+    {
+     "reason": "用中文标题与第一作者在Crossref补充核对",
+     "detail": "Crossref 检索「青藏高原东南缘地震各向异性及其深部构造意义」（作者 高原，2020±1 年）：5 条候选，最接近《天山构造带上地壳介质各向异性分区特征》（李金, 高原 等，2021）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "青藏高原东南缘地震各向异性及其深部构造意义",
+    "year": 2020,
+    "venue": "地球物理学报",
+    "source": "web",
+    "site": "知网",
+    "url": "https://read.cnki.net/web/Journal/Article/DQWX202003003.html"
+   }
+  },
+  {
+   "id": "B087",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "专利类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 5860,
+   "ms": 11489,
+   "note": "已用中文标题检索中文期刊库、并在DataCite检索英文标题，均未找到与该专利对应的记录；专利文献通常不在这些学术数据库覆盖范围内，建议人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索该专利中文标题是否被中文数据库收录",
+     "detail": "中文期刊检索（知网、万方、维普）「时空分割放疗计划确定方法及系统」：1 条候选，最接近《Evaluating the Ethos automated planning …》（维普，《JOURNAL OF APPLIED C…》，2025）",
+     "ok": true
+    },
+    {
+     "reason": "尝试在DataCite中查找该专利记录",
+     "detail": "DataCite 检索「Method and system for determin…」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在OpenAlex中确认该专利标题是否有对应记录",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "B088",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "专利类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 4295,
+   "ms": 4988,
+   "note": "已用中文标题检索DataCite与中文期刊库，均未找到该专利记录；专利文献不在这些开放学术数据库覆盖范围内，需人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "查找该中国专利在DataCite中是否有登记记录",
+     "detail": "DataCite 检索「空间分割放疗靶区布置方法和系统」：5 条候选，最接近《B29 铁三角宪章取代大西洋宪章和世宇三分反独裁救世:伟哥迎量子大时代、十字立法…》（Hill H，2024）",
+     "ok": true
+    },
+    {
+     "reason": "检索中文库中是否收录该专利相关文献",
+     "detail": "中文期刊检索（知网、万方、维普）「空间分割放疗靶区布置方法和系统」：1 条候选，最接近《Evaluating the Ethos automated planning …》（维普，《JOURNAL OF APPLIED C…》，2025）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "B089",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 7249,
+   "ms": 9569,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文标题在知网/万方检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「中国杯萼海桑遗传多样性的ISSR研究」：2 条候选，最接近《海桑属红树植物遗传多样性和引种关系研究》（知网，《海洋学报(中文版)》，2002）",
+     "ok": true
+    },
+    {
+     "reason": "用英文标题与作者年份在Crossref核对",
+     "detail": "Crossref 检索「Genetic diversity of Sonnerati…」（作者 Li，2004±1 年）：5 条候选，最接近《Genetic diversity of the annual weed Mon…》（LI WG, SHEN JJ 等，2005）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中按英文标题核对是否存在该文",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "在DataCite中查找该文的记录",
+     "detail": "DataCite 检索「Sonneratia alba genetic divers…」：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "B090",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在万方找到相近文章，但没有作者信息，不能确认是同一篇，请人工核对",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 4527,
+   "ms": 6618,
+   "note": "在知网和万方按中文标题检索到2005年《遗传学报》上题为“异质性生境对半红树植物海漆(Excoecaria agallocha)居群遗传结构的影响”的条目，但页面未显示作者；Crossref英文检索无匹配。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文标题在知网万方检索该中文期刊文章",
+     "detail": "中文期刊检索（知网、万方、维普）「异质性生境对半红树海漆居群遗传结构的影响」：2 条候选，最接近《异质性生境对半红树植物海漆(Excoecaria agallocha)居群遗传结…》（万方，2005）",
+     "ok": true
+    },
+    {
+     "reason": "用英文标题加作者年份在Crossref核实",
+     "detail": "Crossref 检索「Effects of divergent habitatio…」（作者 Zhang，2005±1 年）：5 条候选，最接近《Genetic analysis on the direct response …》（Zhang W, Aggrey SE 等，2005）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "异质性生境对半红树植物海漆(Excoecaria agallocha)居群遗传结构的影响",
+    "year": 2005,
+    "source": "web",
+    "site": "万方",
+    "url": "https://d.wanfangdata.com.cn/periodical/ycxb200512008"
+   }
+  },
+  {
+   "id": "B091",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 4502,
+   "ms": 8339,
+   "note": "引文未给出文章标题，仅凭作者、刊名与年份检索：中文期刊库未找到王翔、袁贤鑫1997年《分子催化》文章，Crossref 也无匹配记录，无法定位该文献。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文刊名检索1997年王翔、袁贤鑫的文章",
+     "detail": "中文期刊检索（知网、万方、维普）「分子催化」：4 条候选，最接近《《分子催化(中英文)》简介》（知网，《分子催化(中英文)》，2024）",
+     "ok": true
+    },
+    {
+     "reason": "用作者与年份在Crossref补充检索该文",
+     "detail": "Crossref 检索「Yuan Xianxin Wang Xiang molecu…」（作者 Yuan，1997±1 年）：5 条候选，最接近《Characterization and catalysis of a SiO2…》（Yuan Y, Asakura K 等，1997）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "B092",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 6958,
+   "ms": 6551,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文刊名检索该刊2008年王彬等文章",
+     "detail": "中文期刊检索（知网、万方、维普）「燃料化学学报」：1 条候选，最接近《《燃料化学学报(中英文)》征稿简则》（知网，《燃料化学学报(中英文)》，2023）",
+     "ok": true
+    },
+    {
+     "reason": "用英文刊名与作者年份检索该文",
+     "detail": "Crossref 检索「Journal of Fuel Chemistry and …」（作者 Wang，2008±1 年）：5 条候选，最接近《Release of fuel-N during entrained-flow …》（CHEN Z, YUAN S 等，2008）",
+     "ok": true
+    },
+    {
+     "reason": "按作者与刊名检索王彬2008年该刊文章",
+     "detail": "中文期刊检索（知网、万方、维普）「王彬 房克功 燃料化学学报」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在开放索引中按作者与刊名年份查找该文",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "B094",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 6492,
+   "ms": 10383,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索该中文图书是否有DOI记录",
+     "detail": "Crossref 检索「超导小时代: 超导的前世、今生和未来」：5 条候选，最接近《新时代高校青年理想信念教育的创新路径》（罗超，2026）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该图书或相关记录",
+     "detail": "DataCite 检索「超导小时代 超导的前世今生和未来 罗会仟」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在OpenAlex中查找该中文科普图书记录",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "在中文数据库中查找该图书条目信息",
+     "detail": "中文期刊检索（知网、万方、维普）「超导小时代：超导的前世、今生和未来」：6 条候选，最接近《超导的时代，时代的超导——《超导小时代》书评》（知网，《现代物理知识》，2022）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "B095",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 4582,
+   "ms": 8543,
+   "note": "在中文期刊库检索到《钙钛矿太阳能电池中铅泄漏的抑制和回收》（2024年，科学通报）条目，但页面未显示作者；Crossref 英文检索未找到对应记录。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库核对标题与作者是否匹配",
+     "detail": "中文期刊检索（知网、万方、维普）「钙钛矿太阳能电池中铅泄漏的抑制和回收」：6 条候选，最接近《钙钛矿太阳能电池中铅泄漏的抑制和回收》（维普，《科学通报》，2024）",
+     "ok": true
+    },
+    {
+     "reason": "用英文标题加作者年份核对英文记录",
+     "detail": "Crossref 检索「Suppression and recovery of le…」（作者 Wu，2024±1 年）：5 条候选，最接近《Fully Printable Mesoscopic Perovskite So…》（Wu W，2024）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "B096",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 7329,
+   "ms": 6848,
+   "note": "已用中文标题在知网/万方/维普检索两次，并用英文标题在Crossref检索一次，均未找到与《女性生育力保存相关伦理问题及对策》（史潇、全松，2022）标题、作者、年份同时吻合的记录，仅见主题相近的其他文献。中文期刊库收录有限，建议到知网/万方按刊名卷期核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文标题在知网万方维普检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「女性生育力保存相关伦理问题及对策」：3 条候选，最接近《妇科恶性肿瘤患者的生育力保护:临床救治后的生命延续与伦理》（万方，2026）",
+     "ok": true
+    },
+    {
+     "reason": "用英文标题与作者核对是否有对应记录",
+     "detail": "Crossref 检索「Ethical issues and countermeas…」（作者 Quan，2022±1 年）：5 条候选，最接近《Income distribution and poverty issues》（Quan G，2023）",
+     "ok": true
+    },
+    {
+     "reason": "去掉副标题用核心标题再检索一次",
+     "detail": "中文期刊检索（知网、万方、维普）「女性生育力保存相关伦理问题」：3 条候选，最接近《大龄单身女性生育力保存的伦理学研究》（万方，2022）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "B097",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "outcome": "unchanged",
+   "toolCalls": 1,
+   "rounds": 2,
+   "tokens": 3651,
+   "ms": 4702,
+   "note": "该文献为FAO统计数据库网页资源，Crossref与DataCite检索均未找到对应记录，属开放学术数据库覆盖范围之外，需人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "确认FAOSTAT作物与畜产品生产量数据集是否有可检索记录",
+     "detail": "DataCite 检索「FAOSTAT Crops and livestock pr…」：3 条候选，最接近《Extensification factors》（Ball T，2026）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "B098",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 4,
+   "tokens": 8691,
+   "ms": 10593,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按中文标题检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「种植密度对不同生育期玉米品种光温资源利用率和产量的影响」：1 条候选，最接近《2019年黄淮海玉米品种与密度协同的光温高效利用试验》（知网，《现代农业科技》，2020）",
+     "ok": true
+    },
+    {
+     "reason": "用标题加第一作者和年份在Crossref再检索一次",
+     "detail": "Crossref 检索「种植密度对不同生育期玉米品种光温资源利用率和产量的影响」（作者 吴希，2023±1 年）：5 条候选，最接近《Effects of planting patterns and slope p…》（WANG Feng 王，2022）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex按标题检索该中文论文",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "在DataCite补充检索该文记录",
+     "detail": "DataCite 检索「种植密度对不同生育期玉米品种光温资源利用率和产量的影响」：5 条候选，最接近《Triple Legislation and Integration》（Hill H，2025）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "B099",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 7118,
+   "ms": 6159,
+   "note": "已在中文期刊库（知网、万方）以完整标题和标题片段检索，并在Crossref以作者加标题检索，均未找到与该引文标题、作者、年份同时吻合的记录，仅见主题相近的其他文献。开放数据库对中文期刊收录有限，建议到知网或万方进一步核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按标题核查该文是否存在",
+     "detail": "中文期刊检索（知网、万方、维普）「世界一流研究型大学矩阵式跨学科研究组织的样态创新及治理机制」：6 条候选，最接近《新型研究型大学跨学科研究组织的运行机制和逻辑指向——基于悉尼科技大学的探析》（万方，2025）",
+     "ok": true
+    },
+    {
+     "reason": "用较短标题片段再次检索中文期刊库",
+     "detail": "中文期刊检索（知网、万方、维普）「矩阵式跨学科研究组织的样态创新及治理机制」：5 条候选，最接近《美国研究型大学跨学科学术组织的建制基础及样态创新》（万方，2019）",
+     "ok": true
+    },
+    {
+     "reason": "用作者加标题在Crossref核查该文",
+     "detail": "Crossref 检索「矩阵式跨学科研究组织的样态创新及治理机制」（作者 焦磊）：5 条候选，最接近《新双高建设要求下产业学院校企协同治理机制与实施路径研究》（刁学明张磊，2025）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "B100",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 1,
+   "rounds": 2,
+   "tokens": 3841,
+   "ms": 5420,
+   "note": "在万方和知网按中文标题检索到同名文章，年份2023、期刊《国家教育行政学院学报》与引文一致，但结果页未显示作者信息，无法核对第一作者陈霞玲。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按标题检索该文以核对作者与年份",
+     "detail": "中文期刊检索（知网、万方、维普）「高校开展有组织科研的组织模式、经验特征与问题对策」：7 条候选，最接近《高校开展有组织科研的组织模式、经验特征与问题对策》（知网，《国家教育行政学院学报》，2023）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "高校开展有组织科研的组织模式、经验特征与问题对策",
+    "year": 2023,
+    "venue": "国家教育行政学院学报",
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/GJXZ202307009.html"
+   }
+  },
+  {
+   "id": "B101",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 6324,
+   "ms": 7628,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按中文标题检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「灰色关联度在预应力连续梁桥运营监控中的应用」：2 条候选，最接近《基于灰关联GM(1,N)模型的特大跨径桥梁挠度变化分析》（万方，2009）",
+     "ok": true
+    },
+    {
+     "reason": "用作者与年份在Crossref再试中文标题",
+     "detail": "Crossref 检索「灰色关联度在预应力连续梁桥运营监控中的应用」（作者 宋福春，2019±1 年）：5 条候选，最接近《数字化测绘技术在矿山地质测量中的应用研究》（宋福亮，2019）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex按标题检索该中文论文",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "去掉副标题式修饰，用较短中文标题再检索",
+     "detail": "中文期刊检索（知网、万方、维普）「预应力连续梁桥运营监控」：4 条候选，最接近《某连续梁桥预应力损失识别方法探讨》（知网，《交通科技与管理》，2023）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "B102",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 3,
+   "tokens": 6066,
+   "ms": 7075,
+   "note": "已在知网/万方/维普范围按中文标题检索，并用中文标题加第一作者在Crossref复查，均未找到与《浙江省养护措施病害发展数据挖掘分析》（张中平等，公路工程，2019）标题、作者、年份相符的记录，仅返回不相关文献。建议到知网或万方按刊名与年份卷期进一步核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文标题在知网万方维普检索该期刊论文",
+     "detail": "中文期刊检索（知网、万方、维普）「浙江省养护措施病害发展数据挖掘分析」：2 条候选，最接近《公路施工养护管理及其防治措施》（知网，《黑龙江交通科技》，2018）",
+     "ok": true
+    },
+    {
+     "reason": "用中文标题加第一作者在Crossref再试一次",
+     "detail": "Crossref 检索「浙江省养护措施病害发展数据挖掘分析」（作者 张中平）：5 条候选，最接近《公路工程施工及养护质量管理措施研究》（张聪，2023）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "B103",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在万方找到题名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 3,
+   "tokens": 6665,
+   "ms": 6164,
+   "note": "在中文期刊库按中文标题检索到一条标题与年份均吻合的记录（万方，2021年，未显示作者），Crossref 未找到对应英文记录。建议到知网/万方核对作者与卷期页码。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按中文标题检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「箱形柱芯筒式双法兰刚性连接节点平面框架拟静力试验研究」：6 条候选，最接近《箱形柱芯筒式双法兰刚性连接节点平面框架拟静力试验研究》（万方，2021）",
+     "ok": true
+    },
+    {
+     "reason": "用作者与年份在Crossref补充核对英文记录",
+     "detail": "Crossref 检索「箱形柱芯筒式双法兰刚性连接节点平面框架拟静力试验研究」（作者 张爱林，2021±1 年）：5 条候选，最接近《普拉特桁架桥的活载试验研究》（胡成林, 胡静，2022）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "箱形柱芯筒式双法兰刚性连接节点平面框架拟静力试验研究",
+    "year": 2021,
+    "source": "web",
+    "site": "万方",
+    "url": "https://d.wanfangdata.com.cn/periodical/gclx202109013"
+   }
+  },
+  {
+   "id": "B104",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在万方找到题名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 1,
+   "rounds": 2,
+   "tokens": 3794,
+   "ms": 4523,
+   "note": "在中文期刊库按中文标题检索，万方返回标题与年份均吻合的条目（作者信息未显示），其余为相近主题文献。Crossref 未找到对应记录。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按中文标题检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「方钢管柱-H形钢梁拼接外套筒式中节点静力性能研究」：4 条候选，最接近《方钢管柱-H形钢梁拼接外套筒式中节点静力性能研究》（万方，2018）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "方钢管柱-H形钢梁拼接外套筒式中节点静力性能研究",
+    "year": 2018,
+    "source": "web",
+    "site": "万方",
+    "url": "https://d.wanfangdata.com.cn/periodical/jzjgxb201807012"
+   }
+  },
+  {
+   "id": "B105",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 4,
+   "tokens": 8064,
+   "ms": 8732,
+   "note": "在中文期刊库以完整标题和缩短标题各检索一次，仅得到主题相近但年份不符的水锤类文章；Crossref 按作者与年份检索无结果，未找到与引文标题、作者、年份均吻合的记录。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按中文标题检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「非能动先进核电厂主给水管道水锤模拟计算」：2 条候选，最接近《核电轴流式止回阀水锤效应分析及验证研究》（知网，《流体测量与控制》，2022）",
+     "ok": true
+    },
+    {
+     "reason": "用去掉修饰的短标题再检索一次",
+     "detail": "中文期刊检索（知网、万方、维普）「主给水管道水锤模拟计算」：1 条候选，最接近《基于KYPIPE的水锤分析及管道安全防护设计》（知网，《水利科学与寒区工程》，2024）",
+     "ok": true
+    },
+    {
+     "reason": "在Crossref按作者与年份补充检索该中文文献",
+     "detail": "Crossref 检索「水锤模拟计算 主给水管道 核电厂」（作者 盛，2015±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "B106",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 1,
+   "rounds": 2,
+   "tokens": 3896,
+   "ms": 5974,
+   "note": "在中文期刊库按中文标题检索，万方与知网均出现标题、年份（2022）与《核技术》一致的条目，但页面未显示作者信息，无法核对作者。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按中文标题检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「铅铋次临界堆XADS束流超功率事故研究」：5 条候选，最接近《铅铋次临界堆XADS束流超功率事故研究》（知网，《核技术》，2022）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "铅铋次临界堆XADS束流超功率事故研究",
+    "year": 2022,
+    "venue": "核技术",
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/HJSU202210012.html"
+   }
+  },
+  {
+   "id": "B107",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 1,
+   "rounds": 2,
+   "tokens": 3837,
+   "ms": 5787,
+   "note": "在中文期刊库检索该标题，万方与知网均返回题名、年份（2016）和期刊（生态环境学报）一致的条目，但页面未解析出作者信息，无法核对作者。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库检索该中文标题以核对作者与年份",
+     "detail": "中文期刊检索（知网、万方、维普）「昆明市常见绿化植物冬季固碳释氧能力研究」：7 条候选，最接近《昆明市常见绿化植物冬季固碳释氧能力研究》（知网，《生态环境学报》，2016）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "昆明市常见绿化植物冬季固碳释氧能力研究",
+    "year": 2016,
+    "venue": "生态环境学报",
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/TRYJ201608012.html"
+   }
+  },
+  {
+   "id": "B108",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 6430,
+   "ms": 8534,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按中文标题检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「苏州市夏季园林植物光合特性及固碳释氧、降温增湿效益研究」：2 条候选，最接近《江苏省苏州市32种园林植物的光合及水分利用特征》（知网，《江苏农业科学》，2014）",
+     "ok": true
+    },
+    {
+     "reason": "用作者与年份在Crossref缩小检索该中文论文",
+     "detail": "Crossref 检索「苏州市夏季园林植物光合特性及固碳释氧、降温增湿效益研究」（作者 王秋艳，2023±1 年）：5 条候选，最接近《园林施工中反季节种植技术的研究》（李晓霞, 王伟，2023）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex按标题检索该文记录",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "在DataCite补充检索该文记录",
+     "detail": "DataCite 检索「苏州市夏季园林植物光合特性及固碳释氧、降温增湿效益研究」：4 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    }
+   ]
+  }
+ ]
+}

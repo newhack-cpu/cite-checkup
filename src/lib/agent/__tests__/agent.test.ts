@@ -31,6 +31,8 @@ interface World {
   crossrefAgentItems?: unknown[];
   datacite?: unknown[];
   deepseekStatus?: number;
+  /** DeepSeek Search（/v1/tools/search）依次返回的结果 */
+  search?: unknown[][];
 }
 
 function serve(world: World) {
@@ -39,6 +41,9 @@ function serve(world: World) {
   vi.stubGlobal("fetch", async (input: string, init?: RequestInit) => {
     const url = new URL(input);
     calls.push(url.hostname + decodeURIComponent(url.pathname));
+    if (url.hostname === "api.deepseek.com" && url.pathname === "/v1/tools/search") {
+      return Response.json({ results: world.search?.shift() ?? [] });
+    }
     if (url.hostname === "api.deepseek.com") {
       bodies.push(JSON.parse(String(init?.body)));
       if (world.deepseekStatus) return new Response("{}", { status: world.deepseekStatus });
@@ -298,5 +303,77 @@ describe("agent eligibility and DataCite records", () => {
       authors: [{ family: "Esteban", given: "Oscar" }, { family: "Markiewicz", given: "Christopher J." }],
       year: 2025, venue: "Zenodo", type: "Software",
     });
+  });
+});
+
+describe("Chinese journal search (DeepSeek Search over CNKI, Wanfang and CQVIP)", () => {
+  // Invented title, authors and journal in the result formats DeepSeek Search returned on 2026-10-17
+  const CN = "张三, 李四. 城市绿地降温效应的多尺度研究[J]. 测试地理学报, 2021(3): 12-20.";
+  const searchCn = turn([{ name: "search_cn_journals", args: { title: "城市绿地降温效应的多尺度研究", reason: "到中文期刊库按题名检索" } }]);
+  const cnkiHit = {
+    title: "城市绿地降温效应的多尺度研究-测试地理学报2021年03期-手机知网", url: "https://wap.cnki.net/touch/web/Journal/Article/CSDL202103002.html",
+    snippet: "", summary: "城市绿地降温效应的多尺度研究\n\n测试地理学报\n\n2021年03期", date: null, site_name: "手机知网",
+  };
+  const cqvipHit = {
+    title: "城市绿地降温效应的多尺度研究", url: "https://mqikan.cqvip.com/article/ArticleDetail?id=7200000001", snippet: "",
+    summary: "# 城市绿地降温效应的多尺度研究\n\n作者：张三 李四\n\n出处：《测试地理学报》2021年第3期12-20,共9页", date: null, site_name: "维普网",
+  };
+
+  it("confirms a Chinese journal article through a CQVIP page that lists the authors", async () => {
+    const world = serve({ turns: [searchCn], search: [[cnkiHit, cqvipHit]] });
+    const steps: CheckStep[] = [];
+    const result = await (await agent()).runAgent(CN, 1, { onStep: (s) => steps.push(s) });
+    expect(result.agent).toMatchObject({ before: { verdict: "unverifiable" }, outcome: "confirmed", toolCalls: 1 });
+    expect(result.verdict).toBe("verified");
+    expect(result.summary).toContain("（来源：维普）");
+    expect(result.match).toMatchObject({ source: "web", site: "维普", url: cqvipHit.url });
+    expect(result.suggestion).toBe("张三, 李四. 城市绿地降温效应的多尺度研究[J]. 测试地理学报, 2021(3): 12-20.");
+    expect(steps[0].detail).toMatch(/^中文期刊检索（知网、万方、维普）.*维普/);
+    expect(world.calls.filter((c) => c === "api.deepseek.com/v1/tools/search")).toHaveLength(1);
+  });
+
+  it("offers a CNKI page without authors only as a candidate, with its link", async () => {
+    serve({ turns: [searchCn], search: [[cnkiHit], []] });
+    const result = await (await agent()).runAgent(CN, 1);
+    expect(result.verdict).toBe("near_match");
+    expect(result.matchStatus).toBe("candidate");
+    expect(result.summary).toBe("在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者");
+    expect(result.match).toMatchObject({ site: "知网", url: cnkiHit.url });
+    expect(result.agent?.outcome).toBe("unchanged");
+    // 没有作者的记录拼不出完整写法，不给规范写法
+    expect(result.suggestion).toBeUndefined();
+  });
+
+  it("reports invented authors on a real Chinese title as an error, not as verified", async () => {
+    serve({ turns: [searchCn], search: [[cqvipHit]] });
+    const result = await (await agent()).runAgent("王五, 赵六. 城市绿地降温效应的多尺度研究[J]. 测试地理学报, 2021(3): 12-20.", 1);
+    expect(result.verdict).toBe("mismatch");
+    expect(result.issues.join("")).toContain("作者");
+  });
+
+  it("sends back a first finish once when a Chinese journal article was never searched in the Chinese journal sites", async () => {
+    const finish = turn([{ name: "finish", args: { note: "开放数据库不收录，结束" } }]);
+    const world = serve({ turns: [finish, searchCn], search: [[cnkiHit], []] });
+    const result = await (await agent()).runAgent(CN, 1);
+    expect(result.verdict).toBe("near_match");
+    expect(result.match).toMatchObject({ site: "知网" });
+    expect(world.calls.filter((c) => c === "api.deepseek.com/v1/tools/search").length).toBeGreaterThanOrEqual(1);
+    const second = world.bodies[1] as { messages: { role: string; content: string }[] };
+    expect(second.messages.at(-1)).toMatchObject({ role: "tool", content: expect.stringContaining("search_cn_journals has not been tried") });
+  });
+
+  it("accepts the second finish, and an immediate finish on an English citation", async () => {
+    const finish = turn([{ name: "finish", args: { note: "结束" } }]);
+    const world = serve({ turns: [finish, finish] });
+    expect((await (await agent()).runAgent(CN, 1)).agent).toMatchObject({ rounds: 2, toolCalls: 0 });
+    expect(world.calls).not.toContain("api.deepseek.com/v1/tools/search");
+    serve({ turns: [finish] });
+    expect((await (await agent()).runAgent(BOOK, 1)).agent).toMatchObject({ rounds: 1, toolCalls: 0 });
+  });
+
+  it("accepts only a title for search_cn_journals", () => {
+    expect(parseToolCall("search_cn_journals", JSON.stringify({ title: " 城市绿地降温效应 ", reason: "查中文期刊" })))
+      .toEqual({ name: "search_cn_journals", title: "城市绿地降温效应", reason: "查中文期刊" });
+    expect(() => parseToolCall("search_cn_journals", JSON.stringify({ title: "城市绿地", site: "cnki.net", reason: "r" }))).toThrow(/不允许的参数/);
   });
 });

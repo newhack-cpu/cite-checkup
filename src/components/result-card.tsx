@@ -212,6 +212,17 @@ export function ResultCard({
             {result.confidence > 0 && (
               <span title="基于匹配规则的参考指标，并非经过统计校准的正确概率" className="font-mono text-[11.5px] text-ink-faint tabular">匹配参考值 {Math.round(result.confidence * 100)}%</span>
             )}
+            {result.match?.source === "web" && result.match.url && /^https?:\/\//i.test(result.match.url) && (
+              <a
+                href={result.match.url}
+                target="_blank"
+                rel="noreferrer noopener"
+                title="AI 检索在中文学术网站找到的论文页，可打开核对作者、刊名和年期"
+                className="text-[12.5px] text-ink-faint underline decoration-dotted underline-offset-4 hover:text-seal"
+              >
+                打开{result.match.site ?? "来源"}页面
+              </a>
+            )}
             <span className="ml-auto flex items-center gap-3">
               {agent?.onRun && !agent.state && (
                 <button

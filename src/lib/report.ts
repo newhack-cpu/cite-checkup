@@ -42,6 +42,7 @@ export function buildReportMarkdown(refs: ParsedRef[], results: Map<number, RefR
       for (const note of r.notes) lines.push(`- 提示：${safe(note)}`);
       if (r.agent) lines.push(`- AI 检索：${safe(agentSummary(r.agent))}（追查前：${safe(r.agent.before.summary)}；结论由规则复核给出）`);
       if (r.match?.doi) lines.push(`- 数据库 DOI：${safe(r.match.doi)}`);
+      if (r.match?.source === "web" && r.match.url) lines.push(`- 来源页面（${safe(r.match.site ?? "中文学术网站")}）：${safe(r.match.url)}`);
       if (r.suggestion) lines.push("", `${r.matchStatus === "candidate" ? "相近候选写法（待确认，不能直接替换）" : "数据库规范写法"}：${safe(r.suggestion)}`);
       if (r.steps.length) lines.push("", "核查证据：", ...r.steps.map(s => `- ${s.reason ? `（AI 检索理由：${safe(s.reason)}）` : ""}${safe(s.detail)}`));
     }

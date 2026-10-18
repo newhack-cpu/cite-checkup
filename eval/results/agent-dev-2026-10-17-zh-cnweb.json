@@ -1,0 +1,1127 @@
+{
+ "ranAt": "2026-10-18T01:22:52.138Z",
+ "dataset": "dev-2026-10-14",
+ "rulesFile": "eval/results/real-dev-2026-10-17-rules.json",
+ "lang": "zh",
+ "summary": {
+  "eligible": 33,
+  "confirmed": 1,
+  "confirmedVerdicts": {
+   "verified": 1
+  },
+  "unchanged": 32,
+  "failed": 0,
+  "becameNotFound": 0,
+  "becameNearMatch": 16,
+  "webConfirmed": 1,
+  "webConsistent": 14,
+  "avgToolCalls": 2.33,
+  "avgTokens": 5700,
+  "avgSeconds": 6.9,
+  "totalTokens": 188095,
+  "openalexSearchesUsed": 0,
+  "byLanguage": {
+   "en": {
+    "eligible": 0,
+    "confirmed": 0,
+    "becameNearMatch": 0
+   },
+   "zh": {
+    "eligible": 33,
+    "confirmed": 1,
+    "becameNearMatch": 16
+   }
+  }
+ },
+ "rows": [
+  {
+   "id": "D073",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 2,
+   "tokens": 4681,
+   "ms": 7847,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文标题在知网/万方检索该草业学报文章",
+     "detail": "中文期刊检索（知网、万方、维普）「丛枝菌根真菌和根瘤菌与植物共生研究进展」：4 条候选，最接近《丛枝菌根真菌与豆科植物共生的研究进展》（维普，《黑龙江畜牧兽医》，2014）",
+     "ok": true
+    },
+    {
+     "reason": "用中文标题与作者在Crossref补充检索",
+     "detail": "Crossref 检索「丛枝菌根真菌和根瘤菌与植物共生研究进展」（作者 段海霞，2024±1 年）：5 条候选，最接近《Research Progress on Gene Knockout in Fi…》（廖海艳，2024）",
+     "ok": true
+    },
+    {
+     "reason": "去掉并列词，用更短中文标题再检索一次",
+     "detail": "中文期刊检索（知网、万方、维普）「丛枝菌根真菌和根瘤菌与植物共生」：6 条候选，最接近《丛枝菌根真菌与豆科植物共生的研究进展》（万方，2014）",
+     "ok": true
+    },
+    {
+     "reason": "用英文标题在OpenAlex检索该综述",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D074",
+   "lang": "zh",
+   "kind": "book",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 2,
+   "tokens": 4516,
+   "ms": 12042,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索中文书名《地球是钟》是否见于中文数据库",
+     "detail": "中文期刊检索（知网、万方、维普）「地球是钟」：5 条候选，最接近《地球钟越走越慢》（知网，《地球》，2008）",
+     "ok": true
+    },
+    {
+     "reason": "用英文书名与作者检索该图书记录",
+     "detail": "Crossref 检索「The Earth Is A Clock natural h…」（作者 Cheng）：5 条候选，最接近《Perspectives in Biological Nitrogen Fixa…》（Cheng Q，2008）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中检索该中文专著记录",
+     "detail": "DataCite 检索「地球是钟 固氮篇 程奇」：4 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "用中文书名在OpenAlex中查找该专著",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D075",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 7381,
+   "ms": 6453,
+   "note": "先用中文标题在知网/万方检索，仅得到若干主题相近但标题、年份不符的文献；Crossref 用中文标题与作者检索也无匹配记录。未找到与引文标题、作者、年份完全一致的条目，建议到知网/万方按卷期页码进一步核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文标题在知网/万方核查该文是否存在",
+     "detail": "中文期刊检索（知网、万方、维普）「非共生固氮菌及其固氮作用」：2 条候选，最接近《草地土壤非共生固氮微生物研究进展》（知网，《草业科学》，2025）",
+     "ok": true
+    },
+    {
+     "reason": "用中文标题在Crossref补充检索该文记录",
+     "detail": "Crossref 检索「非共生固氮菌及其固氮作用」（作者 Wang，2022±1 年）：5 条候选，最接近《Effects of Nitrogen Deposition on Arbusc…》（WANG Yaoxiong 汪，2021）",
+     "ok": true
+    },
+    {
+     "reason": "用较短中文标题再查知网/万方是否收录该文",
+     "detail": "中文期刊检索（知网、万方、维普）「非共生固氮菌」：4 条候选，最接近《草地土壤非共生固氮微生物研究进展》（知网，《草业科学》，2025）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D078",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在万方找到相近文章，但没有作者信息，不能确认是同一篇，请人工核对",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 4590,
+   "ms": 4913,
+   "note": "在知网/万方按中文标题检索到《飞秒超快动力学过程及飞秒检测》（2004年，激光与光电子学进展），但结果页未显示作者；Crossref 中文检索无相关命中。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文标题在知网万方检索该中文期刊文章",
+     "detail": "中文期刊检索（知网、万方、维普）「飞秒超快动力学过程及飞秒检测」：6 条候选，最接近《飞秒超快动力学过程及飞秒检测》（万方，2004）",
+     "ok": true
+    },
+    {
+     "reason": "用中文标题与作者年份在Crossref补充检索",
+     "detail": "Crossref 检索「飞秒超快动力学过程及飞秒检测」（作者 Zhou，2004±1 年）：4 条候选，最接近《Temperature Effects on Block Copolymer M…》（Dong-Yun L, 中国科学院过程工程研究所 等，2004）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "飞秒超快动力学过程及飞秒检测",
+    "year": 2004,
+    "source": "web",
+    "site": "万方",
+    "url": "https://d.wanfangdata.com.cn/periodical/jgygdzxjz200408002"
+   }
+  },
+  {
+   "id": "D079",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在维普找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 4454,
+   "ms": 6095,
+   "note": "在维普检索到标题与年份完全一致的中文文章（《南京大学学报（自然科学版）》2020年），但结果页未显示作者；Crossref 未找到匹配记录。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库检索该中文标题以确认文章存在",
+     "detail": "中文期刊检索（知网、万方、维普）「方解石晶体定向性对水的拉曼光谱影响的实验评估」：3 条候选，最接近《方解石晶体定向性对水的拉曼光谱影响的实验评估——天然包裹体盐度的测定》（维普，《南京大学学报（自然科学版）》，2020）",
+     "ok": true
+    },
+    {
+     "reason": "用中文标题与作者在Crossref再试一次",
+     "detail": "Crossref 检索「方解石晶体定向性对水的拉曼光谱影响的实验评估」（作者 刘显，2020±1 年）：5 条候选，最接近《基于光力捕获金纳米立方体的拉曼光谱增强》（Rong Sheng 荣, Liu Hongshuang 刘 等，2021）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "方解石晶体定向性对水的拉曼光谱影响的实验评估——天然包裹体盐度的测定",
+    "year": 2020,
+    "venue": "南京大学学报（自然科学版）",
+    "source": "web",
+    "site": "维普",
+    "url": "https://www.cqvip.com/doc/journal/7101843297?sign=aca0991d878d81845c5f2fcb07bdcdc08f569134833bf05d2437cefac1c844c0&expireTime=1800061133556&resourceId=7101843297&type=1#1"
+   }
+  },
+  {
+   "id": "D080",
+   "lang": "zh",
+   "kind": "thesis",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6876,
+   "ms": 8045,
+   "note": "已用中文期刊库、DataCite检索该题名，并尝试OpenAlex（额度已用尽），均未找到与“北疆历史农牧业地理”（满孝永，2009，西北大学）匹配的记录；中文库仅返回主题相近的其他文章。该学位论文需人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索该中文学位论文标题是否被中文库收录",
+     "detail": "中文期刊检索（知网、万方、维普）「北疆历史农牧业地理」：3 条候选，最接近《新疆农牧业地理分布格局演变历程研究》（知网，《西部学刊》，2022）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该学位论文记录",
+     "detail": "DataCite 检索「北疆历史农牧业地理」：4 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中查找该2009年西北大学学位论文",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D081",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6297,
+   "ms": 7539,
+   "note": "已在中文期刊库按完整标题及\"阿依托汗一号墓地\"检索，并在Crossref按作者与标题关键词检索，均未找到与李水城2018年该文匹配的记录；《新疆文物》收录有限，建议到知网、万方进一步核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库检索该中文标题以确认文章存在",
+     "detail": "中文期刊检索（知网、万方、维普）「谈阿凡纳谢沃文化——兼论新疆阿依托汗一号墓地的发现」：2 条候选，最接近《阿凡纳谢沃文化的时空范围及历史角色》（知网，《中华文化论坛》，2026）",
+     "ok": true
+    },
+    {
+     "reason": "用较短标题核心词再检索一次中文期刊库",
+     "detail": "中文期刊检索（知网、万方、维普）「阿依托汗一号墓地」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在Crossref按作者与标题关键词查找该文",
+     "detail": "Crossref 检索「谈阿凡纳谢沃文化 新疆阿依托汗一号墓地」（作者 李水城）：5 条候选，最接近《新疆阿克苏-柯坪地区震旦纪-寒武纪地层研究》（高振家, 吴绍祖 等，1981）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D082",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 3,
+   "tokens": 6312,
+   "ms": 10743,
+   "note": "在中文期刊库检索到《新疆阜康白杨河中游墓群发掘简报》（《文物》，2025年），题名相近但为\"中游\"且年份不符；Crossref 未收录该简报，仅见相关同位素研究。未找到与引文题名、作者、年份完全一致的记录。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库检索该发掘简报的题名与作者",
+     "detail": "中文期刊检索（知网、万方、维普）「新疆阜康白杨河上游墓群发掘简报」：3 条候选，最接近《新疆阜康白杨河中游墓群发掘简报》（知网，《文物》，2025）",
+     "ok": true
+    },
+    {
+     "reason": "用作者与题名在Crossref再确认是否有收录记录",
+     "detail": "Crossref 检索「新疆阜康白杨河上游墓群发掘简报」（作者 闫雪梅）：5 条候选，最接近《新疆白杨河墓地稳定同位素揭示的欧亚草原中-东部青铜时代至唐代人群饮食结构历时性演…》（王伟, 段阜涛 等，2026）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D083",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 7581,
+   "ms": 6247,
+   "note": "已用中文标题在知网/万方/维普检索，并用英文标题加作者年份查Crossref，均未找到与《我国医用高分子材料的发展现状》(张立英, 2005, 山西化工) 标题、作者、年份同时吻合的记录，仅见主题相近的其他年份文章。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文标题在知网/万方检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「我国医用高分子材料的发展现状」：5 条候选，最接近《我国医用高分子材料产业现状和发展趋势浅析》（知网，《石油化工》，2024）",
+     "ok": true
+    },
+    {
+     "reason": "用英文标题加作者年份在Crossref核查",
+     "detail": "Crossref 检索「development status of medical …」（作者 Zhang，2005±1 年）：5 条候选，最接近《Status of Heavy-Oil Development in China》（Shouliang Z, Yitang Z 等，2005）",
+     "ok": true
+    },
+    {
+     "reason": "用简化标题再查中文期刊库",
+     "detail": "中文期刊检索（知网、万方、维普）「医用高分子材料的发展现状」：7 条候选，最接近《医用高分子材料的应用和研究进展》（万方，2025）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D085",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 1,
+   "rounds": 2,
+   "tokens": 3880,
+   "ms": 6460,
+   "note": "在中文期刊库按中文标题检索到《内陆水体初级生产力评估方法研究进展》，2023年发表于《地球科学进展》，与引文标题和年份一致，但结果页未显示作者信息，无法核对作者。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按中文标题检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「内陆水体初级生产力评估方法研究进展」：7 条候选，最接近《内陆水体初级生产力评估方法研究进展》（知网，《地球科学进展》，2023）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "内陆水体初级生产力评估方法研究进展",
+    "year": 2023,
+    "venue": "地球科学进展",
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/DXJZ202301004.html"
+   }
+  },
+  {
+   "id": "D086",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 4260,
+   "ms": 4851,
+   "note": "在中文期刊库按中文标题检索到一条题名、年份与期刊均吻合的记录（作者信息未显示），Crossref 未找到对应条目。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按中文标题检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「天津地区大气降水中氢氧稳定同位素特征及影响因素研究」：1 条候选，最接近《天津地区大气降水中氢氧稳定同位素特征及影响因素研究》（知网，《西南民族大学学报(自然科学版)》，2014）",
+     "ok": true
+    },
+    {
+     "reason": "用中文标题与作者在Crossref补充检索",
+     "detail": "Crossref 检索「天津地区大气降水中氢氧稳定同位素特征及影响因素研究」（作者 徐涛，2014±1 年）：5 条候选，最接近《铅锌矿床中的Cd同位素组成特征及其成因意义》（张羽旭, 朱传威 等，2013）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "天津地区大气降水中氢氧稳定同位素特征及影响因素研究",
+    "year": 2014,
+    "venue": "西南民族大学学报(自然科学版)",
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/XNMZ201403018.html"
+   }
+  },
+  {
+   "id": "D087",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 1,
+   "rounds": 2,
+   "tokens": 3753,
+   "ms": 4438,
+   "note": "在中文期刊库按标题检索到《中国红树林的分布、面积和树种组成》，年份2014、期刊《湿地科学》与引文一致，但页面未显示作者信息，无法核对作者。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按中文标题核查该文是否存在",
+     "detail": "中文期刊检索（知网、万方、维普）「中国红树林的分布、面积和树种组成」：4 条候选，最接近《中国红树林的分布、面积和树种组成》（知网，《湿地科学》，2014）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "中国红树林的分布、面积和树种组成",
+    "year": 2014,
+    "venue": "湿地科学",
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/KXSD201404005.html"
+   }
+  },
+  {
+   "id": "D088",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 3,
+   "tokens": 6650,
+   "ms": 8683,
+   "note": "在知网/万方检索到标题与年份均吻合的《甲烷排放部分抵消湿地生态系统碳汇功能：全球数据分析》（应用生态学报，2023），但结果页未显示作者；Crossref 英文标题检索无对应记录。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文标题在知网万方检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「甲烷排放部分抵消湿地生态系统碳汇功能: 全球数据分析」：6 条候选，最接近《甲烷排放部分抵消湿地生态系统碳汇功能：全球数据分析》（知网，《应用生态学报》，2023）",
+     "ok": true
+    },
+    {
+     "reason": "用英文标题与第一作者补充检索该文记录",
+     "detail": "Crossref 检索「Methane emissions partially of…」（作者 Zhan，2023±1 年）：5 条候选，最接近《\"National carbon source\" or \"national ca…》（CAO H, WU HZ 等，2023）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "甲烷排放部分抵消湿地生态系统碳汇功能：全球数据分析",
+    "year": 2023,
+    "venue": "应用生态学报",
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/YYSB202311009.html"
+   }
+  },
+  {
+   "id": "D089",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 1,
+   "rounds": 2,
+   "tokens": 3793,
+   "ms": 6349,
+   "note": "在中文期刊库按中文标题检索到标题与年份均吻合的条目（《农业环境科学学报》2010年），但页面未显示作者信息；Crossref 未找到对应记录。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按中文标题检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「基于氮排放数据的中国大陆大气氮素湿沉降量估算」：4 条候选，最接近《基于氮排放数据的中国大陆大气氮素湿沉降量估算》（知网，《农业环境科学学报》，2010）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "基于氮排放数据的中国大陆大气氮素湿沉降量估算",
+    "year": 2010,
+    "venue": "农业环境科学学报",
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/NHBH201008031.html"
+   }
+  },
+  {
+   "id": "D090",
+   "lang": "zh",
+   "kind": "thesis",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 7683,
+   "ms": 9552,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文题名检索该硕士学位论文是否被中文库收录",
+     "detail": "中文期刊检索（知网、万方、维普）「质子交换膜燃料电池单电池尺度及电堆尺度下传输过程仿真研究」：6 条候选，最接近《质子交换膜燃料电池电堆CFD仿真模型发展综述》（知网，《电工技术》，2024）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该学位论文记录",
+     "detail": "DataCite 检索「质子交换膜燃料电池单电池尺度及电堆尺度下传输过程仿真研究」：5 条候选，最接近《ESPnet2 pretrained model, vectominist/se…》（Vectominist，2022）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中查找该中文学位论文记录",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "用英文题名与作者年份再查Crossref是否有对应记录",
+     "detail": "Crossref 检索「Simulation-based investigation…」（作者 Li，2023±1 年）：5 条候选，最接近《The flow field analysis of bipolar plate…》（Li Y, Han Q 等，2022）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D091",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在万方找到题名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 3,
+   "tokens": 6008,
+   "ms": 7821,
+   "note": "在万方检索到标题与年份一致的中文条目（未显示作者），Crossref 英文标题检索仅得低相关结果，未能核对作者信息。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文标题在知网/万方检索该文以核对作者与年份",
+     "detail": "中文期刊检索（知网、万方、维普）「玉米免耕播种机主动式秸秆移位防堵装置的设计与试验」：1 条候选，最接近《玉米免耕播种机主动式秸秆移位防堵装置的设计与试验》（万方，2017）",
+     "ok": true
+    },
+    {
+     "reason": "用英文标题在Crossref补充核对作者与出处",
+     "detail": "Crossref 检索「Design and experiment of activ…」：5 条候选，最接近《Design and Experiment of Oblique Stubble…》（Zhu A, Xu C 等，2024）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "玉米免耕播种机主动式秸秆移位防堵装置的设计与试验",
+    "year": 2017,
+    "source": "web",
+    "site": "万方",
+    "url": "https://d.wanfangdata.com.cn/periodical/nygcxb201724002"
+   }
+  },
+  {
+   "id": "D092",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 4129,
+   "ms": 4862,
+   "note": "在中文期刊库（知网、万方）按中文标题检索到题名与年份均一致的条目，但页面未显示作者信息；Crossref 中文标题检索无结果。作者与卷期页码需在知网/万方页面进一步核对。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按中文标题检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「全秸硬茬地小麦播种机碎秸导流装置参数设计与优化」：5 条候选，最接近《全秸硬茬地小麦播种机碎秸导流装置参数设计与优化》（知网，《农业工程学报》，2019）",
+     "ok": true
+    },
+    {
+     "reason": "用中文标题加作者年份在Crossref再查一次",
+     "detail": "Crossref 检索「全秸硬茬地小麦播种机碎秸导流装置参数设计与优化」（作者 罗，2019±1 年）：没有结果",
+     "ok": false
+    }
+   ],
+   "candidate": {
+    "title": "全秸硬茬地小麦播种机碎秸导流装置参数设计与优化",
+    "year": 2019,
+    "venue": "农业工程学报",
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/NYGU201918001.html"
+   }
+  },
+  {
+   "id": "D093",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 3,
+   "tokens": 6224,
+   "ms": 7216,
+   "note": "在中文期刊库检索到标题与年份均吻合的《免耕播种机凹面爪式清茬机构仿真与试验》（2018，农业机械学报），但页面未显示作者；Crossref 未找到对应记录。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库检索该中文标题以核对作者与年份",
+     "detail": "中文期刊检索（知网、万方、维普）「免耕播种机凹面爪式清茬机构仿真与试验」：2 条候选，最接近《免耕播种机凹面爪式清茬机构仿真与试验》（知网，《农业机械学报》，2018）",
+     "ok": true
+    },
+    {
+     "reason": "用作者与年份在Crossref补充核对英文记录",
+     "detail": "Crossref 检索「免耕播种机凹面爪式清茬机构仿真与试验」（作者 贾洪雷，2018±1 年）：5 条候选，最接近《Development of focusing mechanism for sp…》（JIANG Zi-qing 姜, JIA Jian-jun 贾，2018）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "免耕播种机凹面爪式清茬机构仿真与试验",
+    "year": 2018,
+    "venue": "农业机械学报",
+    "source": "web",
+    "site": "知网",
+    "url": "https://read.cnki.net/web/Journal/Article/NYJX201811008.html"
+   }
+  },
+  {
+   "id": "D094",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：维普）",
+   "outcome": "confirmed",
+   "toolCalls": 1,
+   "rounds": 1,
+   "tokens": 1699,
+   "ms": 2395,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库检索该访谈文章以核对作者与年份",
+     "detail": "中文期刊检索（知网、万方、维普）「但开风气不为师：费孝通学科建设思想访谈」：6 条候选，最接近《但开风气不为师——费孝通学科建设思想访谈》（维普，潘乃谷，《民俗研究》，1997）",
+     "ok": true
+    }
+   ],
+   "match": {
+    "title": "但开风气不为师——费孝通学科建设思想访谈",
+    "year": 1997,
+    "source": "web",
+    "site": "维普",
+    "url": "http://m.qikan.cqvip.com/Article/ArticleDetail?id=1002474170&from=article_ArticleDetail"
+   }
+  },
+  {
+   "id": "D095",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 1,
+   "rounds": 2,
+   "tokens": 3747,
+   "ms": 4808,
+   "note": "在中文期刊库检索到标题为《社会学调查要发展》、1983年发表于《社会》的条目（知网页面未显示作者），与引文的标题、年份、期刊一致；Crossref 未找到对应记录。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库检索该中文标题，确认是否收录",
+     "detail": "中文期刊检索（知网、万方、维普）「社会学调查要发展」：7 条候选，最接近《社会学调查要发展》（知网，《社会》，1983）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "社会学调查要发展",
+    "year": 1983,
+    "venue": "社会",
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/SHEH198303003.html"
+   }
+  },
+  {
+   "id": "D096",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 4,
+   "tokens": 8952,
+   "ms": 9467,
+   "note": "已在中文期刊库（含去引号变体）和Crossref按题名与作者检索，均未找到《百年潮》2012年第7期费皖《费孝通“上书紫光阁”》的匹配记录，仅返回题名与作者不符的其他费孝通相关文献。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库检索该文题，确认文章是否存在",
+     "detail": "中文期刊检索（知网、万方、维普）「费孝通“上书紫光阁”」：6 条候选，最接近《费孝通的学者、作家和政治之旅》（知网，《北京师范大学学报(社会科学版)》，2008）",
+     "ok": true
+    },
+    {
+     "reason": "去掉引号再检索题名，确认是否收录该文",
+     "detail": "中文期刊检索（知网、万方、维普）「费孝通上书紫光阁」：2 条候选，最接近《本刊记者附言》（知网，《瞭望周刊》，1989）",
+     "ok": true
+    },
+    {
+     "reason": "用作者姓氏加题名在Crossref再试一次",
+     "detail": "Crossref 检索「费孝通上书紫光阁」（作者 费皖）：5 条候选，最接近《礼治秩序》（费孝通，2016）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D097",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在万方找到题名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 1,
+   "rounds": 2,
+   "tokens": 4013,
+   "ms": 7552,
+   "note": "在中文期刊库按中文标题检索，万方返回一条标题与年份（2019）均吻合的记录，但页面未显示作者信息；另有2023年标题相近的文献。Crossref 未找到对应记录。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按中文标题检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「黑水虻幼虫粉替代鱼粉对黄颡鱼幼鱼生长性能、肌肉品质及血清生化…」：6 条候选，最接近《黑水虻幼虫粉替代鱼粉对黄颡鱼幼鱼生长性能、肌肉品质及血清生化指标的影响》（万方，2019）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "黑水虻幼虫粉替代鱼粉对黄颡鱼幼鱼生长性能、肌肉品质及血清生化指标的影响",
+    "year": 2019,
+    "source": "web",
+    "site": "万方",
+    "url": "https://d.wanfangdata.com.cn/periodical/dwyyxb201906039"
+   }
+  },
+  {
+   "id": "D098",
+   "lang": "zh",
+   "kind": "book",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 3898,
+   "ms": 5716,
+   "note": "已检索中文期刊库与DataCite，仅见往年《中国渔业统计年鉴》的解读类文章，未见2025年版年鉴本身的记录；该书为统计年鉴类出版物，需人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索中文库中是否有该年鉴条目",
+     "detail": "中文期刊检索（知网、万方、维普）「中国渔业统计年鉴」：5 条候选，最接近《《2019中国渔业统计年鉴》》（知网，《世界农业》，2020）",
+     "ok": true
+    },
+    {
+     "reason": "查DataCite是否收录该年鉴记录",
+     "detail": "DataCite 检索「中国渔业统计年鉴 2025」：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D099",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到相近文章，但没有作者信息，不能确认是同一篇，请人工核对",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 4,
+   "tokens": 8955,
+   "ms": 7590,
+   "note": "已在知网/万方范围按中文标题两次检索，仅见主题相近的其他替代鱼粉研究（2020、2021、2023年），未检出该2025年文献；Crossref按标题与作者检索亦无匹配记录。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文标题在知网万方检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「产朊假丝酵母替代鱼粉蛋白对克氏原螯虾幼虾生长性能、抗氧化能力…」：2 条候选，最接近《双低菜粕替代鱼粉对克氏原螯虾幼虾生长性能、抗氧化能力和消化系统组织形态的影响》（知网，《水生生物学报》，2023）",
+     "ok": true
+    },
+    {
+     "reason": "用较短标题片段再查该文是否收录",
+     "detail": "中文期刊检索（知网、万方、维普）「产朊假丝酵母替代鱼粉蛋白对克氏原螯虾幼虾的影响」：2 条候选，最接近《植物蛋白替代鱼粉对克氏原螯虾生长和繁殖的影响》（知网，《水生生物学报》，2020）",
+     "ok": true
+    },
+    {
+     "reason": "在Crossref按中文标题与作者年份再确认一次",
+     "detail": "Crossref 检索「产朊假丝酵母替代鱼粉蛋白对克氏原螯虾幼虾生长性能、抗氧化能力…」（作者 黄莹，2025±1 年）：5 条候选，最接近《功能性丝素蛋白复合材料的紫外屏蔽性能优化研究》（黄志慧，2026）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "双低菜粕替代鱼粉对克氏原螯虾幼虾生长性能、抗氧化能力和消化系统组织形态的影响",
+    "year": 2023,
+    "venue": "水生生物学报",
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/SSWX202312005.html"
+   }
+  },
+  {
+   "id": "D100",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 4,
+   "tokens": 9443,
+   "ms": 7484,
+   "note": "在中文期刊库按原题名及核心词检索，并尝试Crossref作者+标题检索，均未找到与《试析美军数字现代化战略的半导体技术前沿》题名、作者、年份同时吻合的记录，仅见主题相近的其他文章。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按中文标题检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「试析美军数字现代化战略的半导体技术前沿」：5 条候选，最接近《浅析美国在微电子技术创新方面的战略规划布局》（知网，《电子元器件与信息技术》，2023）",
+     "ok": true
+    },
+    {
+     "reason": "用去掉副标题的核心词再检索一次",
+     "detail": "中文期刊检索（知网、万方、维普）「美军数字现代化战略的半导体技术」：5 条候选，最接近《美国国防部数字现代化战略与联合信息环境的综合研究》（万方，2021）",
+     "ok": true
+    },
+    {
+     "reason": "用作者姓与标题词在Crossref补充检索",
+     "detail": "Crossref 检索「半导体技术前沿 美军数字现代化战略」（作者 赖凡）：5 条候选，最接近《供热企业生产体系优化与节能技术探索》（刘云凡，2025）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D101",
+   "lang": "zh",
+   "kind": "book",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 4123,
+   "ms": 6479,
+   "note": "已用 DataCite 和中文期刊库检索《中国高技术产业统计年鉴2024》，均未找到匹配条目；该文献为统计年鉴类图书，不在这些数据库覆盖范围内，需人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "查找该统计年鉴是否被数据仓储收录",
+     "detail": "DataCite 检索「中国高技术产业统计年鉴 2024」：4 条候选，最接近《weijian/2026-USCAP-AI-Pathology-Report: …》（Jan，2026）",
+     "ok": true
+    },
+    {
+     "reason": "在中文库中查找该年鉴条目",
+     "detail": "中文期刊检索（知网、万方、维普）「中国高技术产业统计年鉴2024」：3 条候选，最接近《中国高技术行业全要素生产率增长的测算和分解》（知网，2021）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D102",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 1,
+   "rounds": 2,
+   "tokens": 3830,
+   "ms": 4416,
+   "note": "在中文期刊库按中文标题检索，找到一条标题与年份均与引文一致、来源为《科技导报》2024年的条目，但该页面未显示作者信息，无法核对作者丁如。Crossref 检索未获匹配结果。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按中文标题检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「美国芯片补贴“护栏条款”对中国的影响及应对建议」：7 条候选，最接近《美国芯片补贴“护栏条款”对中国的影响及应对建议》（知网，《科技导报》，2024）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "美国芯片补贴“护栏条款”对中国的影响及应对建议",
+    "year": 2024,
+    "venue": "科技导报",
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/KJDB202417003.html"
+   }
+  },
+  {
+   "id": "D103",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 1,
+   "rounds": 2,
+   "tokens": 3705,
+   "ms": 4259,
+   "note": "在中文期刊库检索到标题、期刊《软科学》与2023年均吻合的条目（知网、万方、维普均有页面），但页面未显示作者，无法核对作者字段。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库检索该标题，核对作者与年份",
+     "detail": "中文期刊检索（知网、万方、维普）「社会脆弱性问题研究进展评述与展望」：4 条候选，最接近《社会脆弱性问题研究进展评述与展望》（知网，《软科学》，2023）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "社会脆弱性问题研究进展评述与展望",
+    "year": 2023,
+    "venue": "软科学",
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/XUXI202309018.html"
+   }
+  },
+  {
+   "id": "D104",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 4,
+   "tokens": 9090,
+   "ms": 7457,
+   "note": "已在中文期刊库（知网/维普）按标题及副标题关键词检索，并在Crossref按中文标题加作者检索，均未找到与冯慧、付国伟2023年《学习论坛》该文匹配的记录，仅见主题相近的其他老旧小区治理文章。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库检索该文标题以核对作者与年份",
+     "detail": "中文期刊检索（知网、万方、维普）「城市老旧小区治理：现实梗阻与未来路向」：5 条候选，最接近《城市老旧小区治理困境及对策研究》（知网，《经营管理者》，2024）",
+     "ok": true
+    },
+    {
+     "reason": "用副标题关键词再检索一次以定位原文",
+     "detail": "中文期刊检索（知网、万方、维普）「基于利益博弈视角的城市老旧小区治理」：1 条候选，最接近《基于演化博弈的老旧小区改造利益协调及仿真分析》（知网，《沈阳建筑大学学报(社会科学版)》，2025）",
+     "ok": true
+    },
+    {
+     "reason": "在Crossref按中文标题与作者再核对一次",
+     "detail": "Crossref 检索「城市老旧小区治理 现实梗阻与未来路向 利益博弈」（作者 冯慧，2023±1 年）：5 条候选，最接近《基于生态水利设计理念的城市河道治理工程》（叶仁政, 严佳慧，2023）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D105",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 4,
+   "tokens": 9166,
+   "ms": 6881,
+   "note": "已在中文期刊库（知网/万方/维普）按原题检索，仅见主题相近但标题、年份均不符的文章；Crossref 以作者加关键词检索亦无匹配记录。未找到与所引标题、作者、年份一致的条目，建议到知网/万方进一步核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库检索该标题，确认作者与年份是否吻合",
+     "detail": "中文期刊检索（知网、万方、维普）「城乡结合部老旧社区的嵌入式治理」：4 条候选，最接近《城乡结合部转型社区治理中政府角色的困境与调适》（万方，2016）",
+     "ok": true
+    },
+    {
+     "reason": "用作者姓氏加标题关键词在Crossref再查一次",
+     "detail": "Crossref 检索「嵌入式治理 城乡结合部老旧社区」（作者 戴祥玉）：5 条候选，最接近《马克思主义中国化与中国传统治理智慧融合下的城市社区治理模式创新研究》（王玉彦，2025）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex再确认该中文标题是否有对应记录",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "D106",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 6689,
+   "ms": 6586,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文标题在知网/万方检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「煤岩单轴压缩破坏声发射轻量化三维卷积预测模型研究」：4 条候选，最接近《单轴压缩下典型煤岩破坏的声发射特征研究》（知网，《地下空间与工程学报》，2023）",
+     "ok": true
+    },
+    {
+     "reason": "用作者与年份在Crossref缩小检索该中文论文",
+     "detail": "Crossref 检索「煤岩单轴压缩破坏声发射轻量化三维卷积预测模型研究」（作者 赵毅鑫，2022±1 年）：5 条候选，最接近《Research on Stock Forecasting Based on L…》（王鑫，2022）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex按标题检索该文记录",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "去掉副标题式修饰，用核心词再查中文库",
+     "detail": "中文期刊检索（知网、万方、维普）「煤岩单轴压缩破坏声发射三维卷积预测模型」：4 条候选，最接近《煤样压缩破坏过程的声发射试验》（万方，2006）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "D107",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "outcome": "unchanged",
+   "toolCalls": 2,
+   "rounds": 2,
+   "tokens": 4256,
+   "ms": 4690,
+   "note": "在中文期刊库检索到标题、年份与期刊均吻合的条目（作者信息未显示），Crossref 英文标题检索未找到对应记录。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库检索该中文标题，核对作者与年份。",
+     "detail": "中文期刊检索（知网、万方、维普）「基于9种机器学习算法的岩爆预测研究」：2 条候选，最接近《基于9种机器学习算法的岩爆预测研究》（知网，《岩石力学与工程学报》，2020）",
+     "ok": true
+    },
+    {
+     "reason": "用英文标题在Crossref检索该文的英文版本记录。",
+     "detail": "Crossref 检索「Rockburst prediction based on …」（作者 Tang，2020±1 年）：5 条候选，最接近《Airline Flight Delay Prediction Using Ma…》（Tang Y，2021）",
+     "ok": true
+    }
+   ],
+   "candidate": {
+    "title": "基于9种机器学习算法的岩爆预测研究",
+    "year": 2020,
+    "venue": "岩石力学与工程学报",
+    "source": "web",
+    "site": "知网",
+    "url": "https://read.cnki.net/web/Journal/Article/YSLX202004011.html"
+   }
+  },
+  {
+   "id": "D108",
+   "lang": "zh",
+   "kind": "journal",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 7461,
+   "ms": 10902,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "在中文期刊库按中文标题检索该文",
+     "detail": "中文期刊检索（知网、万方、维普）「基于时间序列与长短时记忆网络的滑坡位移动态预测模型」：5 条候选，最接近《基于时间序列和CNN-LSTM的滑坡位移动态预测》（维普，《国外电子测量技术》，2022）",
+     "ok": true
+    },
+    {
+     "reason": "用中文标题加作者年份在Crossref再查一次",
+     "detail": "Crossref 检索「基于时间序列与长短时记忆网络的滑坡位移动态预测模型」（作者 杨背背，2018±1 年）：5 条候选，最接近《基于时间序列分解和多变量混沌模型的滑坡阶跃式位移预测》（黄发明, 殷坤龙 等，2018）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex按中文标题查该文记录",
+     "detail": "OpenAlex 检索次数已用完，本次未执行",
+     "ok": false
+    },
+    {
+     "reason": "在DataCite补充检索该中文标题记录",
+     "detail": "DataCite 检索「基于时间序列与长短时记忆网络的滑坡位移动态预测模型」：5 条候选，最接近《长将(长照)图理论x负空间x飞空间》（习砲子8964，2026）",
+     "ok": true
+    }
+   ]
+  }
+ ]
+}

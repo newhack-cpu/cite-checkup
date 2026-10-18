@@ -66,7 +66,8 @@ export function formatGbt(rec: WorkRecord): string {
   if (type === "C") {
     s += `${rec.venue ? "//" + rec.venue + ". " : ""}${rec.year ?? ""}${rec.pages ? ": " + rec.pages : ""}.`;
   } else {
-    const vol = rec.volume ? `, ${rec.volume}${rec.issue ? `(${rec.issue})` : ""}` : "";
+    // 中文期刊常只有期号：“民俗研究, 1997(1): 16-34.”
+    const vol = rec.volume ? `, ${rec.volume}${rec.issue ? `(${rec.issue})` : ""}` : rec.issue ? `(${rec.issue})` : "";
     s += `${rec.venue ?? ""}${rec.venue ? ", " : ""}${rec.year ?? ""}${vol}${rec.pages ? ": " + rec.pages : ""}.`;
   }
   if (rec.doi) s += ` DOI: ${rec.doi}.`;
