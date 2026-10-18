@@ -5,16 +5,19 @@
 | 文件 | 用途 |
 |---|---|
 | `OFFICIAL_REQUIREMENTS.md` | 2026-10-14 实时核对的官方材料要求及评分口径 |
-| `output/pdf/引用体检-技术说明.pdf` | 2026-10-17 版，14 页：加入 AI 检索 Agent、拍照 / 截图识别、隐藏提示词检测、开放全文 + 混合检索和 MCP，“相近候选”单列；逐页验收见 `eval/results/technical-pdf-2026-10-17/` |
+| `output/pdf/引用体检-技术说明.pdf` | 2026-10-17 晚版，14 页（加入第五批盲测、AI 辅助解析对照和 Agent 中文重测）：加入 AI 检索 Agent、拍照 / 截图识别、隐藏提示词检测、开放全文 + 混合检索和 MCP，“相近候选”单列；逐页验收见 `eval/results/technical-pdf-2026-10-17/` |
 | `technical-report.html` | 自含 HTML 阅读/编辑源；修改后需另存，浏览器改动不会自动回写 JSON |
 | `technical-content.json` | 结构化正式内容源；应从此修改内容后重新构建 PDF/HTML |
 | `build_technical_report.py` | 使用 ReportLab 的本地构建脚本，不调用模型或网络 |
 | `validate_technical_report.py` | Poppler 渲染与页面 / 文本 / 页码检查，结果写入 `eval/results/technical-pdf-<日期>/`，不覆盖旧版验收；视觉验收另行实际查看 |
 | `narration.json` | 2026-10-16 重写，当晚删到约 1700 字：10 章、约 7 分 35 秒的普通话讲解稿与动作，由本人录制 |
 | `DEMO_SCRIPT.md` | 正式约 7 分 35 秒分镜、4 分钟快版、录制前逐项准备的演示输入和异常分支 |
+| `VIDEO_PROMPT.md` | 交给 GPT 重做正式视频的任务说明（真实运行、讲稿与画面一致、字幕、验收），视频前的改动提交后再用 |
+| `TRIAL_GUIDE.md` | 请老师试用的指南：启动方式、三分钟讲解、试用流程和记录表 |
 | `DEFENSE_QA.md` | 如实说明技术价值、范围和局限的答辩问答 |
 | `SUBMISSION_CHECKLIST.md` | 正式提交前需本人补充/核对的事项 |
-| `REVIEW.md` | 10-14 的 73/100 模拟复评和扣分依据；之后加入的功能未重新评分，不是官方成绩 |
+| `REVIEW-2026-10-17.md` | 当前版本 81/100 模拟复评：重新核实 Agent / 全文检索 / Vision / MCP、工程与页面，并区分旧盲测和新回放；不是官方成绩 |
+| `REVIEW.md` | 保留 10-14 的 73/100 历史模拟复评；当时的功能缺项不代表当前版本 |
 | `output/video/引用体检-完整演示-1080p.mp4` | 10-14 旧版成片（6 分 39 秒、1080p、合成解说），不含之后的新功能，需按新讲稿重录 |
 | `output/video/video-verification.json` | 视频规格、源片段、实际失败记录与导出验收 |
 | `media/` | 由主执行者维护的实际录屏、旁白和最终视频，按各自验证记录确认 |
@@ -27,4 +30,4 @@ python docs/competition/build_technical_report.py
 
 使用 Python 包 `reportlab` 和本机 Windows 字体（宋体、黑体）。最终 PDF 已生成后，阅读不依赖 Python 或本机字体。内容源更新后必须重新构建并通过实际页面渲染验收；不能只检查脚本退出码。
 
-最终验证与模拟复评分位于项目的 `eval/phase-two-2026-10-14/competition/`。最初的 48/100 评分是修改前版本；最终复评独立保存，不覆盖旧证据，也不构成官方成绩或获奖预测。
+当前复评证据位于项目的 `eval/review-2026-10-17/`，页面截图位于 `output/playwright/review-2026-10-17/`。10-14 的验证与模拟评分保留在 `eval/phase-two-2026-10-14/competition/`；最初的 48/100、10-14 的 73/100 与当前 81/100 均对应各自版本，不覆盖旧证据，也不构成官方成绩或获奖预测。

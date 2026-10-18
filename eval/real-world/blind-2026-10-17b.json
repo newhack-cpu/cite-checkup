@@ -1,0 +1,1088 @@
+{
+ "name": "blind-2026-10-17b",
+ "description": "盲测集：与 dev、test 来自不同论文和不同的出版社组合；抽样后、规则定稿前不查看条目，只运行一次",
+ "createdAt": "2026-10-17T14:16:06.051Z",
+ "method": "Crossref /works?filter=member 或 prefix,has-references:true,from-pub-date:2023-01-01,type:journal-article&sample=40，按出版社各抽若干篇已发表论文（排除已有集合用过的源论文），每篇随机取至多 2 条 unstructured 原文。所有条目都出自已发表论文，视为真实存在的文献。",
+ "cases": [
+  {
+   "id": "B001",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.epidem.2024.100807",
+   "raw": "Ding, Y., Agrawal, S.K., Cao, J., Meyers, L., Hasenbein, J.J., 2021. Surveillance testing for rapid detection of outbreaks in facilities. arXiv:211000170 [q-bio, stat] [Internet]. [cited 2022 Jan 7]; Available from: 〈http://arxiv.org/abs/2110.00170〉.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B002",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.epidem.2024.100807",
+   "raw": "R Core Team, 2022. R: A Language and Environment for Statistical Computing [Internet]. R Foundation for Statistical Computing, Vienna, Austria. Available from: 〈https://www.R-project.org/〉.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B003",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.flatc.2024.100691",
+   "raw": "J. Mahmood, E.K. Lee, M. Jung, D. Shin, I.Y. Jeon, S.M. Jung, H.J. Choi, J.M. Seo, S.Y. Bae, S.D. Sohn, N. Park, J.H. Oh, H.J. Shin, J.B. Baek, Nitrogenated holey two-dimensional structures, Nat Comm 2015 6:1 6 (2015) 1–7. https://doi.org/10.1038/ncomms7486.",
+   "assertedDoi": "10.1038/ncomms7486",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B004",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.flatc.2024.100691",
+   "raw": "Q.S. Du, P.D. Tang, H.L. Huang, F.L. Du, K. Huang, N.Z. Xie, S.Y. Long, Y.M. Li, J.S. Qiu, R.B. Huang, A new type of two-dimensional carbon crystal prepared from 1,3,5-trihydroxybenzene, Scientific Reports 2017 7:1 7 (2017) 1–11. https://doi.org/10.1038/srep40796.",
+   "assertedDoi": "10.1038/srep40796",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B005",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.ijdrr.2022.103486",
+   "raw": "NFPA, Fire loss in the Unitied States during 2020, 2021.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B006",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.ijdrr.2022.103486",
+   "raw": "The Firefighter Mayday Project, 2022. https://www.brandweermaninnood.be/. (Accessed 21 November 2022).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B007",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.prerep.2025.100045",
+   "raw": "International Diabetes Federation. (2021). IDF Diabetes Atlas (10th ed.). 〈https://diabetesatlas.org/idfawp/resource-files/2021/07/IDF_Atlas_10th_Edition_2021.pdf〉 (accessed 15 May 2024).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B008",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.eururo.2024.11.028",
+   "raw": "Lopategui DM, Blachman-Braun R, Porto JG, Bhatia A, Marcovich R, Shah HN. Does severity of chronic urinary retention as estimated by preoperative residual urine estimation negatively impact the outcome of holmium laser enucleation of the prostate? Urology. In press. https://doi.org/10.1016/j.urology.2024.08.043.",
+   "assertedDoi": "10.1016/j.urology.2024.08.043",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B009",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.cemconres.2025.107856",
+   "raw": "B. Shapiro, K. Dormer, I.B. Rutel, A two-magnet system to push therapeutic nanoparticles, in: AIP Conf Proc, NIH Public Access, 2010: p. 77.",
+   "assertedDoi": "10.1063/1.3530064",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B010",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.jposna.2025.100252",
+   "raw": "Baig M. A review of epidemiological distribution of different types of fractures in paediatric age. Cureus. 2017:9(8):e1624. doi:10.7759/cureus.1624.",
+   "assertedDoi": "10.7759/cureus.1624",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B011",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.jcorpfin.2025.102932",
+   "raw": "Nikolova, S.S., Wang, L., 2024. Corporate bond flipping. Working Paper.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B012",
+   "group": "Elsevier",
+   "sourcePaper": "10.1016/j.jcorpfin.2025.102932",
+   "raw": "Cohen, L., Gurun, U.G., Nguyen, Q., 2024. The ESG - Innovation disconnect: Evidence from green patenting. Working Paper.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B013",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s11259-025-10926-2",
+   "raw": "Öner-İyidoğan Y, Koçak H (2025) Interaction of fetuin-A with obesity related insulin resistance and diabetes mellitus. Turk J Biochem 50:170–182. https://doi.org/10.1515/tjb-2024-0235",
+   "assertedDoi": "10.1515/tjb-2024-0235",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B014",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s11259-025-10926-2",
+   "raw": "Counotte G, Durham A, Vandendriessche V, Wollenberg van den L (2022) Haptoglobin, Magnesium, Adiponectin, and leptin as biomarkers for obesity and insulin dysregulation in horses. Int J Equine Sci 1:3–10. https://doi.org/10.64292/ijes.14",
+   "assertedDoi": "10.64292/ijes.14",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B015",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1038/s41598-025-07508-2",
+   "raw": "Rha, D. W., Yi, K. H., Park, E. S., Park, C. & Kim, H. J. Intramuscular nerve distribution of the hamstring muscles: Application to treating spasticity. Clin. Anat. 29(6), 746–751 (2016).",
+   "assertedDoi": "10.1002/ca.22735",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B016",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1038/s41598-025-07508-2",
+   "raw": "Rosales, R. L. et al. Botulinum toxin injection for hypertonicity of the upper extremity within 12 weeks after stroke: A randomized controlled trial. Neurorehabil. Neural Repair 26(7), 812–821 (2012).",
+   "assertedDoi": "10.1177/1545968311430824",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B017",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s11248-025-00446-9",
+   "raw": "Sharma VK, Marla S, Zheng W et al (2022) CRISPR guides induce gene silencing in plants in the absence of Cas. Genome Biol 23:6. https://doi.org/10.1186/s13059-021-02586-7",
+   "assertedDoi": "10.1186/s13059-021-02586-7",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B018",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s11248-025-00446-9",
+   "raw": "Subburaj S, Chung SJ, Lee C et al (2016) Site-directed mutagenesis in Petunia × hybrida protoplast system using direct delivery of purified recombinant Cas9 ribonucleoproteins. Plant Cell Rep 35:1535–1544. https://doi.org/10.1007/s00299-016-1937-7",
+   "assertedDoi": "10.1007/s00299-016-1937-7",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B019",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s42773-023-00266-2",
+   "raw": "Chang J, Zang S, Liang W, Wu D, Lian Z, Xu F, Jiang K, Gao Z (2021) Enhanced faradic activity by construction of p-n junction within reduced graphene oxide@cobalt nickel sulfide@nickle cobalt layered double hydroxide composite electrode for charge storage in hybrid supercapacitor. J Colloid Interface Sci 590:114–124. https://doi.org/10.1016/j.jcis.2021.01.035",
+   "assertedDoi": "10.1016/j.jcis.2021.01.035",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B020",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s42773-023-00266-2",
+   "raw": "Toma FM, Sartorel A, Iurlo M, Carraro M, Rapino S, Hoober-Burkhardt L, Da Ros T, Marcaccio M, Scorrano G, Paolucci F et al (2011) Tailored functionalization of carbon nanotubes for electrocatalytic water splitting and sustainable energy applications. Chemsuschem 4:1447–1451. https://doi.org/10.1002/cssc.201100089",
+   "assertedDoi": "10.1002/cssc.201100089",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B021",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s11205-023-03302-7",
+   "raw": "Pereznieto, P., & Taylor, G. (2014). A review of approaches and methods to measure economic empowerment of women and girls. Gender & Development, 22(2), 233–251. https://doi.org/10.1080/13552074.2014.920976",
+   "assertedDoi": "10.1080/13552074.2014.920976",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B022",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s11205-023-03302-7",
+   "raw": "Jaini, N. I., & Utyuzhnikov, S. V. (2016). Critical criterion analysis for multi-criteria decision making. International Journal of Applied Physics and Mathematics, 6(3), 129.",
+   "assertedDoi": "10.17706/ijapm.2016.6.3.129-137",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B023",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s00467-025-07010-x",
+   "raw": "Basu RK, Kaddourah A, Terrell T, Mottes T, Arnold P, Jacobs J et al (2015) Assessment of worldwide acute kidney injury, renal angina and epidemiology in critically Ill children (AWARE): A prospective study to improve diagnostic precision. J Clin Trials 5:222",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B024",
+   "group": "Springer Nature",
+   "sourcePaper": "10.1007/s00467-025-07010-x",
+   "raw": "Farillas ELF, Dator MA (2025) Acute kidney injury in children and adolescents admitted for pneumonia in the Philippines. Pediatr Nephrol. https://doi.org/10.1007/s00467-025-06899-8",
+   "assertedDoi": "10.1007/s00467-025-06899-8",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B025",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/ls.1733",
+   "raw": "Y.Bertrand “Development of a Low Viscosity Insulating Fluid Based on Vegetable Oil ”(2012). 2012 IEEE Int. Symp. Electr. Insul. 413–8 https://doi.org/10.1109/ELINSL.2012.6251501.",
+   "assertedDoi": "10.1109/ELINSL.2012.6251501",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B026",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/ls.1733",
+   "raw": "S.Amsavahini S.Janani andG.Monisha “Thermo‐physcial Properties and Characterization of TiO2based Nanofluid Blended withMoringa oleiferaOil ”(2021). PREPRINT (Version 1) available at Research Square https://doi.org/10.21203/rs.3.rs‐545467/v1.",
+   "assertedDoi": "10.21203/rs.3.rs-545467/v1",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B027",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/ps.70881",
+   "raw": "XuS ZhengS XuW XuR WangC ZhangJet al. HCF‐net: hierarchical context fusion network for infrared small object detection. arXiv preprint arXiv:2403.10778(2024).",
+   "assertedDoi": "10.1109/ICME57554.2024.10687431",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B028",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/ps.70881",
+   "raw": "CelikkanE KunzmannT YeskaliyevY ItzerottS KleinNandHeroldM WeedsGalore: a multispectral and multitemporal UAV‐based dataset for crop and weed segmentation in agricultural maize fields. arXiv preprint arXiv:2502.13103(2025).",
+   "assertedDoi": "10.1109/WACV61041.2025.00467",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B029",
+   "group": "Wiley",
+   "sourcePaper": "10.1111/iwj.70717",
+   "raw": "M.Kohl “MKpower: Power Analysis and Sample Size Calculation ”2024 https://github.com/stamats/MKpower.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B030",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/job.70126",
+   "raw": "Spielberger G. F. M.Artinger J.Reb andR.Kerschreiter.2025. “Retrieval Augmented Generation for Topic Modeling in Organizational Research: An Introduction With Empirical Demonstration.” arXiv preprint arXiv: 2502.20963.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B031",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/job.70126",
+   "raw": "US Bureau of Labor Statistics.2025. “Employment Projections.”https://www.bls.gov/emp/tables/civilian‐labor‐force‐summary.htm.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B032",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/agm2.12247",
+   "raw": "World Population Ageing: 2020 Highlights. p. 3.2020.https://www.un.org/development/desa/pd/news/world‐population‐ageing‐2020‐highlights. Accessed January 21 2021",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B033",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/oto2.70257",
+   "raw": "Side effects of radiation therapy: radiation effects on body. American Cancer Society. December 10 2020. Retrieved April 26 2022.https://www.cancer.org/treatment/treatments-and-side-effects/treatment-types/radiation/effects-on-different-parts-of-body.html",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B034",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/ecs2.70602",
+   "raw": "Giacomuzzo E. T.Peller I.Gounand S.Kaeser andF.Altermatt.2026.“Connectivity via Resource Flows Interacts with Ecosystem Size and Disturbance to Affect Meta‐Ecosystem Function.”Zenodo.https://doi.org/10.5281/zenodo.18200085",
+   "assertedDoi": "10.22541/au.174838308.83955900/v1",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B035",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/ecs2.70602",
+   "raw": "Lenth R. V.2024.“emmeans: Estimated Marginal Means aka Least‐Squares Means.”",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B036",
+   "group": "Wiley",
+   "sourcePaper": "10.1002/ajim.23574",
+   "raw": "KnegtP. The fruit machine: why every Canadian should learn about this country's ‘gay purge.CBC News. 2018.https://www.cbc.ca/arts/the-fruit-machine-why-every-canadian-should-learn-about-this-country-s-gay-purge-1.4678718",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B037",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/01987429241228505",
+   "raw": "U.S. Department of Education. (2021). 43rd annual report to Congress on the implementation of the Individuals with Disabilities Education Act. https://sites.ed.gov/idea/files/43rd-arc-for-idea.pdf",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B038",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/01987429241228505",
+   "raw": "Christofferson M., Sullivan A. L. (2015). Preservice teachers’ classroom management training: A survey of self-reported training experiences, content coverage, and preparedness. Psychology in the Schools, 52(3), 248–264. https://doi.org/10.1002/pits",
+   "assertedDoi": "10.1002/pits.21819",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B039",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/24731242261451644",
+   "raw": "Team SBE. CPGR. CPGR; 2025. Available from: https://www.cpgr.org.za/precision-medicine-genomics-south-africa-cpgr/",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B040",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/24731242261451644",
+   "raw": "allAfrica.com. Africa: Catalysing precision medicine by Africa for Africa. 2023. Available from: https://allafrica.com/stories/202311270335.html",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B041",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/13634607261460984",
+   "raw": "National Bureau of Statistics of China (2024) Jiangsu economic report 2024. Available at: https://www.stats.gov.cn/sj/zxfb/202412/t20241226_1957890.html (Accessed: 26 January 2025).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B042",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/13634607261460984",
+   "raw": "Jiangsu Government (2024) Jiangsu population and urbanization rate report. Available at: https://www.js.gov.cn (Accessed: 26 January 2025).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B043",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/19345798251325496",
+   "raw": "Ely DM, Driscoll AK. Infant mortality inthe United States: Provisional data fromthe 2022 period linked birth/infant deathfile. National Center for Health Statistics. Vital Statistics Rapid Release. Hyattsville, MD: National Center for Health Statistics, 2023, 33. https://doi.org/10.15620/cdc:133699",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B044",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/19345798251325496",
+   "raw": "Centers for disease control and prevention NC for HS. National vital statistics system linked birth/infant deaths on CDC WONDER online database. Data are from the linked birth/infant deaths records 2007-2022 as compiled from data provided by the 57 vital statistics jurisdictions. https://wonder.cdc.gov/lbd-current.html",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B045",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/15311074261428661",
+   "raw": "Misuraca L, , Natali F, , Da Silva L, et al. Mobility of a mononucleotide within a lipid matrix: A neutron scattering study. Life (Basel) 2017;7(1):2.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B046",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/15311074261428661",
+   "raw": "Damer BF. The Hot Spring Hypothesis for the Origin of Life and the Extended Evolutionary Synthesis; 2019. Available from: http://extendedevolutionarysynthesis.com/the-hot-spring-hypothesis-for-the-origin-of-life-and-the-extended-evolutionary-synthesis/ [Last accessed: June8 2025].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B047",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/17543371261416022",
+   "raw": "Kidd MD. Bicycle chain efficiency. Edinburgh: Heriot-Watt University Edinburgh, 2000.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B048",
+   "group": "SAGE",
+   "sourcePaper": "10.1177/17543371261416022",
+   "raw": "Friction Facts. Effects of lateral chain misalignment (cross-chaining) on drivetrain efficiency & effects of chainring size on drivetrain efficiency. Internal report (OUP). Friction facts 2015.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B049",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s0212610925100864",
+   "raw": "Pfister, U. (2017) Great divergence, consumer revolution and reorganization of textile markets: Evidence from Hamburg’s import trade, eighteenth century. London School of Economics and Political Science Working papers 206.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B050",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s0212610925100864",
+   "raw": "Weber, A. (2008) Relações Comerciais E Acumulação Mercantil: Portugal, Hamburgo E Brasil Entre a Colônia E a Nação. [unpub. Ph.D]. USP.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B051",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s0022226724000306",
+   "raw": "McDonald, Brittany . 2021. The interactional structure of nominals: an investigation of paranouns. Calgary: University of Calgary, MA thesis.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B052",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s0022226724000306",
+   "raw": "Ritter, Elizabeth and Wiltschko, Martina . 2021. Grammar constrains the way we talk to ourselves. In Hernández, Angelica and Plyley, Chris , (eds.), Proceedings of the 2021 Annual Conference of the Canadian Linguistic Association. http://cla-acl.ca/ https://cla-acl.ca/pdfs/actes-2021/Ritter_and_Wiltschko-Grammar_constrains_the_way_we_talk_to_ourselves.pdf",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B053",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1007/s11336-022-09883-5",
+   "raw": "OECD. (2017). PISA 2015 technical report. OECD Publishing.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B054",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1007/s11336-022-09883-5",
+   "raw": "R Core Team. (2021). R: A language and environment for statistical computing. https://www.R-project.org/",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B055",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/psrm.2025.33",
+   "raw": "Orejel, K (2017) Why Trump won rural America. https://www.dissentmagazine.org/online_articles/rural-vote-trump-economy-manufacturing/.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B056",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/ash.2025.64",
+   "raw": "20. U.S. Department of Health and Human Services Food and Drug Administration Center for Drug Evaluation and Research (CDER). Hospital-acquired bacterial pneumonia and ventilator-associated bacterial pneumonia: developing drugs for treatment. June 2020, posting date. https://www.fda.gov/drugs/guidance-compliance-regulatory-information/guidances-drugs.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B057",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/sjp.2026.10038",
+   "raw": "Wujec, T. (2010). Build a tower, build a team [Video]. TED Conferences https://www.ted.com/talks/tom_wujec_build_a_tower_build_a_team",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B058",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s0031182025100589",
+   "raw": "Rambaut, A (2012) FigTree v1.4. Molecular evolution, phylogenetics and epidemiology website: http://tree.bio.ed.ac.uk (accessed 19 November 2024 ).",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B059",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/wet.2023.22",
+   "raw": "Heap, I (2022) The international survey of herbicide-resistant weeds. www.weedscience.org. Accessed: April 6, 2022",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B060",
+   "group": "Cambridge University Press",
+   "sourcePaper": "10.1017/s0003055424000753",
+   "raw": "Robertson, Jeffrey . 2021. “In a Changing Region, Australia’s Relationship with South Korea Has Been Ignored for too Long.” The Conversation, December 13.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B061",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/v16050749",
+   "raw": "Mariggiò, G., and Koch, S. (2017). Kaposi Sarcoma Herpesvirus (KSHV) Latency-Associated Nuclear Antigen (LANA) recruits components of the MRN (Mre11-Rad50-NBS1) repair complex to modulate an innate immune signaling pathway and viral latency. PLoS Pathog., 13.",
+   "assertedDoi": "10.1371/journal.ppat.1006335",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B062",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/v16050749",
+   "raw": "Serfecz, J.C., Hong, Y., and Gay, L.A. (2022). DExD/H Box Helicases DDX24 and DDX49 Inhibit Reactivation of Kaposi’s Sarcoma Associated Herpesvirus by Interacting with Viral mRNAs. Viruses, 14.",
+   "assertedDoi": "10.3390/v14102083",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B063",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/machines11030401",
+   "raw": "Du, J. (2010). Investigation on Unsteady Mechanism of a Transonic Compressor/Fan Rotor Tip Leakage Flow, Institute of Engineering Thermophysics, Chinese Academy of Sciences.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B064",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/machines11030401",
+   "raw": "Camp, T.R., and Day, I.J. (1997). A Study of Spike and Modal Stall Phenomena in a Low-Speed Axial Compressor, American Society of Mechanical Engineers.",
+   "assertedDoi": "10.1115/97-GT-526",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B065",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/fermentation11030138",
+   "raw": "Zheng, D.W. (2022). Study on Microbial Community and Functional Genes Diversity in Starters of Huangjiu Based on Metagenomic Approach. [Master’s Thesis, Shanghai Institute of Technology].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B066",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/fermentation11030138",
+   "raw": "Wang, K., Wu, H.J., Wang, J.X., and Ren, Q. (2023). Microbiota Composition during Fermentation of Broomcorn Millet Huangjiu and Their Effects on Flavor Quality. Foods, 12.",
+   "assertedDoi": "10.3390/foods12142680",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B067",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/min13101245",
+   "raw": "Zhou, B., Li, Z., and Chen, C. (2017). Global potential of rare earth resources and rare earth demand from clean technologies. Minerals, 7.",
+   "assertedDoi": "10.3390/min7110203",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B068",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/min13101245",
+   "raw": "Luo, X., Zhang, Y., Zhou, H., He, K., Luo, C., Liu, Z., and Tang, X.K. (2022). Review on the development and utilization of ionic rare earth ore. Minerals, 12.",
+   "assertedDoi": "10.3390/min12050554",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B069",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/buildings13030588",
+   "raw": "Zhang, L.Y. (2019). Study on Damage Mechanical Behavior of Wire-Ring Net under Repeated Impacts. [Bachelor’s Thesis, Southwest Jiaotong University].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B070",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/buildings13030588",
+   "raw": "Livermore Software Technology Corporation (2005). LSTC LS-DYNA R7.1 Keyword User’s Manual Vol I, Livermore Software Technology Corporation.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B071",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/ijms27062809",
+   "raw": "Camarda, L., Budriesi, R., Corazza, I., Frosini, M., Marzetti, C., and Mattioli, L.B. (2026). Antioxidant and Health-Related Effects of Tannins: From Agri-Food By-Products to Human and Animal Health. Antioxidants, 15.",
+   "assertedDoi": "10.3390/antiox15010104",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B072",
+   "group": "MDPI",
+   "sourcePaper": "10.3390/ijms27062809",
+   "raw": "Njie, E.G., Boelen, E., Stassen, F.R., Steinbusch, H.W., Borchelt, D.R., and Streit, W.J. (2012). Ex Vivo Cultures of Microglia from Young and Aged Rodent Brain Reveal Age-Related Changes in Microglial Function. Neurobiol. Aging, 33.",
+   "assertedDoi": "10.1016/j.neurobiolaging.2010.05.008",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B073",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0349085",
+   "raw": "Yun S, Han D, Oh SJ, Chun S, Choe J, Yoo Y. CutMix: Regularization strategy to train strong classifiers with localizable features. Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV); 2019. p. 6023–32.",
+   "assertedDoi": "10.1109/ICCV.2019.00612",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B074",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0349085",
+   "raw": "Chen J, Li B, Xue X. Scene text telescope: text-focused scene image super-resolution. Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR); 2021. p. 12021–30.",
+   "assertedDoi": "10.1109/CVPR46437.2021.01185",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B075",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pcbi.1014325",
+   "raw": "Kaboudian A, Cherry E, Fenton F. GPU Load Balancing Using Sparse Cartesian Grids: Making Interactive WebGL Simulations of Complex Ionic Models Even Faster on 3D Heart Structures. In: Computing in Cardiology Conference (CinC), 2023. https://doi.org/10.22489/cinc.2023.136",
+   "assertedDoi": "10.22489/CinC.2023.136",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B076",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pcbi.1014325",
+   "raw": "CGAL 4.11 - Manual: Package Overview. https://doc.cgal.org/4.11/Manual/packages.html",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B077",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0293588",
+   "raw": "Altindag DT, Filiz E, Tekin E. Is Online Education Working? Cambridge, MA: National Bureau of Economic Research; 2021. http://www.nber.org/papers/w29113.pdf.",
+   "assertedDoi": "10.3386/w29113",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B078",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0293588",
+   "raw": "Strzelecki A. To use or not to use ChatGPT in higher education? A study of students’ acceptance and use of technology. https://doiorg/101080/1049482020232209881.023.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B079",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pcbi.1013916",
+   "raw": "Tong A, Huang J, Wolf G, Van Dijk D, Krishnaswamy S. TrajectoryNet: A dynamic optimal transport network for modeling cellular dynamics. In: International Conference on Machine Learning. 2020. p. 9526–36.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B080",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pcbi.1013916",
+   "raw": "Kidger P, Foster J, Li X, Lyons TJ. Neural SDEs as infinite–dimensional GANs. In: International Conference on Machine Learning. PMLR; 2021. p. 5453–63.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B081",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0359889",
+   "raw": "Kumar R, Khanna R, Goyal V. A review of literature on word sense disambiguation. 2012.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B082",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0359889",
+   "raw": "Devlin J, Chang MW, Lee K, Toutanova K. BERT: Pre-training of deep bidirectional transformers for language understanding. arXiv. 2019. doi: 10.48550/arXiv.1810.04805",
+   "assertedDoi": "10.18653/v1/N19-1423",
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B083",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0304867",
+   "raw": "Ministry of Agriculture, Forestry and Fisheries of Japan, 2018. Application of ICT devises in livestock section [Cited 2023 July 14]. Available from: https://www.maff.go.jp/j/chikusan/sinko/lin/l_katiku/attach/pdf/index-24.pdf.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B084",
+   "group": "PLOS",
+   "sourcePaper": "10.1371/journal.pone.0304867",
+   "raw": "Ministry of Agriculture, Forestry and Fisheries of Japan. Statistics of Agriculture, Forestry and Fisheries 2020. [Cited 2023 July 14]. Available from: https://www.e-stat.go.jp/stat-search/file-download?statInfId=000032029744&fileKind=0.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "en"
+   }
+  },
+  {
+   "id": "B085",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2024-0189",
+   "raw": "高原, 石玉涛, 王琼. 2020. 青藏高原东南缘地震各向异性及其深部构造意义. 地球物理学报, 63: 802–816.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B086",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2024-0189",
+   "raw": "郑勇, 郭汝梦. 2021. 汶川-芦山地震间的空区危险性研究: 现状、思考和挑战. 中国科学: 地球科学, 51: 483–486.",
+   "assertedDoi": "10.1360/SSTe-2020-0242",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B087",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/tb-2025-0213",
+   "raw": "Dai J R, Ma M. Method and system for determining spatiotemporal segmented radiotherapy plan (in Chinese). PRC Patent, CN116741339A, 2023-09-12 [戴建荣, 马敏. 时空分割放疗计划确定方法及系统. 中国专利, CN116741339A, 2023-09-12].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B088",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/tb-2025-0213",
+   "raw": "Ma P, Dai J R. Method and system for arranging radiotherapy target areas by spatial division (in Chinese). PRC Patent, CN116440426A, 2023-07-18 [马攀, 戴建荣. 空间分割放疗靶区布置方法和系统. 中国专利, CN116440426A, 2023-07-18].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B089",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssv-2024-0144",
+   "raw": "Li H S, Chen G Z. Genetic diversity of Sonneratia alba in China detected by inter-simple sequence repeats (ISSR) analysis (in Chinese). Acta Bot Sin, 2004, 46: 515–521 [李海生, 陈桂珠. 中国杯萼海桑遗传多样性的ISSR研究. 植物学报, 2004, 46: 515–521].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B090",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssv-2024-0144",
+   "raw": "Zhang Z H, Tang T, Zhou R C, et al. Effects of divergent habitation genetic structure of population of Excoecaria agallocha, a mangrove associate (in Chinese). Acta Genet Sin, 2005, 32: 1286–1292 [张志红, 唐恬, 周仁超, 等. 异质性生境对半红树海漆(Excoecaria agalbcha)居群遗传结构的影响. 遗传学报, 2005, 32: 1286–1292].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B091",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssc-2023-0196",
+   "raw": "Wang X, Yuan XX. J Mol Catal, 1997, 11: 101–106 (in Chinese) [王翔, 袁贤鑫. 分子催化, 1997, 11: 101–106].",
+   "assertedDoi": "10.1049/pe:19970302",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B092",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssc-2023-0196",
+   "raw": "Wang B, Fang KG, Chen JG, Sun YH. J Fuel Chem Technol, 2008, 36: 94–98 (in Chinese) [王彬, 房克功, 陈建刚, 孙予罕. 染料化学学报, 2008, 36: 94–98].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B093",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/n072025-0256",
+   "raw": "李玮, 陈赟, 谭萍, 等. 2020. 大陆深俯冲的深浅动力学响应: 来自帕米尔高原地壳精细结构的约束. 中国科学: 地球科学, 50: 663–676.",
+   "assertedDoi": "10.1360/SSTe-2019-0226",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B094",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sspma-2023-0208",
+   "raw": "Luo H Q. Superconducting Times: The Past, Present, and Future of Superconductivity (in Chinese). Beijing: Tsinghua University Press, 2022 [罗会仟. 超导小时代: 超导的前世, 今生和未来. 北京: 清华大学出版社, 2022].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B095",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/csb-2025-0530",
+   "raw": "Wu W Y, Chen C. Suppression and recovery of lead leakage in perovskite solar cells (in Chinese). Chin Sci Bull, 2024, 69: 3283–3298 [吴伟瑜, 陈聪. 钙钛矿太阳能电池中铅泄漏的抑制和回收. 科学通报, 2024, 69: 3283–3298].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B096",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssv-2023-0089",
+   "raw": "Shi X, Quan S. Ethical issues and countermeasures related to female fertility preservation (in Chinese). Chin J Pract Gynecol Obstet, 2022, 38: 618–621 [史潇, 全松. 女性生育力保存相关伦理问题及对策. 中国实用妇科与产科杂志, 2022, 38: 618–621].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B097",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/sp.j.1006.2025.53025",
+   "raw": "联合国粮食及农业组织. 生产量统计: 作物和牲畜产品. [2025-06-11], https://www.fao.org/faostat/zh/#data/QCL..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B098",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/sp.j.1006.2025.53025",
+   "raw": "吴希, 王家瑞, 郝淼艺, 张宏军, 张仁和. 种植密度对不同生育期玉米品种光温资源利用率和产量的影响. 作物学报, 2023, 49: 1065-1078..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B099",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.1671-4342.20250034",
+   "raw": "焦磊，余宜荣. 世界一流研究型大学矩阵式跨学科研究组织的样态创新及治理机制［J］. 大学教育科学，2024（6）：90-99.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B100",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.1671-4342.20250034",
+   "raw": "陈霞玲. 高校开展有组织科研的组织模式、经验特征与问题对策［J］. 国家教育行政学院学报，2023（7）：78-87.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B101",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/sp.j.1249.2024.05619",
+   "raw": "宋福春，刘鉴霆，谢利斌，等．灰色关联度在预应力连续梁桥运营监控中的应用［J］．沈阳工业大学学报，2019，41（6）：693-698．.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B102",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/sp.j.1249.2024.05619",
+   "raw": "张中平，刘燕燕，裘秋波，等．浙江省养护措施病害发展数据挖掘分析［J］．公路工程，2019，44（5）：188-192．.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B103",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.gyjzg23110215",
+   "raw": "张爱林，王杰，张艳霞，等. 箱形柱芯筒式双法兰刚性连接节点平面框架拟静力试验研究［J］. 工程力学，2021，38（9）：146-160..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B104",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.gyjzg23110215",
+   "raw": "夏军武，祝华权，张志雄，等 ． 方钢管柱-H形钢梁拼接外套筒式中节点静力性能研究［J］. 建筑结构学报，2018，39（7）：104-114..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B105",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.0253-3219.2025.hjs.48.240356",
+   "raw": "盛美玲, 田卫卫, 丘锦萌, 等. 非能动先进核电厂主给水管道水锤模拟计算[J]. 原子能科学技术, 2015, 49(S1): 200 – 204...",
+   "assertedDoi": "10.7538/yzk.2015.49.S0.0200",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B106",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.0253-3219.2025.hjs.48.240356",
+   "raw": "张玲, 辜峙钘, 戴嘉宁, 等. 铅铋次临界堆XADS束流超功率事故研究[J]. 核技术, 2022, 45(10): 100602...",
+   "assertedDoi": "10.11889/j.0253-3219.2022.hjs.45.100602",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B107",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.1004-3918.2026.02.009",
+   "raw": "刘雪莲，何云玲，张淑洁，等. 昆明市常见绿化植物冬季固碳释氧能力研究［J］. 生态环境学报，2016，25（8）：1327-1335..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B108",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.1004-3918.2026.02.009",
+   "raw": "王秋艳，王利芬，肖湘东，等. 苏州市夏季园林植物光合特性及固碳释氧、降温增湿效益研究［J］. 福建农业学报，2023，38（11）：1302-1311..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  }
+ ]
+}

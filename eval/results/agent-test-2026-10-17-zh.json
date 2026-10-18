@@ -1,0 +1,659 @@
+{
+ "ranAt": "2026-10-18T00:27:31.446Z",
+ "dataset": "test-2026-10-14",
+ "rulesFile": "eval/results/real-test-2026-10-17-rules.json",
+ "lang": "zh",
+ "summary": {
+  "eligible": 20,
+  "confirmed": 0,
+  "confirmedVerdicts": {},
+  "unchanged": 20,
+  "failed": 0,
+  "becameNotFound": 0,
+  "avgToolCalls": 3.35,
+  "avgTokens": 6010,
+  "avgSeconds": 9,
+  "totalTokens": 120202,
+  "openalexSearchesUsed": 20,
+  "byLanguage": {
+   "en": {
+    "eligible": 0,
+    "confirmed": 0
+   },
+   "zh": {
+    "eligible": 20,
+    "confirmed": 0
+   }
+  }
+ },
+ "rows": [
+  {
+   "id": "T097",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 6915,
+   "ms": 14143,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该期刊论文",
+     "detail": "Crossref 检索「近150年来长江入海流量变化的趋势、阶段与多尺度周期」（作者 万智巍）：5 条候选，最接近《用SS433短周期变化的位相来计算进动周期变化的位相》（罗万前，1987）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文文献记录",
+     "detail": "DataCite 检索「近150年来长江入海流量变化的趋势、阶段与多尺度周期」：5 条候选，最接近《C03 十字宪章、万教归宗十字架立法、王牌立法》（Hill H，2026）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中按中文标题与年份查找该文",
+     "detail": "OpenAlex 题名检索「近150年来长江入海流量变化的趋势、阶段与多尺度周期」（2018±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "用简化标题加作者年份再试一次",
+     "detail": "Crossref 检索「长江入海流量变化 趋势 阶段 多尺度周期」（作者 万智巍，2018±1 年）：5 条候选，最接近《Study of dynamic pattern evolution of dr…》（WAN Honglian 万, WANG Jing 王，2018）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "T098",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 2,
+   "tokens": 4080,
+   "ms": 12360,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文标题精确检索该文元数据",
+     "detail": "Crossref 检索「西藏羊八井地热田SOTEM探测及热储结构分析」：5 条候选，最接近《西藏羊八井地热田三维电性结构模型<bold>——</bold>来自大地电磁的证据》（薛国强, 陈卫营 等，2023）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中查找该中文标题的收录记录",
+     "detail": "OpenAlex 题名检索「西藏羊八井地热田SOTEM探测及热储结构分析」（2023±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在DataCite中查找该文可能的注册记录",
+     "detail": "DataCite 检索「西藏羊八井地热田SOTEM探测及热储结构分析」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "用作者加标题关键词再检索一次",
+     "detail": "Crossref 检索「SOTEM探测及热储结构分析 羊八井」（作者 陈卫营）：5 条候选，最接近《西藏羊八井地热田三维电性结构模型<bold>——</bold>来自大地电磁的证据》（薛国强, 陈卫营 等，2023）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "T099",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 7096,
+   "ms": 11794,
+   "note": "已用书名与章节关键词检索 Crossref、DataCite 和 OpenAlex，均未找到《喜马拉雅山隆升与季风协同演化过程》及其第九章的记录，仅返回不相关的期刊论文与数据条目。该文献为中文编著图书章节，开放学术数据库覆盖有限，建议人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索该书名，确认图书章节是否被收录",
+     "detail": "Crossref 检索「喜马拉雅山隆升与季风协同演化过程」：5 条候选，最接近《东喜马拉雅构造结东、西边界断裂对比及其构造演化过程》（董汉文, 许志琴 等，2018）",
+     "ok": true
+    },
+    {
+     "reason": "在数据仓储中查找该章节或图书记录",
+     "detail": "DataCite 检索「喜马拉雅地热资源 赵平 多吉」：5 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在开放索引中查找该编著图书及其章节",
+     "detail": "OpenAlex 题名检索「喜马拉雅山隆升与季风协同演化过程」：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "T100",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6881,
+   "ms": 9736,
+   "note": "已用中文标题在Crossref、DataCite和OpenAlex检索，均未找到与昂海松等2018年《无人系统技术》论文相符的记录，仅返回不相关结果。开放数据库对中文期刊收录有限，建议到知网或万方进一步核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题检索该中文期刊论文",
+     "detail": "Crossref 检索「微型飞行器的低雷诺数、非定常气动设计与分析」：5 条候选，最接近《电气系统的节能设计与分析》（赵亮, 赵亮，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文文献记录",
+     "detail": "DataCite 检索「微型飞行器的低雷诺数、非定常气动设计与分析」：5 条候选，最接近《C03 十字宪章、万教归宗十字架立法、王牌立法》（Hill H，2026）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中按中文标题与年份查找该文",
+     "detail": "OpenAlex 题名检索「微型飞行器的低雷诺数、非定常气动设计与分析」（2018±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "T101",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6005,
+   "ms": 9512,
+   "note": "已用中文标题、英文标题及作者在 Crossref、OpenAlex、DataCite 检索，均未找到与《微型飞行器的设计原则和策略》（昂海松，2016，航空学报）相符的记录；开放数据库对中文期刊收录有限，建议到知网或万方核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题检索该航空学报论文",
+     "detail": "Crossref 检索「微型飞行器的设计原则和策略」（作者 昂海松，2016±1 年）：5 条候选，最接近《Design of new kind of tunable micro ring…》（Ying YuHai 应，2016）",
+     "ok": true
+    },
+    {
+     "reason": "在开放索引中查找该中文论文记录",
+     "detail": "OpenAlex 题名检索「微型飞行器的设计原则和策略」（2016±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "尝试用英文标题在数据仓储中查找该文",
+     "detail": "DataCite 检索「Design principles and strategi…」：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "T104",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6473,
+   "ms": 8397,
+   "note": "已用中英文标题在 Crossref 与 OpenAlex 检索，均未找到《褐云玛瑙螺及其利用》(陈德牛、高家祥, 1980) 的对应记录，仅返回不相关条目；该中文期刊文献可能未被这些开放数据库收录。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题检索该文献记录",
+     "detail": "Crossref 检索「褐云玛瑙螺及其利用」：5 条候选，最接近《Luonan Purple Green Agate Geological Cha…》（张锋军，2017）",
+     "ok": true
+    },
+    {
+     "reason": "在开放索引中查中文标题与年份",
+     "detail": "OpenAlex 题名检索「褐云玛瑙螺及其利用」（1980±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "用英文标题与作者年份再检索一次",
+     "detail": "Crossref 检索「Achatina fulica and its utiliz…」（作者 Chen，1980±1 年）：5 条候选，最接近《Utilization of Wort Fatty Acids by Yeast…》（Chen ECH，1980）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "T105",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 2,
+   "tokens": 3927,
+   "ms": 8229,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该中文期刊论文",
+     "detail": "Crossref 检索「非洲大蜗牛在中国的研究现状及展望」（作者 郭靖，2015±1 年）：5 条候选，最接近《The Research Process and Prospect of Rej…》（郭瑞，2016）",
+     "ok": true
+    },
+    {
+     "reason": "在开放索引中查找该中文论文记录",
+     "detail": "OpenAlex 题名检索「非洲大蜗牛在中国的研究现状及展望」（2015±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "改用英文标题检索该论文的英文著录记录",
+     "detail": "Crossref 检索「Research status and prospects …」（作者 Guo）：5 条候选，最接近《Current Status and Prospects of Waste Oi…》（Guo CP，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在数据仓储中查找该主题的预印本或报告记录",
+     "detail": "DataCite 检索「giant African snail Achatina f…」：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "T106",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6609,
+   "ms": 9856,
+   "note": "已用中文题名与英文题名在 Crossref、DataCite 和 OpenAlex 检索，均未找到与该图书（郭华东，2020，科学出版社）题名、作者、年份相符的记录，仅见无关条目。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索该中文图书题名是否有对应记录",
+     "detail": "Crossref 检索「地球大数据支撑可持续发展目标报告 2020 中国篇」（作者 郭华东）：5 条候选，最接近《可持续发展下的生态农业经济发展》（郭宝英，2020）",
+     "ok": true
+    },
+    {
+     "reason": "在数据仓储中查找该报告类文献记录",
+     "detail": "DataCite 检索「Big Earth Data in Support of t…」：4 条候选，最接近《Technology and State Relations: China Ca…》（Yılmaz Ö，2024）",
+     "ok": true
+    },
+    {
+     "reason": "在开放索引中查找该报告英文题名记录",
+     "detail": "OpenAlex 题名检索「Big Earth Data in Support of t…」（2020±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "T107",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 3,
+   "tokens": 7222,
+   "ms": 7624,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题检索该综述文章",
+     "detail": "Crossref 检索「大数据 大科学 大发现 大数据与科学发现国际研讨会综述」（作者 Guo）：5 条候选，最接近《科学大数据与数字地球》（LIANG D, WANG L 等，2014）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文综述记录",
+     "detail": "DataCite 检索「大数据 大科学 大发现 大数据与科学发现国际研讨会综述」：5 条候选，最接近《weijian/2026-USCAP-AI-Pathology-Report: …》（Jan，2026）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中查找该中文综述记录",
+     "detail": "OpenAlex 题名检索「大数据 大科学 大发现——大数据与科学发现国际研讨会综述」（2014±1 年）：1 条候选，最接近《大数据 大科学 大发现——大数据与科学发现国际研讨会综述》（dong GH，2014）",
+     "ok": true
+    },
+    {
+     "reason": "核实该DOI记录的作者与出处信息",
+     "detail": "doi.org：DOI 10.3969/j.issn.1000-3045.2014.04.014 未注册",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "T108",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6989,
+   "ms": 6226,
+   "note": "已用中文书名与作者在Crossref、DataCite和OpenAlex检索，均未找到与该1996年中文专著匹配的记录，仅返回无关条目。该书属中文图书，可能未被这些数据库收录，需人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索该中文图书是否有DOI记录",
+     "detail": "Crossref 检索「星汉流年 中国天文考古录」（作者 冯时）：5 条候选，最接近《中国千年之变：“一带一路”倡议》（冯达旋，2025）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该图书或相关记录",
+     "detail": "DataCite 检索「星汉流年 中国天文考古录 冯时」：5 条候选，最接近《B53 The Top G6 Legislation and Axis Legi…》（Hill H，2025）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中查找该中文专著记录",
+     "detail": "OpenAlex 题名检索「星汉流年 中国天文考古录」（1996±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "T109",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 5909,
+   "ms": 7910,
+   "note": "已用中文标题在Crossref、DataCite和OpenAlex检索，均未找到与该发掘简报匹配的记录，Crossref仅返回无关建筑类文献。该文献可能仅收录于中文数据库，需到知网或万方核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文标题精确检索该发掘简报",
+     "detail": "Crossref 检索「山西襄汾县陶寺城址祭祀区大型建筑基址2003年发掘简报」：5 条候选，最接近《基于大数据的建筑工程造价预测模型研究》（马磊，2024）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该简报的记录",
+     "detail": "DataCite 检索「陶寺城址祭祀区大型建筑基址2003年发掘简报」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在OpenAlex中按中文标题查找该简报",
+     "detail": "OpenAlex 题名检索「山西襄汾县陶寺城址祭祀区大型建筑基址2003年发掘简报」（2004±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "T110",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 2,
+   "tokens": 4237,
+   "ms": 4848,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题精确检索该作物学报论文",
+     "detail": "Crossref 检索「油菜素内酯合成和信号转导基因在马铃薯块茎贮藏期间的表达变化及…」（2017±1 年）：5 条候选，最接近《The Effects of Brassinosteroid on Growth…》（罗明华，2017）",
+     "ok": true
+    },
+    {
+     "reason": "用英文标题检索该论文的收录记录",
+     "detail": "OpenAlex 题名检索「Expression changes of genes re…」（2017±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在DataCite中检索该中文论文记录",
+     "detail": "DataCite 检索「油菜素内酯合成和信号转导基因 马铃薯块茎贮藏 萌芽」：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "用英文标题加第一作者再检索一次",
+     "detail": "Crossref 检索「Expression changes of genes re…」（作者 Zou）：5 条候选，最接近《Expression Changes of Genes Related to B…》（ZOU X, DENG MS 等，2017）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "T111",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6715,
+   "ms": 5256,
+   "note": "先用中文标题在Crossref检索无相关结果，再用英文标题在OpenAlex找到2019年《作物学报》同名文章（邹姓第一作者），并解析其DOI记录，题名、作者、年份与引文相符。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索作物学报原文",
+     "detail": "Crossref 检索「挥发性抑芽物质对马铃薯块茎萌芽的影响及其作用机制」（作者 邹雪，2019±1 年）：5 条候选，最接近《水利工程建设对生态环境影响及其生态水利工程建设》（邹泽文，2020）",
+     "ok": true
+    },
+    {
+     "reason": "用英文标题检索该文英文记录",
+     "detail": "OpenAlex 题名检索「Suppression mechanism of volat…」（2019±1 年）：1 条候选，最接近《Suppression mechanism of volatile sprout…》（Zou X, Ding F 等，2019）",
+     "ok": true
+    },
+    {
+     "reason": "核实该DOI记录的作者、卷期页码是否与引文一致",
+     "detail": "Crossref 查询 DOI 10.3724/sp.j.1006.2019.84063：1 条候选，最接近《Suppression mechanism of volatile sprout…》（ZOU X, DING F 等，2019）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "T112",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 7016,
+   "ms": 9808,
+   "note": "已用中文标题与第一作者在Crossref、DataCite及OpenAlex检索，均未找到与《剪叶对春油菜源库关系的影响》相符的记录，仅返回无关条目。该刊《内蒙古农业科技》收录有限，建议到知网或万方进一步核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "按中文标题与第一作者检索该文献记录",
+     "detail": "Crossref 检索「剪叶对春油菜源库关系的影响」（作者 廉博）：5 条候选，最接近《国际关系因素对媒体报道的影响分析》（马尔瓦.拉吉卜博士编写和翻译，2020）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文论文记录",
+     "detail": "DataCite 检索「剪叶对春油菜源库关系的影响」：5 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中按中文标题与年份查找该文",
+     "detail": "OpenAlex 题名检索「剪叶对春油菜源库关系的影响」（2012±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "T113",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6527,
+   "ms": 10374,
+   "note": "已用中文题名在 DataCite、OpenAlex 及 Crossref（加作者王瑛）检索，均未找到与该硕士学位论文题名、作者、年份相符的记录，仅返回无关条目。该中文学位论文可能未被这些开放数据库收录，建议人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "检索该中文学位论文是否被数据仓储收录",
+     "detail": "DataCite 检索「双低春油菜源库关系的研究」：5 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "按中文题名在开放索引中查找该学位论文",
+     "detail": "OpenAlex 题名检索「双低春油菜源库关系的研究」（2006±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "用中文题名与作者在Crossref再试一次",
+     "detail": "Crossref 检索「双低春油菜源库关系」（作者 王瑛）：5 条候选，最接近《油菜甾醇内酯类化合物生物活性与构效关系的研究》（王玉琴，1994）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "T114",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 2,
+   "tokens": 3796,
+   "ms": 8667,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题精确检索该综述文章",
+     "detail": "Crossref 检索「古盐度定量研究方法综述」：5 条候选，最接近《区域气候动力降尺度方法研究综述》（徐忠峰, 韩瑛 等，2018）",
+     "ok": true
+    },
+    {
+     "reason": "在开放索引中查找该中文综述记录",
+     "detail": "OpenAlex 题名检索「古盐度定量研究方法综述」（2003±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "改用英文标题检索该文英文著录",
+     "detail": "Crossref 检索「Summary of quantified research…」（作者 Li）：5 条候选，最接近《Quantified Assertion Verification Method…》（Li X, Yu Y，2022）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文文献记录",
+     "detail": "DataCite 检索「古盐度定量研究方法综述 paleosalinity」：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "T115",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 4,
+   "rounds": 2,
+   "tokens": 3908,
+   "ms": 7722,
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与作者检索该期刊论文",
+     "detail": "Crossref 检索「全球铝土矿资源分布特征、勘查开发格局及展望」（作者 陈喜峰，2024±1 年）：5 条候选，最接近《地质矿产勘查中的矿产资源分布规律研究》（王志远, 张宇峰 等，2025）",
+     "ok": true
+    },
+    {
+     "reason": "在开放索引中查找该中文论文记录",
+     "detail": "OpenAlex 题名检索「全球铝土矿资源分布特征、勘查开发格局及展望」（2024±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "改用英文标题检索该论文记录",
+     "detail": "Crossref 检索「Distribution characteristics a…」（作者 陈喜峰）：5 条候选，最接近《Analysis of Ecological Environment Prote…》（陈思航，2024）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文文献记录",
+     "detail": "DataCite 检索「全球铝土矿资源分布特征 勘查开发格局 展望」：2 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "T116",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 7164,
+   "ms": 9306,
+   "note": "已用中文标题与第一作者在Crossref、DataCite检索，并按标题在OpenAlex查询，均未找到与《斜坡单元尺寸和滑坡取样方式对区域滑坡易发性评价的影响》相符的记录，仅见主题相近的其他文献。开放数据库对中文期刊收录有限，建议到知网或万方进一步核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题与第一作者检索该期刊论文",
+     "detail": "Crossref 检索「斜坡单元尺寸和滑坡取样方式对区域滑坡易发性评价的影响」（作者 杨仲康）：5 条候选，最接近《基于随机森林的滑坡空间易发性评价：以三峡库区湖北段为例》（吴润泽, 胡旭东 等，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在DataCite中查找该中文论文记录",
+     "detail": "DataCite 检索「斜坡单元尺寸和滑坡取样方式对区域滑坡易发性评价的影响」：5 条候选，最接近《ESPnet2 pretrained model, Emiru Tsunoo/a…》（Emiru Tsunoo，2021）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中按中文标题查找该论文",
+     "detail": "OpenAlex 题名检索「斜坡单元尺寸和滑坡取样方式对区域滑坡易发性评价的影响」（2025±1 年）：没有结果",
+     "ok": false
+    }
+   ]
+  },
+  {
+   "id": "T118",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6404,
+   "ms": 7934,
+   "note": "已用中文标题与作者在 DataCite、OpenAlex 和 Crossref 检索，均未找到该华南理工大学学位论文的匹配记录，仅返回不相关条目。此类中文学位论文通常不在这些开放数据库覆盖范围内，建议人工核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "查找该华南理工大学学位论文的收录记录",
+     "detail": "DataCite 检索「广州地区高校校园规划使用后评价及设计要素研究」：5 条候选，最接近《现代风水精鉴》（BIN D，2001）",
+     "ok": true
+    },
+    {
+     "reason": "在开放索引中查找该中文学位论文",
+     "detail": "OpenAlex 题名检索「广州地区高校校园规划使用后评价及设计要素研究」（2014±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "用中文标题与作者再试一次期刊/学位论文记录",
+     "detail": "Crossref 检索「广州地区高校校园规划使用后评价及设计要素研究」（作者 黄翼，2014±1 年）：5 条候选，最接近《The Statistical Analysis about Status an…》（黄希芬，2014）",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "id": "T119",
+   "lang": "zh",
+   "before": "unverifiable",
+   "after": "unverifiable",
+   "outcome": "unchanged",
+   "toolCalls": 3,
+   "rounds": 3,
+   "tokens": 6329,
+   "ms": 10855,
+   "note": "已用中文标题加作者、年份在Crossref、OpenAlex和DataCite检索，均未找到与该引文标题、作者、年份相符的记录，仅返回不相关条目。建议到知网或万方等中文数据库进一步核查。",
+   "issues": [],
+   "steps": [
+    {
+     "reason": "用中文标题加作者年份在Crossref再查一次",
+     "detail": "Crossref 检索「寒地大学校园步行环境的优化设计策略研究」（作者 梅洪元，2019±1 年）：5 条候选，最接近《关于大学校园奶茶营销提升策略》（邓思元, 丁国梅，2020）",
+     "ok": true
+    },
+    {
+     "reason": "在OpenAlex中检索该中文标题的收录情况",
+     "detail": "OpenAlex 题名检索「寒地大学校园步行环境的优化设计策略研究」（2019±1 年）：没有结果",
+     "ok": false
+    },
+    {
+     "reason": "在DataCite中补查该中文文献记录",
+     "detail": "DataCite 检索「寒地大学校园步行环境 优化设计策略」：5 条候选，最接近《Triple Legislation and Integration》（Hill H，2025）",
+     "ok": true
+    }
+   ]
+  }
+ ]
+}

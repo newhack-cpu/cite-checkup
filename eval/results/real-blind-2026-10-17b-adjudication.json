@@ -1,0 +1,223 @@
+{
+ "dataset": "blind-2026-10-17b",
+ "adjudicatedAt": "2026-10-17",
+ "run": {
+  "file": "eval/results/real-blind-2026-10-17b-rules.json",
+  "ranAt": "2026-10-18T00:06:42.998Z",
+  "localTime": "2026-10-17 17:05–17:06（UTC-7）",
+  "commit": "0eae187 加未提交的工作区（src、scripts 的 diff sha256 前 16 位 8c2b8893da58c646：OpenAlex 合并记录、PDF OCR 豁免、AI 辅助解析逐条校验等，规则模式的判定只有合并记录一项相关，且只影响注释）。运行后又改了两处只作用于 AI 辅助解析的代码（输入检查去两次编号、AI 摘出的题名不作为疑似不存在的依据）；用录下的应答以最终代码重放规则模式，108 条的结论、摘要和问题逐条相同，0 次联网",
+  "openalex": "运行前代理出口额度 0.1 美元；规则模式和两次 AI 对照跑完后为 0.092 美元（约 8 次题名检索），没有因额度不足而跳过检索",
+  "recording": "运行时用 scratchpad 的 fetch-cache 包装录下 Crossref、doi.org、OpenAlex 的 200 / 404 应答（只录不改），供 AI 辅助解析对照回放；缓存只在本机"
+ },
+ "method": "第五批盲测集 108 条（英文 84、中文 24，来自 63 篇源论文，九组各 12 条；IEEE 抽不到 unstructured 引文）在 f36bd3e 之后用 pnpm sample:real 抽样，抽样只看了每组条数，运行前没有查看条目内容；规则模式只运行一次。脚本按两种口径统计误报：旧口径把信息有误、相近候选、疑似不存在都算误报（falseAlarms，与此前各复核文件可比）；新口径不算相近候选（falseAlarmsNew）。对旧口径标出的 8 条逐条按 Crossref、OpenAlex、arXiv 和原始出处复核，判为 false_alarm（系统误判）、true_error（引文确实写错）或 uncertain（无法确认），标准与 blind-2026-10-17 相同：判为 true_error 要求系统报出的问题里至少有一条依据正确、且引文确实错在那里。中文 24 条只看了汇总计数，没有逐条查看，留作以后评估中文检索的样本。复核只改统计口径，不改代码。",
+ "summary": {
+  "total": 108,
+  "counts": {
+   "verified": 51,
+   "mismatch": 6,
+   "near_match": 1,
+   "not_found": 1,
+   "retracted": 0,
+   "concern": 0,
+   "unverifiable": 49,
+   "error": 0
+  },
+  "current": {
+   "verified": 51,
+   "flaggedByScript": 8,
+   "flaggedByScriptNew": 7,
+   "nearMatch": 1,
+   "trueErrors": 1,
+   "uncertain": 1,
+   "falseAlarms": 6,
+   "falseAlarmRate": "5.6%",
+   "falseAlarmRate95CI": "2.6%–11.6%（Wilson）",
+   "falseAlarmsNew": 5,
+   "falseAlarmRateNew": "4.6%",
+   "falseAlarmRateNew95CI": "2.0%–10.4%（Wilson）",
+   "notFoundFalseAlarms": 1,
+   "errors": 0
+  },
+  "calibers": {
+   "falseAlarms": "旧口径：信息有误、相近候选、疑似不存在中复核为误报的都算，与此前各复核文件可比",
+   "falseAlarmsNew": "新口径：相近候选不算误报（只找到相近记录、没有断言引文写错），条数见 nearMatch"
+  },
+  "byLanguage": {
+   "en": {
+    "total": 84,
+    "verified": 49,
+    "nearMatch": 1,
+    "falseAlarms": 6,
+    "falseAlarmRate": "7.1%",
+    "falseAlarmsNew": 5,
+    "falseAlarmRateNew": "6.0%",
+    "trueErrors": 1,
+    "uncertain": 1,
+    "unverifiable": 27,
+    "errors": 0
+   },
+   "zh": {
+    "total": 24,
+    "verified": 2,
+    "nearMatch": 0,
+    "falseAlarms": 0,
+    "falseAlarmRate": "0.0%",
+    "falseAlarmsNew": 0,
+    "falseAlarmRateNew": "0.0%",
+    "trueErrors": 0,
+    "uncertain": 0,
+    "unverifiable": 22,
+    "errors": 0
+   }
+  },
+  "byGroup": {
+   "Elsevier": {
+    "total": 12,
+    "falseAlarms": 0,
+    "falseAlarmsNew": 0,
+    "sourcePapersWithFalseAlarm": 0
+   },
+   "Springer Nature": {
+    "total": 12,
+    "falseAlarms": 2,
+    "falseAlarmsNew": 2,
+    "sourcePapersWithFalseAlarm": 2
+   },
+   "Wiley": {
+    "total": 12,
+    "falseAlarms": 0,
+    "falseAlarmsNew": 0,
+    "sourcePapersWithFalseAlarm": 0
+   },
+   "SAGE": {
+    "total": 12,
+    "falseAlarms": 1,
+    "falseAlarmsNew": 1,
+    "sourcePapersWithFalseAlarm": 1
+   },
+   "Cambridge University Press": {
+    "total": 12,
+    "falseAlarms": 1,
+    "falseAlarmsNew": 1,
+    "sourcePapersWithFalseAlarm": 1
+   },
+   "MDPI": {
+    "total": 12,
+    "falseAlarms": 1,
+    "falseAlarmsNew": 0,
+    "sourcePapersWithFalseAlarm": 1
+   },
+   "PLOS": {
+    "total": 12,
+    "falseAlarms": 1,
+    "falseAlarmsNew": 1,
+    "sourcePapersWithFalseAlarm": 1
+   },
+   "中国科学（中文参考文献）": {
+    "total": 12,
+    "falseAlarms": 0,
+    "falseAlarmsNew": 0,
+    "sourcePapersWithFalseAlarm": 0
+   },
+   "科学出版社 10.3724（中文参考文献）": {
+    "total": 12,
+    "falseAlarms": 0,
+    "falseAlarmsNew": 0,
+    "sourcePapersWithFalseAlarm": 0
+   }
+  },
+  "falseAlarmCauses": {
+   "数据库元数据与论文不一致（单位登记成作者、作者顺序不同）": [
+    "B022",
+    "B073"
+   ],
+   "配到同一研究 / 同一作者的另一件作品": [
+    "B023",
+    "B047"
+   ],
+   "覆盖范围外的类型没有识别出来（工作论文、学位论文）": [
+    "B049",
+    "B063"
+   ]
+  },
+  "note": "前四批（规则 10-15 至 81f6f67）旧口径误报 10.1% / 9.1% / 11.7% / 18.0%；本批（f36bd3e 之后的规则）为 5.6%，区间与前几批有重叠，样本只有 108 条、来自 63 篇源论文，复核由开发方完成，没有第二人独立标注。被标出的 8 条只有 1 条确认是引文写错，所以“标出的问题”大多数仍是误报：标出的 8 条里误报 6 条、真错 1 条、无法确认 1 条。"
+ },
+ "items": [
+  {
+   "id": "B011",
+   "judgment": "uncertain",
+   "reason": "引文：Nikolova & Wang，2024，Working Paper；系统配到 SSRN 10.2139/ssrn.4024356（Crossref、OpenAlex 都记为 2022 年，没有其他版本），报“年份不符”。工作论文常按最新修订年份引用，引用它的 J. Corp. Finance 论文是 2025 年发表的；SSRN 页面拒绝脚本访问，无法确认 2024 年是否有修订版，判为无法确认",
+   "evidence": [
+    "https://doi.org/10.2139/ssrn.4024356",
+    "https://api.openalex.org/works/doi:10.2139/ssrn.4024356"
+   ],
+   "current": "mismatch"
+  },
+  {
+   "id": "B022",
+   "judgment": "false_alarm",
+   "reason": "IJAPM 2016 年第 6 卷第 3 期 129–137 页，引文作者 Jaini、Utyuzhnikov 与 Crossref 记录中的两位作者一致；Crossref 把单位地址“School of Mechanical, Aerospace and Civil Engineering, the University of Manchester ...”登记成了第一作者，系统据此报“第一作者不符”。数据库元数据错误",
+   "evidence": [
+    "https://api.crossref.org/works/10.17706/ijapm.2016.6.3.129-137"
+   ],
+   "current": "mismatch"
+  },
+  {
+   "id": "B023",
+   "judgment": "false_alarm",
+   "reason": "引文是同一研究在 Journal of Clinical Trials 上的另一篇（“AWARE: A Prospective Study to Improve Diagnostic Precision”，J Clin Trials 2015;5:222，DOI 10.4172/2167-0870.1000222，Crossref 有此记录，但作者元数据只有一个残缺的名字）；系统配到 BMC Nephrology 的研究方案论文（题名前半相同），报第一作者（研究组署名）和期刊名不符。配错了文献",
+   "evidence": [
+    "https://api.crossref.org/works/10.4172/2167-0870.1000222",
+    "https://doi.org/10.1186/s12882-015-0016-6"
+   ],
+   "current": "mismatch"
+  },
+  {
+   "id": "B038",
+   "judgment": "true_error",
+   "reason": "引文文本里的 DOI 是“https://doi.org/10.1002/pits”，少了后缀，这个 DOI 不存在；系统报“引用中的 DOI 10.1002/pits 并不存在，正确 DOI 应为 10.1002/pits.21819”，依据正确（出版社结构化元数据里的 DOI 也是 10.1002/pits.21819）。截断可能来自出版社提交给 Crossref 的引文文本，而不是论文印刷版，但就送检文本而言 DOI 确实错了",
+   "evidence": [
+    "https://doi.org/10.1002/pits.21819"
+   ],
+   "current": "mismatch"
+  },
+  {
+   "id": "B047",
+   "judgment": "false_alarm",
+   "reason": "引文是 Kidd 2000 年在 Heriot-Watt University 的学位论文《Bicycle chain efficiency》；系统配到 2020 年 CRC Press 重新出版的会议文集 The Engineering of Sport 中同名章节（Kidd、Loch、Reuben），报年份和出处不符。引文类型没有识别为学位论文，配到了同一作者的另一件作品",
+   "evidence": [
+    "https://doi.org/10.1201/9781003078098-37"
+   ],
+   "current": "mismatch"
+  },
+  {
+   "id": "B049",
+   "judgment": "false_alarm",
+   "reason": "Pfister 2017 是 LSE 经济史工作论文（Economic History Working Papers），确实存在，但编号是 No. 266，引文写成了 206；工作论文不在 Crossref、OpenAlex 中，系统判“疑似不存在”。系统报的依据（查不到）不能说明文献不存在；编号写错是系统没有报出的另一处问题",
+   "evidence": [
+    "https://www.lse.ac.uk/asset-library/information/wp266.pdf",
+    "https://www.wiwi.uni-muenster.de/cqe/en/publication/145402"
+   ],
+   "current": "not_found"
+  },
+  {
+   "id": "B063",
+   "judgment": "false_alarm",
+   "reason": "引文是杜娟 2010 年在中国科学院工程热物理研究所的博士学位论文（英文题名）；系统只找到同一作者 2008 年 ASME Turbo Expo 的相关会议论文（GT2008-51463），给出相近候选。旧口径计误报，新口径不计（相近候选没有断言引文写错）",
+   "evidence": [
+    "https://doi.org/10.1115/gt2008-51463"
+   ],
+   "current": "near_match"
+  },
+  {
+   "id": "B073",
+   "judgment": "false_alarm",
+   "reason": "CutMix（ICCV 2019）论文署名顺序为 Yun、Han、Oh、Chun、Choe、Yoo（arXiv 1905.04899 与 CVF 开放获取页一致），引文与之相同；Crossref 中 IEEE 登记的顺序是 Yun、Han、Chun、Oh、Yoo、Choe，系统据此报“作者顺序与数据库不一致”。数据库顺序与论文署名不一致",
+   "evidence": [
+    "https://arxiv.org/abs/1905.04899",
+    "https://api.crossref.org/works/10.1109/iccv.2019.00612"
+   ],
+   "current": "mismatch"
+  }
+ ]
+}

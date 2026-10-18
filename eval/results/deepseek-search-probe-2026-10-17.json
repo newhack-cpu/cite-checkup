@@ -1,0 +1,491 @@
+{
+ "ranAt": "2026-10-17T17:39:45.677Z",
+ "endpoint": "POST https://api.deepseek.com/v1/tools/search",
+ "count": 5,
+ "summary": {
+  "sites": {
+   "searched": 10,
+   "hit": 6,
+   "hitWithAuthor": 2,
+   "hitWithAuthorYear": 2
+  },
+  "open": {
+   "searched": 10,
+   "hit": 6,
+   "hitWithAuthor": 4,
+   "hitWithAuthorYear": 1
+  }
+ },
+ "eitherHit": 7,
+ "rows": [
+  {
+   "id": "D094",
+   "title": "但开风气不为师:费孝通学科建设思想访谈",
+   "author": "潘乃谷",
+   "year": 1997,
+   "venue": "民俗研究",
+   "attempts": [
+    {
+     "mode": "sites",
+     "status": 200,
+     "ms": 3051,
+     "results": 5,
+     "domains": [
+      "m.qikan.cqvip.com",
+      "wap.cnki.net",
+      "dianda.cqvip.com",
+      "wap.cnki.net",
+      "dianda.cqvip.com"
+     ],
+     "hit": true,
+     "hitUrl": "http://m.qikan.cqvip.com/Article/ArticleDetail?id=1002474170&from=article_ArticleDetail",
+     "hitSite": "维普资讯中文科技期刊数据库",
+     "authorInText": true,
+     "yearInText": true,
+     "venueInText": true
+    },
+    {
+     "mode": "open",
+     "status": 200,
+     "ms": 893,
+     "results": 5,
+     "domains": [
+      "www.shehui.pku.edu.cn",
+      "www.shehui.pku.edu.cn",
+      "www.shehui.pku.edu.cn",
+      "sachina.pku.edu.cn",
+      "wap.cnki.net"
+     ],
+     "hit": true,
+     "hitUrl": "http://www.shehui.pku.edu.cn/wap/second/index.aspx?nodeid=2029&page=ContentPage&contentid=9599#1",
+     "hitSite": "北京大学社会学系",
+     "authorInText": true,
+     "yearInText": false,
+     "venueInText": false
+    }
+   ]
+  },
+  {
+   "id": "D095",
+   "title": "社会学调查要发展",
+   "author": "费孝通",
+   "year": 1983,
+   "venue": "社会",
+   "attempts": [
+    {
+     "mode": "sites",
+     "status": 200,
+     "ms": 738,
+     "results": 5,
+     "domains": [
+      "wap.cnki.net",
+      "mqikan.cqvip.com",
+      "d.wanfangdata.com.cn",
+      "www.cqvip.com",
+      "mqikan.cqvip.com"
+     ],
+     "hit": true,
+     "hitUrl": "https://wap.cnki.net/touch/web/Journal/Article/SHEH198303003.html",
+     "hitSite": "手机知网",
+     "authorInText": true,
+     "yearInText": true,
+     "venueInText": true
+    },
+    {
+     "mode": "open",
+     "status": 200,
+     "ms": 864,
+     "results": 5,
+     "domains": [
+      "sociologyol.ruc.edu.cn",
+      "www.sss.tsinghua.edu.cn",
+      "etcnew.sdut.edu.cn",
+      "www.nopss.gov.cn",
+      "theory.people.com.cn"
+     ],
+     "hit": false,
+     "authorInText": false,
+     "yearInText": false,
+     "venueInText": false
+    }
+   ]
+  },
+  {
+   "id": "D096",
+   "title": "费孝通“上书紫光阁”",
+   "author": "费皖",
+   "year": 2012,
+   "venue": "百年潮",
+   "attempts": [
+    {
+     "mode": "sites",
+     "status": 200,
+     "ms": 763,
+     "results": 5,
+     "domains": [
+      "wap.cnki.net",
+      "wap.cnki.net",
+      "wap.cnki.net",
+      "wap.cnki.net",
+      "read.cnki.net"
+     ],
+     "hit": false,
+     "authorInText": false,
+     "yearInText": false,
+     "venueInText": false
+    },
+    {
+     "mode": "open",
+     "status": 200,
+     "ms": 881,
+     "results": 5,
+     "domains": [
+      "dangshi.people.com.cn",
+      "dangshi.people.com.cn",
+      "shanxidsfz.gov.cn",
+      "www.sass.org.cn",
+      "data.gzdafzxx.cn"
+     ],
+     "hit": true,
+     "hitUrl": "http://dangshi.people.com.cn/n/2013/0219/c85037-20524135-2.html",
+     "hitSite": "党史学习教育官网",
+     "authorInText": true,
+     "yearInText": false,
+     "venueInText": false
+    }
+   ]
+  },
+  {
+   "id": "D097",
+   "title": "黑水虻幼虫粉替代鱼粉对黄颡鱼幼鱼生长性能、肌肉品质及血清生化指标的影响",
+   "author": "陈晓瑛",
+   "year": 2019,
+   "venue": "动物营养学报",
+   "attempts": [
+    {
+     "mode": "sites",
+     "status": 200,
+     "ms": 807,
+     "results": 5,
+     "domains": [
+      "s.wanfangdata.com.cn",
+      "lib.cqvip.com",
+      "d.wanfangdata.com.cn",
+      "s.wanfangdata.com.cn",
+      "dianda.cqvip.com"
+     ],
+     "hit": true,
+     "hitUrl": "https://d.wanfangdata.com.cn/periodical/dwyyxb201906039",
+     "hitSite": "万方数据知识服务平台",
+     "authorInText": false,
+     "yearInText": true,
+     "venueInText": false
+    },
+    {
+     "mode": "open",
+     "status": 200,
+     "ms": 749,
+     "results": 5,
+     "domains": [
+      "www.agriir.cn",
+      "www.chinajan.com",
+      "s.wanfangdata.com.cn",
+      "opaj.napstic.cn",
+      "lib.cqvip.com"
+     ],
+     "hit": true,
+     "hitUrl": "https://www.agriir.cn/coat/resources/detail/3/0720230800137102.html#1",
+     "hitSite": "Agriir",
+     "authorInText": true,
+     "yearInText": false,
+     "venueInText": false
+    }
+   ]
+  },
+  {
+   "id": "D106",
+   "title": "煤岩单轴压缩破坏声发射轻量化三维卷积预测模型研究",
+   "author": "赵毅鑫",
+   "year": 2022,
+   "venue": "岩石力学与工程学报",
+   "attempts": [
+    {
+     "mode": "sites",
+     "status": 200,
+     "ms": 811,
+     "results": 5,
+     "domains": [
+      "d.wanfangdata.com.cn",
+      "m.qikan.cqvip.com",
+      "s.wanfangdata.com.cn",
+      "mkkc.cbpt.cnki.net",
+      "wap.cnki.net"
+     ],
+     "hit": false,
+     "authorInText": false,
+     "yearInText": false,
+     "venueInText": false
+    },
+    {
+     "mode": "open",
+     "status": 200,
+     "ms": 745,
+     "results": 5,
+     "domains": [
+      "search.napstic.cn",
+      "rockmech.whrsm.ac.cn",
+      "cjournal.hep.com.cn",
+      "www.x-mol.com",
+      "wap-cnki-net-443.webvpn.imac.edu.cn"
+     ],
+     "hit": false,
+     "authorInText": false,
+     "yearInText": false,
+     "venueInText": false
+    }
+   ]
+  },
+  {
+   "id": "D107",
+   "title": "基于9种机器学习算法的岩爆预测研究",
+   "author": "汤志立",
+   "year": 2020,
+   "venue": "岩石力学与工程学报",
+   "attempts": [
+    {
+     "mode": "sites",
+     "status": 200,
+     "ms": 741,
+     "results": 5,
+     "domains": [
+      "read.cnki.net",
+      "xuewen.cnki.net",
+      "xuewen.cnki.net",
+      "xuewen.cnki.net",
+      "xuewen.cnki.net"
+     ],
+     "hit": true,
+     "hitUrl": "https://read.cnki.net/web/Journal/Article/YSLX202004011.html",
+     "hitSite": "CNKI",
+     "authorInText": false,
+     "yearInText": true,
+     "venueInText": true
+    },
+    {
+     "mode": "open",
+     "status": 200,
+     "ms": 804,
+     "results": 5,
+     "domains": [
+      "read.cnki.net",
+      "rockmech.whrsm.ac.cn",
+      "rockmech.whrsm.ac.cn",
+      "xuewen.cnki.net",
+      "xuewen.cnki.net"
+     ],
+     "hit": true,
+     "hitUrl": "https://read.cnki.net/web/Journal/Article/YSLX202004011.html",
+     "hitSite": "CNKI",
+     "authorInText": false,
+     "yearInText": true,
+     "venueInText": true
+    }
+   ]
+  },
+  {
+   "id": "D108",
+   "title": "基于时间序列与长短时记忆网络的滑坡位移动态预测模型",
+   "author": "杨背背",
+   "year": 2018,
+   "venue": "岩石力学与工程学报",
+   "attempts": [
+    {
+     "mode": "sites",
+     "status": 200,
+     "ms": 781,
+     "results": 5,
+     "domains": [
+      "read.cnki.net",
+      "publish.cnki.net",
+      "qikan.cqvip.com",
+      "www.cqvip.com",
+      "d.wanfangdata.com.cn"
+     ],
+     "hit": false,
+     "authorInText": false,
+     "yearInText": false,
+     "venueInText": false
+    },
+    {
+     "mode": "open",
+     "status": 200,
+     "ms": 745,
+     "results": 5,
+     "domains": [
+      "www.cnki.com.cn",
+      "www.nceqsci.com",
+      "wap-cnki-net-443.webvpn.imac.edu.cn",
+      "tb.chinasmp.com",
+      "femt.etmchina.com"
+     ],
+     "hit": false,
+     "authorInText": false,
+     "yearInText": false,
+     "venueInText": false
+    }
+   ]
+  },
+  {
+   "id": "T109",
+   "title": "山西襄汾县陶寺城址祭祀区大型建筑基址2003年发掘简报",
+   "author": "",
+   "year": 2004,
+   "venue": "考古",
+   "attempts": [
+    {
+     "mode": "sites",
+     "status": 200,
+     "ms": 813,
+     "results": 5,
+     "domains": [
+      "wap.cnki.net",
+      "dianda.cqvip.com",
+      "wap.cnki.net",
+      "d.wanfangdata.com.cn",
+      "dianda.cqvip.com"
+     ],
+     "hit": true,
+     "hitUrl": "https://wap.cnki.net/touch/web/Journal/Article/KAGU200407001.html",
+     "hitSite": "手机知网",
+     "authorInText": false,
+     "yearInText": true,
+     "venueInText": true
+    },
+    {
+     "mode": "open",
+     "status": 200,
+     "ms": 763,
+     "results": 5,
+     "domains": [
+      "dh.dha.ac.cn",
+      "wap.cnki.net",
+      "dianda.cqvip.com",
+      "wap.cnki.net",
+      "d.wanfangdata.com.cn"
+     ],
+     "hit": true,
+     "hitUrl": "https://wap.cnki.net/touch/web/Journal/Article/KAGU200407001.html",
+     "hitSite": "手机知网",
+     "authorInText": false,
+     "yearInText": true,
+     "venueInText": true
+    }
+   ]
+  },
+  {
+   "id": "T116",
+   "title": "斜坡单元尺寸和滑坡取样方式对区域滑坡易发性评价的影响",
+   "author": "杨仲康",
+   "year": 2025,
+   "venue": "岩石力学与工程学报",
+   "attempts": [
+    {
+     "mode": "sites",
+     "status": 200,
+     "ms": 755,
+     "results": 5,
+     "domains": [
+      "d.wanfangdata.com.cn",
+      "wap.cnki.net",
+      "d.wanfangdata.com.cn",
+      "wap.cnki.net",
+      "wap.cnki.net"
+     ],
+     "hit": true,
+     "hitUrl": "https://d.wanfangdata.com.cn/periodical/yslxygcxb202503007",
+     "hitSite": "万方数据知识服务平台",
+     "authorInText": false,
+     "yearInText": true,
+     "venueInText": false
+    },
+    {
+     "mode": "open",
+     "status": 200,
+     "ms": 757,
+     "results": 5,
+     "domains": [
+      "cdn.sciengine.com",
+      "d.wanfangdata.com.cn",
+      "cdn.sciengine.com",
+      "www.sciengine.com",
+      "www.cjwk.cn"
+     ],
+     "hit": true,
+     "hitUrl": "https://cdn.sciengine.com/doi/pdf/2FC40015199D4149B4331258A13A0009#1#4#1",
+     "hitSite": null,
+     "authorInText": true,
+     "yearInText": true,
+     "venueInText": false
+    }
+   ]
+  },
+  {
+   "id": "T117",
+   "title": "机器学习在滑坡智能防灾减灾中的应用与发展趋势",
+   "author": "窦杰",
+   "year": 2023,
+   "venue": "地球科学",
+   "attempts": [
+    {
+     "mode": "sites",
+     "status": 200,
+     "ms": 781,
+     "results": 5,
+     "domains": [
+      "www.cqvip.com",
+      "mqikan.cqvip.com",
+      "hbsl.cbpt.cnki.net",
+      "d.wanfangdata.com.cn",
+      "www.cqvip.com"
+     ],
+     "hit": false,
+     "authorInText": false,
+     "yearInText": false,
+     "venueInText": false
+    },
+    {
+     "mode": "open",
+     "status": 200,
+     "ms": 788,
+     "results": 5,
+     "domains": [
+      "scholar.google.co.jp",
+      "scholar.google.co.jp",
+      "www.nsfc.gov.cn",
+      "xbzrkx.cdut.edu.cn",
+      "www.cqvip.com"
+     ],
+     "hit": false,
+     "authorInText": false,
+     "yearInText": false,
+     "venueInText": false
+    }
+   ]
+  }
+ ],
+ "note": "探针：DeepSeek Search（/v1/tools/search，count=5）能否找到已看过的 dev / test 集里的中文期刊引文。每条两种查法：限定知网、万方、维普三站；不限站点加 lang:zh。命中 = 结果题名包含引文题名（归一化后）。另用 Fetch 抽查 3 个命中页面：维普页有作者、刊名、年期、页码；知网手机版有题名、刊名、年期，没有作者；万方页面由脚本渲染，抓不到内容。样本只有 10 条，只说明可行，不是覆盖率。",
+ "fetchSpotCheck": [
+  {
+   "site": "维普 m.qikan.cqvip.com",
+   "metadata": "题名、作者、刊名、年期、页码"
+  },
+  {
+   "site": "知网 wap.cnki.net",
+   "metadata": "题名、刊名、年期（无作者）"
+  },
+  {
+   "site": "万方 d.wanfangdata.com.cn",
+   "metadata": "无（脚本渲染）；网址含刊名代码与年期"
+  }
+ ]
+}

@@ -1,0 +1,134 @@
+{
+ "comparedAt": "2026-10-17",
+ "method": "同一数据集先跑标准规则、再跑 AI 辅助解析；规则组运行时用本机 fetch-cache 录下 Crossref、doi.org、OpenAlex 的应答，AI 组回放同一批应答，只有 AI 补上题名后新发出的检索才联网，所以两组的差别只来自 AI 辅助解析。两组都开着 OpenAlex（预算按条数给足）。",
+ "aiMode": "只发送规则没解析出题名、类型为期刊 / 会议 / 预印本 / 认不出的条目（只写一个名称的不发）；逐条校验，坏条目单独退回；摘出的刊名只校验不采用；题名几乎等于整条引文时不采用；AI 摘出的题名查不到时不作为疑似不存在的依据",
+ "history": [
+  "10-16 旧版（整批发送、全有或全无）：dev 只用 Crossref 时核实 43（规则 44），多 1 条误报，3 批中 1 批整批退回",
+  "10-17 上午改版后只用 Crossref 对照：test 暴露 T066（只有名称的条目被当成题名 → 相近候选）、T092（章节题名被当作书名补进刊名 → 期刊名不符）两处退步，已改规则并补测试",
+  "10-17 晚第五批：输入检查只去一次编号，双重编号的一批整批被拒（已修，与切分逻辑一致去两次）；修复后 B052（没有 DOI 的会议论文）因 AI 摘出题名后两个库都查不到被判疑似不存在（已加规则：AI 摘出的题名查不到不作为疑似不存在的依据）"
+ ],
+ "sets": {
+  "dev-2026-10-14": {
+   "rulesFile": "eval/results/real-dev-2026-10-17-rules.json",
+   "aiFile": "eval/results/real-dev-2026-10-17-ai.json",
+   "ai": {
+    "sent": 6,
+    "supplemented": 2,
+    "rejected": 0
+   },
+   "rulesCounts": {
+    "verified": 45,
+    "mismatch": 1,
+    "near_match": 0,
+    "not_found": 0,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 62,
+    "error": 0
+   },
+   "aiCounts": {
+    "verified": 45,
+    "mismatch": 1,
+    "near_match": 0,
+    "not_found": 0,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 62,
+    "error": 0
+   },
+   "changes": []
+  },
+  "test-2026-10-14": {
+   "rulesFile": "eval/results/real-test-2026-10-17-rules.json",
+   "aiFile": "eval/results/real-test-2026-10-17-ai.json",
+   "ai": {
+    "sent": 29,
+    "supplemented": 23,
+    "rejected": 1
+   },
+   "rulesCounts": {
+    "verified": 50,
+    "mismatch": 3,
+    "near_match": 0,
+    "not_found": 0,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 66,
+    "error": 0
+   },
+   "aiCounts": {
+    "verified": 52,
+    "mismatch": 4,
+    "near_match": 0,
+    "not_found": 0,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 63,
+    "error": 0
+   },
+   "changes": [
+    {
+     "id": "T028",
+     "rules": "unverifiable",
+     "ai": "verified",
+     "aiFields": [
+      "title"
+     ],
+     "summary": "已核实：与数据库记录一致（来源：OpenAlex）",
+     "review": "收益：ECML/PKDD 2007 挑战赛描述，OpenAlex 按 AI 摘出的题名找到同一篇"
+    },
+    {
+     "id": "T057",
+     "rules": "unverifiable",
+     "ai": "mismatch",
+     "aiFields": [
+      "title"
+     ],
+     "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：OpenAlex）",
+     "review": "真实错误：OpenAlex 记录第一作者为 Olson, C.，引文写成 “Carol, O.B.G.”"
+    },
+    {
+     "id": "T070",
+     "rules": "unverifiable",
+     "ai": "verified",
+     "aiFields": [
+      "title"
+     ],
+     "summary": "已核实：与数据库记录一致（来源：OpenAlex）",
+     "review": "收益：vegan R 包（CRAN 概念 DOI 10.32614/cran.package.vegan）"
+    }
+   ]
+  },
+  "blind-2026-10-17b": {
+   "rulesFile": "eval/results/real-blind-2026-10-17b-rules.json",
+   "aiFile": "eval/results/real-blind-2026-10-17b-ai.json",
+   "ai": {
+    "sent": 8,
+    "supplemented": 8,
+    "rejected": 0
+   },
+   "rulesCounts": {
+    "verified": 51,
+    "mismatch": 6,
+    "near_match": 1,
+    "not_found": 1,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 49,
+    "error": 0
+   },
+   "aiCounts": {
+    "verified": 51,
+    "mismatch": 6,
+    "near_match": 1,
+    "not_found": 1,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 49,
+    "error": 0
+   },
+   "changes": []
+  }
+ },
+ "conclusion": "三个集合合计：AI 辅助解析多核实 2 条、多抓出 1 条真错误（都在 test，且 test 今天已用于改版，不算独立证据）；dev 和第五批盲测无变化；最终版本没有新增误报。收益很小，主要出现在规则解析不出题名的会议论文和软件包上。"
+}

@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-10-17T10:09:52.346172+00:00",
+  "checkedAt": "2026-10-18T00:39:17.848966+00:00",
   "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\output\\pdf\\引用体检-技术说明.pdf",
-  "sha256": "f1299d34e52299d4d5a86f8a77f851120ffa7a2407732d866be64a7426afe1ff",
+  "sha256": "f3392b1ba9615e1b8aa534bda13b779d3a551e2b046ff4167cb31de414a40661",
   "pages": 14,
   "maxPages": 30,
   "textSelectable": true,
@@ -33,14 +33,14 @@
     },
     {
       "page": 4,
-      "textCharacters": 1081,
+      "textCharacters": 981,
       "pageNumber": true,
       "outOfPageText": [],
       "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-17\\render\\page-04.png"
     },
     {
       "page": 5,
-      "textCharacters": 791,
+      "textCharacters": 876,
       "pageNumber": true,
       "outOfPageText": [],
       "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-17\\render\\page-05.png"
@@ -68,7 +68,7 @@
     },
     {
       "page": 9,
-      "textCharacters": 846,
+      "textCharacters": 892,
       "pageNumber": true,
       "outOfPageText": [],
       "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-17\\render\\page-09.png"
@@ -82,7 +82,7 @@
     },
     {
       "page": 11,
-      "textCharacters": 951,
+      "textCharacters": 1025,
       "pageNumber": true,
       "outOfPageText": [],
       "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-17\\render\\page-11.png"
@@ -96,14 +96,14 @@
     },
     {
       "page": 13,
-      "textCharacters": 785,
+      "textCharacters": 812,
       "pageNumber": true,
       "outOfPageText": [],
       "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-17\\render\\page-13.png"
     },
     {
       "page": 14,
-      "textCharacters": 1472,
+      "textCharacters": 1451,
       "pageNumber": true,
       "outOfPageText": [],
       "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-17\\render\\page-14.png"

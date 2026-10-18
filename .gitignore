@@ -65,3 +65,7 @@ eval/**/*.log
 
 # 图片识别评测生成的图片，用 eval/vision/generate.py 重新生成
 eval/vision/out/
+
+# 本机浏览器自动化留下的页面快照和截图（复评结论写在 eval/review-* 的 md 里）
+.playwright-cli/
+/output/
