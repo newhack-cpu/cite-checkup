@@ -1,3 +1,4 @@
+import { UPLOAD_LIMIT_BYTES } from "../deployment-limits";
 import type { HiddenTextReport } from "./hidden";
 
 export type DocumentFormat = "pdf" | "docx" | "txt";
@@ -26,8 +27,8 @@ export interface ImportedDocument {
 }
 
 export const DOCUMENT_LIMITS = {
-  fileBytes: 8 * 1024 * 1024,
-  requestBytes: 8 * 1024 * 1024 + 64 * 1024,
+  fileBytes: UPLOAD_LIMIT_BYTES,
+  requestBytes: UPLOAD_LIMIT_BYTES + 64 * 1024,
   characters: 160_000,
   pages: 100,
   pdfDecodedStreamBytes: 8 * 1024 * 1024,

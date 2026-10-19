@@ -2,12 +2,13 @@
 // 识别结果只是待用户对照原图核对的文字，之后仍由规则引擎核验；模型不判断文献真伪，图片里的文字一律当作数据。
 import { deepseekConfiguration } from "../ai";
 import { readBoundedJson, retryableTransport } from "../claims/io";
+import { UPLOAD_LIMIT_BYTES, UPLOAD_LIMIT_MIB } from "../deployment-limits";
 import { unwrapToolArguments } from "../tool-args";
 
 export const VISION_LIMITS = {
   images: 4,
   /** 所有图片合计（前端会先压缩到 2048 像素以内，正常截图远小于这个值） */
-  totalBytes: 8 * 1024 * 1024,
+  totalBytes: UPLOAD_LIMIT_BYTES,
   entries: 80,
   entryChars: 2_000,
   totalChars: 60_000,
@@ -106,7 +107,7 @@ export async function transcribeReferences(images: { bytes: Uint8Array; format: 
   const config = deepseekConfiguration();
   if (!config.apiKey || !config.endpoint) throw new VisionError("CONFIGURATION", "DeepSeek 尚未配置，暂时不能识别图片", 503);
   if (!images.length || images.length > VISION_LIMITS.images) throw new VisionError("INVALID_IMAGE", `每次可识别 1 至 ${VISION_LIMITS.images} 张图片`, 400);
-  if (images.reduce((sum, image) => sum + image.bytes.byteLength, 0) > VISION_LIMITS.totalBytes) throw new VisionError("TOO_LARGE", "图片合计超过 8 MiB，请压缩或分批上传", 413);
+  if (images.reduce((sum, image) => sum + image.bytes.byteLength, 0) > VISION_LIMITS.totalBytes) throw new VisionError("TOO_LARGE", `图片合计超过 ${UPLOAD_LIMIT_MIB} MiB，请压缩或分批上传`, 413);
   const deadline = AbortSignal.timeout(VISION_LIMITS.timeoutMs);
   const signal = options.signal ? AbortSignal.any([options.signal, deadline]) : deadline;
   const payload = {

@@ -1,3 +1,4 @@
+import { UPLOAD_LIMIT_MIB } from "../deployment-limits";
 import { DOCUMENT_LIMITS, DocumentImportError, throwIfAborted } from "./types";
 
 /** Read a bounded wire body before allowing the multipart parser to allocate. */
@@ -11,7 +12,7 @@ export async function readDocumentUpload(request: Request): Promise<File> {
 /** 先按字节上限读完请求体，再交给 multipart 解析；允许哪些字段由调用方检查。 */
 export async function readBoundedForm(request: Request, typeHint: string): Promise<FormData> {
   const length = request.headers.get("content-length");
-  if (length !== null && (!/^\d+$/.test(length) || Number(length) > DOCUMENT_LIMITS.requestBytes)) throw new DocumentImportError("FILE_TOO_LARGE", "上传请求过大，文件最多 8 MiB。", 413);
+  if (length !== null && (!/^\d+$/.test(length) || Number(length) > DOCUMENT_LIMITS.requestBytes)) throw new DocumentImportError("FILE_TOO_LARGE", `上传请求过大，文件或图片合计最多 ${UPLOAD_LIMIT_MIB} MiB。`, 413);
   const contentType = request.headers.get("content-type") ?? "";
   if (!/^multipart\/form-data\s*;/i.test(contentType)) throw new DocumentImportError("INVALID_DOCUMENT", typeHint, 400);
   throwIfAborted(request.signal);
@@ -31,7 +32,7 @@ export async function readBoundedForm(request: Request, typeHint: string): Promi
       if (timedOut) throw new DocumentImportError("TIMEOUT", "文件上传超时，请检查网络或减小文件后重试。", 408);
       if (done) break;
       size += value.byteLength;
-      if (size > DOCUMENT_LIMITS.requestBytes) throw new DocumentImportError("FILE_TOO_LARGE", "上传请求过大，文件最多 8 MiB。", 413);
+      if (size > DOCUMENT_LIMITS.requestBytes) throw new DocumentImportError("FILE_TOO_LARGE", `上传请求过大，文件或图片合计最多 ${UPLOAD_LIMIT_MIB} MiB。`, 413);
       chunks.push(value);
     }
   } catch (error) {

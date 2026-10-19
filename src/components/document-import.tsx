@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useEffectEvent, useId, useRef, useState } from "react";
+import { UPLOAD_LIMIT_BYTES, UPLOAD_LIMIT_MIB } from "@/lib/deployment-limits";
 import type { HiddenTechnique, HiddenTextReport } from "@/lib/documents/hidden";
 import { DOCUMENT_LIMITS, type DocumentFormat, type ImportedDocument } from "@/lib/documents/types";
 
@@ -14,7 +15,7 @@ export interface DocumentImportProps {
 
 const IMAGE_ACCEPT = "image/png,image/jpeg,image/webp,image/gif";
 const MAX_IMAGES = 4;
-const MAX_IMAGE_BYTES = 8 * 1024 * 1024;
+const MAX_IMAGE_BYTES = UPLOAD_LIMIT_BYTES;
 
 interface VisionPreview {
   entries: string[];
@@ -132,7 +133,7 @@ export function DocumentImport({ onImport, disabled = false, purpose = "referenc
   async function upload(file: File) {
     reset();
     if (!/\.(pdf|docx|txt)$/i.test(file.name)) { setError("仅支持 PDF、DOCX 和 TXT；旧版 .doc 请先另存为 .docx。"); return; }
-    if (file.size > DOCUMENT_LIMITS.fileBytes) { setError("文件超过 8 MiB，请压缩或拆分后导入。"); return; }
+    if (file.size > DOCUMENT_LIMITS.fileBytes) { setError(`文件超过 ${UPLOAD_LIMIT_MIB} MiB，请压缩或拆分后导入。`); return; }
     const next = new AbortController();
     controller.current = next;
     setBusy("document");
@@ -164,7 +165,7 @@ export function DocumentImport({ onImport, disabled = false, purpose = "referenc
     setBusy("vision");
     try {
       const blobs = await Promise.all(images.map(prepareImage));
-      if (blobs.reduce((sum, blob) => sum + blob.size, 0) > MAX_IMAGE_BYTES) throw new Error("图片合计超过 8 MiB，请减少张数后重试。");
+      if (blobs.reduce((sum, blob) => sum + blob.size, 0) > MAX_IMAGE_BYTES) throw new Error(`图片合计超过 ${UPLOAD_LIMIT_MIB} MiB，请减少张数后重试。`);
       const body = new FormData();
       blobs.forEach((blob, i) => body.append("image", blob, `image-${i + 1}.${blob.type === "image/png" ? "png" : "jpg"}`));
       const response = await fetch("/api/vision", { method: "POST", body, signal: next.signal });
@@ -231,7 +232,7 @@ export function DocumentImport({ onImport, disabled = false, purpose = "referenc
           <button type="button" disabled={disabled || !!busy} onClick={() => imageInput.current?.click()} className="rounded-sm border border-rule bg-white/60 px-3 py-1.5 text-[12px] text-ink-soft transition hover:border-seal hover:text-seal disabled:cursor-not-allowed disabled:opacity-50">{busy === "vision" ? "正在识别图片…" : "拍照 / 截图识别"}</button>
         </>}
         {busy && <button type="button" onClick={() => controller.current?.abort()} className="px-2 py-1 text-[12px] text-seal underline underline-offset-4">取消</button>}
-        <span className="text-[11px] text-ink-faint">8 MiB · PDF 最多 100 页{allowImages ? ` · 图片最多 ${MAX_IMAGES} 张` : ""}</span>
+        <span className="text-[11px] text-ink-faint">文件最多 {UPLOAD_LIMIT_MIB} MiB · PDF 最多 100 页{allowImages ? ` · 图片最多 ${MAX_IMAGES} 张，合计 ${UPLOAD_LIMIT_MIB} MiB` : ""}</span>
       </div>
       <p className="mt-2 text-[11px] leading-5 text-ink-faint">
         {allowImages

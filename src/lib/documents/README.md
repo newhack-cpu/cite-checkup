@@ -7,7 +7,7 @@ The response is `ImportedDocument` from `types.ts`: `text`, a heuristic `referen
 
 ## Limits and extraction scope
 
-- File: 8 MiB; multipart body: 8 MiB + 64 KiB, bounded before `formData` parses it; upload timeout: 15 seconds.
+- File: 8 MiB by default, or 4 MiB when built with `NEXT_PUBLIC_DEPLOY_TARGET=netlify`; multipart body: the file limit + 64 KiB, bounded before `formData` parses it; upload timeout: 15 seconds. The client and image-upload flow use the same deployment limit.
 - PDF: Mozilla PDF.js 6.4.299, Node 22.13 or newer, maximum 100 pages; worker timeout 25 seconds, 96 MiB old-generation V8 heap plus 16 MiB young-generation heap. The decoder additionally enforces an 8 MiB maximum decoded stream capacity and a 32 MiB cumulative decoded-buffer allocation budget per document. Each growth charges the actual new capacity before allocation; unchanged buffer reuse is free. The budget is not a claim about total process RSS; a public deployment should additionally cap container/process memory and request sizes at ingress.
 - PDF extraction uses only text-layer content and bundled local fonts/maps. JavaScript evaluation and network fetch are disabled in the parsing worker. Cancellation terminates the worker before releasing the request slot. It does not render or execute embedded PDF actions. Page markers are included for provenance.
 - DOCX: streaming ZIP entries; at most 1,000 entries, 32 MiB declared total expansion, 8 MiB per entry, compression ratio at most 200 for entries larger than 1 MiB. Actual bytes for opened XML entries are bounded and checked against the ZIP declaration. Only selected XML parts are opened; no archive contents are written to disk.

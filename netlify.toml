@@ -1,0 +1,13 @@
+[build]
+  command = "pnpm build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22.22.3"
+  PNPM_FLAGS = "--frozen-lockfile --shamefully-hoist"
+  npm_config_registry = "https://registry.npmjs.org"
+  NEXT_TELEMETRY_DISABLED = "1"
+  NEXT_PUBLIC_DEPLOY_TARGET = "netlify"
+
+# Netlify automatically installs the current OpenNext adapter for Next.js.
+# Runtime credentials belong in the Netlify environment UI, not in this file.

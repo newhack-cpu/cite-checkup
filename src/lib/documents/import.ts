@@ -1,3 +1,4 @@
+import { UPLOAD_LIMIT_MIB } from "../deployment-limits";
 import { parseDocx } from "./docx";
 import { applyHiddenText, stripMarks, type HiddenTechnique } from "./hidden";
 import { parsePdf } from "./pdf";
@@ -6,7 +7,7 @@ import { DOCUMENT_LIMITS, DocumentImportError, throwIfAborted, type DocumentForm
 
 export async function importDocument(file: File, signal?: AbortSignal): Promise<ImportedDocument> {
   throwIfAborted(signal);
-  if (file.size > DOCUMENT_LIMITS.fileBytes) throw new DocumentImportError("FILE_TOO_LARGE", "文件超过 8 MiB，请压缩或拆分后导入。", 413);
+  if (file.size > DOCUMENT_LIMITS.fileBytes) throw new DocumentImportError("FILE_TOO_LARGE", `文件超过 ${UPLOAD_LIMIT_MIB} MiB，请压缩或拆分后导入。`, 413);
   const extension = file.name.split(".").at(-1)?.toLowerCase();
   if (!["pdf", "docx", "txt"].includes(extension ?? "")) throw new DocumentImportError("UNSUPPORTED_TYPE", "仅支持 PDF、DOCX 和 TXT。旧版 .doc 请先另存为 .docx。", 415);
   const format = extension as DocumentFormat;
