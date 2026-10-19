@@ -14,7 +14,7 @@
 ## 从 GitHub 部署
 
 1. 在 Netlify 登录后选择 **Add new project → Import an existing project → GitHub**。
-2. 授权仓库 `newhack-cpu/miniature-fiesta`，选择 `main` 分支；有现成项目时继续该项目，避免重复创建。
+2. 授权仓库 `newhack-cpu/cite-checkup`（10-19 由 miniature-fiesta 改名），选择 `main` 分支；有现成项目时继续该项目，避免重复创建。
 3. 使用 **Free** 计划；构建命令 `pnpm build`，发布目录 `.next`，仓库根目录为基础目录。`netlify.toml` 会提供这些设置。
 4. 在项目环境变量中添加下表配置，作用域须包含 **Functions**（Free 若没有作用域选择，使用默认全部作用域）。秘密值只能放 Netlify 环境变量，不得写入代码或 `netlify.toml`。
 5. 部署完成后按下方清单验收。首页成功不等于 AI、导入或流式接口已经通过。

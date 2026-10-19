@@ -4,8 +4,8 @@
 
 ## 首次部署
 
-1. 注册 / 登录 [Render](https://dashboard.render.com/)，连接 GitHub 仓库 `newhack-cpu/miniature-fiesta`。
-2. 打开 [本仓库的 Blueprint 部署入口](https://dashboard.render.com/blueprint/new?repo=https://github.com/newhack-cpu/miniature-fiesta)。配置已经指定 Free、Singapore、main、Node 22.22.3、pnpm 11.22.0。
+1. 注册 / 登录 [Render](https://dashboard.render.com/)，连接 GitHub 仓库 `newhack-cpu/cite-checkup`（10-19 由 miniature-fiesta 改名）。
+2. 打开 [本仓库的 Blueprint 部署入口](https://dashboard.render.com/blueprint/new?repo=https://github.com/newhack-cpu/cite-checkup)。配置已经指定 Free、Singapore、main、Node 22.22.3、pnpm 11.22.0。
 3. 按提示填写服务端环境变量：
 
    | 名称 | 用途 |
