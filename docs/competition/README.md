@@ -5,7 +5,7 @@
 | 文件 | 用途 |
 |---|---|
 | `OFFICIAL_REQUIREMENTS.md` | 2026-10-14 实时核对的官方材料要求及评分口径 |
-| `output/pdf/引用体检-技术说明.pdf` | 2026-10-17 晚版，14 页（加入第五批盲测、AI 辅助解析对照、Agent 中文重测和中文期刊联网检索）：加入 AI 检索 Agent、拍照 / 截图识别、隐藏提示词检测、开放全文 + 混合检索和 MCP，“相近候选”单列；逐页验收见 `eval/results/technical-pdf-2026-10-17/`（10-18 只改第 11 页测试数，重验见 `eval/results/technical-pdf-2026-10-18/`） |
+| `output/pdf/引用体检-技术说明.pdf` | 2026-10-19 版，15 页（在 10-17 晚版基础上加入“和直接问 AI 比”一页与魔搭公网演示）：加入 AI 检索 Agent、拍照 / 截图识别、隐藏提示词检测、开放全文 + 混合检索和 MCP，“相近候选”单列；逐页验收见 `eval/results/technical-pdf-2026-10-17/`（10-18 只改第 11 页测试数，重验见 `eval/results/technical-pdf-2026-10-18/`） |
 | `technical-report.html` | 自含 HTML 阅读/编辑源；修改后需另存，浏览器改动不会自动回写 JSON |
 | `technical-content.json` | 结构化正式内容源；应从此修改内容后重新构建 PDF/HTML |
 | `build_technical_report.py` | 使用 ReportLab 的本地构建脚本，不调用模型或网络 |
@@ -14,7 +14,9 @@
 | `media/video-2026-10-18/tutorial-narration.json` | 老师操作教程逐字稿：7 章，目标约 3–4 分钟；从已打开的工具页面开始，使用同一云希合成音 |
 | `DEMO_SCRIPT.md` | 双片分镜、逐项操作、已批准演示输入、评测事实与异常分支 |
 | `VIDEO_PROMPT.md` | 既有正式录制要求（真实运行、讲稿与画面一致、字幕、验收）；本轮音色已选定，双片执行约束见 `media/video-2026-10-18/BRIEF.md` |
-| `TRIAL_GUIDE.md` | 请老师试用的指南：启动方式、三分钟讲解、试用流程和记录表 |
+| `TRIAL_GUIDE.md` | 请老师试用的指南：魔搭试用入口、三分钟讲解、试用流程、记录表和 SUS 可用性量表 |
+| `COMPARISON-2026-10-18.md` | 和“直接问 AI”的对照实验与消融：130 条构造真值，本系统三档对 DeepSeek 不联网 / 联网四档，含重复运行一致性 |
+| `USABILITY-2026-10-18.md` | 自动化可用性走查（不是真人测试）：任务步数与耗时、axe-core 无障碍、启发式评估与改进清单 |
 | `DEFENSE_QA.md` | 如实说明技术价值、范围和局限的答辩问答 |
 | `SUBMISSION_CHECKLIST.md` | 正式提交前需本人补充/核对的事项 |
 | `REVIEW-2026-10-17.md` | 当前版本 81/100 模拟复评：重新核实 Agent / 全文检索 / Vision / MCP、工程与页面，并区分旧盲测和新回放；不是官方成绩 |

@@ -1,14 +1,14 @@
 {
   "title": "引用体检：受约束文献核验与论断证据核查",
-  "footer": "本地技术验收版 · 2026-10-17 · 团队身份信息待补充",
+  "footer": "技术验收版 · 2026-10-19 · 团队身份信息待补充",
   "pages": [
     {
       "title": "引用体检 · 技术说明",
       "lead": "从参考文献事实，到正文论断证据。一套面向论文写作自查、保留来源和不确定性的 AI Web 工作流。",
       "blocks": [
         {"type":"callout","text":"产品主张：每一个判断，都应能回到数据库记录或原文片段。"},
-        {"type":"section","title":"项目摘要","paragraphs":["参考文献的书目真实性与正文论断的证据支持是两个问题。本项目把它们分为独立工作区：前者用公开学术数据库逐字段核对题名、作者、年份、期刊与 DOI；后者先检索证据片段，再由 DeepSeek 判断一条论断与材料的关系。","在规则核验之外加入了五项 AI 能力：受约束的字段解析、对查不到条目的 AI 检索 Agent、拍照 / 截图识别参考文献、读取开放全文并混合检索的论断 RAG，以及把核验工具开放给其他 AI 的 MCP Server。导入文档时还会检查读者看不见、AI 却会读到的隐藏提示词。模型输出都经过结构与原文校验，真伪结论由规则或带原文引句的判断给出。"]},
-        {"type":"table","headers":["项目项","当前信息"],"widths":[117,374],"rows":[["参赛方向","第九届传智杯 · AI WEB 网页开发挑战赛"],["运行形态","Next.js 16 Web 应用 + stdio MCP Server；本地生产预览；未声明公网部署"],["AI 提供方","DeepSeek（deepseek-flash）：函数调用、多轮工具调用、图片输入；Search 接口用于中文期刊检索"],["材料日期","2026-10-17；本地技术验收版"],["代码仓库","GitHub 公开仓库，保留真实提交历史"],["学校、队伍与成员","待本人补充真实身份及分工；本材料不编造团队信息"]]},
+        {"type":"section","title":"项目摘要","paragraphs":["参考文献的书目真实性与正文论断的证据支持是两个问题。本项目把它们分为独立工作区：前者用公开学术数据库逐字段核对题名、作者、年份、期刊与 DOI；后者先检索证据片段，再由 DeepSeek 判断一条论断与材料的关系。","在规则核验之外加入了五项 AI 能力：受约束的字段解析、对查不到条目的 AI 检索 Agent、拍照 / 截图识别参考文献、读取开放全文并混合检索的论断 RAG，以及把核验工具开放给其他 AI 的 MCP Server。导入文档时还会检查读者看不见、AI 却会读到的隐藏提示词。模型输出都经过结构与原文校验，真伪结论由规则或带原文引句的判断给出。","和“直接问 AI”的对照实验（130 条构造引文）中，不联网的 DeepSeek 把 23%–33% 的编造引文说成真实，本系统为 0；本系统说“已核实”的条目全部正确，改正写法全部来自数据库记录（第 11 节）。"]},
+        {"type":"table","headers":["项目项","当前信息"],"widths":[117,374],"rows":[["参赛方向","第九届传智杯 · AI WEB 网页开发挑战赛"],["运行形态","Next.js 16 Web 应用 + stdio MCP Server；魔搭创空间公网演示（免费 Docker 资源）"],["AI 提供方","DeepSeek（deepseek-flash）：函数调用、多轮工具调用、图片输入；Search 接口用于中文期刊检索"],["材料日期","2026-10-19；技术验收版"],["代码仓库","GitHub 公开仓库，保留真实提交历史"],["学校、队伍与成员","待本人补充真实身份及分工；本材料不编造团队信息"]]},
         {"type":"small","text":"文档范围：项目概述、需求分析、架构、AI 技术、核心实现、测试与部署、创新和展望。本文不构成官方成绩、临床或学术结论认证。"}
       ]
     },
@@ -105,29 +105,38 @@
       ]
     },
     {
-      "title": "11 运行、配置与复现",
-      "lead": "当前交付为本地源码与验收材料，不等于已完成公网部署或正式赛事提交。评审应使用自己的服务端密钥，复现时保留时间、输入、模型名称与结果。",
+      "title": "11 和“直接问 AI”比：对照实验与消融",
+      "lead": "同一批 130 条构造引文（真实 50、改错一项 40、编造 40，含中文 20），每条真值在构造时确定。交给本系统三档和 DeepSeek 四档（深度思考，逐条单独问，可答“不确定”），这些条件对 AI 有利。",
       "blocks": [
-        {"type":"table","headers":["步骤","执行或配置"],"widths":[111,380],"rows":[["环境","Node.js 22.13+；pnpm；以 package.json 和 pnpm-lock.yaml 为准"],["安装","pnpm install；复制 .env.example 为 .env.local，已有配置不覆盖"],["AI 配置","DEEPSEEK_API_KEY；可选 DEEPSEEK_MODEL、DEEPSEEK_BASE_URL"],["数据库配置","建议设置 CROSSREF_MAILTO、OPENALEX_API_KEY；只保留在服务端"],["开发 / 生产","pnpm dev；pnpm build 后 pnpm start --port 3210"],["MCP Server","pnpm --silent --dir <项目目录> mcp（stdio）"],["质量检查","pnpm test；pnpm lint；pnpm typecheck；pnpm build"],["联网评测","pnpm eval:real、eval:agent、eval:vision、eval:retrieval；pnpm sample:real 抽新盲测集"]]},
-        {"type":"section","title":"复现注意","paragraphs":["没有 AI 密钥时仍可使用标准文献核验；AI 解析、Agent、图片识别和论断判断需要模型配置。公开数据库和模型会变化，复现记录应保存时间、输入、配置的模型名称与结果，不保存密钥。OpenAlex 无 key 时额度很少，连续全量评测会触发 Crossref 限流，评测需分开运行。","自动测试中的固定上游响应保证可重复性，但不能证明当天外部服务可用；真实联网测试会产生少量模型费用，也不能代替离线边界测试。"]},
-        {"type":"small","text":"公网演示是官方可选加分项。本轮没有对外发布授权，不把本地端口写成可公网访问链接；正式提交前另行验证评审访问。"}
+        {"type":"table","headers":["做法","编造说成真实","改错说成正确","改正写法改对","真实英文有结论","重问结论相同","单条用时"],"widths":[118,62,62,62,66,58,63],"rows":[["本系统：只用 Crossref","0/40","0/40","36/36","18/40","—","2.1 秒"],["本系统：规则核验","0/40","0/40","36/36","20/40","129/130","2.1 秒"],["本系统：+ AI 继续查","0/40","0/40","36/36","21/40","—","追查条目约 7 秒"],["直接问 AI（flash）","13/40","7/40","15/37","37/40","115/130","7.5 秒"],["直接问 AI（pro）","9/40","5/40","18/34","30/40","—","18 秒"],["AI + 联网（flash）","0/40","0/40","39/39","40/40","108/130","8 秒"],["AI + 联网（pro）","1/40","2/40","38/40","39/40","—","24 秒"]]},
+        {"type":"section","title":"结论","paragraphs":["不联网直接问 AI 不能用来核查引用：会把编造的说成真实、把改错的说成正确，给出的 DOI 只有 56%–63% 指向正确论文，同一条问两次有 12% 结论会变。","联网 AI 是真正的对手：flash 联网没有放过编造和改错，覆盖也更广；但 pro 联网仍把 2 条改过 DOI 的引文说成“一致”，确认了 1 条虚构中文文献，两次运行有 17% 结论不同，单条 8–24 秒。本系统说“已核实”的 19 条全对，改正写法全对，重跑结论一致，不调用模型；短处是网页、报告、图书多判“待人工”，也不检查格式是否完整。"]},
+        {"type":"section","title":"消融","paragraphs":["去掉 OpenAlex 兜底，编造条目无法判为疑似不存在（10/30 降到 0）；加上 AI 继续查，中文真实条目 8/10 拿到“已核实”或“题名、刊名、年份一致”的链接，虚构的 0/10；给 AI 加联网，编造说成真实从 13/40 降到 0/40。局限：改错是单字段构造，虚构题名由开发方编写，中文只有 20 条，每档只跑一到两次。"]}
       ]
     },
     {
-      "title": "12 创新点、局限与发展方向",
+      "title": "12 运行、配置、部署与复现",
+      "lead": "源码可在本地运行，另在魔搭创空间部署了公网演示；正式赛事提交由参赛者完成。评审复现应使用自己的服务端密钥，保留时间、输入、模型名称与结果。",
+      "blocks": [
+        {"type":"table","headers":["步骤","执行或配置"],"widths":[111,380],"rows":[["环境","Node.js 22.13+；pnpm；以 package.json 和 pnpm-lock.yaml 为准"],["安装","pnpm install；复制 .env.example 为 .env.local，已有配置不覆盖"],["AI 配置","DEEPSEEK_API_KEY；可选 DEEPSEEK_MODEL、DEEPSEEK_BASE_URL"],["数据库配置","建议设置 CROSSREF_MAILTO、OPENALEX_API_KEY；只保留在服务端"],["开发 / 生产","pnpm dev；pnpm build 后 pnpm start --port 3210"],["MCP Server","pnpm --silent --dir <项目目录> mcp（stdio）"],["质量检查","pnpm test；pnpm lint；pnpm typecheck；pnpm build"],["联网评测","pnpm eval:real、eval:agent、eval:vision、eval:retrieval；pnpm sample:real 抽新盲测集"],["公网演示","魔搭 Docker 创空间（Dockerfile，Node 22，standalone 输出），不用登录；第一次打开约半分钟"]]},
+        {"type":"section","title":"复现注意","paragraphs":["没有 AI 密钥时仍可使用标准文献核验；AI 解析、Agent、图片识别和论断判断需要模型配置。公开数据库和模型会变化，复现记录应保存时间、输入、配置的模型名称与结果，不保存密钥。OpenAlex 无 key 时额度很少，连续全量评测会触发 Crossref 限流，评测需分开运行。","自动测试中的固定上游响应保证可重复性，但不能证明当天外部服务可用；真实联网测试会产生少量模型费用，也不能代替离线边界测试。"]},
+        {"type":"small","text":"公网演示是官方可选加分项。魔搭演示为单实例免费资源，所有访客共用 AI 调用额度，接近 8 MiB 的上传未验证通过；地址：modelscope.cn/studios/kgkvybu111111/cite-checkup。"}
+      ]
+    },
+    {
+      "title": "13 创新点、局限与发展方向",
       "lead": "创新定位是应用与工程组合：把 AI 引用问题拆成可追溯的事实核验和证据核查，而不是声称新的基础模型或检索算法。",
       "blocks": [
         {"type":"table","headers":["层面","当前设计价值","尚缺证据"],"widths":[73,247,171],"rows":[["应用","文献事实与正文证据分开；从格式走向可复核判断","真实用户规模和效率改善"],["技术","Agent 只找证据、规则下结论；开放全文 + 跨语言混合检索；隐藏提示词检测","跨模型比较与长文档检索消融"],["交互","保留错误原文、来源范围、失败状态和 Agent 检索理由","系统可用性研究与无障碍完整评估"],["社会价值","帮写作者发现引用问题，识别写给 AI 的隐藏指令","真实教学或学术场景的效果研究"],["商业","图书馆、写作中心、期刊投稿前检查","付费意愿、单位成本、转化及留存"]]},
-        {"type":"section","title":"已经明确的局限","paragraphs":["开放数据库覆盖不完整，知网、万方没有开放接口；联网搜索在 75 条中文条目里找到 33 条的论文页，但知网、万方的结果没有作者，多数只能给带链接的相近候选；中文题名对英文元数据仍无法比对。开放全文只覆盖 Europe PMC 开放获取子集和 arXiv，预印本可能与正式版本不同。图片识别只转写参考文献，未覆盖手写、强反光和严重透视。隐藏文字检测不覆盖被图片盖住、透明、裁剪或批注里的文字。没有账户、计费与公网运营。"]},
-        {"type":"section","title":"下一阶段优先级","paragraphs":["前三次盲测的误报在 9%–12%，第四批为 18.0%；按第四批的原因修过之后，第五批为 5.6%，但区间与前几批重叠，误报仍是长尾。中文期刊下一步要找能拿到作者的合规数据源；请第二人独立标注、扩大样本；在长文档上做检索消融；找真实写作者试用，测量复核时间与误报成本；再决定公网部署、远程 MCP 与机构试点是否值得投入。"]}
+        {"type":"section","title":"已经明确的局限","paragraphs":["开放数据库覆盖不完整，知网、万方没有开放接口；联网搜索在 75 条中文条目里找到 33 条的论文页，但知网、万方的结果没有作者，多数只能给带链接的相近候选；中文题名对英文元数据仍无法比对。开放全文只覆盖 Europe PMC 开放获取子集和 arXiv，预印本可能与正式版本不同。图片识别只转写参考文献，未覆盖手写、强反光和严重透视。隐藏文字检测不覆盖被图片盖住、透明、裁剪或批注里的文字。规则只认学术数据库：网页、报告、图书多数判“待人工”，也不检查格式是否完整，这两点联网 AI 做得更好。没有账户、计费与正式运营。"]},
+        {"type":"section","title":"下一阶段优先级","paragraphs":["前三次盲测的误报在 9%–12%，第四批为 18.0%；按第四批的原因修过之后，第五批为 5.6%，但区间与前几批重叠，误报仍是长尾。中文期刊下一步要找能拿到作者的合规数据源；请第二人独立标注、扩大样本；在长文档上做检索消融；找真实写作者试用，测量复核时间与误报成本；网页类引文打开网址核对标题，AI 只给格式完整性建议、不下真伪结论；再决定正式服务、远程 MCP 与机构试点是否值得投入。"]}
       ]
     },
     {
-      "title": "13 证据索引与提交对应",
-      "lead": "本地路径以下按项目根目录 D:/Darks/projects/cite-checkup 表示。复核时先查看最终状态文件，再核对实际文件，避免把旧版本验收当成新版本。",
+      "title": "14 证据索引与提交对应",
+      "lead": "路径相对项目根目录。复核时先看最终状态文件，再核对实际文件，避免把旧版本验收当成新版本。",
       "blocks": [
-        {"type":"table","headers":["证据","项目内位置 / 说明"],"widths":[124,367],"rows":[["最终项目状态","PROJECT_STATE.md；作为索引，关键结果需核对实际文件"],["真实论文参考文献","eval/real-world/（dev、test 和五批 blind 盲测集）；eval/results/real-*.json（含盲测复核与逐条对比）、ai-parsing-ab-2026-10-17.json"],["自建文献回归","eval/results/curated-2026-10-16-v2.json"],["AI 检索 Agent","eval/results/agent-*-2026-10-15.json、agent-*-2026-10-17-zh.json、agent-*-zh-cnweb.json、deepseek-search-probe-2026-10-17.json"],["图片识别","eval/vision/cases.json；eval/results/vision-2026-10-16.json"],["论断检索","eval/claims-retrieval/cases.json；eval/results/retrieval-2026-10-16.json"],["隐藏提示词","src/lib/documents/__tests__/fixtures/generate_hidden.py、generate_ocr.py 及生成的夹具"],["MCP 实连","eval/results/mcp-smoke-2026-10-16T00-35-59-125Z.json"],["讲稿与内容源","docs/competition/ 下 narration.json、DEMO_SCRIPT.md、DEFENSE_QA.md、technical-content.json"]]},
-        {"type":"section","title":"官方材料要求对应","paragraphs":["官方要求技术 PDF 不超过 30 页，包含概述、需求、架构、AI、实现、测试部署和展望。本报告共 14 页，对应这些部分；AI 选型、集成、优化和创新均单独说明。","正式视频须为 5–8 分钟、MP4、至少 1080p、普通话讲解。代码仓库需可供评审访问、保留真实历史并补齐团队资料。本轮不代为报名、公开仓库或提交赛事。官方页面核对日期为 2026-10-14。"]},
+        {"type":"table","headers":["证据","项目内位置 / 说明"],"widths":[124,367],"rows":[["最终项目状态","PROJECT_STATE.md；作为索引，关键结果需核对实际文件"],["参考文献评测","eval/real-world/（dev、test 和五批 blind 盲测集）；eval/results/real-*.json（含盲测复核）、curated-2026-10-16-v2.json、ai-parsing-ab-2026-10-17.json"],["对照实验与可用性","eval/compare/、eval/results/compare-2026-10-18/；eval/usability/、eval/results/usability-2026-10-18/"],["公网部署","Dockerfile；docs/deployment/MODELSCOPE.md"],["AI 检索 Agent","eval/results/agent-*-2026-10-15.json、agent-*-2026-10-17-zh.json、agent-*-zh-cnweb.json、deepseek-search-probe-2026-10-17.json"],["图片识别与论断检索","eval/vision/、eval/results/vision-2026-10-16.json；eval/claims-retrieval/、eval/results/retrieval-2026-10-16.json"],["隐藏提示词","src/lib/documents/__tests__/fixtures/generate_hidden.py、generate_ocr.py 及生成的夹具"],["MCP 实连","eval/results/mcp-smoke-2026-10-16T00-35-59-125Z.json"],["讲稿与内容源","docs/competition/ 下 narration.json、DEMO_SCRIPT.md、DEFENSE_QA.md、technical-content.json"]]},
+        {"type":"section","title":"官方材料要求对应","paragraphs":["官方要求技术 PDF 不超过 30 页，包含概述、需求、架构、AI、实现、测试部署和展望。本报告共 15 页，对应这些部分；AI 选型、集成、优化和创新均单独说明。","正式视频须为 5–8 分钟、MP4、至少 1080p、普通话讲解。代码仓库已公开并保留真实历史；团队资料由参赛者补齐，本轮不代为报名或提交赛事。官方页面核对日期为 2026-10-14。"]},
         {"type":"small","text":"官方来源：https://www.boxuegu.com/matchTrack/detail/?id=10037\n参考：Sugiyama, S., & Eguchi, R. (2025). Nikkei Asia. https://asia.nikkei.com/Business/Technology/Artificial-intelligence/Positive-review-only-Researchers-hide-AI-prompts-in-papers\n参考：Lin, Z. (2025). Hidden Prompts in Manuscripts Exploit AI-Assisted Peer Review. https://doi.org/10.48550/arXiv.2507.06185"}
       ]
     }
