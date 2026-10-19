@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // 本机部署与验收产生的目录（已在 .gitignore 中），不属于源码
+    "output/**",
+    ".playwright-cli/**",
   ]),
 ]);
 
