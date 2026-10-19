@@ -1,0 +1,26 @@
+# Allow only files needed to build the web application. In particular, never
+# send .env files, Git history, output/, recordings, or local credentials.
+**
+!Dockerfile
+!.dockerignore
+!package.json
+!pnpm-lock.yaml
+!pnpm-workspace.yaml
+!.npmrc
+!next.config.ts
+!next-env.d.ts
+!tsconfig.json
+!src/
+!src/**
+!public/
+!public/**
+
+# Development fixtures are not part of the production TypeScript compilation.
+**/__tests__
+**/__fixtures__
+**/*.test.ts
+**/*.test.tsx
+**/*.test.mts
+**/.env*
+**/*.pem
+**/*.key
