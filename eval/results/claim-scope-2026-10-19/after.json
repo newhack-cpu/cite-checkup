@@ -1,0 +1,154 @@
+{
+  "ranAt": "2026-10-19T14:01:00.273Z",
+  "mode": "scope-review",
+  "model": "deepseek-flash",
+  "doi": "10.1038/s41598-023-41032-5",
+  "evidenceScope": "abstract",
+  "runs": 3,
+  "rows": [
+    {
+      "id": "subgroup-book-chapters",
+      "claim": "即使用 GPT-4，它引用的书籍章节里也有七成是编造的。",
+      "expected": "insufficient_evidence",
+      "verdicts": [
+        "insufficient_evidence",
+        "insufficient_evidence",
+        "insufficient_evidence"
+      ],
+      "ok": 3,
+      "notes": [
+        "范围复核：引句没有单独报告 书籍章节；初判 contradicted",
+        "范围复核：引句没有单独报告 书籍章节；初判 contradicted",
+        "范围复核：引句没有单独报告 书籍章节；初判 contradicted"
+      ]
+    },
+    {
+      "id": "subgroup-journal-articles",
+      "claim": "在该研究样本中，GPT-4 引用的期刊论文有一半是编造的。",
+      "expected": "insufficient_evidence",
+      "verdicts": [
+        "insufficient_evidence",
+        "insufficient_evidence",
+        "insufficient_evidence"
+      ],
+      "ok": 3,
+      "notes": [
+        "范围复核：引句没有单独报告 期刊论文；初判 contradicted",
+        "范围复核：引句没有单独报告 期刊论文；初判 contradicted",
+        "范围复核：引句没有单独报告 期刊论文；初判 contradicted"
+      ]
+    },
+    {
+      "id": "overall-contradicted",
+      "claim": "在该研究样本中，GPT-4 生成的引文有一半以上是编造的。",
+      "expected": "contradicted",
+      "verdicts": [
+        "contradicted",
+        "contradicted",
+        "contradicted"
+      ],
+      "ok": 3,
+      "notes": [
+        "范围复核：同一范围；证据摘要直接给出该样本中GPT-4引文的编造比例为18%，远低于“一半以上（>50%）”，因此与主张不相容。摘要中55%的编造比例对应的是GPT-3.5而非GPT-4，主张可能混淆了模型。需注意：仅依据摘要，未核查全文与完整方法；样本为42个主题、84篇短文中的636条引文。",
+        "范围复核：同一范围；证据摘要直接给出该样本中GPT-4引文的编造比例为18%，远低于\"一半以上\"（>50%）。摘要中55%的编造比例对应的是GPT-3.5，而非GPT-4。因此该主张与所提供文本直接冲突。局限：仅有摘要，未核查全文与完整方法；样本为42个主题、84篇短文中的636条引文，结论仅限该样本。",
+        "范围复核：同一范围；证据摘要直接给出该样本中GPT-4引文的编造比例为18%，远低于\"一半以上\"（>50%）。摘要中55%的编造比例对应的是GPT-3.5，而非GPT-4。因此该主张与所提供文本直接冲突。局限：仅有摘要，未核查全文与完整方法；样本为42个主题、84篇短文中的636条引文，结论仅限该样本。"
+      ]
+    },
+    {
+      "id": "overall-supported",
+      "claim": "在该研究样本中，GPT-3.5 生成引文的 55% 为虚构，GPT-4 为 18%。",
+      "expected": "supported",
+      "verdicts": [
+        "supported",
+        "supported",
+        "supported"
+      ],
+      "ok": 3,
+      "notes": [
+        "摘要原文明确给出：在该研究收集的84篇文献综述（42个主题、636条引文）中，GPT-3.5 引文有55%为虚构，GPT-4 引文仅18%为虚构，与主张的数字和比较方向完全一致。局限：证据仅为摘要，未核查全文与具体统计方法（如置信区间、分类判定细节）；\"该研究样本\"的范围应理解为这42个主题生成的文献综述，不能外推到其他任务或模型版本。",
+        "摘要文本直接给出与主张完全一致的数字：在该研究生成的84篇短文、636条引文中，GPT-3.5 引文有55%为虚构，GPT-4 仅18%。主张中的样本限定（\"在该研究样本中\"）与原文\"Within this set of documents\"相符，人群/对象（引文）、结局（虚构比例）与数值均一致。局限：证据仅为摘要，未核查全文方法细节（如判定虚构的具体标准、数据库检索流程、置信区间或统计检验），也未说明各模型引文数量分布；因此仅能确认摘要层面的数值陈述，不能推断更广泛人群或因果结论。",
+        "摘要文本直接给出与主张完全一致的数字：在该研究生成的文献综述集合中，GPT-3.5 引文有 55% 为虚构，GPT-4 引文仅 18% 为虚构，且明确限定为“within this set of documents”，与主张中的“在该研究样本中”相符。局限：证据仅为摘要，未核查全文、样本构成细节（42 个主题、84 篇论文、636 条引文）之外的统计方法、置信区间或虚构判定标准；结论仅适用于该研究样本，不能外推到其他模型版本或使用场景。"
+      ]
+    }
+  ],
+  "fulltext": {
+    "claim": "即使用 GPT-4，它引用的书籍章节里也有七成是编造的。",
+    "scope": "full_text",
+    "status": "complete",
+    "verdict": "supported",
+    "seconds": 17.8,
+    "quotes": [
+      "Unlike the GPT-3.5 citations, most of the GPT-4 citations refer to works that are verifiably real. Only 18% are fabricated. Even with GPT-4, however, 70% of the cited book chapters are fabricated."
+    ],
+    "warnings": [
+      "本结果为 AI 对论断与召回文本关系的辅助判断；引句可定位不代表科学结论已获证实，需人工复核。",
+      "仅检查本次指定来源，不覆盖跨文献系统检索；检索可能漏召回同义表达、跨语言内容和其他段落中的限制条件。",
+      "证据来自 Europe PMC 的开放获取全文（JATS XML），已去掉参考文献列表、表格内容和公式；图表只保留标题。",
+      "DOI 模式读取了该文的开放获取全文，但只核查本次召回的片段；DOI 收录不等于同行评审或质量背书。",
+      "本功能未独立完成撤稿状态核验；请配合参考文献体检与人工审阅使用。"
+    ]
+  },
+  "probe": [
+    {
+      "id": "med-subgroup",
+      "claim": "80 岁以上的患者中有四成出现副作用。",
+      "quote": "Overall, 12% of patients reported side effects.",
+      "expectedSameScope": false,
+      "got": [
+        "differs: 80 岁以上的患者",
+        "differs: 80 岁以上的患者",
+        "differs: 80 岁以上的患者"
+      ],
+      "ok": 3
+    },
+    {
+      "id": "med-overall",
+      "claim": "该试验中只有 2% 的患者出现副作用。",
+      "quote": "Overall, 12% of patients reported side effects.",
+      "expectedSameScope": true,
+      "got": [
+        "incomplete",
+        "same",
+        "same"
+      ],
+      "ok": 2
+    },
+    {
+      "id": "med-reverse",
+      "claim": "该试验中总体有四成患者出现副作用。",
+      "quote": "Among patients over 80, 40% reported side effects.",
+      "expectedSameScope": false,
+      "got": [
+        "differs: 总体（所有患者）",
+        "differs: 总体（所有患者）",
+        "differs: 总体（所有患者）"
+      ],
+      "ok": 3
+    },
+    {
+      "id": "econ-time",
+      "claim": "2021 年该地区失业率为 3%。",
+      "quote": "In 2020, the regional unemployment rate was 8%.",
+      "expectedSameScope": false,
+      "got": [
+        "differs: 2021 年",
+        "differs: 2021 年",
+        "differs: 2021 年"
+      ],
+      "ok": 3
+    },
+    {
+      "id": "edu-significance",
+      "claim": "干预组的测验成绩显著高于对照组。",
+      "quote": "The intervention group scored 5 points higher than the control group, but the difference was not significant (p = 0.30).",
+      "expectedSameScope": true,
+      "got": [
+        "same",
+        "same",
+        "same"
+      ],
+      "ok": 3
+    }
+  ],
+  "limitation": "同一篇论文摘要上的 4 条论断，用于检查“范围错配”这一类错判，不代表论断核查的总体准确率。"
+}

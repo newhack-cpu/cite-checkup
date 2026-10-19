@@ -1,5 +1,5 @@
 // Server only. Client components import wire types from ./types instead.
-import { hybridRetrieve } from "./assist";
+import { checkContradictionScope, hybridRetrieve } from "./assist";
 import { ClaimError } from "./errors";
 import { withDeadline } from "./io";
 import { getClaimStatus, judgeRetrievedEvidence } from "./model";
@@ -70,6 +70,20 @@ export async function checkClaim(raw: ClaimInput, options: { signal?: AbortSigna
       }
       const judgment = await judgeRetrievedEvidence(input.claim, source, chunks, signal);
       signal.throwIfAborted();
+      if (judgment.verdict === "contradicted") {
+        // 总体或其他范围的结果不能否定限定范围的论断（摘要里 GPT-4 总体 18% 不能否定“书籍章节七成”）：引句没覆盖论断的限定词时改判证据不足
+        const scope = await checkContradictionScope(input.claim, judgment.citations.map((citation) => citation.quote), signal);
+        signal.throwIfAborted();
+        if (!scope) {
+          result.warnings.push("“与证据矛盾”的范围复核未完成：请人工确认引句和论断说的是同一对象、同一条件和时间。");
+        } else if (!scope.sameScope) {
+          const named = scope.missing.map((qualifier) => `“${qualifier}”`).join("、");
+          const initial = judgment.explanation.length > 300 ? `${judgment.explanation.slice(0, 300)}…` : judgment.explanation;
+          return { ...result, ...judgment, status: "complete", verdict: "insufficient_evidence",
+            explanation: `引句给出的是更大范围或其他条件下的结果，没有单独报告论断限定的${named}；这样的数据不能直接否定论断，现有证据不足以判断。要下结论，需要原文中关于${named}的数据。`,
+            warnings: [...result.warnings, `模型初判为“与证据矛盾”，范围复核发现引句没有单独报告${named}，已改判为“证据不足”。初判理由：${initial}`] };
+        }
+      }
       return { ...result, ...judgment, status: "complete" };
     }, options.signal, 85_000);
   } catch (error) {
