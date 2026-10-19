@@ -1,0 +1,1428 @@
+{
+ "system": "rules",
+ "dataset": "eval/compare/compare-2026-10-18.json",
+ "updatedAt": "2026-10-19T01:04:29.876Z",
+ "openalexLeft": 110,
+ "outputs": {
+  "C03": {
+   "id": "C03",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 4252
+  },
+  "C01": {
+   "id": "C01",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "ms": 4385,
+   "corrected": "Finn, R. N., Chauvigné, F., Hlidberg, J. B., Cutler, C. P., & Cerdà, J. (2014). The Lineage-Specific Evolution of Aquaporin Gene Clusters Facilitated Tetrapod Terrestrial Adaptation. PLoS ONE, 9(11), e113686. https://doi.org/10.1371/journal.pone.0113686",
+   "doi": "10.1371/journal.pone.0113686"
+  },
+  "C05": {
+   "id": "C05",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 748
+  },
+  "C04": {
+   "id": "C04",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "ms": 963,
+   "corrected": "Dewar, A., Graham, P., Nowotny, T., & Philippides, A. (2020). Exploring the robustness of insect-inspired visual navigation for flying robots. The 2020 Conference on Artificial Life, 668–677. https://doi.org/10.1162/isal_a_00307",
+   "doi": "10.1162/isal_a_00307"
+  },
+  "C02": {
+   "id": "C02",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "ms": 5381,
+   "corrected": "(2020). Agriculture, forestry, and fisheries. Food and Society, 165–178. https://doi.org/10.1016/b978-0-12-811808-5.00007-6",
+   "doi": "10.1016/b978-0-12-811808-5.00007-6"
+  },
+  "C07": {
+   "id": "C07",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "ms": 1050,
+   "corrected": "Abbasi, S. A., DeCarolis, M., Mohan, S., & Adams, C. J. (2026). A 49-Year-Old Woman With Trastuzumab-Deruxtecan-Induced Pneumonitis Responsive to IV Immunoglobulin Therapy After Failed Steroid Treatment. CHEST, 169(3), e89–e91. https://doi.org/10.1016/j.chest.2025.11.005",
+   "doi": "10.1016/j.chest.2025.11.005"
+  },
+  "C08": {
+   "id": "C08",
+   "verdict": "near_match",
+   "canon": "unsure",
+   "matchStatus": "candidate",
+   "fields": [],
+   "summary": "找到相近文献，但不能确认是同一篇，请人工核对",
+   "ms": 1279
+  },
+  "C06": {
+   "id": "C06",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 1638
+  },
+  "C11": {
+   "id": "C11",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "ms": 1194,
+   "corrected": "Sharma, A., Narang, A., Kumar, N., Rana, R., Megha, Pooja, Dhir, M., Gulati, H. K., Jyoti, Khanna, A., Singh, J. V., Kaur, S., & Bedi, P. M. S. (2025). CADD based designing and biological evaluation of novel triazole based thiazolidinedione coumarin hybrids as antidiabetic agent. Scientific Reports, 15(1), 4302. https://doi.org/10.1038/s41598-025-88944-y",
+   "doi": "10.1038/s41598-025-88944-y"
+  },
+  "C09": {
+   "id": "C09",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "ms": 2190,
+   "corrected": "Quiterio-Gutiérrez, T., González-Morales, S., González-Fuentes, J. A., Benavides-Mendoza, A., Fernández-Luqueño, F., Medrano-Macías, J., & Robledo-Olivo, A. (2023). Production of Kojic Acid by Aspergillus niger M4 with Different Concentrations of Yeast Extract as a Nitrogen Source. Processes, 11(6), 1724. https://doi.org/10.3390/pr11061724",
+   "doi": "10.3390/pr11061724"
+  },
+  "C10": {
+   "id": "C10",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "ms": 2068,
+   "corrected": "Weatherall, J. O. (2018). Regarding the ‘Hole Argument’. The British Journal for the Philosophy of Science, 69(2), 329–350. https://doi.org/10.1093/bjps/axw012",
+   "doi": "10.1093/bjps/axw012"
+  },
+  "C12": {
+   "id": "C12",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "ms": 1013,
+   "corrected": "Subburaj, S., Chung, S. J., Lee, C., Ryu, S.-M., Kim, D. H., Kim, J.-S., Bae, S., & Lee, G.-J. (2016). Site-directed mutagenesis in Petunia × hybrida protoplast system using direct delivery of purified recombinant Cas9 ribonucleoproteins. Plant Cell Reports, 35(7), 1535–1544. https://doi.org/10.1007/s00299-016-1937-7",
+   "doi": "10.1007/s00299-016-1937-7"
+  },
+  "C13": {
+   "id": "C13",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 478
+  },
+  "C14": {
+   "id": "C14",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 669
+  },
+  "C16": {
+   "id": "C16",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "ms": 1223,
+   "corrected": "Yu, G., Jiang, L., Xu, Y., Guo, H., Liu, H., Zhang, Y., Yang, H., Yuan, C., & Ma, J. (2012). Silencing Prion Protein in MDA-MB-435 Breast Cancer Cells Leads to Pleiotropic Cellular Responses to Cytotoxic Stimuli. PLoS ONE, 7(11), e48146. https://doi.org/10.1371/journal.pone.0048146",
+   "doi": "10.1371/journal.pone.0048146"
+  },
+  "C17": {
+   "id": "C17",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "ms": 1496,
+   "corrected": "Sapoetra, N. D., Ridwan, R., Sahide, M. A. K., & Masuda, K. (2019). Local community’s perception, attitude, and participation towards different level management of geopark: A comparison Geosite case study, between Muroto Cape and Rammang-rammang Geosite. IOP Conference Series: Earth and Environmental Science, 343(1), 012044. https://doi.org/10.1088/1755-1315/343/1/012044",
+   "doi": "10.1088/1755-1315/343/1/012044"
+  },
+  "C18": {
+   "id": "C18",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 916
+  },
+  "C19": {
+   "id": "C19",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "ms": 755,
+   "corrected": "Toma, F. M., Sartorel, A., Iurlo, M., Carraro, M., Rapino, S., Hoober‐Burkhardt, L., Da Ros, T., Marcaccio, M., Scorrano, G., Paolucci, F., Bonchio, M., & Prato, M. (2011). Tailored Functionalization of Carbon Nanotubes for Electrocatalytic Water Splitting and Sustainable Energy Applications. ChemSusChem, 4(10), 1447–1451. https://doi.org/10.1002/cssc.201100089",
+   "doi": "10.1002/cssc.201100089"
+  },
+  "C15": {
+   "id": "C15",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：DOI 注册机构）",
+   "ms": 4411,
+   "corrected": "Xu, J., Li, H., Liang, Z., Zhang, D., & Zhang, L. (2018). Real-world Noisy Image Denoising: A New Benchmark. arXiv. https://doi.org/10.48550/arxiv.1804.02603",
+   "doi": "10.48550/arxiv.1804.02603"
+  },
+  "C22": {
+   "id": "C22",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 501
+  },
+  "C23": {
+   "id": "C23",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "ms": 762,
+   "corrected": "Mahmood, J., Lee, E. K., Jung, M., Shin, D., Jeon, I.-Y., Jung, S.-M., Choi, H.-J., Seo, J.-M., Bae, S.-Y., Sohn, S.-D., Park, N., Oh, J. H., Shin, H.-J., & Baek, J.-B. (2015). Nitrogenated holey two-dimensional structures. Nature Communications, 6(1), 6486. https://doi.org/10.1038/ncomms7486",
+   "doi": "10.1038/ncomms7486"
+  },
+  "C24": {
+   "id": "C24",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 693
+  },
+  "C21": {
+   "id": "C21",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 3704
+  },
+  "C25": {
+   "id": "C25",
+   "verdict": "not_found",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "title"
+   ],
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "ms": 1587
+  },
+  "C27": {
+   "id": "C27",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 509
+  },
+  "C26": {
+   "id": "C26",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "ms": 2952,
+   "corrected": "Ibrahim, M. F., Putri, M. M., & Utama, D. M. (2020). A literature review on reducing carbon emission from supply chain system: drivers, barriers, performance indicators, and practices. IOP Conference Series: Materials Science and Engineering, 722(1), 012034. https://doi.org/10.1088/1757-899x/722/1/012034",
+   "doi": "10.1088/1757-899x/722/1/012034"
+  },
+  "C28": {
+   "id": "C28",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：OpenAlex）",
+   "ms": 932,
+   "corrected": "Mackay, A. D., Scobie, D. R., Rhodes, T., & Devantier, B. (2019). Has progress been made in increasing the eco-efficiency of livestock systems?."
+  },
+  "C20": {
+   "id": "C20",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 7364
+  },
+  "C29": {
+   "id": "C29",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+   "ms": 426
+  },
+  "C30": {
+   "id": "C30",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "ms": 1116,
+   "corrected": "Farillas, E. L. F., & Dator, M. A. (2025). Acute kidney injury in children and adolescents admitted for pneumonia in the Philippines. Pediatric Nephrology, 40(12), 3803–3813. https://doi.org/10.1007/s00467-025-06899-8",
+   "doi": "10.1007/s00467-025-06899-8"
+  },
+  "C32": {
+   "id": "C32",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 904
+  },
+  "C33": {
+   "id": "C33",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 423
+  },
+  "C34": {
+   "id": "C34",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 1090
+  },
+  "C35": {
+   "id": "C35",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "ms": 2481,
+   "corrected": "Mariggiò, G., Koch, S., Zhang, G., Weidner-Glunde, M., Rückert, J., Kati, S., Santag, S., & Schulz, T. F. (2017). Kaposi Sarcoma Herpesvirus (KSHV) Latency-Associated Nuclear Antigen (LANA) recruits components of the MRN (Mre11-Rad50-NBS1) repair complex to modulate an innate immune signaling pathway and viral latency. PLOS Pathogens, 13(4), e1006335. https://doi.org/10.1371/journal.ppat.1006335",
+   "doi": "10.1371/journal.ppat.1006335"
+  },
+  "C31": {
+   "id": "C31",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 4286
+  },
+  "C38": {
+   "id": "C38",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "软件 / 数据集类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 1800
+  },
+  "C39": {
+   "id": "C39",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "venue"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1206,
+   "corrected": "Leung, J. C., Lai, K. N., & Tang, S. C. (2014). Crosstalk between Podocytes and Tubular Epithelial Cells. Contributions to Nephrology, 54–63. https://doi.org/10.1159/000359928",
+   "doi": "10.1159/000359928"
+  },
+  "C37": {
+   "id": "C37",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 3792
+  },
+  "C36": {
+   "id": "C36",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：DOI 注册机构）",
+   "ms": 6165,
+   "corrected": "Spielberger, G., Artinger, F. M., Reb, J., & Kerschreiter, R. (2025). Retrieval Augmented Generation for Topic Modeling in Organizational Research: An Introduction with Empirical Demonstration. arXiv. https://doi.org/10.48550/arxiv.2502.20963",
+   "doi": "10.48550/arxiv.2502.20963"
+  },
+  "C40": {
+   "id": "C40",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "venue"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1500,
+   "corrected": "Kumar, A., Udugama, I. A., Gargalo, C. L., & Gernaey, K. V. (2020). Why Is Batch Processing Still Dominating the Biologics Landscape? Towards an Integrated Continuous Bioprocessing Alternative. Processes, 8(12), 1641. https://doi.org/10.3390/pr8121641",
+   "doi": "10.3390/pr8121641"
+  },
+  "E-D01": {
+   "id": "E-D01",
+   "verdict": "not_found",
+   "canon": "fake",
+   "fields": [
+    "doi",
+    "author",
+    "title"
+   ],
+   "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+   "ms": 1391
+  },
+  "E-D03": {
+   "id": "E-D03",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "doi"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1514,
+   "corrected": "Du, Q.-S., Tang, P.-D., Huang, H.-L., Du, F.-L., Huang, K., Xie, N.-Z., Long, S.-Y., Li, Y.-M., Qiu, J.-S., & Huang, R.-B. (2017). A new type of two-dimensional carbon crystal prepared from 1,3,5-trihydroxybenzene. Scientific Reports, 7(1), 40796. https://doi.org/10.1038/srep40796",
+   "doi": "10.1038/srep40796"
+  },
+  "E-D02": {
+   "id": "E-D02",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "doi"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 3104,
+   "corrected": "Bencini, V., Pommerenke, H. W., Grudiev, A., & Lombardi, A. M. (2020). 750 MHz radio frequency quadrupole with trapezoidal vanes for carbon ion therapy. Physical Review Accelerators and Beams, 23(12), 122003. https://doi.org/10.1103/physrevaccelbeams.23.122003",
+   "doi": "10.1103/physrevaccelbeams.23.122003"
+  },
+  "E-D05": {
+   "id": "E-D05",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "doi"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 2600,
+   "corrected": "Silver, J., Kilav, R., & Naveh-Many, T. (2002). Mechanisms of secondary hyperparathyroidism. American Journal of Physiology-Renal Physiology, 283(3), F367–F376. https://doi.org/10.1152/ajprenal.00061.2002",
+   "doi": "10.1152/ajprenal.00061.2002"
+  },
+  "E-D04": {
+   "id": "E-D04",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "doi"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 4174,
+   "corrected": "Bajda, M., Guzior, N., Ignasik, M., & Malawska, B. (2011). Multi-Target-Directed Ligands in Alzheimer's Disease Treatment. Current Medicinal Chemistry, 18(32), 4949–4975. https://doi.org/10.2174/092986711797535245",
+   "doi": "10.2174/092986711797535245"
+  },
+  "E-D06": {
+   "id": "E-D06",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "doi"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 2107,
+   "corrected": "Counotte, G., Durham, A., Vandendriessche, V., & Wollenberg, van den, L. (2022). Haptoglobin, Magnesium, Adiponectin, and Leptin as Biomarkers for Obesity and Insulin Dysregulation in Horses: Relation of Biomarkers with Obesity and Insulin in Horses. International Journal of Equine Science, 1(1), 3–10. https://doi.org/10.64292/ijes.14",
+   "doi": "10.64292/ijes.14"
+  },
+  "E-D08": {
+   "id": "E-D08",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "doi"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1472,
+   "corrected": "McManus, M. L., Long, M. C., Cooper, A., & Litvak, E. (2004). Queuing Theory Accurately Models the Need for Critical Care Resources. Anesthesiology, 100(5), 1271–1276. https://doi.org/10.1097/00000542-200405000-00032",
+   "doi": "10.1097/00000542-200405000-00032"
+  },
+  "E-D07": {
+   "id": "E-D07",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "doi"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 2107,
+   "corrected": "Green, L. V., & Kolesar, P. J. (1997). The Lagged PSA for Estimating Peak Congestion in Multiserver Markovian Queues with Periodic Arrival Rates. Management Science, 43(1), 80–87. https://doi.org/10.1287/mnsc.43.1.80",
+   "doi": "10.1287/mnsc.43.1.80"
+  },
+  "E-D09": {
+   "id": "E-D09",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "doi"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1808,
+   "corrected": "Gnewuch, S., & Rodriguez, E. E. (2020). Distinguishing the Intrinsic Antiferromagnetism in Polycrystalline LiCoPO 4 and LiMnPO 4 Olivines. Inorganic Chemistry, 59(9), 5883–5895. https://doi.org/10.1021/acs.inorgchem.9b03545",
+   "doi": "10.1021/acs.inorgchem.9b03545"
+  },
+  "E-D10": {
+   "id": "E-D10",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "doi"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1681,
+   "corrected": "Chang, J.-Y., Kim, W., & Lee, H. (2015). A language support program for English-medium instruction courses: Its development and evaluation in an EFL setting. International Journal of Bilingual Education and Bilingualism, 20(5), 510–528. https://doi.org/10.1080/13670050.2015.1080658",
+   "doi": "10.1080/13670050.2015.1080658"
+  },
+  "E-V03": {
+   "id": "E-V03",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "venue"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 2262,
+   "corrected": "Trypolska, G., Kyryziuk, S., Krupin, V., Wąs, A., & Podolets, R. (2021). Economic Feasibility of Agricultural Biogas Production by Farms in Ukraine. Energies, 15(1), 87. https://doi.org/10.3390/en15010087",
+   "doi": "10.3390/en15010087"
+  },
+  "E-V04": {
+   "id": "E-V04",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "venue"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1625,
+   "corrected": "Tambuscio, M., & Tschiggerl, M. (2023). “#schleichdiduoaschloch” Terror, Collective Memory, and Social Media. Social Media + Society, 9(3), 20563051231186365. https://doi.org/10.1177/20563051231186365",
+   "doi": "10.1177/20563051231186365"
+  },
+  "E-V02": {
+   "id": "E-V02",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "venue"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 6309,
+   "corrected": "Sharma, V. K., Marla, S., Zheng, W., Mishra, D., Huang, J., Zhang, W., Morris, G. P., & Cook, D. E. (2022). CRISPR guides induce gene silencing in plants in the absence of Cas. Genome Biology, 23(1), 6. https://doi.org/10.1186/s13059-021-02586-7",
+   "doi": "10.1186/s13059-021-02586-7"
+  },
+  "E-V05": {
+   "id": "E-V05",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "venue"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1607,
+   "corrected": "Park, S., & Park, K. (2016). Engineered Polymeric Hydrogels for 3D Tissue Models. Polymers, 8(1), 23. https://doi.org/10.3390/polym8010023",
+   "doi": "10.3390/polym8010023"
+  },
+  "E-V01": {
+   "id": "E-V01",
+   "verdict": "error",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+   "ms": 7739
+  },
+  "E-V06": {
+   "id": "E-V06",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "venue"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1231,
+   "corrected": "Baig, M. (2017). A Review of Epidemiological Distribution of Different Types of Fractures in Paediatric Age. Cureus. https://doi.org/10.7759/cureus.1624",
+   "doi": "10.7759/cureus.1624"
+  },
+  "E-V07": {
+   "id": "E-V07",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "venue"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1347,
+   "corrected": "Deventer, N., Deventer, N., Gosheger, G., de Vaal, M., Vogt, B., & Budny, T. (2021). Current strategies for the treatment of solitary and aneurysmal bone cysts: A review of the literature. Journal of Bone Oncology, 30, 100384. https://doi.org/10.1016/j.jbo.2021.100384",
+   "doi": "10.1016/j.jbo.2021.100384"
+  },
+  "E-V09": {
+   "id": "E-V09",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "venue"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1360,
+   "corrected": "Kim, M.-J., Cho, Y.-A., Kim, E., Choe, J.-Y., Park, J.-W., Lee, J., Lee, J.-W., Moon, S.-H., Kim, Y.-S., Kim, S.-E., & Choi, E.-K. (2022). Cellular Prion Protein Is Closely Associated with Early Recurrence and Poor Survival in Patients with Hepatocellular Carcinoma. Diagnostics, 12(7), 1635. https://doi.org/10.3390/diagnostics12071635",
+   "doi": "10.3390/diagnostics12071635"
+  },
+  "E-V08": {
+   "id": "E-V08",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "venue"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 2322,
+   "corrected": "Jennett, P. A., Hall, L. A., Hailey, D., Ohinmaa, A., Anderson, C., Thomas, R., Young, B., Lorenzetti, D., & Scott, R. E. (2003). The socio-economic impact of telehealth: A systematic review. Journal of Telemedicine and Telecare, 9(6), 311–320. https://doi.org/10.1258/135763303771005207",
+   "doi": "10.1258/135763303771005207"
+  },
+  "E-A01": {
+   "id": "E-A01",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 801,
+   "corrected": "Das, S., Gagandeep, & Bhatia, R. (2022). Paper-based microfluidic devices: Fabrication, detection, and significant applications in various fields. Reviews in Analytical Chemistry, 41(1), 112–136. https://doi.org/10.1515/revac-2022-0037",
+   "doi": "10.1515/revac-2022-0037"
+  },
+  "E-V10": {
+   "id": "E-V10",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "venue"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 2698,
+   "corrected": "Han, L., Zhang, J., Zhang, Y., Ma, Q., Alu, S., & Lang, Q. (2019). Hazard Assessment of Earthquake Disaster Chains Based on a Bayesian Network Model and ArcGIS. ISPRS International Journal of Geo-Information, 8(5), 210. https://doi.org/10.3390/ijgi8050210",
+   "doi": "10.3390/ijgi8050210"
+  },
+  "E-A03": {
+   "id": "E-A03",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1057,
+   "corrected": "Xiao, J., Sun, F., Wang, T., & Wang, H. (2024). Estimation and validation of high-resolution evapotranspiration products for an arid river basin using multi-source remote sensing data. Agricultural Water Management, 298, 108864. https://doi.org/10.1016/j.agwat.2024.108864",
+   "doi": "10.1016/j.agwat.2024.108864"
+  },
+  "E-A04": {
+   "id": "E-A04",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 802,
+   "corrected": "Shahbodaghi, M., Faraji, H., Shahbaazi, H., & Shabani, M. (2022). Magnetic deep eutectic solvent-based microextraction for determination of organophosphorus flame retardants in aqueous samples: One step closer to green chemistry. Microchemical Journal, 183, 108120. https://doi.org/10.1016/j.microc.2022.108120",
+   "doi": "10.1016/j.microc.2022.108120"
+  },
+  "E-A06": {
+   "id": "E-A06",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 1855
+  },
+  "E-A05": {
+   "id": "E-A05",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 2424,
+   "corrected": "B, P., A, V. A., P, G., A, A. M. M. S., & T, A. (2024). Solar photovoltaic cooling using Paraffin phase change material: Comprehensive assessment. Renewable and Sustainable Energy Reviews, 197, 114372. https://doi.org/10.1016/j.rser.2024.114372",
+   "doi": "10.1016/j.rser.2024.114372"
+  },
+  "E-A02": {
+   "id": "E-A02",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 4120,
+   "corrected": "Melear, J., Lakhani, N., O'Shaughnessy, J. A., Wilks, S. T., Khan, S., Chandana, S. R., Tolcher, A. W., Papadopoulos, K. P., Cole, Y., Rivas, K., Ghosh, R., Sinclair, S., Lutz, R., Nadler, P. I., Wood, D. L., & Burtness, B. (2019). Abstract A088: Novel anti-EGFR antibody-drug conjugate AVID100: A phase 2a trial in patients with EGFR-overexpressing advanced solid tumors. Molecular Cancer Therapeutics, 18(12_Supplement), A088–A088. https://doi.org/10.1158/1535-7163.targ-19-a088",
+   "doi": "10.1158/1535-7163.targ-19-a088"
+  },
+  "E-A09": {
+   "id": "E-A09",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "ms": 473
+  },
+  "E-A08": {
+   "id": "E-A08",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1119,
+   "corrected": "Koszewnik, A., & Oldziej, D. (2019). Performance assessment of an energy harvesting system located on a copter. The European Physical Journal Special Topics, 228(7), 1677–1692. https://doi.org/10.1140/epjst/e2019-800128-3",
+   "doi": "10.1140/epjst/e2019-800128-3"
+  },
+  "E-A10": {
+   "id": "E-A10",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 761,
+   "corrected": "Gu, L., Chen, J., Yin, J., Xu, C., & Zhou, J. (2020). Responses of Precipitation and Runoff to Climate Warming and Implications for Future Drought Changes in China. Earth's Future, 8(10), e2020EF001718. https://doi.org/10.1029/2020ef001718",
+   "doi": "10.1029/2020ef001718"
+  },
+  "E-Y01": {
+   "id": "E-Y01",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "year"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1366,
+   "corrected": "Tian, W., Zhang, H., Duan, X., Sun, H., Shao, G., & Wang, S. (2020). Porous Carbons: Structure‐Oriented Design and Versatile Applications. Advanced Functional Materials, 30(17), 1909265. https://doi.org/10.1002/adfm.201909265",
+   "doi": "10.1002/adfm.201909265"
+  },
+  "E-Y03": {
+   "id": "E-Y03",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "year"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 811,
+   "corrected": "Brito, M. C., Redweik, P., Catita, C., Freitas, S., & Santos, M. (2019). 3D Solar Potential in the Urban Environment: A Case Study in Lisbon. Energies, 12(18), 3457. https://doi.org/10.3390/en12183457",
+   "doi": "10.3390/en12183457"
+  },
+  "E-A07": {
+   "id": "E-A07",
+   "verdict": "not_found",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "title"
+   ],
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "ms": 4493
+  },
+  "E-Y05": {
+   "id": "E-Y05",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "year"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 939,
+   "corrected": "Pajtler, K. W., Witt, H., Sill, M., Jones, D. T., Hovestadt, V., Kratochwil, F., Wani, K., Tatevossian, R., Punchihewa, C., Johann, P., Reimand, J., Warnatz, H.-J., Ryzhova, M., Mack, S., Ramaswamy, V., Capper, D., Schweizer, L., Sieber, L., Wittmann, A., . . . Pfister, S. M. (2015). Molecular Classification of Ependymal Tumors across All CNS Compartments, Histopathological Grades, and Age Groups. Cancer Cell, 27(5), 728–743. https://doi.org/10.1016/j.ccell.2015.04.002",
+   "doi": "10.1016/j.ccell.2015.04.002"
+  },
+  "E-Y06": {
+   "id": "E-Y06",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "year"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 827,
+   "corrected": "Zhang, F., Yao, J., Ke, J., Zhang, L., Lam, V. Q., Xin, X.-F., Zhou, X. E., Chen, J., Brunzelle, J., Griffin, P. R., Zhou, M., Xu, H. E., Melcher, K., & He, S. Y. (2015). Structural basis of JAZ repression of MYC transcription factors in jasmonate signalling. Nature, 525(7568), 269–273. https://doi.org/10.1038/nature14661",
+   "doi": "10.1038/nature14661"
+  },
+  "E-Y07": {
+   "id": "E-Y07",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "year"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 795,
+   "corrected": "Rosales, R. L., Kong, K. H., Goh, K. J., Kumthornthip, W., Mok, V. C. T., Delgado-De Los Santos, M. M., Chua, K. S. G., Abdullah, S. J. B. F., Zakine, B., Maisonobe, P., Magis, A., & Wong, K. S. L. (2012). Botulinum Toxin Injection for Hypertonicity of the Upper Extremity Within 12 Weeks After Stroke: A Randomized Controlled Trial. Neurorehabilitation and Neural Repair, 26(7), 812–821. https://doi.org/10.1177/1545968311430824",
+   "doi": "10.1177/1545968311430824"
+  },
+  "E-Y04": {
+   "id": "E-Y04",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "year"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 3824,
+   "corrected": "Mulud, Z. A., & McCarthy, G. (2017). Caregiver Burden Among Caregivers of Individuals With Severe Mental Illness: Testing the Moderation and Mediation Models of Resilience. Archives of Psychiatric Nursing, 31(1), 24–30. https://doi.org/10.1016/j.apnu.2016.07.019",
+   "doi": "10.1016/j.apnu.2016.07.019"
+  },
+  "E-Y08": {
+   "id": "E-Y08",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "year"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 960,
+   "corrected": "Althuri, A., & Venkata Mohan, S. (2022). Emerging innovations for sustainable production of bioethanol and other mercantile products from circular economy perspective. Bioresource Technology, 363, 128013. https://doi.org/10.1016/j.biortech.2022.128013",
+   "doi": "10.1016/j.biortech.2022.128013"
+  },
+  "E-Y10": {
+   "id": "E-Y10",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "year"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 809,
+   "corrected": "HE S, ZHAN D, WANG H, et al. Discrete Memristor and Discrete Memristive Systems[J]. Entropy, 2022, 24(6): 786. DOI: 10.3390/e24060786.",
+   "doi": "10.3390/e24060786"
+  },
+  "E-Y02": {
+   "id": "E-Y02",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "year"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 8245,
+   "corrected": "Ratajczak, J., & Petriczko, E. (2020). The Predictors of Obesity among Urban Girls and Boys Aged 8–10 Years—A Cross-Sectional Study in North-Western Poland. International Journal of Environmental Research and Public Health, 17(18), 6611. https://doi.org/10.3390/ijerph17186611",
+   "doi": "10.3390/ijerph17186611"
+  },
+  "F-C01": {
+   "id": "F-C01",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author",
+    "year",
+    "venue"
+   ],
+   "summary": "文献存在，但有 3 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1665,
+   "corrected": "Acoba, E. F. (2024). Social support and mental health: the mediating role of perceived stress. Frontiers in Psychology, 15, 1330720. https://doi.org/10.3389/fpsyg.2024.1330720",
+   "doi": "10.3389/fpsyg.2024.1330720"
+  },
+  "E-Y09": {
+   "id": "E-Y09",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "year"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 4243,
+   "corrected": "Camarda, L., Budriesi, R., Corazza, I., Frosini, M., Marzetti, C., & Mattioli, L. B. (2026). Antioxidant and Health-Related Effects of Tannins: From Agri-Food By-Products to Human and Animal Health. Antioxidants, 15(1), 104. https://doi.org/10.3390/antiox15010104",
+   "doi": "10.3390/antiox15010104"
+  },
+  "F-C02": {
+   "id": "F-C02",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author",
+    "year",
+    "venue"
+   ],
+   "summary": "文献存在，但有 3 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1491,
+   "corrected": "Sang, H., Wang, Q., Li, K., Chen, Y., & Yang, Z. (2025). Dynamic Analysis of a Novel Chaotic Map Based on a Non-Locally Active Memristor and a Locally Active Memristor and Its STM32 Implementation. Electronics, 14(17), 3374. https://doi.org/10.3390/electronics14173374",
+   "doi": "10.3390/electronics14173374"
+  },
+  "F-C04": {
+   "id": "F-C04",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author",
+    "year",
+    "venue"
+   ],
+   "summary": "文献存在，但有 3 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1596,
+   "corrected": "Misuraca, L., Natali, F., Da Silva, L., Peters, J., Demé, B., Ollivier, J., Seydel, T., Laux-Lesourd, V., Haertlein, M., Zaccai, G., Deamer, D., & Maurel, M. (2017). Mobility of a Mononucleotide within a Lipid Matrix: A Neutron Scattering Study. Life, 7(1), 2. https://doi.org/10.3390/life7010002",
+   "doi": "10.3390/life7010002"
+  },
+  "F-C05": {
+   "id": "F-C05",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author",
+    "year",
+    "venue"
+   ],
+   "summary": "文献存在，但有 3 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1768,
+   "corrected": "Njie, E. G., Boelen, E., Stassen, F. R., Steinbusch, H. W., Borchelt, D. R., & Streit, W. J. (2012). Ex vivo cultures of microglia from young and aged rodent brain reveal age-related changes in microglial function. Neurobiology of Aging, 33(1), 195.e1–195.e12. https://doi.org/10.1016/j.neurobiolaging.2010.05.008",
+   "doi": "10.1016/j.neurobiolaging.2010.05.008"
+  },
+  "F-C03": {
+   "id": "F-C03",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author",
+    "year",
+    "venue"
+   ],
+   "summary": "文献存在，但有 3 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 4336,
+   "corrected": "Jenkins, M. D., Drever, J. I., Reider, R. G., & Buchanan, T. (1987). Chemical composition of fresh snow on Mount Everest. Journal of Geophysical Research: Atmospheres, 92(D9), 10999–11002. https://doi.org/10.1029/jd092id09p10999",
+   "doi": "10.1029/jd092id09p10999"
+  },
+  "F-C06": {
+   "id": "F-C06",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author",
+    "year",
+    "venue"
+   ],
+   "summary": "文献存在，但有 3 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1954,
+   "corrected": "Lopategui, D. M., Blachman-Braun, R., Porto, J. G., Bhatia, A., Marcovich, R., & Shah, H. N. (2025). Does Severity of Chronic Urinary Retention as Estimated by Preoperative Residual Urine Estimation Negatively Impact the Outcome of Holmium Laser Enucleation of the Prostate?. Urology, 195, 142–147. https://doi.org/10.1016/j.urology.2024.08.043",
+   "doi": "10.1016/j.urology.2024.08.043"
+  },
+  "F-C07": {
+   "id": "F-C07",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author",
+    "year",
+    "venue"
+   ],
+   "summary": "文献存在，但有 3 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 2650,
+   "corrected": "Damschroder, L. J., Aron, D. C., Keith, R. E., Kirsh, S. R., Alexander, J. A., & Lowery, J. C. (2009). Fostering implementation of health services research findings into practice: a consolidated framework for advancing implementation science. Implementation Science, 4(1), 50. https://doi.org/10.1186/1748-5908-4-50",
+   "doi": "10.1186/1748-5908-4-50"
+  },
+  "F-C09": {
+   "id": "F-C09",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author",
+    "year"
+   ],
+   "summary": "文献存在，但有 2 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1423,
+   "corrected": "Nussenblatt, R. B., Bielekova, B., Childs, R., Krensky, A., Strober, W., Trinchieri, G., & for the Center for Human Immunology, Autoimmunity and Inflammation, National Institutes of Health (2010). National Institutes of Health Center for Human Immunology Conference, September 2009: Meeting the human immunology challenge. Annals of the New York Academy of Sciences, 1200(s1). https://doi.org/10.1111/j.1749-6632.2010.05682.x",
+   "doi": "10.1111/j.1749-6632.2010.05682.x"
+  },
+  "F-C08": {
+   "id": "F-C08",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author",
+    "year"
+   ],
+   "summary": "文献存在，但有 2 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 2331,
+   "corrected": "Pereznieto, P., & Taylor, G. (2014). A review of approaches and methods to measure economic empowerment of women and girls. Gender & Development, 22(2), 233–251. https://doi.org/10.1080/13552074.2014.920976",
+   "doi": "10.1080/13552074.2014.920976"
+  },
+  "F-C10": {
+   "id": "F-C10",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author",
+    "year"
+   ],
+   "summary": "文献存在，但有 2 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1282,
+   "corrected": "Barredo Arrieta, A., Díaz-Rodríguez, N., Del Ser, J., Bennetot, A., Tabik, S., Barbado, A., Garcia, S., Gil-Lopez, S., Molina, D., Benjamins, R., Chatila, R., & Herrera, F. (2020). Explainable Artificial Intelligence (XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI. Information Fusion, 58, 82–115. https://doi.org/10.1016/j.inffus.2019.12.012",
+   "doi": "10.1016/j.inffus.2019.12.012"
+  },
+  "F-C13": {
+   "id": "F-C13",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author"
+   ],
+   "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1268,
+   "corrected": "Chang, J., Zang, S., Liang, W., Wu, D., Lian, Z., Xu, F., Jiang, K., & Gao, Z. (2021). Enhanced faradic activity by construction of p-n junction within reduced graphene oxide@cobalt nickel sulfide@nickle cobalt layered double hydroxide composite electrode for charge storage in hybrid supercapacitor. Journal of Colloid and Interface Science, 590, 114–124. https://doi.org/10.1016/j.jcis.2021.01.035",
+   "doi": "10.1016/j.jcis.2021.01.035"
+  },
+  "F-C12": {
+   "id": "F-C12",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author",
+    "year",
+    "venue"
+   ],
+   "summary": "文献存在，但有 3 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1804,
+   "corrected": "Seitz, G., Bantle, P., Biegler, M., Elsner, B. A. M., & Rethmeier, M. (2024). An Inherent Strain Method Using Progressive Element Activation for Fast Distortion Calculation in Directed Energy Deposition. Metals, 14(12), 1338. https://doi.org/10.3390/met14121338",
+   "doi": "10.3390/met14121338"
+  },
+  "F-C11": {
+   "id": "F-C11",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author",
+    "year"
+   ],
+   "summary": "文献存在，但有 2 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 2699,
+   "corrected": "Gan, B.-R., Yang, X.-G., Liao, H.-M., & Zhou, J.-W. (2020). Flood Routing Process and High Dam Interception of Natural Discharge from the 2018 Baige Landslide-Dammed Lake. Water, 12(2), 605. https://doi.org/10.3390/w12020605",
+   "doi": "10.3390/w12020605"
+  },
+  "F-C14": {
+   "id": "F-C14",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author",
+    "year"
+   ],
+   "summary": "文献存在，但有 2 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1051,
+   "corrected": "Forsyth, C. B., Zhang, L., Bhushan, A., Swanson, B. A., Mamede, J. I., Shaikh, M., Zhang, L., & Keshavarzian, A. (2022). The SARS-CoV-2 S1 Spike Protein Promotes MAPK and NF-kB Activation and Inflammatory Cytokine Production In Human Lung and Intestinal Epithelial Cells. https://doi.org/10.20944/preprints202206.0010.v1",
+   "doi": "10.20944/preprints202206.0010.v1"
+  },
+  "F-C15": {
+   "id": "F-C15",
+   "verdict": "mismatch",
+   "canon": "error",
+   "matchStatus": "confirmed",
+   "fields": [
+    "author",
+    "year",
+    "venue"
+   ],
+   "summary": "文献存在，但有 3 处信息与数据库记录不一致（来源：Crossref）",
+   "ms": 1355,
+   "corrected": "Cunningham, D. A., Lowe, L. H., Shao, L., & Acosta, N. R. (2016). Neuroradiologic characteristics of astroblastoma and systematic review of the literature: 2 new cases and 125 cases reported in 59 publications. Pediatric Radiology, 46(9), 1301–1308. https://doi.org/10.1007/s00247-016-3607-x",
+   "doi": "10.1007/s00247-016-3607-x"
+  },
+  "F-I03": {
+   "id": "F-I03",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "引用的期刊在该年份不在开放数据库收录范围内，查不到不代表不存在，请人工核查",
+   "ms": 1436
+  },
+  "F-I02": {
+   "id": "F-I02",
+   "verdict": "not_found",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "title"
+   ],
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "ms": 3446
+  },
+  "F-I04": {
+   "id": "F-I04",
+   "verdict": "not_found",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "title"
+   ],
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "ms": 1728
+  },
+  "F-I01": {
+   "id": "F-I01",
+   "verdict": "not_found",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "title"
+   ],
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "ms": 5471
+  },
+  "F-I05": {
+   "id": "F-I05",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查",
+   "ms": 1613
+  },
+  "F-I07": {
+   "id": "F-I07",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "预印本没有写 arXiv 编号或 DOI，开放数据库未必收录，查不到不代表不存在，请人工核查",
+   "ms": 903
+  },
+  "F-I08": {
+   "id": "F-I08",
+   "verdict": "not_found",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "title"
+   ],
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "ms": 3100
+  },
+  "F-I09": {
+   "id": "F-I09",
+   "verdict": "not_found",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "title"
+   ],
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "ms": 2591
+  },
+  "F-I06": {
+   "id": "F-I06",
+   "verdict": "not_found",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "title"
+   ],
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "ms": 5072
+  },
+  "F-I10": {
+   "id": "F-I10",
+   "verdict": "not_found",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "title"
+   ],
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "ms": 1804
+  },
+  "F-I11": {
+   "id": "F-I11",
+   "verdict": "not_found",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "title"
+   ],
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "ms": 1861
+  },
+  "F-I13": {
+   "id": "F-I13",
+   "verdict": "not_found",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "title"
+   ],
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "ms": 1081
+  },
+  "F-I14": {
+   "id": "F-I14",
+   "verdict": "not_found",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "title"
+   ],
+   "summary": "开放数据库中查无此文，疑似不存在（请人工复核）",
+   "ms": 1514
+  },
+  "F-I15": {
+   "id": "F-I15",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "引文没有写期刊、会议或 DOI，看不出是期刊论文，查不到不代表不存在，请人工核查",
+   "ms": 873
+  },
+  "Z-R01": {
+   "id": "Z-R01",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 1623
+  },
+  "Z-R03": {
+   "id": "Z-R03",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 632
+  },
+  "Z-R02": {
+   "id": "Z-R02",
+   "verdict": "verified",
+   "canon": "ok",
+   "matchStatus": "confirmed",
+   "fields": [],
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "ms": 2259,
+   "corrected": "李玮, 谭萍, 袁晓晖, 等. 大陆深俯冲的深浅动力学响应<bold>: </bold>来自帕米尔高原地壳精细结构的约束[J]. SCIENTIA SINICA Terrae, 2020, 50(5): 663-676. DOI: 10.1360/sste-2019-0226.",
+   "doi": "10.1360/sste-2019-0226"
+  },
+  "Z-R05": {
+   "id": "Z-R05",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 638
+  },
+  "Z-R06": {
+   "id": "Z-R06",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 440
+  },
+  "Z-R04": {
+   "id": "Z-R04",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 1607
+  },
+  "Z-R07": {
+   "id": "Z-R07",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 776
+  },
+  "Z-R08": {
+   "id": "Z-R08",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 597
+  },
+  "Z-R09": {
+   "id": "Z-R09",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 488
+  },
+  "Z-F01": {
+   "id": "Z-F01",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 922
+  },
+  "F-I12": {
+   "id": "F-I12",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "引用的期刊在该年份不在开放数据库收录范围内，查不到不代表不存在，请人工核查",
+   "ms": 8662
+  },
+  "Z-F02": {
+   "id": "Z-F02",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 586
+  },
+  "Z-F03": {
+   "id": "Z-F03",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 645
+  },
+  "Z-F04": {
+   "id": "Z-F04",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 2022
+  },
+  "Z-F06": {
+   "id": "Z-F06",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 642
+  },
+  "Z-F07": {
+   "id": "Z-F07",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 571
+  },
+  "Z-F05": {
+   "id": "Z-F05",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 3955
+  },
+  "Z-F08": {
+   "id": "Z-F08",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 1758
+  },
+  "Z-F09": {
+   "id": "Z-F09",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 1928
+  },
+  "Z-R10": {
+   "id": "Z-R10",
+   "verdict": "error",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+   "ms": 8129
+  },
+  "Z-F10": {
+   "id": "Z-F10",
+   "verdict": "unverifiable",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "ms": 1719
+  }
+ }
+}

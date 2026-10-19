@@ -1,0 +1,2870 @@
+{
+ "system": "ai-pro-search",
+ "dataset": "eval/compare/compare-2026-10-18.json",
+ "updatedAt": "2026-10-19T01:09:01.549Z",
+ "model": "deepseek-v4-pro",
+ "search": true,
+ "maxSearches": 3,
+ "thinking": "enabled/high",
+ "outputs": {
+  "C01": {
+   "id": "C01",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.1371/journal.pone.0113686",
+   "summary": "该文献真实存在，作者、年份、题名和期刊等信息均正确。",
+   "ms": 20000,
+   "tokens": 3943,
+   "searches": 1,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.1371/journal.pone.0113686",
+    "reason": "该文献真实存在，作者、年份、题名和期刊等信息均正确。"
+   }
+  },
+  "C04": {
+   "id": "C04",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "venue",
+    "doi"
+   ],
+   "corrected": "Dewar A, Graham P, Nowotny T, Philippides A. Exploring the robustness of insect-inspired visual navigation for flying robots. In: Artificial Life Conference Proceedings (ALIFE 2020). MIT Press; 2020. p. 668–677. doi:10.1162/isal_a_00307",
+   "doi": "10.1162/isal_a_00307",
+   "summary": "该文献真实存在，但原引文把出版社当作出处，遗漏了会议论文集名称和DOI。",
+   "ms": 23271,
+   "tokens": 7354,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "venue",
+     "doi"
+    ],
+    "corrected": "Dewar A, Graham P, Nowotny T, Philippides A. Exploring the robustness of insect-inspired visual navigation for flying robots. In: Artificial Life Conference Proceedings (ALIFE 2020). MIT Press; 2020. p. 668–677. doi:10.1162/isal_a_00307",
+    "doi": "10.1162/isal_a_00307",
+    "reason": "该文献真实存在，但原引文把出版社当作出处，遗漏了会议论文集名称和DOI。"
+   }
+  },
+  "C05": {
+   "id": "C05",
+   "verdict": "uncertain",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "NICE Clinical Knowledge Summaries 确实存在 'Cows' milk allergy in children' 主题及 'Scenario: Suspected cow's milk allergy' 场景页面，题名与 URL 结构匹配，但无法确认 '2024b' 这一修订年份标注是否准确。",
+   "ms": 29116,
+   "tokens": 8576,
+   "searches": 3,
+   "answer": {
+    "verdict": "uncertain",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "NICE Clinical Knowledge Summaries 确实存在 'Cows' milk allergy in children' 主题及 'Scenario: Suspected cow's milk allergy' 场景页面，题名与 URL 结构匹配，但无法确认 '2024b' 这一修订年份标注是否准确。"
+   }
+  },
+  "C02": {
+   "id": "C02",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "title"
+   ],
+   "corrected": "Ministry of Agriculture, Forestry and Fisheries of Japan. Livestock Statistics 2020 (Reiwa 2): beef cattle, Table 2-1, number of farms by agricultural region/prefecture and breeding-cow herd size. [cited 2023 July 14]. Available from: https://www.e-stat.go.jp/stat-search/file-download?statInfId=000032029744&fileKind=0.",
+   "summary": "该 URL 对应的是令和2年畜産統計（肉用牛）统计表，而非题名所写的“Statistics of Agriculture, Forestry and Fisheries 2020”，题名著录有误。",
+   "ms": 31170,
+   "tokens": 9285,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "title"
+    ],
+    "corrected": "Ministry of Agriculture, Forestry and Fisheries of Japan. Livestock Statistics 2020 (Reiwa 2): beef cattle, Table 2-1, number of farms by agricultural region/prefecture and breeding-cow herd size. [cited 2023 July 14]. Available from: https://www.e-stat.go.jp/stat-search/file-download?statInfId=000032029744&fileKind=0.",
+    "doi": "",
+    "reason": "该 URL 对应的是令和2年畜産統計（肉用牛）统计表，而非题名所写的“Statistics of Agriculture, Forestry and Fisheries 2020”，题名著录有误。"
+   }
+  },
+  "C06": {
+   "id": "C06",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "title"
+   ],
+   "corrected": "NIH. Research, Condition, and Disease Categorization (RCDC) Inclusion Statistics Report. https://report.nih.gov/RISR/#/rcdc?rcdcCategory=Parkinson%27s%20Disease. Accessed September 1, 2024.",
+   "summary": "该 NIH RCDC Inclusion Statistics Report 确实存在于该网址，但题名著录不准确：官方名称为 Research, Condition, and Disease Categorization (RCDC) Inclusion Statistics Report，而引用中缺少逗号和 RCDC 缩写，且 'diseases' 应为 'Disease'。",
+   "ms": 31694,
+   "tokens": 8523,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "title"
+    ],
+    "corrected": "NIH. Research, Condition, and Disease Categorization (RCDC) Inclusion Statistics Report. https://report.nih.gov/RISR/#/rcdc?rcdcCategory=Parkinson%27s%20Disease. Accessed September 1, 2024.",
+    "doi": "",
+    "reason": "该 NIH RCDC Inclusion Statistics Report 确实存在于该网址，但题名著录不准确：官方名称为 Research, Condition, and Disease Categorization (RCDC) Inclusion Statistics Report，而引用中缺少逗号和 RCDC 缩写，且 'diseases' 应为 'Disease'。"
+   }
+  },
+  "C07": {
+   "id": "C07",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.1016/j.chest.2025.11.005",
+   "summary": "PubMed 41813314 显示该文献真实存在，作者、题名、期刊、卷期页码和年份均与著录一致。",
+   "ms": 20536,
+   "tokens": 6885,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.1016/j.chest.2025.11.005",
+    "reason": "PubMed 41813314 显示该文献真实存在，作者、题名、期刊、卷期页码和年份均与著录一致。"
+   }
+  },
+  "C10": {
+   "id": "C10",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.1093/bjps/axw012",
+   "summary": "该文献真实存在，作者、年份、题名、期刊卷页均与出版社信息一致。",
+   "ms": 14213,
+   "tokens": 2630,
+   "searches": 1,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.1093/bjps/axw012",
+    "reason": "该文献真实存在，作者、年份、题名、期刊卷页均与出版社信息一致。"
+   }
+  },
+  "C11": {
+   "id": "C11",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.1038/s41598-025-88944-y",
+   "summary": "该文献真实存在，作者、年份、题名、期刊卷号和 DOI 均与 PubMed/Nature 记录一致。",
+   "ms": 14142,
+   "tokens": 3643,
+   "searches": 2,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.1038/s41598-025-88944-y",
+    "reason": "该文献真实存在，作者、年份、题名、期刊卷号和 DOI 均与 PubMed/Nature 记录一致。"
+   }
+  },
+  "C08": {
+   "id": "C08",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "title"
+   ],
+   "corrected": "Du, J. (2010). Investigation on the Unsteady Mechanism of Tip Leakage Flow in Transonic Compressor/Fan Rotors. PhD thesis, Institute of Engineering Thermophysics, Chinese Academy of Sciences, Beijing.",
+   "summary": "该博士论文真实存在，但题名著录有误，正确题名为 Investigation on the Unsteady Mechanism of Tip Leakage Flow in Transonic Compressor/Fan Rotors。",
+   "ms": 24755,
+   "tokens": 7783,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "title"
+    ],
+    "corrected": "Du, J. (2010). Investigation on the Unsteady Mechanism of Tip Leakage Flow in Transonic Compressor/Fan Rotors. PhD thesis, Institute of Engineering Thermophysics, Chinese Academy of Sciences, Beijing.",
+    "doi": "",
+    "reason": "该博士论文真实存在，但题名著录有误，正确题名为 Investigation on the Unsteady Mechanism of Tip Leakage Flow in Transonic Compressor/Fan Rotors。"
+   }
+  },
+  "C03": {
+   "id": "C03",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "venue"
+   ],
+   "corrected": "Raghu, S. V.; Patil, R. K. GAL4-UAS system for genetic labeling and visualization of specific regions of brain. In Experiments with Drosophila for Biology Courses; Indian Academy of Sciences, 2021; ISBN 9788195066421.",
+   "summary": "该章节真实存在，但第二作者应为 R. K. Patil，且该书著录不应标为 Vol. 1。",
+   "ms": 48634,
+   "tokens": 10538,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "venue"
+    ],
+    "corrected": "Raghu, S. V.; Patil, R. K. GAL4-UAS system for genetic labeling and visualization of specific regions of brain. In Experiments with Drosophila for Biology Courses; Indian Academy of Sciences, 2021; ISBN 9788195066421.",
+    "doi": "",
+    "reason": "该章节真实存在，但第二作者应为 R. K. Patil，且该书著录不应标为 Vol. 1。"
+   }
+  },
+  "C12": {
+   "id": "C12",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.1007/s00299-016-1937-7",
+   "summary": "该文献真实存在，作者、年份、题名、期刊卷页和 DOI 均与 PubMed/Scopus 记录一致。",
+   "ms": 16443,
+   "tokens": 7062,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.1007/s00299-016-1937-7",
+    "reason": "该文献真实存在，作者、年份、题名、期刊卷页和 DOI 均与 PubMed/Scopus 记录一致。"
+   }
+  },
+  "C09": {
+   "id": "C09",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "venue"
+   ],
+   "corrected": "Quiterio-Gutiérrez, T., González-Morales, S., González-Fuentes, J.A., Benavides-Mendoza, A., Fernández-Luqueño, F., Medrano-Macías, J., and Robledo-Olivo, A. (2023). Production of Kojic Acid by Aspergillus niger M4 with Different Concentrations of Yeast Extract as a Nitrogen Source. Processes, 11(6), 1724. https://doi.org/10.3390/pr11061724",
+   "doi": "10.3390/pr11061724",
+   "summary": "文献真实存在，但原引文在期刊著录处缺少卷内文章号 1724（及 DOI），信息不完整。",
+   "ms": 27999,
+   "tokens": 8202,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "venue"
+    ],
+    "corrected": "Quiterio-Gutiérrez, T., González-Morales, S., González-Fuentes, J.A., Benavides-Mendoza, A., Fernández-Luqueño, F., Medrano-Macías, J., and Robledo-Olivo, A. (2023). Production of Kojic Acid by Aspergillus niger M4 with Different Concentrations of Yeast Extract as a Nitrogen Source. Processes, 11(6), 1724. https://doi.org/10.3390/pr11061724",
+    "doi": "10.3390/pr11061724",
+    "reason": "文献真实存在，但原引文在期刊著录处缺少卷内文章号 1724（及 DOI），信息不完整。"
+   }
+  },
+  "C15": {
+   "id": "C15",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "doi"
+   ],
+   "corrected": "Xu, J., Li, H., Liang, Z., Zhang, D., & Zhang, L. (2018). Real-world noisy image denoising: A new benchmark. arXiv preprint arXiv:1804.02603.",
+   "doi": "10.48550/arXiv.1804.02603",
+   "summary": "该文献真实存在，但 arXiv 编号著录有误：应为 1804.02603，而非 1804.026030。",
+   "ms": 12154,
+   "tokens": 3538,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "doi"
+    ],
+    "corrected": "Xu, J., Li, H., Liang, Z., Zhang, D., & Zhang, L. (2018). Real-world noisy image denoising: A new benchmark. arXiv preprint arXiv:1804.02603.",
+    "doi": "10.48550/arXiv.1804.02603",
+    "reason": "该文献真实存在，但 arXiv 编号著录有误：应为 1804.02603，而非 1804.026030。"
+   }
+  },
+  "C13": {
+   "id": "C13",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "summary": "该博士论文真实存在，作者 Nils Gustav Martin Palmqvist（N.G.M. Palmqvist）2017 年在瑞典农业科学大学完成，题名与著录信息一致。",
+   "ms": 17877,
+   "tokens": 6929,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "该博士论文真实存在，作者 Nils Gustav Martin Palmqvist（N.G.M. Palmqvist）2017 年在瑞典农业科学大学完成，题名与著录信息一致。"
+   }
+  },
+  "C17": {
+   "id": "C17",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.1088/1755-1315/343/1/012044",
+   "summary": "文献真实存在，作者、年份、题名、期刊及文章号均与 IOPscience 记录一致。",
+   "ms": 14465,
+   "tokens": 4239,
+   "searches": 2,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.1088/1755-1315/343/1/012044",
+    "reason": "文献真实存在，作者、年份、题名、期刊及文章号均与 IOPscience 记录一致。"
+   }
+  },
+  "C18": {
+   "id": "C18",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "summary": "该网页真实存在，标题与 URL 均与加州司法部官网的 CCPA 页面相符，访问日期著录无误。",
+   "ms": 17912,
+   "tokens": 7075,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "该网页真实存在，标题与 URL 均与加州司法部官网的 CCPA 页面相符，访问日期著录无误。"
+   }
+  },
+  "C14": {
+   "id": "C14",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "title"
+   ],
+   "corrected": "Dynacare. ADALIMUMAB (National) [Internet]. Dynacare; 2023. https://www.dynacare.ca/specialpages/secondarynav/find-a-test/nat/adalimumab.aspx?sr=NAT",
+   "summary": "该页面真实存在，但作者署名应简写为 Dynacare，题名中的“(Internet)”不应作为题名成分，且原 URL 的查询串有误。",
+   "ms": 31098,
+   "tokens": 7965,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "title"
+    ],
+    "corrected": "Dynacare. ADALIMUMAB (National) [Internet]. Dynacare; 2023. https://www.dynacare.ca/specialpages/secondarynav/find-a-test/nat/adalimumab.aspx?sr=NAT",
+    "doi": "",
+    "reason": "该页面真实存在，但作者署名应简写为 Dynacare，题名中的“(Internet)”不应作为题名成分，且原 URL 的查询串有误。"
+   }
+  },
+  "C19": {
+   "id": "C19",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.1002/cssc.201100089",
+   "summary": "该文献真实存在，作者、年份、题名、期刊卷页和 DOI 均与 PubMed/出版社记录一致。",
+   "ms": 17747,
+   "tokens": 8344,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.1002/cssc.201100089",
+    "reason": "该文献真实存在，作者、年份、题名、期刊卷页和 DOI 均与 PubMed/出版社记录一致。"
+   }
+  },
+  "C16": {
+   "id": "C16",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "venue"
+   ],
+   "corrected": "Yu, G., Jiang, L., Xu, Y., Guo, H., Liu, H., Zhang, Y., Yang, H., Yuan, C., & Ma, J. (2012). Silencing Prion Protein in MDA-MB-435 Breast Cancer Cells Leads to Pleiotropic Cellular Responses to Cytotoxic Stimuli. PLoS ONE, 7(11), e48146. https://doi.org/10.1371/journal.pone.0048146",
+   "doi": "10.1371/journal.pone.0048146",
+   "summary": "文献真实存在，作者、年份和题名正确，但期刊著录不完整，缺少期号和文章编号（应为 7(11), e48146）。",
+   "ms": 29785,
+   "tokens": 9707,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "venue"
+    ],
+    "corrected": "Yu, G., Jiang, L., Xu, Y., Guo, H., Liu, H., Zhang, Y., Yang, H., Yuan, C., & Ma, J. (2012). Silencing Prion Protein in MDA-MB-435 Breast Cancer Cells Leads to Pleiotropic Cellular Responses to Cytotoxic Stimuli. PLoS ONE, 7(11), e48146. https://doi.org/10.1371/journal.pone.0048146",
+    "doi": "10.1371/journal.pone.0048146",
+    "reason": "文献真实存在，作者、年份和题名正确，但期刊著录不完整，缺少期号和文章编号（应为 7(11), e48146）。"
+   }
+  },
+  "C20": {
+   "id": "C20",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "title"
+   ],
+   "corrected": "Radiation Effects on Body. American Cancer Society. December 10, 2020. Retrieved April 26, 2022. https://www.cancer.org/cancer/treatment-types/radiation/effects-on-different-parts-of-body.html",
+   "summary": "该页面真实存在，但实际标题为“Radiation Effects on Body”，并非“Side effects of radiation therapy: radiation effects on body”。",
+   "ms": 19032,
+   "tokens": 7555,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "title"
+    ],
+    "corrected": "Radiation Effects on Body. American Cancer Society. December 10, 2020. Retrieved April 26, 2022. https://www.cancer.org/cancer/treatment-types/radiation/effects-on-different-parts-of-body.html",
+    "doi": "",
+    "reason": "该页面真实存在，但实际标题为“Radiation Effects on Body”，并非“Side effects of radiation therapy: radiation effects on body”。"
+   }
+  },
+  "C22": {
+   "id": "C22",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "summary": "该指南确实存在于 GP Infant Feeding Network (UK) 的 gpifn.org.uk/imap/ 页面，标题、年份和链接均与著录一致。",
+   "ms": 13591,
+   "tokens": 3916,
+   "searches": 2,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "该指南确实存在于 GP Infant Feeding Network (UK) 的 gpifn.org.uk/imap/ 页面，标题、年份和链接均与著录一致。"
+   }
+  },
+  "C21": {
+   "id": "C21",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "title"
+   ],
+   "corrected": "European Committee on Antimicrobial Susceptibility Testing. EUCAST guidelines for detection of resistance mechanisms and specific resistances of clinical and/or epidemiological importance, Version 2.0. 2017. https://www.eucast.org/fileadmin/src/media/PDFs/EUCAST_files/Resistance_mechanisms/EUCAST_detection_of_resistance_mechanisms_170711.pdf.",
+   "summary": "该指南真实存在且URL正确，但题名应为“EUCAST guidelines for detection of resistance mechanisms and specific resistances of clinical and/or epidemiological importance”，用户给出的题名不完整且非官方原题。",
+   "ms": 19606,
+   "tokens": 7940,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "title"
+    ],
+    "corrected": "European Committee on Antimicrobial Susceptibility Testing. EUCAST guidelines for detection of resistance mechanisms and specific resistances of clinical and/or epidemiological importance, Version 2.0. 2017. https://www.eucast.org/fileadmin/src/media/PDFs/EUCAST_files/Resistance_mechanisms/EUCAST_detection_of_resistance_mechanisms_170711.pdf.",
+    "doi": "",
+    "reason": "该指南真实存在且URL正确，但题名应为“EUCAST guidelines for detection of resistance mechanisms and specific resistances of clinical and/or epidemiological importance”，用户给出的题名不完整且非官方原题。"
+   }
+  },
+  "C26": {
+   "id": "C26",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.1088/1757-899X/722/1/012034",
+   "summary": "该文献真实存在，作者、年份、题名、期刊、卷期页码均与 IOP 官网记录一致。",
+   "ms": 10120,
+   "tokens": 3430,
+   "searches": 2,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.1088/1757-899X/722/1/012034",
+    "reason": "该文献真实存在，作者、年份、题名、期刊、卷期页码均与 IOP 官网记录一致。"
+   }
+  },
+  "C24": {
+   "id": "C24",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.11575/PRISM/39075",
+   "summary": "该硕士论文在卡尔加里大学 PRISM 机构库中真实存在，作者、年份、题名和学位授予单位均与著录一致。",
+   "ms": 15344,
+   "tokens": 6585,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.11575/PRISM/39075",
+    "reason": "该硕士论文在卡尔加里大学 PRISM 机构库中真实存在，作者、年份、题名和学位授予单位均与著录一致。"
+   }
+  },
+  "C30": {
+   "id": "C30",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.1007/s00467-025-06899-8",
+   "summary": "该文献真实存在，作者、年份、题名、期刊和 DOI 均与 Springer 及索引记录一致。",
+   "ms": 7079,
+   "tokens": 3057,
+   "searches": 2,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.1007/s00467-025-06899-8",
+    "reason": "该文献真实存在，作者、年份、题名、期刊和 DOI 均与 Springer 及索引记录一致。"
+   }
+  },
+  "C29": {
+   "id": "C29",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "summary": "该论文确实收录于 CLA 2021 会议论文集，作者、年份、题名和编者信息均与官方页面及 PDF 一致。",
+   "ms": 12943,
+   "tokens": 6917,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "该论文确实收录于 CLA 2021 会议论文集，作者、年份、题名和编者信息均与官方页面及 PDF 一致。"
+   }
+  },
+  "C31": {
+   "id": "C31",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "summary": "该 PDF 确实存在于 TITCK 官网，是 TRANEXEL 250 mg/5 mL IV 注射液的 Kullanma Talimatı（患者使用说明/Instructions for Use），题名和 URL 与著录一致。",
+   "ms": 8345,
+   "tokens": 3524,
+   "searches": 2,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "该 PDF 确实存在于 TITCK 官网，是 TRANEXEL 250 mg/5 mL IV 注射液的 Kullanma Talimatı（患者使用说明/Instructions for Use），题名和 URL 与著录一致。"
+   }
+  },
+  "C27": {
+   "id": "C27",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "venue"
+   ],
+   "corrected": "Knegt, Peter. “The Fruit Machine: Why every Canadian should learn about this country’s ‘gay purge’.” CBC Arts, May 30, 2018. https://www.cbc.ca/arts/the-fruit-machine-why-every-canadian-should-learn-about-this-country-s-gay-purge-1.4678718.",
+   "summary": "文章真实存在，作者为 Peter Knegt，发表平台是 CBC Arts 而非 CBC News，且作者著录格式不规范。",
+   "ms": 26490,
+   "tokens": 11870,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "venue"
+    ],
+    "corrected": "Knegt, Peter. “The Fruit Machine: Why every Canadian should learn about this country’s ‘gay purge’.” CBC Arts, May 30, 2018. https://www.cbc.ca/arts/the-fruit-machine-why-every-canadian-should-learn-about-this-country-s-gay-purge-1.4678718.",
+    "doi": "",
+    "reason": "文章真实存在，作者为 Peter Knegt，发表平台是 CBC Arts 而非 CBC News，且作者著录格式不规范。"
+   }
+  },
+  "C23": {
+   "id": "C23",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "venue"
+   ],
+   "corrected": "J. Mahmood, E.K. Lee, M. Jung, D. Shin, I.Y. Jeon, S.M. Jung, H.J. Choi, J.M. Seo, S.Y. Bae, S.D. Sohn, N. Park, J.H. Oh, H.J. Shin, J.B. Baek, Nitrogenated holey two-dimensional structures, Nat. Commun. 2015, 6, 6486. https://doi.org/10.1038/ncomms7486",
+   "doi": "10.1038/ncomms7486",
+   "summary": "文献真实存在，作者、题名、年份和 DOI 均正确，但期刊/卷号/文章号著录有误，应为 Nat. Commun. 6, 6486。",
+   "ms": 38870,
+   "tokens": 15480,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "venue"
+    ],
+    "corrected": "J. Mahmood, E.K. Lee, M. Jung, D. Shin, I.Y. Jeon, S.M. Jung, H.J. Choi, J.M. Seo, S.Y. Bae, S.D. Sohn, N. Park, J.H. Oh, H.J. Shin, J.B. Baek, Nitrogenated holey two-dimensional structures, Nat. Commun. 2015, 6, 6486. https://doi.org/10.1038/ncomms7486",
+    "doi": "10.1038/ncomms7486",
+    "reason": "文献真实存在，作者、题名、年份和 DOI 均正确，但期刊/卷号/文章号著录有误，应为 Nat. Commun. 6, 6486。"
+   }
+  },
+  "C32": {
+   "id": "C32",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "summary": "该 Chemistry World 新闻文章确实存在，作者为 Maria Burke，标题和 URL 均与著录信息一致，发表于 2022 年。",
+   "ms": 13667,
+   "tokens": 9430,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "该 Chemistry World 新闻文章确实存在，作者为 Maria Burke，标题和 URL 均与著录信息一致，发表于 2022 年。"
+   }
+  },
+  "C35": {
+   "id": "C35",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "venue"
+   ],
+   "corrected": "Mariggiò G, Koch S, Zhang G, Weidner-Glunde M, Rückert J, Kati S, Santag S, Schulz TF (2017). Kaposi Sarcoma Herpesvirus (KSHV) Latency-Associated Nuclear Antigen (LANA) recruits components of the MRN (Mre11-Rad50-NBS1) repair complex to modulate an innate immune signaling pathway and viral latency. PLoS Pathog, 13(4): e1006335.",
+   "doi": "10.1371/journal.ppat.1006335",
+   "summary": "该文献真实存在，但作者列表不完整（实际有8位作者），且出处缺少卷期和文章编号。",
+   "ms": 10422,
+   "tokens": 4003,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "venue"
+    ],
+    "corrected": "Mariggiò G, Koch S, Zhang G, Weidner-Glunde M, Rückert J, Kati S, Santag S, Schulz TF (2017). Kaposi Sarcoma Herpesvirus (KSHV) Latency-Associated Nuclear Antigen (LANA) recruits components of the MRN (Mre11-Rad50-NBS1) repair complex to modulate an innate immune signaling pathway and viral latency. PLoS Pathog, 13(4): e1006335.",
+    "doi": "10.1371/journal.ppat.1006335",
+    "reason": "该文献真实存在，但作者列表不完整（实际有8位作者），且出处缺少卷期和文章编号。"
+   }
+  },
+  "C28": {
+   "id": "C28",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "summary": "该文献真实存在，作者、年份、题名、期刊、卷期和页码均与 NZSAP 官方记录一致；未查到该文 DOI。",
+   "ms": 35548,
+   "tokens": 13045,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "该文献真实存在，作者、年份、题名、期刊、卷期和页码均与 NZSAP 官方记录一致；未查到该文 DOI。"
+   }
+  },
+  "C34": {
+   "id": "C34",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "summary": "该报告真实存在，作者、年份、题名和 URL 均与 ICCL 发布的 2021 年报告一致。",
+   "ms": 11602,
+   "tokens": 5308,
+   "searches": 2,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "该报告真实存在，作者、年份、题名和 URL 均与 ICCL 发布的 2021 年报告一致。"
+   }
+  },
+  "C33": {
+   "id": "C33",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "title"
+   ],
+   "corrected": "Ervin, J. (2003) Rapid Assessment and Prioritization of Protected Area Management (RAPPAM) Methodology. Gland, Switzerland: WWF.",
+   "summary": "该文献真实存在，但题名不应以“WWF”开头，正确题名为“Rapid Assessment and Prioritization of Protected Area Management (RAPPAM) Methodology”。",
+   "ms": 21780,
+   "tokens": 10080,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "title"
+    ],
+    "corrected": "Ervin, J. (2003) Rapid Assessment and Prioritization of Protected Area Management (RAPPAM) Methodology. Gland, Switzerland: WWF.",
+    "doi": "",
+    "reason": "该文献真实存在，但题名不应以“WWF”开头，正确题名为“Rapid Assessment and Prioritization of Protected Area Management (RAPPAM) Methodology”。"
+   }
+  },
+  "C38": {
+   "id": "C38",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "summary": "该文献为 R 语言官方软件引用，R Core Team 2022 年版本真实存在，作者、年份、题名、发布机构和网址均正确。",
+   "ms": 7567,
+   "tokens": 2505,
+   "searches": 1,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "该文献为 R 语言官方软件引用，R Core Team 2022 年版本真实存在，作者、年份、题名、发布机构和网址均正确。"
+   }
+  },
+  "C25": {
+   "id": "C25",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "title",
+    "venue"
+   ],
+   "corrected": "Pappalardo D. Hypersonique : entre rhétorique et réalité [Hypersonics: Between Rhetoric and Reality]. Vortex: Studies on Air and Space Power 2022; 3: 37–48.",
+   "summary": "文献真实存在，但题名应为 Hypersonique : entre rhétorique et réalité（英文版为 Hypersonics: Between Rhetoric and Reality），期刊名应为 Vortex: Studies on Air and Space Power。",
+   "ms": 56270,
+   "tokens": 10938,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "title",
+     "venue"
+    ],
+    "corrected": "Pappalardo D. Hypersonique : entre rhétorique et réalité [Hypersonics: Between Rhetoric and Reality]. Vortex: Studies on Air and Space Power 2022; 3: 37–48.",
+    "doi": "",
+    "reason": "文献真实存在，但题名应为 Hypersonique : entre rhétorique et réalité（英文版为 Hypersonics: Between Rhetoric and Reality），期刊名应为 Vortex: Studies on Air and Space Power。"
+   }
+  },
+  "C39": {
+   "id": "C39",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "venue"
+   ],
+   "corrected": "Leung JCK, Lai KN, Tang SCW. Crosstalk between podocytes and tubular epithelial cells. In: Liu Z-H, He JC, editors. Podocytopathy. Contributions to Nephrology. Basel: Karger; 2014. vol 183, pp 54–63. DOI: 10.1159/000359928.",
+   "doi": "10.1159/000359928",
+   "summary": "该章节确实存在且作者、年份、题名和 DOI 均正确，但期刊/卷信息应为 Karger 的 Contributions to Nephrology 第 183 卷（书名 Podocytopathy），而非 'Cell Biol Pathol Podocytes'。",
+   "ms": 16453,
+   "tokens": 7241,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "venue"
+    ],
+    "corrected": "Leung JCK, Lai KN, Tang SCW. Crosstalk between podocytes and tubular epithelial cells. In: Liu Z-H, He JC, editors. Podocytopathy. Contributions to Nephrology. Basel: Karger; 2014. vol 183, pp 54–63. DOI: 10.1159/000359928.",
+    "doi": "10.1159/000359928",
+    "reason": "该章节确实存在且作者、年份、题名和 DOI 均正确，但期刊/卷信息应为 Karger 的 Contributions to Nephrology 第 183 卷（书名 Podocytopathy），而非 'Cell Biol Pathol Podocytes'。"
+   }
+  },
+  "E-D02": {
+   "id": "E-D02",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "doi"
+   ],
+   "corrected": "Vittorio Bencini, Hermann W. Pommerenke, Alexej Grudiev, and Alessandra M. Lombardi, \"750 MHz radio frequency quadrupole with trapezoidal vanes for carbon ion therapy\", Phys. Rev. Accel. Beams 23, 122003 (2020). DOI: 10.1103/PhysRevAccelBeams.23.122003",
+   "doi": "10.1103/PhysRevAccelBeams.23.122003",
+   "summary": "文献真实存在，著录的文章号 122003 正确，但 DOI 末位应为 122003 而非 122004。",
+   "ms": 10907,
+   "tokens": 4392,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "doi"
+    ],
+    "corrected": "Vittorio Bencini, Hermann W. Pommerenke, Alexej Grudiev, and Alessandra M. Lombardi, \"750 MHz radio frequency quadrupole with trapezoidal vanes for carbon ion therapy\", Phys. Rev. Accel. Beams 23, 122003 (2020). DOI: 10.1103/PhysRevAccelBeams.23.122003",
+    "doi": "10.1103/PhysRevAccelBeams.23.122003",
+    "reason": "文献真实存在，著录的文章号 122003 正确，但 DOI 末位应为 122003 而非 122004。"
+   }
+  },
+  "C36": {
+   "id": "C36",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "title"
+   ],
+   "corrected": "Gerion Spielberger, Florian M. Artinger, Jochen Reb, and Rudolf Kerschreiter. 2025. \"Retrieval Augmented Generation for Topic Modeling in Organizational Research: An Introduction with Empirical Demonstration.\" arXiv preprint arXiv:2502.20963.",
+   "summary": "该文献真实存在，但作者姓名著录严重乱码，且题名中 'With' 的大小写与 arXiv 原文不完全一致。",
+   "ms": 34570,
+   "tokens": 12664,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "title"
+    ],
+    "corrected": "Gerion Spielberger, Florian M. Artinger, Jochen Reb, and Rudolf Kerschreiter. 2025. \"Retrieval Augmented Generation for Topic Modeling in Organizational Research: An Introduction with Empirical Demonstration.\" arXiv preprint arXiv:2502.20963.",
+    "doi": "",
+    "reason": "该文献真实存在，但作者姓名著录严重乱码，且题名中 'With' 的大小写与 arXiv 原文不完全一致。"
+   }
+  },
+  "C40": {
+   "id": "C40",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "venue"
+   ],
+   "corrected": "Kumar, A., Udugama, I.A., Gargalo, C.L., and Gernaey, K.V. (2020). Why is batch processing still dominating the biologics landscape? Towards an integrated continuous bioprocessing alternative. Processes, 8(12), 1641. https://doi.org/10.3390/pr8121641",
+   "doi": "10.3390/pr8121641",
+   "summary": "该文献真实存在，作者、年份和题名均正确，但期刊出处著录不完整，缺少期号和文章编号（应为 8(12), 1641）。",
+   "ms": 23203,
+   "tokens": 10283,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "venue"
+    ],
+    "corrected": "Kumar, A., Udugama, I.A., Gargalo, C.L., and Gernaey, K.V. (2020). Why is batch processing still dominating the biologics landscape? Towards an integrated continuous bioprocessing alternative. Processes, 8(12), 1641. https://doi.org/10.3390/pr8121641",
+    "doi": "10.3390/pr8121641",
+    "reason": "该文献真实存在，作者、年份和题名均正确，但期刊出处著录不完整，缺少期号和文章编号（应为 8(12), 1641）。"
+   }
+  },
+  "E-D01": {
+   "id": "E-D01",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.1016/j.jvsv.2020.09.007",
+   "summary": "该文献真实存在，作者、年份、题名、期刊、卷期页及DOI均与PubMed等记录一致，勘误说明也对应存在的更正条目。",
+   "ms": 22146,
+   "tokens": 6931,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.1016/j.jvsv.2020.09.007",
+    "reason": "该文献真实存在，作者、年份、题名、期刊、卷期页及DOI均与PubMed等记录一致，勘误说明也对应存在的更正条目。"
+   }
+  },
+  "E-D03": {
+   "id": "E-D03",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "doi"
+   ],
+   "corrected": "Q.S. Du, P.D. Tang, H.L. Huang, F.L. Du, K. Huang, N.Z. Xie, S.Y. Long, Y.M. Li, J.S. Qiu, R.B. Huang, A new type of two-dimensional carbon crystal prepared from 1,3,5-trihydroxybenzene, Scientific Reports 7, 40796 (2017). https://doi.org/10.1038/srep40796",
+   "doi": "10.1038/srep40796",
+   "summary": "该文献真实存在，但 DOI 著录错误：正确 DOI 为 10.1038/srep40796，而非 srep40797（后者对应另一篇论文）。",
+   "ms": 17645,
+   "tokens": 4114,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "doi"
+    ],
+    "corrected": "Q.S. Du, P.D. Tang, H.L. Huang, F.L. Du, K. Huang, N.Z. Xie, S.Y. Long, Y.M. Li, J.S. Qiu, R.B. Huang, A new type of two-dimensional carbon crystal prepared from 1,3,5-trihydroxybenzene, Scientific Reports 7, 40796 (2017). https://doi.org/10.1038/srep40796",
+    "doi": "10.1038/srep40796",
+    "reason": "该文献真实存在，但 DOI 著录错误：正确 DOI 为 10.1038/srep40796，而非 srep40797（后者对应另一篇论文）。"
+   }
+  },
+  "C37": {
+   "id": "C37",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author"
+   ],
+   "corrected": "Centers for Disease Control and Prevention. Data and statistics: marijuana and public health. Published 2021. Accessed June 16, 2022. https://www.cdc.gov/marijuana/data-statistics.htm.",
+   "summary": "该网页真实存在，但机构作者名称缺少“and”，正确写法应为 Centers for Disease Control and Prevention。",
+   "ms": 35091,
+   "tokens": 8967,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author"
+    ],
+    "corrected": "Centers for Disease Control and Prevention. Data and statistics: marijuana and public health. Published 2021. Accessed June 16, 2022. https://www.cdc.gov/marijuana/data-statistics.htm.",
+    "doi": "",
+    "reason": "该网页真实存在，但机构作者名称缺少“and”，正确写法应为 Centers for Disease Control and Prevention。"
+   }
+  },
+  "E-D05": {
+   "id": "E-D05",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "doi"
+   ],
+   "corrected": "Silver J, Kilav R, Naveh-Many T. Mechanisms of secondary hyperparathyroidism. Am J Physiol Renal Physiol. 2002;283(3):F367-76. doi:10.1152/ajprenal.00061.2002",
+   "doi": "10.1152/ajprenal.00061.2002",
+   "summary": "该文献真实存在，作者、年份、题名、期刊和页码均正确，但 DOI 末位应为 2002 而非 2003。",
+   "ms": 11892,
+   "tokens": 4168,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "doi"
+    ],
+    "corrected": "Silver J, Kilav R, Naveh-Many T. Mechanisms of secondary hyperparathyroidism. Am J Physiol Renal Physiol. 2002;283(3):F367-76. doi:10.1152/ajprenal.00061.2002",
+    "doi": "10.1152/ajprenal.00061.2002",
+    "reason": "该文献真实存在，作者、年份、题名、期刊和页码均正确，但 DOI 末位应为 2002 而非 2003。"
+   }
+  },
+  "E-D07": {
+   "id": "E-D07",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "doi"
+   ],
+   "corrected": "Green L V, Kolesar P J (1997) The lagged PSA for estimating peak congestion in multiserver Markovian queues with periodic arrival rates. Management Science 43(1):80–87. https://doi.org/10.1287/mnsc.43.1.80",
+   "doi": "10.1287/mnsc.43.1.80",
+   "summary": "文献真实存在且著录信息基本正确，但 DOI 末尾应为 80 而非 81。",
+   "ms": 10183,
+   "tokens": 3316,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "doi"
+    ],
+    "corrected": "Green L V, Kolesar P J (1997) The lagged PSA for estimating peak congestion in multiserver Markovian queues with periodic arrival rates. Management Science 43(1):80–87. https://doi.org/10.1287/mnsc.43.1.80",
+    "doi": "10.1287/mnsc.43.1.80",
+    "reason": "文献真实存在且著录信息基本正确，但 DOI 末尾应为 80 而非 81。"
+   }
+  },
+  "E-D04": {
+   "id": "E-D04",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "doi"
+   ],
+   "corrected": "Bajda M, Guzior N, Ignasik M, Malawska B. Multi-target-directed ligands in Alzheimer’s disease treatment. Curr Med Chem. 2011;18(32):4949–4975. https://doi.org/10.2174/092986711797535245",
+   "doi": "10.2174/092986711797535245",
+   "summary": "文献真实存在，但用户给出的 DOI 末位有误，正确 DOI 为 10.2174/092986711797535245。",
+   "ms": 22687,
+   "tokens": 22001,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "doi"
+    ],
+    "corrected": "Bajda M, Guzior N, Ignasik M, Malawska B. Multi-target-directed ligands in Alzheimer’s disease treatment. Curr Med Chem. 2011;18(32):4949–4975. https://doi.org/10.2174/092986711797535245",
+    "doi": "10.2174/092986711797535245",
+    "reason": "文献真实存在，但用户给出的 DOI 末位有误，正确 DOI 为 10.2174/092986711797535245。"
+   }
+  },
+  "E-D09": {
+   "id": "E-D09",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "doi"
+   ],
+   "corrected": "Gnewuch S, Rodriguez EE (2020) Distinguishing the intrinsic antiferromagnetism in polycrystalline LiCoPO4 and LiMnPO4 olivines. Inorg Chem 59:5883–5895. https://doi.org/10.1021/acs.inorgchem.9b03545",
+   "doi": "10.1021/acs.inorgchem.9b03545",
+   "summary": "该文献真实存在，作者、年份、题名、期刊和页码均正确，但 DOI 末尾应为 9b03545 而非 9b03546。",
+   "ms": 10091,
+   "tokens": 3652,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "doi"
+    ],
+    "corrected": "Gnewuch S, Rodriguez EE (2020) Distinguishing the intrinsic antiferromagnetism in polycrystalline LiCoPO4 and LiMnPO4 olivines. Inorg Chem 59:5883–5895. https://doi.org/10.1021/acs.inorgchem.9b03545",
+    "doi": "10.1021/acs.inorgchem.9b03545",
+    "reason": "该文献真实存在，作者、年份、题名、期刊和页码均正确，但 DOI 末尾应为 9b03545 而非 9b03546。"
+   }
+  },
+  "E-D08": {
+   "id": "E-D08",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "doi"
+   ],
+   "corrected": "McManus ML, Long MC, Cooper AB, Mandell J, Berwick DM, Pagano M, Litvak E. Queuing theory accurately models the need for critical care resources. Anesthesiology. 2004;100(5):1271–1276. doi:10.1097/00000542-200405000-00032",
+   "doi": "10.1097/00000542-200405000-00032",
+   "summary": "文献真实存在，但作者不完整且 DOI 末尾应为 00032 而非 00033。",
+   "ms": 10862,
+   "tokens": 3380,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "doi"
+    ],
+    "corrected": "McManus ML, Long MC, Cooper AB, Mandell J, Berwick DM, Pagano M, Litvak E. Queuing theory accurately models the need for critical care resources. Anesthesiology. 2004;100(5):1271–1276. doi:10.1097/00000542-200405000-00032",
+    "doi": "10.1097/00000542-200405000-00032",
+    "reason": "文献真实存在，但作者不完整且 DOI 末尾应为 00032 而非 00033。"
+   }
+  },
+  "E-V02": {
+   "id": "E-V02",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "venue"
+   ],
+   "corrected": "Sharma VK, Marla S, Zheng W, Mishra D, Huang J, Zhang W, Morris GP, Cook DE. CRISPR guides induce gene silencing in plants in the absence of Cas. Genome Biology, 2022, 23: 6.",
+   "doi": "10.1186/s13059-021-02586-7",
+   "summary": "该论文真实存在，但刊载于 Genome Biology 而非 Pediatric Radiology，期刊著录有误。",
+   "ms": 11462,
+   "tokens": 3585,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "venue"
+    ],
+    "corrected": "Sharma VK, Marla S, Zheng W, Mishra D, Huang J, Zhang W, Morris GP, Cook DE. CRISPR guides induce gene silencing in plants in the absence of Cas. Genome Biology, 2022, 23: 6.",
+    "doi": "10.1186/s13059-021-02586-7",
+    "reason": "该论文真实存在，但刊载于 Genome Biology 而非 Pediatric Radiology，期刊著录有误。"
+   }
+  },
+  "E-V01": {
+   "id": "E-V01",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "venue"
+   ],
+   "corrected": "Kim, S., Im, H., Yu, J., Kim, K., Kim, M., & Lee, T. (2023). Biofuel production from Euglena: Current status and techno-economic perspectives. Bioresource Technology, 371, 128582.",
+   "doi": "10.1016/j.biortech.2023.128582",
+   "summary": "该文献真实存在，但发表于 Bioresource Technology 而非 Annals of the New York Academy of Sciences。",
+   "ms": 16889,
+   "tokens": 7303,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "venue"
+    ],
+    "corrected": "Kim, S., Im, H., Yu, J., Kim, K., Kim, M., & Lee, T. (2023). Biofuel production from Euglena: Current status and techno-economic perspectives. Bioresource Technology, 371, 128582.",
+    "doi": "10.1016/j.biortech.2023.128582",
+    "reason": "该文献真实存在，但发表于 Bioresource Technology 而非 Annals of the New York Academy of Sciences。"
+   }
+  },
+  "E-V05": {
+   "id": "E-V05",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "venue"
+   ],
+   "corrected": "Park, S., & Park, K. M. (2016). Engineered polymeric hydrogels for 3D tissue models. Polymers, 8(1), 23.",
+   "doi": "10.3390/polym8010023",
+   "summary": "该文献真实存在，但期刊应为 Polymers 而非 Quantitative Finance，卷期应为 8(1), 23。",
+   "ms": 10399,
+   "tokens": 3490,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "venue"
+    ],
+    "corrected": "Park, S., & Park, K. M. (2016). Engineered polymeric hydrogels for 3D tissue models. Polymers, 8(1), 23.",
+    "doi": "10.3390/polym8010023",
+    "reason": "该文献真实存在，但期刊应为 Polymers 而非 Quantitative Finance，卷期应为 8(1), 23。"
+   }
+  },
+  "E-D10": {
+   "id": "E-D10",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "year",
+    "doi"
+   ],
+   "corrected": "Chang, J.-Y., Kim, W., & Lee, H. (2017). A language support program for English-medium instruction courses: Its development and evaluation in an EFL setting. International Journal of Bilingual Education and Bilingualism, 20(5), 510–528. https://doi.org/10.1080/13670050.2015.1080658",
+   "doi": "10.1080/13670050.2015.1080658",
+   "summary": "该文献真实存在，但出版年应为2017年（卷20第5期），且DOI末尾应为1080658而非1080659（1080659属于另一篇Pakistan文章）。",
+   "ms": 25800,
+   "tokens": 11108,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "year",
+     "doi"
+    ],
+    "corrected": "Chang, J.-Y., Kim, W., & Lee, H. (2017). A language support program for English-medium instruction courses: Its development and evaluation in an EFL setting. International Journal of Bilingual Education and Bilingualism, 20(5), 510–528. https://doi.org/10.1080/13670050.2015.1080658",
+    "doi": "10.1080/13670050.2015.1080658",
+    "reason": "该文献真实存在，但出版年应为2017年（卷20第5期），且DOI末尾应为1080658而非1080659（1080659属于另一篇Pakistan文章）。"
+   }
+  },
+  "E-V04": {
+   "id": "E-V04",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "title",
+    "venue",
+    "doi"
+   ],
+   "corrected": "Tambuscio M, Tschiggerl M (2023) “#schleichdiduoaschloch” Terror, Collective Memory, and Social Media. Social Media + Society, 9(3), 20563051231186365. https://doi.org/10.1177/20563051231186365",
+   "doi": "10.1177/20563051231186365",
+   "summary": "该文献真实存在，但期刊著录错误，实际发表于 Social Media + Society 而非 Physical Review Accelerators and Beams。",
+   "ms": 26291,
+   "tokens": 8629,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "title",
+     "venue",
+     "doi"
+    ],
+    "corrected": "Tambuscio M, Tschiggerl M (2023) “#schleichdiduoaschloch” Terror, Collective Memory, and Social Media. Social Media + Society, 9(3), 20563051231186365. https://doi.org/10.1177/20563051231186365",
+    "doi": "10.1177/20563051231186365",
+    "reason": "该文献真实存在，但期刊著录错误，实际发表于 Social Media + Society 而非 Physical Review Accelerators and Beams。"
+   }
+  },
+  "E-V07": {
+   "id": "E-V07",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "venue"
+   ],
+   "corrected": "Deventer N, Deventer N, Gosheger G, de Vaal M, Vogt B, Budny T. Current strategies for the treatment of solitary and aneurysmal bone cysts: a review of the literature. Journal of Bone Oncology. 2021;30:100384. doi:10.1016/j.jbo.2021.100384",
+   "doi": "10.1016/j.jbo.2021.100384",
+   "summary": "该文献真实存在，但期刊应为 Journal of Bone Oncology，而非 Scientific Reports。",
+   "ms": 9492,
+   "tokens": 4014,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "venue"
+    ],
+    "corrected": "Deventer N, Deventer N, Gosheger G, de Vaal M, Vogt B, Budny T. Current strategies for the treatment of solitary and aneurysmal bone cysts: a review of the literature. Journal of Bone Oncology. 2021;30:100384. doi:10.1016/j.jbo.2021.100384",
+    "doi": "10.1016/j.jbo.2021.100384",
+    "reason": "该文献真实存在，但期刊应为 Journal of Bone Oncology，而非 Scientific Reports。"
+   }
+  },
+  "E-V03": {
+   "id": "E-V03",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "venue",
+    "year"
+   ],
+   "corrected": "Trypolska, G., Kyryziuk, S., Krupin, V., Wąs, A., & Podolets, R. (2022). Economic Feasibility of Agricultural Biogas Production by Farms in Ukraine. Energies, 15(1), 87.",
+   "doi": "10.3390/en15010087",
+   "summary": "该论文真实存在，但期刊名被误写为 Urology，实际发表于 Energies，且期刊年卷应为 2022 年。",
+   "ms": 29008,
+   "tokens": 8332,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "venue",
+     "year"
+    ],
+    "corrected": "Trypolska, G., Kyryziuk, S., Krupin, V., Wąs, A., & Podolets, R. (2022). Economic Feasibility of Agricultural Biogas Production by Farms in Ukraine. Energies, 15(1), 87.",
+    "doi": "10.3390/en15010087",
+    "reason": "该论文真实存在，但期刊名被误写为 Urology，实际发表于 Energies，且期刊年卷应为 2022 年。"
+   }
+  },
+  "E-V08": {
+   "id": "E-V08",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "venue"
+   ],
+   "corrected": "Jennett PA, Affleck Hall L, Hailey D, Ohinmaa A, Anderson C, Thomas R, Young B, Lorenzetti D, Scott RE. The socio-economic impact of telehealth: a systematic review. Journal of Telemedicine and Telecare. 2003;9(6):311–20.",
+   "doi": "10.1258/135763303771005207",
+   "summary": "该文献真实存在，但期刊应为 Journal of Telemedicine and Telecare，而非 Interactive Learning Environments。",
+   "ms": 10438,
+   "tokens": 3114,
+   "searches": 1,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "venue"
+    ],
+    "corrected": "Jennett PA, Affleck Hall L, Hailey D, Ohinmaa A, Anderson C, Thomas R, Young B, Lorenzetti D, Scott RE. The socio-economic impact of telehealth: a systematic review. Journal of Telemedicine and Telecare. 2003;9(6):311–20.",
+    "doi": "10.1258/135763303771005207",
+    "reason": "该文献真实存在，但期刊应为 Journal of Telemedicine and Telecare，而非 Interactive Learning Environments。"
+   }
+  },
+  "E-V06": {
+   "id": "E-V06",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "venue"
+   ],
+   "corrected": "Baig MN. A Review of Epidemiological Distribution of Different Types of Fractures in Paediatric Age. Cureus. 2017;9(8):e1624. doi:10.7759/cureus.1624.",
+   "doi": "10.7759/cureus.1624",
+   "summary": "该文献真实存在，但期刊应为 Cureus 而非 Astrobiology，且作者全名应为 Baig MN。",
+   "ms": 18831,
+   "tokens": 10983,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "venue"
+    ],
+    "corrected": "Baig MN. A Review of Epidemiological Distribution of Different Types of Fractures in Paediatric Age. Cureus. 2017;9(8):e1624. doi:10.7759/cureus.1624.",
+    "doi": "10.7759/cureus.1624",
+    "reason": "该文献真实存在，但期刊应为 Cureus 而非 Astrobiology，且作者全名应为 Baig MN。"
+   }
+  },
+  "E-A03": {
+   "id": "E-A03",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author"
+   ],
+   "corrected": "Xiao, J., Sun, F., Wang, T., & Wang, H. Estimation and validation of high-resolution evapotranspiration products for an arid river basin using multi-source remote sensing data. Agric. Water Manag. 298, 108864 (2024).",
+   "doi": "10.1016/j.agwat.2024.108864",
+   "summary": "该文献真实存在，但第一作者应为 Xiao Jing 而非 Moreau，其他著录信息正确。",
+   "ms": 8293,
+   "tokens": 3535,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author"
+    ],
+    "corrected": "Xiao, J., Sun, F., Wang, T., & Wang, H. Estimation and validation of high-resolution evapotranspiration products for an arid river basin using multi-source remote sensing data. Agric. Water Manag. 298, 108864 (2024).",
+    "doi": "10.1016/j.agwat.2024.108864",
+    "reason": "该文献真实存在，但第一作者应为 Xiao Jing 而非 Moreau，其他著录信息正确。"
+   }
+  },
+  "E-A01": {
+   "id": "E-A01",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author"
+   ],
+   "corrected": "Das, S., Gagandeep, & Bhatia, R. (2022). Paper-based microfluidic devices: Fabrication, detection, and significant applications in various fields. Reviews in Analytical Chemistry, 41(1), 112–136. https://doi.org/10.1515/revac-2022-0037",
+   "doi": "10.1515/revac-2022-0037",
+   "summary": "该文献真实存在，但作者应为 Shibam Das、Gagandeep 和 Rohit Bhatia，而非 Peterson, S. Gagandeep, Bhatia, R.",
+   "ms": 10411,
+   "tokens": 4049,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author"
+    ],
+    "corrected": "Das, S., Gagandeep, & Bhatia, R. (2022). Paper-based microfluidic devices: Fabrication, detection, and significant applications in various fields. Reviews in Analytical Chemistry, 41(1), 112–136. https://doi.org/10.1515/revac-2022-0037",
+    "doi": "10.1515/revac-2022-0037",
+    "reason": "该文献真实存在，但作者应为 Shibam Das、Gagandeep 和 Rohit Bhatia，而非 Peterson, S. Gagandeep, Bhatia, R."
+   }
+  },
+  "E-V10": {
+   "id": "E-V10",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "venue"
+   ],
+   "corrected": "Han, L., Zhang, J., Zhang, Y., Ma, Q., Alu, S., & Lang, Q. (2019). Hazard assessment of earthquake disaster chains based on a Bayesian network model and ArcGIS. ISPRS International Journal of Geo-Information, 8(5), 210.",
+   "doi": "10.3390/ijgi8050210",
+   "summary": "该文献真实存在，但期刊著录错误，应为 ISPRS International Journal of Geo-Information 而非 Journal of Colloid and Interface Science。",
+   "ms": 19553,
+   "tokens": 7604,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "venue"
+    ],
+    "corrected": "Han, L., Zhang, J., Zhang, Y., Ma, Q., Alu, S., & Lang, Q. (2019). Hazard assessment of earthquake disaster chains based on a Bayesian network model and ArcGIS. ISPRS International Journal of Geo-Information, 8(5), 210.",
+    "doi": "10.3390/ijgi8050210",
+    "reason": "该文献真实存在，但期刊著录错误，应为 ISPRS International Journal of Geo-Information 而非 Journal of Colloid and Interface Science。"
+   }
+  },
+  "E-A02": {
+   "id": "E-A02",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "venue"
+   ],
+   "corrected": "Jason Melear, Nehal Lakhani, Joyce A O'Shaughnessy, Sharon T Wilks, et al. Abstract A088: Novel anti-EGFR antibody-drug conjugate AVID100: A phase 2a trial in patients with EGFR-overexpressing advanced solid tumors. Mol Cancer Ther. 2019;18(12 Suppl):Abstract nr A088. doi:10.1158/1535-7163.TARG-19-A088",
+   "doi": "10.1158/1535-7163.TARG-19-A088",
+   "summary": "该摘要真实存在，但第一作者应为 Jason Melear 而非 Lindqvist J，页码 A088-0A88 应为 Abstract nr A088，且期刊信息缺失。",
+   "ms": 20248,
+   "tokens": 8073,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "venue"
+    ],
+    "corrected": "Jason Melear, Nehal Lakhani, Joyce A O'Shaughnessy, Sharon T Wilks, et al. Abstract A088: Novel anti-EGFR antibody-drug conjugate AVID100: A phase 2a trial in patients with EGFR-overexpressing advanced solid tumors. Mol Cancer Ther. 2019;18(12 Suppl):Abstract nr A088. doi:10.1158/1535-7163.TARG-19-A088",
+    "doi": "10.1158/1535-7163.TARG-19-A088",
+    "reason": "该摘要真实存在，但第一作者应为 Jason Melear 而非 Lindqvist J，页码 A088-0A88 应为 Abstract nr A088，且期刊信息缺失。"
+   }
+  },
+  "E-V09": {
+   "id": "E-V09",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "venue"
+   ],
+   "corrected": "Kim, M.-J., Cho, Y.-A., Kim, E., Choe, J.-Y., Park, J.-W., Lee, J., Lee, J.-W., Moon, S.-H., Kim, Y.-S., Kim, S.-E., & Choi, E.-K. (2022). Cellular Prion Protein Is Closely Associated with Early Recurrence and Poor Survival in Patients with Hepatocellular Carcinoma. Diagnostics, 12(7), 1635.",
+   "doi": "10.3390/diagnostics12071635",
+   "summary": "该文献真实存在，但期刊著录错误（应为 Diagnostics 而非 Cancer Cell），且作者列表遗漏了末位作者 Choi, E.-K。",
+   "ms": 25135,
+   "tokens": 13423,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "venue"
+    ],
+    "corrected": "Kim, M.-J., Cho, Y.-A., Kim, E., Choe, J.-Y., Park, J.-W., Lee, J., Lee, J.-W., Moon, S.-H., Kim, Y.-S., Kim, S.-E., & Choi, E.-K. (2022). Cellular Prion Protein Is Closely Associated with Early Recurrence and Poor Survival in Patients with Hepatocellular Carcinoma. Diagnostics, 12(7), 1635.",
+    "doi": "10.3390/diagnostics12071635",
+    "reason": "该文献真实存在，但期刊著录错误（应为 Diagnostics 而非 Cancer Cell），且作者列表遗漏了末位作者 Choi, E.-K。"
+   }
+  },
+  "E-A05": {
+   "id": "E-A05",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author"
+   ],
+   "corrected": "B. Prabhu, A. Valan Arasu, P. Gurusamy, A. Amala Mithin Minther Singh, T. Arunkumar, Solar photovoltaic cooling using Paraffin phase change material: Comprehensive assessment, Renewable and Sustainable Energy Reviews 197 (2024) 114372.",
+   "doi": "10.1016/j.rser.2024.114372",
+   "summary": "文献真实存在且题名、期刊、卷年、DOI 正确，但作者著录完全错乱，真实作者为 Prabhu 等五人。",
+   "ms": 15173,
+   "tokens": 7756,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author"
+    ],
+    "corrected": "B. Prabhu, A. Valan Arasu, P. Gurusamy, A. Amala Mithin Minther Singh, T. Arunkumar, Solar photovoltaic cooling using Paraffin phase change material: Comprehensive assessment, Renewable and Sustainable Energy Reviews 197 (2024) 114372.",
+    "doi": "10.1016/j.rser.2024.114372",
+    "reason": "文献真实存在且题名、期刊、卷年、DOI 正确，但作者著录完全错乱，真实作者为 Prabhu 等五人。"
+   }
+  },
+  "E-A04": {
+   "id": "E-A04",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "venue"
+   ],
+   "corrected": "M. Shahbodaghi, H. Faraji, H. Shahbaazi, M. Shabani, Magnetic deep eutectic solvent-based microextraction for determination of organophosphorus flame retardants in aqueous samples: One step closer to green chemistry, Microchemical Journal, 183 (2022) 108120.",
+   "doi": "10.1016/j.microc.2022.108120",
+   "summary": "该文献真实存在，但第一作者应为 M. Shahbodaghi 而非 M. Okafor，末位作者应为 M. Shabani，且原引文缺少期刊名 Microchemical Journal。",
+   "ms": 20611,
+   "tokens": 12515,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "venue"
+    ],
+    "corrected": "M. Shahbodaghi, H. Faraji, H. Shahbaazi, M. Shabani, Magnetic deep eutectic solvent-based microextraction for determination of organophosphorus flame retardants in aqueous samples: One step closer to green chemistry, Microchemical Journal, 183 (2022) 108120.",
+    "doi": "10.1016/j.microc.2022.108120",
+    "reason": "该文献真实存在，但第一作者应为 M. Shahbodaghi 而非 M. Okafor，末位作者应为 M. Shabani，且原引文缺少期刊名 Microchemical Journal。"
+   }
+  },
+  "E-A08": {
+   "id": "E-A08",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "year"
+   ],
+   "corrected": "A. Koszewnik, D. Oldziej, Performance assessment of an energy harvesting system located on a copter, The European Physical Journal Special Topics 228 (2019) 1677–1692.",
+   "doi": "10.1140/epjst/e2019-800128-3",
+   "summary": "该文献真实存在，但第一作者应为 A. Koszewnik 而非 A. Barros，年份为 2019 而非 n.d.。",
+   "ms": 8594,
+   "tokens": 3242,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "year"
+    ],
+    "corrected": "A. Koszewnik, D. Oldziej, Performance assessment of an energy harvesting system located on a copter, The European Physical Journal Special Topics 228 (2019) 1677–1692.",
+    "doi": "10.1140/epjst/e2019-800128-3",
+    "reason": "该文献真实存在，但第一作者应为 A. Koszewnik 而非 A. Barros，年份为 2019 而非 n.d.。"
+   }
+  },
+  "E-A06": {
+   "id": "E-A06",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author"
+   ],
+   "corrected": "Damer BF. The Hot Spring Hypothesis for the Origin of Life and the Extended Evolutionary Synthesis; 2019. Available from: http://extendedevolutionarysynthesis.com/the-hot-spring-hypothesis-for-the-origin-of-life-and-the-extended-evolutionary-synthesis/ [Last accessed: June 8, 2025].",
+   "summary": "该网页文章真实存在且题名、年份正确，但作者应为 Bruce Damer（或 Damer BF），而非 Hoffmann BF。",
+   "ms": 16037,
+   "tokens": 8212,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author"
+    ],
+    "corrected": "Damer BF. The Hot Spring Hypothesis for the Origin of Life and the Extended Evolutionary Synthesis; 2019. Available from: http://extendedevolutionarysynthesis.com/the-hot-spring-hypothesis-for-the-origin-of-life-and-the-extended-evolutionary-synthesis/ [Last accessed: June 8, 2025].",
+    "doi": "",
+    "reason": "该网页文章真实存在且题名、年份正确，但作者应为 Bruce Damer（或 Damer BF），而非 Hoffmann BF。"
+   }
+  },
+  "E-A07": {
+   "id": "E-A07",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author"
+   ],
+   "corrected": "Ying, H., Siler, W., & Buckley, J. J. (1990). Fuzzy control theory: A nonlinear case. Automatica, 26(3), 513–520.",
+   "summary": "该文献真实存在，但第一作者应为 Hao Ying 而非 Nakamura H.，其余题名、期刊、年份、卷期和页码均正确。",
+   "ms": 14759,
+   "tokens": 8972,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author"
+    ],
+    "corrected": "Ying, H., Siler, W., & Buckley, J. J. (1990). Fuzzy control theory: A nonlinear case. Automatica, 26(3), 513–520.",
+    "doi": "",
+    "reason": "该文献真实存在，但第一作者应为 Hao Ying 而非 Nakamura H.，其余题名、期刊、年份、卷期和页码均正确。"
+   }
+  },
+  "E-A10": {
+   "id": "E-A10",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "year"
+   ],
+   "corrected": "Gu, L., Chen, J., Yin, J., Xu, C. Y., & Zhou, J. (2020). Responses of precipitation and runoff to climate warming and implications for future drought changes in China. Earth's Future, 8(10), e2020EF001718. https://doi.org/10.1029/2020EF001718",
+   "doi": "10.1029/2020EF001718",
+   "summary": "该文献真实存在，但第一作者应为 Gu, L. 而非 Fitzgerald, L.，且年份应为 2020 而非 2020a。",
+   "ms": 10354,
+   "tokens": 3656,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "year"
+    ],
+    "corrected": "Gu, L., Chen, J., Yin, J., Xu, C. Y., & Zhou, J. (2020). Responses of precipitation and runoff to climate warming and implications for future drought changes in China. Earth's Future, 8(10), e2020EF001718. https://doi.org/10.1029/2020EF001718",
+    "doi": "10.1029/2020EF001718",
+    "reason": "该文献真实存在，但第一作者应为 Gu, L. 而非 Fitzgerald, L.，且年份应为 2020 而非 2020a。"
+   }
+  },
+  "E-Y01": {
+   "id": "E-Y01",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "year",
+    "venue"
+   ],
+   "corrected": "W. Tian, H. Zhang, X. Duan, H. Sun, G. Shao, S. Wang, Porous Carbons: Structure-Oriented Design and Versatile Applications, Advanced Functional Materials, 2020, 30(17), 1909265.",
+   "doi": "10.1002/adfm.201909265",
+   "summary": "该文献真实存在，但著录信息有误：作者中的“S.J.A.F.M. Wang”是“S. Wang”与期刊缩写 Adv. Funct. Mater. 的错误拼接，期刊名缺失，年份应为2020而非2017。",
+   "ms": 12144,
+   "tokens": 4274,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "year",
+     "venue"
+    ],
+    "corrected": "W. Tian, H. Zhang, X. Duan, H. Sun, G. Shao, S. Wang, Porous Carbons: Structure-Oriented Design and Versatile Applications, Advanced Functional Materials, 2020, 30(17), 1909265.",
+    "doi": "10.1002/adfm.201909265",
+    "reason": "该文献真实存在，但著录信息有误：作者中的“S.J.A.F.M. Wang”是“S. Wang”与期刊缩写 Adv. Funct. Mater. 的错误拼接，期刊名缺失，年份应为2020而非2017。"
+   }
+  },
+  "E-D06": {
+   "id": "E-D06",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.64292/ijes.15",
+   "summary": "该文献真实存在，作者、年份、题名、期刊卷页及 DOI 等信息与期刊页面记录一致。",
+   "ms": 90953,
+   "tokens": 13547,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.64292/ijes.15",
+    "reason": "该文献真实存在，作者、年份、题名、期刊卷页及 DOI 等信息与期刊页面记录一致。"
+   }
+  },
+  "E-Y02": {
+   "id": "E-Y02",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "year"
+   ],
+   "corrected": "Ratajczak, J.; Petriczko, E. The Predictors of Obesity among Urban Girls and Boys Aged 8–10 Years—A Cross-Sectional Study in North-Western Poland. Int. J. Environ. Res. Public Health 2020, 17(18), 6611.",
+   "doi": "10.3390/ijerph17186611",
+   "summary": "该文献真实存在，但发表年份应为2020年而非2017年，且完整出处为17卷18期文章号6611。",
+   "ms": 14000,
+   "tokens": 7351,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "year"
+    ],
+    "corrected": "Ratajczak, J.; Petriczko, E. The Predictors of Obesity among Urban Girls and Boys Aged 8–10 Years—A Cross-Sectional Study in North-Western Poland. Int. J. Environ. Res. Public Health 2020, 17(18), 6611.",
+    "doi": "10.3390/ijerph17186611",
+    "reason": "该文献真实存在，但发表年份应为2020年而非2017年，且完整出处为17卷18期文章号6611。"
+   }
+  },
+  "E-A09": {
+   "id": "E-A09",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "title"
+   ],
+   "corrected": "Emenaha Miles, U., & Gehrtz, J. (2026). STEM education and critical consciousness: Faculty insights and reflections. American Journal of STEM Education, 17, 25–42.",
+   "summary": "该文献真实存在，但第一作者应为 Uchenna Emenaha Miles，且题名含副标题“Faculty Insights and Reflections”。",
+   "ms": 23328,
+   "tokens": 5491,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "title"
+    ],
+    "corrected": "Emenaha Miles, U., & Gehrtz, J. (2026). STEM education and critical consciousness: Faculty insights and reflections. American Journal of STEM Education, 17, 25–42.",
+    "doi": "",
+    "reason": "该文献真实存在，但第一作者应为 Uchenna Emenaha Miles，且题名含副标题“Faculty Insights and Reflections”。"
+   }
+  },
+  "E-Y04": {
+   "id": "E-Y04",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "year"
+   ],
+   "corrected": "Mulud ZA, McCarthy G. Caregiver Burden Among Caregivers of Individuals With Severe Mental Illness: Testing the Moderation and Mediation Models of Resilience. Archives of Psychiatric Nursing. 2017;31(1):24-30. doi:10.1016/j.apnu.2016.07.019",
+   "doi": "10.1016/j.apnu.2016.07.019",
+   "summary": "该文献真实存在，但发表年份应为2017年而非2014年，且DOI为10.1016/j.apnu.2016.07.019。",
+   "ms": 9164,
+   "tokens": 3510,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "year"
+    ],
+    "corrected": "Mulud ZA, McCarthy G. Caregiver Burden Among Caregivers of Individuals With Severe Mental Illness: Testing the Moderation and Mediation Models of Resilience. Archives of Psychiatric Nursing. 2017;31(1):24-30. doi:10.1016/j.apnu.2016.07.019",
+    "doi": "10.1016/j.apnu.2016.07.019",
+    "reason": "该文献真实存在，但发表年份应为2017年而非2014年，且DOI为10.1016/j.apnu.2016.07.019。"
+   }
+  },
+  "E-Y06": {
+   "id": "E-Y06",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "year"
+   ],
+   "corrected": "Zhang, F. et al. Structural basis of JAZ repression of MYC transcription factors in jasmonate signalling. Nature 525, 269–273 (2015).",
+   "doi": "10.1038/nature14661",
+   "summary": "该文献真实存在，但发表年份应为2015年而非2012年。",
+   "ms": 6740,
+   "tokens": 3171,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "year"
+    ],
+    "corrected": "Zhang, F. et al. Structural basis of JAZ repression of MYC transcription factors in jasmonate signalling. Nature 525, 269–273 (2015).",
+    "doi": "10.1038/nature14661",
+    "reason": "该文献真实存在，但发表年份应为2015年而非2012年。"
+   }
+  },
+  "E-Y03": {
+   "id": "E-Y03",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "year",
+    "venue"
+   ],
+   "corrected": "Brito, M.C., Redweik, P., Catita, C., Freitas, S., & Santos, M. (2019). 3D solar potential in the urban environment: A case study in Lisbon. Energies, 12(18), 3457. https://doi.org/10.3390/en12183457",
+   "doi": "10.3390/en12183457",
+   "summary": "该文献真实存在，但发表年份是2019年而非2016年，且期刊卷期/文章号应为Energies 12(18), 3457。",
+   "ms": 15166,
+   "tokens": 3499,
+   "searches": 1,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "year",
+     "venue"
+    ],
+    "corrected": "Brito, M.C., Redweik, P., Catita, C., Freitas, S., & Santos, M. (2019). 3D solar potential in the urban environment: A case study in Lisbon. Energies, 12(18), 3457. https://doi.org/10.3390/en12183457",
+    "doi": "10.3390/en12183457",
+    "reason": "该文献真实存在，但发表年份是2019年而非2016年，且期刊卷期/文章号应为Energies 12(18), 3457。"
+   }
+  },
+  "E-Y05": {
+   "id": "E-Y05",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "year"
+   ],
+   "corrected": "Pajtler KW, Witt H, Sill M, Jones DTW, Hovestadt V, Kratochwil F, et al. Molecular classification of ependymal tumors across all CNS compartments, histopathological grades, and age groups. Cancer Cell. 2015;27(5):728–43.",
+   "doi": "10.1016/j.ccell.2015.04.002",
+   "summary": "该文献真实存在，但发表年份应为2015年而非2012年。",
+   "ms": 10003,
+   "tokens": 3396,
+   "searches": 1,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "year"
+    ],
+    "corrected": "Pajtler KW, Witt H, Sill M, Jones DTW, Hovestadt V, Kratochwil F, et al. Molecular classification of ependymal tumors across all CNS compartments, histopathological grades, and age groups. Cancer Cell. 2015;27(5):728–43.",
+    "doi": "10.1016/j.ccell.2015.04.002",
+    "reason": "该文献真实存在，但发表年份应为2015年而非2012年。"
+   }
+  },
+  "E-Y07": {
+   "id": "E-Y07",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "year"
+   ],
+   "corrected": "Rosales RL, et al. Botulinum toxin injection for hypertonicity of the upper extremity within 12 weeks after stroke: a randomized controlled trial. Neurorehabil Neural Repair. 2012;26(7):812–821. doi:10.1177/1545968311430824",
+   "doi": "10.1177/1545968311430824",
+   "summary": "该文献真实存在，但发表年份应为2012年而非2009年。",
+   "ms": 15900,
+   "tokens": 4053,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "year"
+    ],
+    "corrected": "Rosales RL, et al. Botulinum toxin injection for hypertonicity of the upper extremity within 12 weeks after stroke: a randomized controlled trial. Neurorehabil Neural Repair. 2012;26(7):812–821. doi:10.1177/1545968311430824",
+    "doi": "10.1177/1545968311430824",
+    "reason": "该文献真实存在，但发表年份应为2012年而非2009年。"
+   }
+  },
+  "E-Y08": {
+   "id": "E-Y08",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "year"
+   ],
+   "corrected": "Althuri, A. and Venkata Mohan, S. (2022). Emerging Innovations for Sustainable Production of Bioethanol and Other Mercantile Products from Circular Economy Perspective. Bioresource Technology, 363, 128013.",
+   "doi": "10.1016/j.biortech.2022.128013",
+   "summary": "该文献真实存在，作者、题名和期刊均正确，但发表年份应为2022年而非2019年，且卷号为363、文章号128013。",
+   "ms": 20457,
+   "tokens": 8098,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "year"
+    ],
+    "corrected": "Althuri, A. and Venkata Mohan, S. (2022). Emerging Innovations for Sustainable Production of Bioethanol and Other Mercantile Products from Circular Economy Perspective. Bioresource Technology, 363, 128013.",
+    "doi": "10.1016/j.biortech.2022.128013",
+    "reason": "该文献真实存在，作者、题名和期刊均正确，但发表年份应为2022年而非2019年，且卷号为363、文章号128013。"
+   }
+  },
+  "E-Y09": {
+   "id": "E-Y09",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "year"
+   ],
+   "corrected": "Camarda, L., Budriesi, R., Corazza, I., Frosini, M., Marzetti, C., & Mattioli, L. B. (2026). Antioxidant and Health-Related Effects of Tannins: From Agri-Food By-Products to Human and Animal Health. Antioxidants, 15(1), 104. https://doi.org/10.3390/antiox15010104",
+   "doi": "10.3390/antiox15010104",
+   "summary": "该文献真实存在，作者、题名和期刊正确，但发表年份应为 2026 年而非 2023 年。",
+   "ms": 19818,
+   "tokens": 4120,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "year"
+    ],
+    "corrected": "Camarda, L., Budriesi, R., Corazza, I., Frosini, M., Marzetti, C., & Mattioli, L. B. (2026). Antioxidant and Health-Related Effects of Tannins: From Agri-Food By-Products to Human and Animal Health. Antioxidants, 15(1), 104. https://doi.org/10.3390/antiox15010104",
+    "doi": "10.3390/antiox15010104",
+    "reason": "该文献真实存在，作者、题名和期刊正确，但发表年份应为 2026 年而非 2023 年。"
+   }
+  },
+  "E-Y10": {
+   "id": "E-Y10",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "year",
+    "venue"
+   ],
+   "corrected": "He S, Zhan D, Wang H, Sun K, Peng Y. Discrete memristor and discrete memristive systems. Entropy. 2022;24(6):786. doi:10.3390/e24060786",
+   "doi": "10.3390/e24060786",
+   "summary": "该文献真实存在，但发表年份为2022年而非2019年，且文章编号为786而非页码786–810。",
+   "ms": 21121,
+   "tokens": 3890,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "year",
+     "venue"
+    ],
+    "corrected": "He S, Zhan D, Wang H, Sun K, Peng Y. Discrete memristor and discrete memristive systems. Entropy. 2022;24(6):786. doi:10.3390/e24060786",
+    "doi": "10.3390/e24060786",
+    "reason": "该文献真实存在，但发表年份为2022年而非2019年，且文章编号为786而非页码786–810。"
+   }
+  },
+  "F-C04": {
+   "id": "F-C04",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "year",
+    "venue",
+    "doi"
+   ],
+   "corrected": "Misuraca, L.; Natali, F.; Da Silva, L.; Peters, J.; Demé, B.; Ollivier, J.; Seydel, T. Mobility of a Mononucleotide within a Lipid Matrix: A Neutron Scattering Study. Life 2017, 7(1), 2.",
+   "doi": "10.3390/life7010002",
+   "summary": "该文真实存在，但实际发表于 Life 2017 年第 7 卷第 1 期，作者为 Misuraca 等，而非所列的 Seitz、Rethmeier 等（后者疑似另一篇 Metals 论文的作者被错配）。",
+   "ms": 20610,
+   "tokens": 7773,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "year",
+     "venue",
+     "doi"
+    ],
+    "corrected": "Misuraca, L.; Natali, F.; Da Silva, L.; Peters, J.; Demé, B.; Ollivier, J.; Seydel, T. Mobility of a Mononucleotide within a Lipid Matrix: A Neutron Scattering Study. Life 2017, 7(1), 2.",
+    "doi": "10.3390/life7010002",
+    "reason": "该文真实存在，但实际发表于 Life 2017 年第 7 卷第 1 期，作者为 Misuraca 等，而非所列的 Seitz、Rethmeier 等（后者疑似另一篇 Metals 论文的作者被错配）。"
+   }
+  },
+  "F-C06": {
+   "id": "F-C06",
+   "verdict": "fabricated",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "year",
+    "title",
+    "venue",
+    "doi"
+   ],
+   "summary": "该引文为拼接编造：作者、期刊、年份、卷号来自 Microorganisms 2022 年发表的另一篇 SARS-CoV-2 S1 Spike Protein 文章，而题目实际对应 Urology 2025 年 Lopategui 等人的文章，两者并非同一篇文献。",
+   "ms": 19777,
+   "tokens": 9026,
+   "searches": 3,
+   "answer": {
+    "verdict": "fabricated",
+    "wrong_fields": [
+     "author",
+     "year",
+     "title",
+     "venue",
+     "doi"
+    ],
+    "corrected": "",
+    "doi": "",
+    "reason": "该引文为拼接编造：作者、期刊、年份、卷号来自 Microorganisms 2022 年发表的另一篇 SARS-CoV-2 S1 Spike Protein 文章，而题目实际对应 Urology 2025 年 Lopategui 等人的文章，两者并非同一篇文献。"
+   }
+  },
+  "F-C02": {
+   "id": "F-C02",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "year",
+    "venue",
+    "doi"
+   ],
+   "corrected": "Sang H, Wang Q, Li K, et al. Dynamic Analysis of a Novel Chaotic Map Based on a Non-Locally Active Memristor and a Locally Active Memristor and Its STM32 Implementation. Electronics. 2025;14(17):3374.",
+   "doi": "10.3390/electronics14173374",
+   "summary": "题名对应真实存在论文，但作者、年份、期刊、卷页均被误配为 Barredo Arrieta 等在 Information Fusion 2020 年发表的 XAI 论文信息。",
+   "ms": 39622,
+   "tokens": 15111,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "year",
+     "venue",
+     "doi"
+    ],
+    "corrected": "Sang H, Wang Q, Li K, et al. Dynamic Analysis of a Novel Chaotic Map Based on a Non-Locally Active Memristor and a Locally Active Memristor and Its STM32 Implementation. Electronics. 2025;14(17):3374.",
+    "doi": "10.3390/electronics14173374",
+    "reason": "题名对应真实存在论文，但作者、年份、期刊、卷页均被误配为 Barredo Arrieta 等在 Information Fusion 2020 年发表的 XAI 论文信息。"
+   }
+  },
+  "F-C03": {
+   "id": "F-C03",
+   "verdict": "fabricated",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "year",
+    "venue"
+   ],
+   "summary": "该题名对应的真实文献是 Jenkins 等 1987 年发表于 Journal of Geophysical Research 的论文（DOI: 10.1029/JD092iD09p10999），未查到 Gan、Yang、Liao、Zhou 2020 年在 Water 发表的此文。",
+   "ms": 28943,
+   "tokens": 8224,
+   "searches": 3,
+   "answer": {
+    "verdict": "fabricated",
+    "wrong_fields": [
+     "author",
+     "year",
+     "venue"
+    ],
+    "corrected": "",
+    "doi": "",
+    "reason": "该题名对应的真实文献是 Jenkins 等 1987 年发表于 Journal of Geophysical Research 的论文（DOI: 10.1029/JD092iD09p10999），未查到 Gan、Yang、Liao、Zhou 2020 年在 Water 发表的此文。"
+   }
+  },
+  "F-C01": {
+   "id": "F-C01",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "year",
+    "venue"
+   ],
+   "corrected": "Acoba EF. Social support and mental health: the mediating role of perceived stress. Frontiers in Psychology. 2024;15:1330720. doi:10.3389/fpsyg.2024.1330720",
+   "doi": "10.3389/fpsyg.2024.1330720",
+   "summary": "该标题对应的是 Acoba 2024 年发表于 Frontiers in Psychology 的文章，作者、年份和期刊均著录错误。",
+   "ms": 42703,
+   "tokens": 8992,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "year",
+     "venue"
+    ],
+    "corrected": "Acoba EF. Social support and mental health: the mediating role of perceived stress. Frontiers in Psychology. 2024;15:1330720. doi:10.3389/fpsyg.2024.1330720",
+    "doi": "10.3389/fpsyg.2024.1330720",
+    "reason": "该标题对应的是 Acoba 2024 年发表于 Frontiers in Psychology 的文章，作者、年份和期刊均著录错误。"
+   }
+  },
+  "F-C07": {
+   "id": "F-C07",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "year",
+    "venue"
+   ],
+   "corrected": "Damschroder LJ, Aron DC, Keith RE, Kirsh SR, Alexander JA, Lowery JC. Fostering implementation of health services research findings into practice: a consolidated framework for advancing implementation science. Implement Sci. 2009;4:50.",
+   "doi": "10.1186/1748-5908-4-50",
+   "summary": "该标题对应的是 Damschroder 等人 2009 年发表在 Implementation Science 的 CFIR 论文，而非 Cunningham 等人 2016 年发表在 Pediatric Radiology 的文章。",
+   "ms": 11410,
+   "tokens": 5225,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "year",
+     "venue"
+    ],
+    "corrected": "Damschroder LJ, Aron DC, Keith RE, Kirsh SR, Alexander JA, Lowery JC. Fostering implementation of health services research findings into practice: a consolidated framework for advancing implementation science. Implement Sci. 2009;4:50.",
+    "doi": "10.1186/1748-5908-4-50",
+    "reason": "该标题对应的是 Damschroder 等人 2009 年发表在 Implementation Science 的 CFIR 论文，而非 Cunningham 等人 2016 年发表在 Pediatric Radiology 的文章。"
+   }
+  },
+  "F-C05": {
+   "id": "F-C05",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "year",
+    "venue"
+   ],
+   "corrected": "Njie EG, Boelen E, Stassen FR, Steinbusch HW, Borchelt DR, Streit WJ (2012) Ex vivo cultures of microglia from young and aged rodent brain reveal age-related changes in microglial function. Neurobiol Aging 33(1):195.e1–195.e12. doi:10.1016/j.neurobiolaging.2010.05.008",
+   "doi": "10.1016/j.neurobiolaging.2010.05.008",
+   "summary": "该标题对应的是 Njie 等人 2012 年发表在 Neurobiology of Aging 的文章，作者、年份和期刊均与所给著录不符。",
+   "ms": 34997,
+   "tokens": 9314,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "year",
+     "venue"
+    ],
+    "corrected": "Njie EG, Boelen E, Stassen FR, Steinbusch HW, Borchelt DR, Streit WJ (2012) Ex vivo cultures of microglia from young and aged rodent brain reveal age-related changes in microglial function. Neurobiol Aging 33(1):195.e1–195.e12. doi:10.1016/j.neurobiolaging.2010.05.008",
+    "doi": "10.1016/j.neurobiolaging.2010.05.008",
+    "reason": "该标题对应的是 Njie 等人 2012 年发表在 Neurobiology of Aging 的文章，作者、年份和期刊均与所给著录不符。"
+   }
+  },
+  "F-C08": {
+   "id": "F-C08",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "year",
+    "venue",
+    "doi"
+   ],
+   "corrected": "Pereznieto P, Taylor G. A review of approaches and methods to measure economic empowerment of women and girls. Gender & Development. 2014;22(2):233–251. doi:10.1080/13552074.2014.920976",
+   "doi": "10.1080/13552074.2014.920976",
+   "summary": "该标题真实存在，但作者应为 Pereznieto 和 Taylor，发表于 Gender & Development 2014 年第 22 卷第 2 期，而非 Acoba 的 2024 年文献。",
+   "ms": 15989,
+   "tokens": 7308,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "year",
+     "venue",
+     "doi"
+    ],
+    "corrected": "Pereznieto P, Taylor G. A review of approaches and methods to measure economic empowerment of women and girls. Gender & Development. 2014;22(2):233–251. doi:10.1080/13552074.2014.920976",
+    "doi": "10.1080/13552074.2014.920976",
+    "reason": "该标题真实存在，但作者应为 Pereznieto 和 Taylor，发表于 Gender & Development 2014 年第 22 卷第 2 期，而非 Acoba 的 2024 年文献。"
+   }
+  },
+  "F-C11": {
+   "id": "F-C11",
+   "verdict": "no_answer",
+   "canon": "unsure",
+   "fields": [],
+   "ms": 16389,
+   "tokens": 8059,
+   "searches": 3
+  },
+  "F-C09": {
+   "id": "F-C09",
+   "verdict": "fabricated",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "venue",
+    "year"
+   ],
+   "corrected": "Center for Human Immunology, Autoimmunity and Inflammation, National Institutes of Health. National Institutes of Health Center for Human Immunology Conference, September 2009. Ann N Y Acad Sci. 2010. DOI: 10.1111/j.1749-6632.2010.05682.x",
+   "doi": "10.1111/j.1749-6632.2010.05682.x",
+   "summary": "题名对应的是2010年《纽约科学院年鉴》的会议报告（机构作者），被错误拼接了作者和Electronics 2025的出处，不存在所引的这篇文章。",
+   "ms": 23339,
+   "tokens": 8503,
+   "searches": 3,
+   "answer": {
+    "verdict": "fabricated",
+    "wrong_fields": [
+     "author",
+     "venue",
+     "year"
+    ],
+    "corrected": "Center for Human Immunology, Autoimmunity and Inflammation, National Institutes of Health. National Institutes of Health Center for Human Immunology Conference, September 2009. Ann N Y Acad Sci. 2010. DOI: 10.1111/j.1749-6632.2010.05682.x",
+    "doi": "10.1111/j.1749-6632.2010.05682.x",
+    "reason": "题名对应的是2010年《纽约科学院年鉴》的会议报告（机构作者），被错误拼接了作者和Electronics 2025的出处，不存在所引的这篇文章。"
+   }
+  },
+  "F-C12": {
+   "id": "F-C12",
+   "verdict": "fabricated",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "year",
+    "title",
+    "venue",
+    "doi"
+   ],
+   "summary": "该条目把 Njie 等 2012 年 Neurobiol. Aging 的作者与期刊信息和 Seitz 等 2024 年 Metals 的题名拼接在一起，这一组合文献并不存在。",
+   "ms": 18860,
+   "tokens": 7744,
+   "searches": 3,
+   "answer": {
+    "verdict": "fabricated",
+    "wrong_fields": [
+     "author",
+     "year",
+     "title",
+     "venue",
+     "doi"
+    ],
+    "corrected": "",
+    "doi": "",
+    "reason": "该条目把 Njie 等 2012 年 Neurobiol. Aging 的作者与期刊信息和 Seitz 等 2024 年 Metals 的题名拼接在一起，这一组合文献并不存在。"
+   }
+  },
+  "F-C14": {
+   "id": "F-C14",
+   "verdict": "fabricated",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "year",
+    "title",
+    "venue",
+    "doi"
+   ],
+   "summary": "该条目为拼接文献：标题属于 Forsyth 等 2022 年发表在 Microorganisms 的论文，而作者、期刊、年份、卷页和 DOI 均来自 Damschroder 等 2009 年 Implement Sci 的 CFIR 论文。",
+   "ms": 19048,
+   "tokens": 4743,
+   "searches": 2,
+   "answer": {
+    "verdict": "fabricated",
+    "wrong_fields": [
+     "author",
+     "year",
+     "title",
+     "venue",
+     "doi"
+    ],
+    "corrected": "",
+    "doi": "",
+    "reason": "该条目为拼接文献：标题属于 Forsyth 等 2022 年发表在 Microorganisms 的论文，而作者、期刊、年份、卷页和 DOI 均来自 Damschroder 等 2009 年 Implement Sci 的 CFIR 论文。"
+   }
+  },
+  "F-C13": {
+   "id": "F-C13",
+   "verdict": "fabricated",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "venue",
+    "year",
+    "doi"
+   ],
+   "corrected": "Chang J, Zang S, Liang W, Wu D, Lian Z, Xu F, Jiang K, Gao Z. Enhanced faradic activity by construction of p-n junction within reduced graphene oxide@cobalt nickel sulfide@nickle cobalt layered double hydroxide composite electrode for charge storage in hybrid supercapacitor. J Colloid Interface Sci. 2021;590:114-124.",
+   "doi": "10.1016/j.jcis.2021.01.035",
+   "summary": "该引文将一篇泌尿外科论文的作者列表与一篇超级电容器材料论文的题名/期刊错误拼接，所著录的文献并不存在。",
+   "ms": 22640,
+   "tokens": 8787,
+   "searches": 3,
+   "answer": {
+    "verdict": "fabricated",
+    "wrong_fields": [
+     "author",
+     "venue",
+     "year",
+     "doi"
+    ],
+    "corrected": "Chang J, Zang S, Liang W, Wu D, Lian Z, Xu F, Jiang K, Gao Z. Enhanced faradic activity by construction of p-n junction within reduced graphene oxide@cobalt nickel sulfide@nickle cobalt layered double hydroxide composite electrode for charge storage in hybrid supercapacitor. J Colloid Interface Sci. 2021;590:114-124.",
+    "doi": "10.1016/j.jcis.2021.01.035",
+    "reason": "该引文将一篇泌尿外科论文的作者列表与一篇超级电容器材料论文的题名/期刊错误拼接，所著录的文献并不存在。"
+   }
+  },
+  "F-C15": {
+   "id": "F-C15",
+   "verdict": "fabricated",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "year",
+    "title",
+    "venue",
+    "doi"
+   ],
+   "corrected": "Cunningham, D. A., Lowe, L. H., Shao, L., & Acosta, N. R. (2016). Neuroradiologic characteristics of astroblastoma and systematic review of the literature: 2 new cases and 125 cases reported in 59 publications. Pediatric Radiology, 46(9), 1301–1308. https://doi.org/10.1007/s00247-016-3607-x",
+   "doi": "10.1007/s00247-016-3607-x",
+   "summary": "题名属于 Cunningham 等 2016 年发表于 Pediatric Radiology 的文章，而作者、年份、期刊、页码属于 Pereznieto 与 Taylor 2014 年在 Gender & Development 发表的另一篇文章，属拼接文献。",
+   "ms": 18975,
+   "tokens": 8673,
+   "searches": 3,
+   "answer": {
+    "verdict": "fabricated",
+    "wrong_fields": [
+     "author",
+     "year",
+     "title",
+     "venue",
+     "doi"
+    ],
+    "corrected": "Cunningham, D. A., Lowe, L. H., Shao, L., & Acosta, N. R. (2016). Neuroradiologic characteristics of astroblastoma and systematic review of the literature: 2 new cases and 125 cases reported in 59 publications. Pediatric Radiology, 46(9), 1301–1308. https://doi.org/10.1007/s00247-016-3607-x",
+    "doi": "10.1007/s00247-016-3607-x",
+    "reason": "题名属于 Cunningham 等 2016 年发表于 Pediatric Radiology 的文章，而作者、年份、期刊、页码属于 Pereznieto 与 Taylor 2014 年在 Gender & Development 发表的另一篇文章，属拼接文献。"
+   }
+  },
+  "F-I01": {
+   "id": "F-I01",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "title"
+   ],
+   "corrected": "Al-Shamsi HO, Alhazzani W, Alhuraiji A, et al. A Practical Approach to the Management of Cancer Patients During the Novel Coronavirus Disease 2019 (COVID-19) Pandemic: An International Collaborative Group. Oncologist. 2020;25(6):e936–e945.",
+   "doi": "10.1634/theoncologist.2020-0213",
+   "summary": "作者、年份、期刊和页码对应的是 Oncologist 2020;25(6):e936–e945 的另一篇论文，题名应为 A Practical Approach to the Management of Cancer Patients During the Novel Coronavirus Disease 2019 (COVID-19) Pandemic，而非所给题名。",
+   "ms": 17821,
+   "tokens": 9019,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "title"
+    ],
+    "corrected": "Al-Shamsi HO, Alhazzani W, Alhuraiji A, et al. A Practical Approach to the Management of Cancer Patients During the Novel Coronavirus Disease 2019 (COVID-19) Pandemic: An International Collaborative Group. Oncologist. 2020;25(6):e936–e945.",
+    "doi": "10.1634/theoncologist.2020-0213",
+    "reason": "作者、年份、期刊和页码对应的是 Oncologist 2020;25(6):e936–e945 的另一篇论文，题名应为 A Practical Approach to the Management of Cancer Patients During the Novel Coronavirus Disease 2019 (COVID-19) Pandemic，而非所给题名。"
+   }
+  },
+  "F-I02": {
+   "id": "F-I02",
+   "verdict": "fabricated",
+   "canon": "fake",
+   "fields": [],
+   "summary": "未检索到该标题的文献；Zhou、Li、Chen 2017 年在 Minerals 发表的是另一篇关于全球稀土资源潜力的文章，题名系拼接编造。",
+   "ms": 24908,
+   "tokens": 8346,
+   "searches": 3,
+   "answer": {
+    "verdict": "fabricated",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "未检索到该标题的文献；Zhou、Li、Chen 2017 年在 Minerals 发表的是另一篇关于全球稀土资源潜力的文章，题名系拼接编造。"
+   }
+  },
+  "F-I03": {
+   "id": "F-I03",
+   "verdict": "uncertain",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "未能通过检索确认该文章在 Foods 2023 年第12卷中的真实存在，但也不能排除检索不完整，因此无法判断。",
+   "ms": 18572,
+   "tokens": 7542,
+   "searches": 3,
+   "answer": {
+    "verdict": "uncertain",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "未能通过检索确认该文章在 Foods 2023 年第12卷中的真实存在，但也不能排除检索不完整，因此无法判断。"
+   }
+  },
+  "F-I07": {
+   "id": "F-I07",
+   "verdict": "uncertain",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "未在公开检索结果中找到该标题的 SSRN 文献，但作者 Dhruba Banjade 真实存在且研究领域相符，无法确认其是否存在或著录是否有误。",
+   "ms": 13434,
+   "tokens": 6100,
+   "searches": 3,
+   "answer": {
+    "verdict": "uncertain",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "未在公开检索结果中找到该标题的 SSRN 文献，但作者 Dhruba Banjade 真实存在且研究领域相符，无法确认其是否存在或著录是否有误。"
+   }
+  },
+  "F-I08": {
+   "id": "F-I08",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "title"
+   ],
+   "corrected": "Lee CU, Chong S, Choi HW, Choi JC. Quantitative image analysis using chest computed tomography in the evaluation of lymph node involvement in pulmonary sarcoidosis and tuberculosis. PLoS ONE. 2018;13(11):e0207959. doi:10.1371/journal.pone.0207959",
+   "doi": "10.1371/journal.pone.0207959",
+   "summary": "该 DOI 对应的真实文章题名不同，作者、年份、期刊和文章编号均正确，仅题名著录错误。",
+   "ms": 16554,
+   "tokens": 7476,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "title"
+    ],
+    "corrected": "Lee CU, Chong S, Choi HW, Choi JC. Quantitative image analysis using chest computed tomography in the evaluation of lymph node involvement in pulmonary sarcoidosis and tuberculosis. PLoS ONE. 2018;13(11):e0207959. doi:10.1371/journal.pone.0207959",
+    "doi": "10.1371/journal.pone.0207959",
+    "reason": "该 DOI 对应的真实文章题名不同，作者、年份、期刊和文章编号均正确，仅题名著录错误。"
+   }
+  },
+  "F-C10": {
+   "id": "F-C10",
+   "verdict": "fabricated",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "year",
+    "venue",
+    "doi"
+   ],
+   "corrected": "Arrieta, A. B., Díaz-Rodríguez, N., Del Ser, J., Bennetot, A., Tabik, S., Barbado, A., García, S., Gil-López, S., Molina, D., Benjamins, R., Chatila, R., & Herrera, F. (2020). Explainable Artificial Intelligence (XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI. Information Fusion, 58, 82–115. https://doi.org/10.1016/j.inffus.2019.12.012",
+   "doi": "10.1016/j.inffus.2019.12.012",
+   "summary": "题名属于 Arrieta 等人 2020 年发表在 Information Fusion 的 XAI 综述，而作者、年份、期刊、页码实为 Jenkins 等人 1987 年关于珠峰新雪化学成分的论文，属于拼接文献。",
+   "ms": 80547,
+   "tokens": 10939,
+   "searches": 2,
+   "answer": {
+    "verdict": "fabricated",
+    "wrong_fields": [
+     "author",
+     "year",
+     "venue",
+     "doi"
+    ],
+    "corrected": "Arrieta, A. B., Díaz-Rodríguez, N., Del Ser, J., Bennetot, A., Tabik, S., Barbado, A., García, S., Gil-López, S., Molina, D., Benjamins, R., Chatila, R., & Herrera, F. (2020). Explainable Artificial Intelligence (XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI. Information Fusion, 58, 82–115. https://doi.org/10.1016/j.inffus.2019.12.012",
+    "doi": "10.1016/j.inffus.2019.12.012",
+    "reason": "题名属于 Arrieta 等人 2020 年发表在 Information Fusion 的 XAI 综述，而作者、年份、期刊、页码实为 Jenkins 等人 1987 年关于珠峰新雪化学成分的论文，属于拼接文献。"
+   }
+  },
+  "F-I06": {
+   "id": "F-I06",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "venue"
+   ],
+   "corrected": "Jara-Rojas, R.; Russy, S.; Roco, L.; Fleming-Muñoz, D.; Engler, A. Smallholder Willingness to Establish Live Fences on Degraded Pastures in the Colombian Orinoquía: Evidence from a Discrete Choice Experiment. Forests 2020, 11, 1135.",
+   "doi": "10.3390/f11111135",
+   "summary": "文献真实存在，但作者间分隔符缺失，且期刊著录不完整，缺少文章号 1135。",
+   "ms": 42356,
+   "tokens": 14915,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "venue"
+    ],
+    "corrected": "Jara-Rojas, R.; Russy, S.; Roco, L.; Fleming-Muñoz, D.; Engler, A. Smallholder Willingness to Establish Live Fences on Degraded Pastures in the Colombian Orinoquía: Evidence from a Discrete Choice Experiment. Forests 2020, 11, 1135.",
+    "doi": "10.3390/f11111135",
+    "reason": "文献真实存在，但作者间分隔符缺失，且期刊著录不完整，缺少文章号 1135。"
+   }
+  },
+  "F-I10": {
+   "id": "F-I10",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "title"
+   ],
+   "corrected": "Al-Jamimi, H.A.; BinMakhashen, G.M.; Worku, M.Y.; Hassan, M.A. (2023). Advancements in Household Load Forecasting: Deep Learning Model with Hyperparameter Optimization. Electronics, 12(24), 4985.",
+   "doi": "10.3390/electronics12244985",
+   "summary": "作者、年份和期刊信息吻合，但题名有误；实际题名为“Advancements in Household Load Forecasting: Deep Learning Model with Hyperparameter Optimization”。",
+   "ms": 20125,
+   "tokens": 7714,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "title"
+    ],
+    "corrected": "Al-Jamimi, H.A.; BinMakhashen, G.M.; Worku, M.Y.; Hassan, M.A. (2023). Advancements in Household Load Forecasting: Deep Learning Model with Hyperparameter Optimization. Electronics, 12(24), 4985.",
+    "doi": "10.3390/electronics12244985",
+    "reason": "作者、年份和期刊信息吻合，但题名有误；实际题名为“Advancements in Household Load Forecasting: Deep Learning Model with Hyperparameter Optimization”。"
+   }
+  },
+  "F-I09": {
+   "id": "F-I09",
+   "verdict": "fabricated",
+   "canon": "fake",
+   "fields": [],
+   "summary": "Quant Finance 2001 年第 1 卷第 2 期 223-236 页对应的是 Cont 的“Empirical properties of asset returns: stylized facts and statistical issues”，所给题名“Wavelet-based estimation of long memory in the intraday volatility of five European equity indices”不存在。",
+   "ms": 30824,
+   "tokens": 13924,
+   "searches": 3,
+   "answer": {
+    "verdict": "fabricated",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "Quant Finance 2001 年第 1 卷第 2 期 223-236 页对应的是 Cont 的“Empirical properties of asset returns: stylized facts and statistical issues”，所给题名“Wavelet-based estimation of long memory in the intraday volatility of five European equity indices”不存在。"
+   }
+  },
+  "F-I12": {
+   "id": "F-I12",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "venue"
+   ],
+   "corrected": "Serfecz, J.C.; Hong, Y.; Gay, L.A.; et al. The DEAD-Box Helicase DDX21 Restricts Lytic Reactivation of Epstein–Barr Virus by Sequestering BZLF1 Transcripts in the Nucleolus. Viruses 2022, 14(10), 2083. doi:10.3390/v14102083",
+   "doi": "10.3390/v14102083",
+   "summary": "该文献真实存在，但作者列表不完整，且期刊著录缺少卷、期和文章号。",
+   "ms": 20584,
+   "tokens": 8290,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "venue"
+    ],
+    "corrected": "Serfecz, J.C.; Hong, Y.; Gay, L.A.; et al. The DEAD-Box Helicase DDX21 Restricts Lytic Reactivation of Epstein–Barr Virus by Sequestering BZLF1 Transcripts in the Nucleolus. Viruses 2022, 14(10), 2083. doi:10.3390/v14102083",
+    "doi": "10.3390/v14102083",
+    "reason": "该文献真实存在，但作者列表不完整，且期刊著录缺少卷、期和文章号。"
+   }
+  },
+  "F-I14": {
+   "id": "F-I14",
+   "verdict": "uncertain",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "未能在可检索到的学术数据库和期刊页面中确认该篇文献的存在与著录信息，无法判断其真实性。",
+   "ms": 16234,
+   "tokens": 7316,
+   "searches": 3,
+   "answer": {
+    "verdict": "uncertain",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "未能在可检索到的学术数据库和期刊页面中确认该篇文献的存在与著录信息，无法判断其真实性。"
+   }
+  },
+  "F-I13": {
+   "id": "F-I13",
+   "verdict": "uncertain",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "未能在可检索范围内找到与题名、作者及 e70025 完全匹配的文献，且该文缺少年份和 DOI，无法确认其真实性与著录准确性。",
+   "ms": 30436,
+   "tokens": 8613,
+   "searches": 3,
+   "answer": {
+    "verdict": "uncertain",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "未能在可检索范围内找到与题名、作者及 e70025 完全匹配的文献，且该文缺少年份和 DOI，无法确认其真实性与著录准确性。"
+   }
+  },
+  "Z-R02": {
+   "id": "Z-R02",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.1360/SSTe-2019-0226",
+   "summary": "该文献真实存在，作者、年份、题名、期刊、卷页均与数据库记录一致。",
+   "ms": 11578,
+   "tokens": 7412,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.1360/SSTe-2019-0226",
+    "reason": "该文献真实存在，作者、年份、题名、期刊、卷页均与数据库记录一致。"
+   }
+  },
+  "Z-R01": {
+   "id": "Z-R01",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "venue"
+   ],
+   "corrected": "王金鹏, 刘晓伟, 荣楠, 等. 广东省大亚湾和红海湾表层沉积物重金属分布特征及风险评价[J]. 环境化学, 2024, 43(3): 942-950.",
+   "doi": "10.7524/j.issn.0254-6108.2023071405",
+   "summary": "文献真实存在，但作者漏写“等”且卷期著录缺少期号，应为43(3)。",
+   "ms": 23133,
+   "tokens": 4726,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "venue"
+    ],
+    "corrected": "王金鹏, 刘晓伟, 荣楠, 等. 广东省大亚湾和红海湾表层沉积物重金属分布特征及风险评价[J]. 环境化学, 2024, 43(3): 942-950.",
+    "doi": "10.7524/j.issn.0254-6108.2023071405",
+    "reason": "文献真实存在，但作者漏写“等”且卷期著录缺少期号，应为43(3)。"
+   }
+  },
+  "F-I11": {
+   "id": "F-I11",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "title"
+   ],
+   "corrected": "Tziomalos K. Secondary Hypertension: Novel Insights. Curr Hypertens Rev. 2020;16(1):11. doi:10.2174/1573402115666190416161116",
+   "doi": "10.2174/1573402115666190416161116",
+   "summary": "在 Curr Hypertens Rev 2020 年第 16 卷第 11 页，Tziomalos 的文章实际题名为 Secondary Hypertension: Novel Insights，而非所给的肾去神经支配题名。",
+   "ms": 56962,
+   "tokens": 12392,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "title"
+    ],
+    "corrected": "Tziomalos K. Secondary Hypertension: Novel Insights. Curr Hypertens Rev. 2020;16(1):11. doi:10.2174/1573402115666190416161116",
+    "doi": "10.2174/1573402115666190416161116",
+    "reason": "在 Curr Hypertens Rev 2020 年第 16 卷第 11 页，Tziomalos 的文章实际题名为 Secondary Hypertension: Novel Insights，而非所给的肾去神经支配题名。"
+   }
+  },
+  "Z-R04": {
+   "id": "Z-R04",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.14006/j.jzjgxb.2018.07.012",
+   "summary": "该文献真实存在，作者、年份、刊名、卷期和页码均与《建筑结构学报》2018年第39卷第7期著录信息一致。",
+   "ms": 12018,
+   "tokens": 7381,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.14006/j.jzjgxb.2018.07.012",
+    "reason": "该文献真实存在，作者、年份、刊名、卷期和页码均与《建筑结构学报》2018年第39卷第7期著录信息一致。"
+   }
+  },
+  "Z-R05": {
+   "id": "Z-R05",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.1360/TB-2020-0764",
+   "summary": "该文献真实存在，作者、年份、题名、期刊、卷和页码均与期刊信息一致。",
+   "ms": 12583,
+   "tokens": 6432,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.1360/TB-2020-0764",
+    "reason": "该文献真实存在，作者、年份、题名、期刊、卷和页码均与期刊信息一致。"
+   }
+  },
+  "Z-R03": {
+   "id": "Z-R03",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "title"
+   ],
+   "corrected": "蔡克峰. Ⅰ-型锗基笼形物—极有希望的热电材料[J]. 功能材料与器件学报, 2004, 10(2): 139-144.",
+   "summary": "文献真实存在，但题名中冒号应为破折号，原刊题名写作“Ⅰ-型锗基笼形物—极有希望的热电材料”。",
+   "ms": 26794,
+   "tokens": 8223,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "title"
+    ],
+    "corrected": "蔡克峰. Ⅰ-型锗基笼形物—极有希望的热电材料[J]. 功能材料与器件学报, 2004, 10(2): 139-144.",
+    "doi": "",
+    "reason": "文献真实存在，但题名中冒号应为破折号，原刊题名写作“Ⅰ-型锗基笼形物—极有希望的热电材料”。"
+   }
+  },
+  "F-I04": {
+   "id": "F-I04",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "title"
+   ],
+   "corrected": "Luo, X.; Zhang, Y.; Zhou, H.; He, K.; Luo, C.; Liu, Z.; Tang, X. (2022). Column Leaching Kinetics of Weathered Crust Elution-Deposited Rare Earth Ore with Magnesium Sulfate–Ascorbic Acid Mixed Lixiviants. Minerals, 12.",
+   "summary": "该文献真实存在，但标题漏了“Elution-Deposited”，且作者之间的分隔符不规范。",
+   "ms": 127886,
+   "tokens": 30713,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "title"
+    ],
+    "corrected": "Luo, X.; Zhang, Y.; Zhou, H.; He, K.; Luo, C.; Liu, Z.; Tang, X. (2022). Column Leaching Kinetics of Weathered Crust Elution-Deposited Rare Earth Ore with Magnesium Sulfate–Ascorbic Acid Mixed Lixiviants. Minerals, 12.",
+    "doi": "",
+    "reason": "该文献真实存在，但标题漏了“Elution-Deposited”，且作者之间的分隔符不规范。"
+   }
+  },
+  "Z-R07": {
+   "id": "Z-R07",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "summary": "经检索维普、万方等数据库，该文作者、题名、期刊、年份、期号和页码均与原文一致。",
+   "ms": 15521,
+   "tokens": 11399,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "经检索维普、万方等数据库，该文作者、题名、期刊、年份、期号和页码均与原文一致。"
+   }
+  },
+  "Z-R06": {
+   "id": "Z-R06",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.15982/j.issn.2095-7777.2018.02.005",
+   "summary": "该文献真实存在，作者、题名、期刊、年份和页码均与官网著录一致。",
+   "ms": 24660,
+   "tokens": 7603,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.15982/j.issn.2095-7777.2018.02.005",
+    "reason": "该文献真实存在，作者、题名、期刊、年份和页码均与官网著录一致。"
+   }
+  },
+  "Z-R10": {
+   "id": "Z-R10",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.13328/j.cnki.jos.005607",
+   "summary": "该文献真实存在，作者、年份、题名、期刊、卷期页码均与《软件学报》官方著录一致。",
+   "ms": 10799,
+   "tokens": 6938,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.13328/j.cnki.jos.005607",
+    "reason": "该文献真实存在，作者、年份、题名、期刊、卷期页码均与《软件学报》官方著录一致。"
+   }
+  },
+  "Z-R09": {
+   "id": "Z-R09",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "venue"
+   ],
+   "corrected": "张琦, 蒲婷婷, 王艺儒, 韩卫娟, 白玉娥, 索玉静, 傅建敏. 柿品种杂交亲和性研究[J]. 中国农业大学学报, 2023, 28(9): 87-98.",
+   "doi": "10.11841/j.issn.1007-4333.2023.09.08",
+   "summary": "该文真实存在，但作者著录不全（漏掉韩卫娟、白玉娥、索玉静、傅建敏），且缺期号9。",
+   "ms": 18040,
+   "tokens": 4544,
+   "searches": 2,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "venue"
+    ],
+    "corrected": "张琦, 蒲婷婷, 王艺儒, 韩卫娟, 白玉娥, 索玉静, 傅建敏. 柿品种杂交亲和性研究[J]. 中国农业大学学报, 2023, 28(9): 87-98.",
+    "doi": "10.11841/j.issn.1007-4333.2023.09.08",
+    "reason": "该文真实存在，但作者著录不全（漏掉韩卫娟、白玉娥、索玉静、傅建敏），且缺期号9。"
+   }
+  },
+  "Z-R08": {
+   "id": "Z-R08",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "doi": "10.12677/OJFR.2018.52009",
+   "summary": "该文献真实存在，作者、年份、题名、期刊均正确，DOI 为 10.12677/OJFR.2018.52009。",
+   "ms": 22999,
+   "tokens": 9133,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "10.12677/OJFR.2018.52009",
+    "reason": "该文献真实存在，作者、年份、题名、期刊均正确，DOI 为 10.12677/OJFR.2018.52009。"
+   }
+  },
+  "Z-F02": {
+   "id": "Z-F02",
+   "verdict": "fabricated",
+   "canon": "fake",
+   "fields": [],
+   "summary": "未检索到《经济研究》2022年第57卷第4期存在该题名及作者组合的论文，题目与作者均无法核实，疑为编造。",
+   "ms": 13269,
+   "tokens": 6959,
+   "searches": 3,
+   "answer": {
+    "verdict": "fabricated",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "未检索到《经济研究》2022年第57卷第4期存在该题名及作者组合的论文，题目与作者均无法核实，疑为编造。"
+   }
+  },
+  "F-I05": {
+   "id": "F-I05",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "venue",
+    "doi"
+   ],
+   "corrected": "Lin CY, Silberbauer J, Lin YJ, Lo MT, Lin C, Chang HC, et al. Ripple Mapping Fused with Late Gadolinium Enhancement Imaging to Localize Isthmus Sites of Scar-Related Ventricular Tachycardia in Sinus Rhythm. Heart Rhythm. 2016;13(5S).",
+   "summary": "该文献真实存在，是一篇 Heart Rhythm 2016 会议摘要；但原引文缺少期刊/卷期和 DOI，且作者列表不完整（应有 et al.）。",
+   "ms": 157491,
+   "tokens": 31517,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "venue",
+     "doi"
+    ],
+    "corrected": "Lin CY, Silberbauer J, Lin YJ, Lo MT, Lin C, Chang HC, et al. Ripple Mapping Fused with Late Gadolinium Enhancement Imaging to Localize Isthmus Sites of Scar-Related Ventricular Tachycardia in Sinus Rhythm. Heart Rhythm. 2016;13(5S).",
+    "doi": "",
+    "reason": "该文献真实存在，是一篇 Heart Rhythm 2016 会议摘要；但原引文缺少期刊/卷期和 DOI，且作者列表不完整（应有 et al.）。"
+   }
+  },
+  "Z-F01": {
+   "id": "Z-F01",
+   "verdict": "fabricated",
+   "canon": "fake",
+   "fields": [
+    "author",
+    "title",
+    "venue",
+    "doi"
+   ],
+   "summary": "未检索到该题名与作者组合；《地理学报》2021年76卷5期1123-1138页并非此文，同卷期相近DOI（10.11821/dlxb202105012）对应的是高海东、吴昭的《黄河头道拐—潼关区间植被恢复及其对水沙过程影响》（1206-1217页）。",
+   "ms": 30323,
+   "tokens": 9428,
+   "searches": 3,
+   "answer": {
+    "verdict": "fabricated",
+    "wrong_fields": [
+     "author",
+     "title",
+     "venue",
+     "doi"
+    ],
+    "corrected": "",
+    "doi": "",
+    "reason": "未检索到该题名与作者组合；《地理学报》2021年76卷5期1123-1138页并非此文，同卷期相近DOI（10.11821/dlxb202105012）对应的是高海东、吴昭的《黄河头道拐—潼关区间植被恢复及其对水沙过程影响》（1206-1217页）。"
+   }
+  },
+  "Z-F03": {
+   "id": "Z-F03",
+   "verdict": "uncertain",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "未检索到与题名、作者和出处完全匹配的文献，无法确认其真实性。",
+   "ms": 23603,
+   "tokens": 8167,
+   "searches": 3,
+   "answer": {
+    "verdict": "uncertain",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "未检索到与题名、作者和出处完全匹配的文献，无法确认其真实性。"
+   }
+  },
+  "Z-F05": {
+   "id": "Z-F05",
+   "verdict": "uncertain",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "未检索到与所给题名、作者、年份、卷期页码完全一致的文献记录，无法确认其真实性或著录信息。",
+   "ms": 19136,
+   "tokens": 7901,
+   "searches": 3,
+   "answer": {
+    "verdict": "uncertain",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "未检索到与所给题名、作者、年份、卷期页码完全一致的文献记录，无法确认其真实性或著录信息。"
+   }
+  },
+  "Z-F06": {
+   "id": "Z-F06",
+   "verdict": "uncertain",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "未能通过公开检索确认该文献的准确著录信息，无法判断其是否存在或有误。",
+   "ms": 17370,
+   "tokens": 7420,
+   "searches": 3,
+   "answer": {
+    "verdict": "uncertain",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "未能通过公开检索确认该文献的准确著录信息，无法判断其是否存在或有误。"
+   }
+  },
+  "F-I15": {
+   "id": "F-I15",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author",
+    "title",
+    "doi"
+   ],
+   "corrected": "Zhai X., Marksteiner U., Weiler F., Lemmerz C., Lux O., Rahm S., Reitebuch O., Witschas B. (2020). First comparison of Aeolus Rayleigh-clear and Mie-cloudy wind profiles with ground-based coherent Doppler wind lidar over the Tibetan Plateau. EPJ Web of Conferences, 237, 06002. https://doi.org/10.1051/epjconf/202023706002",
+   "doi": "10.1051/epjconf/202023706002",
+   "summary": "该文真实存在，但第一作者为 Zhai 等，题名漏了 Mie-cloudy 和 wind，且原引文缺少卷期与 DOI。",
+   "ms": 108130,
+   "tokens": 16636,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author",
+     "title",
+     "doi"
+    ],
+    "corrected": "Zhai X., Marksteiner U., Weiler F., Lemmerz C., Lux O., Rahm S., Reitebuch O., Witschas B. (2020). First comparison of Aeolus Rayleigh-clear and Mie-cloudy wind profiles with ground-based coherent Doppler wind lidar over the Tibetan Plateau. EPJ Web of Conferences, 237, 06002. https://doi.org/10.1051/epjconf/202023706002",
+    "doi": "10.1051/epjconf/202023706002",
+    "reason": "该文真实存在，但第一作者为 Zhai 等，题名漏了 Mie-cloudy 和 wind，且原引文缺少卷期与 DOI。"
+   }
+  },
+  "Z-F04": {
+   "id": "Z-F04",
+   "verdict": "uncertain",
+   "canon": "unsure",
+   "fields": [],
+   "summary": "未能检索到该文献的准确记录，无法判断其真实性",
+   "ms": 32988,
+   "tokens": 8495,
+   "searches": 3,
+   "answer": {
+    "verdict": "uncertain",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "未能检索到该文献的准确记录，无法判断其真实性"
+   }
+  },
+  "Z-F07": {
+   "id": "Z-F07",
+   "verdict": "fabricated",
+   "canon": "fake",
+   "fields": [],
+   "summary": "未检索到该篇文献，且《计算机学报》2021年44卷10期目录/页码与著录信息不符，疑为编造。",
+   "ms": 39566,
+   "tokens": 8824,
+   "searches": 3,
+   "answer": {
+    "verdict": "fabricated",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "未检索到该篇文献，且《计算机学报》2021年44卷10期目录/页码与著录信息不符，疑为编造。"
+   }
+  },
+  "Z-F09": {
+   "id": "Z-F09",
+   "verdict": "fabricated",
+   "canon": "fake",
+   "fields": [],
+   "summary": "检索未发现《中华医学杂志》2019年第99卷第15期存在该文，仅有万方同题学位论文，期刊引文疑为拼接编造。",
+   "ms": 34075,
+   "tokens": 9024,
+   "searches": 3,
+   "answer": {
+    "verdict": "fabricated",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "检索未发现《中华医学杂志》2019年第99卷第15期存在该文，仅有万方同题学位论文，期刊引文疑为拼接编造。"
+   }
+  },
+  "Z-F08": {
+   "id": "Z-F08",
+   "verdict": "has_error",
+   "canon": "error",
+   "fields": [
+    "author"
+   ],
+   "corrected": "刘传江, 赵晓梦. 碳排放权交易试点政策对制造业绿色全要素生产率的影响[J]. 管理世界, 2021, 37(11): 98-112.",
+   "summary": "该文真实存在，但作者应为刘传江、赵晓梦，而非赵国栋、钱雨。",
+   "ms": 39435,
+   "tokens": 9564,
+   "searches": 3,
+   "answer": {
+    "verdict": "has_error",
+    "wrong_fields": [
+     "author"
+    ],
+    "corrected": "刘传江, 赵晓梦. 碳排放权交易试点政策对制造业绿色全要素生产率的影响[J]. 管理世界, 2021, 37(11): 98-112.",
+    "doi": "",
+    "reason": "该文真实存在，但作者应为刘传江、赵晓梦，而非赵国栋、钱雨。"
+   }
+  },
+  "Z-F10": {
+   "id": "Z-F10",
+   "verdict": "correct",
+   "canon": "ok",
+   "fields": [],
+   "summary": "该文献真实存在，作者、题名、期刊、年份和页码均与《环境科学》2022年第43卷第7期一致。",
+   "ms": 46594,
+   "tokens": 10906,
+   "searches": 3,
+   "answer": {
+    "verdict": "correct",
+    "wrong_fields": [],
+    "corrected": "",
+    "doi": "",
+    "reason": "该文献真实存在，作者、题名、期刊、年份和页码均与《环境科学》2022年第43卷第7期一致。"
+   }
+  }
+ }
+}

@@ -1,0 +1,1808 @@
+{
+ "scoredAt": "2026-10-19T01:18:11.155Z",
+ "dataset": "eval/compare/compare-2026-10-18.json",
+ "systems": [
+  {
+   "system": "rules-crossref",
+   "label": "本系统：只用 Crossref",
+   "items": 130,
+   "en": {
+    "correct": {
+     "n": 40,
+     "ok": 16,
+     "error": 2,
+     "fake": 0,
+     "unsure": 22
+    },
+    "error": {
+     "n": 40,
+     "ok": 0,
+     "error": 36,
+     "fake": 0,
+     "unsure": 4,
+     "rightField": 36
+    },
+    "fabricated": {
+     "n": 30,
+     "ok": 0,
+     "error": 15,
+     "fake": 0,
+     "unsure": 15
+    }
+   },
+   "zh": {
+    "correct": {
+     "n": 10,
+     "ok": 1,
+     "error": 0,
+     "fake": 0,
+     "unsure": 9
+    },
+    "error": {
+     "n": 0,
+     "ok": 0,
+     "error": 0,
+     "fake": 0,
+     "unsure": 0,
+     "rightField": 0
+    },
+    "fabricated": {
+     "n": 10,
+     "ok": 0,
+     "error": 0,
+     "fake": 0,
+     "unsure": 10
+    }
+   },
+   "doi": {
+    "given": 55,
+    "right": 53,
+    "otherWork": 0,
+    "unregistered": 0,
+    "unknown": 2,
+    "onFabricated": 15,
+    "onFabricatedUnregistered": 0,
+    "onFabricatedTitleOwner": 15,
+    "onFabricatedWrong": 0
+   },
+   "fixes": {
+    "offered": 36,
+    "right": 36
+   },
+   "avgSeconds": 2.1,
+   "avgTokens": 0,
+   "failed": 0,
+   "metrics": {
+    "okPrecision": 1,
+    "fabricatedAsOk": 0,
+    "fabricatedN": 40,
+    "errorAsOk": 0,
+    "errorN": 40,
+    "realAsFake": 0,
+    "realN": 50,
+    "realAnswered": 18,
+    "realEnN": 40
+   }
+  },
+  {
+   "system": "rules",
+   "label": "本系统：规则核验",
+   "items": 130,
+   "en": {
+    "correct": {
+     "n": 40,
+     "ok": 18,
+     "error": 2,
+     "fake": 1,
+     "unsure": 19
+    },
+    "error": {
+     "n": 40,
+     "ok": 0,
+     "error": 36,
+     "fake": 2,
+     "unsure": 2,
+     "rightField": 36
+    },
+    "fabricated": {
+     "n": 30,
+     "ok": 0,
+     "error": 15,
+     "fake": 10,
+     "unsure": 5
+    }
+   },
+   "zh": {
+    "correct": {
+     "n": 10,
+     "ok": 1,
+     "error": 0,
+     "fake": 0,
+     "unsure": 9
+    },
+    "error": {
+     "n": 0,
+     "ok": 0,
+     "error": 0,
+     "fake": 0,
+     "unsure": 0,
+     "rightField": 0
+    },
+    "fabricated": {
+     "n": 10,
+     "ok": 0,
+     "error": 0,
+     "fake": 0,
+     "unsure": 10
+    }
+   },
+   "doi": {
+    "given": 56,
+    "right": 54,
+    "otherWork": 0,
+    "unregistered": 0,
+    "unknown": 2,
+    "onFabricated": 15,
+    "onFabricatedUnregistered": 0,
+    "onFabricatedTitleOwner": 15,
+    "onFabricatedWrong": 0
+   },
+   "fixes": {
+    "offered": 36,
+    "right": 36
+   },
+   "avgSeconds": 0.2,
+   "avgTokens": 0,
+   "failed": 0,
+   "repeat": {
+    "compared": 130,
+    "sameConclusion": 129,
+    "changed": [
+     "E-V01 mismatch→error"
+    ]
+   },
+   "metrics": {
+    "okPrecision": 1,
+    "fabricatedAsOk": 0,
+    "fabricatedN": 40,
+    "errorAsOk": 0,
+    "errorN": 40,
+    "realAsFake": 1,
+    "realN": 50,
+    "realAnswered": 20,
+    "realEnN": 40
+   }
+  },
+  {
+   "system": "agent",
+   "label": "本系统：规则 + AI 继续查",
+   "items": 130,
+   "en": {
+    "correct": {
+     "n": 40,
+     "ok": 19,
+     "error": 2,
+     "fake": 1,
+     "unsure": 18
+    },
+    "error": {
+     "n": 40,
+     "ok": 0,
+     "error": 36,
+     "fake": 2,
+     "unsure": 2,
+     "rightField": 36
+    },
+    "fabricated": {
+     "n": 30,
+     "ok": 0,
+     "error": 15,
+     "fake": 10,
+     "unsure": 5
+    }
+   },
+   "zh": {
+    "correct": {
+     "n": 10,
+     "ok": 1,
+     "error": 0,
+     "fake": 0,
+     "unsure": 9
+    },
+    "error": {
+     "n": 0,
+     "ok": 0,
+     "error": 0,
+     "fake": 0,
+     "unsure": 0,
+     "rightField": 0
+    },
+    "fabricated": {
+     "n": 10,
+     "ok": 0,
+     "error": 0,
+     "fake": 0,
+     "unsure": 10
+    }
+   },
+   "doi": {
+    "given": 57,
+    "right": 54,
+    "otherWork": 0,
+    "unregistered": 0,
+    "unknown": 3,
+    "onFabricated": 15,
+    "onFabricatedUnregistered": 0,
+    "onFabricatedTitleOwner": 15,
+    "onFabricatedWrong": 0
+   },
+   "fixes": {
+    "offered": 36,
+    "right": 36
+   },
+   "avgSeconds": 2.5,
+   "avgTokens": 1845,
+   "failed": 0,
+   "metrics": {
+    "okPrecision": 1,
+    "fabricatedAsOk": 0,
+    "fabricatedN": 40,
+    "errorAsOk": 0,
+    "errorN": 40,
+    "realAsFake": 1,
+    "realN": 50,
+    "realAnswered": 21,
+    "realEnN": 40
+   }
+  },
+  {
+   "system": "ai-flash",
+   "label": "直接问 AI（flash，不联网）",
+   "items": 130,
+   "en": {
+    "correct": {
+     "n": 40,
+     "ok": 26,
+     "error": 11,
+     "fake": 0,
+     "unsure": 3
+    },
+    "error": {
+     "n": 40,
+     "ok": 7,
+     "error": 31,
+     "fake": 0,
+     "unsure": 2,
+     "rightField": 25
+    },
+    "fabricated": {
+     "n": 30,
+     "ok": 8,
+     "error": 10,
+     "fake": 12,
+     "unsure": 0
+    }
+   },
+   "zh": {
+    "correct": {
+     "n": 10,
+     "ok": 9,
+     "error": 1,
+     "fake": 0,
+     "unsure": 0
+    },
+    "error": {
+     "n": 0,
+     "ok": 0,
+     "error": 0,
+     "fake": 0,
+     "unsure": 0,
+     "rightField": 0
+    },
+    "fabricated": {
+     "n": 10,
+     "ok": 5,
+     "error": 0,
+     "fake": 0,
+     "unsure": 5
+    }
+   },
+   "doi": {
+    "given": 55,
+    "right": 31,
+    "otherWork": 17,
+    "unregistered": 4,
+    "unknown": 3,
+    "onFabricated": 21,
+    "onFabricatedUnregistered": 4,
+    "onFabricatedTitleOwner": 1,
+    "onFabricatedWrong": 20
+   },
+   "fixes": {
+    "offered": 37,
+    "right": 15
+   },
+   "avgSeconds": 7.5,
+   "avgTokens": 1754,
+   "failed": 0,
+   "repeat": {
+    "compared": 130,
+    "sameConclusion": 115,
+    "changed": [
+     "C02 uncertain→correct",
+     "C05 correct→has_error",
+     "E-D03 has_error→correct",
+     "E-D06 has_error→uncertain",
+     "E-A07 correct→has_error",
+     "E-A10 has_error→correct",
+     "F-C01 fabricated→has_error",
+     "F-C03 has_error→correct",
+     "F-I03 correct→has_error",
+     "F-I04 correct→has_error",
+     "F-I10 has_error→correct",
+     "F-I15 has_error→correct",
+     "Z-F02 uncertain→fabricated",
+     "Z-F05 correct→uncertain",
+     "Z-F10 correct→has_error"
+    ]
+   },
+   "metrics": {
+    "okPrecision": 0.634,
+    "fabricatedAsOk": 13,
+    "fabricatedN": 40,
+    "errorAsOk": 7,
+    "errorN": 40,
+    "realAsFake": 0,
+    "realN": 50,
+    "realAnswered": 37,
+    "realEnN": 40
+   }
+  },
+  {
+   "system": "ai-pro",
+   "label": "直接问 AI（pro，不联网）",
+   "items": 130,
+   "en": {
+    "correct": {
+     "n": 40,
+     "ok": 13,
+     "error": 17,
+     "fake": 0,
+     "unsure": 10
+    },
+    "error": {
+     "n": 40,
+     "ok": 5,
+     "error": 31,
+     "fake": 1,
+     "unsure": 3,
+     "rightField": 25
+    },
+    "fabricated": {
+     "n": 30,
+     "ok": 5,
+     "error": 9,
+     "fake": 12,
+     "unsure": 4
+    }
+   },
+   "zh": {
+    "correct": {
+     "n": 10,
+     "ok": 7,
+     "error": 1,
+     "fake": 0,
+     "unsure": 2
+    },
+    "error": {
+     "n": 0,
+     "ok": 0,
+     "error": 0,
+     "fake": 0,
+     "unsure": 0,
+     "rightField": 0
+    },
+    "fabricated": {
+     "n": 10,
+     "ok": 4,
+     "error": 0,
+     "fake": 0,
+     "unsure": 6
+    }
+   },
+   "doi": {
+    "given": 43,
+    "right": 27,
+    "otherWork": 9,
+    "unregistered": 5,
+    "unknown": 2,
+    "onFabricated": 16,
+    "onFabricatedUnregistered": 3,
+    "onFabricatedTitleOwner": 1,
+    "onFabricatedWrong": 15
+   },
+   "fixes": {
+    "offered": 34,
+    "right": 18
+   },
+   "avgSeconds": 18.3,
+   "avgTokens": 2378,
+   "failed": 0,
+   "metrics": {
+    "okPrecision": 0.565,
+    "fabricatedAsOk": 9,
+    "fabricatedN": 40,
+    "errorAsOk": 5,
+    "errorN": 40,
+    "realAsFake": 0,
+    "realN": 50,
+    "realAnswered": 30,
+    "realEnN": 40
+   }
+  },
+  {
+   "system": "ai-flash-search",
+   "label": "AI + 联网搜索（flash）",
+   "items": 130,
+   "en": {
+    "correct": {
+     "n": 40,
+     "ok": 31,
+     "error": 9,
+     "fake": 0,
+     "unsure": 0
+    },
+    "error": {
+     "n": 40,
+     "ok": 0,
+     "error": 39,
+     "fake": 0,
+     "unsure": 1,
+     "rightField": 39
+    },
+    "fabricated": {
+     "n": 30,
+     "ok": 0,
+     "error": 7,
+     "fake": 18,
+     "unsure": 5
+    }
+   },
+   "zh": {
+    "correct": {
+     "n": 10,
+     "ok": 9,
+     "error": 1,
+     "fake": 0,
+     "unsure": 0
+    },
+    "error": {
+     "n": 0,
+     "ok": 0,
+     "error": 0,
+     "fake": 0,
+     "unsure": 0,
+     "rightField": 0
+    },
+    "fabricated": {
+     "n": 10,
+     "ok": 0,
+     "error": 0,
+     "fake": 7,
+     "unsure": 3
+    }
+   },
+   "doi": {
+    "given": 63,
+    "right": 56,
+    "otherWork": 2,
+    "unregistered": 0,
+    "unknown": 5,
+    "onFabricated": 20,
+    "onFabricatedUnregistered": 0,
+    "onFabricatedTitleOwner": 6,
+    "onFabricatedWrong": 14
+   },
+   "fixes": {
+    "offered": 39,
+    "right": 39
+   },
+   "avgSeconds": 8,
+   "avgTokens": 5711,
+   "failed": 0,
+   "repeat": {
+    "compared": 130,
+    "sameConclusion": 108,
+    "changed": [
+     "C02 has_error→correct",
+     "C06 correct→has_error",
+     "C14 has_error→correct",
+     "C20 correct→has_error",
+     "C21 correct→has_error",
+     "C25 has_error→correct",
+     "C27 has_error→correct",
+     "C32 correct→has_error",
+     "E-A09 uncertain→has_error",
+     "F-C03 fabricated→has_error",
+     "F-C06 fabricated→has_error",
+     "F-C07 fabricated→has_error",
+     "F-C10 fabricated→has_error",
+     "F-C12 fabricated→has_error",
+     "F-I03 has_error→uncertain",
+     "F-I05 fabricated→has_error",
+     "F-I07 uncertain→fabricated",
+     "F-I13 uncertain→has_error",
+     "F-I15 fabricated→has_error",
+     "Z-R09 has_error→correct",
+     "Z-F06 fabricated→uncertain",
+     "Z-F10 fabricated→uncertain"
+    ]
+   },
+   "metrics": {
+    "okPrecision": 1,
+    "fabricatedAsOk": 0,
+    "fabricatedN": 40,
+    "errorAsOk": 0,
+    "errorN": 40,
+    "realAsFake": 0,
+    "realN": 50,
+    "realAnswered": 40,
+    "realEnN": 40
+   }
+  },
+  {
+   "system": "ai-pro-search",
+   "label": "AI + 联网搜索（pro）",
+   "items": 130,
+   "en": {
+    "correct": {
+     "n": 40,
+     "ok": 19,
+     "error": 20,
+     "fake": 0,
+     "unsure": 1
+    },
+    "error": {
+     "n": 40,
+     "ok": 2,
+     "error": 38,
+     "fake": 0,
+     "unsure": 0,
+     "rightField": 38
+    },
+    "fabricated": {
+     "n": 30,
+     "ok": 0,
+     "error": 15,
+     "fake": 10,
+     "unsure": 5
+    }
+   },
+   "zh": {
+    "correct": {
+     "n": 10,
+     "ok": 7,
+     "error": 3,
+     "fake": 0,
+     "unsure": 0
+    },
+    "error": {
+     "n": 0,
+     "ok": 0,
+     "error": 0,
+     "fake": 0,
+     "unsure": 0,
+     "rightField": 0
+    },
+    "fabricated": {
+     "n": 10,
+     "ok": 1,
+     "error": 1,
+     "fake": 4,
+     "unsure": 4
+    }
+   },
+   "doi": {
+    "given": 63,
+    "right": 54,
+    "otherWork": 3,
+    "unregistered": 1,
+    "unknown": 5,
+    "onFabricated": 17,
+    "onFabricatedUnregistered": 0,
+    "onFabricatedTitleOwner": 10,
+    "onFabricatedWrong": 7
+   },
+   "fixes": {
+    "offered": 40,
+    "right": 38
+   },
+   "avgSeconds": 24.4,
+   "avgTokens": 7956,
+   "failed": 0,
+   "metrics": {
+    "okPrecision": 0.905,
+    "fabricatedAsOk": 1,
+    "fabricatedN": 40,
+    "errorAsOk": 2,
+    "errorN": 40,
+    "realAsFake": 0,
+    "realN": 50,
+    "realAnswered": 39,
+    "realEnN": 40
+   }
+  }
+ ],
+ "perItem": {
+  "C01": {
+   "rules-crossref": "verified",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "correct",
+   "ai-pro": "has_error",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C02": {
+   "rules-crossref": "verified",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "uncertain",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "C03": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "has_error",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "has_error"
+  },
+  "C04": {
+   "rules-crossref": "error",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "C05": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "has_error",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "uncertain"
+  },
+  "C06": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "has_error"
+  },
+  "C07": {
+   "rules-crossref": "verified",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "uncertain",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C08": {
+   "rules-crossref": "near_match",
+   "rules": "near_match",
+   "agent": "near_match",
+   "ai-flash": "correct",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "has_error"
+  },
+  "C09": {
+   "rules-crossref": "verified",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "correct",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "has_error"
+  },
+  "C10": {
+   "rules-crossref": "verified",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C11": {
+   "rules-crossref": "verified",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "correct",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C12": {
+   "rules-crossref": "verified",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C13": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C14": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "uncertain",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "C15": {
+   "rules-crossref": "verified",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "C16": {
+   "rules-crossref": "verified",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "has_error"
+  },
+  "C17": {
+   "rules-crossref": "verified",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C18": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C19": {
+   "rules-crossref": "verified",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C20": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "has_error"
+  },
+  "C21": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "has_error"
+  },
+  "C22": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "has_error",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C23": {
+   "rules-crossref": "verified",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "C24": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "verified",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C25": {
+   "rules-crossref": "unverifiable",
+   "rules": "not_found",
+   "agent": "not_found",
+   "ai-flash": "correct",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "C26": {
+   "rules-crossref": "verified",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C27": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "C28": {
+   "rules-crossref": "unverifiable",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "correct",
+   "ai-pro": "has_error",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C29": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C30": {
+   "rules-crossref": "verified",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "correct",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C31": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C32": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C33": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "has_error"
+  },
+  "C34": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C35": {
+   "rules-crossref": "verified",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "C36": {
+   "rules-crossref": "verified",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "correct",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "has_error"
+  },
+  "C37": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "has_error"
+  },
+  "C38": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "C39": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "C40": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "correct",
+   "ai-pro": "has_error",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "has_error"
+  },
+  "E-D01": {
+   "rules-crossref": "unverifiable",
+   "rules": "not_found",
+   "agent": "not_found",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "correct"
+  },
+  "E-D02": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-D03": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-D04": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-D05": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-D06": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "correct"
+  },
+  "E-D07": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-D08": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "correct",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-D09": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-D10": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-V01": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "fabricated",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-V02": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-V03": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-V04": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-V05": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-V06": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-V07": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-V08": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-V09": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-V10": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-A01": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-A02": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-A03": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-A04": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-A05": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "uncertain",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-A06": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-A07": {
+   "rules-crossref": "unverifiable",
+   "rules": "not_found",
+   "agent": "not_found",
+   "ai-flash": "correct",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-A08": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-A09": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "uncertain",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "uncertain",
+   "ai-pro-search": "has_error"
+  },
+  "E-A10": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-Y01": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-Y02": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-Y03": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-Y04": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-Y05": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-Y06": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-Y07": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-Y08": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-Y09": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "E-Y10": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "F-C01": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "fabricated",
+   "ai-pro": "fabricated",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "has_error"
+  },
+  "F-C02": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "fabricated",
+   "ai-pro": "fabricated",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "has_error"
+  },
+  "F-C03": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "correct",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "fabricated"
+  },
+  "F-C04": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "fabricated",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "has_error"
+  },
+  "F-C05": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "fabricated",
+   "ai-pro": "has_error",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "has_error"
+  },
+  "F-C06": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "fabricated",
+   "ai-pro": "fabricated",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "fabricated"
+  },
+  "F-C07": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "fabricated",
+   "ai-pro": "fabricated",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "has_error"
+  },
+  "F-C08": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "has_error",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "F-C09": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "fabricated",
+   "ai-pro": "fabricated",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "fabricated"
+  },
+  "F-C10": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "fabricated",
+   "ai-pro": "fabricated",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "fabricated"
+  },
+  "F-C11": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "fabricated",
+   "ai-pro": "fabricated",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "no_answer"
+  },
+  "F-C12": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "fabricated",
+   "ai-pro": "fabricated",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "fabricated"
+  },
+  "F-C13": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "fabricated",
+   "ai-pro": "fabricated",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "fabricated"
+  },
+  "F-C14": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "fabricated",
+   "ai-pro": "fabricated",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "fabricated"
+  },
+  "F-C15": {
+   "rules-crossref": "mismatch",
+   "rules": "mismatch",
+   "agent": "mismatch",
+   "ai-flash": "fabricated",
+   "ai-pro": "fabricated",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "fabricated"
+  },
+  "F-I01": {
+   "rules-crossref": "unverifiable",
+   "rules": "not_found",
+   "agent": "not_found",
+   "ai-flash": "has_error",
+   "ai-pro": "correct",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "F-I02": {
+   "rules-crossref": "unverifiable",
+   "rules": "not_found",
+   "agent": "not_found",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "fabricated"
+  },
+  "F-I03": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "uncertain"
+  },
+  "F-I04": {
+   "rules-crossref": "unverifiable",
+   "rules": "not_found",
+   "agent": "not_found",
+   "ai-flash": "correct",
+   "ai-pro": "has_error",
+   "ai-flash-search": "uncertain",
+   "ai-pro-search": "has_error"
+  },
+  "F-I05": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "has_error"
+  },
+  "F-I06": {
+   "rules-crossref": "unverifiable",
+   "rules": "not_found",
+   "agent": "not_found",
+   "ai-flash": "correct",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "F-I07": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "uncertain",
+   "ai-pro-search": "uncertain"
+  },
+  "F-I08": {
+   "rules-crossref": "unverifiable",
+   "rules": "not_found",
+   "agent": "not_found",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "F-I09": {
+   "rules-crossref": "unverifiable",
+   "rules": "not_found",
+   "agent": "not_found",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "fabricated"
+  },
+  "F-I10": {
+   "rules-crossref": "unverifiable",
+   "rules": "not_found",
+   "agent": "not_found",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "F-I11": {
+   "rules-crossref": "unverifiable",
+   "rules": "not_found",
+   "agent": "not_found",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "F-I12": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "has_error",
+   "ai-flash-search": "uncertain",
+   "ai-pro-search": "has_error"
+  },
+  "F-I13": {
+   "rules-crossref": "unverifiable",
+   "rules": "not_found",
+   "agent": "not_found",
+   "ai-flash": "has_error",
+   "ai-pro": "has_error",
+   "ai-flash-search": "uncertain",
+   "ai-pro-search": "uncertain"
+  },
+  "F-I14": {
+   "rules-crossref": "unverifiable",
+   "rules": "not_found",
+   "agent": "not_found",
+   "ai-flash": "correct",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "uncertain",
+   "ai-pro-search": "uncertain"
+  },
+  "F-I15": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "has_error",
+   "ai-pro": "correct",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "has_error"
+  },
+  "Z-R01": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "near_match",
+   "ai-flash": "correct",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "has_error"
+  },
+  "Z-R02": {
+   "rules-crossref": "verified",
+   "rules": "verified",
+   "agent": "verified",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "Z-R03": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "near_match",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "has_error"
+  },
+  "Z-R04": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "near_match",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "Z-R05": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "near_match",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "Z-R06": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "has_error",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "Z-R07": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "near_match",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "Z-R08": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "has_error",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "Z-R09": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "near_match",
+   "ai-flash": "correct",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "has_error",
+   "ai-pro-search": "has_error"
+  },
+  "Z-R10": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "near_match",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "correct",
+   "ai-pro-search": "correct"
+  },
+  "Z-F01": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "uncertain",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "fabricated"
+  },
+  "Z-F02": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "uncertain",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "fabricated"
+  },
+  "Z-F03": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "uncertain"
+  },
+  "Z-F04": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "near_match",
+   "ai-flash": "uncertain",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "uncertain",
+   "ai-pro-search": "uncertain"
+  },
+  "Z-F05": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "uncertain"
+  },
+  "Z-F06": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "uncertain",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "uncertain"
+  },
+  "Z-F07": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "uncertain",
+   "ai-pro": "correct",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "fabricated"
+  },
+  "Z-F08": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "near_match",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "uncertain",
+   "ai-pro-search": "has_error"
+  },
+  "Z-F09": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "uncertain",
+   "ai-flash-search": "uncertain",
+   "ai-pro-search": "fabricated"
+  },
+  "Z-F10": {
+   "rules-crossref": "unverifiable",
+   "rules": "unverifiable",
+   "agent": "unverifiable",
+   "ai-flash": "correct",
+   "ai-pro": "correct",
+   "ai-flash-search": "fabricated",
+   "ai-pro-search": "correct"
+  }
+ }
+}
