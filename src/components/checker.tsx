@@ -1,6 +1,6 @@
 "use client";
 
-import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { SAMPLE_REFERENCES } from "@/lib/samples";
 import { VERDICT_META, VERDICT_ORDER } from "@/lib/verdict-meta";
@@ -34,8 +34,13 @@ const KIND_LABEL: Record<RefKind, string> = {
 };
 
 const MAX_REFS = 80;
+const PLACEHOLDER = "[1] 作者. 题名[J]. 刊名, 年, 卷(期): 页码.\n[2] Author, A. (2023). Title. Journal, 12(3), 45–67.\n\n每条一行，或用 [1]、1. 这类序号分隔；支持 GB/T 7714、APA、IEEE 等格式";
+const noSubscribe = () => () => {};
 
 export function Checker() {
+  // 服务端渲染和水合时为 false，脚本接管后为 true。慢网络（如魔搭）下页面先出现、脚本后到：
+  // 这段时间粘贴的文字会在水合时被清空，“载入示例”也点不动（10-19 实测）。所以接管前先禁用输入并提示加载中
+  const hydrated = useSyncExternalStore(noSubscribe, () => true, () => false);
   const [text, setText] = useState("");
   const [phase, setPhase] = useState<Phase>("idle");
   const [refs, setRefs] = useState<ParsedRef[]>([]);
@@ -235,15 +240,15 @@ export function Checker() {
             <button
               type="button"
               onClick={() => setText(SAMPLE_REFERENCES)}
-              disabled={phase === "running"}
+              disabled={!hydrated || phase === "running"}
               title="填入 11 条示例：含真实、写错、编造和已撤稿的文献"
               className="shrink-0 rounded-sm border border-seal/50 px-2.5 py-1 text-[13px] text-seal transition hover:bg-seal hover:text-card disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-seal"
             >
               载入示例
             </button>
           </header>
-          <DocumentImport onImport={setText} disabled={phase === "running"} purpose="references" pasteTargetId="refs" />
-          <fieldset disabled={phase === "running"} className="border-b border-dashed border-rule px-5 py-3">
+          <DocumentImport onImport={setText} disabled={!hydrated || phase === "running"} purpose="references" pasteTargetId="refs" />
+          <fieldset disabled={!hydrated || phase === "running"} className="border-b border-dashed border-rule px-5 py-3">
             <legend className="sr-only">核验模式</legend>
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-[13px] text-ink-soft">
               <label className="flex cursor-pointer items-center gap-2"><input type="radio" name="mode" value="standard" checked={mode === "standard"} onChange={() => setMode("standard")} className="accent-seal" />标准核验</label>
@@ -259,8 +264,8 @@ export function Checker() {
             value={text}
             onChange={(e) => setText(e.target.value)}
             spellCheck={false}
-            disabled={phase === "running"}
-            placeholder={"[1] 作者. 题名[J]. 刊名, 年, 卷(期): 页码.\n[2] Author, A. (2023). Title. Journal, 12(3), 45–67.\n\n每条一行，或用 [1]、1. 这类序号分隔；支持 GB/T 7714、APA、IEEE 等格式"}
+            disabled={!hydrated || phase === "running"}
+            placeholder={hydrated ? PLACEHOLDER : "页面还在加载，稍候即可粘贴参考文献…"}
             className="ruled block h-[12rem] w-full resize-y py-2 pl-[3.4rem] pr-4 font-serif text-[14px] text-ink outline-none placeholder:text-ink-faint/70 focus-visible:bg-white/40 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-seal/40"
           />
           <footer className="space-y-3 border-t border-dashed border-rule px-5 py-4">
