@@ -1,5 +1,6 @@
 // 前后端共用：AI 检索的流式事件格式与校验。这里不能引入任何仅限服务端的模块。
-import { VERDICTS, type AgentTrace, type CheckStep, type RefResult } from "./verify/types";
+import { notReference } from "./verify/extract";
+import { VERDICTS, type AgentTrace, type CheckStep, type ParsedRef, type RefResult } from "./verify/types";
 
 export type AgentEvent =
   | { type: "step"; step: CheckStep }
@@ -9,8 +10,10 @@ export type AgentEvent =
 /**
  * 只有"无法核验"和"只找到相近候选"的条目值得继续查；查无此文、已确认的结论不交给模型。
  * DOI 写错但另有相近候选的（信息有误 + candidate）也可以继续查那篇候选是不是同一篇。
+ * 看起来不是参考文献的一段正文不交给模型去查。
  */
-export function agentEligible(result: Pick<RefResult, "verdict" | "matchStatus">): boolean {
+export function agentEligible(result: Pick<RefResult, "verdict" | "matchStatus"> & { parsed?: ParsedRef }): boolean {
+  if (result.parsed && notReference(result.parsed)) return false;
   return result.verdict === "unverifiable" || result.verdict === "near_match" || (result.verdict === "mismatch" && result.matchStatus === "candidate");
 }
 

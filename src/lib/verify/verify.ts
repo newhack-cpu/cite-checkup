@@ -6,7 +6,7 @@
 
 import { suggestCitation } from "./format";
 import { UpstreamError } from "./http";
-import { nameOnly } from "./extract";
+import { nameOnly, notReference } from "./extract";
 import { dice, normalizeText, stripRetractionPrefix } from "./normalize";
 import {
   fieldChecks,
@@ -510,6 +510,13 @@ function judgeNotSame(ref: ParsedRef, best: Ranked | undefined, steps: CheckStep
     return {
       ...b, verdict: "unverifiable", confidence: 0,
       summary: "引文只写了名称，没有作者、年份或 DOI，信息不足以核验，请补全后再查",
+    };
+  }
+  // 粘进来的是一段正文而不是参考文献：别再提示“去知网核查”或给相近候选（可用性走查，10-18）
+  if (notReference(ref)) {
+    return {
+      ...b, verdict: "unverifiable", confidence: 0,
+      summary: "这段文字看起来不像参考文献（没有年份、出处或 DOI），没有核查依据；如果确实是参考文献，请补全后再查",
     };
   }
   // AI 检索在知网、万方、维普找到题名相近的文章、但不能确认是同一篇：给出候选和来源链接，请人工核对。

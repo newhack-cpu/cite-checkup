@@ -6,6 +6,7 @@ import {
   extractYear,
   guessTitle,
   guessVenue,
+  notReference,
   parseReference,
   splitReferences,
 } from "../extract";
@@ -120,5 +121,33 @@ describe("parseReference", () => {
   });
   it("中文识别", () => {
     expect(parseReference("周志华. 机器学习[M]. 北京: 清华大学出版社, 2016.", 1).lang).toBe("zh");
+  });
+});
+
+describe("作者段里的单名作者（Elsevier / Harvard 写法）", () => {
+  // 第三批盲测 B004，也是演示视频第 03 章的示例：单名作者 Tikeshwari 让作者段提前结束，题名取成了作者名
+  const raw = "Tandey, K., Shrivas, K., Sharma, A., Kant, T., Tejwani, A., Tikeshwari, Kanti Deb, M., Pervez, S., Ghosh, K.K., 2024. Nanomaterial-enabled portable paper-based colorimetric and fluorometric devices: Progress in point-of-care diagnosis. Coord. Chem. Rev.514, 215919.";
+  it("作者段到 “, 年份.” 为止，题名取年份之后的一句", () => {
+    const p = parseReference(raw, 1);
+    expect(p.titleGuess).toBe("Nanomaterial-enabled portable paper-based colorimetric and fluorometric devices: Progress in point-of-care diagnosis");
+    expect(p.authorsGuess).toBe("Tandey, K., Shrivas, K., Sharma, A., Kant, T., Tejwani, A., Tikeshwari, Kanti Deb, M., Pervez, S., Ghosh, K.K");
+  });
+  it("不像姓名的片段太多时不按这个写法切（机构名、题名不能当作者段）", () => {
+    const p = parseReference("World Health Organization, Global Tuberculosis Programme, Regional Office, 2021. Global tuberculosis report. Geneva.", 1);
+    expect(p.authorsGuess ?? "").not.toContain("Regional Office");
+  });
+});
+
+describe("看起来不像参考文献的一段正文", () => {
+  it("中文正文段落：没有年份、出处，带句号", () => {
+    expect(notReference(parseReference("本研究采用问卷调查法，对 300 名大学生的学习动机进行了测量。结果表明，内在动机与学业成绩显著正相关。", 1))).toBe(true);
+  });
+  it("英文正文段落：两句以上的长句", () => {
+    expect(notReference(parseReference("We surveyed three hundred undergraduate students about their study habits and their motivation for learning. The results show that intrinsic motivation was positively associated with grades across all of the participating departments.", 1))).toBe(true);
+  });
+  it("真实参考文献不算，即使没有年份", () => {
+    expect(notReference(parseReference("周志华. 机器学习[M]. 北京: 清华大学出版社, 2016.", 1))).toBe(false);
+    expect(notReference(parseReference("Smith J, Doe K. Measuring citation errors in student theses. Journal of Academic Writing.", 1))).toBe(false);
+    expect(notReference(parseReference("NIH. Research condition and disease categorization report. https://report.nih.gov/", 1))).toBe(false);
   });
 });

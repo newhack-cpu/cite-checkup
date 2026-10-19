@@ -286,6 +286,9 @@ describe("agent eligibility and DataCite records", () => {
     // DOI 写错、另有相近候选：可以继续查那篇候选是不是同一篇
     expect(agentEligible({ verdict: "mismatch", matchStatus: "candidate" })).toBe(true);
     expect(agentEligible({ verdict: "mismatch", matchStatus: "confirmed" })).toBe(false);
+    // 粘进来的是一段正文时不交给模型去查
+    const { parseReference } = await import("../../verify/extract");
+    expect(agentEligible({ verdict: "unverifiable", parsed: parseReference("本研究采用问卷调查法，对 300 名大学生进行了测量。结果表明，内在动机与成绩显著正相关。", 1) })).toBe(false);
     expect(agentEligible({ verdict: "not_found" })).toBe(false);
     expect(agentEligible({ verdict: "verified", matchStatus: "confirmed" })).toBe(false);
   });

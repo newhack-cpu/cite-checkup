@@ -283,6 +283,18 @@ function isAuthorList(text: string): boolean {
   return segs.length > 0 && segs.every(isName) && segs.some((s) => !ET_AL_RE.test(s));
 }
 
+/**
+ * 作者段大多是姓名：个别片段是单名作者或复姓（Elsevier 写法的 "Tejwani, A., Tikeshwari, Kanti Deb, M."），
+ * 对不上姓名格式时仍算作者段。不像姓名的片段只能是一两个大写开头的词，不能带数字，也不能多
+ */
+function mostlyNames(text: string): boolean {
+  const segs = nameSegments(text.replace(/[.:\s]+$/, ""));
+  if (segs.length < 3) return false;
+  const odd = segs.filter((s) => !isName(s) && !INITIALS_ONLY_RE.test(s));
+  return odd.length <= Math.max(1, Math.floor(segs.length / 4))
+    && odd.every((s) => /^\p{Lu}[\p{L}'’-]*(?:\s\p{Lu}[\p{L}'’-]*)?$/u.test(s));
+}
+
 interface Span {
   text: string;
   /** 作者段在原文中的结束位置 */
@@ -341,6 +353,9 @@ function authorSpan(t: string): Span | undefined {
   // Springer：作者段以 "M.:" 这样的冒号结束
   const colon = t.match(/^(.{2,400}?\.)\s*:\s/);
   if (colon && isAuthorList(colon[1])) return { text: colon[1], end: colon[1].length };
+  // Elsevier / Harvard："Surname, I., Surname, I., 2024. Title. Journal"：作者段到 ", 年份." 之前（视频示例 B004 的单名作者）
+  const harvard = t.match(/^(.{2,400}?),\s*(?:18|19|20)\d{2}[a-z]?[.．]\s+\S/);
+  if (harvard && mostlyNames(harvard[1])) return { text: harvard[1], end: harvard[1].length };
   return leadingNames(t);
 }
 
@@ -501,4 +516,15 @@ export function parseReferenceList(text: string): ParsedRef[] {
  */
 export function nameOnly(ref: ParsedRef): boolean {
   return !ref.year && !ref.authorsGuess && !ref.doi && tokenCount(ref.raw) <= 8;
+}
+
+/**
+ * 看起来不是参考文献，而是一段正文（把论文段落粘进了参考文献框）：没有年份、DOI、arXiv 编号、网址和 [J] 这类类型标识，
+ * 而且像连贯的句子——中文带句号“。”，或英文有两句以上、每句十个以上小写词。只用来提醒和改写结论，不阻止核查
+ */
+export function notReference(ref: ParsedRef): boolean {
+  if (ref.year || ref.doi || ref.arxivId || /https?:\/\/|www\./i.test(ref.raw) || GBT_MARKER_RE.test(ref.raw)) return false;
+  if (/。/.test(ref.raw)) return true;
+  const longSentences = ref.raw.split(/[.!?]\s+/).filter((s) => (s.match(/\b\p{Ll}{2,}\b/gu)?.length ?? 0) >= 10);
+  return longSentences.length >= 2;
 }
