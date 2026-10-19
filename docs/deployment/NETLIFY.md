@@ -2,6 +2,15 @@
 
 本项目包含 Next.js 服务端 API、流式核验和 PDF worker，必须使用 Netlify 的 Next.js / OpenNext 适配器，不能把静态目录拖到 Netlify Drop 当作完整应用。
 
+## 当前上线版本
+
+- 公网入口：<https://cite-checkup-ql514740.netlify.app>。
+- 管理面板：<https://app.netlify.com/projects/cite-checkup-ql514740>。
+- 2026-10-18 使用已授权的官方 CLI 身份，通过 Netlify 源码 ZIP API 在 Linux 云端构建；源码提交 `cf1b845`，部署 ID `6ad59f2e255dbb55546fb0b7`。本地只打包已提交代码，不上传 `.env.local`。
+- 已实测：11 条网页示例完整结束、报告下载、真实 DeepSeek 字段解析、4 项论断判断、维普中文检索、图片转写、PDF/DOCX/中文 PDF 导入、390px 手机宽度无横向溢出。
+- 账号已核实 Free、300 credits、自动充值关闭。DeepSeek 使用项目已有密钥；项目未提供的 OpenAlex key 与 Crossref 联系邮箱没有擅自补填。
+- **当前没有 GitHub 自动部署钩子**：推送代码不会自动更新网址。更新时需再次触发源码 ZIP 云构建，或按下方步骤关联已有项目到 GitHub；不要重复创建站点。当前本地操作与验收记录在 `output/netlify-2026-10-18/`，长期交接见 `PROJECT_STATE.md`。
+
 ## 从 GitHub 部署
 
 1. 在 Netlify 登录后选择 **Add new project → Import an existing project → GitHub**。
