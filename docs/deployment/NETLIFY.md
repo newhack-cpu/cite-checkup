@@ -25,7 +25,7 @@
 ## 构建与平台适配
 
 - `netlify.toml` 固定 Node 22.22.3；pnpm 11.22.0 取自 `package.json` 的 `packageManager`。安装使用锁文件并按 Netlify 的 Next.js / pnpm 指引展开依赖。
-- 不手工锁定或添加旧版 `@netlify/plugin-nextjs`；平台自动应用当前 OpenNext 适配器。
+- `netlify.toml` 显式启用 `@netlify/plugin-nextjs`，不锁定旧版本，由平台下载当前 OpenNext 适配器。源码 ZIP 云构建实测不会自动附加该适配器；漏掉声明会只发布 `.next` 文件、生成 0 个函数，导致首页/API 404，即使构建状态显示成功。
 - 构建变量 `NEXT_PUBLIC_DEPLOY_TARGET=netlify` 使浏览器与服务端共同采用 **4 MiB** 文件/图片合计上限、**50 秒**请求处理预算，给平台 60 秒截止时间留余量。该变量是公开能力标记，不包含秘密；修改后需要重新构建。
 - 非 Netlify 构建仍保留原本 8 MiB 上限及各流程的时间预算。
 - Netlify 的同步与流式函数均有 60 秒上限，二进制请求经 Base64 编码后实际约 4.5 MB。路由中的 `maxDuration` 不能提高平台上限。大批核验可能只完成一部分，界面应提示未完成；建议老师先试少量条目。

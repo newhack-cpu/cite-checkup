@@ -9,5 +9,8 @@
   NEXT_TELEMETRY_DISABLED = "1"
   NEXT_PUBLIC_DEPLOY_TARGET = "netlify"
 
-# Netlify automatically installs the current OpenNext adapter for Next.js.
+# Explicit activation is needed for source-zip builds; leave the adapter version unpinned.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
 # Runtime credentials belong in the Netlify environment UI, not in this file.
