@@ -1,0 +1,1491 @@
+{
+  "checkedAt": "2026-10-18T09:12:32.793881+00:00",
+  "scope": "17 WAV tracks, acoustic integrity plus four local ASR samples; no human listening review",
+  "voice": "zh-CN-YunxiNeural",
+  "status": "complete",
+  "thresholds": {
+    "silenceDbFS": -50,
+    "longSilenceSeconds": 1.0,
+    "nearClippingDbFS": -0.1
+  },
+  "chapters": [
+    {
+      "kind": "competition",
+      "id": "01-intro",
+      "title": "一条引用，需要检查两件事",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\competition\\01-intro.wav",
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 33.072,
+      "manifestSeconds": 33.072,
+      "durationDeltaSeconds": 0.0,
+      "peakDbFS": -3.08,
+      "rmsDbFS": -24.663,
+      "clippedSamples": 0,
+      "firstSignalSeconds": 0.2147,
+      "lastSignalSeconds": 32.1526,
+      "trailingSilenceSeconds": 0.9194,
+      "longSilenceIntervals": [],
+      "ttsBoundaryEndSeconds": 32.14475,
+      "ttsLastToken": "原文",
+      "lastCue": {
+        "start": 28.065791,
+        "end": 32.36475,
+        "text": "最终判断仍然需要回到数据库记录和论文原文。"
+      },
+      "boundaryTextMatchesNarration": true,
+      "tailAfterTtsBoundarySeconds": 0.9273,
+      "findings": [],
+      "pcmSha256": "5cebf7fa62432cea56631df3bfb1c1c50d4dd458335fc2e1ae59e5e97304dbf7",
+      "fileSha256": "d867ff2ffd41e7469acb0eed77c53799d4954e7065b09f1ec8eac306e03674e8",
+      "tailAssessment": "末词TTS边界在音轨内，边界之后保留约0.92秒；不等于逐句听审。"
+    },
+    {
+      "kind": "competition",
+      "id": "02-photo",
+      "title": "从截图到条目，先核对转写",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\competition\\02-photo.wav",
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 48.096,
+      "manifestSeconds": 48.096,
+      "durationDeltaSeconds": 0.0,
+      "peakDbFS": -3.08,
+      "rmsDbFS": -24.444,
+      "clippedSamples": 0,
+      "firstSignalSeconds": 0.2068,
+      "lastSignalSeconds": 47.1887,
+      "trailingSilenceSeconds": 0.9073,
+      "longSilenceIntervals": [],
+      "ttsBoundaryEndSeconds": 47.171041,
+      "ttsLastToken": "情况",
+      "lastCue": {
+        "start": 46.10525,
+        "end": 47.391041,
+        "text": "的实拍情况。"
+      },
+      "boundaryTextMatchesNarration": true,
+      "tailAfterTtsBoundarySeconds": 0.925,
+      "findings": [],
+      "pcmSha256": "380eea03511ce9adde38f00340b9ed70f695226d65258af3a99bc52051168e60",
+      "fileSha256": "dfcebd644474aba7cce0f1170b6138ec146e86bbaffbbe99e1d07cee251e80d8",
+      "tailAssessment": "末词TTS边界在音轨内，边界之后保留约0.92秒；不等于逐句听审。"
+    },
+    {
+      "kind": "competition",
+      "id": "03-reference",
+      "title": "逐字段核对，区分错误与待查",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\competition\\03-reference.wav",
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 55.632,
+      "manifestSeconds": 55.632,
+      "durationDeltaSeconds": 0.0,
+      "peakDbFS": -1.93,
+      "rmsDbFS": -24.668,
+      "clippedSamples": 0,
+      "firstSignalSeconds": 0.2018,
+      "lastSignalSeconds": 54.7134,
+      "trailingSilenceSeconds": 0.9186,
+      "longSilenceIntervals": [],
+      "ttsBoundaryEndSeconds": 54.697374,
+      "ttsLastToken": "过程",
+      "lastCue": {
+        "start": 49.434208,
+        "end": 54.917374,
+        "text": "看完结论，还要检查它查了哪些来源，再下载报告保留过程。"
+      },
+      "boundaryTextMatchesNarration": true,
+      "tailAfterTtsBoundarySeconds": 0.9346,
+      "findings": [],
+      "pcmSha256": "9e422ad3cc5b23227bc64ca03b19c2b4b277f14171f00ce227a2c603973afb6c",
+      "fileSha256": "70c9ba090cf79bb8854ebd23dea5a17bb1f94c18eacb42131ddad5f9a56ae88d",
+      "tailAssessment": "末词TTS边界在音轨内，边界之后保留约0.92秒；不等于逐句听审。"
+    },
+    {
+      "kind": "competition",
+      "id": "04-agent",
+      "title": "AI 继续查：找到线索后仍要复核",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\competition\\04-agent.wav",
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 51.528,
+      "manifestSeconds": 51.528,
+      "durationDeltaSeconds": 0.0,
+      "peakDbFS": -3.299,
+      "rmsDbFS": -24.435,
+      "clippedSamples": 0,
+      "firstSignalSeconds": 0.199,
+      "lastSignalSeconds": 50.6178,
+      "trailingSilenceSeconds": 0.9102,
+      "longSilenceIntervals": [],
+      "ttsBoundaryEndSeconds": 50.592082,
+      "ttsLastToken": "步骤",
+      "lastCue": {
+        "start": 44.802625,
+        "end": 50.812082,
+        "text": "因此，找到页面、规则确认、人工复核，是三个不同步骤。"
+      },
+      "boundaryTextMatchesNarration": true,
+      "tailAfterTtsBoundarySeconds": 0.9359,
+      "findings": [],
+      "pcmSha256": "9eee8d59ff9bc277d3aeca070e7678a98443adc322bedabf199badd8d1cac4aa",
+      "fileSha256": "b9009f294eee48875d1eb619ff191305505f1ce9ff1464a275b1e7e22627ff9a",
+      "tailAssessment": "末词TTS边界在音轨内，边界之后保留约0.92秒；不等于逐句听审。"
+    },
+    {
+      "kind": "competition",
+      "id": "05-hidden",
+      "title": "导入时检查不易察觉的文字",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\competition\\05-hidden.wav",
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 46.512,
+      "manifestSeconds": 46.512,
+      "durationDeltaSeconds": 0.0,
+      "peakDbFS": -3.387,
+      "rmsDbFS": -24.75,
+      "clippedSamples": 0,
+      "firstSignalSeconds": 0.2086,
+      "lastSignalSeconds": 45.6141,
+      "trailingSilenceSeconds": 0.8979,
+      "longSilenceIntervals": [],
+      "ttsBoundaryEndSeconds": 45.578957,
+      "ttsLastToken": "判断",
+      "lastCue": {
+        "start": 41.960541,
+        "end": 45.798957,
+        "text": "是否保留这些内容，要对照原文人工判断。"
+      },
+      "boundaryTextMatchesNarration": true,
+      "tailAfterTtsBoundarySeconds": 0.933,
+      "findings": [],
+      "pcmSha256": "120d5136cbfd488d0f3b234834fe9d475b17960e384dc5968f25fa44c0a02351",
+      "fileSha256": "71875298c36eaad7059e84d74da2db5881caaf327650619590d0328cdbedf2da",
+      "tailAssessment": "末词TTS边界在音轨内，边界之后保留约0.92秒；不等于逐句听审。"
+    },
+    {
+      "kind": "competition",
+      "id": "06-claims",
+      "title": "论断核查：先看范围，再读原句",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\competition\\06-claims.wav",
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 55.632,
+      "manifestSeconds": 55.632,
+      "durationDeltaSeconds": 0.0,
+      "peakDbFS": -2.413,
+      "rmsDbFS": -24.562,
+      "clippedSamples": 0,
+      "firstSignalSeconds": 0.2327,
+      "lastSignalSeconds": 54.7219,
+      "trailingSilenceSeconds": 0.9101,
+      "longSilenceIntervals": [],
+      "ttsBoundaryEndSeconds": 54.70525,
+      "ttsLastToken": "模型",
+      "lastCue": {
+        "start": 52.363166,
+        "end": 54.92525,
+        "text": "研究样本推广到所有模型。"
+      },
+      "boundaryTextMatchesNarration": true,
+      "tailAfterTtsBoundarySeconds": 0.9267,
+      "findings": [],
+      "pcmSha256": "57f411a8fa0209cfeb353465a73ac00d22853f71680b9ed2db52a2c2137de29e",
+      "fileSha256": "3891293fe72fb3a9d3081c464e97600cde47dc44d39d0604d3bcdeab51b6e366",
+      "tailAssessment": "末词TTS边界在音轨内，边界之后保留约0.92秒；不等于逐句听审。"
+    },
+    {
+      "kind": "competition",
+      "id": "07-boundaries",
+      "title": "区分矛盾、证据不足和未完成",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\competition\\07-boundaries.wav",
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 31.296,
+      "manifestSeconds": 31.296,
+      "durationDeltaSeconds": 0.0,
+      "peakDbFS": -2.224,
+      "rmsDbFS": -24.353,
+      "clippedSamples": 0,
+      "firstSignalSeconds": 0.195,
+      "lastSignalSeconds": 30.3454,
+      "trailingSilenceSeconds": 0.9506,
+      "longSilenceIntervals": [],
+      "ttsBoundaryEndSeconds": 30.35525,
+      "ttsLastToken": "错误",
+      "lastCue": {
+        "start": 24.592125,
+        "end": 30.57525,
+        "text": "完成。失败不是反对论断的证据，证据不足也不等于论断错误。"
+      },
+      "boundaryTextMatchesNarration": true,
+      "tailAfterTtsBoundarySeconds": 0.9407,
+      "findings": [],
+      "pcmSha256": "c725e53f368c190e8ec8898d897e5424eafbe82b685f55fb70286cba057b1d80",
+      "fileSha256": "49e5da170bba50c49bbfe313131cf3a3185522af46fcb370c27b254ff6842aac",
+      "tailAssessment": "末词TTS边界在音轨内，边界之后保留约0.92秒；不等于逐句听审。"
+    },
+    {
+      "kind": "competition",
+      "id": "08-mcp",
+      "title": "通过 MCP 调用同一套核验能力",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\competition\\08-mcp.wav",
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 35.832,
+      "manifestSeconds": 35.832,
+      "durationDeltaSeconds": 0.0,
+      "peakDbFS": -3.399,
+      "rmsDbFS": -24.659,
+      "clippedSamples": 0,
+      "firstSignalSeconds": 0.2023,
+      "lastSignalSeconds": 34.9474,
+      "trailingSilenceSeconds": 0.8846,
+      "longSilenceIntervals": [],
+      "ttsBoundaryEndSeconds": 34.907916,
+      "ttsLastToken": "使用者",
+      "lastCue": {
+        "start": 29.328958,
+        "end": 35.127916,
+        "text": "这样，写作工具可以把核验作为一步检查，并把依据交给使用者。"
+      },
+      "boundaryTextMatchesNarration": true,
+      "tailAfterTtsBoundarySeconds": 0.9241,
+      "findings": [],
+      "pcmSha256": "9e933a2f01c1674c6a9af2f4e8fbf8c3ef39eee4ebad09f05aa5aafb04a425f7",
+      "fileSha256": "4c3360e84949a16339ffc2b7316de81aec16d2530f5b758709ceb3a6070594b6",
+      "tailAssessment": "末词TTS边界在音轨内，边界之后保留约0.92秒；不等于逐句听审。"
+    },
+    {
+      "kind": "competition",
+      "id": "09-evidence",
+      "title": "评测记录说明了什么",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\competition\\09-evidence.wav",
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 36.84,
+      "manifestSeconds": 36.84,
+      "durationDeltaSeconds": 0.0,
+      "peakDbFS": -3.175,
+      "rmsDbFS": -24.56,
+      "clippedSamples": 0,
+      "firstSignalSeconds": 0.2134,
+      "lastSignalSeconds": 35.9474,
+      "trailingSilenceSeconds": 0.8926,
+      "longSilenceIntervals": [],
+      "ttsBoundaryEndSeconds": 35.921083,
+      "ttsLastToken": "复核",
+      "lastCue": {
+        "start": 29.736833,
+        "end": 36.141083,
+        "text": "总体准确率。这些记录用于暴露问题，也提醒我们保留人工复核。"
+      },
+      "boundaryTextMatchesNarration": true,
+      "tailAfterTtsBoundarySeconds": 0.9189,
+      "findings": [],
+      "pcmSha256": "e784a6f12651fc3bc619e10a217810b7f0b9accc99c70c71c4fb405a9d31a7f5",
+      "fileSha256": "7e304b6ce05f12f29d8e5ef84e0ab00d5fe14ec71b268646f57f059942977c8d",
+      "tailAssessment": "末词TTS边界在音轨内，边界之后保留约0.92秒；不等于逐句听审。"
+    },
+    {
+      "kind": "competition",
+      "id": "10-outlook",
+      "title": "把证据交给人，把问题留可追溯",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\competition\\10-outlook.wav",
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 35.88,
+      "manifestSeconds": 35.88,
+      "durationDeltaSeconds": 0.0,
+      "peakDbFS": -3.373,
+      "rmsDbFS": -24.388,
+      "clippedSamples": 0,
+      "firstSignalSeconds": 0.2045,
+      "lastSignalSeconds": 34.9471,
+      "trailingSilenceSeconds": 0.9329,
+      "longSilenceIntervals": [],
+      "ttsBoundaryEndSeconds": 34.947374,
+      "ttsLastToken": "大家",
+      "lastCue": {
+        "start": 34.131583,
+        "end": 35.167374,
+        "text": "谢谢大家。"
+      },
+      "boundaryTextMatchesNarration": true,
+      "tailAfterTtsBoundarySeconds": 0.9326,
+      "findings": [],
+      "pcmSha256": "0265c4101c7cb8e0470f97b5df294c2500bdb9e5acef0497e08aff5df03e9eb1",
+      "fileSha256": "b41df1d07e71d429e26055c783663f79349ce4b8dce667bc426bbe8c9e632a8b",
+      "tailAssessment": "末词TTS边界在音轨内，边界之后保留约0.92秒；不等于逐句听审。"
+    },
+    {
+      "kind": "tutorial",
+      "id": "01-start",
+      "title": "先放入要检查的参考文献",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\tutorial\\01-start.wav",
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 26.784,
+      "manifestSeconds": 26.784,
+      "durationDeltaSeconds": 0.0,
+      "peakDbFS": -4.031,
+      "rmsDbFS": -25.2,
+      "clippedSamples": 0,
+      "firstSignalSeconds": 0.2128,
+      "lastSignalSeconds": 25.8813,
+      "trailingSilenceSeconds": 0.9027,
+      "longSilenceIntervals": [],
+      "ttsBoundaryEndSeconds": 25.85525,
+      "ttsLastToken": "同意",
+      "lastCue": {
+        "start": 21.460541,
+        "end": 26.07525,
+        "text": "请使用有权处理的材料，未公开论文先征得同意。"
+      },
+      "boundaryTextMatchesNarration": true,
+      "tailAfterTtsBoundarySeconds": 0.9287,
+      "findings": [],
+      "pcmSha256": "a397dbb790790461fe3788505bb0dbd410ddc3ec5f0caa76caea64045cf66945",
+      "fileSha256": "311d2c95e96fada05aee555609a06e50f2d4a7ddac24e967fd9b324312b4569b",
+      "tailAssessment": "末词TTS边界在音轨内，边界之后保留约0.92秒；不等于逐句听审。"
+    },
+    {
+      "kind": "tutorial",
+      "id": "02-import",
+      "title": "导入 PDF 后先看预览",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\tutorial\\02-import.wav",
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 36.096,
+      "manifestSeconds": 36.096,
+      "durationDeltaSeconds": 0.0,
+      "peakDbFS": -2.845,
+      "rmsDbFS": -24.243,
+      "clippedSamples": 0,
+      "firstSignalSeconds": 0.2104,
+      "lastSignalSeconds": 35.1884,
+      "trailingSilenceSeconds": 0.9076,
+      "longSilenceIntervals": [],
+      "ttsBoundaryEndSeconds": 35.171083,
+      "ttsLastToken": "原因",
+      "lastCue": {
+        "start": 31.934208,
+        "end": 35.391083,
+        "text": "发现隐藏文字提示时，也要先查看原因。"
+      },
+      "boundaryTextMatchesNarration": true,
+      "tailAfterTtsBoundarySeconds": 0.9249,
+      "findings": [],
+      "pcmSha256": "f30c5f01af4851640d697ef07508a76a4b3794dd60d7450f28d3cab5c40baa77",
+      "fileSha256": "8db1e50942f7e69fedbc5dddc81e75cf53e428cdeeb033775c16caa6ccba3d6b",
+      "tailAssessment": "末词TTS边界在音轨内，边界之后保留约0.92秒；不等于逐句听审。"
+    },
+    {
+      "kind": "tutorial",
+      "id": "03-results",
+      "title": "开始体检，读懂不同结论",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\tutorial\\03-results.wav",
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 44.256,
+      "manifestSeconds": 44.256,
+      "durationDeltaSeconds": 0.0,
+      "peakDbFS": -2.734,
+      "rmsDbFS": -24.647,
+      "clippedSamples": 0,
+      "firstSignalSeconds": 0.1968,
+      "lastSignalSeconds": 43.3419,
+      "trailingSilenceSeconds": 0.9141,
+      "longSilenceIntervals": [],
+      "ttsBoundaryEndSeconds": 43.31575,
+      "ttsLastToken": "核对",
+      "lastCue": {
+        "start": 42.565791,
+        "end": 43.53575,
+        "text": "人工核对。"
+      },
+      "boundaryTextMatchesNarration": true,
+      "tailAfterTtsBoundarySeconds": 0.9402,
+      "findings": [],
+      "pcmSha256": "51abc6dcb41c29ace2a680731a0fe3f3c9fac83fc2a435dfefa084812de13d74",
+      "fileSha256": "b75a4d66cd58fbfa95a7bca0e30051dc3265c45eb579412a23e8216507597de8",
+      "tailAssessment": "末词TTS边界在音轨内，边界之后保留约0.92秒；不等于逐句听审。"
+    },
+    {
+      "kind": "tutorial",
+      "id": "04-agent",
+      "title": "中文候选可以继续找线索",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\tutorial\\04-agent.wav",
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 36.384,
+      "manifestSeconds": 36.384,
+      "durationDeltaSeconds": 0.0,
+      "peakDbFS": -2.309,
+      "rmsDbFS": -24.391,
+      "clippedSamples": 0,
+      "firstSignalSeconds": 0.2002,
+      "lastSignalSeconds": 35.4798,
+      "trailingSilenceSeconds": 0.9042,
+      "longSilenceIntervals": [],
+      "ttsBoundaryEndSeconds": 35.460499,
+      "ttsLastToken": "确认",
+      "lastCue": {
+        "start": 31.184208,
+        "end": 35.680499,
+        "text": "这一步帮助缩小查找范围，不能替代最终确认。"
+      },
+      "boundaryTextMatchesNarration": true,
+      "tailAfterTtsBoundarySeconds": 0.9235,
+      "findings": [],
+      "pcmSha256": "3b069ee8a86d759f9cb7819ddc36ed5b5109ca1a6d88efdad9c30e250662fc64",
+      "fileSha256": "6b81183495a619014e31468c327ea7dfef398af4254f1000f334faf49378d22d",
+      "tailAssessment": "末词TTS边界在音轨内，边界之后保留约0.92秒；不等于逐句听审。"
+    },
+    {
+      "kind": "tutorial",
+      "id": "05-claims",
+      "title": "核对正文论断与原文",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\tutorial\\05-claims.wav",
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 38.496,
+      "manifestSeconds": 38.496,
+      "durationDeltaSeconds": 0.0,
+      "peakDbFS": -3.739,
+      "rmsDbFS": -25.689,
+      "clippedSamples": 0,
+      "firstSignalSeconds": 0.2668,
+      "lastSignalSeconds": 37.5881,
+      "trailingSilenceSeconds": 0.9079,
+      "longSilenceIntervals": [],
+      "ttsBoundaryEndSeconds": 37.565791,
+      "ttsLastToken": "条件",
+      "lastCue": {
+        "start": 33.407875,
+        "end": 37.785790999999996,
+        "text": "即使显示支持，也要核对研究对象和适用条件。"
+      },
+      "boundaryTextMatchesNarration": true,
+      "tailAfterTtsBoundarySeconds": 0.9302,
+      "findings": [],
+      "pcmSha256": "f5ccea68c6656b1791fee86998ecdd0198ff886e8bb46fab62ab6b36a1f9e67b",
+      "fileSha256": "fcccdaddbf1bcf8a2d196fc432f816846fdb0be93984b57f8cb7f31993207ab1",
+      "tailAssessment": "末词TTS边界在音轨内，边界之后保留约0.92秒；不等于逐句听审。"
+    },
+    {
+      "kind": "tutorial",
+      "id": "06-report",
+      "title": "保存报告，保留原始记录",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\tutorial\\06-report.wav",
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 24.336,
+      "manifestSeconds": 24.336,
+      "durationDeltaSeconds": 0.0,
+      "peakDbFS": -1.624,
+      "rmsDbFS": -23.914,
+      "clippedSamples": 0,
+      "firstSignalSeconds": 0.2225,
+      "lastSignalSeconds": 23.4316,
+      "trailingSilenceSeconds": 0.9044,
+      "longSilenceIntervals": [],
+      "ttsBoundaryEndSeconds": 23.407916,
+      "ttsLastToken": "学生",
+      "lastCue": {
+        "start": 18.64475,
+        "end": 23.627916,
+        "text": "也建议保留原列表，避免把尚未核实的修改直接交给学生。"
+      },
+      "boundaryTextMatchesNarration": true,
+      "tailAfterTtsBoundarySeconds": 0.9281,
+      "findings": [],
+      "pcmSha256": "16e68e696235c8c753f86d767ebf9f3a7019ed506430ad36ff0550ba5f1106db",
+      "fileSha256": "20bea153aa5f6af00e9cc96d25566544947fbb8369368edb7488ed4e4a28febe",
+      "tailAssessment": "末词TTS边界在音轨内，边界之后保留约0.92秒；不等于逐句听审。"
+    },
+    {
+      "kind": "tutorial",
+      "id": "07-feedback",
+      "title": "试用时怎样留下反馈",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\tutorial\\07-feedback.wav",
+      "codec": "pcm_s16le",
+      "sampleRate": 48000,
+      "channels": 1,
+      "seconds": 29.352,
+      "manifestSeconds": 29.352,
+      "durationDeltaSeconds": 0.0,
+      "peakDbFS": -3.319,
+      "rmsDbFS": -24.264,
+      "clippedSamples": 0,
+      "firstSignalSeconds": 0.2058,
+      "lastSignalSeconds": 28.2885,
+      "trailingSilenceSeconds": 1.0635,
+      "longSilenceIntervals": [
+        {
+          "start": 28.2885,
+          "end": 29.352,
+          "seconds": 1.0635
+        }
+      ],
+      "ttsBoundaryEndSeconds": 28.434208,
+      "ttsLastToken": "试用",
+      "lastCue": {
+        "start": 26.223666,
+        "end": 28.654208,
+        "text": "改进。谢谢您的试用。"
+      },
+      "boundaryTextMatchesNarration": true,
+      "tailAfterTtsBoundarySeconds": 0.9178,
+      "findings": [],
+      "pcmSha256": "09b67bd85c294bfdaaa17f4776b86470c94799eb962a774ad4466abc7161996a",
+      "fileSha256": "e4e82bae7978a6a42b11c09df73b433ff0cd1178a76bc8064b0465e57dafd5a3",
+      "tailAssessment": "末词TTS边界在音轨内，边界之后保留约0.92秒；不等于逐句听审。"
+    }
+  ],
+  "asr": [
+    {
+      "kind": "competition",
+      "id": "01-intro",
+      "expected": "大家好，这是引用体检，用于论文引用自查。参考文献格式完整，不等于真实存在；即使文献存在，也未必支持正文里那句话。所以这里有两个工作区：参考文献体检，核对文献和字段；论断证据核查，检查论断与原文的关系。工具把查询过程和依据摆出来，让使用者能够继续复核。最终判断仍然需要回到数据库记录和论文原文。",
+      "recognized": "大家好,这是引用提减,用于论文引用自查。参考文现格式完整,不等于真实存在,即使文现存在也未必支持正文里那句话。所以,这里有两个工作区,参考文现提减,核对文现和自断,论断正举核查,检查论断与原文的关系。工具把查询过程和依据摆出来,让使用者能够继续复合。最終判斷,仍然需要回到數據庫記錄和論文原文。",
+      "elapsedSeconds": 13.56,
+      "normalizedSequenceSimilarity": 0.8397,
+      "differences": [
+        {
+          "operation": "replace",
+          "expected": "体检",
+          "recognized": "提减"
+        },
+        {
+          "operation": "replace",
+          "expected": "献",
+          "recognized": "现"
+        },
+        {
+          "operation": "replace",
+          "expected": "献",
+          "recognized": "现"
+        },
+        {
+          "operation": "replace",
+          "expected": "献体检",
+          "recognized": "现提减"
+        },
+        {
+          "operation": "replace",
+          "expected": "献",
+          "recognized": "现"
+        },
+        {
+          "operation": "replace",
+          "expected": "字段",
+          "recognized": "自断"
+        },
+        {
+          "operation": "replace",
+          "expected": "证据",
+          "recognized": "正举"
+        },
+        {
+          "operation": "replace",
+          "expected": "核",
+          "recognized": "合"
+        },
+        {
+          "operation": "replace",
+          "expected": "终",
+          "recognized": "終"
+        },
+        {
+          "operation": "replace",
+          "expected": "断",
+          "recognized": "斷"
+        },
+        {
+          "operation": "replace",
+          "expected": "数据库记录",
+          "recognized": "數據庫記錄"
+        },
+        {
+          "operation": "replace",
+          "expected": "论",
+          "recognized": "論"
+        }
+      ],
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.48,
+          "text": "大家好,这是引用提减,用于论文引用自查。",
+          "avgLogprob": -0.20345701579174963,
+          "noSpeechProb": 0.004105833824723959
+        },
+        {
+          "start": 4.48,
+          "end": 12.16,
+          "text": "参考文现格式完整,不等于真实存在,即使文现存在也未必支持正文里那句话。",
+          "avgLogprob": -0.20345701579174963,
+          "noSpeechProb": 0.004105833824723959
+        },
+        {
+          "start": 12.16,
+          "end": 16.42,
+          "text": "所以,这里有两个工作区,参考文现提减,",
+          "avgLogprob": -0.20345701579174963,
+          "noSpeechProb": 0.004105833824723959
+        },
+        {
+          "start": 16.42,
+          "end": 22.16,
+          "text": "核对文现和自断,论断正举核查,检查论断与原文的关系。",
+          "avgLogprob": -0.20345701579174963,
+          "noSpeechProb": 0.004105833824723959
+        },
+        {
+          "start": 22.16,
+          "end": 27.8,
+          "text": "工具把查询过程和依据摆出来,让使用者能够继续复合。",
+          "avgLogprob": -0.20345701579174963,
+          "noSpeechProb": 0.004105833824723959
+        },
+        {
+          "start": 27.8,
+          "end": 32.8,
+          "text": "最終判斷,仍然需要回到數據庫記錄和論文原文。",
+          "avgLogprob": -0.25326891603140994,
+          "noSpeechProb": 0.015098700299859047
+        }
+      ],
+      "reviewStatus": "semantic sequence and final sentence compared against supplied script; not human listening",
+      "review": {
+        "verdict": "no_confirmed_omission_or_truncation",
+        "tailExpected": "最终判断仍然需要回到数据库记录和论文原文。",
+        "tailRecognized": "最終判斷,仍然需要回到數據庫記錄和論文原文。",
+        "notes": "完整句序与尾句均见于ASR；“体检/提减”“文献/文现”“复核/复合”等为同音或近音识别差异，未据此认定TTS错读。"
+      }
+    },
+    {
+      "kind": "competition",
+      "id": "04-agent",
+      "expected": "对待人工或相近候选，可以点 AI 继续查。模型阅读原引文和已经查过的路径，再决定换关键词、换数据库，或搜索中文期刊论文页。每一步的理由和结果都会显示，候选仍交给规则比对；模型不能自行宣布文献不存在。中文结果如果缺少作者，就保留候选链接，请人打开核对，不能直接算已核实。已有英文盲测中，七条被系统确认的结果，复核发现两条误报、一条无法确认；后续修了规则，但没有新的独立复测。中文七十五条中找到三十三条论文页，只有一条自动确认。因此，找到页面、规则确认、人工复核，是三个不同步骤。",
+      "recognized": "對待人工或相近候選可以點AI繼續查。模型閱讀原因文和已經查過的陸境在決定換關鍵詞換數據庫或搜索中文期刊論文藝。每一步的理由和結果都會顯示候選人交給規則比對模型不能自行宣布文現不存在。中文結果如果缺少作者就保留候選鏈接請人打開核對不能直接算一核時。已有英文盲策中,七條被系統確認的結果,負荷發現兩條誤報,一條無法確認,後續修了規則,但沒有新的獨立負責。中文75條中,找到33條論文業,只有一條自動確認。因此,找到業面,規則確認,人工負荷,是三個不同步種。",
+      "elapsedSeconds": 17.52,
+      "normalizedSequenceSimilarity": 0.5694,
+      "differences": [
+        {
+          "operation": "replace",
+          "expected": "对",
+          "recognized": "對"
+        },
+        {
+          "operation": "replace",
+          "expected": "选",
+          "recognized": "選"
+        },
+        {
+          "operation": "replace",
+          "expected": "点",
+          "recognized": "點"
+        },
+        {
+          "operation": "replace",
+          "expected": "继续",
+          "recognized": "繼續"
+        },
+        {
+          "operation": "replace",
+          "expected": "阅读",
+          "recognized": "閱讀"
+        },
+        {
+          "operation": "replace",
+          "expected": "引",
+          "recognized": "因"
+        },
+        {
+          "operation": "replace",
+          "expected": "经",
+          "recognized": "經"
+        },
+        {
+          "operation": "replace",
+          "expected": "过",
+          "recognized": "過"
+        },
+        {
+          "operation": "replace",
+          "expected": "路径再决",
+          "recognized": "陸境在決"
+        },
+        {
+          "operation": "replace",
+          "expected": "换关键词换数据库",
+          "recognized": "換關鍵詞換數據庫"
+        },
+        {
+          "operation": "replace",
+          "expected": "论",
+          "recognized": "論"
+        },
+        {
+          "operation": "replace",
+          "expected": "页",
+          "recognized": "藝"
+        },
+        {
+          "operation": "replace",
+          "expected": "结",
+          "recognized": "結"
+        },
+        {
+          "operation": "replace",
+          "expected": "会显",
+          "recognized": "會顯"
+        },
+        {
+          "operation": "replace",
+          "expected": "选仍",
+          "recognized": "選人"
+        },
+        {
+          "operation": "replace",
+          "expected": "给规则",
+          "recognized": "給規則"
+        },
+        {
+          "operation": "replace",
+          "expected": "对",
+          "recognized": "對"
+        },
+        {
+          "operation": "replace",
+          "expected": "献",
+          "recognized": "現"
+        },
+        {
+          "operation": "replace",
+          "expected": "结",
+          "recognized": "結"
+        },
+        {
+          "operation": "replace",
+          "expected": "选链",
+          "recognized": "選鏈"
+        },
+        {
+          "operation": "replace",
+          "expected": "请",
+          "recognized": "請"
+        },
+        {
+          "operation": "replace",
+          "expected": "开",
+          "recognized": "開"
+        },
+        {
+          "operation": "replace",
+          "expected": "对",
+          "recognized": "對"
+        },
+        {
+          "operation": "replace",
+          "expected": "已",
+          "recognized": "一"
+        },
+        {
+          "operation": "replace",
+          "expected": "实",
+          "recognized": "時"
+        },
+        {
+          "operation": "replace",
+          "expected": "测",
+          "recognized": "策"
+        },
+        {
+          "operation": "replace",
+          "expected": "条",
+          "recognized": "條"
+        },
+        {
+          "operation": "replace",
+          "expected": "统确认",
+          "recognized": "統確認"
+        },
+        {
+          "operation": "replace",
+          "expected": "结",
+          "recognized": "結"
+        },
+        {
+          "operation": "replace",
+          "expected": "复核发现两条误报",
+          "recognized": "負荷發現兩條誤報"
+        },
+        {
+          "operation": "replace",
+          "expected": "条无",
+          "recognized": "條無"
+        },
+        {
+          "operation": "replace",
+          "expected": "确认后续",
+          "recognized": "確認後續"
+        },
+        {
+          "operation": "replace",
+          "expected": "规则",
+          "recognized": "規則"
+        },
+        {
+          "operation": "replace",
+          "expected": "没",
+          "recognized": "沒"
+        },
+        {
+          "operation": "replace",
+          "expected": "独",
+          "recognized": "獨"
+        },
+        {
+          "operation": "replace",
+          "expected": "复测",
+          "recognized": "負責"
+        },
+        {
+          "operation": "replace",
+          "expected": "七十五条",
+          "recognized": "75條"
+        },
+        {
+          "operation": "replace",
+          "expected": "三十三条论",
+          "recognized": "33條論"
+        },
+        {
+          "operation": "replace",
+          "expected": "页",
+          "recognized": "業"
+        },
+        {
+          "operation": "replace",
+          "expected": "条",
+          "recognized": "條"
+        },
+        {
+          "operation": "replace",
+          "expected": "动确认",
+          "recognized": "動確認"
+        },
+        {
+          "operation": "replace",
+          "expected": "页",
+          "recognized": "業"
+        },
+        {
+          "operation": "replace",
+          "expected": "规则确认",
+          "recognized": "規則確認"
+        },
+        {
+          "operation": "replace",
+          "expected": "复核",
+          "recognized": "負荷"
+        },
+        {
+          "operation": "replace",
+          "expected": "个",
+          "recognized": "個"
+        },
+        {
+          "operation": "replace",
+          "expected": "骤",
+          "recognized": "種"
+        }
+      ],
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.3,
+          "text": "對待人工或相近候選可以點AI繼續查。",
+          "avgLogprob": -0.24600006629680765,
+          "noSpeechProb": 0.0060646249912679195
+        },
+        {
+          "start": 4.3,
+          "end": 7.54,
+          "text": "模型閱讀原因文和已經查過的陸境",
+          "avgLogprob": -0.24600006629680765,
+          "noSpeechProb": 0.0060646249912679195
+        },
+        {
+          "start": 7.54,
+          "end": 12.76,
+          "text": "在決定換關鍵詞換數據庫或搜索中文期刊論文藝。",
+          "avgLogprob": -0.24600006629680765,
+          "noSpeechProb": 0.0060646249912679195
+        },
+        {
+          "start": 12.76,
+          "end": 15.44,
+          "text": "每一步的理由和結果都會顯示",
+          "avgLogprob": -0.24600006629680765,
+          "noSpeechProb": 0.0060646249912679195
+        },
+        {
+          "start": 15.44,
+          "end": 17.8,
+          "text": "候選人交給規則比對",
+          "avgLogprob": -0.24600006629680765,
+          "noSpeechProb": 0.0060646249912679195
+        },
+        {
+          "start": 17.8,
+          "end": 20.84,
+          "text": "模型不能自行宣布文現不存在。",
+          "avgLogprob": -0.24600006629680765,
+          "noSpeechProb": 0.0060646249912679195
+        },
+        {
+          "start": 20.84,
+          "end": 25.04,
+          "text": "中文結果如果缺少作者就保留候選鏈接",
+          "avgLogprob": -0.24600006629680765,
+          "noSpeechProb": 0.0060646249912679195
+        },
+        {
+          "start": 25.04,
+          "end": 28.240000000000002,
+          "text": "請人打開核對不能直接算一核時。",
+          "avgLogprob": -0.24600006629680765,
+          "noSpeechProb": 0.0060646249912679195
+        },
+        {
+          "start": 28.24,
+          "end": 32.28,
+          "text": "已有英文盲策中,七條被系統確認的結果,",
+          "avgLogprob": -0.2318590778415486,
+          "noSpeechProb": 0.010936137288808823
+        },
+        {
+          "start": 32.28,
+          "end": 38.879999999999995,
+          "text": "負荷發現兩條誤報,一條無法確認,後續修了規則,但沒有新的獨立負責。",
+          "avgLogprob": -0.2318590778415486,
+          "noSpeechProb": 0.010936137288808823
+        },
+        {
+          "start": 38.879999999999995,
+          "end": 44.519999999999996,
+          "text": "中文75條中,找到33條論文業,只有一條自動確認。",
+          "avgLogprob": -0.2318590778415486,
+          "noSpeechProb": 0.010936137288808823
+        },
+        {
+          "start": 44.519999999999996,
+          "end": 51.2,
+          "text": "因此,找到業面,規則確認,人工負荷,是三個不同步種。",
+          "avgLogprob": -0.2318590778415486,
+          "noSpeechProb": 0.010936137288808823
+        }
+      ],
+      "reviewStatus": "semantic sequence and final sentence compared against supplied script; not human listening",
+      "review": {
+        "verdict": "no_confirmed_omission_or_truncation",
+        "tailExpected": "因此，找到页面、规则确认、人工复核，是三个不同步骤。",
+        "tailRecognized": "因此,找到業面,規則確認,人工負荷,是三個不同步種。",
+        "notes": "句序完整，七条、两条、一条、七十五条、三十三条和只有一条均被识别；“复测/负责”“页面/业面”等同音近音字及繁简差异不能视为已证实错读。"
+      }
+    },
+    {
+      "kind": "competition",
+      "id": "08-mcp",
+      "expected": "这些能力还通过 MCP 协议供其他工具调用。现在打开的是为本次录制制作的本地 MCP 演示客户端。先连接并列出工具，再请求核验两条参考文献。这里实际连接项目的 MCP 服务，显示真实调用和结构化结果。它使用与网页端相同的核验逻辑；外部数据和查询时间不同，具体结果仍以本次返回为准。这样，写作工具可以把核验作为一步检查，并把依据交给使用者。",
+      "recognized": "這些能力還通過 MCP 協議供其他工具調用現在打開的是為本詞錄製製作的本地 MCP 也是客戶端先連接並列出工具在請求核役兩條參考文獻這裡實際連接項目的 MCP 服務顯示真實調用和結構化結果它使用於網頁端相同的核役邏輯外部數據和查詢時間不同具體結果仍以本次返回為準这样 写作工具可以把合宴作为一部检查 并把依据交给使用者。",
+      "elapsedSeconds": 14.02,
+      "normalizedSequenceSimilarity": 0.6291,
+      "differences": [
+        {
+          "operation": "replace",
+          "expected": "这",
+          "recognized": "這"
+        },
+        {
+          "operation": "replace",
+          "expected": "还",
+          "recognized": "還"
+        },
+        {
+          "operation": "replace",
+          "expected": "过",
+          "recognized": "過"
+        },
+        {
+          "operation": "replace",
+          "expected": "协议",
+          "recognized": "協議"
+        },
+        {
+          "operation": "replace",
+          "expected": "调",
+          "recognized": "調"
+        },
+        {
+          "operation": "replace",
+          "expected": "现",
+          "recognized": "現"
+        },
+        {
+          "operation": "replace",
+          "expected": "开",
+          "recognized": "開"
+        },
+        {
+          "operation": "replace",
+          "expected": "为",
+          "recognized": "為"
+        },
+        {
+          "operation": "replace",
+          "expected": "次录制制",
+          "recognized": "詞錄製製"
+        },
+        {
+          "operation": "replace",
+          "expected": "演示",
+          "recognized": "也是"
+        },
+        {
+          "operation": "replace",
+          "expected": "户",
+          "recognized": "戶"
+        },
+        {
+          "operation": "replace",
+          "expected": "连",
+          "recognized": "連"
+        },
+        {
+          "operation": "replace",
+          "expected": "并",
+          "recognized": "並"
+        },
+        {
+          "operation": "replace",
+          "expected": "再请",
+          "recognized": "在請"
+        },
+        {
+          "operation": "replace",
+          "expected": "验两条参",
+          "recognized": "役兩條參"
+        },
+        {
+          "operation": "replace",
+          "expected": "献这里实际连",
+          "recognized": "獻這裡實際連"
+        },
+        {
+          "operation": "replace",
+          "expected": "项",
+          "recognized": "項"
+        },
+        {
+          "operation": "replace",
+          "expected": "务显",
+          "recognized": "務顯"
+        },
+        {
+          "operation": "replace",
+          "expected": "实调",
+          "recognized": "實調"
+        },
+        {
+          "operation": "replace",
+          "expected": "结构",
+          "recognized": "結構"
+        },
+        {
+          "operation": "replace",
+          "expected": "结",
+          "recognized": "結"
+        },
+        {
+          "operation": "replace",
+          "expected": "与网页",
+          "recognized": "於網頁"
+        },
+        {
+          "operation": "replace",
+          "expected": "验逻辑",
+          "recognized": "役邏輯"
+        },
+        {
+          "operation": "replace",
+          "expected": "数据",
+          "recognized": "數據"
+        },
+        {
+          "operation": "replace",
+          "expected": "询时间",
+          "recognized": "詢時間"
+        },
+        {
+          "operation": "replace",
+          "expected": "体结",
+          "recognized": "體結"
+        },
+        {
+          "operation": "replace",
+          "expected": "为准",
+          "recognized": "為準"
+        },
+        {
+          "operation": "replace",
+          "expected": "核验",
+          "recognized": "合宴"
+        },
+        {
+          "operation": "replace",
+          "expected": "步",
+          "recognized": "部"
+        }
+      ],
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.5600000000000005,
+          "text": "這些能力還通過 MCP 協議供其他工具調用",
+          "avgLogprob": -0.22192461985462117,
+          "noSpeechProb": 0.0023164188023656607
+        },
+        {
+          "start": 4.5600000000000005,
+          "end": 7.5600000000000005,
+          "text": "現在打開的是為本詞錄製製作的本地",
+          "avgLogprob": -0.22192461985462117,
+          "noSpeechProb": 0.0023164188023656607
+        },
+        {
+          "start": 7.5600000000000005,
+          "end": 9.700000000000001,
+          "text": " MCP 也是客戶端",
+          "avgLogprob": -0.22192461985462117,
+          "noSpeechProb": 0.0023164188023656607
+        },
+        {
+          "start": 9.700000000000001,
+          "end": 11.8,
+          "text": "先連接並列出工具",
+          "avgLogprob": -0.22192461985462117,
+          "noSpeechProb": 0.0023164188023656607
+        },
+        {
+          "start": 11.8,
+          "end": 14.44,
+          "text": "在請求核役兩條參考文獻",
+          "avgLogprob": -0.22192461985462117,
+          "noSpeechProb": 0.0023164188023656607
+        },
+        {
+          "start": 14.44,
+          "end": 17.68,
+          "text": "這裡實際連接項目的 MCP 服務",
+          "avgLogprob": -0.22192461985462117,
+          "noSpeechProb": 0.0023164188023656607
+        },
+        {
+          "start": 17.68,
+          "end": 20.8,
+          "text": "顯示真實調用和結構化結果",
+          "avgLogprob": -0.22192461985462117,
+          "noSpeechProb": 0.0023164188023656607
+        },
+        {
+          "start": 20.8,
+          "end": 23.64,
+          "text": "它使用於網頁端相同的核役邏輯",
+          "avgLogprob": -0.22192461985462117,
+          "noSpeechProb": 0.0023164188023656607
+        },
+        {
+          "start": 23.64,
+          "end": 26.240000000000002,
+          "text": "外部數據和查詢時間不同",
+          "avgLogprob": -0.22192461985462117,
+          "noSpeechProb": 0.0023164188023656607
+        },
+        {
+          "start": 26.240000000000002,
+          "end": 29.16,
+          "text": "具體結果仍以本次返回為準",
+          "avgLogprob": -0.22192461985462117,
+          "noSpeechProb": 0.0023164188023656607
+        },
+        {
+          "start": 29.16,
+          "end": 35.16,
+          "text": "这样 写作工具可以把合宴作为一部检查 并把依据交给使用者。",
+          "avgLogprob": -0.27082308133443195,
+          "noSpeechProb": 0.0013157050125300884
+        }
+      ],
+      "reviewStatus": "semantic sequence and final sentence compared against supplied script; not human listening",
+      "review": {
+        "verdict": "no_confirmed_omission_or_truncation",
+        "tailExpected": "这样，写作工具可以把核验作为一步检查，并把依据交给使用者。",
+        "tailRecognized": "这样 写作工具可以把合宴作为一部检查 并把依据交给使用者。",
+        "notes": "完整句序、MCP名称和尾句均被识别；“核验/合宴”“演示/也是”等ASR差异未提供音轨丢句或截断证据。"
+      }
+    },
+    {
+      "kind": "tutorial",
+      "id": "01-start",
+      "expected": "老师您好，页面打开后，先选参考文献体检，把列表粘进送检单，一条一行，也可以保留原来的编号。第一次用，可以点载入示例熟悉操作。标准核验会查询公开数据库；使用 AI 功能时，相应文字还会发送给模型服务。请使用有权处理的材料，未公开论文先征得同意。",
+      "recognized": "老師您好,頁面打開後先選參考文獻提檢把列表沾進送簡單,一條一行也可以保留原來的編號第一次用可以點載入勢力熟悉操作標準核延會查詢公開數據庫使用AI功能時,相應文字還會發送給模型服務請使用有權處理的材料,為公開論文先爭的同意",
+      "elapsedSeconds": 8.64,
+      "normalizedSequenceSimilarity": 0.5755,
+      "differences": [
+        {
+          "operation": "replace",
+          "expected": "师",
+          "recognized": "師"
+        },
+        {
+          "operation": "replace",
+          "expected": "页",
+          "recognized": "頁"
+        },
+        {
+          "operation": "replace",
+          "expected": "开后",
+          "recognized": "開後"
+        },
+        {
+          "operation": "replace",
+          "expected": "选参",
+          "recognized": "選參"
+        },
+        {
+          "operation": "replace",
+          "expected": "献体检",
+          "recognized": "獻提檢"
+        },
+        {
+          "operation": "replace",
+          "expected": "粘进",
+          "recognized": "沾進"
+        },
+        {
+          "operation": "replace",
+          "expected": "检单",
+          "recognized": "簡單"
+        },
+        {
+          "operation": "replace",
+          "expected": "条",
+          "recognized": "條"
+        },
+        {
+          "operation": "replace",
+          "expected": "来",
+          "recognized": "來"
+        },
+        {
+          "operation": "replace",
+          "expected": "编号",
+          "recognized": "編號"
+        },
+        {
+          "operation": "replace",
+          "expected": "点载",
+          "recognized": "點載"
+        },
+        {
+          "operation": "replace",
+          "expected": "示例",
+          "recognized": "勢力"
+        },
+        {
+          "operation": "replace",
+          "expected": "标准",
+          "recognized": "標準"
+        },
+        {
+          "operation": "replace",
+          "expected": "验会",
+          "recognized": "延會"
+        },
+        {
+          "operation": "replace",
+          "expected": "询",
+          "recognized": "詢"
+        },
+        {
+          "operation": "replace",
+          "expected": "开数据库",
+          "recognized": "開數據庫"
+        },
+        {
+          "operation": "replace",
+          "expected": "时",
+          "recognized": "時"
+        },
+        {
+          "operation": "replace",
+          "expected": "应",
+          "recognized": "應"
+        },
+        {
+          "operation": "replace",
+          "expected": "还会发",
+          "recognized": "還會發"
+        },
+        {
+          "operation": "replace",
+          "expected": "给",
+          "recognized": "給"
+        },
+        {
+          "operation": "replace",
+          "expected": "务请",
+          "recognized": "務請"
+        },
+        {
+          "operation": "replace",
+          "expected": "权处",
+          "recognized": "權處"
+        },
+        {
+          "operation": "replace",
+          "expected": "未",
+          "recognized": "為"
+        },
+        {
+          "operation": "replace",
+          "expected": "开论",
+          "recognized": "開論"
+        },
+        {
+          "operation": "replace",
+          "expected": "征得",
+          "recognized": "爭的"
+        }
+      ],
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 4.68,
+          "text": "老師您好,頁面打開後先選參考文獻提檢",
+          "avgLogprob": -0.23250209923946497,
+          "noSpeechProb": 0.006121308542788029
+        },
+        {
+          "start": 4.68,
+          "end": 9.64,
+          "text": "把列表沾進送簡單,一條一行也可以保留原來的編號",
+          "avgLogprob": -0.23250209923946497,
+          "noSpeechProb": 0.006121308542788029
+        },
+        {
+          "start": 9.64,
+          "end": 13.56,
+          "text": "第一次用可以點載入勢力熟悉操作",
+          "avgLogprob": -0.23250209923946497,
+          "noSpeechProb": 0.006121308542788029
+        },
+        {
+          "start": 13.56,
+          "end": 16.4,
+          "text": "標準核延會查詢公開數據庫",
+          "avgLogprob": -0.23250209923946497,
+          "noSpeechProb": 0.006121308542788029
+        },
+        {
+          "start": 16.4,
+          "end": 21.240000000000002,
+          "text": "使用AI功能時,相應文字還會發送給模型服務",
+          "avgLogprob": -0.23250209923946497,
+          "noSpeechProb": 0.006121308542788029
+        },
+        {
+          "start": 21.240000000000002,
+          "end": 26.48,
+          "text": "請使用有權處理的材料,為公開論文先爭的同意",
+          "avgLogprob": -0.23250209923946497,
+          "noSpeechProb": 0.006121308542788029
+        }
+      ],
+      "reviewStatus": "semantic sequence and final sentence compared against supplied script; not human listening",
+      "review": {
+        "verdict": "no_confirmed_omission_or_truncation",
+        "tailExpected": "请使用有权处理的材料，未公开论文先征得同意。",
+        "tailRecognized": "請使用有權處理的材料,為公開論文先爭的同意",
+        "notes": "操作说明和末句均被识别；“未/为”“征得/争的”“送检单/送简单”等同音字差异不据此判为TTS错读。"
+      }
+    }
+  ],
+  "summary": {
+    "tracks": 17,
+    "acousticFindings": 0,
+    "peakDbFSRange": [
+      -4.031,
+      -1.624
+    ],
+    "rmsDbFSRange": [
+      -25.689,
+      -23.914
+    ],
+    "durationSecondsByKind": {
+      "competition": 430.32,
+      "tutorial": 235.704
+    }
+  },
+  "asrRuntime": {
+    "package": "openai-whisper",
+    "modelFile": "C:\\Users\\Darks\\.cache\\whisper\\base.pt",
+    "device": "cpu",
+    "torchThreads": 2,
+    "cudaUsed": false,
+    "externalModelCalls": false,
+    "downloadedModels": false,
+    "humanListeningPerformed": false
+  },
+  "completedAt": "2026-10-18T09:17:11.771373+00:00",
+  "conclusion": {
+    "acousticIntegrity": "passed",
+    "asrSamples": 4,
+    "confirmedMissingSentences": 0,
+    "confirmedTruncatedTails": 0,
+    "confirmedPronunciationDefects": 0,
+    "humanListeningPerformed": false,
+    "limitations": [
+      "未进行人工逐句听审。",
+      "Whisper存在繁简、专名、同音字和近音字误识别；转写相似度不是发音质量分数。",
+      "ASR仅抽查主片01/04/08及教程01；其余章节只做声学及TTS边界检查。"
+    ],
+    "filesModified": [
+      "audio-QA.json",
+      "audio-QA.md"
+    ],
+    "mcpServiceStopped": false
+  }
+}

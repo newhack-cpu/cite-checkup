@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-10-18T09:58:54.2746155Z",
+  "rootProcessVerified": 35292,
+  "stoppedProcessTree": [
+    {
+      "processId": 1044,
+      "parentProcessId": 32468,
+      "name": "node.exe"
+    },
+    {
+      "processId": 32468,
+      "parentProcessId": 16340,
+      "name": "node.exe"
+    },
+    {
+      "processId": 16340,
+      "parentProcessId": 21536,
+      "name": "cmd.exe"
+    },
+    {
+      "processId": 21536,
+      "parentProcessId": 29732,
+      "name": "node.exe"
+    },
+    {
+      "processId": 40668,
+      "parentProcessId": 29732,
+      "name": "conhost.exe"
+    },
+    {
+      "processId": 29732,
+      "parentProcessId": 35292,
+      "name": "cmd.exe"
+    },
+    {
+      "processId": 22656,
+      "parentProcessId": 35292,
+      "name": "esbuild.exe"
+    },
+    {
+      "processId": 35292,
+      "parentProcessId": 25740,
+      "name": "node.exe"
+    }
+  ],
+  "mcp3211Closed": true,
+  "production3210Preserved": true,
+  "productionHttpStatus": 200,
+  "globalProcessNameKillUsed": false
+}

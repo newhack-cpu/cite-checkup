@@ -1,0 +1,21 @@
+{
+  "deliveredAt": "2026-10-18T09:57:19.511818+00:00",
+  "videos": [
+    {
+      "kind": "competition",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\output\\video\\引用体检-完整演示-1080p.mp4",
+      "sha256": "3cfd1f472d36dbaa8eec21f545123b50233ccb7ff22d8ab022dcd77802e53205",
+      "seconds": 464.061333,
+      "bytes": 62449228,
+      "verification": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\output\\video\\video-verification.json"
+    },
+    {
+      "kind": "tutorial",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\output\\video\\引用体检-老师操作教程-1080p.mp4",
+      "sha256": "d8d609be1f9e23dd0a3e78507482fe0008261aae6c53c0467fac768097c50790",
+      "seconds": 246.741333,
+      "bytes": 37237694,
+      "verification": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\output\\video\\tutorial-video-verification.json"
+    }
+  ]
+}

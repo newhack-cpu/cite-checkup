@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-10-18T09:06:11.251Z",
+  "html": {
+    "status": 200,
+    "hasTitle": true
+  },
+  "connect": {
+    "status": 200,
+    "connected": true,
+    "tools": [
+      "verify_references",
+      "check_claim"
+    ],
+    "record": "list-tools-2026-10-18T09-06-11-210Z.json"
+  },
+  "security": {
+    "fixedInputRejected": 403,
+    "missingOriginRejected": 403,
+    "arbitraryCallRejected": 404
+  },
+  "verificationCallExecuted": false,
+  "browserJavaScriptSyntax": "passed",
+  "typescript": "passed"
+}

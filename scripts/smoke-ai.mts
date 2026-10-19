@@ -22,9 +22,12 @@ await readCheckStream(response.body, e => {
 const out = join("eval", "results", `ai-smoke-${new Date().toISOString().replace(/[:.]/g, "-")}.json`);
 mkdirSync(join("eval", "results"), { recursive: true });
 writeFileSync(out, JSON.stringify({ ranAt: new Date().toISOString(), model: status.model, input: text, events }, null, 2));
-if (events.some(e => e.type === "notice")) throw new Error(`本次发生降级，未通过真实 AI 验收。证据：${out}`);
+// Successful selective extraction also emits a notice describing supplemented fields.
+// Reject actual fallback, then require field-level evidence that AI ran for this sample.
+if (events.some(e => e.type === "notice" && /改用标准规则核验|回退/.test(e.message))) throw new Error(`本次发生降级，未通过真实 AI 验收。证据：${out}`);
 const meta = events.find(e => e.type === "meta");
 if (!meta || meta.type !== "meta" || meta.refs[0]?.titleGuess !== "Deep learning" || !meta.refs[0]?.authorsGuess?.includes("LECUN")) throw new Error("复杂格式的AI字段抽取未达到预期。");
+if (!meta.refs[0].aiFields?.length) throw new Error(`没有 AI 补充字段的证据，未通过真实 AI 验收。证据：${out}`);
 const results = events.filter(e => e.type === "result").map(e => e.result);
 if (results[0]?.index === 2) results.reverse();
 if (results[0]?.verdict !== "verified" || results[1]?.verdict !== "mismatch") throw new Error(`核验结果未达到预期，请检查数据源和记录。证据：${out}`);

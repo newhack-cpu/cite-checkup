@@ -1,0 +1,327 @@
+{
+  "passed": true,
+  "inspectedFiles": [
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/01-intro-middle-0015927.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/02-photo-middle-0064144.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/03-reference-middle-0116414.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/03-reference-late-0137776.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/04-agent-late-0198407.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/05-hidden-middle-0232729.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/06-claims-middle-0286747.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/06-claims-late-0312564.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/07-boundaries-middle-0336609.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/08-mcp-late-0386148.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/09-evidence-middle-0406886.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/10-outlook-middle-0450374.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/contact-sheet.jpg",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/01-start-middle-0015651.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/02-import-middle-0050116.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/03-results-middle-0089224.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/03-results-late-0109691.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/04-agent-middle-0133612.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/04-agent-late-0145912.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/05-claims-middle-0170083.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/05-claims-late-0186037.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/06-report-middle-0201840.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/06-report-late-0211616.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/07-feedback-middle-0234115.png",
+    "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/contact-sheet.jpg"
+  ],
+  "frameObservations": [
+    {
+      "kind": "competition",
+      "chapter": "01-intro",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/01-intro-middle-0015927.png",
+      "observations": "章节标题、中文字幕、合成音标记可读；实际论断工作区与介绍不冲突；未见终端或秘密。",
+      "sha256": "dcb5f9168c408d734c59cb3cbf0145a1d46865638639bca6bdb5a74a03949611",
+      "seconds": 15.927103
+    },
+    {
+      "kind": "competition",
+      "chapter": "02-photo",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/02-photo-middle-0064144.png",
+      "observations": "图片转写预览与确认填入按钮可见，合成模拟照片标记清楚，中文字幕可读。",
+      "sha256": "d95c1c49a98a3bf7b68dcb864a7976c0cfaa10ef3aeb16b07c213b3f5f0eff01",
+      "seconds": 64.144208
+    },
+    {
+      "kind": "competition",
+      "chapter": "03-reference",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/03-reference-middle-0116414.png",
+      "observations": "期刊名字段不符与有误印章一致，测试条目标记和字幕可读。该抽帧字幕在泛讲相近候选，当前屏幕聚焦有误条目；属于概念讲解与滚动细节未逐项对应，未把当前结果改标相近候选。",
+      "sha256": "809c1cbdfd7de6186237347bab8dbee7ccc8eea6afb6ef1f7035f41ca0aa5fc3",
+      "seconds": 116.413958
+    },
+    {
+      "kind": "competition",
+      "chapter": "03-reference",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/03-reference-late-0137776.png",
+      "observations": "查无此文结果、DOI未注册及查询来源清楚可见，字幕提示检查来源，与UI核查过程相符。",
+      "sha256": "11e7c1726a8680526b23f2662f3c0600780d882c36c777aa0cee45f8efa72c05",
+      "seconds": 137.775791
+    },
+    {
+      "kind": "competition",
+      "chapter": "04-agent",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/04-agent-late-0198407.png",
+      "observations": "相近候选和缺少作者说明可读，历史中文评测33/75、1条自动确认有明确历史标签，与字幕人工复核说明不冲突。",
+      "sha256": "cb7c24b6d7ce14a2c658c9b22d7e2f8ba488a523991b6b0bfacbec506957abfa",
+      "seconds": 198.407353
+    },
+    {
+      "kind": "competition",
+      "chapter": "05-hidden",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/05-hidden-middle-0232729.png",
+      "observations": "隐藏文字提示和净化后预览可读，合成测试PDF标记明确；可见英文隐藏指令属于被展示的数据，未见终端或秘密。",
+      "sha256": "66218191cf9746256b0e4cd4faf2adbd271e65a3e4756e1aa9d1fb745f43efeb",
+      "seconds": 232.729208
+    },
+    {
+      "kind": "competition",
+      "chapter": "06-claims",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/06-claims-middle-0286747.png",
+      "observations": "证据支持报告、具体论断及研究样本限定可读；等待已缩短标记明确。",
+      "sha256": "aa09f3ae1bc4fd6f0208cc85039ee1bf803ae6c3b530f2fea8756178fd37f701",
+      "seconds": 286.747104
+    },
+    {
+      "kind": "competition",
+      "chapter": "06-claims",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/06-claims-late-0312564.png",
+      "observations": "原文检索片段与来源编号、文本位置可读，七成书籍章节引句可复核；中文字幕无遮挡。",
+      "sha256": "6dc89e511487f77e23b8d58afb4fdafe398f1dde6b41b34a13c8b359c8edec3f",
+      "seconds": 312.564208
+    },
+    {
+      "kind": "competition",
+      "chapter": "07-boundaries",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/07-boundaries-middle-0336609.png",
+      "observations": "与证据矛盾报告保留所核查的400名论断及40名证据；左侧已在编辑下一论断，是操作中间状态；合成研究材料标记可读。",
+      "sha256": "a5f86813bb630f77badc09786e41d28ff6e20df33fff4af44e4ec87b23c1217e",
+      "seconds": 336.608937
+    },
+    {
+      "kind": "competition",
+      "chapter": "08-mcp",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/08-mcp-late-0386148.png",
+      "observations": "本地MCP两条结果为已核实/年份有误，2017对2015差异明确；真实stdio集成演示页脚及等待缩短标记可见，没有伪称Claude或Cursor。",
+      "sha256": "d56a84a6f41a049a53d3025a2b7c1b1a74a44adc3316eaf499b4c21f183a63f7",
+      "seconds": 386.148437
+    },
+    {
+      "kind": "competition",
+      "chapter": "09-evidence",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/09-evidence-middle-0406886.png",
+      "observations": "技术说明PDF表格、历史样本数量与解释范围可读，字幕将旧口径比例限定于各批样本，没有展示终端或密钥。",
+      "sha256": "aa6215c33d13267285183ca446ecd5e080292f9ffa5cc623b404afdf5e129d75",
+      "seconds": 406.886041
+    },
+    {
+      "kind": "competition",
+      "chapter": "10-outlook",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/10-outlook-middle-0450374.png",
+      "observations": "结尾页展示人工复核与原文阅读提醒；章节标题和字幕可读，无敏感控制台内容。",
+      "sha256": "fdcd9931f80fc7d05f54bbd09a1977d51a8b0a8918a7fb94eced4ac6c674cae6",
+      "seconds": 450.373687
+    },
+    {
+      "kind": "competition",
+      "chapter": "all",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/contact-sheet.jpg",
+      "observations": "实际查看主片10章、每章早中晚共30格联系表，画面布局连续一致，无黑屏/空白外站/终端异常。",
+      "sha256": "024f57466ce29c0ec49c8cb2e8f7a89f4b0cf4a90eb7448ec81cae4195f0c353"
+    },
+    {
+      "kind": "tutorial",
+      "chapter": "01-start",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/01-start-middle-0015651.png",
+      "observations": "送检单、标准核验说明与开放数据库字幕对应，章节/合成音标记可读。",
+      "sha256": "0f7860ac8a6c2c54b88f77aceba2ab29aa949c91481519cce4ea522039f6fd1d",
+      "seconds": 15.650812
+    },
+    {
+      "kind": "tutorial",
+      "chapter": "02-import",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/02-import-middle-0050116.png",
+      "observations": "PDF预览、参考文献区域选择与确认填入按钮清楚，第二条期刊故意改错标记可读。",
+      "sha256": "f1698a6ed85ab7f5368b7e7bbf655affe5cf93867807bdea0efab78f7f6ed511",
+      "seconds": 50.116042
+    },
+    {
+      "kind": "tutorial",
+      "chapter": "03-results",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/03-results-middle-0089224.png",
+      "observations": "候选文献的逐字段表格及需确认同一篇的说明可读；字幕在泛讲待人工结论，未改写所显示候选判定。",
+      "sha256": "219ee0da3457da40404f595865fbb09ec0d7b8f5024205faae8273710b586368",
+      "seconds": 89.223666
+    },
+    {
+      "kind": "tutorial",
+      "chapter": "03-results",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/03-results-late-0109691.png",
+      "observations": "13条统计及各类结果清楚，最后字幕强调人工核对；测试条目声明可见。",
+      "sha256": "6aa91552e6fbc77dc908340ff0dbeacafe9deff2541455a8775782032e8c8039",
+      "seconds": 109.69077
+    },
+    {
+      "kind": "tutorial",
+      "chapter": "04-agent",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/04-agent-middle-0133612.png",
+      "observations": "重录教师04显示作者缺失的相近候选及AI检索过程，与字幕要求点击来源核对相符。",
+      "sha256": "4d7fcb6bee3d4d9c3525df4f39e7a76ccf50038e0e3c49c99c1f9ddde8add965",
+      "seconds": 133.611562
+    },
+    {
+      "kind": "tutorial",
+      "chapter": "04-agent",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/04-agent-late-0145912.png",
+      "observations": "重录教师04尾段仍在本应用候选结果页，没有旧版空白知网外部页；字幕不能替代最终确认与UI一致。",
+      "sha256": "9d33b67c0dff6a2cbd4287cbee4159b3fd1203f43c1a1de288f774c05ef43f6a",
+      "seconds": 145.912353
+    },
+    {
+      "kind": "tutorial",
+      "chapter": "05-claims",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/05-claims-middle-0170083.png",
+      "observations": "等待状态真实可见，停止核查按钮及等待已缩短标记可读；字幕在说明可能的结果类别，没有伪称结果已完成。",
+      "sha256": "3967166bbeb1976a0bb878caa9e7d57a5cbe41152040b349cef02ed64d447c0f",
+      "seconds": 170.082895
+    },
+    {
+      "kind": "tutorial",
+      "chapter": "05-claims",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/05-claims-late-0186037.png",
+      "observations": "原文证据段及55%/18%引句、片段编号和文本位置可读；字幕强调研究对象与适用条件。",
+      "sha256": "d71ab5e8ea2fd1f5bc455ecd121d9d82278971183122559edcb84e7ebe300976",
+      "seconds": 186.036833
+    },
+    {
+      "kind": "tutorial",
+      "chapter": "06-report",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/06-report-middle-0201840.png",
+      "observations": "参考文献报告中的两条计数、已核实/有误及下载按钮可读；与保留查询过程的字幕一致。",
+      "sha256": "75d4af721d7d0467e495bcdde2bf034cd92721c90fdaa3b583df7d1f3e968276",
+      "seconds": 201.84
+    },
+    {
+      "kind": "tutorial",
+      "chapter": "06-report",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/06-report-late-0211616.png",
+      "observations": "复制修正版清单操作及原始输入仍可见，字幕明确保留原列表、人工复核；无误导自动交付。",
+      "sha256": "0711c4993a3deb91f0b1304c67b2070931c74b665826224717a4506e5ab10bd9",
+      "seconds": 211.616333
+    },
+    {
+      "kind": "tutorial",
+      "chapter": "07-feedback",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/07-feedback-middle-0234115.png",
+      "observations": "空白反馈表可读，未填真实姓名或用户隐私；字幕只填编号学科、不写姓名与场景一致。",
+      "sha256": "826eefdfbf242837b213f2bb478cc5de8739ef95e807f9e30235895b8d7968d0",
+      "seconds": 234.115271
+    },
+    {
+      "kind": "tutorial",
+      "chapter": "all",
+      "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/contact-sheet.jpg",
+      "observations": "实际查看修复后教程7章、每章早中晚共21格联系表，包含重录教师04和缩短40ms的教师05；无黑屏/空白外站/终端异常。",
+      "sha256": "e758bbf977b0e59df358b6f31a6cd2f6330156b1bad6e5cfc1094419f318c64e"
+    }
+  ],
+  "findings": [
+    {
+      "severity": "info",
+      "blocking": false,
+      "kind": "competition",
+      "chapter": "03-reference",
+      "description": "中段字幕概括相近候选时，画面正在滚动查看一条确认有误的字段。字幕没有指称当前条目为相近候选，UI也保留有误印章；这是概念讲解与细节画面未逐项同步，不构成结论改写。"
+    },
+    {
+      "severity": "info",
+      "blocking": false,
+      "kind": "competition",
+      "chapter": "07-boundaries",
+      "description": "中段保留上一条400名论断的矛盾报告，同时左侧输入开始编辑下一论断；报告内原论断仍明确可见，属于真实操作中间状态。"
+    },
+    {
+      "severity": "resolved",
+      "blocking": false,
+      "kind": "tutorial",
+      "chapter": "04-agent",
+      "description": "已实际查看重录后的中段和尾段，停留于本应用候选结果页，旧版空白外站画面不在本次审核版本。"
+    },
+    {
+      "severity": "resolved",
+      "blocking": false,
+      "kind": "tutorial",
+      "chapter": "05-claims",
+      "description": "首次机器验收发现容器时长较视频流多40ms。主执行者仅缩短章尾40ms后重新合成；新版完整机器验收通过，未补帧。"
+    }
+  ],
+  "humanListeningPerformed": false,
+  "reviewMethod": "Actual model visual inspection of both per-chapter contact sheets and 23 full-resolution extracted frames, covering all 17 chapters. No audio listening or continuous full-film playback was performed.",
+  "limitations": [
+    "抽帧检查不等于逐帧观看，不能排除抽样间隙的瞬时画面问题。",
+    "没有人工听审；语音文件的独立声学与四章本地ASR抽查记录见audio-QA.json。",
+    "真实联网、无mock/循环/冻帧的依据是录屏/剪辑声明、文件对应和连续源区间，不由静态画面推断。",
+    "字幕有分句切换；部分概念说明配合实际结果滚动展示，不是每句字幕都指称当时屏幕中某一条结果。"
+  ],
+  "supplementalRootReview": {
+    "source": "Root agent collaboration message",
+    "reportedInspectedChapters": {
+      "competition": [
+        "contact sheet",
+        "02-photo",
+        "04-agent",
+        "06-claims",
+        "08-mcp",
+        "09-evidence"
+      ],
+      "tutorial": [
+        "05-claims",
+        "06-report"
+      ]
+    },
+    "reportedResult": "无新增问题"
+  },
+  "unmodifiedFirstFourTutorialChapterFramesReusedAfterHashComparison": true,
+  "checkedAt": "2026-10-18T09:56:33.523930+00:00",
+  "videos": [
+    {
+      "kind": "competition",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\competition\\final.mp4",
+      "sha256": "3cfd1f472d36dbaa8eec21f545123b50233ccb7ff22d8ab022dcd77802e53205",
+      "chaptersInspected": [
+        "01-intro",
+        "02-photo",
+        "03-reference",
+        "04-agent",
+        "05-hidden",
+        "06-claims",
+        "07-boundaries",
+        "08-mcp",
+        "09-evidence",
+        "10-outlook"
+      ],
+      "fullResolutionFramesInspected": 12,
+      "contactSheet": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\competition\\contact-sheet.jpg"
+    },
+    {
+      "kind": "tutorial",
+      "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\final.mp4",
+      "sha256": "d8d609be1f9e23dd0a3e78507482fe0008261aae6c53c0467fac768097c50790",
+      "chaptersInspected": [
+        "01-start",
+        "02-import",
+        "03-results",
+        "04-agent",
+        "05-claims",
+        "06-report",
+        "07-feedback"
+      ],
+      "fullResolutionFramesInspected": 11,
+      "contactSheet": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\contact-sheet.jpg"
+    }
+  ],
+  "inspectedFileCount": 25,
+  "fullResolutionFramesInspected": 23
+}

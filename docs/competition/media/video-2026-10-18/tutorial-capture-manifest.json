@@ -1,0 +1,1677 @@
+{
+  "date": "2026-10-18",
+  "actualNetwork": true,
+  "mockedResponses": false,
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "zoom": 1.25,
+  "chapters": [
+    {
+      "id": "01-start",
+      "title": "先放入要检查的参考文献",
+      "plannedSeconds": 25,
+      "startedAt": "2026-10-18T09:34:37.404Z",
+      "directory": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\01-start-2026-10-18T09-34-36-930Z",
+      "cues": [
+        {
+          "at": 0,
+          "action": "页面已载入"
+        },
+        {
+          "at": 5.275,
+          "action": "载入示例"
+        },
+        {
+          "at": 20.728,
+          "action": "阅读隐私说明"
+        }
+      ],
+      "waits": [],
+      "responses": [],
+      "errors": [],
+      "contentStart": 3.333,
+      "contentSeconds": 30.002,
+      "success": true,
+      "finishedAt": "2026-10-18T09:35:11.550Z",
+      "contentEnd": 34.146,
+      "video": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\01-start-2026-10-18T09-34-36-930Z\\raw.webm"
+    },
+    {
+      "id": "02-import",
+      "title": "导入 PDF 后先看预览",
+      "plannedSeconds": 35,
+      "startedAt": "2026-10-18T09:35:17.145Z",
+      "directory": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\02-import-2026-10-18T09-35-16-911Z",
+      "cues": [
+        {
+          "at": 0,
+          "action": "页面已载入"
+        },
+        {
+          "at": 4.012,
+          "action": "导入公开演示参考文献PDF"
+        },
+        {
+          "at": 12.424,
+          "action": "全文预览"
+        },
+        {
+          "at": 17.482,
+          "action": "选择参考文献区域"
+        },
+        {
+          "at": 31.416,
+          "action": "确认替换输入框"
+        }
+      ],
+      "waits": [
+        {
+          "start": 4.117,
+          "end": 6.577,
+          "reason": "提取PDF文字",
+          "keepSeconds": 3
+        }
+      ],
+      "responses": [
+        {
+          "url": "http://127.0.0.1:3210/api/import",
+          "httpStatus": 200,
+          "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\02-import-2026-10-18T09-35-16-911Z\\01--api-import.txt",
+          "receivedAt": 1792316126493
+        }
+      ],
+      "errors": [],
+      "contentStart": 2.978,
+      "contentSeconds": 40.007,
+      "success": true,
+      "finishedAt": "2026-10-18T09:36:00.909Z",
+      "contentEnd": 43.764,
+      "video": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\02-import-2026-10-18T09-35-16-911Z\\raw.webm"
+    },
+    {
+      "id": "03-results",
+      "title": "开始体检，读懂不同结论",
+      "plannedSeconds": 45,
+      "startedAt": "2026-10-18T09:44:16.296Z",
+      "directory": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\03-results-2026-10-18T09-44-15-941Z",
+      "cues": [
+        {
+          "at": 0,
+          "action": "页面已载入"
+        },
+        {
+          "at": 3.401,
+          "action": "开始体检"
+        },
+        {
+          "at": 4.154,
+          "action": "体检实际结果",
+          "detail": [
+            {
+              "index": 1,
+              "verdict": "verified",
+              "summary": "已核实：与数据库记录一致（来源：Crossref）"
+            },
+            {
+              "index": 2,
+              "verdict": "verified",
+              "summary": "已核实：与数据库记录一致（来源：Crossref）"
+            },
+            {
+              "index": 3,
+              "verdict": "verified",
+              "summary": "已核实：与数据库记录一致（来源：Crossref）"
+            },
+            {
+              "index": 4,
+              "verdict": "mismatch",
+              "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）"
+            },
+            {
+              "index": 5,
+              "verdict": "verified",
+              "summary": "已核实：与数据库记录一致（来源：DOI 注册机构）"
+            },
+            {
+              "index": 6,
+              "verdict": "not_found",
+              "summary": "DOI 未注册，且检索不到同名文献，疑似编造"
+            },
+            {
+              "index": 9,
+              "verdict": "retracted",
+              "summary": "文献存在，但已被撤稿，不宜作为论据引用"
+            },
+            {
+              "index": 8,
+              "verdict": "mismatch",
+              "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）"
+            },
+            {
+              "index": 7,
+              "verdict": "not_found",
+              "summary": "DOI 指向的是另一篇文献，引用内容疑似编造"
+            },
+            {
+              "index": 11,
+              "verdict": "unverifiable",
+              "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查"
+            },
+            {
+              "index": 10,
+              "verdict": "verified",
+              "summary": "已核实：与数据库记录一致（来源：Crossref）"
+            },
+            {
+              "index": 13,
+              "verdict": "near_match",
+              "summary": "找到相近文献，但不能确认是同一篇，请人工核对"
+            },
+            {
+              "index": 12,
+              "verdict": "not_found",
+              "summary": "开放数据库中查无此文，疑似不存在（请人工复核）"
+            }
+          ]
+        },
+        {
+          "at": 7.646,
+          "action": "查看实际分类",
+          "detail": {
+            "index": 1,
+            "verdict": "verified",
+            "summary": "已核实：与数据库记录一致（来源：Crossref）"
+          }
+        },
+        {
+          "at": 11.373,
+          "action": "查看实际分类",
+          "detail": {
+            "index": 4,
+            "verdict": "mismatch",
+            "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）"
+          }
+        },
+        {
+          "at": 21.866,
+          "action": "查看实际分类",
+          "detail": {
+            "index": 13,
+            "verdict": "near_match",
+            "summary": "找到相近文献，但不能确认是同一篇，请人工核对"
+          }
+        },
+        {
+          "at": 32.343,
+          "action": "查看实际分类",
+          "detail": {
+            "index": 11,
+            "verdict": "unverifiable",
+            "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查"
+          }
+        },
+        {
+          "at": 37.079,
+          "action": "查看实际分类",
+          "detail": {
+            "index": 6,
+            "verdict": "not_found",
+            "summary": "DOI 未注册，且检索不到同名文献，疑似编造"
+          }
+        },
+        {
+          "at": 41.824,
+          "action": "回顾真实结果分布"
+        }
+      ],
+      "waits": [
+        {
+          "start": 3.514,
+          "end": 4.153,
+          "reason": "数据库核验",
+          "keepSeconds": 7
+        }
+      ],
+      "responses": [
+        {
+          "url": "http://127.0.0.1:3210/api/check",
+          "httpStatus": 200,
+          "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\03-results-2026-10-18T09-44-15-941Z\\01--api-check.txt",
+          "receivedAt": 1792316662891
+        }
+      ],
+      "errors": [],
+      "contentStart": 3.038,
+      "referenceResults": [
+        {
+          "index": 1,
+          "verdict": "verified",
+          "summary": "已核实：与数据库记录一致（来源：Crossref）"
+        },
+        {
+          "index": 2,
+          "verdict": "verified",
+          "summary": "已核实：与数据库记录一致（来源：Crossref）"
+        },
+        {
+          "index": 3,
+          "verdict": "verified",
+          "summary": "已核实：与数据库记录一致（来源：Crossref）"
+        },
+        {
+          "index": 4,
+          "verdict": "mismatch",
+          "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）"
+        },
+        {
+          "index": 5,
+          "verdict": "verified",
+          "summary": "已核实：与数据库记录一致（来源：DOI 注册机构）"
+        },
+        {
+          "index": 6,
+          "verdict": "not_found",
+          "summary": "DOI 未注册，且检索不到同名文献，疑似编造"
+        },
+        {
+          "index": 9,
+          "verdict": "retracted",
+          "summary": "文献存在，但已被撤稿，不宜作为论据引用"
+        },
+        {
+          "index": 8,
+          "verdict": "mismatch",
+          "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）"
+        },
+        {
+          "index": 7,
+          "verdict": "not_found",
+          "summary": "DOI 指向的是另一篇文献，引用内容疑似编造"
+        },
+        {
+          "index": 11,
+          "verdict": "unverifiable",
+          "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查"
+        },
+        {
+          "index": 10,
+          "verdict": "verified",
+          "summary": "已核实：与数据库记录一致（来源：Crossref）"
+        },
+        {
+          "index": 13,
+          "verdict": "near_match",
+          "summary": "找到相近文献，但不能确认是同一篇，请人工核对"
+        },
+        {
+          "index": 12,
+          "verdict": "not_found",
+          "summary": "开放数据库中查无此文，疑似不存在（请人工复核）"
+        }
+      ],
+      "contentSeconds": 47.012,
+      "success": true,
+      "finishedAt": "2026-10-18T09:45:07.089Z",
+      "contentEnd": 50.793,
+      "video": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\03-results-2026-10-18T09-44-15-941Z\\raw.webm"
+    },
+    {
+      "id": "04-agent",
+      "title": "中文候选可以继续找线索",
+      "plannedSeconds": 35,
+      "startedAt": "2026-10-18T09:47:00.944Z",
+      "directory": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\04-agent-2026-10-18T09-47-00-427Z",
+      "cues": [
+        {
+          "at": 0,
+          "action": "页面已载入"
+        },
+        {
+          "at": 3.131,
+          "action": "开始体检"
+        },
+        {
+          "at": 3.403,
+          "action": "体检实际结果",
+          "detail": [
+            {
+              "index": 1,
+              "verdict": "unverifiable",
+              "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查"
+            }
+          ]
+        },
+        {
+          "at": 8.163,
+          "action": "中文期刊AI继续查"
+        },
+        {
+          "at": 14.353,
+          "action": "中文期刊实际结论",
+          "detail": "01\n相近候选\n\n费孝通. 社会学调查要发展[J]. 社会, 1983(3): 10-14.\n\n在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者\n\n匹配参考值 50%\n打开知网页面\n收起\n\nAI\nAI 检索 1 次，没有找到能由规则确认的同一篇，结论不变\n\n注：知网的搜索结果没有作者信息，无法确认是不是同一篇；请打开来源页面核对作者\n字段\n引用中的写法\n数据库记录\n比对\n题名\n社会学调查要发展\n社会学调查要发展\n✓一致\n作者\n费孝通\n—\n—未提供\n年份\n1983\n1983\n✓一致\n期刊 / 会议\n社会\n社会\n✓一致\n\n核查过程 · 共 3 步\n\nCROSSREFCrossref 引文检索返回 5 条候选，排第一的是《福建师范大学大学生习武动机调查研究》1ms\nAI 检索「在中文期刊库检索该文题以确认费孝通此文」中文期刊检索（知网、万方、维普）「社会学调查要发展」：7 条候选，最接近《社会学调查要发展》（知网，《社会》，1983）1521ms\nAI 小结在中文期刊库检索到题名《社会学调查要发展》、1983年发表于《社会》的条目，但页面未显示作者，无法据此核对作者费孝通。"
+        },
+        {
+          "at": 29.101,
+          "action": "点击真实来源链接",
+          "detail": "https://wap.cnki.net/touch/web/Journal/Article/SHEH198303003.html"
+        },
+        {
+          "at": 35.93,
+          "action": "真实来源新标签加载状态",
+          "detail": {
+            "contentLoaded": false,
+            "title": ""
+          }
+        }
+      ],
+      "waits": [
+        {
+          "start": 3.312,
+          "end": 3.403,
+          "reason": "数据库核验",
+          "keepSeconds": 7
+        },
+        {
+          "start": 8.236,
+          "end": 13.605,
+          "reason": "中文期刊真实Agent检索",
+          "keepSeconds": 10
+        }
+      ],
+      "responses": [
+        {
+          "url": "http://127.0.0.1:3210/api/check",
+          "httpStatus": 200,
+          "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\04-agent-2026-10-18T09-47-00-427Z\\01--api-check.txt",
+          "receivedAt": 1792316827399
+        },
+        {
+          "url": "http://127.0.0.1:3210/api/agent",
+          "httpStatus": 200,
+          "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\04-agent-2026-10-18T09-47-00-427Z\\02--api-agent.txt",
+          "receivedAt": 1792316837710
+        }
+      ],
+      "errors": [],
+      "contentStart": 3.233,
+      "referenceResults": [
+        {
+          "index": 1,
+          "verdict": "unverifiable",
+          "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查"
+        }
+      ],
+      "agentBodies": [
+        "{\"type\":\"step\",\"step\":{\"action\":\"agent_search\",\"reason\":\"在中文期刊库检索该文题以确认费孝通此文\",\"detail\":\"中文期刊检索（知网、万方、维普）「社会学调查要发展」：7 条候选，最接近《社会学调查要发展》（知网，《社会》，1983）\",\"ok\":true,\"ms\":1521}}\n{\"type\":\"step\",\"step\":{\"action\":\"agent_note\",\"detail\":\"在中文期刊库检索到题名《社会学调查要发展》、1983年发表于《社会》的条目，但页面未显示作者，无法据此核对作者费孝通。\",\"ok\":true,\"ms\":0}}\n{\"type\":\"result\",\"result\":{\"index\":1,\"raw\":\"费孝通. 社会学调查要发展[J]. 社会, 1983(3): 10-14.\",\"issues\":[],\"notes\":[\"知网的搜索结果没有作者信息，无法确认是不是同一篇；请打开来源页面核对作者\"],\"fields\":[{\"field\":\"title\",\"status\":\"match\",\"cited\":\"社会学调查要发展\",\"actual\":\"社会学调查要发展\"},{\"field\":\"authors\",\"status\":\"missing\",\"cited\":\"费孝通\"},{\"field\":\"year\",\"status\":\"match\",\"cited\":\"1983\",\"actual\":\"1983\"},{\"field\":\"venue\",\"status\":\"match\",\"cited\":\"社会\",\"actual\":\"社会\"}],\"steps\":[{\"action\":\"crossref_search\",\"detail\":\"Crossref 引文检索返回 5 条候选，排第一的是《福建师范大学大学生习武动机调查研究》\",\"ok\":true,\"ms\":1},{\"action\":\"agent_search\",\"reason\":\"在中文期刊库检索该文题以确认费孝通此文\",\"detail\":\"中文期刊检索（知网、万方、维普）「社会学调查要发展」：7 条候选，最接近《社会学调查要发展》（知网，《社会》，1983）\",\"ok\":true,\"ms\":1521},{\"action\":\"agent_note\",\"detail\":\"在中文期刊库检索到题名《社会学调查要发展》、1983年发表于《社会》的条目，但页面未显示作者，无法据此核对作者费孝通。\",\"ok\":true,\"ms\":0}],\"parsed\":{\"index\":1,\"raw\":\"费孝通. 社会学调查要发展[J]. 社会, 1983(3): 10-14.\",\"year\":1983,\"titleGuess\":\"社会学调查要发展\",\"authorsGuess\":\"费孝通\",\"venueGuess\":\"社会\",\"kind\":\"journal\",\"lang\":\"zh\"},\"match\":{\"source\":\"web\",\"site\":\"知网\",\"title\":\"社会学调查要发展\",\"authors\":[],\"venue\":\"社会\",\"year\":1983,\"issue\":\"3\",\"type\":\"journal-article\",\"url\":\"https://wap.cnki.net/touch/web/Journal/Article/SHEH198303003.html\"},\"matchStatus\":\"candidate\",\"verdict\":\"near_match\",\"confidence\":0.5,\"summary\":\"在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者\",\"agent\":{\"model\":\"deepseek-flash\",\"toolCalls\":1,\"rounds\":2,\"outcome\":\"unchanged\",\"before\":{\"verdict\":\"unverifiable\",\"summary\":\"开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查\"},\"ms\":5305,\"note\":\"在中文期刊库检索到题名《社会学调查要发展》、1983年发表于《社会》的条目，但页面未显示作者，无法据此核对作者费孝通。\",\"tokens\":3741}}}\n"
+      ],
+      "sourceLink": "https://wap.cnki.net/touch/web/Journal/Article/SHEH198303003.html",
+      "externalPage": {
+        "url": "chrome-error://chromewebdata/",
+        "title": "",
+        "text": "",
+        "screenshot": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\04-agent-2026-10-18T09-47-00-427Z\\external-source.png",
+        "contentLoaded": false,
+        "video": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\04-agent-2026-10-18T09-47-00-427Z\\external-source.webm"
+      },
+      "contentSeconds": 44.68,
+      "success": true,
+      "finishedAt": "2026-10-18T09:47:49.744Z",
+      "contentEnd": 48.8,
+      "video": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\04-agent-2026-10-18T09-47-00-427Z\\raw.webm"
+    },
+    {
+      "id": "05-claims",
+      "title": "核对正文论断与原文",
+      "plannedSeconds": 40,
+      "startedAt": "2026-10-18T09:39:53.568Z",
+      "directory": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z",
+      "cues": [
+        {
+          "at": 0.001000000000000334,
+          "action": "教程论断章开始"
+        },
+        {
+          "at": 6.282,
+          "action": "展示提供文献正文入口"
+        },
+        {
+          "at": 11.089,
+          "action": "回到真实使用的DOI来源"
+        },
+        {
+          "at": 14.094,
+          "action": "核查论断"
+        },
+        {
+          "at": 28.431000000000004,
+          "action": "论断实际结果",
+          "detail": {
+            "status": "complete",
+            "verdict": "supported",
+            "source": "Europe PMC 开放全文",
+            "method": "hybrid-v1"
+          }
+        },
+        {
+          "at": 29.187000000000005,
+          "action": "阅读真实证据范围与结论"
+        },
+        {
+          "at": 39.984,
+          "action": "查看原文上下文"
+        },
+        {
+          "at": 46.985,
+          "action": "教程报告章开始"
+        }
+      ],
+      "waits": [
+        {
+          "start": 14.176,
+          "end": 28.43,
+          "reason": "检索原文和论断判断",
+          "keepSeconds": 7
+        }
+      ],
+      "responses": [
+        {
+          "url": "http://127.0.0.1:3210/api/check",
+          "httpStatus": 200,
+          "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z\\01--api-check.txt",
+          "receivedAt": 1792316400897
+        },
+        {
+          "url": "http://127.0.0.1:3210/api/claims",
+          "httpStatus": 200,
+          "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z\\02--api-claims.txt",
+          "receivedAt": 1792316430051
+        }
+      ],
+      "errors": [],
+      "contentStart": 8.204,
+      "referenceResults": [
+        {
+          "index": 1,
+          "verdict": "verified",
+          "summary": "已核实：与数据库记录一致（来源：Crossref）"
+        },
+        {
+          "index": 2,
+          "verdict": "mismatch",
+          "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）"
+        }
+      ],
+      "claimResults": [
+        {
+          "status": "complete",
+          "claim": "在该研究样本中，GPT-3.5生成引文的55%为虚构，GPT-4为18%。",
+          "verdict": "supported",
+          "explanation": "证据直接支持该主张。摘要与讨论部分均明确写道：在该研究生成的84篇文档（636条引文）中，GPT-3.5引文的55%为虚构，而GPT-4仅为18%。正文\"Extent of fabrication\"一节也给出对应数据（GPT-3.5的222条被引作品中55%为虚构；GPT-4仅18%为虚构）。主张中的样本范围（\"该研究样本\"）、模型（GPT-3.5、GPT-4）与数值（55%、18%）均与原文一致，未作外推。局限：这些数字仅适用于该研究42个主题、84篇生成文本的特定样本，不能推广到其他提示或使用情境；本文为全文，但未独立核验其数据与检索方法。",
+          "citations": [
+            {
+              "sourceId": "source-1",
+              "chunkId": "source-1-c1",
+              "quote": "Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated.",
+              "start": 716,
+              "end": 826
+            },
+            {
+              "sourceId": "source-1",
+              "chunkId": "source-1-c16",
+              "quote": "Of the 222 works cited in the GPT-3.5 papers, 55% are fabricated (Table 3).",
+              "start": 14449,
+              "end": 14524
+            },
+            {
+              "sourceId": "source-1",
+              "chunkId": "source-1-c16",
+              "quote": "Unlike the GPT-3.5 citations, most of the GPT-4 citations refer to works that are verifiably real. Only 18% are fabricated.",
+              "start": 14879,
+              "end": 15002
+            },
+            {
+              "sourceId": "source-1",
+              "chunkId": "source-1-c20",
+              "quote": "Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated.",
+              "start": 18765,
+              "end": 18875
+            }
+          ],
+          "chunks": [
+            {
+              "id": "source-1-c1",
+              "sourceId": "source-1",
+              "text": "## Abstract\nAlthough chatbots such as ChatGPT can facilitate cost-effective text generation and editing, factually incorrect responses (hallucinations) limit their utility. This study evaluates one particular type of hallucination: fabricated bibliographic citations that do not represent actual scholarly works. We used ChatGPT-3.5 and ChatGPT-4 to produce short literature reviews on 42 multidisciplinary topics, compiling data on the 636 bibliographic citations (references) found in the 84 papers. We then searched multiple databases and websites to determine the prevalence of fabricated citations, to identify errors in the citations to non-fabricated papers, and to evaluate adherence to APA citation format. Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated. Likewise, 43% of the real (non-fabricated) GPT-3.5 citations but just 24% of the real GPT-4 citations include substantive citation errors. Although GPT-4 is a major improvement over GPT-3.5, problems remain.\n## Introduction\n",
+              "start": 0,
+              "end": 1051,
+              "score": 5.689052
+            },
+            {
+              "id": "source-1-c20",
+              "sourceId": "source-1",
+              "text": "d GPT-4 each provide links for fewer than 10% of their citations to real works, and links are actually more likely to be found within the fabricated citations. When links are included within the citations to real works, about one-third of them are inaccurate. GPT-4 performs only slightly better than GPT-3.5 in this regard.\nTable 6\nLinks included in ChatGPT citations.\n## Discussion\nIn terms of both fabricated citations and citation errors, GPT-4 is a major improvement over GPT-3.5. Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated. Likewise, 43% of the real GPT-3.5 citations but just 24% of the real GPT-4 citations include substantive citation errors. Our results are broadly consistent with previous research (Table 1).\nBecause detailed information on the use of ChatGPT is not available, we cannot know what proportion of users are taking advantage of the enhanced performance of GPT-4. As of August 2023, GPT-3.5 is freely available online while GPT-4 is available only to paid subscribers; the individual rate is US $20 per month.\n## Why do fabricated citations persist?\n",
+              "start": 18279,
+              "end": 19421,
+              "score": 5.675112
+            },
+            {
+              "id": "source-1-c16",
+              "sourceId": "source-1",
+              "text": "t 5 works, however. Every cited work is at least broadly relevant to the paper topic, and 93% are scholarly rather than popular works.\n## Extent of fabrication\nOf the 222 works cited in the GPT-3.5 papers, 55% are fabricated (Table 3). That is, they do not exist as actual works that have been published, presented, posted, or otherwise publicly disseminated. The articles and book chapters cited by GPT-3.5 are more likely to be fabricated than real, while the cited books and websites are more likely to be real.\nTable 3\nExtent of fabrication among the works cited in the ChatGPT papers.\nUnlike the GPT-3.5 citations, most of the GPT-4 citations refer to works that are verifiably real. Only 18% are fabricated. Even with GPT-4, however, 70% of the cited book chapters are fabricated.\nBoth GPT-3.5 and GPT-4 seem to have special difficulty with book chapters. As Table 3 shows, most of the fabricated article, book, and website citations include the names of real journals, publishers, and organizations. In contrast, many of the fabricated references to book chapters mention books that do not themselves exist; neither the chapters nor the books are real.\n",
+              "start": 14289,
+              "end": 15449,
+              "score": 5.476758
+            },
+            {
+              "id": "source-1-c3",
+              "sourceId": "source-1",
+              "text": "an information-processing tool, but a language-processing tool. It mimics the texts—not necessarily the substantive content—found in its information base10,11. ChatGPT has also been known to “hallucinate”—to provide factually incorrect responses—although OpenAI reports that this is less of a problem with ChatGPT-4, released in March 2023, than with earlier versions of the software12–15.\nThis study investigates one particular type of hallucination: fabricated bibliographic citations that do not correspond to actual scholarly works. For 84 documents generated by GPT-3.5 and GPT-4, we determine the percentage of the 636 cited works that are fabricated rather than real, along with the percentage of the works (articles, chapters, books and websites) for which the larger publication or organization (journal, book, publisher) is also fabricated. For the citations that correspond to real works, we also assess the prevalence of various citation errors (e.g., incorrect author names, article titles, dates, journal titles, volume numbers, issue numbers, page numbers, and publisher/organization names). ",
+              "start": 1794,
+              "end": 2901,
+              "score": 1.469473
+            },
+            {
+              "id": "source-1-c8",
+              "sourceId": "source-1",
+              "text": " asked “Is this citation correct” or “Do you fabricate citations?”12,13,18,24,29.\nTwo studies have investigated the errors in non-fabricated ChatGPT citations. Bhattacharyya et al.27 found that 87% of the citations to real (non-fabricated) works had 1 or more of 7 errors—incorrect PubMedID number, author name, article title, date, journal title, volume number, or page numbers—and Day28 reported very similar results. Errors in the numerical components of citations are especially common26,27.\n## Methods\nWe used GPT-3.5 and GPT-4 to generate short papers on 42 multidisciplinary topics, then compiled data on the 636 bibliographic citations found in the 84 papers. With that information, we searched multiple databases and websites to evaluate (a) the proportion of fabricated citations, (b) the prevalence of errors in the citations to non-fabricated papers, (c) the extent of adherence to the fundamentals of APA citation format, and (d) the characteristics of the hyperlinks found in the ChatGPT citations. Supplementary Appendix 1 presents the 42 paper topics. Supplementary Appendix 2 includes the 84 texts generated by GPT-3.5 and GPT-4. Supplementary Appendix 3 is the resulting data file.\n",
+              "start": 6516,
+              "end": 7716,
+              "score": 3.101356
+            },
+            {
+              "id": "source-1-c17",
+              "sourceId": "source-1",
+              "text": "tions. In contrast, many of the fabricated references to book chapters mention books that do not themselves exist; neither the chapters nor the books are real.\nChatGPT often provides inaccurate responses when asked to verify the legitimacy of the works it cites12,13,18,24,29. Interestingly, however, one of the 84 works generated for this study (GPT-3.5, topic 28) includes a caveat within the text of its response: “These are sample bibliography entries and are not meant to represent actual sources”. Another (GPT-3.5, topic 19) recommends that the user cite more than the 5 references provided in response to the prompt.\n## Substantive citation errors\nAmong the GPT-3.5 cited works that are real (not fabricated), 43% have one or more substantive citation errors: incorrect author name(s), article titles, dates, journal titles, volume/issue/page numbers, or publishers (Table 4). More than a third of the articles have incorrect volume, issue, or page numbers, and 22% of the cited works have incorrect dates (years). With older works, a common problem is the reporting of online posting dates rather than the original publication dates. ",
+              "start": 15289,
+              "end": 16432,
+              "score": 2.544036
+            }
+          ],
+          "source": {
+            "id": "source-1",
+            "kind": "europepmc_fulltext",
+            "label": "Europe PMC 开放全文",
+            "title": "Fabrication and errors in the bibliographic citations generated by ChatGPT",
+            "doi": "10.1038/s41598-023-41032-5",
+            "url": "https://europepmc.org/article/PMC/PMC10484980",
+            "retrievedAt": "2026-10-18T09:40:22.056Z",
+            "scope": "full_text",
+            "totalChars": 24256
+          },
+          "coverage": {
+            "scope": "full_text",
+            "totalChunks": 25,
+            "retrievedChunks": 6,
+            "retrievedChars": 6803,
+            "method": "hybrid-v1",
+            "expansion": [
+              "GPT-3.5 fabricated citations",
+              "GPT-4 fabricated references",
+              "hallucinated citations rate",
+              "fabricated references percentage",
+              "GPT-3.5 虚构引文",
+              "GPT-4 虚构参考文献",
+              "引文幻觉率",
+              "参考文献捏造比例",
+              "ChatGPT citation accuracy",
+              "reference hallucination LLM",
+              "55% fabricated citations",
+              "18% fabricated references",
+              "GPT-3.5 vs GPT-4 references",
+              "bibliographic hallucination study",
+              "AI-generated references accuracy",
+              "虚假引文 大语言模型"
+            ]
+          },
+          "warnings": [
+            "本结果为 AI 对论断与召回文本关系的辅助判断；引句可定位不代表科学结论已获证实，需人工复核。",
+            "仅检查本次指定来源，不覆盖跨文献系统检索；检索可能漏召回同义表达、跨语言内容和其他段落中的限制条件。",
+            "证据来自 Europe PMC 的开放获取全文（JATS XML），已去掉参考文献列表、表格内容和公式；图表只保留标题。",
+            "DOI 模式读取了该文的开放获取全文，但只核查本次召回的片段；DOI 收录不等于同行评审或质量背书。",
+            "本功能未独立完成撤稿状态核验；请配合参考文献体检与人工审阅使用。"
+          ],
+          "model": "deepseek-flash"
+        }
+      ],
+      "contentSeconds": 46.985,
+      "success": true,
+      "finishedAt": "2026-10-18T09:41:17.050Z",
+      "contentEnd": 55.189,
+      "video": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z\\raw.webm",
+      "reuseSource": "同一次连续真实录制的独立时间段；未循环、未重放响应"
+    },
+    {
+      "id": "06-report",
+      "title": "保存报告，保留原始记录",
+      "plannedSeconds": 40,
+      "startedAt": "2026-10-18T09:39:53.568Z",
+      "directory": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z",
+      "cues": [
+        {
+          "at": 0,
+          "action": "教程报告章开始"
+        },
+        {
+          "at": 5.597000000000001,
+          "action": "论断报告已下载"
+        },
+        {
+          "at": 15.551000000000009,
+          "action": "参考文献报告已下载"
+        },
+        {
+          "at": 19.601999999999997,
+          "action": "复制前仍需核对候选"
+        }
+      ],
+      "waits": [],
+      "responses": [
+        {
+          "url": "http://127.0.0.1:3210/api/check",
+          "httpStatus": 200,
+          "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z\\01--api-check.txt",
+          "receivedAt": 1792316400897
+        },
+        {
+          "url": "http://127.0.0.1:3210/api/claims",
+          "httpStatus": 200,
+          "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z\\02--api-claims.txt",
+          "receivedAt": 1792316430051
+        }
+      ],
+      "errors": [],
+      "contentStart": 55.189,
+      "referenceResults": [
+        {
+          "index": 1,
+          "verdict": "verified",
+          "summary": "已核实：与数据库记录一致（来源：Crossref）"
+        },
+        {
+          "index": 2,
+          "verdict": "mismatch",
+          "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）"
+        }
+      ],
+      "claimResults": [
+        {
+          "status": "complete",
+          "claim": "在该研究样本中，GPT-3.5生成引文的55%为虚构，GPT-4为18%。",
+          "verdict": "supported",
+          "explanation": "证据直接支持该主张。摘要与讨论部分均明确写道：在该研究生成的84篇文档（636条引文）中，GPT-3.5引文的55%为虚构，而GPT-4仅为18%。正文\"Extent of fabrication\"一节也给出对应数据（GPT-3.5的222条被引作品中55%为虚构；GPT-4仅18%为虚构）。主张中的样本范围（\"该研究样本\"）、模型（GPT-3.5、GPT-4）与数值（55%、18%）均与原文一致，未作外推。局限：这些数字仅适用于该研究42个主题、84篇生成文本的特定样本，不能推广到其他提示或使用情境；本文为全文，但未独立核验其数据与检索方法。",
+          "citations": [
+            {
+              "sourceId": "source-1",
+              "chunkId": "source-1-c1",
+              "quote": "Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated.",
+              "start": 716,
+              "end": 826
+            },
+            {
+              "sourceId": "source-1",
+              "chunkId": "source-1-c16",
+              "quote": "Of the 222 works cited in the GPT-3.5 papers, 55% are fabricated (Table 3).",
+              "start": 14449,
+              "end": 14524
+            },
+            {
+              "sourceId": "source-1",
+              "chunkId": "source-1-c16",
+              "quote": "Unlike the GPT-3.5 citations, most of the GPT-4 citations refer to works that are verifiably real. Only 18% are fabricated.",
+              "start": 14879,
+              "end": 15002
+            },
+            {
+              "sourceId": "source-1",
+              "chunkId": "source-1-c20",
+              "quote": "Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated.",
+              "start": 18765,
+              "end": 18875
+            }
+          ],
+          "chunks": [
+            {
+              "id": "source-1-c1",
+              "sourceId": "source-1",
+              "text": "## Abstract\nAlthough chatbots such as ChatGPT can facilitate cost-effective text generation and editing, factually incorrect responses (hallucinations) limit their utility. This study evaluates one particular type of hallucination: fabricated bibliographic citations that do not represent actual scholarly works. We used ChatGPT-3.5 and ChatGPT-4 to produce short literature reviews on 42 multidisciplinary topics, compiling data on the 636 bibliographic citations (references) found in the 84 papers. We then searched multiple databases and websites to determine the prevalence of fabricated citations, to identify errors in the citations to non-fabricated papers, and to evaluate adherence to APA citation format. Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated. Likewise, 43% of the real (non-fabricated) GPT-3.5 citations but just 24% of the real GPT-4 citations include substantive citation errors. Although GPT-4 is a major improvement over GPT-3.5, problems remain.\n## Introduction\n",
+              "start": 0,
+              "end": 1051,
+              "score": 5.689052
+            },
+            {
+              "id": "source-1-c20",
+              "sourceId": "source-1",
+              "text": "d GPT-4 each provide links for fewer than 10% of their citations to real works, and links are actually more likely to be found within the fabricated citations. When links are included within the citations to real works, about one-third of them are inaccurate. GPT-4 performs only slightly better than GPT-3.5 in this regard.\nTable 6\nLinks included in ChatGPT citations.\n## Discussion\nIn terms of both fabricated citations and citation errors, GPT-4 is a major improvement over GPT-3.5. Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated. Likewise, 43% of the real GPT-3.5 citations but just 24% of the real GPT-4 citations include substantive citation errors. Our results are broadly consistent with previous research (Table 1).\nBecause detailed information on the use of ChatGPT is not available, we cannot know what proportion of users are taking advantage of the enhanced performance of GPT-4. As of August 2023, GPT-3.5 is freely available online while GPT-4 is available only to paid subscribers; the individual rate is US $20 per month.\n## Why do fabricated citations persist?\n",
+              "start": 18279,
+              "end": 19421,
+              "score": 5.675112
+            },
+            {
+              "id": "source-1-c16",
+              "sourceId": "source-1",
+              "text": "t 5 works, however. Every cited work is at least broadly relevant to the paper topic, and 93% are scholarly rather than popular works.\n## Extent of fabrication\nOf the 222 works cited in the GPT-3.5 papers, 55% are fabricated (Table 3). That is, they do not exist as actual works that have been published, presented, posted, or otherwise publicly disseminated. The articles and book chapters cited by GPT-3.5 are more likely to be fabricated than real, while the cited books and websites are more likely to be real.\nTable 3\nExtent of fabrication among the works cited in the ChatGPT papers.\nUnlike the GPT-3.5 citations, most of the GPT-4 citations refer to works that are verifiably real. Only 18% are fabricated. Even with GPT-4, however, 70% of the cited book chapters are fabricated.\nBoth GPT-3.5 and GPT-4 seem to have special difficulty with book chapters. As Table 3 shows, most of the fabricated article, book, and website citations include the names of real journals, publishers, and organizations. In contrast, many of the fabricated references to book chapters mention books that do not themselves exist; neither the chapters nor the books are real.\n",
+              "start": 14289,
+              "end": 15449,
+              "score": 5.476758
+            },
+            {
+              "id": "source-1-c3",
+              "sourceId": "source-1",
+              "text": "an information-processing tool, but a language-processing tool. It mimics the texts—not necessarily the substantive content—found in its information base10,11. ChatGPT has also been known to “hallucinate”—to provide factually incorrect responses—although OpenAI reports that this is less of a problem with ChatGPT-4, released in March 2023, than with earlier versions of the software12–15.\nThis study investigates one particular type of hallucination: fabricated bibliographic citations that do not correspond to actual scholarly works. For 84 documents generated by GPT-3.5 and GPT-4, we determine the percentage of the 636 cited works that are fabricated rather than real, along with the percentage of the works (articles, chapters, books and websites) for which the larger publication or organization (journal, book, publisher) is also fabricated. For the citations that correspond to real works, we also assess the prevalence of various citation errors (e.g., incorrect author names, article titles, dates, journal titles, volume numbers, issue numbers, page numbers, and publisher/organization names). ",
+              "start": 1794,
+              "end": 2901,
+              "score": 1.469473
+            },
+            {
+              "id": "source-1-c8",
+              "sourceId": "source-1",
+              "text": " asked “Is this citation correct” or “Do you fabricate citations?”12,13,18,24,29.\nTwo studies have investigated the errors in non-fabricated ChatGPT citations. Bhattacharyya et al.27 found that 87% of the citations to real (non-fabricated) works had 1 or more of 7 errors—incorrect PubMedID number, author name, article title, date, journal title, volume number, or page numbers—and Day28 reported very similar results. Errors in the numerical components of citations are especially common26,27.\n## Methods\nWe used GPT-3.5 and GPT-4 to generate short papers on 42 multidisciplinary topics, then compiled data on the 636 bibliographic citations found in the 84 papers. With that information, we searched multiple databases and websites to evaluate (a) the proportion of fabricated citations, (b) the prevalence of errors in the citations to non-fabricated papers, (c) the extent of adherence to the fundamentals of APA citation format, and (d) the characteristics of the hyperlinks found in the ChatGPT citations. Supplementary Appendix 1 presents the 42 paper topics. Supplementary Appendix 2 includes the 84 texts generated by GPT-3.5 and GPT-4. Supplementary Appendix 3 is the resulting data file.\n",
+              "start": 6516,
+              "end": 7716,
+              "score": 3.101356
+            },
+            {
+              "id": "source-1-c17",
+              "sourceId": "source-1",
+              "text": "tions. In contrast, many of the fabricated references to book chapters mention books that do not themselves exist; neither the chapters nor the books are real.\nChatGPT often provides inaccurate responses when asked to verify the legitimacy of the works it cites12,13,18,24,29. Interestingly, however, one of the 84 works generated for this study (GPT-3.5, topic 28) includes a caveat within the text of its response: “These are sample bibliography entries and are not meant to represent actual sources”. Another (GPT-3.5, topic 19) recommends that the user cite more than the 5 references provided in response to the prompt.\n## Substantive citation errors\nAmong the GPT-3.5 cited works that are real (not fabricated), 43% have one or more substantive citation errors: incorrect author name(s), article titles, dates, journal titles, volume/issue/page numbers, or publishers (Table 4). More than a third of the articles have incorrect volume, issue, or page numbers, and 22% of the cited works have incorrect dates (years). With older works, a common problem is the reporting of online posting dates rather than the original publication dates. ",
+              "start": 15289,
+              "end": 16432,
+              "score": 2.544036
+            }
+          ],
+          "source": {
+            "id": "source-1",
+            "kind": "europepmc_fulltext",
+            "label": "Europe PMC 开放全文",
+            "title": "Fabrication and errors in the bibliographic citations generated by ChatGPT",
+            "doi": "10.1038/s41598-023-41032-5",
+            "url": "https://europepmc.org/article/PMC/PMC10484980",
+            "retrievedAt": "2026-10-18T09:40:22.056Z",
+            "scope": "full_text",
+            "totalChars": 24256
+          },
+          "coverage": {
+            "scope": "full_text",
+            "totalChunks": 25,
+            "retrievedChunks": 6,
+            "retrievedChars": 6803,
+            "method": "hybrid-v1",
+            "expansion": [
+              "GPT-3.5 fabricated citations",
+              "GPT-4 fabricated references",
+              "hallucinated citations rate",
+              "fabricated references percentage",
+              "GPT-3.5 虚构引文",
+              "GPT-4 虚构参考文献",
+              "引文幻觉率",
+              "参考文献捏造比例",
+              "ChatGPT citation accuracy",
+              "reference hallucination LLM",
+              "55% fabricated citations",
+              "18% fabricated references",
+              "GPT-3.5 vs GPT-4 references",
+              "bibliographic hallucination study",
+              "AI-generated references accuracy",
+              "虚假引文 大语言模型"
+            ]
+          },
+          "warnings": [
+            "本结果为 AI 对论断与召回文本关系的辅助判断；引句可定位不代表科学结论已获证实，需人工复核。",
+            "仅检查本次指定来源，不覆盖跨文献系统检索；检索可能漏召回同义表达、跨语言内容和其他段落中的限制条件。",
+            "证据来自 Europe PMC 的开放获取全文（JATS XML），已去掉参考文献列表、表格内容和公式；图表只保留标题。",
+            "DOI 模式读取了该文的开放获取全文，但只核查本次召回的片段；DOI 收录不等于同行评审或质量背书。",
+            "本功能未独立完成撤稿状态核验；请配合参考文献体检与人工审阅使用。"
+          ],
+          "model": "deepseek-flash"
+        }
+      ],
+      "contentSeconds": 27.607000000000006,
+      "success": true,
+      "finishedAt": "2026-10-18T09:41:17.050Z",
+      "contentEnd": 82.796,
+      "video": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z\\raw.webm",
+      "reuseSource": "同一次连续真实录制的独立时间段；未循环、未重放响应"
+    },
+    {
+      "id": "07-feedback",
+      "title": "试用时怎样留下反馈",
+      "plannedSeconds": 25,
+      "startedAt": "2026-10-18T09:36:06.337Z",
+      "directory": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\07-feedback-2026-10-18T09-36-06-125Z",
+      "cues": [
+        {
+          "at": 0,
+          "action": "页面已载入"
+        },
+        {
+          "at": 7.008,
+          "action": "条数与人工、工具用时分别记录"
+        },
+        {
+          "at": 16.014,
+          "action": "确实有问题、误报、拿不准"
+        },
+        {
+          "at": 24.004,
+          "action": "空白评价与其他意见"
+        }
+      ],
+      "waits": [],
+      "responses": [],
+      "errors": [],
+      "contentStart": 1.854,
+      "contentSeconds": 33.014,
+      "success": true,
+      "finishedAt": "2026-10-18T09:36:41.375Z",
+      "contentEnd": 35.038,
+      "video": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\07-feedback-2026-10-18T09-36-06-125Z\\raw.webm"
+    }
+  ],
+  "attempts": [
+    {
+      "id": "01-start",
+      "title": "先放入要检查的参考文献",
+      "plannedSeconds": 25,
+      "startedAt": "2026-10-18T09:34:37.404Z",
+      "directory": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\01-start-2026-10-18T09-34-36-930Z",
+      "cues": [
+        {
+          "at": 0,
+          "action": "页面已载入"
+        },
+        {
+          "at": 5.275,
+          "action": "载入示例"
+        },
+        {
+          "at": 20.728,
+          "action": "阅读隐私说明"
+        }
+      ],
+      "waits": [],
+      "responses": [],
+      "errors": [],
+      "contentStart": 3.333,
+      "contentSeconds": 30.002,
+      "success": true,
+      "finishedAt": "2026-10-18T09:35:11.550Z",
+      "contentEnd": 34.146,
+      "video": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\01-start-2026-10-18T09-34-36-930Z\\raw.webm"
+    },
+    {
+      "id": "02-import",
+      "title": "导入 PDF 后先看预览",
+      "plannedSeconds": 35,
+      "startedAt": "2026-10-18T09:35:17.145Z",
+      "directory": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\02-import-2026-10-18T09-35-16-911Z",
+      "cues": [
+        {
+          "at": 0,
+          "action": "页面已载入"
+        },
+        {
+          "at": 4.012,
+          "action": "导入公开演示参考文献PDF"
+        },
+        {
+          "at": 12.424,
+          "action": "全文预览"
+        },
+        {
+          "at": 17.482,
+          "action": "选择参考文献区域"
+        },
+        {
+          "at": 31.416,
+          "action": "确认替换输入框"
+        }
+      ],
+      "waits": [
+        {
+          "start": 4.117,
+          "end": 6.577,
+          "reason": "提取PDF文字",
+          "keepSeconds": 3
+        }
+      ],
+      "responses": [
+        {
+          "url": "http://127.0.0.1:3210/api/import",
+          "httpStatus": 200,
+          "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\02-import-2026-10-18T09-35-16-911Z\\01--api-import.txt",
+          "receivedAt": 1792316126493
+        }
+      ],
+      "errors": [],
+      "contentStart": 2.978,
+      "contentSeconds": 40.007,
+      "success": true,
+      "finishedAt": "2026-10-18T09:36:00.909Z",
+      "contentEnd": 43.764,
+      "video": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\02-import-2026-10-18T09-35-16-911Z\\raw.webm"
+    },
+    {
+      "id": "07-feedback",
+      "title": "试用时怎样留下反馈",
+      "plannedSeconds": 25,
+      "startedAt": "2026-10-18T09:36:06.337Z",
+      "directory": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\07-feedback-2026-10-18T09-36-06-125Z",
+      "cues": [
+        {
+          "at": 0,
+          "action": "页面已载入"
+        },
+        {
+          "at": 7.008,
+          "action": "条数与人工、工具用时分别记录"
+        },
+        {
+          "at": 16.014,
+          "action": "确实有问题、误报、拿不准"
+        },
+        {
+          "at": 24.004,
+          "action": "空白评价与其他意见"
+        }
+      ],
+      "waits": [],
+      "responses": [],
+      "errors": [],
+      "contentStart": 1.854,
+      "contentSeconds": 33.014,
+      "success": true,
+      "finishedAt": "2026-10-18T09:36:41.375Z",
+      "contentEnd": 35.038,
+      "video": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\07-feedback-2026-10-18T09-36-06-125Z\\raw.webm"
+    },
+    {
+      "id": "04-agent",
+      "title": "中文候选可以继续找线索",
+      "plannedSeconds": 35,
+      "startedAt": "2026-10-18T09:37:35.531Z",
+      "directory": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\04-agent-2026-10-18T09-37-35-066Z",
+      "cues": [
+        {
+          "at": 0,
+          "action": "页面已载入"
+        },
+        {
+          "at": 3.103,
+          "action": "开始体检"
+        },
+        {
+          "at": 3.427,
+          "action": "体检实际结果",
+          "detail": [
+            {
+              "index": 1,
+              "verdict": "unverifiable",
+              "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查"
+            }
+          ]
+        },
+        {
+          "at": 8.179,
+          "action": "中文期刊AI继续查"
+        },
+        {
+          "at": 14.216,
+          "action": "中文期刊实际结论",
+          "detail": "01\n相近候选\n\n费孝通. 社会学调查要发展[J]. 社会, 1983(3): 10-14.\n\n在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者\n\n匹配参考值 50%\n打开知网页面\n收起\n\nAI\nAI 检索 1 次，没有找到能由规则确认的同一篇，结论不变\n\n注：知网的搜索结果没有作者信息，无法确认是不是同一篇；请打开来源页面核对作者\n字段\n引用中的写法\n数据库记录\n比对\n题名\n社会学调查要发展\n社会学调查要发展\n✓一致\n作者\n费孝通\n—\n—未提供\n年份\n1983\n1983\n✓一致\n期刊 / 会议\n社会\n社会\n✓一致\n\n核查过程 · 共 3 步\n\nCROSSREFCrossref 引文检索返回 5 条候选，排第一的是《福建师范大学大学生习武动机调查研究》缓存\nAI 检索「在中文期刊库检索该文题，确认费孝通1983年文章」中文期刊检索（知网、万方、维普）「社会学调查要发展」：7 条候选，最接近《社会学调查要发展》（知网，《社会》，1983）1530ms\nAI 小结在中文期刊库检索到题名《社会学调查要发展》、1983年发表于《社会》的条目，但页面未显示作者，无法据此核对作者字段；Crossref 检索无相关结果。"
+        },
+        {
+          "at": 28.975,
+          "action": "点击真实来源链接",
+          "detail": "https://wap.cnki.net/touch/web/Journal/Article/SHEH198303003.html"
+        },
+        {
+          "at": 37.042,
+          "action": "实际来源页",
+          "detail": "chrome-error://chromewebdata/"
+        }
+      ],
+      "waits": [
+        {
+          "start": 3.218,
+          "end": 3.426,
+          "reason": "数据库核验",
+          "keepSeconds": 7
+        },
+        {
+          "start": 8.249,
+          "end": 13.45,
+          "reason": "中文期刊真实Agent检索",
+          "keepSeconds": 10
+        }
+      ],
+      "responses": [],
+      "errors": [],
+      "contentStart": 3.221,
+      "referenceResults": [
+        {
+          "index": 1,
+          "verdict": "unverifiable",
+          "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查"
+        }
+      ],
+      "agentBodies": [
+        "{\"type\":\"step\",\"step\":{\"action\":\"agent_search\",\"reason\":\"在中文期刊库检索该文题，确认费孝通1983年文章\",\"detail\":\"中文期刊检索（知网、万方、维普）「社会学调查要发展」：7 条候选，最接近《社会学调查要发展》（知网，《社会》，1983）\",\"ok\":true,\"ms\":1530}}\n{\"type\":\"step\",\"step\":{\"action\":\"agent_note\",\"detail\":\"在中文期刊库检索到题名《社会学调查要发展》、1983年发表于《社会》的条目，但页面未显示作者，无法据此核对作者字段；Crossref 检索无相关结果。\",\"ok\":true,\"ms\":0}}\n{\"type\":\"result\",\"result\":{\"index\":1,\"raw\":\"费孝通. 社会学调查要发展[J]. 社会, 1983(3): 10-14.\",\"issues\":[],\"notes\":[\"知网的搜索结果没有作者信息，无法确认是不是同一篇；请打开来源页面核对作者\"],\"fields\":[{\"field\":\"title\",\"status\":\"match\",\"cited\":\"社会学调查要发展\",\"actual\":\"社会学调查要发展\"},{\"field\":\"authors\",\"status\":\"missing\",\"cited\":\"费孝通\"},{\"field\":\"year\",\"status\":\"match\",\"cited\":\"1983\",\"actual\":\"1983\"},{\"field\":\"venue\",\"status\":\"match\",\"cited\":\"社会\",\"actual\":\"社会\"}],\"steps\":[{\"action\":\"crossref_search\",\"detail\":\"Crossref 引文检索返回 5 条候选，排第一的是《福建师范大学大学生习武动机调查研究》\",\"ok\":true,\"ms\":0},{\"action\":\"agent_search\",\"reason\":\"在中文期刊库检索该文题，确认费孝通1983年文章\",\"detail\":\"中文期刊检索（知网、万方、维普）「社会学调查要发展」：7 条候选，最接近《社会学调查要发展》（知网，《社会》，1983）\",\"ok\":true,\"ms\":1530},{\"action\":\"agent_note\",\"detail\":\"在中文期刊库检索到题名《社会学调查要发展》、1983年发表于《社会》的条目，但页面未显示作者，无法据此核对作者字段；Crossref 检索无相关结果。\",\"ok\":true,\"ms\":0}],\"parsed\":{\"index\":1,\"raw\":\"费孝通. 社会学调查要发展[J]. 社会, 1983(3): 10-14.\",\"year\":1983,\"titleGuess\":\"社会学调查要发展\",\"authorsGuess\":\"费孝通\",\"venueGuess\":\"社会\",\"kind\":\"journal\",\"lang\":\"zh\"},\"match\":{\"source\":\"web\",\"site\":\"知网\",\"title\":\"社会学调查要发展\",\"authors\":[],\"venue\":\"社会\",\"year\":1983,\"issue\":\"3\",\"type\":\"journal-article\",\"url\":\"https://wap.cnki.net/touch/web/Journal/Article/SHEH198303003.html\"},\"matchStatus\":\"candidate\",\"verdict\":\"near_match\",\"confidence\":0.5,\"summary\":\"在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者\",\"agent\":{\"model\":\"deepseek-flash\",\"toolCalls\":1,\"rounds\":2,\"outcome\":\"unchanged\",\"before\":{\"verdict\":\"unverifiable\",\"summary\":\"开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查\"},\"ms\":5117,\"note\":\"在中文期刊库检索到题名《社会学调查要发展》、1983年发表于《社会》的条目，但页面未显示作者，无法据此核对作者字段；Crossref 检索无相关结果。\",\"tokens\":3752}}}\n"
+      ],
+      "sourceLink": "https://wap.cnki.net/touch/web/Journal/Article/SHEH198303003.html",
+      "contentSeconds": 41.012,
+      "success": true,
+      "finishedAt": "2026-10-18T09:38:19.944Z",
+      "contentEnd": 44.413,
+      "video": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\04-agent-2026-10-18T09-37-35-066Z\\raw.webm"
+    },
+    {
+      "id": "05-claims",
+      "title": "核对正文论断与原文",
+      "plannedSeconds": 40,
+      "startedAt": "2026-10-18T09:39:53.568Z",
+      "directory": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z",
+      "cues": [
+        {
+          "at": 0,
+          "action": "页面已载入"
+        },
+        {
+          "at": 0.105,
+          "action": "开始体检"
+        },
+        {
+          "at": 4.436,
+          "action": "体检实际结果",
+          "detail": [
+            {
+              "index": 1,
+              "verdict": "verified",
+              "summary": "已核实：与数据库记录一致（来源：Crossref）"
+            },
+            {
+              "index": 2,
+              "verdict": "mismatch",
+              "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）"
+            }
+          ]
+        },
+        {
+          "at": 5.142,
+          "action": "教程论断章开始"
+        },
+        {
+          "at": 11.423,
+          "action": "展示提供文献正文入口"
+        },
+        {
+          "at": 16.23,
+          "action": "回到真实使用的DOI来源"
+        },
+        {
+          "at": 19.235,
+          "action": "核查论断"
+        },
+        {
+          "at": 33.572,
+          "action": "论断实际结果",
+          "detail": {
+            "status": "complete",
+            "verdict": "supported",
+            "source": "Europe PMC 开放全文",
+            "method": "hybrid-v1"
+          }
+        },
+        {
+          "at": 34.328,
+          "action": "阅读真实证据范围与结论"
+        },
+        {
+          "at": 45.125,
+          "action": "查看原文上下文"
+        },
+        {
+          "at": 52.126,
+          "action": "教程报告章开始"
+        },
+        {
+          "at": 57.723,
+          "action": "论断报告已下载"
+        },
+        {
+          "at": 67.677,
+          "action": "参考文献报告已下载"
+        },
+        {
+          "at": 71.728,
+          "action": "复制前仍需核对候选"
+        }
+      ],
+      "waits": [
+        {
+          "start": 0.292,
+          "end": 4.435,
+          "reason": "数据库核验",
+          "keepSeconds": 7
+        },
+        {
+          "start": 19.317,
+          "end": 33.571,
+          "reason": "检索原文和论断判断",
+          "keepSeconds": 7
+        }
+      ],
+      "responses": [
+        {
+          "url": "http://127.0.0.1:3210/api/check",
+          "httpStatus": 200,
+          "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z\\01--api-check.txt",
+          "receivedAt": 1792316400897
+        },
+        {
+          "url": "http://127.0.0.1:3210/api/claims",
+          "httpStatus": 200,
+          "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z\\02--api-claims.txt",
+          "receivedAt": 1792316430051
+        }
+      ],
+      "errors": [],
+      "contentStart": 3.063,
+      "referenceResults": [
+        {
+          "index": 1,
+          "verdict": "verified",
+          "summary": "已核实：与数据库记录一致（来源：Crossref）"
+        },
+        {
+          "index": 2,
+          "verdict": "mismatch",
+          "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）"
+        }
+      ],
+      "claimResults": [
+        {
+          "status": "complete",
+          "claim": "在该研究样本中，GPT-3.5生成引文的55%为虚构，GPT-4为18%。",
+          "verdict": "supported",
+          "explanation": "证据直接支持该主张。摘要与讨论部分均明确写道：在该研究生成的84篇文档（636条引文）中，GPT-3.5引文的55%为虚构，而GPT-4仅为18%。正文\"Extent of fabrication\"一节也给出对应数据（GPT-3.5的222条被引作品中55%为虚构；GPT-4仅18%为虚构）。主张中的样本范围（\"该研究样本\"）、模型（GPT-3.5、GPT-4）与数值（55%、18%）均与原文一致，未作外推。局限：这些数字仅适用于该研究42个主题、84篇生成文本的特定样本，不能推广到其他提示或使用情境；本文为全文，但未独立核验其数据与检索方法。",
+          "citations": [
+            {
+              "sourceId": "source-1",
+              "chunkId": "source-1-c1",
+              "quote": "Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated.",
+              "start": 716,
+              "end": 826
+            },
+            {
+              "sourceId": "source-1",
+              "chunkId": "source-1-c16",
+              "quote": "Of the 222 works cited in the GPT-3.5 papers, 55% are fabricated (Table 3).",
+              "start": 14449,
+              "end": 14524
+            },
+            {
+              "sourceId": "source-1",
+              "chunkId": "source-1-c16",
+              "quote": "Unlike the GPT-3.5 citations, most of the GPT-4 citations refer to works that are verifiably real. Only 18% are fabricated.",
+              "start": 14879,
+              "end": 15002
+            },
+            {
+              "sourceId": "source-1",
+              "chunkId": "source-1-c20",
+              "quote": "Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated.",
+              "start": 18765,
+              "end": 18875
+            }
+          ],
+          "chunks": [
+            {
+              "id": "source-1-c1",
+              "sourceId": "source-1",
+              "text": "## Abstract\nAlthough chatbots such as ChatGPT can facilitate cost-effective text generation and editing, factually incorrect responses (hallucinations) limit their utility. This study evaluates one particular type of hallucination: fabricated bibliographic citations that do not represent actual scholarly works. We used ChatGPT-3.5 and ChatGPT-4 to produce short literature reviews on 42 multidisciplinary topics, compiling data on the 636 bibliographic citations (references) found in the 84 papers. We then searched multiple databases and websites to determine the prevalence of fabricated citations, to identify errors in the citations to non-fabricated papers, and to evaluate adherence to APA citation format. Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated. Likewise, 43% of the real (non-fabricated) GPT-3.5 citations but just 24% of the real GPT-4 citations include substantive citation errors. Although GPT-4 is a major improvement over GPT-3.5, problems remain.\n## Introduction\n",
+              "start": 0,
+              "end": 1051,
+              "score": 5.689052
+            },
+            {
+              "id": "source-1-c20",
+              "sourceId": "source-1",
+              "text": "d GPT-4 each provide links for fewer than 10% of their citations to real works, and links are actually more likely to be found within the fabricated citations. When links are included within the citations to real works, about one-third of them are inaccurate. GPT-4 performs only slightly better than GPT-3.5 in this regard.\nTable 6\nLinks included in ChatGPT citations.\n## Discussion\nIn terms of both fabricated citations and citation errors, GPT-4 is a major improvement over GPT-3.5. Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated. Likewise, 43% of the real GPT-3.5 citations but just 24% of the real GPT-4 citations include substantive citation errors. Our results are broadly consistent with previous research (Table 1).\nBecause detailed information on the use of ChatGPT is not available, we cannot know what proportion of users are taking advantage of the enhanced performance of GPT-4. As of August 2023, GPT-3.5 is freely available online while GPT-4 is available only to paid subscribers; the individual rate is US $20 per month.\n## Why do fabricated citations persist?\n",
+              "start": 18279,
+              "end": 19421,
+              "score": 5.675112
+            },
+            {
+              "id": "source-1-c16",
+              "sourceId": "source-1",
+              "text": "t 5 works, however. Every cited work is at least broadly relevant to the paper topic, and 93% are scholarly rather than popular works.\n## Extent of fabrication\nOf the 222 works cited in the GPT-3.5 papers, 55% are fabricated (Table 3). That is, they do not exist as actual works that have been published, presented, posted, or otherwise publicly disseminated. The articles and book chapters cited by GPT-3.5 are more likely to be fabricated than real, while the cited books and websites are more likely to be real.\nTable 3\nExtent of fabrication among the works cited in the ChatGPT papers.\nUnlike the GPT-3.5 citations, most of the GPT-4 citations refer to works that are verifiably real. Only 18% are fabricated. Even with GPT-4, however, 70% of the cited book chapters are fabricated.\nBoth GPT-3.5 and GPT-4 seem to have special difficulty with book chapters. As Table 3 shows, most of the fabricated article, book, and website citations include the names of real journals, publishers, and organizations. In contrast, many of the fabricated references to book chapters mention books that do not themselves exist; neither the chapters nor the books are real.\n",
+              "start": 14289,
+              "end": 15449,
+              "score": 5.476758
+            },
+            {
+              "id": "source-1-c3",
+              "sourceId": "source-1",
+              "text": "an information-processing tool, but a language-processing tool. It mimics the texts—not necessarily the substantive content—found in its information base10,11. ChatGPT has also been known to “hallucinate”—to provide factually incorrect responses—although OpenAI reports that this is less of a problem with ChatGPT-4, released in March 2023, than with earlier versions of the software12–15.\nThis study investigates one particular type of hallucination: fabricated bibliographic citations that do not correspond to actual scholarly works. For 84 documents generated by GPT-3.5 and GPT-4, we determine the percentage of the 636 cited works that are fabricated rather than real, along with the percentage of the works (articles, chapters, books and websites) for which the larger publication or organization (journal, book, publisher) is also fabricated. For the citations that correspond to real works, we also assess the prevalence of various citation errors (e.g., incorrect author names, article titles, dates, journal titles, volume numbers, issue numbers, page numbers, and publisher/organization names). ",
+              "start": 1794,
+              "end": 2901,
+              "score": 1.469473
+            },
+            {
+              "id": "source-1-c8",
+              "sourceId": "source-1",
+              "text": " asked “Is this citation correct” or “Do you fabricate citations?”12,13,18,24,29.\nTwo studies have investigated the errors in non-fabricated ChatGPT citations. Bhattacharyya et al.27 found that 87% of the citations to real (non-fabricated) works had 1 or more of 7 errors—incorrect PubMedID number, author name, article title, date, journal title, volume number, or page numbers—and Day28 reported very similar results. Errors in the numerical components of citations are especially common26,27.\n## Methods\nWe used GPT-3.5 and GPT-4 to generate short papers on 42 multidisciplinary topics, then compiled data on the 636 bibliographic citations found in the 84 papers. With that information, we searched multiple databases and websites to evaluate (a) the proportion of fabricated citations, (b) the prevalence of errors in the citations to non-fabricated papers, (c) the extent of adherence to the fundamentals of APA citation format, and (d) the characteristics of the hyperlinks found in the ChatGPT citations. Supplementary Appendix 1 presents the 42 paper topics. Supplementary Appendix 2 includes the 84 texts generated by GPT-3.5 and GPT-4. Supplementary Appendix 3 is the resulting data file.\n",
+              "start": 6516,
+              "end": 7716,
+              "score": 3.101356
+            },
+            {
+              "id": "source-1-c17",
+              "sourceId": "source-1",
+              "text": "tions. In contrast, many of the fabricated references to book chapters mention books that do not themselves exist; neither the chapters nor the books are real.\nChatGPT often provides inaccurate responses when asked to verify the legitimacy of the works it cites12,13,18,24,29. Interestingly, however, one of the 84 works generated for this study (GPT-3.5, topic 28) includes a caveat within the text of its response: “These are sample bibliography entries and are not meant to represent actual sources”. Another (GPT-3.5, topic 19) recommends that the user cite more than the 5 references provided in response to the prompt.\n## Substantive citation errors\nAmong the GPT-3.5 cited works that are real (not fabricated), 43% have one or more substantive citation errors: incorrect author name(s), article titles, dates, journal titles, volume/issue/page numbers, or publishers (Table 4). More than a third of the articles have incorrect volume, issue, or page numbers, and 22% of the cited works have incorrect dates (years). With older works, a common problem is the reporting of online posting dates rather than the original publication dates. ",
+              "start": 15289,
+              "end": 16432,
+              "score": 2.544036
+            }
+          ],
+          "source": {
+            "id": "source-1",
+            "kind": "europepmc_fulltext",
+            "label": "Europe PMC 开放全文",
+            "title": "Fabrication and errors in the bibliographic citations generated by ChatGPT",
+            "doi": "10.1038/s41598-023-41032-5",
+            "url": "https://europepmc.org/article/PMC/PMC10484980",
+            "retrievedAt": "2026-10-18T09:40:22.056Z",
+            "scope": "full_text",
+            "totalChars": 24256
+          },
+          "coverage": {
+            "scope": "full_text",
+            "totalChunks": 25,
+            "retrievedChunks": 6,
+            "retrievedChars": 6803,
+            "method": "hybrid-v1",
+            "expansion": [
+              "GPT-3.5 fabricated citations",
+              "GPT-4 fabricated references",
+              "hallucinated citations rate",
+              "fabricated references percentage",
+              "GPT-3.5 虚构引文",
+              "GPT-4 虚构参考文献",
+              "引文幻觉率",
+              "参考文献捏造比例",
+              "ChatGPT citation accuracy",
+              "reference hallucination LLM",
+              "55% fabricated citations",
+              "18% fabricated references",
+              "GPT-3.5 vs GPT-4 references",
+              "bibliographic hallucination study",
+              "AI-generated references accuracy",
+              "虚假引文 大语言模型"
+            ]
+          },
+          "warnings": [
+            "本结果为 AI 对论断与召回文本关系的辅助判断；引句可定位不代表科学结论已获证实，需人工复核。",
+            "仅检查本次指定来源，不覆盖跨文献系统检索；检索可能漏召回同义表达、跨语言内容和其他段落中的限制条件。",
+            "证据来自 Europe PMC 的开放获取全文（JATS XML），已去掉参考文献列表、表格内容和公式；图表只保留标题。",
+            "DOI 模式读取了该文的开放获取全文，但只核查本次召回的片段；DOI 收录不等于同行评审或质量背书。",
+            "本功能未独立完成撤稿状态核验；请配合参考文献体检与人工审阅使用。"
+          ],
+          "model": "deepseek-flash"
+        }
+      ],
+      "sections": [
+        {
+          "id": "05-claims",
+          "title": "核对正文论断与原文",
+          "start": 5.141,
+          "end": 52.126
+        },
+        {
+          "id": "06-report",
+          "title": "保存报告，保留原始记录",
+          "start": 52.126,
+          "end": 79.733
+        }
+      ],
+      "contentSeconds": 79.733,
+      "success": true,
+      "finishedAt": "2026-10-18T09:41:17.050Z",
+      "contentEnd": 83.482,
+      "video": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z\\raw.webm"
+    },
+    {
+      "id": "03-results",
+      "title": "开始体检，读懂不同结论",
+      "plannedSeconds": 45,
+      "startedAt": "2026-10-18T09:44:16.296Z",
+      "directory": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\03-results-2026-10-18T09-44-15-941Z",
+      "cues": [
+        {
+          "at": 0,
+          "action": "页面已载入"
+        },
+        {
+          "at": 3.401,
+          "action": "开始体检"
+        },
+        {
+          "at": 4.154,
+          "action": "体检实际结果",
+          "detail": [
+            {
+              "index": 1,
+              "verdict": "verified",
+              "summary": "已核实：与数据库记录一致（来源：Crossref）"
+            },
+            {
+              "index": 2,
+              "verdict": "verified",
+              "summary": "已核实：与数据库记录一致（来源：Crossref）"
+            },
+            {
+              "index": 3,
+              "verdict": "verified",
+              "summary": "已核实：与数据库记录一致（来源：Crossref）"
+            },
+            {
+              "index": 4,
+              "verdict": "mismatch",
+              "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）"
+            },
+            {
+              "index": 5,
+              "verdict": "verified",
+              "summary": "已核实：与数据库记录一致（来源：DOI 注册机构）"
+            },
+            {
+              "index": 6,
+              "verdict": "not_found",
+              "summary": "DOI 未注册，且检索不到同名文献，疑似编造"
+            },
+            {
+              "index": 9,
+              "verdict": "retracted",
+              "summary": "文献存在，但已被撤稿，不宜作为论据引用"
+            },
+            {
+              "index": 8,
+              "verdict": "mismatch",
+              "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）"
+            },
+            {
+              "index": 7,
+              "verdict": "not_found",
+              "summary": "DOI 指向的是另一篇文献，引用内容疑似编造"
+            },
+            {
+              "index": 11,
+              "verdict": "unverifiable",
+              "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查"
+            },
+            {
+              "index": 10,
+              "verdict": "verified",
+              "summary": "已核实：与数据库记录一致（来源：Crossref）"
+            },
+            {
+              "index": 13,
+              "verdict": "near_match",
+              "summary": "找到相近文献，但不能确认是同一篇，请人工核对"
+            },
+            {
+              "index": 12,
+              "verdict": "not_found",
+              "summary": "开放数据库中查无此文，疑似不存在（请人工复核）"
+            }
+          ]
+        },
+        {
+          "at": 7.646,
+          "action": "查看实际分类",
+          "detail": {
+            "index": 1,
+            "verdict": "verified",
+            "summary": "已核实：与数据库记录一致（来源：Crossref）"
+          }
+        },
+        {
+          "at": 11.373,
+          "action": "查看实际分类",
+          "detail": {
+            "index": 4,
+            "verdict": "mismatch",
+            "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）"
+          }
+        },
+        {
+          "at": 21.866,
+          "action": "查看实际分类",
+          "detail": {
+            "index": 13,
+            "verdict": "near_match",
+            "summary": "找到相近文献，但不能确认是同一篇，请人工核对"
+          }
+        },
+        {
+          "at": 32.343,
+          "action": "查看实际分类",
+          "detail": {
+            "index": 11,
+            "verdict": "unverifiable",
+            "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查"
+          }
+        },
+        {
+          "at": 37.079,
+          "action": "查看实际分类",
+          "detail": {
+            "index": 6,
+            "verdict": "not_found",
+            "summary": "DOI 未注册，且检索不到同名文献，疑似编造"
+          }
+        },
+        {
+          "at": 41.824,
+          "action": "回顾真实结果分布"
+        }
+      ],
+      "waits": [
+        {
+          "start": 3.514,
+          "end": 4.153,
+          "reason": "数据库核验",
+          "keepSeconds": 7
+        }
+      ],
+      "responses": [
+        {
+          "url": "http://127.0.0.1:3210/api/check",
+          "httpStatus": 200,
+          "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\03-results-2026-10-18T09-44-15-941Z\\01--api-check.txt",
+          "receivedAt": 1792316662891
+        }
+      ],
+      "errors": [],
+      "contentStart": 3.038,
+      "referenceResults": [
+        {
+          "index": 1,
+          "verdict": "verified",
+          "summary": "已核实：与数据库记录一致（来源：Crossref）"
+        },
+        {
+          "index": 2,
+          "verdict": "verified",
+          "summary": "已核实：与数据库记录一致（来源：Crossref）"
+        },
+        {
+          "index": 3,
+          "verdict": "verified",
+          "summary": "已核实：与数据库记录一致（来源：Crossref）"
+        },
+        {
+          "index": 4,
+          "verdict": "mismatch",
+          "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）"
+        },
+        {
+          "index": 5,
+          "verdict": "verified",
+          "summary": "已核实：与数据库记录一致（来源：DOI 注册机构）"
+        },
+        {
+          "index": 6,
+          "verdict": "not_found",
+          "summary": "DOI 未注册，且检索不到同名文献，疑似编造"
+        },
+        {
+          "index": 9,
+          "verdict": "retracted",
+          "summary": "文献存在，但已被撤稿，不宜作为论据引用"
+        },
+        {
+          "index": 8,
+          "verdict": "mismatch",
+          "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）"
+        },
+        {
+          "index": 7,
+          "verdict": "not_found",
+          "summary": "DOI 指向的是另一篇文献，引用内容疑似编造"
+        },
+        {
+          "index": 11,
+          "verdict": "unverifiable",
+          "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查"
+        },
+        {
+          "index": 10,
+          "verdict": "verified",
+          "summary": "已核实：与数据库记录一致（来源：Crossref）"
+        },
+        {
+          "index": 13,
+          "verdict": "near_match",
+          "summary": "找到相近文献，但不能确认是同一篇，请人工核对"
+        },
+        {
+          "index": 12,
+          "verdict": "not_found",
+          "summary": "开放数据库中查无此文，疑似不存在（请人工复核）"
+        }
+      ],
+      "contentSeconds": 47.012,
+      "success": true,
+      "finishedAt": "2026-10-18T09:45:07.089Z",
+      "contentEnd": 50.793,
+      "video": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\03-results-2026-10-18T09-44-15-941Z\\raw.webm"
+    },
+    {
+      "id": "04-agent",
+      "title": "中文候选可以继续找线索",
+      "plannedSeconds": 35,
+      "startedAt": "2026-10-18T09:47:00.944Z",
+      "directory": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\04-agent-2026-10-18T09-47-00-427Z",
+      "cues": [
+        {
+          "at": 0,
+          "action": "页面已载入"
+        },
+        {
+          "at": 3.131,
+          "action": "开始体检"
+        },
+        {
+          "at": 3.403,
+          "action": "体检实际结果",
+          "detail": [
+            {
+              "index": 1,
+              "verdict": "unverifiable",
+              "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查"
+            }
+          ]
+        },
+        {
+          "at": 8.163,
+          "action": "中文期刊AI继续查"
+        },
+        {
+          "at": 14.353,
+          "action": "中文期刊实际结论",
+          "detail": "01\n相近候选\n\n费孝通. 社会学调查要发展[J]. 社会, 1983(3): 10-14.\n\n在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者\n\n匹配参考值 50%\n打开知网页面\n收起\n\nAI\nAI 检索 1 次，没有找到能由规则确认的同一篇，结论不变\n\n注：知网的搜索结果没有作者信息，无法确认是不是同一篇；请打开来源页面核对作者\n字段\n引用中的写法\n数据库记录\n比对\n题名\n社会学调查要发展\n社会学调查要发展\n✓一致\n作者\n费孝通\n—\n—未提供\n年份\n1983\n1983\n✓一致\n期刊 / 会议\n社会\n社会\n✓一致\n\n核查过程 · 共 3 步\n\nCROSSREFCrossref 引文检索返回 5 条候选，排第一的是《福建师范大学大学生习武动机调查研究》1ms\nAI 检索「在中文期刊库检索该文题以确认费孝通此文」中文期刊检索（知网、万方、维普）「社会学调查要发展」：7 条候选，最接近《社会学调查要发展》（知网，《社会》，1983）1521ms\nAI 小结在中文期刊库检索到题名《社会学调查要发展》、1983年发表于《社会》的条目，但页面未显示作者，无法据此核对作者费孝通。"
+        },
+        {
+          "at": 29.101,
+          "action": "点击真实来源链接",
+          "detail": "https://wap.cnki.net/touch/web/Journal/Article/SHEH198303003.html"
+        },
+        {
+          "at": 35.93,
+          "action": "真实来源新标签加载状态",
+          "detail": {
+            "contentLoaded": false,
+            "title": ""
+          }
+        }
+      ],
+      "waits": [
+        {
+          "start": 3.312,
+          "end": 3.403,
+          "reason": "数据库核验",
+          "keepSeconds": 7
+        },
+        {
+          "start": 8.236,
+          "end": 13.605,
+          "reason": "中文期刊真实Agent检索",
+          "keepSeconds": 10
+        }
+      ],
+      "responses": [
+        {
+          "url": "http://127.0.0.1:3210/api/check",
+          "httpStatus": 200,
+          "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\04-agent-2026-10-18T09-47-00-427Z\\01--api-check.txt",
+          "receivedAt": 1792316827399
+        },
+        {
+          "url": "http://127.0.0.1:3210/api/agent",
+          "httpStatus": 200,
+          "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\04-agent-2026-10-18T09-47-00-427Z\\02--api-agent.txt",
+          "receivedAt": 1792316837710
+        }
+      ],
+      "errors": [],
+      "contentStart": 3.233,
+      "referenceResults": [
+        {
+          "index": 1,
+          "verdict": "unverifiable",
+          "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查"
+        }
+      ],
+      "agentBodies": [
+        "{\"type\":\"step\",\"step\":{\"action\":\"agent_search\",\"reason\":\"在中文期刊库检索该文题以确认费孝通此文\",\"detail\":\"中文期刊检索（知网、万方、维普）「社会学调查要发展」：7 条候选，最接近《社会学调查要发展》（知网，《社会》，1983）\",\"ok\":true,\"ms\":1521}}\n{\"type\":\"step\",\"step\":{\"action\":\"agent_note\",\"detail\":\"在中文期刊库检索到题名《社会学调查要发展》、1983年发表于《社会》的条目，但页面未显示作者，无法据此核对作者费孝通。\",\"ok\":true,\"ms\":0}}\n{\"type\":\"result\",\"result\":{\"index\":1,\"raw\":\"费孝通. 社会学调查要发展[J]. 社会, 1983(3): 10-14.\",\"issues\":[],\"notes\":[\"知网的搜索结果没有作者信息，无法确认是不是同一篇；请打开来源页面核对作者\"],\"fields\":[{\"field\":\"title\",\"status\":\"match\",\"cited\":\"社会学调查要发展\",\"actual\":\"社会学调查要发展\"},{\"field\":\"authors\",\"status\":\"missing\",\"cited\":\"费孝通\"},{\"field\":\"year\",\"status\":\"match\",\"cited\":\"1983\",\"actual\":\"1983\"},{\"field\":\"venue\",\"status\":\"match\",\"cited\":\"社会\",\"actual\":\"社会\"}],\"steps\":[{\"action\":\"crossref_search\",\"detail\":\"Crossref 引文检索返回 5 条候选，排第一的是《福建师范大学大学生习武动机调查研究》\",\"ok\":true,\"ms\":1},{\"action\":\"agent_search\",\"reason\":\"在中文期刊库检索该文题以确认费孝通此文\",\"detail\":\"中文期刊检索（知网、万方、维普）「社会学调查要发展」：7 条候选，最接近《社会学调查要发展》（知网，《社会》，1983）\",\"ok\":true,\"ms\":1521},{\"action\":\"agent_note\",\"detail\":\"在中文期刊库检索到题名《社会学调查要发展》、1983年发表于《社会》的条目，但页面未显示作者，无法据此核对作者费孝通。\",\"ok\":true,\"ms\":0}],\"parsed\":{\"index\":1,\"raw\":\"费孝通. 社会学调查要发展[J]. 社会, 1983(3): 10-14.\",\"year\":1983,\"titleGuess\":\"社会学调查要发展\",\"authorsGuess\":\"费孝通\",\"venueGuess\":\"社会\",\"kind\":\"journal\",\"lang\":\"zh\"},\"match\":{\"source\":\"web\",\"site\":\"知网\",\"title\":\"社会学调查要发展\",\"authors\":[],\"venue\":\"社会\",\"year\":1983,\"issue\":\"3\",\"type\":\"journal-article\",\"url\":\"https://wap.cnki.net/touch/web/Journal/Article/SHEH198303003.html\"},\"matchStatus\":\"candidate\",\"verdict\":\"near_match\",\"confidence\":0.5,\"summary\":\"在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者\",\"agent\":{\"model\":\"deepseek-flash\",\"toolCalls\":1,\"rounds\":2,\"outcome\":\"unchanged\",\"before\":{\"verdict\":\"unverifiable\",\"summary\":\"开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查\"},\"ms\":5305,\"note\":\"在中文期刊库检索到题名《社会学调查要发展》、1983年发表于《社会》的条目，但页面未显示作者，无法据此核对作者费孝通。\",\"tokens\":3741}}}\n"
+      ],
+      "sourceLink": "https://wap.cnki.net/touch/web/Journal/Article/SHEH198303003.html",
+      "externalPage": {
+        "url": "chrome-error://chromewebdata/",
+        "title": "",
+        "text": "",
+        "screenshot": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\04-agent-2026-10-18T09-47-00-427Z\\external-source.png",
+        "contentLoaded": false,
+        "video": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\04-agent-2026-10-18T09-47-00-427Z\\external-source.webm"
+      },
+      "contentSeconds": 44.68,
+      "success": true,
+      "finishedAt": "2026-10-18T09:47:49.744Z",
+      "contentEnd": 48.8,
+      "video": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\04-agent-2026-10-18T09-47-00-427Z\\raw.webm"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "startedAt": "2026-10-14T02:45:25.632Z",
+  "actualNetwork": true,
+  "mockResponses": false,
+  "narration": "Microsoft Huihui Desktop; synthetic Mandarin",
+  "chapters": [
+    {
+      "id": "01-intro",
+      "title": "一条引用，需要检查两件事",
+      "narration": "大家好，这个项目叫引用体检，面向论文写作中的引用自查。人工智能生成的文字可能附上一条格式完整的参考文献，但格式完整，并不等于文献真实。即使文献确实存在，它也未必支持正文中的那句话。因此，我们把问题分成两个工作区：参考文献体检，检查文献和字段；论断证据核查，检查一条论断和材料之间的关系。设计原则是，让结论回到数据库记录和原文证据，让用户能看见依据，也看见系统暂时无法判断的边界。",
+      "actions": [
+        "打开最终生产版本首页",
+        "缓慢展示两个工作区及项目定位",
+        "停留在隐私与适用范围提示"
+      ],
+      "start": 2.037,
+      "narrationSeconds": 43.189388,
+      "end": 47.229
+    },
+    {
+      "id": "02-import",
+      "title": "先提取，再确认",
+      "narration": "首先演示文件导入。用户可以选择带文字层的 PDF、Word 文档，或者纯文本文件。系统先展示提取到的内容，由用户检查和选择需要使用的范围，再确认放进输入框。这个确认步骤很重要，因为提取文字可能包含页眉、页脚，也可能把参考文献与正文混在一起。当前 PDF 导入读取的是文字层，没有实现图片识别，所以扫描版文档会明确说明限制。文件导入本身不会调用语言模型。只有主动选择相应的人工智能功能后，相关内容才进入模型处理链路。",
+      "actions": [
+        "上传已验收的无隐私PDF或DOCX",
+        "展示提取预览和范围选项",
+        "确认应用参考文献片段"
+      ],
+      "start": 47.236,
+      "narrationSeconds": 46.546032,
+      "end": 95.785
+    },
+    {
+      "id": "03-reference",
+      "title": "模型解析，数据库核实",
+      "narration": "接下来选择人工智能辅助解析，核查这几条公开参考文献。这里使用 DeepSeek 的工具调用，把原文中能够找到的字段交给程序。服务端固定条目边界，并检查模型有没有改写原文、增加条目，或者凭空补出字段。通过校验以后，才查询 Crossref、DOI 注册服务和 OpenAlex。模型不能直接宣布一篇文献存在，也不能随意访问其他网址。大家现在看到的，是实际数据库查询及返回过程。这个设计保留了模型阅读杂乱格式的能力，同时把文献真实性交给可核对的数据源。",
+      "actions": [
+        "选择AI辅助解析",
+        "运行已通过验收的2至3条公开引文",
+        "展示阶段进度和实际返回结果"
+      ],
+      "start": 95.872,
+      "narrationSeconds": 46.623673,
+      "end": 144.494
+    },
+    {
+      "id": "04-report",
+      "title": "错误字段和未完成状态都要留下",
+      "narration": "打开结果后，可以看到题名、作者、年份、期刊和 DOI 的逐项差异，以及对应来源。原始引文和错误证据一直保留，修正写法只来自数据库，并分开展示。相近候选如果没有确认属于同一篇文献，会保留原文并要求人工复核。另一个原则是，查不到不能直接等于编造。中文文献和特殊资料的数据库覆盖并不完整；上游故障也不是文献不存在的证据。完成以后可以下载报告。若过程被停止或查询没有完成，报告会标明状态，不会把部分结果包装成完整的健康结论。",
+      "actions": [
+        "展开一条信息有误的结果",
+        "展示数据库记录和核查过程",
+        "下载Markdown报告并展示文件生成"
+      ],
+      "start": 144.498,
+      "narrationSeconds": 47.324218,
+      "end": 193.831
+    },
+    {
+      "id": "05-claims",
+      "title": "论断必须回到证据",
+      "narration": "现在切换到论断证据核查。我们输入一条正文论断，并使用已经验收的公开 DOI 样例。系统取得可用摘要，或者使用用户自己提供的材料，先分块检索，再让模型只依据召回的片段判断。结果分为支持、部分支持、矛盾和证据不足，并显示来源及原文引句。服务端还会检查片段编号和引句是否真的存在于材料中。请注意，这里显示的来源范围是摘要，所以结论也只适用于摘要提供的信息，不能说成系统已经读完整篇论文。引句真实存在，也不代表对引句的解释必然正确，用户仍应阅读上下文。",
+      "actions": [
+        "切换到论断证据核查",
+        "运行最终真实联网验收成功的公开DOI样例",
+        "展示判断、摘要来源标签、引句和片段定位"
+      ],
+      "start": 193.835,
+      "narrationSeconds": 50.022222,
+      "end": 245.869
+    },
+    {
+      "id": "06-boundaries",
+      "title": "用受控材料检查边界",
+      "narration": "为了检查系统的边界，我们再使用一段明确标为合成的测试材料。它不是一篇真实论文，而是用于验证行为的固定样例。面对材料直接支持的陈述，系统应该给出支持；把陈述改成与原文相反的意思，就应该识别矛盾。如果材料没有讨论这个问题，则应承认证据不足，而不是补写出处。用户也可以停止等待。缺少配置、模型超时或者输出不能通过校验时，界面会提供明确反馈。我们把这些失败路径和正常路径一起检查，因为可信工具不仅要在顺利时有结果，也要在证据不足时知道如何停下来。",
+      "actions": [
+        "使用最终验收的合成证据样例并显示合成标识",
+        "展示支持及矛盾或不足结果",
+        "展示取消入口与错误边界，不模拟成功"
+      ],
+      "start": 245.873,
+      "narrationSeconds": 49.26263,
+      "end": 297.13563,
+      "boundaryOutcome": {
+        "expected": "insufficient_evidence",
+        "actual": "incomplete",
+        "code": "INVALID_MODEL_RESPONSE",
+        "explanation": "模型结果未通过原文引用与结构校验，本次核查未完成",
+        "evidence": "claim-1791946207455.json"
+      }
+    },
+    {
+      "id": "07-evidence",
+      "title": "验证记录和技术边界",
+      "narration": "工程上，项目采用 Next.js、React 和 TypeScript，解析、核验、模型、文档导入与界面分开维护。验证记录也区分固定响应回归、真实数据库、真实模型和浏览器操作。原有二十九条自建文献回归样本全部符合预期，真实文献误报不存在为零比十五。但这只是小样本回归结果，不能宣称现实场景的准确率达到百分之百。新增导入和论断功能的验证范围，也在技术文档中单独列出。桌面和手机交互、报告输出、取消与失败状态，都需要和接口结果一起检查。",
+      "actions": [
+        "展示技术PDF的架构与验证页",
+        "展示最终测试结果及明确样本限制",
+        "展示最终手机布局截图或实际窄屏页面"
+      ],
+      "start": 297.13563,
+      "narrationSeconds": 47.3478,
+      "end": 346.48863
+    },
+    {
+      "id": "08-outlook",
+      "title": "帮助复核，而不是代替学术判断",
+      "narration": "最后说明当前范围。我们实现的是受约束的人工智能工作流，没有把它称为自主规划的完整智能体；工具调用也不等于已经实现 MCP。文档文字提取不冒充多模态理解。当前也没有真实付费用户或商业转化数据。下一步会优先扩大独立测试集，比较不同检索策略，并邀请真实写作者验证节省了多少时间、还需要复核哪些错误。引用体检希望把难以察觉的引用问题，变成可以定位、可以解释、可以人工复核的检查项。它服务于论文自查，不替代阅读全文和研究者自己的学术判断。谢谢大家。",
+      "actions": [
+        "回到项目首页",
+        "展示已知限制和后续方向",
+        "结束于引用体检主画面"
+      ],
+      "start": 346.48863,
+      "narrationSeconds": 49.691247,
+      "end": 398.19263
+    }
+  ],
+  "errors": [],
+  "success": true,
+  "finishedAt": "2026-10-14T02:55:27.906Z",
+  "originalRecordingFailure": "模型结果未通过原文引用与结构校验，本次核查未完成\n+ actual - expected\n\n+ 'incomplete'\n- 'complete'\n",
+  "videoParts": [
+    {
+      "file": "incomplete-demo.webm",
+      "padToSeconds": 297.13563,
+      "reframeFromSeconds": 282,
+      "cropWidth": 1330
+    },
+    {
+      "file": "continuation.webm"
+    }
+  ],
+  "editingNote": "The first six chapters are actual network operations. The final model response was rejected and remains visibly incomplete. Hold that last frame to finish its narration, then append actual technical-document and homepage recording. No failure is changed into a successful result. The screenshot tool briefly expanded the viewport at the end of the first recording; that last second is reframed to remove its gray unused capture area before holding the unchanged failure view."
+}

@@ -58,6 +58,14 @@ docs/competition/media/verification-frames/
 docs/competition/media/*.png
 docs/competition/media/*.log
 
+# 2026-10-18 双视频的本地源素材与剪辑缓存；脚本、讲稿和验收摘要保留
+docs/competition/media/video-2026-10-18/audio/
+docs/competition/media/video-2026-10-18/capture/
+docs/competition/media/video-2026-10-18/edit/
+docs/competition/media/video-2026-10-18/verification-frames/
+docs/competition/media/video-2026-10-18/**/*.log
+docs/competition/media/video-2026-10-18/*.mp3
+
 # 验收过程中的截图、日志和备份快照（结论已写在同目录的 json / md 里）
 eval/**/*.png
 eval/**/*.zip

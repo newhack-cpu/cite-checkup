@@ -1,0 +1,2267 @@
+{
+  "verified": true,
+  "verifiedAt": "2026-10-18T09:57:19.508810+00:00",
+  "kind": "tutorial",
+  "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\output\\video\\引用体检-老师操作教程-1080p.mp4",
+  "sha256": "d8d609be1f9e23dd0a3e78507482fe0008261aae6c53c0467fac768097c50790",
+  "subtitles": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\output\\video\\引用体检-老师操作教程-1080p.srt",
+  "baselineCommit": "474c66a",
+  "productSourceChangedDuringVideoWork": false,
+  "ordinaryMandarin": "zh-CN-YunxiNeural neural synthetic voice, rate -5%",
+  "humanRecording": false,
+  "humanListeningPerformed": false,
+  "audioReview": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio-QA.json",
+  "visualReview": {
+    "passed": true,
+    "inspectedFiles": [
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/01-intro-middle-0015927.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/02-photo-middle-0064144.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/03-reference-middle-0116414.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/03-reference-late-0137776.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/04-agent-late-0198407.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/05-hidden-middle-0232729.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/06-claims-middle-0286747.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/06-claims-late-0312564.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/07-boundaries-middle-0336609.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/08-mcp-late-0386148.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/09-evidence-middle-0406886.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/10-outlook-middle-0450374.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/contact-sheet.jpg",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/01-start-middle-0015651.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/02-import-middle-0050116.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/03-results-middle-0089224.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/03-results-late-0109691.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/04-agent-middle-0133612.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/04-agent-late-0145912.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/05-claims-middle-0170083.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/05-claims-late-0186037.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/06-report-middle-0201840.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/06-report-late-0211616.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/07-feedback-middle-0234115.png",
+      "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/contact-sheet.jpg"
+    ],
+    "frameObservations": [
+      {
+        "kind": "competition",
+        "chapter": "01-intro",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/01-intro-middle-0015927.png",
+        "observations": "章节标题、中文字幕、合成音标记可读；实际论断工作区与介绍不冲突；未见终端或秘密。",
+        "sha256": "dcb5f9168c408d734c59cb3cbf0145a1d46865638639bca6bdb5a74a03949611",
+        "seconds": 15.927103
+      },
+      {
+        "kind": "competition",
+        "chapter": "02-photo",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/02-photo-middle-0064144.png",
+        "observations": "图片转写预览与确认填入按钮可见，合成模拟照片标记清楚，中文字幕可读。",
+        "sha256": "d95c1c49a98a3bf7b68dcb864a7976c0cfaa10ef3aeb16b07c213b3f5f0eff01",
+        "seconds": 64.144208
+      },
+      {
+        "kind": "competition",
+        "chapter": "03-reference",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/03-reference-middle-0116414.png",
+        "observations": "期刊名字段不符与有误印章一致，测试条目标记和字幕可读。该抽帧字幕在泛讲相近候选，当前屏幕聚焦有误条目；属于概念讲解与滚动细节未逐项对应，未把当前结果改标相近候选。",
+        "sha256": "809c1cbdfd7de6186237347bab8dbee7ccc8eea6afb6ef1f7035f41ca0aa5fc3",
+        "seconds": 116.413958
+      },
+      {
+        "kind": "competition",
+        "chapter": "03-reference",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/03-reference-late-0137776.png",
+        "observations": "查无此文结果、DOI未注册及查询来源清楚可见，字幕提示检查来源，与UI核查过程相符。",
+        "sha256": "11e7c1726a8680526b23f2662f3c0600780d882c36c777aa0cee45f8efa72c05",
+        "seconds": 137.775791
+      },
+      {
+        "kind": "competition",
+        "chapter": "04-agent",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/04-agent-late-0198407.png",
+        "observations": "相近候选和缺少作者说明可读，历史中文评测33/75、1条自动确认有明确历史标签，与字幕人工复核说明不冲突。",
+        "sha256": "cb7c24b6d7ce14a2c658c9b22d7e2f8ba488a523991b6b0bfacbec506957abfa",
+        "seconds": 198.407353
+      },
+      {
+        "kind": "competition",
+        "chapter": "05-hidden",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/05-hidden-middle-0232729.png",
+        "observations": "隐藏文字提示和净化后预览可读，合成测试PDF标记明确；可见英文隐藏指令属于被展示的数据，未见终端或秘密。",
+        "sha256": "66218191cf9746256b0e4cd4faf2adbd271e65a3e4756e1aa9d1fb745f43efeb",
+        "seconds": 232.729208
+      },
+      {
+        "kind": "competition",
+        "chapter": "06-claims",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/06-claims-middle-0286747.png",
+        "observations": "证据支持报告、具体论断及研究样本限定可读；等待已缩短标记明确。",
+        "sha256": "aa09f3ae1bc4fd6f0208cc85039ee1bf803ae6c3b530f2fea8756178fd37f701",
+        "seconds": 286.747104
+      },
+      {
+        "kind": "competition",
+        "chapter": "06-claims",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/06-claims-late-0312564.png",
+        "observations": "原文检索片段与来源编号、文本位置可读，七成书籍章节引句可复核；中文字幕无遮挡。",
+        "sha256": "6dc89e511487f77e23b8d58afb4fdafe398f1dde6b41b34a13c8b359c8edec3f",
+        "seconds": 312.564208
+      },
+      {
+        "kind": "competition",
+        "chapter": "07-boundaries",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/07-boundaries-middle-0336609.png",
+        "observations": "与证据矛盾报告保留所核查的400名论断及40名证据；左侧已在编辑下一论断，是操作中间状态；合成研究材料标记可读。",
+        "sha256": "a5f86813bb630f77badc09786e41d28ff6e20df33fff4af44e4ec87b23c1217e",
+        "seconds": 336.608937
+      },
+      {
+        "kind": "competition",
+        "chapter": "08-mcp",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/08-mcp-late-0386148.png",
+        "observations": "本地MCP两条结果为已核实/年份有误，2017对2015差异明确；真实stdio集成演示页脚及等待缩短标记可见，没有伪称Claude或Cursor。",
+        "sha256": "d56a84a6f41a049a53d3025a2b7c1b1a74a44adc3316eaf499b4c21f183a63f7",
+        "seconds": 386.148437
+      },
+      {
+        "kind": "competition",
+        "chapter": "09-evidence",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/09-evidence-middle-0406886.png",
+        "observations": "技术说明PDF表格、历史样本数量与解释范围可读，字幕将旧口径比例限定于各批样本，没有展示终端或密钥。",
+        "sha256": "aa6215c33d13267285183ca446ecd5e080292f9ffa5cc623b404afdf5e129d75",
+        "seconds": 406.886041
+      },
+      {
+        "kind": "competition",
+        "chapter": "10-outlook",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/10-outlook-middle-0450374.png",
+        "observations": "结尾页展示人工复核与原文阅读提醒；章节标题和字幕可读，无敏感控制台内容。",
+        "sha256": "fdcd9931f80fc7d05f54bbd09a1977d51a8b0a8918a7fb94eced4ac6c674cae6",
+        "seconds": 450.373687
+      },
+      {
+        "kind": "competition",
+        "chapter": "all",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/competition/contact-sheet.jpg",
+        "observations": "实际查看主片10章、每章早中晚共30格联系表，画面布局连续一致，无黑屏/空白外站/终端异常。",
+        "sha256": "024f57466ce29c0ec49c8cb2e8f7a89f4b0cf4a90eb7448ec81cae4195f0c353"
+      },
+      {
+        "kind": "tutorial",
+        "chapter": "01-start",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/01-start-middle-0015651.png",
+        "observations": "送检单、标准核验说明与开放数据库字幕对应，章节/合成音标记可读。",
+        "sha256": "0f7860ac8a6c2c54b88f77aceba2ab29aa949c91481519cce4ea522039f6fd1d",
+        "seconds": 15.650812
+      },
+      {
+        "kind": "tutorial",
+        "chapter": "02-import",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/02-import-middle-0050116.png",
+        "observations": "PDF预览、参考文献区域选择与确认填入按钮清楚，第二条期刊故意改错标记可读。",
+        "sha256": "f1698a6ed85ab7f5368b7e7bbf655affe5cf93867807bdea0efab78f7f6ed511",
+        "seconds": 50.116042
+      },
+      {
+        "kind": "tutorial",
+        "chapter": "03-results",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/03-results-middle-0089224.png",
+        "observations": "候选文献的逐字段表格及需确认同一篇的说明可读；字幕在泛讲待人工结论，未改写所显示候选判定。",
+        "sha256": "219ee0da3457da40404f595865fbb09ec0d7b8f5024205faae8273710b586368",
+        "seconds": 89.223666
+      },
+      {
+        "kind": "tutorial",
+        "chapter": "03-results",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/03-results-late-0109691.png",
+        "observations": "13条统计及各类结果清楚，最后字幕强调人工核对；测试条目声明可见。",
+        "sha256": "6aa91552e6fbc77dc908340ff0dbeacafe9deff2541455a8775782032e8c8039",
+        "seconds": 109.69077
+      },
+      {
+        "kind": "tutorial",
+        "chapter": "04-agent",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/04-agent-middle-0133612.png",
+        "observations": "重录教师04显示作者缺失的相近候选及AI检索过程，与字幕要求点击来源核对相符。",
+        "sha256": "4d7fcb6bee3d4d9c3525df4f39e7a76ccf50038e0e3c49c99c1f9ddde8add965",
+        "seconds": 133.611562
+      },
+      {
+        "kind": "tutorial",
+        "chapter": "04-agent",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/04-agent-late-0145912.png",
+        "observations": "重录教师04尾段仍在本应用候选结果页，没有旧版空白知网外部页；字幕不能替代最终确认与UI一致。",
+        "sha256": "9d33b67c0dff6a2cbd4287cbee4159b3fd1203f43c1a1de288f774c05ef43f6a",
+        "seconds": 145.912353
+      },
+      {
+        "kind": "tutorial",
+        "chapter": "05-claims",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/05-claims-middle-0170083.png",
+        "observations": "等待状态真实可见，停止核查按钮及等待已缩短标记可读；字幕在说明可能的结果类别，没有伪称结果已完成。",
+        "sha256": "3967166bbeb1976a0bb878caa9e7d57a5cbe41152040b349cef02ed64d447c0f",
+        "seconds": 170.082895
+      },
+      {
+        "kind": "tutorial",
+        "chapter": "05-claims",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/05-claims-late-0186037.png",
+        "observations": "原文证据段及55%/18%引句、片段编号和文本位置可读；字幕强调研究对象与适用条件。",
+        "sha256": "d71ab5e8ea2fd1f5bc455ecd121d9d82278971183122559edcb84e7ebe300976",
+        "seconds": 186.036833
+      },
+      {
+        "kind": "tutorial",
+        "chapter": "06-report",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/06-report-middle-0201840.png",
+        "observations": "参考文献报告中的两条计数、已核实/有误及下载按钮可读；与保留查询过程的字幕一致。",
+        "sha256": "75d4af721d7d0467e495bcdde2bf034cd92721c90fdaa3b583df7d1f3e968276",
+        "seconds": 201.84
+      },
+      {
+        "kind": "tutorial",
+        "chapter": "06-report",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/06-report-late-0211616.png",
+        "observations": "复制修正版清单操作及原始输入仍可见，字幕明确保留原列表、人工复核；无误导自动交付。",
+        "sha256": "0711c4993a3deb91f0b1304c67b2070931c74b665826224717a4506e5ab10bd9",
+        "seconds": 211.616333
+      },
+      {
+        "kind": "tutorial",
+        "chapter": "07-feedback",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/07-feedback-middle-0234115.png",
+        "observations": "空白反馈表可读，未填真实姓名或用户隐私；字幕只填编号学科、不写姓名与场景一致。",
+        "sha256": "826eefdfbf242837b213f2bb478cc5de8739ef95e807f9e30235895b8d7968d0",
+        "seconds": 234.115271
+      },
+      {
+        "kind": "tutorial",
+        "chapter": "all",
+        "file": "D:/Darks/projects/cite-checkup/docs/competition/media/video-2026-10-18/verification-frames/tutorial/contact-sheet.jpg",
+        "observations": "实际查看修复后教程7章、每章早中晚共21格联系表，包含重录教师04和缩短40ms的教师05；无黑屏/空白外站/终端异常。",
+        "sha256": "e758bbf977b0e59df358b6f31a6cd2f6330156b1bad6e5cfc1094419f318c64e"
+      }
+    ],
+    "findings": [
+      {
+        "severity": "info",
+        "blocking": false,
+        "kind": "competition",
+        "chapter": "03-reference",
+        "description": "中段字幕概括相近候选时，画面正在滚动查看一条确认有误的字段。字幕没有指称当前条目为相近候选，UI也保留有误印章；这是概念讲解与细节画面未逐项同步，不构成结论改写。"
+      },
+      {
+        "severity": "info",
+        "blocking": false,
+        "kind": "competition",
+        "chapter": "07-boundaries",
+        "description": "中段保留上一条400名论断的矛盾报告，同时左侧输入开始编辑下一论断；报告内原论断仍明确可见，属于真实操作中间状态。"
+      },
+      {
+        "severity": "resolved",
+        "blocking": false,
+        "kind": "tutorial",
+        "chapter": "04-agent",
+        "description": "已实际查看重录后的中段和尾段，停留于本应用候选结果页，旧版空白外站画面不在本次审核版本。"
+      },
+      {
+        "severity": "resolved",
+        "blocking": false,
+        "kind": "tutorial",
+        "chapter": "05-claims",
+        "description": "首次机器验收发现容器时长较视频流多40ms。主执行者仅缩短章尾40ms后重新合成；新版完整机器验收通过，未补帧。"
+      }
+    ],
+    "humanListeningPerformed": false,
+    "reviewMethod": "Actual model visual inspection of both per-chapter contact sheets and 23 full-resolution extracted frames, covering all 17 chapters. No audio listening or continuous full-film playback was performed.",
+    "limitations": [
+      "抽帧检查不等于逐帧观看，不能排除抽样间隙的瞬时画面问题。",
+      "没有人工听审；语音文件的独立声学与四章本地ASR抽查记录见audio-QA.json。",
+      "真实联网、无mock/循环/冻帧的依据是录屏/剪辑声明、文件对应和连续源区间，不由静态画面推断。",
+      "字幕有分句切换；部分概念说明配合实际结果滚动展示，不是每句字幕都指称当时屏幕中某一条结果。"
+    ],
+    "supplementalRootReview": {
+      "source": "Root agent collaboration message",
+      "reportedInspectedChapters": {
+        "competition": [
+          "contact sheet",
+          "02-photo",
+          "04-agent",
+          "06-claims",
+          "08-mcp",
+          "09-evidence"
+        ],
+        "tutorial": [
+          "05-claims",
+          "06-report"
+        ]
+      },
+      "reportedResult": "无新增问题"
+    },
+    "unmodifiedFirstFourTutorialChapterFramesReusedAfterHashComparison": true,
+    "checkedAt": "2026-10-18T09:56:33.523930+00:00",
+    "videos": [
+      {
+        "kind": "competition",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\competition\\final.mp4",
+        "sha256": "3cfd1f472d36dbaa8eec21f545123b50233ccb7ff22d8ab022dcd77802e53205",
+        "chaptersInspected": [
+          "01-intro",
+          "02-photo",
+          "03-reference",
+          "04-agent",
+          "05-hidden",
+          "06-claims",
+          "07-boundaries",
+          "08-mcp",
+          "09-evidence",
+          "10-outlook"
+        ],
+        "fullResolutionFramesInspected": 12,
+        "contactSheet": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\competition\\contact-sheet.jpg"
+      },
+      {
+        "kind": "tutorial",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\final.mp4",
+        "sha256": "d8d609be1f9e23dd0a3e78507482fe0008261aae6c53c0467fac768097c50790",
+        "chaptersInspected": [
+          "01-start",
+          "02-import",
+          "03-results",
+          "04-agent",
+          "05-claims",
+          "06-report",
+          "07-feedback"
+        ],
+        "fullResolutionFramesInspected": 11,
+        "contactSheet": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\contact-sheet.jpg"
+      }
+    ],
+    "inspectedFileCount": 25,
+    "fullResolutionFramesInspected": 23
+  },
+  "actualNetworkRecording": true,
+  "mockedResponses": false,
+  "loopedVideo": false,
+  "freezeFramePadding": false,
+  "editingNote": "Actual production recordings; waits shortened only where listed and marked on-screen. Synthetic demonstration inputs are labelled. Neural narration and burned captions are added; application results are unchanged.",
+  "probe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "mime_codec_string": "avc1.640028",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "has_b_frames": 2,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "16:9",
+        "pix_fmt": "yuv420p",
+        "level": 40,
+        "color_range": "tv",
+        "color_space": "bt470bg",
+        "chroma_location": "left",
+        "field_order": "progressive",
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "time_base": "1/12800",
+        "start_pts": 269,
+        "start_time": "0.021016",
+        "duration_ts": 3158016,
+        "duration": "246.720000",
+        "bit_rate": "1055464",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "6168",
+        "extradata_size": 50,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "encoder": "Lavc62.28.101 libx264"
+        }
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "codec_long_name": "AAC (Advanced Audio Coding)",
+        "profile": "LC",
+        "codec_type": "audio",
+        "codec_tag_string": "mp4a",
+        "codec_tag": "0x6134706d",
+        "mime_codec_string": "mp4a.40.2",
+        "sample_fmt": "fltp",
+        "sample_rate": "48000",
+        "channels": 1,
+        "channel_layout": "mono",
+        "bits_per_sample": 0,
+        "initial_padding": 0,
+        "id": "0x2",
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/48000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 11843584,
+        "duration": "246.741333",
+        "bit_rate": "145900",
+        "nb_frames": "11382",
+        "extradata_size": 5,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "SoundHandler"
+        }
+      }
+    ],
+    "format": {
+      "filename": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\final.mp4",
+      "nb_streams": 2,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "246.741333",
+      "size": "37237694",
+      "bit_rate": "1207343",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf62.12.101"
+      }
+    }
+  },
+  "machineAudit": {
+    "kind": "tutorial",
+    "checks": [
+      {
+        "name": "input_exists:final",
+        "passed": true,
+        "severity": "error",
+        "details": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\final.mp4"
+      },
+      {
+        "name": "input_exists:editManifest",
+        "passed": true,
+        "severity": "error",
+        "details": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\edit-manifest.json"
+      },
+      {
+        "name": "input_exists:captureManifest",
+        "passed": true,
+        "severity": "error",
+        "details": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\tutorial-capture-manifest.json"
+      },
+      {
+        "name": "input_exists:audioManifest",
+        "passed": true,
+        "severity": "error",
+        "details": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\tutorial\\manifest.json"
+      },
+      {
+        "name": "input_exists:script",
+        "passed": true,
+        "severity": "error",
+        "details": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\tutorial-narration.json"
+      },
+      {
+        "name": "input_exists:subtitles",
+        "passed": true,
+        "severity": "error",
+        "details": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\subtitles.srt"
+      },
+      {
+        "name": "input_exists:assembler",
+        "passed": true,
+        "severity": "error",
+        "details": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\assemble_current.py"
+      },
+      {
+        "name": "chapter_order_and_completeness",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "expected": [
+            "01-start",
+            "02-import",
+            "03-results",
+            "04-agent",
+            "05-claims",
+            "06-report",
+            "07-feedback"
+          ],
+          "actual": [
+            "01-start",
+            "02-import",
+            "03-results",
+            "04-agent",
+            "05-claims",
+            "06-report",
+            "07-feedback"
+          ]
+        }
+      },
+      {
+        "name": "chapter_ids_unique",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "audio_chapters_match_script",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "audio_text_matches_current_script",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "audio_manifest_speech_total_consistent",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "capture_successful_chapters_present",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "manifest_declares_real_network_no_mock",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "captureActualNetwork": true,
+          "captureMockedResponses": false,
+          "editActualNetwork": true,
+          "editLoopedVideo": false,
+          "editFreezeFramePadding": false
+        }
+      },
+      {
+        "name": "manifest_declares_no_loop_or_freeze_padding",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "captureActualNetwork": true,
+          "captureMockedResponses": false,
+          "editActualNetwork": true,
+          "editLoopedVideo": false,
+          "editFreezeFramePadding": false
+        }
+      },
+      {
+        "name": "approved_synthetic_voice",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "single_video_and_audio_stream",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "mp4_container",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "1920x1080_h264_yuv420p",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "25fps",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "average": "25/1",
+          "nominal": "25/1"
+        }
+      },
+      {
+        "name": "aac_48000hz",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "audio_video_end_difference_under_0_2_seconds",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "differenceSeconds": 0.0003169999999954598,
+          "video": {
+            "packetCount": 6168,
+            "firstPts": 0.021016,
+            "lastEnd": 246.741016
+          },
+          "audio": {
+            "packetCount": 11382,
+            "firstPts": 0.0,
+            "lastEnd": 246.741333
+          }
+        }
+      },
+      {
+        "name": "full_video_and_audio_decode",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "exitCode": 0,
+          "seconds": 18.06,
+          "stderr": ""
+        }
+      },
+      {
+        "name": "chapter:01-start:files_exist",
+        "passed": true,
+        "severity": "error",
+        "details": [
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\01-start.mp4",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\01-start-2026-10-18T09-34-36-930Z\\raw.webm",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\tutorial\\01-start.wav",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\01-start.ass"
+        ]
+      },
+      {
+        "name": "chapter:01-start:matches_successful_capture",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:01-start:no_conflicting_mock_loop_or_freeze_flags",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:01-start:source_has_no_recorded_errors",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:01-start:timeline_contiguous",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "start": 0.0,
+          "previousEnd": 0.0,
+          "duration": 28.36,
+          "end": 28.36
+        }
+      },
+      {
+        "name": "chapter:01-start:duration_matches_media",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:01-start:narration_duration_matches",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:01-start:narration_fits_chapter",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "offset": 0.6,
+          "voiceSeconds": 26.784,
+          "chapterSeconds": 28.36
+        }
+      },
+      {
+        "name": "chapter:01-start:source_intervals_valid_and_monotonic",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "sourceDuration": 35.0,
+          "intervals": [
+            [
+              3.333,
+              31.692999999999998
+            ]
+          ]
+        }
+      },
+      {
+        "name": "chapter:01-start:source_duration_covers_output_without_video_padding",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "selectedSourceSeconds": 28.36,
+          "outputSeconds": 28.36
+        }
+      },
+      {
+        "name": "chapter:01-start:intervals_inside_capture_content",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:01-start:no_repeated_source_intervals_in_this_final",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:01-start:cuts_only_in_declared_waits",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:01-start:ass_all_events_within_chapter",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:01-start:synthetic_voice_disclosed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:01-start:shortened_wait_disclosed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:01-start:caption_count_matches_voice",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "ass": 6,
+          "voice": 6
+        }
+      },
+      {
+        "name": "chapter:01-start:voice_cues_complete_and_bounded",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:01-start:ass_captions_match_voice_times_and_text",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:01-start:last_spoken_word_not_trimmed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:02-import:files_exist",
+        "passed": true,
+        "severity": "error",
+        "details": [
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\02-import.mp4",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\02-import-2026-10-18T09-35-16-911Z\\raw.webm",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\tutorial\\02-import.wav",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\02-import.ass"
+        ]
+      },
+      {
+        "name": "chapter:02-import:matches_successful_capture",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:02-import:no_conflicting_mock_loop_or_freeze_flags",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:02-import:source_has_no_recorded_errors",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:02-import:timeline_contiguous",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "start": 28.36,
+          "previousEnd": 28.36,
+          "duration": 37.68,
+          "end": 66.03999999999999
+        }
+      },
+      {
+        "name": "chapter:02-import:duration_matches_media",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:02-import:narration_duration_matches",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:02-import:narration_fits_chapter",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "offset": 0.6,
+          "voiceSeconds": 36.096,
+          "chapterSeconds": 37.68
+        }
+      },
+      {
+        "name": "chapter:02-import:source_intervals_valid_and_monotonic",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "sourceDuration": 44.56,
+          "intervals": [
+            [
+              2.978,
+              40.658
+            ]
+          ]
+        }
+      },
+      {
+        "name": "chapter:02-import:source_duration_covers_output_without_video_padding",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "selectedSourceSeconds": 37.68,
+          "outputSeconds": 37.68
+        }
+      },
+      {
+        "name": "chapter:02-import:intervals_inside_capture_content",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:02-import:no_repeated_source_intervals_in_this_final",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:02-import:cuts_only_in_declared_waits",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:02-import:ass_all_events_within_chapter",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:02-import:synthetic_voice_disclosed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:02-import:shortened_wait_disclosed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:02-import:caption_count_matches_voice",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "ass": 8,
+          "voice": 8
+        }
+      },
+      {
+        "name": "chapter:02-import:voice_cues_complete_and_bounded",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:02-import:ass_captions_match_voice_times_and_text",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:02-import:last_spoken_word_not_trimmed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:03-results:files_exist",
+        "passed": true,
+        "severity": "error",
+        "details": [
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\03-results.mp4",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\03-results-2026-10-18T09-44-15-941Z\\raw.webm",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\tutorial\\03-results.wav",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\03-results.ass"
+        ]
+      },
+      {
+        "name": "chapter:03-results:matches_successful_capture",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:03-results:no_conflicting_mock_loop_or_freeze_flags",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:03-results:source_has_no_recorded_errors",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:03-results:timeline_contiguous",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "start": 66.03999999999999,
+          "previousEnd": 66.03999999999999,
+          "duration": 45.84,
+          "end": 111.88
+        }
+      },
+      {
+        "name": "chapter:03-results:duration_matches_media",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:03-results:narration_duration_matches",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:03-results:narration_fits_chapter",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "offset": 0.6,
+          "voiceSeconds": 44.256,
+          "chapterSeconds": 45.84
+        }
+      },
+      {
+        "name": "chapter:03-results:source_intervals_valid_and_monotonic",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "sourceDuration": 51.64,
+          "intervals": [
+            [
+              3.038,
+              48.878
+            ]
+          ]
+        }
+      },
+      {
+        "name": "chapter:03-results:source_duration_covers_output_without_video_padding",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "selectedSourceSeconds": 45.84,
+          "outputSeconds": 45.84
+        }
+      },
+      {
+        "name": "chapter:03-results:intervals_inside_capture_content",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:03-results:no_repeated_source_intervals_in_this_final",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:03-results:cuts_only_in_declared_waits",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:03-results:ass_all_events_within_chapter",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:03-results:synthetic_voice_disclosed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:03-results:shortened_wait_disclosed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:03-results:caption_count_matches_voice",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "ass": 11,
+          "voice": 11
+        }
+      },
+      {
+        "name": "chapter:03-results:voice_cues_complete_and_bounded",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:03-results:ass_captions_match_voice_times_and_text",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:03-results:last_spoken_word_not_trimmed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:04-agent:files_exist",
+        "passed": true,
+        "severity": "error",
+        "details": [
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\04-agent.mp4",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\04-agent-2026-10-18T09-47-00-427Z\\raw.webm",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\tutorial\\04-agent.wav",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\04-agent.ass"
+        ]
+      },
+      {
+        "name": "chapter:04-agent:matches_successful_capture",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:04-agent:no_conflicting_mock_loop_or_freeze_flags",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:04-agent:source_has_no_recorded_errors",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:04-agent:timeline_contiguous",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "start": 111.88,
+          "previousEnd": 111.88,
+          "duration": 37.96,
+          "end": 149.84
+        }
+      },
+      {
+        "name": "chapter:04-agent:duration_matches_media",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:04-agent:narration_duration_matches",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:04-agent:narration_fits_chapter",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "offset": 0.6,
+          "voiceSeconds": 36.384,
+          "chapterSeconds": 37.96
+        }
+      },
+      {
+        "name": "chapter:04-agent:source_intervals_valid_and_monotonic",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "sourceDuration": 49.64,
+          "intervals": [
+            [
+              3.233,
+              41.193
+            ]
+          ]
+        }
+      },
+      {
+        "name": "chapter:04-agent:source_duration_covers_output_without_video_padding",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "selectedSourceSeconds": 37.96,
+          "outputSeconds": 37.96
+        }
+      },
+      {
+        "name": "chapter:04-agent:intervals_inside_capture_content",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:04-agent:no_repeated_source_intervals_in_this_final",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:04-agent:cuts_only_in_declared_waits",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:04-agent:ass_all_events_within_chapter",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:04-agent:synthetic_voice_disclosed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:04-agent:shortened_wait_disclosed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:04-agent:caption_count_matches_voice",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "ass": 6,
+          "voice": 6
+        }
+      },
+      {
+        "name": "chapter:04-agent:voice_cues_complete_and_bounded",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:04-agent:ass_captions_match_voice_times_and_text",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:04-agent:last_spoken_word_not_trimmed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:05-claims:files_exist",
+        "passed": true,
+        "severity": "error",
+        "details": [
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\05-claims.mp4",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z\\raw.webm",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\tutorial\\05-claims.wav",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\05-claims.ass"
+        ]
+      },
+      {
+        "name": "chapter:05-claims:matches_successful_capture",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:05-claims:no_conflicting_mock_loop_or_freeze_flags",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:05-claims:source_has_no_recorded_errors",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:05-claims:timeline_contiguous",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "start": 149.84,
+          "previousEnd": 149.84,
+          "duration": 40.04,
+          "end": 189.88
+        }
+      },
+      {
+        "name": "chapter:05-claims:duration_matches_media",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:05-claims:narration_duration_matches",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:05-claims:narration_fits_chapter",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "offset": 0.6,
+          "voiceSeconds": 38.496,
+          "chapterSeconds": 40.04
+        }
+      },
+      {
+        "name": "chapter:05-claims:source_intervals_valid_and_monotonic",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "sourceDuration": 84.32,
+          "intervals": [
+            [
+              8.204,
+              25.880000000000003
+            ],
+            [
+              32.785000000000004,
+              55.189
+            ]
+          ]
+        }
+      },
+      {
+        "name": "chapter:05-claims:source_duration_covers_output_without_video_padding",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "selectedSourceSeconds": 40.08,
+          "outputSeconds": 40.04
+        }
+      },
+      {
+        "name": "chapter:05-claims:intervals_inside_capture_content",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:05-claims:no_repeated_source_intervals_in_this_final",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:05-claims:cuts_only_in_declared_waits",
+        "passed": true,
+        "severity": "error",
+        "details": [
+          {
+            "start": 17.676000000000002,
+            "end": 24.581000000000003
+          }
+        ]
+      },
+      {
+        "name": "chapter:05-claims:ass_all_events_within_chapter",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:05-claims:synthetic_voice_disclosed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:05-claims:shortened_wait_disclosed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:05-claims:caption_count_matches_voice",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "ass": 8,
+          "voice": 8
+        }
+      },
+      {
+        "name": "chapter:05-claims:voice_cues_complete_and_bounded",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:05-claims:ass_captions_match_voice_times_and_text",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:05-claims:last_spoken_word_not_trimmed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:06-report:files_exist",
+        "passed": true,
+        "severity": "error",
+        "details": [
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\06-report.mp4",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z\\raw.webm",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\tutorial\\06-report.wav",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\06-report.ass"
+        ]
+      },
+      {
+        "name": "chapter:06-report:matches_successful_capture",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:06-report:no_conflicting_mock_loop_or_freeze_flags",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:06-report:source_has_no_recorded_errors",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:06-report:timeline_contiguous",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "start": 189.88,
+          "previousEnd": 189.88,
+          "duration": 25.92,
+          "end": 215.8
+        }
+      },
+      {
+        "name": "chapter:06-report:duration_matches_media",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:06-report:narration_duration_matches",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:06-report:narration_fits_chapter",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "offset": 0.6,
+          "voiceSeconds": 24.336,
+          "chapterSeconds": 25.92
+        }
+      },
+      {
+        "name": "chapter:06-report:source_intervals_valid_and_monotonic",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "sourceDuration": 84.32,
+          "intervals": [
+            [
+              55.189,
+              81.10900000000001
+            ]
+          ]
+        }
+      },
+      {
+        "name": "chapter:06-report:source_duration_covers_output_without_video_padding",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "selectedSourceSeconds": 25.92000000000001,
+          "outputSeconds": 25.92
+        }
+      },
+      {
+        "name": "chapter:06-report:intervals_inside_capture_content",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:06-report:no_repeated_source_intervals_in_this_final",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:06-report:cuts_only_in_declared_waits",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:06-report:ass_all_events_within_chapter",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:06-report:synthetic_voice_disclosed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:06-report:shortened_wait_disclosed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:06-report:caption_count_matches_voice",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "ass": 5,
+          "voice": 5
+        }
+      },
+      {
+        "name": "chapter:06-report:voice_cues_complete_and_bounded",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:06-report:ass_captions_match_voice_times_and_text",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:06-report:last_spoken_word_not_trimmed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:07-feedback:files_exist",
+        "passed": true,
+        "severity": "error",
+        "details": [
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\07-feedback.mp4",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\07-feedback-2026-10-18T09-36-06-125Z\\raw.webm",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\tutorial\\07-feedback.wav",
+          "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\07-feedback.ass"
+        ]
+      },
+      {
+        "name": "chapter:07-feedback:matches_successful_capture",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:07-feedback:no_conflicting_mock_loop_or_freeze_flags",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:07-feedback:source_has_no_recorded_errors",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:07-feedback:timeline_contiguous",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "start": 215.8,
+          "previousEnd": 215.8,
+          "duration": 30.92,
+          "end": 246.72000000000003
+        }
+      },
+      {
+        "name": "chapter:07-feedback:duration_matches_media",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:07-feedback:narration_duration_matches",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:07-feedback:narration_fits_chapter",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "offset": 0.6,
+          "voiceSeconds": 29.352,
+          "chapterSeconds": 30.92
+        }
+      },
+      {
+        "name": "chapter:07-feedback:source_intervals_valid_and_monotonic",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "sourceDuration": 35.88,
+          "intervals": [
+            [
+              1.854,
+              32.774
+            ]
+          ]
+        }
+      },
+      {
+        "name": "chapter:07-feedback:source_duration_covers_output_without_video_padding",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "selectedSourceSeconds": 30.92,
+          "outputSeconds": 30.92
+        }
+      },
+      {
+        "name": "chapter:07-feedback:intervals_inside_capture_content",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:07-feedback:no_repeated_source_intervals_in_this_final",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:07-feedback:cuts_only_in_declared_waits",
+        "passed": true,
+        "severity": "error",
+        "details": []
+      },
+      {
+        "name": "chapter:07-feedback:ass_all_events_within_chapter",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:07-feedback:synthetic_voice_disclosed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:07-feedback:shortened_wait_disclosed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:07-feedback:caption_count_matches_voice",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "ass": 6,
+          "voice": 6
+        }
+      },
+      {
+        "name": "chapter:07-feedback:voice_cues_complete_and_bounded",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:07-feedback:ass_captions_match_voice_times_and_text",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter:07-feedback:last_spoken_word_not_trimmed",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "chapter_total_matches_final",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "chapterTotal": 246.72000000000003,
+          "finalDuration": 246.741333,
+          "manifestTotal": 246.72000000000003
+        }
+      },
+      {
+        "name": "edit_manifest_total_consistent",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "srt_caption_count_and_indices",
+        "passed": true,
+        "severity": "error",
+        "details": {
+          "actual": 50,
+          "expected": 50
+        }
+      },
+      {
+        "name": "srt_matches_all_chapter_voice_cues",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "srt_boundaries_and_no_overlap",
+        "passed": true,
+        "severity": "error"
+      },
+      {
+        "name": "verification_frames_extracted",
+        "passed": true,
+        "severity": "error"
+      }
+    ],
+    "chapters": [
+      {
+        "id": "01-start",
+        "start": 0.0,
+        "end": 28.36,
+        "duration": 28.36,
+        "sourceFile": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\01-start-2026-10-18T09-34-36-930Z\\raw.webm",
+        "sourceBytes": 3669701,
+        "sourceDuration": 35.0,
+        "sourceIntervals": [
+          [
+            3.333,
+            31.692999999999998
+          ]
+        ],
+        "narrationSeconds": 26.784,
+        "narrationOffset": 0.6,
+        "lastTtsBoundaryEnd": 25.85525,
+        "captionCount": 6,
+        "removedWaits": [],
+        "reuseSource": null,
+        "assSha256": "1b117ebabcbf9fcd3d6d6a3093421b0e7146b127acd44b2fa1e6df0f0eeb9a76"
+      },
+      {
+        "id": "02-import",
+        "start": 28.36,
+        "end": 66.03999999999999,
+        "duration": 37.68,
+        "sourceFile": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\02-import-2026-10-18T09-35-16-911Z\\raw.webm",
+        "sourceBytes": 4461564,
+        "sourceDuration": 44.56,
+        "sourceIntervals": [
+          [
+            2.978,
+            40.658
+          ]
+        ],
+        "narrationSeconds": 36.096,
+        "narrationOffset": 0.6,
+        "lastTtsBoundaryEnd": 35.171083,
+        "captionCount": 8,
+        "removedWaits": [],
+        "reuseSource": null,
+        "assSha256": "1a703a80c036ed31d5e564a2f45460ca3a5096b38e1416b56382037a9ed70b9e"
+      },
+      {
+        "id": "03-results",
+        "start": 66.03999999999999,
+        "end": 111.88,
+        "duration": 45.84,
+        "sourceFile": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\03-results-2026-10-18T09-44-15-941Z\\raw.webm",
+        "sourceBytes": 6926829,
+        "sourceDuration": 51.64,
+        "sourceIntervals": [
+          [
+            3.038,
+            48.878
+          ]
+        ],
+        "narrationSeconds": 44.256,
+        "narrationOffset": 0.6,
+        "lastTtsBoundaryEnd": 43.31575,
+        "captionCount": 11,
+        "removedWaits": [],
+        "reuseSource": null,
+        "assSha256": "654c7ec6c0f77b71359af1c77a29747fa2dc5fd7dcb3439965a081b26176c21c"
+      },
+      {
+        "id": "04-agent",
+        "start": 111.88,
+        "end": 149.84,
+        "duration": 37.96,
+        "sourceFile": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\04-agent-2026-10-18T09-47-00-427Z\\raw.webm",
+        "sourceBytes": 5102429,
+        "sourceDuration": 49.64,
+        "sourceIntervals": [
+          [
+            3.233,
+            41.193
+          ]
+        ],
+        "narrationSeconds": 36.384,
+        "narrationOffset": 0.6,
+        "lastTtsBoundaryEnd": 35.460499,
+        "captionCount": 6,
+        "removedWaits": [],
+        "reuseSource": null,
+        "assSha256": "4d8c2aa61eac96db69483a7cc78d190153338f0d00f79a7fe6c8fb8fab17c6a2"
+      },
+      {
+        "id": "05-claims",
+        "start": 149.84,
+        "end": 189.88,
+        "duration": 40.04,
+        "sourceFile": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z\\raw.webm",
+        "sourceBytes": 9035621,
+        "sourceDuration": 84.32,
+        "sourceIntervals": [
+          [
+            8.204,
+            25.880000000000003
+          ],
+          [
+            32.785000000000004,
+            55.189
+          ]
+        ],
+        "narrationSeconds": 38.496,
+        "narrationOffset": 0.6,
+        "lastTtsBoundaryEnd": 37.565791,
+        "captionCount": 8,
+        "removedWaits": [
+          {
+            "start": 17.676000000000002,
+            "end": 24.581000000000003
+          }
+        ],
+        "reuseSource": "同一次连续真实录制的独立时间段；未循环、未重放响应",
+        "assSha256": "17fd74c11d31cec30b5cf7ac5a5ea1db5747b9edc9b32df592686c0827e49eb3"
+      },
+      {
+        "id": "06-report",
+        "start": 189.88,
+        "end": 215.8,
+        "duration": 25.92,
+        "sourceFile": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z\\raw.webm",
+        "sourceBytes": 9035621,
+        "sourceDuration": 84.32,
+        "sourceIntervals": [
+          [
+            55.189,
+            81.10900000000001
+          ]
+        ],
+        "narrationSeconds": 24.336,
+        "narrationOffset": 0.6,
+        "lastTtsBoundaryEnd": 23.407916,
+        "captionCount": 5,
+        "removedWaits": [],
+        "reuseSource": "同一次连续真实录制的独立时间段；未循环、未重放响应",
+        "assSha256": "4a337a16148570e59c3eb755705c94679d6d26ac740bee0866d26939ea1ccd42"
+      },
+      {
+        "id": "07-feedback",
+        "start": 215.8,
+        "end": 246.72000000000003,
+        "duration": 30.92,
+        "sourceFile": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\07-feedback-2026-10-18T09-36-06-125Z\\raw.webm",
+        "sourceBytes": 3429225,
+        "sourceDuration": 35.88,
+        "sourceIntervals": [
+          [
+            1.854,
+            32.774
+          ]
+        ],
+        "narrationSeconds": 29.352,
+        "narrationOffset": 0.6,
+        "lastTtsBoundaryEnd": 28.434208,
+        "captionCount": 6,
+        "removedWaits": [],
+        "reuseSource": null,
+        "assSha256": "5af9757e1c457995bdc0f2e063fb98d2ec4753174db9668f65978b3a1635148f"
+      }
+    ],
+    "frames": [
+      {
+        "chapter": "01-start",
+        "label": "early",
+        "seconds": 3.97052,
+        "expectedCaption": "老师您好，页面打开后，先选参考文献体检，把列表粘进送检单，",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\01-start-early-0003971.png",
+        "sha256": "6b9efc2a361fb69dee72149a1aa70d1656e2a69d42d554b711dbf37ad8975580"
+      },
+      {
+        "chapter": "01-start",
+        "label": "middle",
+        "seconds": 15.650812,
+        "expectedCaption": "标准核验会查询公开数据库；",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\01-start-middle-0015651.png",
+        "sha256": "0f7860ac8a6c2c54b88f77aceba2ab29aa949c91481519cce4ea522039f6fd1d"
+      },
+      {
+        "chapter": "01-start",
+        "label": "late",
+        "seconds": 24.367896,
+        "expectedCaption": "请使用有权处理的材料，未公开论文先征得同意。",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\01-start-late-0024368.png",
+        "sha256": "e5958d8f738066dbb282f0d444d11a8d68efaf3d6b32c61398d66480ae66b9cb"
+      },
+      {
+        "chapter": "02-import",
+        "label": "early",
+        "seconds": 31.606833,
+        "expectedCaption": "如果手头是论文文件，点导入 PDF、Word 或 TXT。",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\02-import-early-0031607.png",
+        "sha256": "51f01e3067a91b912f460f091770a2908be9bf72d5f142c367b2dc92f7fe398e"
+      },
+      {
+        "chapter": "02-import",
+        "label": "middle",
+        "seconds": 50.116042,
+        "expectedCaption": "确认会替换输入框里的内容。",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\02-import-middle-0050116.png",
+        "sha256": "f1698a6ed85ab7f5368b7e7bbf655affe5cf93867807bdea0efab78f7f6ed511"
+      },
+      {
+        "chapter": "02-import",
+        "label": "late",
+        "seconds": 62.622646,
+        "expectedCaption": "发现隐藏文字提示时，也要先查看原因。",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\02-import-late-0062623.png",
+        "sha256": "6d117e5646d8cf9dc0925c095a2d2f58ac16ae8748ce625979e4d60d794d361f"
+      },
+      {
+        "chapter": "03-results",
+        "label": "early",
+        "seconds": 69.148666,
+        "expectedCaption": "选择标准核验，点击开始体检，结果会逐条出现。",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\03-results-early-0069149.png",
+        "sha256": "4723786b152e7dac78394930b8ef50d4d04b456c74c5414d54414567cc1fd37c"
+      },
+      {
+        "chapter": "03-results",
+        "label": "middle",
+        "seconds": 89.223666,
+        "expectedCaption": "待人工表示开放数据库覆盖不足。",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\03-results-middle-0089224.png",
+        "sha256": "219ee0da3457da40404f595865fbb09ec0d7b8f5024205faae8273710b586368"
+      },
+      {
+        "chapter": "03-results",
+        "label": "late",
+        "seconds": 109.69077,
+        "expectedCaption": "人工核对。",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\03-results-late-0109691.png",
+        "sha256": "6aa91552e6fbc77dc908340ff0dbeacafe9deff2541455a8775782032e8c8039"
+      },
+      {
+        "chapter": "04-agent",
+        "label": "early",
+        "seconds": 115.212375,
+        "expectedCaption": "对待人工或相近候选，点 AI 继续查，可以再找线索。",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\04-agent-early-0115212.png",
+        "sha256": "b6b349b4338d3d207eda401b3f58d0cd15f6c84b9bbe3728837868153e06e300"
+      },
+      {
+        "chapter": "04-agent",
+        "label": "middle",
+        "seconds": 133.611562,
+        "expectedCaption": "是否一致。搜索结果缺少作者时，工具只保留候选，请点来源链接",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\04-agent-middle-0133612.png",
+        "sha256": "4d7fcb6bee3d4d9c3525df4f39e7a76ccf50038e0e3c49c99c1f9ddde8add965"
+      },
+      {
+        "chapter": "04-agent",
+        "label": "late",
+        "seconds": 145.912353,
+        "expectedCaption": "这一步帮助缩小查找范围，不能替代最终确认。",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\04-agent-late-0145912.png",
+        "sha256": "9d33b67c0dff6a2cbd4287cbee4159b3fd1203f43c1a1de288f774c05ef43f6a"
+      },
+      {
+        "chapter": "05-claims",
+        "label": "early",
+        "seconds": 151.56052,
+        "expectedCaption": "再切到论断证据核查。",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\05-claims-early-0151561.png",
+        "sha256": "24380a472f1390b09df0bf36c9cbe028309e1e0b2c6cf3d34bcec89ec5bbf96a"
+      },
+      {
+        "chapter": "05-claims",
+        "label": "middle",
+        "seconds": 170.082895,
+        "expectedCaption": "提供的材料。结果分为支持、部分支持、矛盾和证据不足。",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\05-claims-middle-0170083.png",
+        "sha256": "3967166bbeb1976a0bb878caa9e7d57a5cbe41152040b349cef02ed64d447c0f"
+      },
+      {
+        "chapter": "05-claims",
+        "label": "late",
+        "seconds": 186.036833,
+        "expectedCaption": "即使显示支持，也要核对研究对象和适用条件。",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\05-claims-late-0186037.png",
+        "sha256": "d71ab5e8ea2fd1f5bc455ecd121d9d82278971183122559edcb84e7ebe300976"
+      },
+      {
+        "chapter": "06-report",
+        "label": "early",
+        "seconds": 191.837354,
+        "expectedCaption": "核对完，可以下载论断报告；",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\06-report-early-0191837.png",
+        "sha256": "3e9b9053f0d59379cbb48f03ad18c4cc60b1283cdd62907b2311a0a875d9fd75"
+      },
+      {
+        "chapter": "06-report",
+        "label": "middle",
+        "seconds": 201.84,
+        "expectedCaption": "报告保留原条目、发现的问题和查询过程，方便以后复核。",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\06-report-middle-0201840.png",
+        "sha256": "75d4af721d7d0467e495bcdde2bf034cd92721c90fdaa3b583df7d1f3e968276"
+      },
+      {
+        "chapter": "06-report",
+        "label": "late",
+        "seconds": 211.616333,
+        "expectedCaption": "也建议保留原列表，避免把尚未核实的修改直接交给学生。",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\06-report-late-0211616.png",
+        "sha256": "0711c4993a3deb91f0b1304c67b2070931c74b665826224717a4506e5ab10bd9"
+      },
+      {
+        "chapter": "07-feedback",
+        "label": "early",
+        "seconds": 219.311833,
+        "expectedCaption": "正式试用时，请分别记录人工核对五条的时间，以及工具检查整份",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\07-feedback-early-0219312.png",
+        "sha256": "6ea69901fbe829ba29f352898d5d5219389916d42925fc8c25de3b3d3f66832c"
+      },
+      {
+        "chapter": "07-feedback",
+        "label": "middle",
+        "seconds": 234.115271,
+        "expectedCaption": "遗漏的问题。反馈表只填编号和学科，不写真实姓名。",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\07-feedback-middle-0234115.png",
+        "sha256": "826eefdfbf242837b213f2bb478cc5de8739ef95e807f9e30235895b8d7968d0"
+      },
+      {
+        "chapter": "07-feedback",
+        "label": "late",
+        "seconds": 243.838937,
+        "expectedCaption": "改进。谢谢您的试用。",
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\07-feedback-late-0243839.png",
+        "sha256": "4c6f1d3b6ffb49f3718b55c5ff376ea7e32141d82188896127fc80e28d6a4b2d"
+      }
+    ],
+    "visualReview": "pending_actual_frame_inspection",
+    "humanListeningPerformed": false,
+    "inputs": {
+      "final": {
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\final.mp4",
+        "bytes": 37237694,
+        "sha256": "d8d609be1f9e23dd0a3e78507482fe0008261aae6c53c0467fac768097c50790"
+      },
+      "editManifest": {
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\edit-manifest.json",
+        "bytes": 54583,
+        "sha256": "d336d3e34aa68c67859a25feebe166dcf20b74f670ff3657b4c05f550d1179c9"
+      },
+      "captureManifest": {
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\tutorial-capture-manifest.json",
+        "bytes": 92474,
+        "sha256": "6140e12800b4d428cfa98c983fd33c4c76e4afe882f5d28d83c908f3329af4d5"
+      },
+      "audioManifest": {
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\audio\\tutorial\\manifest.json",
+        "bytes": 78273,
+        "sha256": "737bbfd749cae26e0a8ab39243152d511d64cb9ce2a52607bc78ca80c699e82a"
+      },
+      "script": {
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\tutorial-narration.json",
+        "bytes": 6703,
+        "sha256": "f0905d11c61dbfd7494a1b9bd468ba4b05bd33cad756b75a4801d2ef9e4e5bd5"
+      },
+      "subtitles": {
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\subtitles.srt",
+        "bytes": 5060,
+        "sha256": "3b6aa0c194d42a9c9f49c7dc0544f6239d951011912c6f85b5e6043c46eb72cd"
+      },
+      "assembler": {
+        "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\assemble_current.py",
+        "bytes": 12855,
+        "sha256": "8947ec446f05850f9d6a38cf96b3e5247fb6a01b2c71d05299bd8dcb275eda6d"
+      }
+    },
+    "provenanceDeclarations": {
+      "captureActualNetwork": true,
+      "captureMockedResponses": false,
+      "editActualNetwork": true,
+      "editLoopedVideo": false,
+      "editFreezeFramePadding": false
+    },
+    "finalProbe": {
+      "format": {
+        "filename": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\edit\\tutorial\\final.mp4",
+        "nb_streams": 2,
+        "nb_programs": 0,
+        "nb_stream_groups": 0,
+        "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+        "format_long_name": "QuickTime / MOV",
+        "start_time": "0.000000",
+        "duration": "246.741333",
+        "size": "37237694",
+        "bit_rate": "1207343",
+        "probe_score": 100,
+        "tags": {
+          "major_brand": "isom",
+          "minor_version": "512",
+          "compatible_brands": "isomiso2avc1mp41",
+          "encoder": "Lavf62.12.101"
+        }
+      },
+      "streams": [
+        {
+          "index": 0,
+          "codec_type": "video",
+          "codec_name": "h264",
+          "width": 1920,
+          "height": 1080,
+          "pix_fmt": "yuv420p",
+          "r_frame_rate": "25/1",
+          "avg_frame_rate": "25/1",
+          "start_time": "0.021016",
+          "duration": "246.720000",
+          "nb_frames": "6168"
+        },
+        {
+          "index": 1,
+          "codec_type": "audio",
+          "codec_name": "aac",
+          "r_frame_rate": "0/0",
+          "avg_frame_rate": "0/0",
+          "sample_rate": "48000",
+          "channels": 1,
+          "start_time": "0.000000",
+          "duration": "246.741333",
+          "nb_frames": "11382"
+        }
+      ]
+    },
+    "tutorialDurationSeconds": 246.741333,
+    "packetExtents": {
+      "0": {
+        "packetCount": 6168,
+        "firstPts": 0.021016,
+        "lastEnd": 246.741016
+      },
+      "1": {
+        "packetCount": 11382,
+        "firstPts": 0.0,
+        "lastEnd": 246.741333
+      }
+    },
+    "contactSheet": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\verification-frames\\tutorial\\contact-sheet.jpg",
+    "machinePassed": true,
+    "failureCount": 0,
+    "failedChecks": []
+  },
+  "chapters": [
+    {
+      "id": "01-start",
+      "title": "先放入要检查的参考文献",
+      "start": 0.0,
+      "duration": 28.36,
+      "end": 28.36,
+      "narrationSeconds": 26.784,
+      "sourceFile": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\01-start-2026-10-18T09-34-36-930Z\\raw.webm",
+      "sourceIntervals": [
+        [
+          3.333,
+          31.692999999999998
+        ]
+      ],
+      "removedWaits": [],
+      "removedReadingTailSeconds": 1.6419999999999995,
+      "reuseSource": null,
+      "frameEndTrimSeconds": 0
+    },
+    {
+      "id": "02-import",
+      "title": "导入 PDF 后先看预览",
+      "start": 28.36,
+      "duration": 37.68,
+      "end": 66.03999999999999,
+      "narrationSeconds": 36.096,
+      "sourceFile": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\02-import-2026-10-18T09-35-16-911Z\\raw.webm",
+      "sourceIntervals": [
+        [
+          2.978,
+          40.658
+        ]
+      ],
+      "removedWaits": [],
+      "removedReadingTailSeconds": 2.326999999999998,
+      "reuseSource": null,
+      "frameEndTrimSeconds": 0
+    },
+    {
+      "id": "03-results",
+      "title": "开始体检，读懂不同结论",
+      "start": 66.03999999999999,
+      "duration": 45.84,
+      "end": 111.88,
+      "narrationSeconds": 44.256,
+      "sourceFile": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\03-results-2026-10-18T09-44-15-941Z\\raw.webm",
+      "sourceIntervals": [
+        [
+          3.038,
+          48.878
+        ]
+      ],
+      "removedWaits": [],
+      "removedReadingTailSeconds": 1.171999999999997,
+      "reuseSource": null,
+      "frameEndTrimSeconds": 0
+    },
+    {
+      "id": "04-agent",
+      "title": "中文候选可以继续找线索",
+      "start": 111.88,
+      "duration": 37.96,
+      "end": 149.84,
+      "narrationSeconds": 36.384,
+      "sourceFile": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\04-agent-2026-10-18T09-47-00-427Z\\raw.webm",
+      "sourceIntervals": [
+        [
+          3.233,
+          41.193
+        ]
+      ],
+      "removedWaits": [],
+      "removedReadingTailSeconds": 6.719999999999999,
+      "reuseSource": null,
+      "frameEndTrimSeconds": 0
+    },
+    {
+      "id": "05-claims",
+      "title": "核对正文论断与原文",
+      "start": 149.84,
+      "duration": 40.04,
+      "end": 189.88,
+      "narrationSeconds": 38.496,
+      "sourceFile": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z\\raw.webm",
+      "sourceIntervals": [
+        [
+          8.204,
+          25.880000000000003
+        ],
+        [
+          32.785000000000004,
+          55.189
+        ]
+      ],
+      "removedWaits": [
+        {
+          "start": 17.676000000000002,
+          "end": 24.581000000000003
+        }
+      ],
+      "removedReadingTailSeconds": 0.0,
+      "reuseSource": "同一次连续真实录制的独立时间段；未循环、未重放响应",
+      "frameEndTrimSeconds": 0.04
+    },
+    {
+      "id": "06-report",
+      "title": "保存报告，保留原始记录",
+      "start": 189.88,
+      "duration": 25.92,
+      "end": 215.8,
+      "narrationSeconds": 24.336,
+      "sourceFile": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\05-claims-2026-10-18T09-39-53-133Z\\raw.webm",
+      "sourceIntervals": [
+        [
+          55.189,
+          81.10900000000001
+        ]
+      ],
+      "removedWaits": [],
+      "removedReadingTailSeconds": 1.6870000000000047,
+      "reuseSource": "同一次连续真实录制的独立时间段；未循环、未重放响应",
+      "frameEndTrimSeconds": 0
+    },
+    {
+      "id": "07-feedback",
+      "title": "试用时怎样留下反馈",
+      "start": 215.8,
+      "duration": 30.92,
+      "end": 246.72000000000003,
+      "narrationSeconds": 29.352,
+      "sourceFile": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\capture\\07-feedback-2026-10-18T09-36-06-125Z\\raw.webm",
+      "sourceIntervals": [
+        [
+          1.854,
+          32.774
+        ]
+      ],
+      "removedWaits": [],
+      "removedReadingTailSeconds": 2.094000000000001,
+      "reuseSource": null,
+      "frameEndTrimSeconds": 0
+    }
+  ],
+  "captureManifest": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\video-2026-10-18\\tutorial-capture-manifest.json",
+  "productionNotes": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\media\\README.md",
+  "historicalBackupDirectory": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\output\\video\\history-2026-10-14"
+}

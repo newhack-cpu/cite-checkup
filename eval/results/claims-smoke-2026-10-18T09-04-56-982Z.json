@@ -1,0 +1,325 @@
+{
+  "ranAt": "2026-10-18T09:04:56.987Z",
+  "model": "deepseek-flash",
+  "passed": true,
+  "results": [
+    {
+      "id": "public-abstract",
+      "input": {
+        "doi": "10.1038/s41598-023-41032-5",
+        "claim": "在该研究样本中，GPT-3.5生成引文的55%为虚构，GPT-4为18%。"
+      },
+      "expected": "supported",
+      "response": {
+        "status": "complete",
+        "claim": "在该研究样本中，GPT-3.5生成引文的55%为虚构，GPT-4为18%。",
+        "verdict": "supported",
+        "explanation": "证据直接支持该主张。摘要与讨论部分均明确给出：在该研究生成的84篇文档（42个主题）中，GPT-3.5引文的55%为虚构，而GPT-4仅为18%；结果部分进一步说明GPT-3.5论文所引222篇作品中有55%为虚构，GPT-4引文中仅18%为虚构。样本范围（42个多学科主题、84篇短文、636条引文）与主张中的\"该研究样本\"一致，数值与比较方向完全吻合。局限：证据来自摘要与全文片段，未独立核验全文方法细节；该比例仅适用于本研究样本，不能外推到其他提示词或使用情境。",
+        "citations": [
+          {
+            "sourceId": "source-1",
+            "chunkId": "source-1-c1",
+            "quote": "Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated.",
+            "start": 716,
+            "end": 826
+          },
+          {
+            "sourceId": "source-1",
+            "chunkId": "source-1-c16",
+            "quote": "Of the 222 works cited in the GPT-3.5 papers, 55% are fabricated (Table 3).",
+            "start": 14449,
+            "end": 14524
+          },
+          {
+            "sourceId": "source-1",
+            "chunkId": "source-1-c16",
+            "quote": "Unlike the GPT-3.5 citations, most of the GPT-4 citations refer to works that are verifiably real. Only 18% are fabricated.",
+            "start": 14879,
+            "end": 15002
+          },
+          {
+            "sourceId": "source-1",
+            "chunkId": "source-1-c20",
+            "quote": "Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated.",
+            "start": 18765,
+            "end": 18875
+          }
+        ],
+        "chunks": [
+          {
+            "id": "source-1-c1",
+            "sourceId": "source-1",
+            "text": "## Abstract\nAlthough chatbots such as ChatGPT can facilitate cost-effective text generation and editing, factually incorrect responses (hallucinations) limit their utility. This study evaluates one particular type of hallucination: fabricated bibliographic citations that do not represent actual scholarly works. We used ChatGPT-3.5 and ChatGPT-4 to produce short literature reviews on 42 multidisciplinary topics, compiling data on the 636 bibliographic citations (references) found in the 84 papers. We then searched multiple databases and websites to determine the prevalence of fabricated citations, to identify errors in the citations to non-fabricated papers, and to evaluate adherence to APA citation format. Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated. Likewise, 43% of the real (non-fabricated) GPT-3.5 citations but just 24% of the real GPT-4 citations include substantive citation errors. Although GPT-4 is a major improvement over GPT-3.5, problems remain.\n## Introduction\n",
+            "start": 0,
+            "end": 1051,
+            "score": 5.689052
+          },
+          {
+            "id": "source-1-c20",
+            "sourceId": "source-1",
+            "text": "d GPT-4 each provide links for fewer than 10% of their citations to real works, and links are actually more likely to be found within the fabricated citations. When links are included within the citations to real works, about one-third of them are inaccurate. GPT-4 performs only slightly better than GPT-3.5 in this regard.\nTable 6\nLinks included in ChatGPT citations.\n## Discussion\nIn terms of both fabricated citations and citation errors, GPT-4 is a major improvement over GPT-3.5. Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated. Likewise, 43% of the real GPT-3.5 citations but just 24% of the real GPT-4 citations include substantive citation errors. Our results are broadly consistent with previous research (Table 1).\nBecause detailed information on the use of ChatGPT is not available, we cannot know what proportion of users are taking advantage of the enhanced performance of GPT-4. As of August 2023, GPT-3.5 is freely available online while GPT-4 is available only to paid subscribers; the individual rate is US $20 per month.\n## Why do fabricated citations persist?\n",
+            "start": 18279,
+            "end": 19421,
+            "score": 5.675112
+          },
+          {
+            "id": "source-1-c16",
+            "sourceId": "source-1",
+            "text": "t 5 works, however. Every cited work is at least broadly relevant to the paper topic, and 93% are scholarly rather than popular works.\n## Extent of fabrication\nOf the 222 works cited in the GPT-3.5 papers, 55% are fabricated (Table 3). That is, they do not exist as actual works that have been published, presented, posted, or otherwise publicly disseminated. The articles and book chapters cited by GPT-3.5 are more likely to be fabricated than real, while the cited books and websites are more likely to be real.\nTable 3\nExtent of fabrication among the works cited in the ChatGPT papers.\nUnlike the GPT-3.5 citations, most of the GPT-4 citations refer to works that are verifiably real. Only 18% are fabricated. Even with GPT-4, however, 70% of the cited book chapters are fabricated.\nBoth GPT-3.5 and GPT-4 seem to have special difficulty with book chapters. As Table 3 shows, most of the fabricated article, book, and website citations include the names of real journals, publishers, and organizations. In contrast, many of the fabricated references to book chapters mention books that do not themselves exist; neither the chapters nor the books are real.\n",
+            "start": 14289,
+            "end": 15449,
+            "score": 5.476758
+          },
+          {
+            "id": "source-1-c3",
+            "sourceId": "source-1",
+            "text": "an information-processing tool, but a language-processing tool. It mimics the texts—not necessarily the substantive content—found in its information base10,11. ChatGPT has also been known to “hallucinate”—to provide factually incorrect responses—although OpenAI reports that this is less of a problem with ChatGPT-4, released in March 2023, than with earlier versions of the software12–15.\nThis study investigates one particular type of hallucination: fabricated bibliographic citations that do not correspond to actual scholarly works. For 84 documents generated by GPT-3.5 and GPT-4, we determine the percentage of the 636 cited works that are fabricated rather than real, along with the percentage of the works (articles, chapters, books and websites) for which the larger publication or organization (journal, book, publisher) is also fabricated. For the citations that correspond to real works, we also assess the prevalence of various citation errors (e.g., incorrect author names, article titles, dates, journal titles, volume numbers, issue numbers, page numbers, and publisher/organization names). ",
+            "start": 1794,
+            "end": 2901,
+            "score": 1.469473
+          },
+          {
+            "id": "source-1-c8",
+            "sourceId": "source-1",
+            "text": " asked “Is this citation correct” or “Do you fabricate citations?”12,13,18,24,29.\nTwo studies have investigated the errors in non-fabricated ChatGPT citations. Bhattacharyya et al.27 found that 87% of the citations to real (non-fabricated) works had 1 or more of 7 errors—incorrect PubMedID number, author name, article title, date, journal title, volume number, or page numbers—and Day28 reported very similar results. Errors in the numerical components of citations are especially common26,27.\n## Methods\nWe used GPT-3.5 and GPT-4 to generate short papers on 42 multidisciplinary topics, then compiled data on the 636 bibliographic citations found in the 84 papers. With that information, we searched multiple databases and websites to evaluate (a) the proportion of fabricated citations, (b) the prevalence of errors in the citations to non-fabricated papers, (c) the extent of adherence to the fundamentals of APA citation format, and (d) the characteristics of the hyperlinks found in the ChatGPT citations. Supplementary Appendix 1 presents the 42 paper topics. Supplementary Appendix 2 includes the 84 texts generated by GPT-3.5 and GPT-4. Supplementary Appendix 3 is the resulting data file.\n",
+            "start": 6516,
+            "end": 7716,
+            "score": 3.101356
+          },
+          {
+            "id": "source-1-c15",
+            "sourceId": "source-1",
+            "text": " editions of the APA Publication Manual.\nFinally, we recorded whether each citation included a hyperlink and whether the link led to the cited work.\n## Results\nAlthough we asked for papers of approximately 2000 words, none of the 84 papers are more than 1400 words long, and most are substantially shorter (Table 2). As other authors have noted30, GPT-3.5 works best with short, conversational responses, and this is true of GPT-4 as well. Follow-up questions can be used to generate additional text, however, and simply typing “Continue” will often achieve the same result. Text generated after the initial response may not be fully integrated into the initial text, however, and the subsequent responses will include additional bibliographic citations only about 20% of the time.\nTable 2\nCharacteristics of the papers generated by ChatGPT.\nAlthough we asked for at least 5 bibliographic citations, 12 of the 42 GPT-3.5 papers cite fewer than 5 works. Each of the GPT-4 papers does cite at least 5 works, however. Every cited work is at least broadly relevant to the paper topic, and 93% are scholarly rather than popular works.\n## Extent of fabrication\n",
+            "start": 13294,
+            "end": 14449,
+            "score": 2.067838
+          }
+        ],
+        "source": {
+          "id": "source-1",
+          "kind": "europepmc_fulltext",
+          "label": "Europe PMC 开放全文",
+          "title": "Fabrication and errors in the bibliographic citations generated by ChatGPT",
+          "doi": "10.1038/s41598-023-41032-5",
+          "url": "https://europepmc.org/article/PMC/PMC10484980",
+          "retrievedAt": "2026-10-18T09:04:41.250Z",
+          "scope": "full_text",
+          "totalChars": 24256
+        },
+        "coverage": {
+          "scope": "full_text",
+          "totalChunks": 25,
+          "retrievedChunks": 6,
+          "retrievedChars": 6815,
+          "method": "hybrid-v1",
+          "expansion": [
+            "GPT-3.5 fabricated citations",
+            "GPT-4 fabricated references",
+            "hallucinated citations rate",
+            "fabricated references percentage",
+            "GPT-3.5 虚构引文",
+            "GPT-4 虚构参考文献",
+            "引文虚构比例",
+            "参考文献幻觉率",
+            "ChatGPT citation accuracy",
+            "reference hallucination LLM",
+            "55% fabricated citations",
+            "18% fabricated references",
+            "GPT-3.5 GPT-4 comparison",
+            "bibliographic references accuracy study"
+          ]
+        },
+        "warnings": [
+          "本结果为 AI 对论断与召回文本关系的辅助判断；引句可定位不代表科学结论已获证实，需人工复核。",
+          "仅检查本次指定来源，不覆盖跨文献系统检索；检索可能漏召回同义表达、跨语言内容和其他段落中的限制条件。",
+          "证据来自 Europe PMC 的开放获取全文（JATS XML），已去掉参考文献列表、表格内容和公式；图表只保留标题。",
+          "DOI 模式读取了该文的开放获取全文，但只核查本次召回的片段；DOI 收录不等于同行评审或质量背书。",
+          "本功能未独立完成撤稿状态核验；请配合参考文献体检与人工审阅使用。"
+        ],
+        "model": "deepseek-flash"
+      },
+      "httpStatus": 200,
+      "ms": 17647,
+      "citationsValid": true,
+      "passed": true
+    },
+    {
+      "id": "synthetic-supported",
+      "input": {
+        "evidenceText": "这是功能验收用的合成研究材料，不是真实论文。研究招募了40名大学生，分为学习计划组和对照组，各20人。干预持续四周。学习计划组与对照组的平均测验成绩差异没有达到统计显著性。研究没有观察到学习计划提高考试成绩的可靠证据。研究没有追踪长期效果。",
+        "evidenceLabel": "验收合成材料",
+        "claim": "研究招募了40名大学生，干预持续四周。"
+      },
+      "expected": "supported",
+      "response": {
+        "status": "complete",
+        "claim": "研究招募了40名大学生，干预持续四周。",
+        "verdict": "supported",
+        "explanation": "证据文本直接、完整地支持该主张的两个组成部分：招募40名大学生（\"研究招募了40名大学生\"）以及干预持续四周（\"干预持续四周。\"）。人群（大学生）、样本量（40）与干预时长（四周）均与主张一致，无夸大或外推。需注意：该材料为用户提供的合成研究材料，其真实性未经独立核实；且证据仅为单一段落摘要式描述，未提供招募细节、干预内容或方法学信息，因此不能据此推断研究质量或结论可靠性。",
+        "citations": [
+          {
+            "sourceId": "source-1",
+            "chunkId": "source-1-c1",
+            "quote": "研究招募了40名大学生，分为学习计划组和对照组，各20人。干预持续四周。",
+            "start": 22,
+            "end": 58
+          }
+        ],
+        "chunks": [
+          {
+            "id": "source-1-c1",
+            "sourceId": "source-1",
+            "text": "这是功能验收用的合成研究材料，不是真实论文。研究招募了40名大学生，分为学习计划组和对照组，各20人。干预持续四周。学习计划组与对照组的平均测验成绩差异没有达到统计显著性。研究没有观察到学习计划提高考试成绩的可靠证据。研究没有追踪长期效果。",
+            "start": 0,
+            "end": 120,
+            "score": 3.939031
+          }
+        ],
+        "source": {
+          "id": "source-1",
+          "kind": "user_provided",
+          "label": "验收合成材料",
+          "retrievedAt": "2026-10-18T09:04:50.570Z",
+          "scope": "user_provided_text",
+          "totalChars": 120
+        },
+        "coverage": {
+          "scope": "user_provided_text",
+          "totalChunks": 1,
+          "retrievedChunks": 1,
+          "retrievedChars": 120,
+          "method": "bm25-en-zh-v1"
+        },
+        "warnings": [
+          "本结果为 AI 对论断与召回文本关系的辅助判断；引句可定位不代表科学结论已获证实，需人工复核。",
+          "仅检查本次指定来源，不覆盖跨文献系统检索；检索可能漏召回同义表达、跨语言内容和其他段落中的限制条件。",
+          "证据正文由用户提供，来源、真实性与完整性未经数据库核验；判断只对本次提供并召回的文字负责。"
+        ],
+        "model": "deepseek-flash"
+      },
+      "httpStatus": 200,
+      "ms": 2067,
+      "citationsValid": true,
+      "passed": true
+    },
+    {
+      "id": "synthetic-contradicted",
+      "input": {
+        "evidenceText": "这是功能验收用的合成研究材料，不是真实论文。研究招募了40名大学生，分为学习计划组和对照组，各20人。干预持续四周。学习计划组与对照组的平均测验成绩差异没有达到统计显著性。研究没有观察到学习计划提高考试成绩的可靠证据。研究没有追踪长期效果。",
+        "evidenceLabel": "验收合成材料",
+        "claim": "这项研究招募了400名大学生。"
+      },
+      "expected": "contradicted",
+      "response": {
+        "status": "complete",
+        "claim": "这项研究招募了400名大学生。",
+        "verdict": "contradicted",
+        "explanation": "证据文本明确写明研究招募了40名大学生（分为学习计划组和对照组，各20人），而声称的样本量为400名，二者在数量上直接冲突，属于同一条件下的不相容陈述。因此判定为被证据直接否定。需注意：该材料为功能验收用的合成研究材料，并非真实论文，且仅为单一文本片段，未提供完整方法学细节。",
+        "citations": [
+          {
+            "sourceId": "source-1",
+            "chunkId": "source-1-c1",
+            "quote": "研究招募了40名大学生，分为学习计划组和对照组，各20人。",
+            "start": 22,
+            "end": 51
+          }
+        ],
+        "chunks": [
+          {
+            "id": "source-1-c1",
+            "sourceId": "source-1",
+            "text": "这是功能验收用的合成研究材料，不是真实论文。研究招募了40名大学生，分为学习计划组和对照组，各20人。干预持续四周。学习计划组与对照组的平均测验成绩差异没有达到统计显著性。研究没有观察到学习计划提高考试成绩的可靠证据。研究没有追踪长期效果。",
+            "start": 0,
+            "end": 120,
+            "score": 2.212939
+          }
+        ],
+        "source": {
+          "id": "source-1",
+          "kind": "user_provided",
+          "label": "验收合成材料",
+          "retrievedAt": "2026-10-18T09:04:52.627Z",
+          "scope": "user_provided_text",
+          "totalChars": 120
+        },
+        "coverage": {
+          "scope": "user_provided_text",
+          "totalChunks": 1,
+          "retrievedChunks": 1,
+          "retrievedChars": 120,
+          "method": "bm25-en-zh-v1"
+        },
+        "warnings": [
+          "本结果为 AI 对论断与召回文本关系的辅助判断；引句可定位不代表科学结论已获证实，需人工复核。",
+          "仅检查本次指定来源，不覆盖跨文献系统检索；检索可能漏召回同义表达、跨语言内容和其他段落中的限制条件。",
+          "证据正文由用户提供，来源、真实性与完整性未经数据库核验；判断只对本次提供并召回的文字负责。"
+        ],
+        "model": "deepseek-flash"
+      },
+      "httpStatus": 200,
+      "ms": 1860,
+      "citationsValid": true,
+      "passed": true
+    },
+    {
+      "id": "synthetic-insufficient",
+      "input": {
+        "evidenceText": "这是功能验收用的合成研究材料，不是真实论文。研究招募了40名大学生，分为学习计划组和对照组，各20人。干预持续四周。学习计划组与对照组的平均测验成绩差异没有达到统计显著性。研究没有观察到学习计划提高考试成绩的可靠证据。研究没有追踪长期效果。",
+        "evidenceLabel": "验收合成材料",
+        "claim": "干预使参与者一年后的收入翻倍。"
+      },
+      "expected": "insufficient_evidence",
+      "response": {
+        "status": "complete",
+        "claim": "干预使参与者一年后的收入翻倍。",
+        "verdict": "insufficient_evidence",
+        "explanation": "所提供的证据文本（用户提供的合成研究材料，非真实论文，未核实其真实性）只涉及40名大学生、为期四周的学习计划干预，结局为测验成绩，且明确说明成绩差异未达统计显著、没有可靠证据表明提高考试成绩，并明确\"研究没有追踪长期效果\"。文本完全没有涉及收入这一结局，也没有一年后随访数据，因此既不能支持\"收入翻倍\"，也不构成对收入结果的直接矛盾（未测量≠相反结果）。该主张所需的结局（收入）、时间跨度（一年后）与效应量（翻倍）在证据中均缺失。",
+        "citations": [
+          {
+            "sourceId": "source-1",
+            "chunkId": "source-1-c1",
+            "quote": "研究没有追踪长期效果。",
+            "start": 109,
+            "end": 120
+          }
+        ],
+        "chunks": [
+          {
+            "id": "source-1-c1",
+            "sourceId": "source-1",
+            "text": "这是功能验收用的合成研究材料，不是真实论文。研究招募了40名大学生，分为学习计划组和对照组，各20人。干预持续四周。学习计划组与对照组的平均测验成绩差异没有达到统计显著性。研究没有观察到学习计划提高考试成绩的可靠证据。研究没有追踪长期效果。",
+            "start": 0,
+            "end": 120,
+            "score": 0.287682
+          }
+        ],
+        "source": {
+          "id": "source-1",
+          "kind": "user_provided",
+          "label": "验收合成材料",
+          "retrievedAt": "2026-10-18T09:04:54.488Z",
+          "scope": "user_provided_text",
+          "totalChars": 120
+        },
+        "coverage": {
+          "scope": "user_provided_text",
+          "totalChunks": 1,
+          "retrievedChunks": 1,
+          "retrievedChars": 120,
+          "method": "bm25-en-zh-v1"
+        },
+        "warnings": [
+          "本结果为 AI 对论断与召回文本关系的辅助判断；引句可定位不代表科学结论已获证实，需人工复核。",
+          "仅检查本次指定来源，不覆盖跨文献系统检索；检索可能漏召回同义表达、跨语言内容和其他段落中的限制条件。",
+          "证据正文由用户提供，来源、真实性与完整性未经数据库核验；判断只对本次提供并召回的文字负责。"
+        ],
+        "model": "deepseek-flash"
+      },
+      "httpStatus": 200,
+      "ms": 2504,
+      "citationsValid": true,
+      "passed": true
+    }
+  ],
+  "limitation": "四条流程验收，不代表开放场景判断准确率；三条证据是明确标注的合成材料。"
+}

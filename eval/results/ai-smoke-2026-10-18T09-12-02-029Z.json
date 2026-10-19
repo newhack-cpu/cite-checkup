@@ -1,0 +1,289 @@
+{
+  "ranAt": "2026-10-18T09:12:02.034Z",
+  "model": "deepseek-flash",
+  "input": "[1] LECUN Y, BENGIO Y, HINTON G | Deep learning | Nature | 2015 | DOI: 10.1038/nature14539\n[2] Hochreiter, S., & Schmidhuber, J. (1997). Long short-term memory. Neural Networks, 9(8), 1735–1780. DOI: 10.1162/neco.1997.9.8.1735",
+  "events": [
+    {
+      "type": "phase",
+      "phase": "extract",
+      "message": "正在准备 AI 辅助解析"
+    },
+    {
+      "type": "phase",
+      "phase": "extract",
+      "message": "规则没解析出 1 条引文的题名，DeepSeek 正在从原文中摘取字段"
+    },
+    {
+      "type": "phase",
+      "phase": "extract",
+      "message": "已逐条校验 1 条 AI 解析结果的原文依据，准备查询文献数据库"
+    },
+    {
+      "type": "notice",
+      "message": "规则没解析出题名的 1 条交给 DeepSeek 从原文中摘取字段；1 条补上了字段（详情的比对表中标“AI 摘出”）；其余 1 条规则已解析出题名，未发送。"
+    },
+    {
+      "type": "meta",
+      "total": 2,
+      "refs": [
+        {
+          "index": 1,
+          "raw": "LECUN Y, BENGIO Y, HINTON G | Deep learning | Nature | 2015 | DOI: 10.1038/nature14539",
+          "doi": "10.1038/nature14539",
+          "year": 2015,
+          "titleGuess": "Deep learning",
+          "authorsGuess": "LECUN Y, BENGIO Y, HINTON G",
+          "kind": "unknown",
+          "lang": "en",
+          "aiFields": [
+            "title",
+            "authors"
+          ]
+        },
+        {
+          "index": 2,
+          "raw": "Hochreiter, S., & Schmidhuber, J. (1997). Long short-term memory. Neural Networks, 9(8), 1735–1780. DOI: 10.1162/neco.1997.9.8.1735",
+          "doi": "10.1162/neco.1997.9.8.1735",
+          "year": 1997,
+          "titleGuess": "Long short-term memory",
+          "authorsGuess": "Hochreiter, S., & Schmidhuber, J",
+          "venueGuess": "Neural Networks",
+          "kind": "journal",
+          "lang": "en"
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "phase": "verify",
+      "message": "正在通过学术数据源核验 2 条参考文献"
+    },
+    {
+      "type": "result",
+      "result": {
+        "index": 1,
+        "raw": "LECUN Y, BENGIO Y, HINTON G | Deep learning | Nature | 2015 | DOI: 10.1038/nature14539",
+        "issues": [],
+        "notes": [],
+        "fields": [
+          {
+            "field": "title",
+            "status": "match",
+            "cited": "Deep learning",
+            "actual": "Deep learning"
+          },
+          {
+            "field": "authors",
+            "status": "match",
+            "cited": "LECUN Y, BENGIO Y, HINTON G",
+            "actual": "LeCun Y, Bengio Y, Hinton G"
+          },
+          {
+            "field": "year",
+            "status": "match",
+            "cited": "2015",
+            "actual": "2015"
+          },
+          {
+            "field": "venue",
+            "status": "match",
+            "actual": "Nature"
+          },
+          {
+            "field": "doi",
+            "status": "match",
+            "cited": "10.1038/nature14539",
+            "actual": "10.1038/nature14539"
+          }
+        ],
+        "steps": [
+          {
+            "action": "doi_lookup",
+            "detail": "Crossref：DOI 10.1038/nature14539 对应《Deep learning》",
+            "ok": true,
+            "ms": 1
+          },
+          {
+            "action": "openalex_lookup",
+            "detail": "OpenAlex：未发现撤稿标记",
+            "ok": true,
+            "ms": 0
+          }
+        ],
+        "parsed": {
+          "index": 1,
+          "raw": "LECUN Y, BENGIO Y, HINTON G | Deep learning | Nature | 2015 | DOI: 10.1038/nature14539",
+          "doi": "10.1038/nature14539",
+          "year": 2015,
+          "titleGuess": "Deep learning",
+          "authorsGuess": "LECUN Y, BENGIO Y, HINTON G",
+          "kind": "unknown",
+          "lang": "en",
+          "aiFields": [
+            "title",
+            "authors"
+          ]
+        },
+        "match": {
+          "source": "crossref",
+          "doi": "10.1038/nature14539",
+          "title": "Deep learning",
+          "authors": [
+            {
+              "family": "LeCun",
+              "given": "Yann"
+            },
+            {
+              "family": "Bengio",
+              "given": "Yoshua"
+            },
+            {
+              "family": "Hinton",
+              "given": "Geoffrey"
+            }
+          ],
+          "year": 2015,
+          "venue": "Nature",
+          "venueShort": "Nature",
+          "issn": [
+            "0028-0836",
+            "1476-4687"
+          ],
+          "volume": "521",
+          "issue": "7553",
+          "pages": "436-444",
+          "type": "journal-article",
+          "url": "https://doi.org/10.1038/nature14539"
+        },
+        "matchStatus": "confirmed",
+        "suggestion": "LeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. Nature, 521(7553), 436–444. https://doi.org/10.1038/nature14539",
+        "verdict": "verified",
+        "confidence": 0.98,
+        "summary": "已核实：与数据库记录一致（来源：Crossref）"
+      }
+    },
+    {
+      "type": "result",
+      "result": {
+        "index": 2,
+        "raw": "Hochreiter, S., & Schmidhuber, J. (1997). Long short-term memory. Neural Networks, 9(8), 1735–1780. DOI: 10.1162/neco.1997.9.8.1735",
+        "issues": [
+          "期刊名不符：引用写「Neural Networks」，数据库记录为「Neural Computation」"
+        ],
+        "notes": [],
+        "fields": [
+          {
+            "field": "title",
+            "status": "match",
+            "cited": "Long short-term memory",
+            "actual": "Long Short-Term Memory"
+          },
+          {
+            "field": "authors",
+            "status": "match",
+            "cited": "Hochreiter, S., & Schmidhuber, J",
+            "actual": "Hochreiter S, Schmidhuber J"
+          },
+          {
+            "field": "year",
+            "status": "match",
+            "cited": "1997",
+            "actual": "1997"
+          },
+          {
+            "field": "venue",
+            "status": "mismatch",
+            "cited": "Neural Networks",
+            "actual": "Neural Computation"
+          },
+          {
+            "field": "doi",
+            "status": "match",
+            "cited": "10.1162/neco.1997.9.8.1735",
+            "actual": "10.1162/neco.1997.9.8.1735"
+          }
+        ],
+        "steps": [
+          {
+            "action": "doi_lookup",
+            "detail": "Crossref：DOI 10.1162/neco.1997.9.8.1735 对应《Long Short-Term Memory》",
+            "ok": true,
+            "ms": 1
+          },
+          {
+            "action": "openalex_source",
+            "detail": "OpenAlex：该刊登记的 1 个名称中没有与引用相符的",
+            "ok": false,
+            "ms": 1
+          },
+          {
+            "action": "openalex_lookup",
+            "detail": "OpenAlex：未发现撤稿标记",
+            "ok": true,
+            "ms": 0
+          }
+        ],
+        "parsed": {
+          "index": 2,
+          "raw": "Hochreiter, S., & Schmidhuber, J. (1997). Long short-term memory. Neural Networks, 9(8), 1735–1780. DOI: 10.1162/neco.1997.9.8.1735",
+          "doi": "10.1162/neco.1997.9.8.1735",
+          "year": 1997,
+          "titleGuess": "Long short-term memory",
+          "authorsGuess": "Hochreiter, S., & Schmidhuber, J",
+          "venueGuess": "Neural Networks",
+          "kind": "journal",
+          "lang": "en"
+        },
+        "match": {
+          "source": "crossref",
+          "doi": "10.1162/neco.1997.9.8.1735",
+          "title": "Long Short-Term Memory",
+          "authors": [
+            {
+              "family": "Hochreiter",
+              "given": "Sepp"
+            },
+            {
+              "family": "Schmidhuber",
+              "given": "Jürgen"
+            }
+          ],
+          "year": 1997,
+          "venue": "Neural Computation",
+          "venueShort": "Neural Computation",
+          "issn": [
+            "0899-7667",
+            "1530-888X"
+          ],
+          "volume": "9",
+          "issue": "8",
+          "pages": "1735-1780",
+          "type": "journal-article",
+          "url": "https://doi.org/10.1162/neco.1997.9.8.1735"
+        },
+        "matchStatus": "confirmed",
+        "suggestion": "Hochreiter, S., & Schmidhuber, J. (1997). Long Short-Term Memory. Neural Computation, 9(8), 1735–1780. https://doi.org/10.1162/neco.1997.9.8.1735",
+        "verdict": "mismatch",
+        "confidence": 0.98,
+        "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）"
+      }
+    },
+    {
+      "type": "done",
+      "stats": {
+        "total": 2,
+        "counts": {
+          "verified": 1,
+          "mismatch": 1,
+          "near_match": 0,
+          "not_found": 0,
+          "retracted": 0,
+          "concern": 0,
+          "unverifiable": 0,
+          "error": 0
+        },
+        "ms": 2950
+      }
+    }
+  ]
+}

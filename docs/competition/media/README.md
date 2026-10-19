@@ -1,28 +1,111 @@
-# 演示视频源文件
+# 双视频源文件与制作记录
 
-正式视频位于 `../output/video/引用体检-完整演示-1080p.mp4`；时长、编码和分辨率以同目录 `video-verification.json` 为准。
+状态：2026-10-18 双视频已导出并完成媒体与逐章抽帧验收。正式交付路径为本轮新版；10-14 旧片、旧验收和旧时间记录已在替换前备份并核对 SHA256。
 
-- `incomplete-demo.webm`：前六章1920×1080实际操作原始录屏。公开摘要支持、合成支持/矛盾成功；最后一次新措辞论断的模型输出被拒绝，页面真实显示未完成。
-- `continuation.webm`：第七/八章技术说明、手机验收截图和首页的实际录制。成片在第六章最后一帧短暂停留以完成失败处理旁白，然后拼接这两章；未把失败改成成功。
-- `recording-timing.json`：实际章节起止、网络模式、异常与成功标记。
-- `claim-*.json`、`reference-live-page.txt`、`demo-reference-report.md`：正式录制过程的真实响应和下载产物。
-- `narration/*.wav`：Windows Microsoft Huihui Desktop 通用普通话合成声音，非真人声纹克隆；稿件为上一级 `narration.json`。
-- `verification-frames/`：由最终MP4逐章抽取的验收帧。
-- `rehearsal/`：快进彩排，文献和论断使用预先保存的响应回放；只用于验证脚本定位，**不作为正式视频或真实模型验收证据**。
+| 视频 | 正式交付路径（相对项目根目录） | 目标 | 当前状态 |
+|---|---|---|---|
+| 正式参赛片 | docs/competition/output/video/引用体检-完整演示-1080p.mp4 | 5–8 分钟 | 已验收，7 分 44.061 秒，62.45 MB |
+| 老师操作教程 | docs/competition/output/video/引用体检-老师操作教程-1080p.mp4 | 约 4 分钟 | 已验收，4 分 06.741 秒，37.24 MB |
 
-正式录制不拦截模型/数据库响应；公开文献与标明虚构的合成研究各自按来源展示。`assemble_demo.py` 会拒绝未成功录制、回放模式或不满足5–8分钟的视频。导出为H264/AAC MP4，保留原录屏和独立旁白便于重新剪辑。
+两片均使用用户已选择的 **云希 zh-CN-YunxiNeural 神经合成音**，不是本人录音或声纹克隆。成片标明合成配音，烧录中文字幕；导出目标为 1920×1080、H.264 视频与 AAC 音频的 MP4。精确参数和时长只采用最终文件的 ffprobe 实测值。
 
-本次`recording-timing.json`的`success`只表示8章录制完整，**不表示所有模型调用成功**；第6章`boundaryOutcome`保留真实`INVALID_MODEL_RESPONSE`。原停止时的元数据在`initial-recording-timing.json`，续录由`record-ending.cjs`验证这个已知失败后执行；独立联网四例冒烟的成功结果与这次演示失败分开保留。
+## 本轮有效材料
 
-在项目根目录运行（本机需 Playwright Chromium、ffmpeg/ffprobe，Python需reportlab/python-docx）：
+- [主片逐字稿](../narration.json)：10 章，原章 id 不变。
+- [双片分镜](../DEMO_SCRIPT.md)：动作、演示输入、事实边界和异常分支。
+- [老师教程逐字稿](video-2026-10-18/tutorial-narration.json)：7 章，从已打开的工具页面开始。
+- [本轮制作约束](video-2026-10-18/BRIEF.md)与[讲稿核对说明](video-2026-10-18/SCRIPT_NOTES.md)。
+- [老师试用指南](../TRIAL_GUIDE.md)：既有操作指引、试用流程和空白记录表；老师试用由用户安排，未发生的反馈不写入材料。
 
-```powershell
-# 如修改了旁白，先本地重新合成
-& ./docs/competition/media/generate-narration.ps1
-python docs/competition/media/prepare_media.py
-# 先启动已构建、已配置的本地生产服务3210；以下会发生真实模型/数据库调用
-node docs/competition/media/record-demo.cjs
-python docs/competition/media/assemble_demo.py
-```
+本轮工作目录为 `video-2026-10-18/`。当前脚本和记录入口如下，文件存在不代表最终验收通过：
 
-录制前确认技术HTML与手机生产截图已验收。脚本默认使用本机Playwright安装位置，可用`PLAYWRIGHT_MODULE`修改；服务地址可用`DEMO_BASE_URL`修改。`DEMO_REHEARSAL=1`只生成隔离彩排文件，不得用于正式导出。再次录制前自行备份需要保留的旧成片。
+| 路径 | 用途 |
+|---|---|
+| generate_voice.py | 根据相应 JSON 讲稿生成云希配音与时间标记 |
+| audio/competition/、audio/tutorial/ | 两片独立音频及各自 manifest.json；以实际生成记录为准 |
+| record-current.cjs | 真实生产版逐章录制 |
+| capture/、capture-manifest.json | 主片原始录屏与动作、等待和响应记录 |
+| tutorial-capture-manifest.json | 教程素材与动作记录；复用片段需保留源文件对应关系 |
+| mcp-viewer.mts、mcp-viewer.html、mcp/ | 真实本地 stdio MCP 演示客户端与调用证据，不冒充 Claude/Cursor 界面 |
+| assemble_current.py | 剪辑、中文字幕、云希配音与两片分别导出；最终交付需另经实测验收 |
+| audio-QA.json、audio-QA.md | 配音检查记录，不代替最终成片的视听检查 |
+
+## 录制与剪辑要求
+
+- 只录最终生产构建的真实操作，数据库与模型调用均真实联网；不拦截、不 mock、不回放响应作为正式证据。
+- 长等待允许剪短，并在画面标明“等待已缩短”。保留原始录屏、等待区间与剪辑对应记录；不循环或冻帧凑时长。
+- 合成模拟照片、测试 PDF、虚构引文和合成证据明确标注。失败、未完成和未找到结果如实保留；录制当天结果变化时同步旁白与字幕。
+- 不录入终端、密钥、环境变量、个人邮箱或密码界面。MCP 段仅展示实际本地演示客户端的连接、工具和返回。
+- 老师教程展示导入预览确认、结果解释、中文候选链接、论断原句和报告下载；反馈表是试用说明，不能伪装成已有产品表单，也不填虚构反馈。
+- 替换正式路径前，先备份旧 MP4 和旧验收记录；历史素材与本轮素材分开保存，不用旧片验收结果证明新片完成。
+
+## 最终验收
+
+| 项目 | 正式参赛片 | 老师操作教程 |
+|---|---|---|
+| 最终导出时间与版本 | 2026-10-18，产品基线 474c66a | 2026-10-18，同一生产构建 |
+| ffprobe 实测时长 | 464.061333 秒 | 246.741333 秒 |
+| 实测分辨率、视频/音频编码和音轨 | 1920×1080，H.264，25 fps，AAC 48 kHz 单声道 | 同左 |
+| 最终验收记录路径（相对 competition） | output/video/video-verification.json | output/video/tutorial-video-verification.json |
+| 实际章节起止、压缩等待与素材对应记录 | media/recording-timing.json 中 competition | 同文件中 tutorial |
+| 按章节抽帧与音轨检查 | 10 章早/中/晚抽帧，完整解码、字幕、语音完整性与音画末端检查通过 | 7 章早/中/晚抽帧，同项检查通过 |
+| 与讲稿的出入、失败后重录说明 | 见下节及 recording-notes.json | 见下节；外部知网页面加载失败未伪称成功 |
+
+旧 MP4、旧 `video-verification.json` 与旧 `recording-timing.json` 均备份在 `docs/competition/output/video/history-2026-10-14/`（相对项目根目录）。两片均另附同名 SRT。
+
+机器验收详见 [final-video-QA.json](video-2026-10-18/final-video-QA.json)，实际抽帧检查详见 [visual-QA.json](video-2026-10-18/visual-QA.json)。17 条旁白完整解码、无削波，四章完成本地 ASR 抽查；没有进行人工听审。视觉验收为逐章抽帧检查，不是逐帧观看。两片分别绑定最终文件 SHA256。
+
+| 主片章节 | 起点 | 章节时长 |
+|---|---|---|
+| 01 两个工作区 | 00:00.00 | 35.00 秒 |
+| 02 拍照与截图转写 | 00:35.00 | 50.00 秒 |
+| 03 参考文献逐字段核对 | 01:25.00 | 65.00 秒 |
+| 04 AI 继续查与中文候选 | 02:30.00 | 58.32 秒 |
+| 05 隐藏文字检查 | 03:28.32 | 50.00 秒 |
+| 06 论断与原文引句 | 04:18.32 | 60.00 秒 |
+| 07 矛盾、证据不足与停止 | 05:18.32 | 35.00 秒 |
+| 08 真实 MCP 调用 | 05:53.32 | 36.56 秒 |
+| 09 评测与限制 | 06:29.88 | 37.56 秒 |
+| 10 后续试用与总结 | 07:07.44 | 36.60 秒 |
+
+| 教程章节 | 起点 | 章节时长 |
+|---|---|---|
+| 01 输入与隐私 | 00:00.00 | 28.36 秒 |
+| 02 PDF 导入预览 | 00:28.36 | 37.68 秒 |
+| 03 阅读核验结果 | 01:06.04 | 45.84 秒 |
+| 04 中文候选与来源链接 | 01:51.88 | 37.96 秒 |
+| 05 论断与引句定位 | 02:29.84 | 40.04 秒 |
+| 06 下载报告 | 03:09.88 | 25.92 秒 |
+| 07 记录真实试用反馈 | 03:35.80 | 30.92 秒 |
+
+表中为编辑时间轴；MP4 容器因 AAC 封装另有约 21 毫秒起始时间偏移。包级音视频末端差均不足 1 毫秒。长等待仅在记录的真实等待区间剪短，片中有提示。
+
+## 本次录制与重录记录
+
+本次产品基线为 `474c66a`，未修改产品 `src`。当天 589 项测试、生产构建、typecheck 和 lint 通过；真实 AI 解析冒烟与论断冒烟 4/4 通过。旧 AI 冒烟脚本把正常的解析提示误当成降级，已修正断言并增加 AI 字段证据检查后实连通过。MCP 冒烟的工具列举、参考文献核验成功，论断调用曾超时，不能称所有 MCP 冒烟都成功；成片 MCP 段只调用真实 `verify_references`。
+
+重录与实际边界见 [recording-notes.json](video-2026-10-18/recording-notes.json)：
+
+- 主片第 02 章原片短于旁白，补录完整的六条识别文字对照过程。
+- 第 03 章先遇到录屏脚本等待流连接结束、再遇到字段网格选择器错误；产品结果已正常完成。修复录制观察方式和定位后完整重录，正式片未使用卡住的画面。
+- 第 06 章第一次真实模型结果未通过引句/结构校验，页面正确显示未完成；只重试一次，取得 Europe PMC 全文、有效原文引句并点击定位。两次真实响应都保留，没有替换响应。
+- 第 07 章真实显示矛盾、证据不足，并主动停止另一次核查；停止不形成结论。
+- 教程第 04 章直接进入知网后曾出现空白页，已重录为真实打开来源新标签、核实加载状态后返回产品候选说明，不声称已读到知网全文。
+- 教程第 05 章按真实视频帧将音轨尾部缩短 40 毫秒，消除拼接时的视频帧间隙；没有复制末帧或循环补时。
+
+讲稿中的评测数字已区分历史样本与当天结果；教师教程第 05 章使用原论文 55% / 18% 的公开论断，主片第 06 章使用 GPT-4 书籍章节 70% 的论断。两片讲解各自真实画面，不把检索命中率写成判断准确率。教程的反馈表保持空白，真实老师试用仍待用户安排。
+
+旁白使用隔离安装的 `edge-tts 7.3.1`、云希 `zh-CN-YunxiNeural`、语速 `-5%`。旧 7.2.8 接口曾返回 403，升级只安装在本机临时依赖目录，没有替换项目或全局依赖。`generate_voice.py` 支持用 `CITE_TTS_PACKAGES` 指定该隔离目录。合成为 FFmpeg 本地剪辑；本会话未使用 ChatCut 云端服务。
+
+## 10-14 历史素材说明
+
+以下属于旧八章视频流程，保留用于追溯，不是本轮当前制作入口：
+
+- `incomplete-demo.webm`、`continuation.webm`、`initial-recording-timing.json` 和旧 `recording-timing.json`：旧片真实录制与续录记录。旧记录的 success 仅指八章录制完整，不代表所有模型调用成功；第六章保留 INVALID_MODEL_RESPONSE。
+- `claim-*.json`、`reference-live-page.txt`、`demo-reference-report.md`：旧次录制的响应和下载产物。
+- 旧 `narration/*.wav`：10-14 使用的 Windows Microsoft Huihui Desktop 合成音，仅作历史保留；本轮使用上文指定的云希神经合成音。
+- 旧 `verification-frames/`：对应旧 MP4 的抽帧，不能当作本轮成片验收。
+- `generate-narration.ps1`、`prepare_media.py`、`record-demo.cjs`、`record-ending.cjs`、`assemble_demo.py`：历史流程脚本，不直接套用于本轮双片。
+- `rehearsal/`：使用预存响应的旧彩排，只验证脚本定位，始终不作为正式视频或真实联网验收证据。
+
+旧片曾在失败画面短暂停留完成旁白，属于历史剪辑事实；本轮按真实动作和配音重新制作，不沿用停帧补时做法。
