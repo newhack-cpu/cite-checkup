@@ -40,7 +40,7 @@ export function Stamp({ verdict, size = "md", still = false }: { verdict: Verdic
     <span
       role="img"
       aria-label={`结论：${meta.label}`}
-      className={`relative inline-flex select-none items-center justify-center whitespace-nowrap rounded-[6px] font-serif font-black tracking-[0.18em] ${box} ${still ? "-rotate-[8deg] opacity-90" : "animate-stamp"}`}
+      className={`relative inline-flex select-none items-center justify-center whitespace-nowrap rounded-[6px] font-serif font-black tracking-[0.18em] ${box} ${still ? "-rotate-[8deg]" : "animate-stamp"}`}
       // 小号章不加墨迹滤镜：效果几乎看不出来，滤镜却要逐帧重绘
       style={{ color: meta.color, borderColor: meta.color, filter: size === "md" ? "url(#ink)" : undefined }}
     >

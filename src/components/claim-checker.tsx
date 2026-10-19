@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { ClaimResult, ClaimServiceStatus, ClaimVerdict, EvidenceChunk } from "@/lib/claims/types";
 import { buildClaimReport, CLAIM_LABELS } from "@/lib/claim-report";
+import { localDate, reportHtml, saveFile } from "@/lib/report-html";
 import { DocumentImport } from "./document-import";
 
 const COLORS: Record<ClaimVerdict, string> = { supported: "var(--color-jade)", partially_supported: "var(--color-amber)", contradicted: "var(--color-seal)", insufficient_evidence: "var(--color-slate)" };
@@ -74,9 +75,7 @@ export function ClaimChecker() {
 
   function download() {
     if (!result) return;
-    const url = URL.createObjectURL(new Blob([buildClaimReport(result)], { type: "text/markdown;charset=utf-8" }));
-    const link = document.createElement("a"); link.href = url; link.download = `论断核查报告-${new Date().toISOString().slice(0, 10)}.md`; link.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    saveFile(reportHtml(buildClaimReport(result), "论断核查报告"), "text/html;charset=utf-8", `论断核查报告-${localDate()}.html`);
   }
 
   return (
@@ -133,7 +132,7 @@ export function ClaimChecker() {
             <p className="text-xs tracking-[0.3em] text-ink-faint">论 断 核 查 报 告</p>
             <div className="mt-4 flex flex-wrap items-start justify-between gap-4">
               <h2 className="font-serif text-3xl font-black" style={{ color: result.status === "complete" && result.verdict ? COLORS[result.verdict] : "var(--color-slate)" }}>{result.status === "complete" && result.verdict ? CLAIM_LABELS[result.verdict] : "核查未完成"}</h2>
-              <button type="button" onClick={download} className="rounded-sm border border-ink/25 px-3 py-2 text-[13px] hover:border-seal hover:text-seal">下载论断报告</button>
+              <button type="button" onClick={download} title="网页格式，双击用浏览器打开，可直接打印或另存为 PDF" className="rounded-sm border border-ink/25 px-3 py-2 text-[13px] hover:border-seal hover:text-seal">下载论断报告</button>
             </div>
             <p className="mt-5 border-l-2 border-rule pl-4 font-serif text-[15px] leading-8">{result.claim}</p>
             <p className="mt-5 font-kai text-[18px] leading-8 text-ink-soft">{result.explanation}</p>

@@ -1,9 +1,10 @@
 "use client";
 
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { SAMPLE_REFERENCES } from "@/lib/samples";
 import { VERDICT_META, VERDICT_ORDER } from "@/lib/verdict-meta";
-import { parseReferenceList } from "@/lib/verify/extract";
+import { notReference, parseReferenceList } from "@/lib/verify/extract";
 import { agentEligible, readAgentStream } from "@/lib/agent-stream";
 import { readCheckStream } from "@/lib/check-stream";
 import type { CheckEvent, ParsedRef, RefKind, RefResult } from "@/lib/verify/types";
@@ -61,6 +62,19 @@ export function Checker() {
     for (const r of detected) counts.set(r.kind, (counts.get(r.kind) ?? 0) + 1);
     return [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([k, n]) => `${KIND_LABEL[k]} ${n}`).join(" · ");
   }, [detected]);
+  // 像正文段落而不像参考文献的条目序号（只提醒，不拦截）
+  const prose = useMemo(() => detected.filter(notReference).map((r) => r.index), [detected]);
+
+  // 页面上的“开始体检”是否在屏幕里；不在时手机底部显示一个
+  const startRef = useRef<HTMLButtonElement>(null);
+  const [startVisible, setStartVisible] = useState(true);
+  useEffect(() => {
+    const el = startRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(([entry]) => setStartVisible(entry.isIntersecting), { threshold: 0.6 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   // 计时器
   useEffect(() => {
@@ -213,11 +227,20 @@ export function Checker() {
       {/* 送检单 */}
       <section className="animate-rise self-start [animation-delay:120ms] lg:sticky lg:top-8">
         <div className="sheet overflow-hidden rounded-sm border border-rule/80">
-          <header className="flex items-center justify-between border-b border-dashed border-rule px-5 py-3">
+          <header className="flex items-center justify-between gap-3 border-b border-dashed border-rule px-5 py-3">
             <h2 className="whitespace-nowrap font-serif text-[17px] font-bold">
               送检单 <span className="ml-1 text-[13px] font-normal text-ink-faint">粘贴参考文献列表</span>
             </h2>
-            <span className="hidden whitespace-nowrap font-mono text-[11px] tracking-wider text-ink-faint sm:inline">GB/T 7714 · APA · IEEE</span>
+            {/* 第一次来的访客在首屏就能试：示例按钮放在标题栏（可用性走查，10-18） */}
+            <button
+              type="button"
+              onClick={() => setText(SAMPLE_REFERENCES)}
+              disabled={phase === "running"}
+              title="填入 11 条示例：含真实、写错、编造和已撤稿的文献"
+              className="shrink-0 rounded-sm border border-seal/50 px-2.5 py-1 text-[13px] text-seal transition hover:bg-seal hover:text-card disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-seal"
+            >
+              载入示例
+            </button>
           </header>
           <DocumentImport onImport={setText} disabled={phase === "running"} purpose="references" pasteTargetId="refs" />
           <fieldset disabled={phase === "running"} className="border-b border-dashed border-rule px-5 py-3">
@@ -237,8 +260,8 @@ export function Checker() {
             onChange={(e) => setText(e.target.value)}
             spellCheck={false}
             disabled={phase === "running"}
-            placeholder={"[1] 作者. 题名[J]. 刊名, 年, 卷(期): 页码.\n[2] Author, A. (2023). Title. Journal, 12(3), 45–67.\n\n每条一行，或用 [1]、1. 这类序号分隔"}
-            className="ruled block h-[16rem] w-full resize-y py-2 pl-[3.4rem] pr-4 font-serif text-[14px] text-ink outline-none placeholder:text-ink-faint/70 focus-visible:bg-white/40 lg:h-[17rem]"
+            placeholder={"[1] 作者. 题名[J]. 刊名, 年, 卷(期): 页码.\n[2] Author, A. (2023). Title. Journal, 12(3), 45–67.\n\n每条一行，或用 [1]、1. 这类序号分隔；支持 GB/T 7714、APA、IEEE 等格式"}
+            className="ruled block h-[12rem] w-full resize-y py-2 pl-[3.4rem] pr-4 font-serif text-[14px] text-ink outline-none placeholder:text-ink-faint/70 focus-visible:bg-white/40 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-seal/40"
           />
           <footer className="space-y-3 border-t border-dashed border-rule px-5 py-4">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[13.5px]">
@@ -250,14 +273,6 @@ export function Checker() {
               <span className="ml-auto flex gap-1">
                 <button
                   type="button"
-                  onClick={() => setText(SAMPLE_REFERENCES)}
-                  disabled={phase === "running"}
-                  className="rounded-sm px-2 py-1 text-ink-soft underline decoration-dotted underline-offset-4 hover:text-seal"
-                >
-                  载入示例
-                </button>
-                <button
-                  type="button"
                   onClick={() => setText("")}
                   disabled={!text || phase === "running"}
                   className="rounded-sm px-2 py-1 text-ink-soft underline decoration-dotted underline-offset-4 hover:text-seal disabled:opacity-40"
@@ -266,7 +281,13 @@ export function Checker() {
                 </button>
               </span>
             </div>
+            {prose.length > 0 && !tooMany && (
+              <p role="status" className="rounded-sm border border-amber/40 bg-amber/5 px-3 py-2 text-[12.5px] leading-5 text-ink-soft">
+                {prose.length === detected.length && detected.length === 1 ? "这段文字" : `第 ${prose.join("、")} 条`}看起来不像参考文献（没有年份、出处或 DOI），像是正文段落。请确认粘贴的是参考文献列表。
+              </p>
+            )}
             <button
+              ref={startRef}
               type="button"
               onClick={run}
               disabled={!canRun}
@@ -277,6 +298,20 @@ export function Checker() {
             {phase === "running" && <button type="button" onClick={() => abortRef.current?.abort()} className="w-full py-1 text-sm text-ink-soft underline underline-offset-4">停止核查</button>}
           </footer>
         </div>
+        {/* 手机上贴完列表，开始按钮常在屏幕外：在底部补一个，页面上的按钮露出来就收起。
+            挂到 body 上：外层区块的入场动画留下 transform，fixed 会变成相对区块定位。首屏渲染时输入为空，不会进服务端渲染 */}
+        {canRun && refs.length === 0 && !startVisible && typeof document !== "undefined" && createPortal(
+          <div className="fixed inset-x-0 bottom-0 z-30 border-t border-rule bg-paper/95 px-4 py-3 shadow-[0_-4px_12px_rgba(0,0,0,0.06)] backdrop-blur lg:hidden">
+            <button
+              type="button"
+              onClick={run}
+              className="w-full rounded-sm bg-seal px-4 py-3 font-serif text-[16px] font-bold tracking-[0.15em] text-card shadow-[0_2px_0_var(--color-seal-deep)] active:translate-y-px active:shadow-none"
+            >
+              开始体检（{detected.length} 条）
+            </button>
+          </div>,
+          document.body,
+        )}
         <p className="mt-4 flex gap-2 text-[12.5px] leading-6 text-ink-faint">
           <span aria-hidden>⚿</span>
           {mode === "ai" ? "AI 辅助模式会把规则没解析出题名的参考文献条目发送给 DeepSeek 解析，再查询公开数据库。请勿粘贴未公开论文正文或敏感信息。" : "只把参考文献条目发送给 Crossref、OpenAlex、doi.org 检索，不上传论文正文。"}

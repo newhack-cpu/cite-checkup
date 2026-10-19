@@ -236,7 +236,7 @@ export function DocumentImport({ onImport, disabled = false, purpose = "referenc
       </div>
       <p className="mt-2 text-[11px] leading-5 text-ink-faint">
         {allowImages
-          ? "文件在本站服务器提取文字，不调用 AI；图片识别会把图片发给 DeepSeek 视觉模型转写文字，也可以在参考文献框里直接粘贴截图。都要确认预览后才填入，原文件不持久保存。"
+          ? "文件在本站服务器提取文字，不调用 AI；图片会发给 DeepSeek 视觉模型转写，也可直接粘贴截图。确认预览后才填入，原文件不保存。"
           : "文件发送至本站服务器提取文字，确认预览后填入；导入不调用 AI，原文件不持久保存。"}
       </p>
       {busy === "vision" && <p role="status" className="mt-2 text-[12px] leading-5 text-ink-soft">DeepSeek 正在逐条转写图片中的参考文献，通常需要 5–15 秒<span className="animate-blink">▍</span></p>}

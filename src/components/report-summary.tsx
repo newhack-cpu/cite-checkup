@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { healthScore, VERDICT_META, VERDICT_ORDER } from "@/lib/verdict-meta";
 import { buildFixedList, buildReportMarkdown } from "@/lib/report";
+import { localDate, reportHtml, saveFile } from "@/lib/report-html";
 import type { ParsedRef, RefResult, Verdict } from "@/lib/verify/types";
 import { Stamp } from "./seal";
 
@@ -39,13 +40,12 @@ export function ReportSummary({
   // 相近候选没有确认哪里写错，不算"需要处理"，单独提示人工核对
   const near = counts.near_match ?? 0;
 
-  function download() {
-    const url = URL.createObjectURL(new Blob([buildReportMarkdown(refs, results, complete)], { type: "text/markdown;charset=utf-8" }));
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `引用体检报告-${new Date().toISOString().slice(0, 10)}.md`;
-    link.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  // 默认给可直接打开、打印的网页；需要纯文本的另给 Markdown
+  function download(format: "html" | "md") {
+    const markdown = buildReportMarkdown(refs, results, complete);
+    const name = `引用体检报告-${localDate()}`;
+    if (format === "md") saveFile(markdown, "text/markdown;charset=utf-8", `${name}.md`);
+    else saveFile(reportHtml(markdown, "引用体检报告"), "text/html;charset=utf-8", `${name}.html`);
   }
 
   return (
@@ -94,7 +94,8 @@ export function ReportSummary({
         >
           {copied ? "已复制到剪贴板" : "复制修正版清单"}
         </button>
-        <button type="button" onClick={download} disabled={running} className="rounded-sm border border-ink/25 px-4 py-2 text-[14px] text-ink hover:border-seal hover:text-seal disabled:opacity-40">下载核查报告</button>
+        <button type="button" onClick={() => download("html")} disabled={running} title="网页格式，双击用浏览器打开，可直接打印或另存为 PDF" className="rounded-sm border border-ink/25 px-4 py-2 text-[14px] text-ink hover:border-seal hover:text-seal disabled:opacity-40">下载核查报告</button>
+        <button type="button" onClick={() => download("md")} disabled={running} className="self-center px-1 py-1 text-[12.5px] text-ink-faint underline decoration-dotted underline-offset-4 hover:text-seal disabled:opacity-40">Markdown 版</button>
         </div>
       </div>
       <p className="mt-3 text-[12.5px] leading-6 text-ink-faint">健康度只计算有明确结论的条目；相近候选、待人工与关注声明不计入分母。{!finished && "本次核查未全部完成，暂不显示健康度或提供修正版清单。"}</p>

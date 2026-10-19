@@ -1,6 +1,7 @@
 import { agentSummary } from "./agent-stream";
 import { VERDICT_META, VERDICT_ORDER } from "./verdict-meta";
 import type { ParsedRef, RefResult, Verdict } from "./verify/types";
+import { localTime } from "./report-html";
 
 export function buildFixedList(refs: ParsedRef[], results: Map<number, RefResult>): string {
   return refs.map(ref => {
@@ -29,7 +30,7 @@ export function buildReportMarkdown(refs: ParsedRef[], results: Map<number, RefR
   const counts = new Map<Verdict, number>();
   for (const r of results.values()) counts.set(r.verdict, (counts.get(r.verdict) ?? 0) + 1);
   const tally = VERDICT_ORDER.filter(v => counts.get(v)).map(v => `${VERDICT_META[v].label} ${counts.get(v)}`).join("，");
-  const lines = ["# 引用体检报告", "", `生成时间：${new Date().toISOString()}`, `状态：${finished ? "核查完成" : "未完成，部分条目仍需重试"}`, `收到结果：${results.size} / ${refs.length}`, `结论统计：${tally || "暂无"}`, "", "核查只覆盖公开数据库可提供的证据；未检索到不等于不存在。请保留人工复核。"];
+  const lines = ["# 引用体检报告", "", `生成时间：${localTime()}`, `状态：${finished ? "核查完成" : "未完成，部分条目仍需重试"}`, `收到结果：${results.size} / ${refs.length}`, `结论统计：${tally || "暂无"}`, "", "核查只覆盖公开数据库可提供的证据；未检索到不等于不存在。请保留人工复核。"];
   if (counts.get("near_match")) lines.push("相近候选只是找到了相近的记录、未能确认是同一篇，不算信息有误，请逐条人工核对。");
   lines.push("");
   for (const ref of refs) {

@@ -201,7 +201,7 @@ export function ResultCard({
 
       <div className="relative min-w-0 p-4 sm:p-5">
         {/* 印章右浮动，窄屏时正文绕排，不会被挤成一条窄列 */}
-        <div className="float-right mb-1 ml-3 pt-1">{verdict ? <Stamp verdict={verdict} /> : stopped ? <Stamp verdict="error" /> : <PendingStamp />}</div>
+        <div className="float-right mb-2 ml-4 pt-1">{verdict ? <Stamp verdict={verdict} /> : stopped ? <Stamp verdict="error" /> : <PendingStamp />}</div>
         <p className="break-words font-serif text-[14.5px] leading-7 text-ink-soft">{refItem.raw}</p>
 
         {result ? (
@@ -218,7 +218,7 @@ export function ResultCard({
                 target="_blank"
                 rel="noreferrer noopener"
                 title="AI 检索在中文学术网站找到的论文页，可打开核对作者、刊名和年期"
-                className="text-[12.5px] text-ink-faint underline decoration-dotted underline-offset-4 hover:text-seal"
+                className="inline-flex min-h-7 items-center text-[12.5px] text-ink-faint underline decoration-dotted underline-offset-4 hover:text-seal"
               >
                 打开{result.match.site ?? "来源"}页面
               </a>
@@ -238,7 +238,7 @@ export function ResultCard({
                 type="button"
                 onClick={() => setOpen(!expanded)}
                 aria-expanded={expanded}
-                className="text-[13px] text-ink-faint underline decoration-dotted underline-offset-4 hover:text-seal"
+                className="inline-flex min-h-7 items-center px-1 text-[13px] text-ink-faint underline decoration-dotted underline-offset-4 hover:text-seal"
               >
                 {expanded ? "收起" : "展开详情"}
               </button>

@@ -7,12 +7,12 @@
   --color-card: #fbf8f1;
   --color-ink: #1d1a16;
   --color-ink-soft: #4a433a;
-  --color-ink-faint: #8a8073;
+  --color-ink-faint: #736a5e; /* 10-18 可用性走查：原 #8a8073 在卡片底色上对比度 3.66:1，改后 5.0:1 */
   --color-rule: #d8ceba;
   --color-seal: #b8322a;
   --color-seal-deep: #8f241e;
   --color-jade: #2e6a4f;
-  --color-amber: #a26a14;
+  --color-amber: #94600f; /* 10-19：原 #a26a14 对比度 4.3:1，改后 5.0:1 */
   --color-oxblood: #6e1f2f;
   --color-slate: #56657a;
   --color-iris: #6b4f8a;
@@ -51,7 +51,7 @@
       transform: scale(1.05) rotate(-9deg);
     }
     100% {
-      opacity: 0.9;
+      opacity: 1;
       transform: scale(1) rotate(-8deg);
     }
   }

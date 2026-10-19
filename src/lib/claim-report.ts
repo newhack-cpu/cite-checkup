@@ -1,4 +1,5 @@
 import type { ClaimResult, ClaimVerdict } from "./claims/types";
+import { localTime } from "./report-html";
 
 export const CLAIM_LABELS: Record<ClaimVerdict, string> = {
   supported: "证据支持",
@@ -10,7 +11,7 @@ export const CLAIM_LABELS: Record<ClaimVerdict, string> = {
 const safe = (value: string) => value.replace(/\r?\n/g, " ").replace(/[\\`*_{}[\]<>#|]/g, "\\$&");
 
 export function buildClaimReport(result: ClaimResult): string {
-  const lines = ["# 正文论断核查报告", "", `生成时间：${new Date().toISOString()}`, "",
+  const lines = ["# 正文论断核查报告", "", `生成时间：${localTime()}`, "",
     `核查状态：${result.status === "complete" ? "已完成" : "未完成"}`,
     `论断：${safe(result.claim)}`,
     `判断：${result.status === "complete" && result.verdict ? CLAIM_LABELS[result.verdict] : "本次未形成判断"}`,
