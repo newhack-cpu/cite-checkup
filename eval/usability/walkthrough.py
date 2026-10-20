@@ -2,7 +2,7 @@
 记录每项任务的操作步数、等待时间、首屏可见性、键盘可达性、触控目标尺寸和 axe-core 无障碍检查结果。
 这是自动化的专家走查，不是真人可用性测试；真人测试见 docs/competition/TRIAL_GUIDE.md 的任务和 SUS 问卷。
 
-用法：python -I eval/usability/walkthrough.py eval/results/usability-2026-10-18
+用法：python -I eval/usability/walkthrough.py eval/results/usability-2026-10-18 [http://localhost:3210/]
 结果写到 <outdir>/walkthrough.json，截图写到同目录（截图不进 git）。
 """
 import json
@@ -13,7 +13,8 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[2]
-BASE = "http://localhost:3210/"
+# 第二个参数可以指定被测地址，默认本机生产版
+BASE = sys.argv[2] if len(sys.argv) > 2 else "http://localhost:3210/"
 OUT = Path(sys.argv[1])
 OUT.mkdir(parents=True, exist_ok=True)
 AXE = (ROOT / "node_modules/.pnpm/axe-core@4.14.0/node_modules/axe-core/axe.min.js").read_text(encoding="utf-8")
@@ -22,6 +23,8 @@ CLAIM = "即使用 GPT-4，它引用的书籍章节里也有七成是编造的�
 CLAIM_DOI = "10.1038/s41598-023-41032-5"
 NOT_REFERENCES = "本研究采用问卷调查法，对 300 名大学生的学习动机进行了测量。结果表明，内在动机与学业成绩显著正相关。"
 VERDICT_WORDS = ["证据支持", "部分支持", "与证据矛盾", "证据不足", "未完成"]
+# 除“首次来访”一项外，都当作看过开场动画和新手引导的访客，免得动画和邀请便签挡住要测的界面
+SEEN_ONBOARDING = "try { localStorage.setItem('cite-intro', '1'); localStorage.setItem('cite-tour', 'done'); } catch (e) {}"
 
 report = {"base": BASE, "startedAt": time.strftime("%Y-%m-%dT%H:%M:%S"), "tasks": [], "axe": [], "keyboard": [], "targets": [], "notes": []}
 
@@ -131,8 +134,46 @@ def tap_targets(page, label):
 with sync_playwright() as p:
     browser = p.chromium.launch()
 
+    # ---------- 首次来访：开场动画 → 邀请便签 → 新手引导 → 载入示例并体检（10-20） ----------
+    ctx = browser.new_context(viewport={"width": 1440, "height": 900})
+    page = ctx.new_page()
+    t0 = time.time()
+    page.goto(BASE, wait_until="domcontentloaded")
+    intro = page.evaluate("document.documentElement.dataset.intro")
+    page.wait_for_function("() => document.documentElement.dataset.intro !== 'play'", timeout=30_000)
+    intro_done = time.time() - t0
+    invite = page.locator("aside[aria-labelledby=tour-invite-title]")
+    invite.wait_for(timeout=15_000)
+    page.wait_for_timeout(500)
+    page.screenshot(path=str(OUT / "desktop-00-invite.png"))
+    axe(page, "首次来访：邀请便签")
+    invite.get_by_role("button", name="带我看看").click()
+    titles = []
+    t1 = time.time()
+    for _ in range(10):
+        page.get_by_role("dialog").wait_for(timeout=10_000)
+        page.wait_for_timeout(900)
+        titles.append(page.locator("#tour-title").inner_text())
+        if len(titles) == 2:
+            axe(page, "新手引导（第 2 步）")
+        final = page.get_by_role("button", name="载入示例并开始体检")
+        if final.count():
+            page.screenshot(path=str(OUT / "desktop-00-tour-final.png"))
+            t1 = time.time()
+            final.click()
+            break
+        page.get_by_role("button", name="下一步").click()
+    page.wait_for_function("() => /已完成\\s*(\\d+)\\s*\\/\\s*\\1\\s*条/.test(document.body.innerText)", timeout=240_000)
+    task("首次来访：开场动画 → 邀请便签 → 新手引导 → 载入示例并体检", introPlayed=intro == "play", introDoneSeconds=round(intro_done, 1),
+         tourSteps=titles, sampleRunSeconds=round(time.time() - t1, 1))
+    page.reload(wait_until="networkidle")
+    page.wait_for_timeout(1200)
+    task("再次来访", introPlayed=page.evaluate("document.documentElement.dataset.intro") == "play", invite=page.locator("aside[aria-labelledby=tour-invite-title]").count())
+    ctx.close()
+
     # ---------- 桌面 ----------
     ctx = browser.new_context(viewport={"width": 1440, "height": 900}, accept_downloads=True)
+    ctx.add_init_script(SEEN_ONBOARDING)
     ctx.grant_permissions(["clipboard-read", "clipboard-write"], origin=BASE.rstrip("/"))
     page = ctx.new_page()
     errors = []
@@ -242,6 +283,7 @@ with sync_playwright() as p:
 
     # ---------- 手机 ----------
     ctx = browser.new_context(viewport={"width": 390, "height": 844}, device_scale_factor=2, is_mobile=True, has_touch=True)
+    ctx.add_init_script(SEEN_ONBOARDING)
     page = ctx.new_page()
     errors = []
     page.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
