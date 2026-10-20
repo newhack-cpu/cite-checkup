@@ -38,10 +38,27 @@ describe("retrieval augmented claim checking", () => {
     expect(serialized).not.toContain("test-only-secret");
     expect(serialized).toContain("judge_claim");
     expect(result.warnings.join(" ")).toMatch(/用户提供/);
-    // 引句报告的就是论断说的试验：复核后保持“矛盾”，复核只收到论断和引句
+    // 引句报告的就是论断说的试验：复核后保持“矛盾”；复核收到论断、引句和引句所在的片段
     expect(payloads).toHaveLength(2);
-    expect(JSON.parse((payloads[1].messages as { content: string }[])[1].content)).toEqual({ claim: "The trial found a significant benefit.", quotes: ["no significant benefit"] });
+    expect(JSON.parse((payloads[1].messages as { content: string }[])[1].content)).toEqual({ claim: "The trial found a significant benefit.", quotes: ["no significant benefit"], context: ["The trial found no significant benefit after 12 weeks."] });
     expect(result.warnings.join(" ")).not.toMatch(/范围复核/);
+  });
+
+  it("gives the scope review only the cited passages as context", async () => {
+    let scopeInput: { context?: string[] } = {};
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(async (_url, options) => {
+      const body = JSON.parse(options.body);
+      if (body.tools[0].function.name !== "check_scope") return reply({ verdict: "contradicted", explanation: "试验未观察到显著收益。", citations: [{ sourceId: "source-1", chunkId: "source-1-c2", quote: "no significant benefit" }] });
+      scopeInput = JSON.parse(body.messages[1].content);
+      return reply({ qualifiers: [{ qualifier: "The trial", inQuote: true }] }, "tool_calls", "check_scope");
+    }));
+    const evidenceText = "Unrelated pottery note. ".repeat(60) + "The trial found no significant benefit after 12 weeks.";
+    const result = await checkClaim({ claim: "The trial found a significant benefit.", evidenceText });
+    expect(result.verdict).toBe("contradicted");
+    expect(result.chunks.map((chunk) => chunk.id)).toContain("source-1-c2");
+    expect(scopeInput.context).toHaveLength(1);
+    expect(scopeInput.context![0]).toContain("no significant benefit");
+    expect(scopeInput.context![0]).toBe(result.chunks.find((chunk) => chunk.id === "source-1-c2")!.text);
   });
 
   it("downgrades a contradiction drawn from a broader result to insufficient evidence", async () => {
@@ -52,6 +69,14 @@ describe("retrieval augmented claim checking", () => {
     expect(result.explanation).toContain("没有单独报告论断限定的“80 岁以上的患者”");
     expect(result.citations).toHaveLength(1);
     expect(result.warnings.join(" ")).toMatch(/初判为“与证据矛盾”.*已改判为“证据不足”.*总体只有 12%/);
+  });
+
+  it("treats a malformed scope answer as an unfinished review", async () => {
+    const judge = { verdict: "contradicted", explanation: "试验未观察到收益。", citations: [{ sourceId: "source-1", chunkId: "source-1-c1", quote: "The trial found no benefit." }] };
+    vi.stubGlobal("fetch", byTool(judge, () => reply({ qualifiers: [{ qualifier: "老年患者", inQuote: false, sameScope: false }] }, "tool_calls", "check_scope")));
+    const result = await checkClaim({ claim: "老年患者在该试验中获益。", evidenceText: "The trial found no benefit." });
+    expect(result).toMatchObject({ status: "complete", verdict: "contradicted" });
+    expect(result.warnings.join(" ")).toMatch(/范围复核未完成/);
   });
 
   it("keeps the initial contradiction with a warning when the scope review fails", async () => {

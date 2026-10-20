@@ -1,18 +1,16 @@
-// 论断判定的“范围错配”检查：只有摘要时，总体比例不能用来否定限定了范围的论断。
-// 2026-10-19 走查中 Europe PMC 全文超时、退回摘要，“GPT-4 引用的书籍章节七成是编造的”被判成“与证据矛盾”
-// （摘要只有 GPT-4 总体 18%）。这里固定用同一份摘要证据，每条论断判 N 次：
-//   --mode=judge-only     只做判定（修复前线上的做法）
-//   --mode=scope-review   判定后，初判为矛盾时做范围复核（与 checkClaim 相同）
-// 另跑一次 DOI 全文路径（--fulltext），确认能取到全文时这句论断仍判“证据支持”；
-// --probe 单独测范围复核：其他领域的合成引句（医学、经济、教育），看是不是只对这一篇论文有效。
-// 用法：NODE_USE_ENV_PROXY=1 pnpm exec tsx scripts/eval-claim-scope.mts --mode=scope-review --runs=3 --tag=after --fulltext --probe
-import { mkdirSync, writeFileSync } from "node:fs";
+// 论断“范围错配”评测：数据集 eval/claims-scope/cases.json（三篇论文的真实摘要 20 条 + 合成材料 27 条）。
+// 起因：10-19 走查中 Europe PMC 全文超时、退回摘要，“GPT-4 引用的书籍章节七成是编造的”被摘要里“GPT-4 总体 18%”判成“与证据矛盾”。
+// 每条论断判 N 次；同一次判定结果上同时算三种做法，便于比较：
+//   judge   只做判定（10-19 之前的线上做法）
+//   contra  初判为“矛盾”时做范围复核，引句没覆盖论断的限定范围就改判“证据不足”（10-19 上线的做法）
+//   both    初判为“矛盾”或“支持”时都做范围复核（候选）
+// 用法：NODE_USE_ENV_PROXY=1 pnpm exec tsx scripts/eval-claim-scope.mts [--runs=3] [--tag=v1] [--concurrency=4] [--only=W1,S5c]
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { checkContradictionScope } from "../src/lib/claims/assist";
-import { checkClaim } from "../src/lib/claims/index";
 import { judgeRetrievedEvidence } from "../src/lib/claims/model";
 import { chunkEvidence, retrieveEvidence } from "../src/lib/claims/retrieval";
 import { fetchDoiEvidence } from "../src/lib/claims/sources";
-import type { ClaimVerdict } from "../src/lib/claims/types";
+import type { ClaimSource, ClaimVerdict, EvidenceChunk } from "../src/lib/claims/types";
 
 try {
   process.loadEnvFile(".env.local");
@@ -21,85 +19,125 @@ try {
 const arg = (name: string) => process.argv.find((a) => a.startsWith(`--${name}=`))?.split("=")[1];
 const runs = Number(arg("runs") ?? 3);
 const tag = arg("tag") ?? "run";
-const mode = arg("mode") === "judge-only" ? "judge-only" : "scope-review";
-const DOI = "10.1038/s41598-023-41032-5"; // Walters & Wilder 2023, Scientific Reports
-const BOOK_CHAPTERS = "即使用 GPT-4，它引用的书籍章节里也有七成是编造的。";
+const concurrency = Number(arg("concurrency") ?? 4);
+const only = arg("only")?.split(",");
 
-// 摘要原文：55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated（没有按文献类型细分）
-const cases: { id: string; claim: string; expected: ClaimVerdict }[] = [
-  { id: "subgroup-book-chapters", claim: BOOK_CHAPTERS, expected: "insufficient_evidence" },
-  { id: "subgroup-journal-articles", claim: "在该研究样本中，GPT-4 引用的期刊论文有一半是编造的。", expected: "insufficient_evidence" },
-  { id: "overall-contradicted", claim: "在该研究样本中，GPT-4 生成的引文有一半以上是编造的。", expected: "contradicted" },
-  { id: "overall-supported", claim: "在该研究样本中，GPT-3.5 生成引文的 55% 为虚构，GPT-4 为 18%。", expected: "supported" },
-];
+interface Doc { id: string; kind: "doi" | "synthetic"; doi?: string; text?: string }
+interface Case { id: string; doc: string; category: string; claim: string; expected: ClaimVerdict[] }
+const data = JSON.parse(readFileSync("eval/claims-scope/cases.json", "utf8")) as { documents: Doc[]; cases: Case[]; categories: Record<string, string> };
+const cases = data.cases.filter((c) => !only || only.includes(c.id));
 
-const evidence = await fetchDoiEvidence(DOI, undefined, { fullText: false });
-const chunks = chunkEvidence(evidence.text, evidence.source.id);
-console.log(`模式：${mode}；证据：${evidence.source.label}，${evidence.text.length} 字符，${chunks.length} 段`);
+// 证据：DOI 只取摘要（模拟全文取不到）；合成材料按用户提供的正文处理，与 checkClaim 相同
+const evidence = new Map<string, { source: ClaimSource; text: string; chunks: EvidenceChunk[] }>();
+for (const doc of data.documents.filter((d) => cases.some((c) => c.doc === d.id))) {
+  let source: ClaimSource;
+  let text: string;
+  if (doc.kind === "doi") {
+    const fetched = await fetchDoiEvidence(doc.doi!, undefined, { fullText: false });
+    source = fetched.source;
+    text = fetched.text;
+  } else {
+    text = doc.text!;
+    source = { id: "source-1", kind: "user_provided", label: "合成测试材料", retrievedAt: new Date().toISOString(), scope: "user_provided_text", totalChars: text.length };
+  }
+  evidence.set(doc.id, { source, text, chunks: chunkEvidence(text, source.id) });
+  console.log(`证据 ${doc.id}：${source.label}，${text.length} 字符`);
+}
 
-const rows = [];
-for (const c of cases) {
+type Variant = "judge" | "contra" | "both";
+const VARIANTS: Variant[] = ["judge", "contra", "both"];
+interface Run { verdict?: ClaimVerdict; quotes?: string[]; scope?: { sameScope: boolean; missing: string[] } | null; final?: Record<Variant, ClaimVerdict>; judgeMs?: number; scopeMs?: number; explanation?: string; error?: string }
+const results = new Map<string, Run[]>(cases.map((c) => [c.id, []]));
+
+async function runOne(c: Case) {
+  const { source, chunks } = evidence.get(c.doc)!;
   const retrieved = retrieveEvidence(c.claim, chunks);
   const used = retrieved.length ? retrieved : chunks;
-  const verdicts: string[] = [];
-  const notes: string[] = [];
-  for (let i = 0; i < runs; i++) {
-    try {
-      const judged = await judgeRetrievedEvidence(c.claim, evidence.source, used);
-      let verdict: string = judged.verdict;
-      let note = judged.explanation;
-      if (mode === "scope-review" && verdict === "contradicted") {
-        const scope = await checkContradictionScope(c.claim, judged.citations.map((citation) => citation.quote), AbortSignal.timeout(30_000));
-        if (!scope) note = `范围复核未完成；${note}`;
-        else if (!scope.sameScope) { verdict = "insufficient_evidence"; note = `范围复核：引句没有单独报告 ${scope.missing.join("、")}；初判 contradicted`; }
-        else note = `范围复核：同一范围；${note}`;
-      }
-      verdicts.push(verdict);
-      notes.push(note);
-    } catch (error) {
-      verdicts.push("error");
-      notes.push(error instanceof Error ? error.message : String(error));
+  const run: Run = {};
+  try {
+    const started = Date.now();
+    const judged = await judgeRetrievedEvidence(c.claim, source, used);
+    run.judgeMs = Date.now() - started;
+    run.verdict = judged.verdict;
+    run.quotes = judged.citations.map((citation) => citation.quote);
+    run.explanation = judged.explanation;
+    if (judged.verdict === "contradicted" || judged.verdict === "supported") {
+      const scopeStarted = Date.now();
+      const cited = used.filter((chunk) => judged.citations.some((citation) => citation.chunkId === chunk.id)).map((chunk) => chunk.text);
+      run.scope = await checkContradictionScope(c.claim, run.quotes, cited, AbortSignal.timeout(30_000));
+      run.scopeMs = Date.now() - scopeStarted;
     }
+    const narrowed = run.scope ? !run.scope.sameScope : false;
+    run.final = {
+      judge: judged.verdict,
+      contra: judged.verdict === "contradicted" && narrowed ? "insufficient_evidence" : judged.verdict,
+      both: (judged.verdict === "contradicted" || judged.verdict === "supported") && narrowed ? "insufficient_evidence" : judged.verdict,
+    };
+  } catch (error) {
+    run.error = error instanceof Error ? error.message : String(error);
   }
-  const ok = verdicts.filter((v) => v === c.expected).length;
-  rows.push({ ...c, verdicts, ok, notes });
-  console.log(`${ok === runs ? "PASS" : "FAIL"} ${c.id}: ${verdicts.join(", ")}（期望 ${c.expected}）`);
+  results.get(c.id)!.push(run);
+  const scopeNote = run.scope === undefined ? "" : run.scope === null ? " 复核未完成" : run.scope.sameScope ? " 同范围" : ` 缺:${run.scope.missing.join("/")}`;
+  console.log(`${c.id} ${run.error ? `错误 ${run.error}` : `${run.verdict}${scopeNote} → contra=${run.final!.contra} both=${run.final!.both}`}（期望 ${c.expected.join("/")}）`);
 }
 
-let fulltext: Record<string, unknown> | undefined;
-if (process.argv.includes("--fulltext")) {
-  const started = Date.now();
-  const result = await checkClaim({ doi: DOI, claim: BOOK_CHAPTERS });
-  fulltext = { claim: BOOK_CHAPTERS, scope: result.coverage.scope, status: result.status, verdict: result.verdict, seconds: Math.round((Date.now() - started) / 100) / 10,
-    quotes: result.citations.map((citation) => citation.quote), warnings: result.warnings };
-  console.log(`DOI 路径：范围 ${result.coverage.scope}，${result.status} / ${result.verdict}，${fulltext.seconds} 秒`);
+const tasks = cases.flatMap((c) => Array.from({ length: runs }, () => c));
+let next = 0;
+await Promise.all(Array.from({ length: Math.min(concurrency, tasks.length) }, async () => {
+  while (next < tasks.length) await runOne(tasks[next++]);
+}));
+
+// 统计：错判矛盾 = 不该矛盾却判矛盾；丢失矛盾 = 该矛盾却没判；支持同理
+const summary: Record<string, unknown> = {};
+const byCategory: Record<string, Record<Variant, string>> = {};
+for (const variant of VARIANTS) {
+  let n = 0, ok = 0, falseContra = 0, lostContra = 0, falseSupport = 0, lostSupport = 0, errors = 0;
+  for (const c of cases) {
+    let catN = 0, catOk = 0;
+    for (const run of results.get(c.id)!) {
+      if (!run.final) { errors++; continue; }
+      const verdict = run.final[variant];
+      n++; catN++;
+      if (c.expected.includes(verdict)) { ok++; catOk++; }
+      if (verdict === "contradicted" && !c.expected.includes("contradicted")) falseContra++;
+      if (c.expected.includes("contradicted") && verdict !== "contradicted") lostContra++;
+      if (verdict === "supported" && !c.expected.includes("supported")) falseSupport++;
+      if (c.expected.includes("supported") && verdict !== "supported") lostSupport++;
+    }
+    const cat = (byCategory[c.category] ??= {} as Record<Variant, string>);
+    const [prevOk, prevN] = (cat[variant] ?? "0/0").split("/").map(Number);
+    cat[variant] = `${prevOk + catOk}/${prevN + catN}`;
+  }
+  summary[variant] = { correct: `${ok}/${n}`, falseContradicted: falseContra, lostContradicted: lostContra, falseSupported: falseSupport, lostSupported: lostSupport, errors };
+}
+const allRuns = [...results.values()].flat();
+const reviewed = allRuns.filter((run) => run.scope !== undefined);
+const latency = {
+  judgeMedianMs: median(allRuns.flatMap((run) => (run.judgeMs ? [run.judgeMs] : []))),
+  scopeMedianMs: median(reviewed.flatMap((run) => (run.scopeMs ? [run.scopeMs] : []))),
+  scopeIncomplete: reviewed.filter((run) => run.scope === null).length,
+  scopeCalls: reviewed.length,
+};
+function median(values: number[]) {
+  const sorted = [...values].sort((a, b) => a - b);
+  return sorted.length ? sorted[Math.floor(sorted.length / 2)] : null;
 }
 
-// 范围复核单独测：sameScope 期望值；false 表示引句没有报告论断限定的范围
-let probe: Record<string, unknown>[] | undefined;
-if (process.argv.includes("--probe")) {
-  const probes: [string, string, string, boolean][] = [
-    ["med-subgroup", "80 岁以上的患者中有四成出现副作用。", "Overall, 12% of patients reported side effects.", false],
-    ["med-overall", "该试验中只有 2% 的患者出现副作用。", "Overall, 12% of patients reported side effects.", true],
-    ["med-reverse", "该试验中总体有四成患者出现副作用。", "Among patients over 80, 40% reported side effects.", false],
-    ["econ-time", "2021 年该地区失业率为 3%。", "In 2020, the regional unemployment rate was 8%.", false],
-    ["edu-significance", "干预组的测验成绩显著高于对照组。", "The intervention group scored 5 points higher than the control group, but the difference was not significant (p = 0.30).", true],
-  ];
-  probe = [];
-  for (const [id, claim, quote, expected] of probes) {
-    const got: string[] = [];
-    for (let i = 0; i < runs; i++) {
-      const scope = await checkContradictionScope(claim, [quote], AbortSignal.timeout(30_000));
-      got.push(!scope ? "incomplete" : scope.sameScope ? "same" : `differs: ${scope.missing.join("、")}`);
-    }
-    const ok = got.filter((g) => (expected ? g === "same" : g.startsWith("differs"))).length;
-    probe.push({ id, claim, quote, expectedSameScope: expected, got, ok });
-    console.log(`${ok === runs ? "PASS" : "FAIL"} probe ${id}: ${got.join("; ")}`);
-  }
+console.log("\n做法\t正确\t错判矛盾\t丢失矛盾\t错判支持\t丢失支持\t出错");
+for (const variant of VARIANTS) {
+  const s = summary[variant] as Record<string, number | string>;
+  console.log(`${variant}\t${s.correct}\t${s.falseContradicted}\t${s.lostContradicted}\t${s.falseSupported}\t${s.lostSupported}\t${s.errors}`);
 }
+console.log("\n分类\tjudge\tcontra\tboth");
+for (const [category, row] of Object.entries(byCategory)) console.log(`${category}\t${row.judge}\t${row.contra}\t${row.both}`);
+console.log(`\n判定中位耗时 ${latency.judgeMedianMs} ms；范围复核 ${latency.scopeCalls} 次，中位 ${latency.scopeMedianMs} ms，未完成 ${latency.scopeIncomplete} 次`);
 
 mkdirSync("eval/results/claim-scope-2026-10-19", { recursive: true });
 const out = `eval/results/claim-scope-2026-10-19/${tag}.json`;
-writeFileSync(out, JSON.stringify({ ranAt: new Date().toISOString(), mode, model: process.env.DEEPSEEK_MODEL || "deepseek-flash", doi: DOI, evidenceScope: evidence.source.scope, runs, rows, fulltext, probe,
-  limitation: "同一篇论文摘要上的 4 条论断，用于检查“范围错配”这一类错判，不代表论断核查的总体准确率。" }, null, 2));
+writeFileSync(out, JSON.stringify({
+  ranAt: new Date().toISOString(), model: process.env.DEEPSEEK_MODEL || "deepseek-flash", dataset: "eval/claims-scope/cases.json", runs, summary, byCategory, latency,
+  evidence: Object.fromEntries([...evidence].map(([id, e]) => [id, { label: e.source.label, scope: e.source.scope, text: e.text }])),
+  cases: cases.map((c) => ({ ...c, runs: results.get(c.id) })),
+  limitation: "47 条论断由评测者编写，真实部分只用三篇论文的摘要；用于检查“范围错配”这一类错判和复核的副作用，不代表论断核查的总体准确率。",
+}, null, 2));
 console.log(`结果：${out}`);

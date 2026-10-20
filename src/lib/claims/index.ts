@@ -72,7 +72,8 @@ export async function checkClaim(raw: ClaimInput, options: { signal?: AbortSigna
       signal.throwIfAborted();
       if (judgment.verdict === "contradicted") {
         // 总体或其他范围的结果不能否定限定范围的论断（摘要里 GPT-4 总体 18% 不能否定“书籍章节七成”）：引句没覆盖论断的限定词时改判证据不足
-        const scope = await checkContradictionScope(input.claim, judgment.citations.map((citation) => citation.quote), signal);
+        const cited = chunks.filter((chunk) => judgment.citations.some((citation) => citation.chunkId === chunk.id)).map((chunk) => chunk.text);
+        const scope = await checkContradictionScope(input.claim, judgment.citations.map((citation) => citation.quote), cited, signal);
         signal.throwIfAborted();
         if (!scope) {
           result.warnings.push("“与证据矛盾”的范围复核未完成：请人工确认引句和论断说的是同一对象、同一条件和时间。");
