@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-10-19T14:08:38.322517+00:00",
+  "checkedAt": "2026-10-20T02:07:03.491935+00:00",
   "file": "D:\\Darks\\projects\\cite-checkup\\docs\\competition\\output\\pdf\\引用体检-技术说明.pdf",
-  "sha256": "4c455fc0b3258f3a67c03a1eff31326a15e622810d07366fe75bd240bb71584a",
+  "sha256": "7656af627f0ebfeeb19ba597abee5b7292cd1e162e176c48c250c53743013ab9",
   "pages": 15,
   "maxPages": 30,
   "textSelectable": true,
@@ -47,7 +47,7 @@
     },
     {
       "page": 6,
-      "textCharacters": 963,
+      "textCharacters": 1020,
       "pageNumber": true,
       "outOfPageText": [],
       "render": "D:\\Darks\\projects\\cite-checkup\\eval\\results\\technical-pdf-2026-10-19\\render\\page-06.png"

@@ -17,7 +17,7 @@
 - [x] 替换前备份并校验 10-14 旧 MP4、旧验收与旧时间记录，位置为 `output/video/history-2026-10-14/`；历史验收不替代本轮验收。
 - [x] 两片分别通过 ffprobe 规格、完整解码、25 fps、字幕边界、语音覆盖和源片段核对；逐章抽帧实际检查通过。验收范围和文件 SHA256 见 `media/video-2026-10-18/final-video-QA.json` 与 `visual-QA.json`。
 - [x] `media/README.md` 已记录准确时长、版本、验收路径、章节起止、失败后重录和检查限制；主片 `video-verification.json` 与教程 `tutorial-video-verification.json` 为独立验收记录。
-- [x] PDF 与本地验收证据一致：636 项测试（视频录制时为 589 项）、deepseek-flash、开放全文 + 混合检索、图片识别与隐藏提示词的范围和局限明确。
+- [x] PDF 与本地验收证据一致：638 项测试（视频录制时为 589 项）、deepseek-flash、开放全文 + 混合检索、图片识别与隐藏提示词的范围和局限明确。
 - [x] 双视频核对：功能、测试数字、模型与 PDF / README 的限制一致；英文 Agent 历史 7 条含 2 条误报、1 条无法确认，中文 33/75 是找到论文页、仅 1 条自动确认；检索命中率不是判断准确率，所有证据仍需人工复核。
 - [x] 在新盲测集 `eval/real-world/blind-2026-10-16.json` 上运行一次（10-16 17:04）：逐条复核误报 10/110（9.1%），与上次盲测相当；结果已补进 README、技术 PDF、答辩问答和讲稿（复核记录 `eval/results/real-blind-2026-10-16-adjudication.json`）。
 - [x] 按这批误报修规则后，在第三批盲测集 `eval/real-world/blind-2026-10-16b.json` 上运行一次（10-16 21:31）：逐条复核误报 13/111（11.7%），与前两次盲测相当；dev、test、自建 29 条全量回归无新增误报（`eval/results/real-regression-2026-10-16-v2.json`、`real-blind-2026-10-16b-adjudication.json`）；结果已补进 README、技术 PDF、答辩问答和讲稿。
