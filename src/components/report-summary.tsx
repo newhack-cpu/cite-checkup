@@ -49,7 +49,7 @@ export function ReportSummary({
   }
 
   return (
-    <section className="sheet animate-rise rounded-sm border border-rule/80 p-5 sm:p-7">
+    <section data-tour="summary" className="sheet animate-rise rounded-sm border border-rule/80 p-5 sm:p-7">
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div>
           <p className="text-[12px] tracking-[0.4em] text-ink-faint">体 检 报 告</p>

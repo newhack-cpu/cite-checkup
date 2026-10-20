@@ -1,19 +1,20 @@
 import { Workbench } from "@/components/workbench";
-import { InkFilter, SealLogo } from "@/components/seal";
+import { SealLogo } from "@/components/seal";
+import { Tour, TourButton } from "@/components/tour";
 
 export default function Home() {
   return (
     <>
-      <InkFilter />
       <header className="mx-auto max-w-6xl animate-rise px-5 pt-10 sm:px-8 sm:pt-14">
         <div className="flex items-center gap-4 sm:gap-6">
           <SealLogo className="size-14 shrink-0 sm:size-[4.5rem]" />
-          <div>
+          <div className="min-w-0">
             <h1 className="font-serif text-[32px] font-black leading-tight tracking-[0.08em] sm:text-[42px]">引用体检</h1>
             <p className="mt-1 text-[14px] text-ink-soft sm:text-[15.5px]">
               让每一条引用有据可查：文献真实性 · 信息准确性 · 论断与证据
             </p>
           </div>
+          <TourButton className="ml-auto shrink-0 self-start sm:self-center" />
         </div>
         <div aria-hidden className="mt-7 space-y-[3px]">
           <div className="h-[2px] bg-ink/80" />
@@ -29,6 +30,7 @@ export default function Home() {
         <div aria-hidden className="mb-4 h-px bg-ink/20" />
         数据来源：Crossref（含 Retraction Watch 撤稿数据）· OpenAlex · doi.org，或你提供的文献原文。规范引文依据数据库生成；论断判断附带证据范围，供人工复核。
       </footer>
+      <Tour />
     </>
   );
 }

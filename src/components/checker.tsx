@@ -2,6 +2,7 @@
 
 import { useDeferredValue, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
+import { RUN_STARTED, TRY_SAMPLE } from "@/lib/onboarding";
 import { SAMPLE_REFERENCES } from "@/lib/samples";
 import { VERDICT_META, VERDICT_ORDER } from "@/lib/verdict-meta";
 import { notReference, parseReferenceList } from "@/lib/verify/extract";
@@ -56,6 +57,8 @@ export function Checker() {
   const [agentAvailable, setAgentAvailable] = useState(false);
   const [agentRuns, setAgentRuns] = useState<Map<number, AgentRunState>>(new Map());
   const abortRef = useRef<AbortController | null>(null);
+  const phaseRef = useRef<Phase>("idle");
+  const [sampleRequest, setSampleRequest] = useState(0);
   const agentAborts = useRef(new Map<number, AbortController>());
   const reportRef = useRef<HTMLDivElement>(null);
 
@@ -80,6 +83,25 @@ export function Checker() {
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
+  // 新手引导最后一步“载入示例并开始体检”：先填入示例，等这次渲染拿到新文本再开始（run 提交的是当次渲染的 text）
+  useEffect(() => {
+    phaseRef.current = phase;
+  }, [phase]);
+  useEffect(() => {
+    const onTry = () => {
+      if (phaseRef.current === "running") return;
+      setText(SAMPLE_REFERENCES);
+      setSampleRequest((n) => n + 1);
+    };
+    window.addEventListener(TRY_SAMPLE, onTry);
+    return () => window.removeEventListener(TRY_SAMPLE, onTry);
+  }, []);
+  useEffect(() => {
+    if (sampleRequest > 0) void run();
+    // 每收到一次示例请求只开始一次
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sampleRequest]);
 
   // 计时器
   useEffect(() => {
@@ -159,6 +181,7 @@ export function Checker() {
   }
 
   async function run() {
+    window.dispatchEvent(new Event(RUN_STARTED));
     abortRef.current?.abort();
     stopAgents();
     const controller = new AbortController();
@@ -241,13 +264,16 @@ export function Checker() {
               type="button"
               onClick={() => setText(SAMPLE_REFERENCES)}
               disabled={!hydrated || phase === "running"}
+              data-tour="sample"
               title="填入 11 条示例：含真实、写错、编造和已撤稿的文献"
               className="shrink-0 rounded-sm border border-seal/50 px-2.5 py-1 text-[13px] text-seal transition hover:bg-seal hover:text-card disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-seal"
             >
               载入示例
             </button>
           </header>
-          <DocumentImport onImport={setText} disabled={!hydrated || phase === "running"} purpose="references" pasteTargetId="refs" />
+          <div data-tour="import">
+            <DocumentImport onImport={setText} disabled={!hydrated || phase === "running"} purpose="references" pasteTargetId="refs" />
+          </div>
           <fieldset disabled={!hydrated || phase === "running"} className="border-b border-dashed border-rule px-5 py-3">
             <legend className="sr-only">核验模式</legend>
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-[13px] text-ink-soft">
@@ -261,8 +287,16 @@ export function Checker() {
           </label>
           <textarea
             id="refs"
+            data-tour="input"
             value={text}
             onChange={(e) => setText(e.target.value)}
+            onKeyDown={(e) => {
+              // Ctrl / ⌘ + Enter 直接开始体检，不用再去找按钮
+              if (e.key === "Enter" && (e.ctrlKey || e.metaKey) && canRun) {
+                e.preventDefault();
+                void run();
+              }
+            }}
             spellCheck={false}
             disabled={!hydrated || phase === "running"}
             placeholder={hydrated ? PLACEHOLDER : "页面还在加载，稍候即可粘贴参考文献…"}
@@ -275,7 +309,8 @@ export function Checker() {
                 {tooMany && `（单次最多 ${MAX_REFS} 条）`}
               </span>
               {kindSummary && !tooMany && <span className="text-[12.5px] text-ink-faint">{kindSummary}</span>}
-              <span className="ml-auto flex gap-1">
+              <span className="ml-auto flex items-center gap-1">
+                {detected.length > 0 && <span className="mr-1 hidden text-[12px] text-ink-faint lg:inline">Ctrl / ⌘ + Enter 开始</span>}
                 <button
                   type="button"
                   onClick={() => setText("")}
@@ -294,6 +329,7 @@ export function Checker() {
             <button
               ref={startRef}
               type="button"
+              data-tour="start"
               onClick={run}
               disabled={!canRun}
               className="group relative w-full overflow-hidden rounded-sm bg-seal px-4 py-3 font-serif text-[17px] font-bold tracking-[0.4em] text-card shadow-[0_2px_0_var(--color-seal-deep)] transition hover:bg-seal-deep active:translate-y-px active:shadow-none disabled:cursor-not-allowed disabled:bg-ink-faint/40 disabled:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-seal"
@@ -395,7 +431,7 @@ function EmptyState({ waiting }: { waiting: boolean }) {
         ))}
       </ol>
 
-      <div className="mt-8 border-t border-dashed border-rule pt-6">
+      <div data-tour="legend" className="mt-8 border-t border-dashed border-rule pt-6">
         <p className="mb-4 text-[12px] tracking-[0.3em] text-ink-faint">结论印章说明</p>
         <dl className="grid gap-x-6 gap-y-4 sm:grid-cols-2">
           {VERDICT_ORDER.filter((v) => v !== "error").map((v) => (

@@ -5,6 +5,9 @@ import "lxgw-wenkai-webfont/lxgwwenkai-regular.css";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
 import "./globals.css";
+import { Intro } from "@/components/intro";
+import { InkFilter } from "@/components/seal";
+import { INTRO_SCRIPT } from "@/lib/onboarding";
 
 export const metadata: Metadata = {
   title: "引用体检 · 论文参考文献核查",
@@ -13,8 +16,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="zh-CN" className="h-full">
-      <body className="min-h-full">{children}</body>
+    // data-intro 由下面的脚本在首次绘制前写上，和服务端渲染的属性不同属于预期
+    <html lang="zh-CN" className="h-full" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: INTRO_SCRIPT }} />
+      </head>
+      <body className="min-h-full">
+        <InkFilter />
+        <Intro />
+        {children}
+      </body>
     </html>
   );
 }

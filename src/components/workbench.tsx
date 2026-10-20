@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { TOUR_OPEN } from "@/lib/onboarding";
 import { Checker } from "./checker";
 import { ClaimChecker } from "./claim-checker";
 
@@ -12,9 +13,15 @@ const TABS = [
 export function Workbench() {
   const [active, setActive] = useState<"references" | "claims">("references");
   const buttons = useRef<(HTMLButtonElement | null)[]>([]);
+  // 新手引导讲的都是“参考文献体检”页，打开引导时切回这一页
+  useEffect(() => {
+    const show = () => setActive("references");
+    window.addEventListener(TOUR_OPEN, show);
+    return () => window.removeEventListener(TOUR_OPEN, show);
+  }, []);
   return (
     <>
-      <div role="tablist" aria-label="选择核查任务" className="mb-7 grid grid-cols-2 gap-3">
+      <div role="tablist" aria-label="选择核查任务" data-tour="tabs" className="mb-7 grid grid-cols-2 gap-3">
         {TABS.map((tab, index) => (
           <button key={tab.id} ref={el => { buttons.current[index] = el; }} type="button" role="tab"
             id={`tab-${tab.id}`} aria-controls={`panel-${tab.id}`} aria-selected={active === tab.id}
