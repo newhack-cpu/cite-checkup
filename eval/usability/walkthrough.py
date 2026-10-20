@@ -78,7 +78,7 @@ def first_screen(page, label):
     v = vitals(page)
     seen = {
         "参考文献输入框": visible_in_first_screen(page, page.locator("#refs")),
-        "开始体检按钮": visible_in_first_screen(page, page.get_by_role("button", name="开始体检")),
+        "开始体检按钮": visible_in_first_screen(page, page.get_by_role("button", name="开始体检", exact=True)),
         "载入示例": visible_in_first_screen(page, page.get_by_role("button", name="载入示例")),
         "两个任务标签": visible_in_first_screen(page, page.get_by_role("tab", name="正文论断核查")),
         "导入文件按钮": visible_in_first_screen(page, page.get_by_role("button", name="导入 PDF / Word / TXT")),
@@ -89,19 +89,28 @@ def first_screen(page, label):
     return task(f"{label}：打开首页", vitals=v, firstScreen=seen, pageHeight=height)
 
 
+def detected_count(page):
+    """“识别到 N 条”经 useDeferredValue 延后渲染，填入后立刻读会读到 0；等数字出来再读"""
+    try:
+        page.wait_for_function("() => /识别到\\s*[1-9]\\d*\\s*条/.test(document.body.innerText)", timeout=10_000)
+    except Exception:
+        pass
+    return page.get_by_text("识别到").first.inner_text().replace("\n", " ")
+
+
 def run_check(page, label):
     page.get_by_role("button", name="载入示例").click()
-    detected = page.get_by_text("识别到").first.inner_text()
+    detected = detected_count(page)
     t0 = time.time()
-    page.get_by_role("button", name="开始体检").click()
+    page.get_by_role("button", name="开始体检", exact=True).click()
     page.locator("article[aria-busy=false]").first.wait_for(timeout=60_000)
     first = time.time() - t0
-    page.get_by_text("已完成").first.wait_for(timeout=120_000)
-    page.wait_for_function("() => /已完成\\s*(\\d+)\\s*\\/\\s*\\1\\s*条/.test(document.body.innerText)", timeout=180_000)
+    page.get_by_text("已完成").first.wait_for(timeout=240_000)
+    page.wait_for_function("() => /已完成\\s*(\\d+)\\s*\\/\\s*\\1\\s*条/.test(document.body.innerText)", timeout=240_000)
     done = time.time() - t0
     chips = [c.inner_text().replace("\n", " ") for c in page.get_by_role("tablist", name="按结论筛选").get_by_role("tab").all()]
     page.screenshot(path=str(OUT / f"{label}-02-results.png"))
-    return task(f"{label}：载入示例并体检", steps=2, detected=detected.replace("\n", " "), firstResultSeconds=round(first, 1), allDoneSeconds=round(done, 1), filterChips=chips)
+    return task(f"{label}：载入示例并体检", steps=2, detected=detected, firstResultSeconds=round(first, 1), allDoneSeconds=round(done, 1), filterChips=chips)
 
 
 def overflow(page):
@@ -152,19 +161,19 @@ with sync_playwright() as p:
 
     # 空输入、非参考文献文字、超长输入
     page.goto(BASE, wait_until="networkidle")
-    start = page.get_by_role("button", name="开始体检")
+    start = page.get_by_role("button", name="开始体检", exact=True)
     task("桌面：空输入", startDisabled=start.is_disabled())
     page.fill("#refs", NOT_REFERENCES)
-    detected = page.get_by_text("识别到").first.inner_text().replace("\n", " ")
+    detected = detected_count(page)
     start.click()
-    page.wait_for_function("() => /已完成\\s*(\\d+)\\s*\\/\\s*\\1\\s*条/.test(document.body.innerText)", timeout=120_000)
+    page.wait_for_function("() => /已完成\\s*(\\d+)\\s*\\/\\s*\\1\\s*条/.test(document.body.innerText)", timeout=240_000)
     verdicts = [a.locator("p.font-serif.font-bold").first.inner_text() for a in page.locator("article").all()]
     page.screenshot(path=str(OUT / "desktop-03-not-references.png"))
     task("桌面：粘贴的是正文段落而不是参考文献", detected=detected, results=verdicts)
     page.goto(BASE, wait_until="networkidle")
     page.fill("#refs", "[1] " + "很长的一段文字。" * 9000)
     long_text = page.locator("body").inner_text()
-    task("桌面：超长输入（7.2 万字符）", startDisabled=page.get_by_role("button", name="开始体检").is_disabled(),
+    task("桌面：超长输入（7.2 万字符）", startDisabled=page.get_by_role("button", name="开始体检", exact=True).is_disabled(),
          hint=[line for line in long_text.split("\n") if "字符" in line or "条" in line][:4])
 
     # 主流程：载入示例 → 体检 → 只看有问题的 → 复制修正版 → 下载报告
@@ -185,7 +194,7 @@ with sync_playwright() as p:
     task("桌面：筛出“有误”并复制修正版清单", steps=2, mismatchCardsShown=shown, clipboardLines=len([l for l in clip.split("\n") if l.strip()]), clipboardHead=clip[:300])
     with page.expect_download() as dl:
         page.get_by_role("button", name="下载核查报告").click()
-    path = OUT / "desktop-report.md"
+    path = OUT / ("desktop-report" + Path(dl.value.suggested_filename).suffix)
     dl.value.save_as(str(path))
     task("桌面：下载核查报告", steps=1, fileName=dl.value.suggested_filename, sizeKB=round(path.stat().st_size / 1024, 1))
 
@@ -195,7 +204,7 @@ with sync_playwright() as p:
         t0 = time.time()
         button.first.click()
         page.wait_for_timeout(500)
-        page.wait_for_function("() => !document.body.innerText.includes('正在规划下一步') && !document.body.innerText.includes('正在读取核查记录')", timeout=180_000)
+        page.wait_for_function("() => !document.body.innerText.includes('正在规划下一步') && !document.body.innerText.includes('正在读取核查记录')", timeout=240_000)
         card = page.locator("article").filter(has=page.get_by_text("AI 检索")).first
         page.screenshot(path=str(OUT / "desktop-05-agent.png"))
         task("桌面：对一条待人工的条目点“AI 继续查”", steps=1, seconds=round(time.time() - t0, 1), aiButtons=button.count(),
@@ -211,7 +220,7 @@ with sync_playwright() as p:
     region_enabled = region.count() > 0 and region.first.is_enabled()
     page.screenshot(path=str(OUT / "desktop-06-import-preview.png"))
     page.get_by_role("button", name="确认并填入参考文献").click()
-    detected = page.get_by_text("识别到").first.inner_text().replace("\n", " ")
+    detected = detected_count(page)
     task("桌面：导入 PDF 的参考文献", steps=3, previewSeconds=round(preview, 1), referenceRegionDetected=region_enabled, detected=detected)
 
     # 论断核查

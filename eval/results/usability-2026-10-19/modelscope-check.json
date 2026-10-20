@@ -1,0 +1,134 @@
+{
+ "url": "https://www.modelscope.cn/studios/kgkvybu111111/cite-checkup?mode=full",
+ "startedAt": "2026-10-19T17:53:44-0700",
+ "steps": [
+  {
+   "step": "desktop: 打开",
+   "appShownSeconds": 60.3,
+   "interactiveSeconds": 64.3,
+   "placeholderWhenShown": "页面还在加载，稍候即可粘贴参考文献…"
+  },
+  {
+   "step": "desktop: 新版本标记",
+   "iframeBox": {
+    "x": 0,
+    "y": 0,
+    "width": 1440,
+    "height": 900
+   },
+   "appViewportAndScrollWidth": [
+    1440,
+    900,
+    1440
+   ],
+   "sampleButtonInHeader": true,
+   "newPlaceholder": true
+  },
+  {
+   "step": "desktop: 首屏",
+   "startVisible": true,
+   "sampleVisible": true
+  },
+  {
+   "step": "desktop: 正文段落",
+   "warning": "这段文字看起来不像参考文献（没有年份、出处或 DOI），像是正文段落。请确认粘贴的是参考文献列表。",
+   "verdict": "这段文字看起来不像参考文献（没有年份、出处或 DOI），没有核查依据；如果确实是参考文献，请补全后再查",
+   "aiButton": 0
+  },
+  {
+   "step": "desktop: 示例体检",
+   "detected": "识别到 11 条",
+   "seconds": 6.8,
+   "chips": [
+    "全部 11",
+    "查无此文 2",
+    "已撤稿 1",
+    "有误 2",
+    "已核实 5",
+    "待人工 1"
+   ]
+  },
+  {
+   "step": "desktop: 下载核查报告",
+   "fileName": "引用体检报告-2026-10-19.html",
+   "sizeKB": 10.5,
+   "generated": "<p>生成时间：2026-10-19 17:55（UTC-7）</p>",
+   "markdownButton": 1
+  },
+  {
+   "step": "desktop: 论断核查",
+   "seconds": 7.3,
+   "verdict": "证据支持",
+   "scope": "判断范围：Europe PMC 开放全文，只核查召回的片段",
+   "downgraded": false
+  },
+  {
+   "step": "mobile: 打开",
+   "appShownSeconds": 29.2,
+   "interactiveSeconds": 38.0,
+   "placeholderWhenShown": "页面还在加载，稍候即可粘贴参考文献…"
+  },
+  {
+   "step": "mobile: 新版本标记",
+   "iframeBox": {
+    "x": 0,
+    "y": 7.140625,
+    "width": 412,
+    "height": 839
+   },
+   "appViewportAndScrollWidth": [
+    412,
+    839,
+    412
+   ],
+   "sampleButtonInHeader": true,
+   "newPlaceholder": true
+  },
+  {
+   "step": "mobile: 首屏",
+   "startVisible": false,
+   "sampleVisible": true
+  },
+  {
+   "step": "mobile: 填入示例后底部开始按钮",
+   "detected": "识别到 11 条",
+   "stickyBar": {
+    "top": 779,
+    "bottom": 827,
+    "width": 380,
+    "vh": 839,
+    "text": "开始体检（11 条）"
+   }
+  },
+  {
+   "step": "mobile: 点底部按钮体检",
+   "seconds": 0.9,
+   "barGone": true,
+   "scrollWidth": [
+    412,
+    412
+   ]
+  }
+ ],
+ "axe": [
+  {
+   "state": "desktop 首页",
+   "violations": []
+  },
+  {
+   "state": "desktop 结果页",
+   "violations": []
+  },
+  {
+   "state": "mobile 首页",
+   "violations": []
+  },
+  {
+   "state": "mobile 结果页",
+   "violations": []
+  }
+ ],
+ "desktopAppConsoleErrors": [],
+ "mobileAppConsoleErrors": [],
+ "finishedAt": "2026-10-19T17:56:09-0700"
+}
