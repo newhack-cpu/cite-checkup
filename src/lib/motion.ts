@@ -3,6 +3,9 @@ import { useEffect, useLayoutEffect, useRef, useState, type PointerEvent } from 
 
 const reducedMotion = () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+/** 脚本里的平滑滚动：减少动画时直接跳到位置 */
+export const scrollBehavior = (): ScrollBehavior => (reducedMotion() ? "auto" : "smooth");
+
 /** 在 .ink 按钮里、指尖按下的位置放一滴“朱砂”，晕开后自己移除 */
 export function inkDrop(event: PointerEvent<HTMLElement>, color?: string) {
   if (reducedMotion()) return;

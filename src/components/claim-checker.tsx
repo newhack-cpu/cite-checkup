@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import type { ClaimResult, ClaimServiceStatus, ClaimVerdict, EvidenceChunk } from "@/lib/claims/types";
 import { buildClaimReport, CLAIM_LABELS } from "@/lib/claim-report";
-import { inkDrop } from "@/lib/motion";
+import { inkDrop, scrollBehavior } from "@/lib/motion";
 import { localDate, reportHtml, saveFile } from "@/lib/report-html";
 import { DocumentImport } from "./document-import";
 import { IconArrow, IconChevron, IconDownload, IconShield, IconStop } from "./icons";
@@ -58,7 +58,7 @@ export function ClaimChecker() {
     const controller = new AbortController();
     abort.current = controller;
     setRunning(true); setError(null); setResult(null); setSeconds(0);
-    requestAnimationFrame(() => report.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
+    requestAnimationFrame(() => report.current?.scrollIntoView({ behavior: scrollBehavior(), block: "start" }));
     try {
       const response = await fetch("/api/claims", {
         method: "POST", headers: { "Content-Type": "application/json" }, signal: controller.signal,
@@ -193,7 +193,7 @@ export function ClaimChecker() {
             <h3 className="font-serif text-[18px] font-bold">判断引用的原文</h3>
             {result.citations.length ? <ol className="mt-4 space-y-4">{result.citations.map((citation, index) => <li key={`${citation.chunkId}-${index}`}>
               <blockquote className="rounded-r-xl border-l-2 border-seal/60 bg-paper/60 px-4 py-3 text-[14.5px] leading-7 text-ink-soft">{citation.quote}</blockquote>
-              <button type="button" className="mt-2 text-[12.5px] text-seal underline underline-offset-4" onClick={() => { setShowEvidence(true); requestAnimationFrame(() => document.getElementById(`evidence-${citation.chunkId}`)?.scrollIntoView({ behavior: "smooth", block: "center" })); }}>查看片段 {citation.chunkId} · 文本位置 {citation.start + 1}–{citation.end}</button>
+              <button type="button" className="mt-2 text-[12.5px] text-seal underline underline-offset-4" onClick={() => { setShowEvidence(true); requestAnimationFrame(() => document.getElementById(`evidence-${citation.chunkId}`)?.scrollIntoView({ behavior: scrollBehavior(), block: "center" })); }}>查看片段 {citation.chunkId} · 文本位置 {citation.start + 1}–{citation.end}</button>
             </li>)}</ol> : <p className="mt-3 text-[14px] leading-7 text-ink-faint">本次没有可用于判断的有效引句。证据不足不等于论断错误。</p>}
           </section>
           {result.chunks.length > 0 && <section className="card enter p-5 sm:p-7" style={delay(160)}>

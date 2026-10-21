@@ -2,7 +2,7 @@
 
 import { useDeferredValue, useEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties } from "react";
 import { createPortal } from "react-dom";
-import { inkDrop, useCountUp } from "@/lib/motion";
+import { inkDrop, scrollBehavior, useCountUp } from "@/lib/motion";
 import { RUN_STARTED, TRY_SAMPLE } from "@/lib/onboarding";
 import { SAMPLE_REFERENCES } from "@/lib/samples";
 import { VERDICT_META } from "@/lib/verdict-meta";
@@ -201,7 +201,7 @@ export function Checker() {
     setElapsedMs(0);
     setRunId((n) => n + 1);
     setPhase("running");
-    requestAnimationFrame(() => reportRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
+    requestAnimationFrame(() => reportRef.current?.scrollIntoView({ behavior: scrollBehavior(), block: "start" }));
 
     let completed = false;
     try {

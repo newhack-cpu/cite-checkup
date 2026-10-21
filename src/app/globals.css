@@ -491,7 +491,10 @@ html[data-intro="play"] .intro.intro-skip {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0s !important; /* 入场的错峰延迟也去掉，内容一次出齐，不再一块块跳出来 */
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
   }
 }

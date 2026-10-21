@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import { inkDrop, useCountUp, useGlide } from "@/lib/motion";
+import { inkDrop, scrollBehavior, useCountUp, useGlide } from "@/lib/motion";
 import { buildFixedList, buildReportMarkdown } from "@/lib/report";
 import { localDate, reportHtml, saveFile } from "@/lib/report-html";
 import { VERDICT_META, VERDICT_ORDER } from "@/lib/verdict-meta";
@@ -166,7 +166,7 @@ function FilterChip({ active, onClick, color, dot = false, children }: { active:
       onClick={(event) => {
         onClick();
         // 手机上筛选横向滑动：点中的一项滚到看得见的位置
-        event.currentTarget.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "smooth" });
+        event.currentTarget.scrollIntoView({ block: "nearest", inline: "nearest", behavior: scrollBehavior() });
       }}
       className={`relative z-[1] inline-flex h-8 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-3 text-[13px] transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-seal ${active ? "font-semibold" : "text-ink-soft hover:text-ink"}`}
       style={active ? { color: color ?? "var(--color-ink)" } : undefined}
