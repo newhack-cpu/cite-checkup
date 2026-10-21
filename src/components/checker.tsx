@@ -1,18 +1,20 @@
 "use client";
 
-import { useDeferredValue, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { useDeferredValue, useEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties } from "react";
 import { createPortal } from "react-dom";
+import { inkDrop, useCountUp } from "@/lib/motion";
 import { RUN_STARTED, TRY_SAMPLE } from "@/lib/onboarding";
 import { SAMPLE_REFERENCES } from "@/lib/samples";
-import { VERDICT_META, VERDICT_ORDER } from "@/lib/verdict-meta";
+import { VERDICT_META } from "@/lib/verdict-meta";
 import { notReference, parseReferenceList } from "@/lib/verify/extract";
 import { agentEligible, readAgentStream } from "@/lib/agent-stream";
 import { readCheckStream } from "@/lib/check-stream";
-import type { CheckEvent, ParsedRef, RefKind, RefResult } from "@/lib/verify/types";
-import { ReportSummary, type Filter } from "./report-summary";
+import type { CheckEvent, ParsedRef, RefKind, RefResult, Verdict } from "@/lib/verify/types";
+import { ATTENTION, ReportSummary, type Filter } from "./report-summary";
 import { ResultCard, type AgentRunState } from "./result-card";
 import { Stamp } from "./seal";
 import { DocumentImport } from "./document-import";
+import { IconArrow, IconCheck, IconChevron, IconShield, IconSpark, IconStop } from "./icons";
 
 type Phase = "idle" | "running" | "done" | "interrupted";
 
@@ -35,6 +37,10 @@ const KIND_LABEL: Record<RefKind, string> = {
 };
 
 const MAX_REFS = 80;
+const CHECKS = ["DOI 是否注册", "题名、作者、年份、期刊是否一致", "是否撤稿"];
+/** 图例只放常见的六种；关注声明和出错很少见，出现时在结果里有说明 */
+const LEGEND: Verdict[] = ["verified", "mismatch", "near_match", "not_found", "retracted", "unverifiable"];
+const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 const PLACEHOLDER = "[1] 作者. 题名[J]. 刊名, 年, 卷(期): 页码.\n[2] Author, A. (2023). Title. Journal, 12(3), 45–67.\n\n每条一行，或用 [1]、1. 这类序号分隔；支持 GB/T 7714、APA、IEEE 等格式";
 const noSubscribe = () => () => {};
 
@@ -246,219 +252,222 @@ export function Checker() {
     }
   }
 
-  const visible = filter === "all" ? refs : refs.filter((r) => results.get(r.index)?.verdict === filter);
+  const visible = filter === "all" ? refs : refs.filter((r) => {
+    const verdict = results.get(r.index)?.verdict;
+    return filter === "attention" ? !!verdict && ATTENTION.includes(verdict) : verdict === filter;
+  });
   const tooMany = detected.length > MAX_REFS;
   const canRun = detected.length > 0 && !tooMany && phase !== "running";
+  const running = phase === "running";
+  const done = results.size;
+  const total = refs.length;
+  const count = useCountUp(detected.length);
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(320px,400px)_1fr] lg:gap-10">
-      {/* 送检单 */}
-      <section className="animate-rise self-start [animation-delay:120ms] lg:sticky lg:top-8">
-        <div className="sheet overflow-hidden rounded-sm border border-rule/80">
-          <header className="flex items-center justify-between gap-3 border-b border-dashed border-rule px-5 py-3">
-            <h2 className="whitespace-nowrap font-serif text-[17px] font-bold">
-              送检单 <span className="ml-1 text-[13px] font-normal text-ink-faint">粘贴参考文献列表</span>
-            </h2>
-            {/* 第一次来的访客在首屏就能试：示例按钮放在标题栏（可用性走查，10-18） */}
+    <div>
+      <div className="mb-6 max-w-3xl md:mb-8">
+        <h2 className="reveal font-serif text-[28px] font-bold leading-tight tracking-[0.02em] sm:text-[36px]" style={delay(160)}>
+          参考文献，逐条体检
+        </h2>
+        <p className="reveal mt-3 text-[15px] leading-7 text-ink-soft sm:text-[16px]" style={delay(220)}>
+          粘贴论文末尾的参考文献列表，逐条查 DOI 是否注册、信息是否一致、有没有撤稿；数据库查不到的，再交给 AI 继续查。
+        </p>
+      </div>
+
+      {/* 输入卡：上面是输入框，下面一行工具条 */}
+      <section className="card reveal overflow-hidden transition-[border-color,box-shadow] duration-300 focus-within:border-seal/45 focus-within:shadow-[0_0_0_4px_rgb(184_50_42/0.08),0_18px_40px_-26px_rgb(40_28_14/0.28)]" style={delay(280)}>
+        <label htmlFor="refs" className="sr-only">
+          参考文献列表
+        </label>
+        <textarea
+          id="refs"
+          data-tour="input"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          onKeyDown={(e) => {
+            // Ctrl / ⌘ + Enter 直接开始体检，不用再去找按钮
+            if (e.key === "Enter" && (e.ctrlKey || e.metaKey) && canRun) {
+              e.preventDefault();
+              void run();
+            }
+          }}
+          spellCheck={false}
+          disabled={!hydrated || running}
+          placeholder={hydrated ? PLACEHOLDER : "页面还在加载，稍候即可粘贴参考文献…"}
+          className="autogrow block max-h-[20rem] min-h-[11.5rem] w-full resize-y bg-transparent px-5 py-4 font-serif text-[15px] leading-[1.85] text-ink outline-none placeholder:text-ink-faint/80 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-seal/25 sm:min-h-[13rem] sm:px-6 sm:py-5"
+        />
+        <div className="flex flex-wrap items-center gap-x-1 gap-y-2 border-t border-hair px-2.5 py-2.5 sm:px-3.5">
+          <button
+            type="button"
+            onClick={() => setText(SAMPLE_REFERENCES)}
+            disabled={!hydrated || running}
+            data-tour="sample"
+            title="填入 11 条示例：含真实、写错、编造和已撤稿的文献"
+            className="inline-flex h-9 items-center gap-1.5 rounded-full px-3 text-[13.5px] text-seal transition hover:bg-seal/8 focus-visible:outline-2 focus-visible:outline-seal disabled:cursor-not-allowed disabled:opacity-45"
+          >
+            <IconSpark className="text-[16px]" />
+            载入示例
+          </button>
+          <DocumentImport onImport={setText} disabled={!hydrated || running} purpose="references" pasteTargetId="refs" tourId="import" />
+          <span aria-hidden className="mx-1.5 hidden h-5 w-px bg-rule sm:block" />
+          <span title={kindSummary || undefined} className={`min-w-0 px-1.5 text-[13px] ${tooMany ? "text-seal" : "text-ink-soft"}`}>
+            识别到 <b className="font-semibold tabular text-ink">{count}</b> 条
+            {tooMany && `（单次最多 ${MAX_REFS} 条）`}
+          </span>
+          <span className="ml-auto flex items-center gap-1 max-sm:w-full">
             <button
               type="button"
-              onClick={() => setText(SAMPLE_REFERENCES)}
-              disabled={!hydrated || phase === "running"}
-              data-tour="sample"
-              title="填入 11 条示例：含真实、写错、编造和已撤稿的文献"
-              className="shrink-0 rounded-sm border border-seal/50 px-2.5 py-1 text-[13px] text-seal transition hover:bg-seal hover:text-card disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-seal"
+              role="switch"
+              aria-checked={mode === "ai"}
+              onClick={() => setMode(mode === "ai" ? "standard" : "ai")}
+              disabled={!hydrated || running}
+              title="规则没解析出题名的条目交给 DeepSeek 从原文摘取字段；结论仍由数据库核验"
+              className="inline-flex h-9 items-center gap-2 rounded-full px-2.5 text-[13px] text-ink-soft transition hover:bg-paper-deep/80 focus-visible:outline-2 focus-visible:outline-seal disabled:cursor-not-allowed disabled:opacity-45"
             >
-              载入示例
+              <span aria-hidden className={`relative h-[18px] w-8 shrink-0 rounded-full transition-colors duration-300 ${mode === "ai" ? "bg-seal" : "bg-ink/20"}`}>
+                <span className={`absolute left-[2px] top-[2px] size-[14px] rounded-full bg-white shadow-sm transition-transform duration-300 ease-spring ${mode === "ai" ? "translate-x-[14px]" : ""}`} />
+              </span>
+              AI 辅助解析
             </button>
-          </header>
-          <div data-tour="import">
-            <DocumentImport onImport={setText} disabled={!hydrated || phase === "running"} purpose="references" pasteTargetId="refs" />
-          </div>
-          <fieldset disabled={!hydrated || phase === "running"} className="border-b border-dashed border-rule px-5 py-3">
-            <legend className="sr-only">核验模式</legend>
-            <div className="flex flex-wrap gap-x-5 gap-y-2 text-[13px] text-ink-soft">
-              <label className="flex cursor-pointer items-center gap-2"><input type="radio" name="mode" value="standard" checked={mode === "standard"} onChange={() => setMode("standard")} className="accent-seal" />标准核验</label>
-              <label className="flex cursor-pointer items-center gap-2"><input type="radio" name="mode" value="ai" checked={mode === "ai"} onChange={() => setMode("ai")} className="accent-seal" />AI 辅助解析</label>
-            </div>
-            <p className="mt-2 text-[12px] leading-5 text-ink-faint">{mode === "standard" ? "直接检索数据库，不调用大模型。" : aiStatus?.available ? "规则没解析出题名的条目交给 DeepSeek 从原文摘取字段，逐条核对确是原文片段；其余条目不发送，结论仍由数据库核验。" : "AI 服务尚未就绪，本次将明确回退标准核验。"}</p>
-          </fieldset>
-          <label htmlFor="refs" className="sr-only">
-            参考文献列表
-          </label>
-          <textarea
-            id="refs"
-            data-tour="input"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            onKeyDown={(e) => {
-              // Ctrl / ⌘ + Enter 直接开始体检，不用再去找按钮
-              if (e.key === "Enter" && (e.ctrlKey || e.metaKey) && canRun) {
-                e.preventDefault();
-                void run();
-              }
-            }}
-            spellCheck={false}
-            disabled={!hydrated || phase === "running"}
-            placeholder={hydrated ? PLACEHOLDER : "页面还在加载，稍候即可粘贴参考文献…"}
-            className="ruled block h-[12rem] w-full resize-y py-2 pl-[3.4rem] pr-4 font-serif text-[14px] text-ink outline-none placeholder:text-ink-faint/70 focus-visible:bg-white/40 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-seal/40"
-          />
-          <footer className="space-y-3 border-t border-dashed border-rule px-5 py-4">
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[13.5px]">
-              <span className={tooMany ? "text-seal" : "text-ink-soft"}>
-                识别到 <b className="font-mono text-[15px] tabular">{detected.length}</b> 条
-                {tooMany && `（单次最多 ${MAX_REFS} 条）`}
-              </span>
-              {kindSummary && !tooMany && <span className="text-[12.5px] text-ink-faint">{kindSummary}</span>}
-              <span className="ml-auto flex items-center gap-1">
-                {detected.length > 0 && <span className="mr-1 hidden text-[12px] text-ink-faint lg:inline">Ctrl / ⌘ + Enter 开始</span>}
-                <button
-                  type="button"
-                  onClick={() => setText("")}
-                  disabled={!text || phase === "running"}
-                  className="rounded-sm px-2 py-1 text-ink-soft underline decoration-dotted underline-offset-4 hover:text-seal disabled:opacity-40"
-                >
-                  清空
-                </button>
-              </span>
-            </div>
-            {prose.length > 0 && !tooMany && (
-              <p role="status" className="rounded-sm border border-amber/40 bg-amber/5 px-3 py-2 text-[12.5px] leading-5 text-ink-soft">
-                {prose.length === detected.length && detected.length === 1 ? "这段文字" : `第 ${prose.join("、")} 条`}看起来不像参考文献（没有年份、出处或 DOI），像是正文段落。请确认粘贴的是参考文献列表。
-              </p>
+            {text && !running && (
+              <button type="button" onClick={() => setText("")} className="inline-flex h-9 items-center rounded-full px-3 text-[13px] text-ink-soft transition hover:bg-paper-deep/80 hover:text-ink">
+                清空
+              </button>
+            )}
+            {running && (
+              <button type="button" onClick={() => abortRef.current?.abort()} className="inline-flex h-9 items-center gap-1 rounded-full px-3 text-[13px] text-ink-soft transition hover:bg-paper-deep/80 hover:text-seal">
+                <IconStop className="text-[15px]" />
+                停止
+              </button>
             )}
             <button
               ref={startRef}
               type="button"
               data-tour="start"
               onClick={run}
+              onPointerDown={(e) => {
+                if (canRun) inkDrop(e);
+              }}
               disabled={!canRun}
-              className="group relative w-full overflow-hidden rounded-sm bg-seal px-4 py-3 font-serif text-[17px] font-bold tracking-[0.4em] text-card shadow-[0_2px_0_var(--color-seal-deep)] transition hover:bg-seal-deep active:translate-y-px active:shadow-none disabled:cursor-not-allowed disabled:bg-ink-faint/40 disabled:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-seal"
+              className={`ink group ml-1 inline-flex h-10 items-center justify-center gap-2 rounded-full px-5 text-[14.5px] font-semibold tracking-[0.06em] transition duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-seal max-sm:ml-auto max-sm:flex-1 ${
+                running ? "cursor-progress bg-seal text-card" : canRun ? "bg-seal text-card shadow-[0_10px_24px_-12px_rgb(184_50_42/0.85)] hover:-translate-y-px hover:bg-seal-deep" : "cursor-not-allowed bg-ink/10 text-ink-faint"
+              }`}
             >
-              {phase === "running" ? "体检中…" : "开始体检"}
+              {running ? (
+                <>
+                  <span aria-hidden className="progress-fill absolute inset-y-0 left-0 -z-10 bg-white/20" style={{ width: total ? `${(100 * done) / total}%` : "8%" }} />
+                  <span aria-hidden className="progress-sheen absolute inset-0 -z-10" />
+                  体检中 <span className="tabular">{total ? `${done} / ${total}` : "…"}</span>
+                </>
+              ) : (
+                <>
+                  开始体检
+                  <IconArrow className="text-[15px] transition-transform duration-300 group-hover:translate-x-0.5" />
+                </>
+              )}
             </button>
-            {phase === "running" && <button type="button" onClick={() => abortRef.current?.abort()} className="w-full py-1 text-sm text-ink-soft underline underline-offset-4">停止核查</button>}
-          </footer>
+          </span>
         </div>
-        {/* 手机上贴完列表，开始按钮常在屏幕外：在底部补一个，页面上的按钮露出来就收起。
-            挂到 body 上：外层区块的入场动画留下 transform，fixed 会变成相对区块定位。首屏渲染时输入为空，不会进服务端渲染 */}
-        {canRun && refs.length === 0 && !startVisible && typeof document !== "undefined" && createPortal(
-          <div className="fixed inset-x-0 bottom-0 z-30 border-t border-rule bg-paper/95 px-4 py-3 shadow-[0_-4px_12px_rgba(0,0,0,0.06)] backdrop-blur lg:hidden">
-            <button
-              type="button"
-              onClick={run}
-              className="w-full rounded-sm bg-seal px-4 py-3 font-serif text-[16px] font-bold tracking-[0.15em] text-card shadow-[0_2px_0_var(--color-seal-deep)] active:translate-y-px active:shadow-none"
-            >
-              开始体检（{detected.length} 条）
-            </button>
-          </div>,
-          document.body,
-        )}
-        <p className="mt-4 flex gap-2 text-[12.5px] leading-6 text-ink-faint">
-          <span aria-hidden>⚿</span>
-          {mode === "ai" ? "AI 辅助模式会把规则没解析出题名的参考文献条目发送给 DeepSeek 解析，再查询公开数据库。请勿粘贴未公开论文正文或敏感信息。" : "只把参考文献条目发送给 Crossref、OpenAlex、doi.org 检索，不上传论文正文。"}
-          {agentAvailable && "点击「AI 继续查」时，该条引文会发送给 DeepSeek 规划检索，并用 DeepSeek 联网搜索查询知网、万方、维普的论文页，以及 DataCite 等数据源。"}查不到不等于一定是编造，结果供人工复核参考。
-        </p>
-      </section>
-
-      {/* 体检报告 */}
-      <div ref={reportRef} className="min-w-0 scroll-mt-6 space-y-4">
-        {phase === "running" && <p role="status" aria-live="polite" className="rounded-sm border border-rule bg-card px-5 py-3 font-kai text-[16px] text-ink-soft">{progress || "正在逐条核验…"}</p>}
-        {notices.map((notice, i) => <p key={i} role="status" className="rounded-sm border border-amber/40 bg-amber/5 px-5 py-3 text-[14px] leading-6 text-ink-soft">{notice}</p>)}
-        {error && (
-          <div role="alert" className="animate-rise rounded-sm border border-seal/40 bg-seal/5 px-5 py-3 font-kai text-[16px] text-seal">
-            ✎ {error}
+        {(mode === "ai" || (prose.length > 0 && !tooMany)) && (
+          <div className="space-y-2 border-t border-hair px-5 py-3 sm:px-6">
+            {mode === "ai" && (
+              <p className="text-[12.5px] leading-6 text-ink-faint">
+                {aiStatus?.available ? "AI 辅助解析：规则没解析出题名的条目交给 DeepSeek 从原文摘取字段，逐条核对确是原文片段；其余条目不发送，结论仍由数据库核验。" : "AI 服务尚未就绪，本次将明确回退标准核验。"}
+              </p>
+            )}
+            {prose.length > 0 && !tooMany && (
+              <p role="status" className="text-[13px] leading-6 text-amber">
+                {prose.length === detected.length && detected.length === 1 ? "这段文字" : `第 ${prose.join("、")} 条`}看起来不像参考文献（没有年份、出处或 DOI），像是正文段落。请确认粘贴的是参考文献列表。
+              </p>
+            )}
           </div>
         )}
-        {refs.length > 0 ? (
+      </section>
+
+      {/* 会查什么、结论印章、隐私：一眼扫过，不用读长段说明 */}
+      <div className="reveal mt-4 space-y-3 px-1" style={delay(360)}>
+        <ul className="flex flex-wrap gap-x-5 gap-y-1.5 text-[13px] text-ink-soft">
+          {CHECKS.map((check) => (
+            <li key={check} className="inline-flex items-center gap-1.5">
+              <IconCheck className="text-[14px] text-jade" />
+              {check}
+            </li>
+          ))}
+          <li className="inline-flex items-center gap-1.5">
+            <IconSpark className="text-[14px] text-seal" />
+            查不到的交给 AI 继续查
+          </li>
+        </ul>
+        <div data-tour="legend" className="flex flex-wrap items-center gap-x-3 gap-y-2">
+          <span className="text-[12.5px] text-ink-faint">结论印章</span>
+          {LEGEND.map((verdict) => (
+            <span key={verdict} title={VERDICT_META[verdict].hint} className="inline-flex">
+              <Stamp verdict={verdict} size="sm" still />
+            </span>
+          ))}
+        </div>
+        <details className="group text-[12.5px] leading-6 text-ink-faint">
+          <summary className="inline-flex cursor-pointer list-none items-center gap-1.5 rounded-full py-1 transition hover:text-ink-soft [&::-webkit-details-marker]:hidden">
+            <IconShield className="text-[14px]" />
+            只发送参考文献条目，不上传论文正文
+            <IconChevron className="text-[13px] transition-transform duration-300 group-open:rotate-180" />
+          </summary>
+          <p className="mt-1 max-w-3xl">
+            {mode === "ai" ? "AI 辅助模式会把规则没解析出题名的参考文献条目发送给 DeepSeek 解析，再查询公开数据库。请勿粘贴未公开论文正文或敏感信息。" : "只把参考文献条目发送给 Crossref、OpenAlex、doi.org 检索，不上传论文正文。"}
+            {agentAvailable && "点击「AI 继续查」时，该条引文会发送给 DeepSeek 规划检索，并用 DeepSeek 联网搜索查询知网、万方、维普的论文页，以及 DataCite 等数据源。"}查不到不等于一定是编造，结果供人工复核参考。
+          </p>
+        </details>
+      </div>
+
+      {/* 体检报告 */}
+      <div ref={reportRef} className="mt-10 min-w-0 scroll-mt-24 space-y-3">
+        {running && <p role="status" aria-live="polite" className="enter rounded-xl border border-rule bg-card px-5 py-3 text-[14px] text-ink-soft">{progress || "正在逐条核验…"}</p>}
+        {notices.map((notice, i) => <p key={i} role="status" className="rounded-xl border border-amber/30 bg-amber/5 px-5 py-3 text-[14px] leading-6 text-ink-soft">{notice}</p>)}
+        {error && (
+          <div role="alert" className="enter rounded-xl border border-seal/30 bg-seal/5 px-5 py-3 text-[14px] text-seal">
+            {error}
+          </div>
+        )}
+        {refs.length > 0 && (
           <>
-            <ReportSummary
-              refs={refs}
-              results={results}
-              running={phase === "running"}
-              complete={phase === "done"}
-              elapsedMs={elapsedMs}
-              filter={filter}
-              onFilter={setFilter}
-            />
+            <ReportSummary refs={refs} results={results} running={running} complete={phase === "done"} elapsedMs={elapsedMs} filter={filter} onFilter={setFilter} />
             <div className="space-y-3">
-              {visible.map((r) => {
+              {visible.map((r, i) => {
                 const result = results.get(r.index);
                 const state = agentRuns.get(r.index);
-                const canRun = agentAvailable && phase !== "running" && !!result && !result.agent && agentEligible(result) && state?.status !== "running";
+                const canRunAgent = agentAvailable && !running && !!result && !result.agent && agentEligible(result) && state?.status !== "running";
                 return (
                   <ResultCard
                     key={`${runId}-${r.index}`}
+                    order={i}
                     refItem={r}
                     result={result}
                     stopped={phase === "interrupted"}
-                    agent={{ state, onRun: canRun ? () => void runAgent(r) : undefined }}
+                    agent={{ state, onRun: canRunAgent ? () => void runAgent(r) : undefined }}
                   />
                 );
               })}
-              {visible.length === 0 && <p className="py-10 text-center font-kai text-[16px] text-ink-faint">这一类暂时没有条目</p>}
+              {visible.length === 0 && <p className="py-10 text-center text-[14px] text-ink-faint">这一类暂时没有条目</p>}
             </div>
           </>
-        ) : (
-          <EmptyState waiting={phase === "running"} />
         )}
       </div>
-    </div>
-  );
-}
 
-function EmptyState({ waiting }: { waiting: boolean }) {
-  const checks = [
-    { n: "壹", title: "DOI 是否真实注册", body: "通过 doi.org 查询，覆盖 Crossref、DataCite、中文 DOI 等所有注册机构。大模型编造的 DOI 在这一步就会露馅。" },
-    { n: "贰", title: "题名、作者、年份、期刊是否对得上", body: "用整条引文到 Crossref 检索，必要时用 OpenAlex 兜底，再逐字段比对。真题名配假作者、DOI 张冠李戴都能识别。" },
-    { n: "叁", title: "是否已被撤稿", body: "读取 Crossref 中的 Retraction Watch 撤稿数据，提醒你别把已撤稿的研究当论据。" },
-    { n: "肆", title: "查不到的，交给 AI 继续查", body: "对无法核验或只找到相近候选的条目，DeepSeek 规划检索策略，换着方式查 Crossref、OpenAlex、DataCite，中文期刊还会联网搜索知网、万方、维普，每一步都摆在你眼前；找到的候选仍由规则逐字段确认。" },
-  ];
-  return (
-    <section className="sheet animate-rise rounded-sm border border-rule/80 p-6 [animation-delay:220ms] sm:p-8">
-      <p className="text-[12px] tracking-[0.4em] text-ink-faint">{waiting ? "正 在 送 检" : "尚 未 送 检"}</p>
-      <h2 className="mt-2 font-serif text-[26px] font-black leading-snug sm:text-[30px]">三道检查，查不到再交给 AI</h2>
-      <ol className="mt-6 space-y-5">
-        {checks.map((c) => (
-          <li key={c.n} className="grid grid-cols-[2.75rem_1fr] gap-4">
-            <span className="flex size-11 items-center justify-center rounded-full border-2 border-seal font-serif text-[17px] font-black text-seal">
-              {c.n}
-            </span>
-            <div>
-              <h3 className="font-serif text-[17px] font-bold">{c.title}</h3>
-              <p className="mt-1 text-[14px] leading-7 text-ink-soft">{c.body}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-
-      <div data-tour="legend" className="mt-8 border-t border-dashed border-rule pt-6">
-        <p className="mb-4 text-[12px] tracking-[0.3em] text-ink-faint">结论印章说明</p>
-        <dl className="grid gap-x-6 gap-y-4 sm:grid-cols-2">
-          {VERDICT_ORDER.filter((v) => v !== "error").map((v) => (
-            <div key={v} className="flex items-start gap-3">
-              <dt className="w-[5.5rem] shrink-0 pt-0.5">
-                <Stamp verdict={v} size="sm" still />
-              </dt>
-              <dd className="text-[13.5px] leading-6 text-ink-soft">{VERDICT_META[v].hint}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-
-      <blockquote className="mt-8 border-l-2 border-seal/60 pl-4 font-kai text-[16px] leading-8 text-ink-soft">
-        一项发表在 Scientific Reports 的研究发现：GPT-3.5 生成的参考文献中 55% 是编造的，GPT-4 也有 18%。
-        <footer className="mt-1 font-serif text-[12.5px] not-italic text-ink-faint">
-          —— Walters &amp; Wilder, 2023,{" "}
-          <a
-            className="font-mono underline decoration-rule underline-offset-4 hover:text-seal"
-            href="https://doi.org/10.1038/s41598-023-41032-5"
-            target="_blank"
-            rel="noreferrer"
+      {/* 手机上贴完列表，开始按钮可能在屏幕外：在底部补一个，页面上的按钮露出来就收起。
+          挂到 body 上：外层区块的入场动画留下 transform，fixed 会变成相对区块定位。首屏渲染时输入为空，不会进服务端渲染 */}
+      {canRun && refs.length === 0 && !startVisible && typeof document !== "undefined" && createPortal(
+        <div className="enter fixed inset-x-0 bottom-0 z-30 border-t border-rule bg-paper/85 px-4 py-3 backdrop-blur-md lg:hidden">
+          <button
+            type="button"
+            onClick={run}
+            onPointerDown={(e) => inkDrop(e)}
+            className="ink w-full rounded-full bg-seal px-4 py-3 text-[15px] font-semibold tracking-[0.08em] text-card shadow-[0_10px_24px_-12px_rgb(184_50_42/0.85)]"
           >
-            doi:10.1038/s41598-023-41032-5
-          </a>
-        </footer>
-      </blockquote>
-    </section>
+            开始体检（{detected.length} 条）
+          </button>
+        </div>,
+        document.body,
+      )}
+    </div>
   );
 }

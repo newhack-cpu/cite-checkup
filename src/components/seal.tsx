@@ -32,20 +32,19 @@ export function SealLogo({ className = "" }: { className?: string }) {
   );
 }
 
-/** 结论印章 */
+/** 结论印章：md 用在结果卡上（落下时有盖章动画），sm 用在图例和筛选上 */
 export function Stamp({ verdict, size = "md", still = false }: { verdict: Verdict; size?: "sm" | "md"; still?: boolean }) {
   const meta = VERDICT_META[verdict];
-  const box = size === "sm" ? "px-1.5 py-0.5 text-[11px] border-2" : "px-3 py-1.5 text-[17px] border-[3px]";
+  const box = size === "sm" ? "px-1.5 py-px text-[11px] border-[1.5px] rounded-[4px]" : "px-2 py-0.5 text-[13.5px] border-2 rounded-[5px]";
   return (
     <span
       role="img"
       aria-label={`结论：${meta.label}`}
-      className={`relative inline-flex select-none items-center justify-center whitespace-nowrap rounded-[6px] font-serif font-black tracking-[0.18em] ${box} ${still ? "-rotate-[8deg]" : "animate-stamp"}`}
+      className={`relative inline-flex select-none items-center justify-center whitespace-nowrap font-serif font-bold tracking-[0.14em] ${box} ${still ? "-rotate-[3deg]" : "animate-stamp"}`}
       // 小号章不加墨迹滤镜：效果几乎看不出来，滤镜却要逐帧重绘
       style={{ color: meta.color, borderColor: meta.color, filter: size === "md" ? "url(#ink)" : undefined }}
     >
-      {size === "md" && <span aria-hidden className="absolute inset-[3px] rounded-[3px] border" style={{ borderColor: meta.color, opacity: 0.5 }} />}
-      <span className="relative pl-[0.18em]">{meta.stamp}</span>
+      <span className="relative pl-[0.14em]">{meta.stamp}</span>
     </span>
   );
 }
@@ -53,8 +52,8 @@ export function Stamp({ verdict, size = "md", still = false }: { verdict: Verdic
 /** 还在核查中的占位章 */
 export function PendingStamp() {
   return (
-    <span className="inline-flex -rotate-[8deg] items-center justify-center rounded-[6px] border-[3px] border-dashed border-ink-faint/50 px-3 py-1.5 font-serif text-[17px] font-black tracking-[0.18em] text-ink-faint/60">
-      <span className="pl-[0.18em]">核查中</span>
+    <span className="inline-flex -rotate-[3deg] items-center justify-center rounded-[5px] border-2 border-dashed border-ink-faint/45 px-2 py-0.5 font-serif text-[13.5px] font-bold tracking-[0.14em] text-ink-faint/70">
+      <span className="pl-[0.14em]">核查中</span>
     </span>
   );
 }

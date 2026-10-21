@@ -11,6 +11,8 @@ interface Step {
   targets: string[];
   title: string;
   body: string;
+  /** 只在桌面显示的补充（比如键盘快捷键，手机上没有） */
+  desktopNote?: string;
   /** 桌面端批注卡优先放在哪一侧；手机只放上下 */
   prefer: Side[];
   final?: boolean;
@@ -27,31 +29,32 @@ const STEPS: Step[] = [
     targets: ['[data-tour="input"]'],
     title: "把参考文献贴进来",
     body: "从论文末尾整段复制参考文献列表。GB/T 7714、APA、IEEE 都可以，每条一行，或者带 [1]、1. 这样的序号。",
-    prefer: ["right", "bottom", "top"],
+    prefer: ["bottom", "top"],
   },
   {
     targets: ['[data-tour="import"]'],
     title: "也可以直接导入",
     body: "PDF、Word、TXT 会自动找出参考文献那一节；手机拍照、截图也能识别。先预览，确认后才填进来。",
-    prefer: ["right", "bottom", "top"],
+    prefer: ["bottom", "top"],
   },
   {
     targets: ['[data-tour="start"]'],
     title: "点这里开始体检",
-    body: "逐条查 DOI、比对题名作者年份期刊、看有没有撤稿，结果一条一条出来。在输入框里按 Ctrl + Enter 也能开始。",
-    prefer: ["right", "top", "bottom"],
+    body: "逐条查 DOI、比对题名作者年份期刊、看有没有撤稿，结果一条一条出来。",
+    desktopNote: "在输入框里按 Ctrl + Enter（Mac 上是 ⌘ + Enter）也能开始。",
+    prefer: ["bottom", "top", "left"],
   },
   {
     targets: ['[data-tour="legend"]', '[data-tour="summary"]'],
     title: "看结论印章",
-    body: "每条会盖一个章：已核实、有误、查无此文、已撤稿、待人工。点开能看核查过程和规范写法；数据库查不到的，可以点“AI 继续查”。",
-    prefer: ["left", "top", "bottom"],
+    body: "体检后每条会盖一个章：已核实、有误、相近候选、查无此文、已撤稿、待人工。点“详情”能看核查过程和规范写法；数据库查不到的，可以点“AI 继续查”。",
+    prefer: ["bottom", "top"],
   },
   {
     targets: ['[data-tour="sample"]'],
     title: "先拿示例试一试",
     body: "示例里的 11 条参考文献有真有假，还有一篇已经撤稿。点下面的按钮，自动载入并开始体检。",
-    prefer: ["bottom", "right", "left"],
+    prefer: ["bottom", "top"],
     final: true,
   },
 ];
@@ -205,7 +208,7 @@ export function Tour() {
 
   if (mode === "invite") {
     return createPortal(
-      <aside aria-labelledby="tour-invite-title" className="tour-invite fixed bottom-4 right-4 z-[85] w-[min(21.5rem,calc(100vw-2rem))] rounded-sm border border-rule bg-card p-4 pl-5 max-sm:left-4 max-sm:w-auto">
+      <aside aria-labelledby="tour-invite-title" className="tour-invite fixed bottom-4 right-4 z-[85] w-[min(21.5rem,calc(100vw-2rem))] rounded-2xl border border-rule bg-card p-4 pl-5 max-sm:left-4 max-sm:w-auto">
         <div className="flex items-start gap-3">
           <SealLogo className="mt-0.5 size-9 shrink-0 -rotate-6" />
           <div>
@@ -217,7 +220,7 @@ export function Tour() {
           <button type="button" onClick={dismissInvite} className="rounded-sm px-3 py-1.5 text-[13.5px] text-ink-soft underline decoration-dotted underline-offset-4 hover:text-seal focus-visible:outline-2 focus-visible:outline-seal">
             先不用
           </button>
-          <button type="button" onClick={start} className="rounded-sm bg-seal px-4 py-1.5 font-serif text-[14px] font-bold tracking-[0.12em] text-card shadow-[0_2px_0_var(--color-seal-deep)] hover:bg-seal-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-seal">
+          <button type="button" onClick={start} className="rounded-full bg-seal px-4 py-1.5 text-[14px] font-semibold tracking-[0.08em] text-card shadow-[0_2px_0_var(--color-seal-deep)] hover:bg-seal-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-seal">
             带我看看
           </button>
         </div>
@@ -294,7 +297,7 @@ export function Tour() {
         aria-labelledby="tour-title"
         aria-describedby="tour-body"
         onKeyDown={onKeyDown}
-        className="tour-card fixed z-[92] rounded-sm border border-rule bg-card py-4 pl-7 pr-5"
+        className="tour-card fixed z-[92] rounded-2xl border border-rule bg-card py-4 pl-7 pr-5"
         style={{ left: placed?.left ?? 12, top: placed?.top ?? 12, width: cardWidth, visibility: placed ? "visible" : "hidden" }}
       >
         <div className="flex items-center gap-2.5">
@@ -309,6 +312,7 @@ export function Tour() {
         <h2 id="tour-title" className="mt-3 font-serif text-[18px] font-bold leading-snug">{current.title}</h2>
         <p id="tour-body" className="mt-1.5 font-kai text-[15.5px] leading-7 text-ink-soft">
           {current.final && hasText ? "你已经填好了内容，点左边的“开始体检”就行；想先看效果，也可以点“载入示例”。" : current.body}
+          {!mobile && current.desktopNote}
           {current.final && <span className="mt-1 block text-[13.5px] text-ink-faint">以后想再看这份引导，点页面右上角的“怎么用”。</span>}
         </p>
         <div className="mt-4 flex items-center gap-2">
@@ -330,7 +334,7 @@ export function Tour() {
                 finish();
                 window.dispatchEvent(new Event(TRY_SAMPLE));
               }}
-              className="whitespace-nowrap rounded-sm bg-seal px-3.5 py-1.5 font-serif text-[14px] font-bold tracking-[0.06em] text-card shadow-[0_2px_0_var(--color-seal-deep)] hover:bg-seal-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-seal"
+              className="whitespace-nowrap rounded-full bg-seal px-4 py-1.5 text-[14px] font-semibold tracking-[0.04em] text-card shadow-[0_2px_0_var(--color-seal-deep)] hover:bg-seal-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-seal"
             >
               载入示例并开始体检
             </button>
@@ -341,7 +345,7 @@ export function Tour() {
               onClick={() => {
                 if (current.final || !go(step + 1, 1)) finish();
               }}
-              className="whitespace-nowrap rounded-sm bg-seal px-4 py-1.5 font-serif text-[14px] font-bold tracking-[0.12em] text-card shadow-[0_2px_0_var(--color-seal-deep)] hover:bg-seal-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-seal"
+              className="whitespace-nowrap rounded-full bg-seal px-4 py-1.5 text-[14px] font-semibold tracking-[0.08em] text-card shadow-[0_2px_0_var(--color-seal-deep)] hover:bg-seal-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-seal"
             >
               {current.final ? "完成" : "下一步"}
             </button>
@@ -360,7 +364,7 @@ export function TourButton({ className = "" }: { className?: string }) {
       type="button"
       onClick={() => window.dispatchEvent(new Event(TOUR_START))}
       title="新手引导：30 秒看懂怎么用"
-      className={`inline-flex min-h-9 items-center gap-2 rounded-full border border-rule bg-card/70 p-1.5 text-[13.5px] text-ink-soft transition hover:border-seal/60 hover:text-seal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-seal sm:pr-3.5 ${className}`}
+      className={`inline-flex min-h-9 items-center gap-2 rounded-full border border-rule bg-card/80 p-1.5 text-[13.5px] text-ink-soft transition duration-300 hover:border-seal/50 hover:text-seal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-seal sm:pr-3.5 ${className}`}
     >
       <span aria-hidden className="flex size-6 items-center justify-center rounded-full border border-seal/70 font-serif text-[12px] font-black text-seal">问</span>
       <span className="max-sm:sr-only">怎么用</span>

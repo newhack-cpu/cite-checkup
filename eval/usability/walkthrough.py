@@ -84,7 +84,7 @@ def first_screen(page, label):
         "开始体检按钮": visible_in_first_screen(page, page.get_by_role("button", name="开始体检", exact=True)),
         "载入示例": visible_in_first_screen(page, page.get_by_role("button", name="载入示例")),
         "两个任务标签": visible_in_first_screen(page, page.get_by_role("tab", name="正文论断核查")),
-        "导入文件按钮": visible_in_first_screen(page, page.get_by_role("button", name="导入 PDF / Word / TXT")),
+        "导入文件按钮": visible_in_first_screen(page, page.get_by_role("button", name="导入文件")),
     }
     page.screenshot(path=str(OUT / f"{label}-01-first-screen.png"))
     page.screenshot(path=str(OUT / f"{label}-01-full-page.png"), full_page=True)
@@ -93,9 +93,10 @@ def first_screen(page, label):
 
 
 def detected_count(page):
-    """“识别到 N 条”经 useDeferredValue 延后渲染，填入后立刻读会读到 0；等数字出来再读"""
+    """“识别到 N 条”经 useDeferredValue 延后渲染，填入后立刻读会读到 0；数字还有约 0.65 秒的滚动计数。等数字出来、停下再读"""
     try:
         page.wait_for_function("() => /识别到\\s*[1-9]\\d*\\s*条/.test(document.body.innerText)", timeout=10_000)
+        page.wait_for_timeout(900)
     except Exception:
         pass
     return page.get_by_text("识别到").first.inner_text().replace("\n", " ")
@@ -208,7 +209,7 @@ with sync_playwright() as p:
     detected = detected_count(page)
     start.click()
     page.wait_for_function("() => /已完成\\s*(\\d+)\\s*\\/\\s*\\1\\s*条/.test(document.body.innerText)", timeout=240_000)
-    verdicts = [a.locator("p.font-serif.font-bold").first.inner_text() for a in page.locator("article").all()]
+    verdicts = [a.locator("[data-summary]").first.inner_text() for a in page.locator("article").all()]
     page.screenshot(path=str(OUT / "desktop-03-not-references.png"))
     task("桌面：粘贴的是正文段落而不是参考文献", detected=detected, results=verdicts)
     page.goto(BASE, wait_until="networkidle")
@@ -249,7 +250,7 @@ with sync_playwright() as p:
         card = page.locator("article").filter(has=page.get_by_text("AI 检索")).first
         page.screenshot(path=str(OUT / "desktop-05-agent.png"))
         task("桌面：对一条待人工的条目点“AI 继续查”", steps=1, seconds=round(time.time() - t0, 1), aiButtons=button.count(),
-             outcome=page.locator("article").filter(has=page.get_by_text("AI 检索")).first.locator("p.font-serif.font-bold").first.inner_text() if card.count() else None)
+             outcome=page.locator("article").filter(has=page.get_by_text("AI 检索")).first.locator("[data-summary]").first.inner_text() if card.count() else None)
 
     # 导入 PDF
     page.goto(BASE, wait_until="networkidle")
