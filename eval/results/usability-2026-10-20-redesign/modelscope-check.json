@@ -1,0 +1,127 @@
+{
+ "url": "https://www.modelscope.cn/studios/kgkvybu111111/cite-checkup?mode=full",
+ "startedAt": "2026-10-20T23:38:57-0700",
+ "runs": [
+  {
+   "label": "desktop",
+   "appShownSeconds": 65.7,
+   "introAtShown": "play",
+   "introFinishedSeconds": 95.7,
+   "newLayout": {
+    "标题": true,
+    "导入文件": true,
+    "截图识别": false,
+    "AI 开关": true
+   },
+   "invite": true,
+   "tourSteps": [
+    "两件事，分开查",
+    "把参考文献贴进来",
+    "也可以直接导入",
+    "点这里开始体检",
+    "看结论印章",
+    "先拿示例试一试"
+   ],
+   "sampleRun": "completed",
+   "filterChips": [
+    "全部 11",
+    "需要处理 5",
+    "查无此文 2",
+    "已撤稿 1",
+    "有误 2",
+    "已核实 5",
+    "待人工 1"
+   ],
+   "axe": [
+    {
+     "state": "结果页",
+     "violations": []
+    },
+    {
+     "state": "首页",
+     "violations": []
+    }
+   ],
+   "attentionCards": 5,
+   "glide": {
+    "chip": "需要处理 5",
+    "dx": 0,
+    "dw": 0,
+    "opacity": "1"
+   },
+   "noHorizontalOverflow": true,
+   "secondVisit": {
+    "intro": "skip",
+    "invite": 0
+   },
+   "firstScreen": {
+    "输入框": true,
+    "开始体检": true,
+    "载入示例": true,
+    "导入文件": true
+   },
+   "appConsoleErrors": []
+  },
+  {
+   "label": "mobile",
+   "appShownSeconds": 5.8,
+   "introAtShown": "play",
+   "introFinishedSeconds": 7.9,
+   "newLayout": {
+    "标题": true,
+    "导入文件": true,
+    "截图识别": true,
+    "AI 开关": true
+   },
+   "invite": true,
+   "tourSteps": [
+    "两件事，分开查",
+    "把参考文献贴进来",
+    "也可以直接导入",
+    "点这里开始体检",
+    "看结论印章",
+    "先拿示例试一试"
+   ],
+   "sampleRun": "completed",
+   "filterChips": [
+    "全部 11",
+    "需要处理 5",
+    "查无此文 2",
+    "已撤稿 1",
+    "有误 2",
+    "已核实 5",
+    "待人工 1"
+   ],
+   "axe": [
+    {
+     "state": "结果页",
+     "violations": []
+    },
+    {
+     "state": "首页",
+     "violations": []
+    }
+   ],
+   "attentionCards": 5,
+   "glide": {
+    "chip": "需要处理 5",
+    "dx": 0,
+    "dw": 0,
+    "opacity": "1"
+   },
+   "noHorizontalOverflow": true,
+   "secondVisit": {
+    "intro": "skip",
+    "invite": 0
+   },
+   "firstScreen": {
+    "输入框": true,
+    "开始体检": true,
+    "载入示例": true,
+    "导入文件": true
+   },
+   "appConsoleErrors": []
+  }
+ ],
+ "finishedAt": "2026-10-20T23:41:27-0700"
+}
