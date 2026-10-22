@@ -1,11 +1,107 @@
 # 引用体检：完善与参赛准备
 
 - 项目：`D:\Darks\projects\cite-checkup`
-- 当前目标：用户要求论断证据核查、PDF/Word导入、重新评分与参赛演示材料全部完成；10-17 晚最新要求：用 DeepSeek 搜索补中文覆盖，改完再按 VIDEO_PROMPT.md 重做视频。10-14 已交付当时版本；之后新增能力已落地，当前复评为 81/100，新功能演示视频仍待本人录制，其他缺项见最新复评，不能将旧版交付状态视作当前全部完成。
+- 当前目标：2026-10-18 新版双视频、Netlify 及魔搭国内试用入口已交付。魔搭 https://www.modelscope.cn/studios/kgkvybu111111/cite-checkup?mode=full 已 Running，匿名使用和主要功能通过；8 MiB 附近上传请求超时，先用小文件或粘贴文本。原 Netlify 入口保留。老师真实试用由用户安排；81/100 是此前工程模拟复评，不是官方成绩。
 - 验收标准：原误判回归、真实DeepSeek/数据库链路、导入与证据边界、取消/未完成、桌面/手机、生产构建、技术PDF逐页渲染、5–8分钟1080p普通话MP4。
-- 约束：沿用项目纸张/印章风格；模型不能决定文献真实性；不伪造证据或秘密；保留用户模型设置；没有公网发布、正式提交或编造团队资料。
+- 约束：沿用项目纸张/印章风格；模型不能决定文献真实性；不伪造证据或秘密；保留用户模型设置。2026-10-18 已按授权上线 Netlify 免费云部署，不依赖本机持续开机；没有正式参赛提交或编造团队资料。
 
-## 2026-10-17 晚：中文期刊联网检索（最新）
+## 2026-10-18（America/Los_Angeles）：魔搭国内入口已上线，主要功能验收通过
+
+- 用户已选择“魔搭云端构建”，目标为国内老师试用入口；不安装 Docker Desktop，不重写为 Streamlit，不替换或删除 Netlify。历史“时空呼吸”使用的是 Streamlit Cloud，未找到已完成魔搭部署的证据。
+- 账号令牌已有效：通过官方 `GET /openapi/v1/users/me` 验证，账号 `kgkvybu111111`。实际查询可用免费 Docker 资源为 `platform/2v-cpu-8g-mem`（2 核 / 8 GB，resource_type=free）；没有选择收费资源。
+- 账号阻塞已解除：用户补齐绑定后成功创建 `kgkvybu111111/cite-checkup`，公开 Docker 创空间、免费资源。平台页 https://modelscope.cn/studios/kgkvybu111111/cite-checkup ，分配应用域名 https://kgkvybu111111-cite-checkup.ms.show 。此前 HTTP 400“未绑定阿里云账号”为历史失败；不再要求重复登录或令牌。记录同目录 `account-inspection.json`、`studio.json`。
+- 已推送到魔搭：83 文件清单经 SHA 校验和本项目已知秘密值检查后，通过独立 `deploy-repository` checkout 上传，提交 `2e99b82ee0e0a5566dde53267fce675a9019a17c`，远端 master 已核对；没有强推或向 GitHub 推送。DeepSeek key 单独写入 Secrets，普通变量为项目实际 `OPENALEX_SEARCH_BUDGET`，模型/API地址沿用应用默认值。令牌仅通过子进程环境与 GIT_ASKPASS 传入，远端 URL 无令牌。
+- 云构建与运行：2026-10-19T06:29:24Z 触发，云效 build ID `7f1a8b43-25de-4252-853b-39e851f74e6b`。Docker Linux 依赖安装、Next 生产构建、TypeScript 及镜像推送成功；镜像 digest `sha256:2ebaf6e98ab81ee641ea12fae232436289a3a745a4c6f8d670ca601e4cf24483`。最终状态 Running、运行配置为免费 Docker。证据 `source-sync.json`、`environment.json`、`deployment.json`、`build-logs.json`、`studio-status.json`。
+- 公开访问：全新未登录浏览器通过上述魔搭平台页正常加载应用 iframe，无需老师登录、填写令牌或本机保持开机。直接 curl 分配的 ms.show 域名会得到平台鉴权提示；这不是应用崩溃，也不是让老师使用部署令牌的理由。统一分享带 mode=full 的平台页面。
+- 已完成配置：`D:\Darks\projects\cite-checkup\Dockerfile`、`.dockerignore`、`docs\deployment\MODELSCOPE.md`；`next.config.ts` 仅在 `DEPLOY_OUTPUT=standalone` 时开启独立输出，不改变现有 Netlify profile。镜像使用 Node 22.22.3 Debian bookworm-slim、pnpm 11.22.0、非 root 用户、0.0.0.0:7860。pnpm 11 的持久平铺设置使用 `pnpm_config_shamefully_hoist=true`，否则构建时检查布局会触发无 TTY 重装错误。
+- 已筛选源码：`D:\Darks\projects\cite-checkup\output\modelscope-2026-10-18\source-manifest.json`，83 个文件、711510 字节，排除环境文件、Git 历史、视频、测试夹具和本机输出。`source` 内另有本地 node_modules/.next；上传时必须按清单建立独立 Git 仓库，不能直接把 source 整目录加入 Git。
+- 本地已验证：standalone 生产构建及 TypeScript 检查通过，next.config.ts 的 ESLint 和差异空白检查通过；24 项运行检查通过（首页、10 个静态资源、3 个字体抽样、4 个无密钥 AI 状态、普通/中文 PDF、DOCX、32 MiB 解压扩展返回 413）。PDF worker SHA 匹配、canvas 原生模块加载成功、记录的解析路径均位于 standalone 内；临时文件清空。
+- 验收证据：`D:\Darks\projects\cite-checkup\output\modelscope-2026-10-18\local-qa\verification.json`、`runtime-resolution.json`、`server-session.json`。本轮未加载模型密钥、未调用真实 AI、未重跑此前的 625 项全量测试；Netlify 云端验证结果不能冒充魔搭云端验证。
+- 云端已验证：4 个 AI 状态 GET 为 200/available；普通 PDF、中文 PDF、DOCX 正文/参考文献全部符合；真实 AI 解析 2 条有字段证据且无降级；论断 4/4 且引句定位一致；中文 Agent 经维普确认；图片 5 条题名全部命中。7 个模型 POST 顺序完成、无重试。浏览器标准示例 11/11、12.4 秒，6.1 秒时已收到 3/11，确认逐步更新；实际下载报告成功。桌面 1440px 和移动设备模式 360px 已查看，无应用横向溢出。
+- 总证据：`D:\Darks\projects\cite-checkup\output\modelscope-2026-10-18\cloud-verification.json`；子证据 `cloud-qa\cloud-imports.json`、`cloud-ai\verification.json`、`cloud-ai\cloud-ai-response.json`；截图 `D:\Darks\projects\cite-checkup\output\playwright\modelscope-cloud-desktop-home.png`、`modelscope-cloud-mobile-device.png`。新报告独立保存为 `output\modelscope-2026-10-18\browser-standard-report.md`，SHA256 `ca6aea1e7e08722a4ff375fa1aa6bc0ecc7670a2e76da89892b00b6fa13ceb1f`；浏览器 .playwright-cli 的同名临时报告现为魔搭版，勿再当作 Netlify 原报告。
+- 明确限制：8 MiB 和 8 MiB+1 两个边界请求分别在 60.003/60.007 秒被验收端取消，均无 HTTP 响应，不足以判断上传链路还是网关原因；因此总记录 allChecksPassed=false，仅主要功能就绪。建议老师先用小文件，较大论文粘贴参考文献。云端极限资源、长请求/取消边界及各大陆运营商可达性未完整验证；没有宣称免费平台永久稳定或总体准确率。
+- 平台外层表现：匿名登录信息查询 401、iframe 权限警告，移动端外层另有 setAttribute 脚本异常；应用验收请求均成功。桌面浏览器缩到390px时平台外框仍最小1280px；真实移动设备模式使用另一套外框，360px正常。不把此结果写成控制台零错误或所有窗口尺寸均通过。此前本地 Windows 验收与失败的 WSL 安装证据保留，不与本次 Linux 云构建混淆。
+- 操作工具在忽略目录：`D:\Darks\projects\cite-checkup\output\modelscope-2026-10-18\manage.mjs`（inspect/create/status）、`prepare-source.mjs`、`auth.env`（只记录位置，不记录内容）。Node 原生 fetch 在当前网络超时，工具复用已有官方 Netlify CLI 安装的 node-fetch；未关闭 TLS 或读取浏览器 cookie。
+- 根仓库部署配置已提交并推送 GitHub：`e5f28f5`，仅 `.dockerignore`、`Dockerfile`、`next.config.ts`、`docs/deployment/MODELSCOPE.md` 四文件。老师试用指南已在本地补国内入口与大文件限制，沿用原有未提交修改。魔搭实际运行源码仍是其独立仓库 `2e99b82e`，不是 GitHub 自动部署；未触发 Netlify 重建。
+- 下一步：用户把魔搭入口和老师指南发给老师，收集真实使用反馈；大文件边界作为已知待核实事项。后续更新按 `prepare-source.mjs` → `sync-source.mjs` → `manage.mjs deploy` 顺序，先核对既有项目/清单；同步脚本仅在清单范围提交到魔搭，默认 master、不强推，不把令牌写进 remote。两站没有自动同步钩子。
+- 运行/文件责任：本轮所有本地服务器、WSL 构建、4 个验收浏览器和代理任务均已结束；仅云端应用持续 Running，不依赖本机。本状态由主执行者维护。保留既有视频/评测等未提交改动，未代老师填写试用反馈或正式参赛提交。
+
+## 2026-10-18（America/Los_Angeles）：Netlify 免费部署已上线并验收
+
+- 用户最新决定：不再使用 Render，改用 Netlify；用户已完成 Netlify 网页登录。Render 仅浏览过面板，没有创建服务、付费资源或上传秘密。下方 Render 配置留作历史，不再执行其部署步骤。
+- 已新增：`D:\Darks\projects\cite-checkup\netlify.toml`、`D:\Darks\projects\cite-checkup\docs\deployment\NETLIFY.md`；显式启用官方 Next.js / OpenNext 适配器、Node 22.22.3、锁文件 pnpm 11.22.0，未创建静态 Drop 站点。
+- 平台适配：构建标记 `NEXT_PUBLIC_DEPLOY_TARGET=netlify` 统一文档/图片合计 4 MiB；check/agent/claims/vision 路由从入口共用 50 秒预算，超时流发 fatal、保留已有结果、取消下游且释放预约；非流式返回 504。非 Netlify 默认上限与底层库/MCP预算保留。共享文件为 `src/lib/deployment-limits.ts`、`src/lib/request-deadline.ts`。
+- 本地已验证：40 文件 625 项测试、lint、typecheck、Netlify profile 生产构建通过；独立复核未发现阻塞部署问题，安装版 NextRequest 正文复制/取消探针通过。生产版 3212 的 vision 状态显示 4 MiB，小 PDF/DOCX 返回预期正文与 DOI；390px 无横向溢出。本地一次标准核验触发 50 秒未完成提示、表单正常恢复，不计作完整成功。证据 `D:\Darks\projects\cite-checkup\output\netlify-2026-10-18\local-verification.json`。
+- 已提交并推送：`0c3ab2d87c28a4dc000eb13e02f69d28b3f3fd50` 为 16 个部署适配/测试/说明文件；`cf1b845615b2765af7f9b60ba4d55f1468247036` 显式启用适配器，为线上源码版本；`9e257bd` 只补正式网址及验收说明，没有再次部署。既有视频、状态、评测等未提交修改保留。
+- 接入已完成：用户已授权官方 Netlify CLI 27.13.0。C 盘同目录 rename 实测 EXDEV，D 盘通过；仅对 CLI 进程将 APPDATA 指向 `D:\Darks\.netlify-cli`（不改全局环境），凭据留该目录不进项目、不打印。不读取浏览器 cookie。
+- 已上线：`https://cite-checkup-ql514740.netlify.app`；面板 `https://app.netlify.com/projects/cite-checkup-ql514740`；站点 ID `e40e1a96-ff64-4d59-b866-3aea90f28b37`。部署 `6ad59f2e255dbb55546fb0b7`，构建 `6ad59f2e255dbb55546fb0b5`，状态 ready，2026-10-19T04:41:38.548Z 发布，1 个 Next.js 服务端函数。账号 Free / credit-free、300 credits、自动充值 false；未启用收费资源。DeepSeek API 使用原有额度，并非免费服务。
+- 已配置必要运行时变量：项目已有 DeepSeek 密钥、模型、API 地址、OpenAlex 检索预算及 Node 22 runtime；秘密通过官方 API 写环境变量，未打印或入库。没有擅自补填项目缺少的 OpenAlex key / Crossref 邮箱。源码 ZIP 来自 cf1b845 的 git archive，SHA256 `02B4FD0F77C0B0EAD5A454331D2EC53085AF473A3C6FE2FA481A8CF8CE40B0EA`，不含 `.env.local`。没有 GitHub 自动部署钩子，后续推送不会自动更新站点；需再次触发源码 ZIP 构建或关联已有项目，不要重复建站。
+- 云端已验收：首页及静态资源；4 个 AI GET 状态 HTTP 200 / available；PDF、DOCX、中文 PDF 导入全部正文/参考文献断言通过；真实 DeepSeek 解析 2 条、论断核查 4/4 通过；浏览器标准示例 11/11、约 7 秒完成并实际下载报告；中文 Agent D094 经维普确认作者/题名/年份；图片识别 5 条英文题名全部命中；390px 无横向溢出、4 MiB 标签正确；新浏览器控制台 0 错误/警告。只说明这些样本，不等于所有真实用户输入都已验收。
+- 证据：总记录 `D:\Darks\projects\cite-checkup\output\netlify-2026-10-18\cloud-verification.json`；同目录 `cloud-imports.json`、`cloud-agent.ndjson`、`cloud-vision.json`、最终 build 日志；`D:\Darks\projects\cite-checkup\eval\results\ai-smoke-2026-10-19T04-43-49-837Z.json`、`claims-smoke-2026-10-19T04-44-05-561Z.json`；`D:\Darks\projects\cite-checkup\output\playwright\netlify-cloud-desktop.png` / `netlify-cloud-mobile.png`；下载报告 `D:\Darks\projects\cite-checkup\.playwright-cli\引用体检报告-2026-10-19.md`。
+- 已解决的部署失败：首次源码 ZIP 构建未自动装载适配器，产生 0 个函数、首页/API 404；在 netlify.toml 显式声明官方插件后重建修复，最终部署与功能检查全部针对 cf1b845。原始失败日志保留，不与最终成功混淆。
+- 部署任务无剩余实现待办。已更新老师试用指南的公网入口与 4 MiB / 50 秒限制；下一步由用户安排老师真实试用并收集反馈。本轮 3212 临时服务器与验收浏览器均结束，原 3210 服务未主动关闭；部署不依赖本机进程。临时工具及证据在项目 output 目录，没有秘密值。
+- 其他线索：上传边界测试发现既有 TXT 多 MiB 连续空格可能使清理正则过慢，未在本次部署适配中扩大修复；不把它记为本轮已解决。
+
+## 2026-10-18（America/Los_Angeles）：Render 配置历史（已被 Netlify 方案替代）
+
+- 当前目标：将完整网站部署到免费云服务器，让老师直接浏览和试用；不依赖本机持续开机。
+- 方案：Render 单实例 Free Node Web Service，新加坡；保留当前 Next.js API、PDF worker 和流式核验。Sites 的 Workers 运行环境不适合直接承载现有 Node worker/原生依赖，未创建 Sites 或临时隧道。
+- 已完成：`D:\Darks\projects\cite-checkup\render.yaml` 和 `D:\Darks\projects\cite-checkup\docs\deployment\RENDER.md`；Node 22.22.3（本机生产 Node 同版本）、pnpm 11.22.0、锁文件安装、0.0.0.0:$PORT、首页健康检查、关闭自动部署、秘密通过服务端环境变量注入。无付费资源或数据库。
+- 已验证：YAML 通过 Render 官方 JSON Schema；`git diff --cached --check` 通过。此次只增加部署配置及说明，未改业务代码，复用当天 589 项测试及生产构建证据，未将本地验证称为云端验收。
+- 已提交并推送：`a8b6ea8`，只含上述两文件，无 Claude 署名；既有视频、状态、`.claude/launch.json` 等未提交修改保留。
+- 部署入口：https://dashboard.render.com/blueprint/new?repo=https://github.com/newhack-cpu/miniature-fiesta 。如果插件已创建服务，应继续已有服务，勿重复套用 Blueprint。
+- 当前限制：用户随后明确跳过本次 Render 插件安装/连接，不再建议或依赖该插件。改用已推送的 Blueprint 网页入口；仍需用户完成 Render 注册/登录及 GitHub 授权。未创建云服务、未取得公网 URL、未上传本地秘密。
+- 下一步：用户通过上述 Blueprint 入口登录，确认 Free 计划，将必要的 `.env.local` 服务端变量填入 Render（不复制 localhost 代理），点击 Deploy / Apply；取得面板网址后继续通过公开 HTTP 和浏览器验收首页、静态资源、标准核验、PDF/DOCX 导入、AI 解析/论断与中文检索。不要要求插件或将配置已推送称为网站已上线。
+- 免费边界：闲置 15 分钟休眠，约一分钟唤醒；512 MB / 0.1 CPU，PDF 与真实 API 耗时待云端实测；托管免费不等于 DeepSeek 调用免费。用户已被告知休眠和原有 AI 额度。
+- 本轮无新启动的持续运行进程；原本机 3210 生产服务未更改。
+
+## 2026-10-18：双视频已交付
+
+- 用户已授权制作正式参赛视频与给老师看的操作教程；老师试用由用户联系安排。已选择云希男声 `zh-CN-YunxiNeural`，合成音标明来源。
+- 基线 `474c66a`；工作目录 `D:\Darks\projects\cite-checkup\docs\competition\media\video-2026-10-18`，分工与要求见 `BRIEF.md`。未改产品 `src`，未提交或推送；保留原有 `.claude/launch.json` 修改。
+- 正式成片：`D:\Darks\projects\cite-checkup\docs\competition\output\video\引用体检-完整演示-1080p.mp4`，464.061333 秒，62,449,228 字节，SHA256 `3cfd1f472d36dbaa8eec21f545123b50233ccb7ff22d8ab022dcd77802e53205`。
+- 老师教程：`D:\Darks\projects\cite-checkup\docs\competition\output\video\引用体检-老师操作教程-1080p.mp4`，246.741333 秒，37,237,694 字节，SHA256 `d8d609be1f9e23dd0a3e78507482fe0008261aae6c53c0467fac768097c50790`。两片均为 1920×1080、25 fps、H.264/AAC，云希普通话合成旁白与烧录中文字幕，另附同名 SRT。
+- 已验证：两片完整解码、媒体规格、音视频末端、全部 17 章语音/字幕范围、真实源片段对应通过；实际查看两张逐章联系表及 23 张全尺寸帧，覆盖 17 章。旁白 17 条完整性/削波检查及四章本地 ASR 抽查通过；没有人工听审，视觉验收为抽帧而非逐帧观看。独立验收为工作目录 `final-video-QA.json`、`visual-QA.json`；正式目录 `video-verification.json`、`tutorial-video-verification.json` 分别绑定最终 SHA256。
+- 当天生产检查：38 文件 589 项测试、build、typecheck、lint 通过。真实 AI 解析与论断冒烟 4/4 通过；修复 `scripts/smoke-ai.mts` 将正常解析提示误判为降级的问题，并增加 AI 字段证据断言后实连通过。MCP 列工具/核验参考文献成功，`check_claim` 冒烟曾超时，未声称全通过；正式 MCP 片段只展示真实参考文献核验。
+- 录制与重录：参考文献录屏等待及选择器问题已修后重录；主片论断首次引句校验未通过，只重试一次后获得有效全文引句；教师知网来源页加载为空白，重录为真实打开新标签并返回候选说明，未伪称阅读成功。原始失败保留。长等待剪短均标记，合成材料有标识，无响应回放、循环或冻帧补时。细节见工作目录 `recording-notes.json`、`raw-verification.json` 和 `docs/competition/media/README.md`。
+- 旧 MP4、旧验收和旧时间记录已在替换前备份并校验，目录 `D:\Darks\projects\cite-checkup\docs\competition\output\video\history-2026-10-14`。新版章节时间与来源记录在 `D:\Darks\projects\cite-checkup\docs\competition\media\recording-timing.json`；正式交付清单在工作目录 `delivery-manifest.json`。
+- 按 VIDEO_PROMPT 的真实生产运行与本地 Playwright/FFmpeg 流程制作；ChatCut 本会话缺少可调用工具，没有云端上传。云希使用隔离 edge-tts 7.3.1，未修改全局依赖。没有调用 MiniMax。
+- 运行状态：所有录屏浏览器和录制任务已结束；生产服务 `http://127.0.0.1:3210`（PID 29136）保留供用户试用，已核实 HTTP 200；服务日志和交接见工作目录 `capture/service-handoff.json`。MCP 3211 的临时演示服务及其 stdio 子进程已关闭，已核实无监听；证据为工作目录 `mcp/shutdown.json`。
+- 本轮视频任务无制作待办。下一步由用户观看并安排老师按 `D:\Darks\projects\cite-checkup\docs\competition\TRIAL_GUIDE.md` 实际试用，取得真实反馈后再修改材料；不编造人数、用时或使用意见。没有正式参赛提交、公开部署或 Git 提交/推送。
+
+## 2026-10-18：中文检索补查维普失败时保留首轮候选
+
+- 起因：上一节通读发现、用户转来的问题：`cnJournalSearch` 首轮在知网、万方找到同题名文章（没有作者）后补查维普，补查一旦遇到限流、余额不足或连接失败，整个检索抛错，首轮候选跟着丢掉，卡片只剩“数据源暂时不可用”。
+- 修复：`src/lib/verify/sources/cnweb.ts` 补查遇到 `UpstreamError` 时保留首轮结果，返回 `supplementError`；取消、总时限到了照常抛出。`src/lib/agent/tools.ts` 把首轮候选照常交给规则，检索步骤写“补查维普作者未完成（原因）”，并告诉模型候选只来自首轮。
+- 测试：新增 7 项（补查 429 / 402 / 503 / 连接失败都保留首轮结果；补查时取消照常中止；首轮失败仍报数据源不可用；Agent 端到端补查失败仍给知网候选）。其中 5 项先在旧代码上确认失败，修复后通过。全量 38 个文件 589 项、typecheck、lint、生产构建通过。
+- 浏览器：生产版桌面实测 D095，补查正常时结果不变（知网相近候选 + 链接），控制台无报错。补查失败分支真实接口触发不了，只由测试覆盖。
+- 材料：测试数 582 → 589（README、技术 PDF 第 11 页、讲稿第 09 章、演示稿、提交清单）；`docs/competition/README.md` 的 7 分 35 秒改为 7 分 40 秒；“本人录制”统一为“本人录音，没有录音时按 VIDEO_PROMPT.md 用合成音并注明”。技术 PDF 重建仍 14 页、行首标点 0 处，重验记录 `eval/results/technical-pdf-2026-10-18/`。
+- 仍未处理：PDF 验收 JSON 的 `visualReview` 由脚本固定写“pending human image inspection”，需要本人看图后确认；其余待办见下一节。
+- 独立复核（用户再次询问“现在呢”）：当前 HEAD `474c66a`；已对照 `db06b64..474c66a` 核对补查失败保留候选、错误提示、取消传播和新增测试。定向重跑 `cnweb.test.ts`、`agent.test.ts` 共 2 文件 59 项全部通过；本轮未重跑全量、构建、浏览器或付费模型调用，未改业务代码。
+- 材料独立核对：当前制作入口已统一 589 项测试、约 7:40 与配音说明；最新 PDF 实物哈希和 10-18 验收记录一致，视觉检查仍待确认。现有 MP4 哈希与旧验收记录一致，时长 398.593 秒，仍非新版成片。
+- 提交时不加 Claude 的 Co-Authored-By 行（用户已清理过历史署名）。本文件仍只在本地修改，没有提交。
+
+## 2026-10-18（America/Los_Angeles）：当前项目通读
+
+- 本次目标：用户要求先看一遍当前项目；仅梳理代码、近期改动、已有评测与参赛材料，不启动功能修改或视频制作。当前 HEAD 为 `db06b64f4e9365cab55c8f6695ca71036ffbe0af`。
+- 已核对：页面与两条核查流程、Agent 中文检索及候选判定、PDF OCR 修复、MCP、现有中文评测和第五批裁定、参赛清单。中文检索与逐条 AI 解析已落地，旧记录中的相应修复待办已完成；81/100 为此前版本的模拟评分，本次未重新评分。
+- 本轮重新执行并通过：38 个测试文件、582 项测试；`pnpm typecheck`；`pnpm lint`。未重新构建、启动浏览器验收、调用真实模型或重渲染 PDF；未读取密钥或第五批原始盲测集。
+- 现有证据：中文 75 条找到论文页面候选 33 条，仅规则确认 1 条；第五批 108 条复核误报旧口径 6、新口径 5。这些数字不等于总体准确率或中文核验成功率。
+- 新发现待办（静态代码核对，未动态复现）：`src/lib/verify/sources/cnweb.ts` 中补查维普抛错会使整个检索失败，丢掉首轮已有候选。后续修复应保留首轮结果并覆盖补查失败分支。
+- 材料仍需收尾：新版视频未交付；参赛材料 README 的 7:35 / 本人录音说明与最新 VIDEO_PROMPT 的约 7:40 / 可选神经合成音不一致；PDF 验收 JSON 的 visualReview 仍标 pending，需与历史人工查看记录对齐；真实试用、第二标注者、清洁环境复现、团队信息与本人提交仍待完成。
+- 本轮仅补充本状态，保留原有 `.claude/launch.json` 和状态文件未提交修改；无持续运行作业。下一步按用户指示继续，优先处理上述候选保留问题及材料一致性。
+
+## 2026-10-17（America/Los_Angeles）：清理 Git 提交共同作者署名
+
+- 用户要求先清除 GitHub Contributors 中的 Claude 署名；本次只处理历史提交署名，未修改 Claude Code 的未来署名设置。
+- 已清除 main 全部 27 条提交中的 Claude Co-Authored-By 行，并以明确旧 HEAD 的 force-with-lease 推送；远端 HEAD 已核实为 `db06b64f4e9365cab55c8f6695ca71036ffbe0af`，本地 main 与 origin/main 已同步。
+- 已逐条验证 27 个文件树完全相同，原作者、提交者、时间及其他提交头保留；工作区和暂存区原有修改保持不变（`.claude/launch.json`）。无需重跑业务测试。
+- 旧 HEAD：`8b3cf89c1339bd6d4582a1f4cd2b98e29913c912`。历史引用的旧提交号可通过映射查询；未重写旧评测记录。
+- 已验证的原始历史备份：`D:\Darks\projects\cite-checkup\.git\attribution-cleanup-20261017\before-cleanup.bundle`；完整旧新提交映射及验证结果：同目录 `verification.json`。备份只保存在本地。
+- 本清理记录保存在本地 PROJECT_STATE.md，未另加远端提交。现有 detached worktree 未改动；后续在旧 checkout 继续开发前应先对齐新历史，避免重新合入旧署名。
+- 本次清理任务无待办；项目其他待办仍按以下记录执行。
+
+## 2026-10-17 晚：中文期刊联网检索
 
 - 视频前的改动已完成并提交；视频按 `docs/competition/VIDEO_PROMPT.md` 交给 GPT 做。
 - 起因：用户问 DeepSeek 的 Search API 能不能覆盖中文，同意接着做，做完再重做视频。
