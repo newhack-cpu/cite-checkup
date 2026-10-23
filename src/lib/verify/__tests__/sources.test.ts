@@ -104,3 +104,17 @@ describe("OpenAlex title search query", () => {
     expect(result.records.map((r) => r.doi)).toEqual(["10.9999/work"]);
   });
 });
+
+describe("Crossref author lists", () => {
+  it("drops an affiliation registered as an author when the record also has personal authors", async () => {
+    const { mapAuthors } = await import("../sources/crossref");
+    expect(mapAuthors([{ name: "경상대학교 경남문화연구원 전임연구원" }, { family: "Lee", given: "Young-Seok" }])).toEqual([{ family: "Lee", given: "Young-Seok" }]);
+    expect(mapAuthors([{ name: "Universidad Autónoma de Zacatecas" }, { family: "Veltmeyer", given: "Henry" }])).toEqual([{ family: "Veltmeyer", given: "Henry" }]);
+  });
+
+  it("keeps real corporate authors and organization-only records", async () => {
+    const { mapAuthors } = await import("../sources/crossref");
+    expect(mapAuthors([{ name: "ATLAS Collaboration" }, { family: "Aad", given: "G." }]).map((a) => a.family)).toEqual(["ATLAS Collaboration", "Aad"]);
+    expect(mapAuthors([{ name: "Harvard University" }]).map((a) => a.family)).toEqual(["Harvard University"]);
+  });
+});

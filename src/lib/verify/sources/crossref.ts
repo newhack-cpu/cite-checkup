@@ -73,10 +73,19 @@ export function doiPath(doi: string): string {
   return doi.split("/").map(encodeURIComponent).join("/");
 }
 
+/**
+ * 作者单位被误登记成作者：只有 name、名字是大学或研究机构（“경상대학교 경남문화연구원 전임연구원”“Universidad Autónoma de Zacatecas”）。
+ * 10-23 从 Crossref 随机抽 30 条期刊论文，就有 2 条这样。记录里另有个人作者时不算作者，免得规范写法里多出单位、比对时第一作者对不上；
+ * “ATLAS Collaboration”“World Health Organization”这类真正的机构作者不在此列
+ */
+const AFFILIATION = /大学|学院|研究院|研究所|研究中心|实验室|医院|대학교|연구원|연구소|Universi|Institut|College|Faculty|Department|School of|Hospital|Laborator|Cent(?:er|re) for/i;
+
 /** 中文作者有时被整串塞进 family（"张三，李四"），这里拆开 */
 export function mapAuthors(list: CrossrefAuthor[] | undefined): Author[] {
   const out: Author[] = [];
+  const people = (list ?? []).some((a) => !!a.family?.trim());
   for (const a of list ?? []) {
+    if (people && !a.family?.trim() && !a.given?.trim() && a.name && AFFILIATION.test(a.name)) continue;
     const family = (a.family ?? a.name ?? "").trim();
     const given = a.given?.trim() || undefined;
     if (!family) continue;
