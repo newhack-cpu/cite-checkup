@@ -208,6 +208,31 @@ export async function crossrefFieldSearch(
   return { records: items.filter(validItem).map((it) => ({ ...mapCrossref(it), score: it.score })), ms: res.ms };
 }
 
+/**
+ * 在某刊（按 ISSN）某一年的文献里检索，用于中文期刊按卷、起始页定位：Crossref 里的中文期刊记录常只有英文题名和拼音作者，
+ * 按中文题名检索不到。刊物不在 Crossref 时接口返回 404，当作没有结果
+ */
+export async function crossrefJournalWorks(
+  issn: string,
+  year: number,
+  query: string,
+  signal?: AbortSignal,
+): Promise<{ records: WorkRecord[]; ms: number }> {
+  const params = withMailto(new URLSearchParams({
+    "query.bibliographic": query.slice(0, 300), rows: "20", select: SELECT, filter: `from-pub-date:${year},until-pub-date:${year}`,
+  }));
+  const res = await getJson(`${BASE}/journals/${encodeURIComponent(issn)}/works?${params}`, {
+    signal,
+    validate: (json) => {
+      const items = (json as { message?: { items?: unknown } } | null)?.message?.items;
+      return Array.isArray(items) && items.every((item) => validItem(item) || untitledItem(item));
+    },
+  });
+  if (res.status !== 200) return { records: [], ms: res.ms };
+  const items = (res.json as { message?: { items?: CrossrefItem[] } })?.message?.items ?? [];
+  return { records: items.filter(validItem).map(mapCrossref), ms: res.ms };
+}
+
 interface CrossrefJournal {
   title?: unknown;
   ISSN?: unknown;

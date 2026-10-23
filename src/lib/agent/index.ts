@@ -3,6 +3,7 @@
 import { getAIStatus } from "../ai";
 import { agentEligible } from "../agent-stream";
 import { WindowLimit } from "../check-limits";
+import { defaultCnBudget } from "../verify/cnjournal";
 import { UpstreamError } from "../verify/http";
 import { parseReference } from "../verify/extract";
 import { formatAuthorsShort, scoreCandidate } from "../verify/match";
@@ -59,6 +60,8 @@ export interface AgentOptions {
   onStep?: (step: CheckStep) => void;
   /** 多条文献共用的 OpenAlex 检索额度（批量评测时用来封顶）；不传则每条各自限次 */
   openalexPool?: { left: number };
+  /** 托管平台整个请求的时限（毫秒时间戳），规则核验里的中文期刊联网核查据此收尾 */
+  deadline?: number;
 }
 
 const isAbort = (error: unknown) => error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError");
@@ -74,8 +77,10 @@ export async function runAgent(raw: string, index: number, options: AgentOptions
   const signal = parent ? AbortSignal.any([parent, deadline]) : deadline;
   const ref = parseReference(raw, index);
   const model = getAIStatus().model;
+  // 规则核验和标准体检一样包括中文期刊联网核查（检索结果有缓存，复核时基本不重复请求）
+  const cn = defaultCnBudget(options.deadline);
 
-  const before = await verifyReference(ref, { openalexBudget: options.openalexPool ?? { left: 1 }, signal });
+  const before = await verifyReference(ref, { openalexBudget: options.openalexPool ?? { left: 1 }, signal, cn });
   const trace = (fields: Partial<AgentTrace>): AgentTrace => ({
     model, toolCalls: 0, rounds: 0, outcome: "unchanged", before: { verdict: before.verdict, summary: before.summary },
     ms: Date.now() - started, ...fields,
@@ -179,7 +184,7 @@ export async function runAgent(raw: string, index: number, options: AgentOptions
 
   if (note) emit({ action: "agent_note", detail: note, ok: true, ms: 0 });
   // 时限只约束模型和检索；最后的规则复核主要命中缓存，只受调用方取消控制
-  const checked = await verifyReference(ref, { openalexBudget: options.openalexPool ?? { left: 1 }, signal: parent }, { candidates, steps });
+  const checked = await verifyReference(ref, { openalexBudget: options.openalexPool ?? { left: 1 }, signal: parent, cn }, { candidates, steps });
   // 报告、图书、网页等覆盖不足的类型，AI 找到的同名记录与引文有出入时多半是其他版本：
   // 只作为候选给出差异，不据此判"信息有误"
   const after: RefResult = checked.verdict === "mismatch" && checked.matchStatus === "confirmed" && outOfScope(ref.kind)

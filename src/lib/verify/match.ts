@@ -39,6 +39,8 @@ export interface MatchScore {
   /** 数据库记录的卷号、起始页（或文章号）是否出现在引文里 */
   volumeHit: boolean;
   pageHit: boolean;
+  /** 数据库记录的期号是否以期号的写法（"(3)" "第3期"）出现在引文里 */
+  issueHit: boolean;
   /** 期刊名一致程度；无法比对时为 undefined */
   venueScore?: number;
   /** 引文里写的期刊名能否被单独识别出来 */
@@ -150,6 +152,32 @@ function numberIn(text: string, value: string | undefined): boolean {
   return !!v && /^\d{1,8}$/.test(v) && new RegExp(`(?<![\\d.])[eE]?${v}(?!\\d)`).test(text);
 }
 
+/** 期号是否以期号的写法出现在引文里：(3)、（03）、(S1)、第3期、no. 3、Issue 3 */
+function issueIn(text: string, value: string | undefined): boolean {
+  const v = value?.trim().replace(/^0+(?=\d)/, "");
+  if (!v || !/^[0-9A-Za-z]{1,4}$/.test(v)) return false;
+  const n = escapeRe(v);
+  return new RegExp(`[(（]\\s*0*${n}\\s*[)）]|第\\s*0*${n}\\s*期|\\b(?:no|nos|issue|iss)\\.?\\s*0*${n}(?![\\dA-Za-z])`, "i").test(text);
+}
+
+/** 中文刊名去掉括号里的副刊名、“版”字后相同或互相包含（南京大学学报 ↔ 南京大学学报(自然科学版)） */
+function chineseVenueFits(cited: string | undefined, actual: string): boolean {
+  if (!cited || !isCjk(cited.trim()[0] ?? "") || !isCjk(actual.trim()[0] ?? "")) return false;
+  const core = (s: string) => compact(s.normalize("NFKC")).replace(/[(（][^)）]*[)）]/g, "").replace(/[·•:：\-—]/g, "");
+  const a = core(cited);
+  const b = core(actual);
+  return a.length >= 3 && b.length >= 3 && (a === b || a.includes(b) || b.includes(a));
+}
+
+// 引文署名是单位而不是个人（“中国社会科学院考古研究所山西队, 山西省考古研究所”），没法和知网列出的执笔人逐个比对
+const CJK_ORG_AUTHOR_RE = /^[^.．。]{0,60}?(?:研究所|研究院|研究中心|大学|学院|委员会|协会|学会|编辑部|课题组|考古队|工作队|管理局|文物局|统计局|气象局|办公室|公司|医院|中心|学校)/;
+
+export function chineseOrganizationCited(ref: ParsedRef): boolean {
+  if (ref.lang !== "zh") return false;
+  const head = (ref.authorsGuess ?? ref.raw.split(/[.．。]/)[0] ?? "").normalize("NFKC");
+  return CJK_ORG_AUTHOR_RE.test(head) && !/^[\p{Script=Han}]{2,4}(?:\s*[,，、]\s*[\p{Script=Han}]{2,4})*\s*$/u.test(head);
+}
+
 // 题名之外常见的书目用词
 const BIBLIO_WORDS = new Set([
   "vol", "volume", "no", "issue", "pp", "page", "pages", "art", "article", "suppl", "supplement",
@@ -241,7 +269,7 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
   // 引文是机构署名（"World Health Organization. 1978. ..."），记录里的个人作者一个也不在引文中：同样不按姓氏比对。
   // 期刊论文的记录常列出执笔的个人（"American Diabetes Association. ... Diabetes Care 2023" ↔ ElSayed NA 等）；
   // 报告、宣言这类非期刊文献，这样的记录通常是收录或转载它的图书章节、期刊（B056），不算同一篇
-  const orgCited = !citedAuthors && people.length > 0 && organizationAuthor(ref.raw)
+  const orgCited = people.length > 0 && ((!citedAuthors && organizationAuthor(ref.raw)) || chineseOrganizationCited(ref))
     && people.every((a) => locateAuthor(a, rawNorm, rawCompact) < 0);
   const reprint = orgCited && VERSIONED_KINDS.has(ref.kind);
   if (orgCited) people = [];
@@ -276,7 +304,10 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
       const given = initialsOf(a.given ?? "");
       if (family && given) initialsByFamily.set(family, [...(initialsByFamily.get(family) ?? []), given]);
     }
-    const cited = normalizeText(deglueNames(citedAuthors))
+    // 中文姓名中间常带空格（“王 韦韦, 朱 存玺”）：按逗号切开后，纯汉字的片段去掉空格当一个姓名
+    const joined = deglueNames(citedAuthors).split(/([,，、;；])/)
+      .map((seg) => (/^[\s\p{Script=Han}]+$/u.test(seg) ? seg.replace(/\s+/g, "") : seg)).join("");
+    const cited = normalizeText(joined)
       .replace(/\bet\s+al\b|\band\b|等(?:人)?/g, " ").split(/\s+/).filter(Boolean);
     authorListMismatch = cited.some((name, i) => name.length > 1 && !known.has(name)
       && !(/^[a-z]{2,3}$/.test(name) && (initialsByFamily.get(cited[i - 1]) ?? []).some((g) => name.startsWith(g))));
@@ -295,6 +326,7 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
   const yearDiff = ref.year && years.length ? Math.min(...years.map((y) => Math.abs(ref.year! - y))) : undefined;
   const volumeHit = numberIn(plain, rec.volume);
   const pageHit = numberIn(plain, rec.pages?.split(/[-–]/)[0]);
+  const issueHit = issueIn(plain, rec.issue);
 
   // 期刊：中文引文对英文期刊名（或反过来）没法比，直接跳过
   let venueScore: number | undefined;
@@ -303,6 +335,8 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
     if (ref.venueGuess) {
       venueCited = true;
       venueScore = venueSimilarity(ref.venueGuess, rec.venue, rec.venueShort);
+      // 中文刊名只差括号里的“自然科学版”这类副刊名，算同一本刊
+      if (venueScore < 0.75 && chineseVenueFits(ref.venueGuess, rec.venue)) venueScore = 0.75;
     } else {
       venueScore = Math.max(fuzzyRecall(rec.venue, ref.raw), rec.venueShort ? fuzzyRecall(rec.venueShort, ref.raw) : 0);
     }
@@ -349,14 +383,32 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
     // 长题名几乎逐字一致时，即使作者写错也认定为同一篇（大模型常把真题名配上假作者）
     same = (strongTitle && (authorOk || (yearOk && venueOk))) || (titleScore >= 0.92 && tokenCount(main) >= 6);
   }
-  // 知网、万方的网页结果没有作者：大模型常把真题名配上假作者，作者核对不了就不能认定是同一篇，最多是相近候选
-  if (rec.source === "web" && noAuthors) same = false;
+  if (rec.source === "web") {
+    // 中文网页记录是按题名检索来的，同名文章不少：题名、刊名、年份都对上才算同一篇，作者另行核对（见 webVerdict）。
+    // 知网、万方的网页结果没有作者：大模型常把真题名配上假作者，作者核对不了就不能认定是同一篇，最多是相近候选
+    const venueFits = !!rec.venue && (venueOk || chineseVenueFits(ref.venueGuess, rec.venue));
+    same = !noAuthors && titleScore >= 0.9 && yearOk && venueFits;
+  }
   const partial = !same && !reprint && titleScore >= 0.6 && (authorOk || noAuthors) && (yearDiff === undefined || yearDiff <= 2);
 
   return {
     titleScore, titleMissing, authorRatio, firstAuthor, authorOrderOk, authorListMismatch, authorsReordered, yearDiff, volumeHit, pageHit,
-    venueScore, venueCited, doiMatch, composite, same, partial,
+    issueHit, venueScore, venueCited, doiMatch, composite, same, partial,
   };
+}
+
+/**
+ * 中文网页记录（知网、维普、期刊官网）确认同一篇之后怎么判：
+ * - verified：作者对得上，年份一致，卷号、期号或起始页至少一项与记录一致
+ * - mismatch：作者对不上（真题名配假作者是常见的拼凑式编造）
+ * - incomplete：作者对得上，但年份差一年，或卷期页码没法与记录核对（知网页面没有卷号，页码多是期内页码）
+ */
+export function webVerdict(s: MatchScore): "verified" | "mismatch" | "incomplete" {
+  if (s.authorRatio === undefined) return "incomplete";
+  const authorsWrong = s.authorRatio === 0 || s.firstAuthor === "mismatch" || s.authorsReordered === true
+    || s.authorOrderOk === false || s.authorListMismatch === true;
+  if (authorsWrong) return "mismatch";
+  return s.yearDiff === 0 && (s.volumeHit || s.issueHit || s.pageHit) ? "verified" : "incomplete";
 }
 
 export function formatAuthorsShort(authors: Author[], max = 6): string {

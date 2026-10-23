@@ -130,7 +130,11 @@ export async function POST(request: Request) {
             received.add(result.index);
             counts[result.verdict]++;
             send({ type: "result", result });
-          }, { concurrency: 3, openalexBudget: Number.isFinite(budget) ? Math.max(0, Math.min(MAX_CHECK_REFS, Math.floor(budget))) : 20, signal: work.signal }));
+          }, {
+            concurrency: 3, openalexBudget: Number.isFinite(budget) ? Math.max(0, Math.min(MAX_CHECK_REFS, Math.floor(budget))) : 20, signal: work.signal,
+            // Netlify 上整个请求 50 秒：快到时不再开始新的中文期刊联网核查，已开始的各自有时限
+            deadline: work.deadline,
+          }));
           work.signal.throwIfAborted();
           if (received.size !== refs.length) throw new Error("Incomplete verification results");
           send({ type: "done", stats: { total: refs.length, counts, ms: Date.now() - started } });

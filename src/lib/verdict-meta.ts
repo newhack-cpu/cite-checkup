@@ -18,7 +18,7 @@ export const VERDICT_META: Record<Verdict, VerdictMeta> = {
   not_found: { stamp: "查无此文", label: "疑似不存在", hint: "DOI 未注册、DOI 指向别的文献，或开放数据库中查无此文", color: "var(--color-seal)" },
   retracted: { stamp: "已撤稿", label: "撤稿 / 撤回", hint: "文献已被撤稿或撤回，请查阅原始声明", color: "var(--color-oxblood)" },
   concern: { stamp: "关注声明", label: "关注声明", hint: "期刊发布了关注声明，尚不等于已撤稿，请审慎核查", color: "var(--color-amber)" },
-  unverifiable: { stamp: "待人工", label: "无法核验", hint: "图书、学位论文、网页、无 DOI 的中文文献等，不在开放数据库覆盖范围内", color: "var(--color-slate)" },
+  unverifiable: { stamp: "待人工", label: "无法核验", hint: "图书、学位论文、网页等不在开放数据库覆盖范围内，或开放数据库和联网检索都没能核对到的中文文献", color: "var(--color-slate)" },
   error: { stamp: "未完成", label: "出错", hint: "数据源暂时不可用，可稍后重试", color: "var(--color-ink-faint)" },
 };
 
@@ -41,6 +41,9 @@ export const STEP_SOURCE: Record<CheckStep["action"], string> = {
   openalex_lookup: "OpenAlex",
   openalex_search: "OpenAlex",
   openalex_source: "OpenAlex",
+  cn_search: "DeepSeek 搜索",
+  cn_page: "原文页面",
+  cn_crossref: "Crossref",
   agent_search: "AI 检索",
   agent_note: "AI 小结",
 };

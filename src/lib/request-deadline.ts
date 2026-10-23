@@ -3,6 +3,7 @@ import { HOSTED_REQUEST_TIMEOUT_MS } from "./deployment-limits";
 /** One route budget, including input reads. Library/MCP deadlines stay independent. */
 export function createRequestDeadline(request: Request) {
   const controller = new AbortController();
+  const startedAt = Date.now();
   let timedOut = false;
   let beforeTimeout: (() => void) | undefined;
   const abort = () => controller.abort(request.signal.reason);
@@ -20,6 +21,8 @@ export function createRequestDeadline(request: Request) {
   return {
     request: new Request(request, { signal: controller.signal }),
     signal: controller.signal,
+    /** 托管平台的整体时限（毫秒时间戳）；本机和其他部署没有时为 undefined */
+    deadline: HOSTED_REQUEST_TIMEOUT_MS === undefined ? undefined : startedAt + HOSTED_REQUEST_TIMEOUT_MS,
     get timedOut() { return timedOut; },
     onTimeout(callback: () => void) { beforeTimeout = callback; },
     abort(reason?: unknown) { controller.abort(reason); },

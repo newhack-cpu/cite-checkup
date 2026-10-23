@@ -38,6 +38,8 @@ const KIND_LABEL: Record<RefKind, string> = {
 
 const MAX_REFS = 80;
 const CHECKS = ["DOI 是否注册", "题名、作者、年份、期刊是否一致", "是否撤稿"];
+/** 配置了 DeepSeek 密钥才会用它的搜索接口做中文期刊联网核查，没有就不列 */
+const CN_CHECK = "中文期刊到知网、万方、维普核对";
 /** 图例只放常见的六种；关注声明和出错很少见，出现时在结果里有说明 */
 const LEGEND: Verdict[] = ["verified", "mismatch", "near_match", "not_found", "retracted", "unverifiable"];
 const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
@@ -387,7 +389,7 @@ export function Checker() {
       {/* 会查什么、结论印章、隐私：一眼扫过，不用读长段说明 */}
       <div className="reveal mt-4 space-y-3 px-1" style={delay(360)}>
         <ul className="flex flex-wrap gap-x-5 gap-y-1.5 text-[13px] text-ink-soft">
-          {CHECKS.map((check) => (
+          {(aiStatus?.available ? [...CHECKS.slice(0, 2), CN_CHECK, ...CHECKS.slice(2)] : CHECKS).map((check) => (
             <li key={check} className="inline-flex items-center gap-1.5">
               <IconCheck className="text-[14px] text-jade" />
               {check}
@@ -413,7 +415,7 @@ export function Checker() {
             <IconChevron className="text-[13px] transition-transform duration-300 group-open:rotate-180" />
           </summary>
           <p className="mt-1 max-w-3xl">
-            {mode === "ai" ? "AI 辅助模式会把规则没解析出题名的参考文献条目发送给 DeepSeek 解析，再查询公开数据库。请勿粘贴未公开论文正文或敏感信息。" : "只把参考文献条目发送给 Crossref、OpenAlex、doi.org 检索，不上传论文正文。"}
+            {mode === "ai" ? "AI 辅助模式会把规则没解析出题名的参考文献条目发送给 DeepSeek 解析，再查询公开数据库。请勿粘贴未公开论文正文或敏感信息。" : aiStatus?.available ? "只把参考文献条目发送给 Crossref、OpenAlex、doi.org 检索；中文期刊论文的题名还会发给 DeepSeek 的搜索接口，并读取知网和期刊官网的论文页。不上传论文正文。" : "只把参考文献条目发送给 Crossref、OpenAlex、doi.org 检索，不上传论文正文。"}
             {agentAvailable && "点击「AI 继续查」时，该条引文会发送给 DeepSeek 规划检索，并用 DeepSeek 联网搜索查询知网、万方、维普的论文页，以及 DataCite 等数据源。"}查不到不等于一定是编造，结果供人工复核参考。
           </p>
         </details>

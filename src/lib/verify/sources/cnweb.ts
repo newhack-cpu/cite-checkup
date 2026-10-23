@@ -1,12 +1,14 @@
-// 中文期刊论文的联网检索：用 DeepSeek 的 Search 接口（POST /v1/tools/search，DeepSeek 自研搜索引擎）
+// 中文期刊论文的联网检索：用 DeepSeek 的 Search 接口（POST /v1/tools/search，DeepSeek 自研搜索引擎，不是大模型）
 // 在知网、万方、维普三站按题名检索，从搜索结果的标题、摘要和网址里解析题名、作者、刊名、年期，
 // 作为候选交给规则比对。只认这三站的期刊论文页，其他网页、学位论文页不当作候选。
 // 2026-10-17 探针：10 条中文期刊引文找到 7 条，6 条命中这三站（eval/results/deepseek-search-probe-2026-10-17.json）。
-// 维普的结果带作者；知网、万方的结果没有作者，同题名再查一次维普补上。没有作者的记录只能给相近候选（见 match.ts）。
+// 维普的结果带作者；知网、万方的结果没有作者：AI 检索的工具同题名再查一次维普补上，标准体检另外读取知网文章页、
+// 期刊官网元数据和 Crossref 补作者与卷期页（见 cnjournal.ts、cnpage.ts）。没有作者的记录只能给相近候选（见 match.ts）。
 import { deepseekConfiguration } from "../../ai";
-import { readBoundedJson } from "../../claims/io";
+import { readBoundedJson, retryableTransport } from "../../claims/io";
 import { UpstreamError } from "../http";
 import { compact, normalizeText } from "../normalize";
+import { Gate, TtlCache } from "../throttle";
 import type { Author, WorkRecord } from "../types";
 
 const SITES = "site:cnki.net OR site:wanfangdata.com.cn OR site:cqvip.com";
@@ -14,6 +16,15 @@ const SITES = "site:cnki.net OR site:wanfangdata.com.cn OR site:cqvip.com";
 const MAX_QUERY = 128;
 const TIMEOUT_MS = 20_000;
 const MAX_RESPONSE_BYTES = 600_000;
+// 接口每个账户限 5 次 / 秒：本进程内最多同时 3 个请求，相邻两次至少隔 250 毫秒（标准体检和 AI 检索共用）
+const searchGate = new Gate(3, 250);
+// 同一题名在一次核查和随后的“AI 继续查”里会再查一遍，成功的结果缓存 6 小时
+const searchCache = new TtlCache<SearchHit[]>(6 * 60 * 60 * 1000, 500);
+
+/** 只给测试用：清空搜索结果缓存 */
+export function clearSearchCache(): void {
+  searchCache.clear();
+}
 
 export interface SearchHit {
   title: string;
@@ -31,18 +42,31 @@ const str = (v: unknown) => (typeof v === "string" ? v : "");
 export async function deepseekSearch(query: string, count: number, signal?: AbortSignal): Promise<SearchHit[]> {
   const config = deepseekConfiguration();
   if (!config.apiKey || !config.searchEndpoint) throw new UpstreamError("DeepSeek 联网搜索尚未配置");
+  const body = JSON.stringify({ query: query.slice(0, MAX_QUERY), count });
+  const key = `${config.searchEndpoint}\n${body}`;
+  const cached = searchCache.get(key);
+  if (cached) return cached;
+  const hits = await searchGate.run(() => searchOnce(config.searchEndpoint!, config.apiKey, body, signal), signal);
+  searchCache.set(key, hits);
+  return hits;
+}
+
+async function searchOnce(endpoint: string, apiKey: string, payload: string, signal?: AbortSignal): Promise<SearchHit[]> {
   const timeout = AbortSignal.timeout(TIMEOUT_MS);
   const combined = signal ? AbortSignal.any([signal, timeout]) : timeout;
-  let response: Response;
-  try {
-    response = await fetch(config.searchEndpoint, {
-      method: "POST", redirect: "error", cache: "no-store", signal: combined,
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${config.apiKey}` },
-      body: JSON.stringify({ query: query.slice(0, MAX_QUERY), count }),
-    });
-  } catch {
-    signal?.throwIfAborted();
-    throw new UpstreamError("DeepSeek 联网搜索连接失败");
+  let response: Response | undefined;
+  // 连接超时、被重置这类网络故障重试一次（和调用 DeepSeek 模型时一样）；HTTP 错误不重试
+  for (let attempt = 1; !response; attempt++) {
+    try {
+      response = await fetch(endpoint, {
+        method: "POST", redirect: "error", cache: "no-store", signal: combined,
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
+        body: payload,
+      });
+    } catch (error) {
+      signal?.throwIfAborted();
+      if (attempt >= 2 || timeout.aborted || !retryableTransport(error)) throw new UpstreamError("DeepSeek 联网搜索连接失败");
+    }
   }
   if (!response.ok) {
     void response.body?.cancel().catch(() => {});
@@ -86,11 +110,11 @@ function splitAuthors(text: string): Author[] {
   return parts.map(clean).filter((name) => name && name.length <= 30 && !/^(?:等|et\s*al\.?)$/i.test(name)).map((family) => ({ family }));
 }
 
-/** “《社会研究方法评论》2025年第2期1-15,共15页”或“《民俗研究》 • 1997年1期 16-34” */
+/** “《社会研究方法评论》2025年第2期1-15,共15页”“《民俗研究》 • 1997年1期 16-34”或“2025年26卷 4期84-92” */
 function parseSource(text: string) {
   const venue = text.match(/《([^》]+)》/)?.[1]?.trim();
   const year = validYear(Number(text.match(/(\d{4})\s*年/)?.[1]));
-  const volume = text.match(/第\s*(\d{1,4})\s*卷/)?.[1];
+  const volume = text.match(/(?:第|年)\s*(\d{1,4})\s*卷/)?.[1];
   const issue = issueOf(text.match(/(?:年|卷)\s*第?\s*([0-9]{1,3})\s*期/)?.[1]);
   const pageMatch = text.match(/期\s*[,，]?\s*(\d+)\s*[-–—~]\s*(\d+)/);
   return { venue, year, volume, issue, pages: pageMatch ? `${pageMatch[1]}-${pageMatch[2]}` : undefined };
@@ -118,15 +142,44 @@ export function parseCqvip(hit: SearchHit): WorkRecord | undefined {
   return { source: "web", site: "维普", title, authors, ...source, type: "journal-article", url: hit.url };
 }
 
-/** 知网（wap.cnki.net、read.cnki.net 等）：标题形如“题名-刊名2024年05期-手机知网”，没有作者 */
+/**
+ * 知网期刊论文的文献编号（刊物代码 + 年 + 期 + 序号，如 DQWX202003003）：手机知网、知网阅读、知网空间、学问的文章页网址里都有。
+ * 只认知网自己的域名，学校 WebVPN 镜像（wap-cnki-net-443.webvpn.*）这类转载站不算
+ */
+export function cnkiArticleCode(url: string): string | undefined {
+  const host = hostOf(url);
+  if (!onSite(host, "cnki.net") && !onSite(host, "cnki.com.cn")) return undefined;
+  let path = "";
+  let filename = "";
+  try {
+    const u = new URL(url);
+    path = decodeURIComponent(u.pathname);
+    filename = u.searchParams.get("filename") ?? u.searchParams.get("FileName") ?? "";
+  } catch {
+    return undefined;
+  }
+  // 学位论文、会议论文、报纸的页面另有编号规则，不是期刊论文
+  if (/\/(?:Dissertation|Conference|Newspaper|Yearbook|Patent|Standard)\//i.test(path)) return undefined;
+  const code = /^[A-Z]{2,8}\d{4}[0-9A-Z]{2}\d{3,4}$/;
+  if (code.test(filename.toUpperCase())) return filename.toUpperCase();
+  const m = path.match(/(?:\/|CJFD(?:TOTAL|LAST\d{4})?-|CJFDTotal-)([A-Za-z]{2,8}\d{4}[0-9A-Za-z]{2}\d{3,4})(?:\.html?)?$/i);
+  return m && code.test(m[1].toUpperCase()) ? m[1].toUpperCase() : undefined;
+}
+
+/** 知网（wap.cnki.net、read.cnki.net、www.cnki.com.cn 等）：标题形如“题名-刊名2024年05期-手机知网”，没有作者 */
 export function parseCnki(hit: SearchHit): WorkRecord | undefined {
-  if (!onSite(hostOf(hit.url), "cnki.net")) return undefined;
-  const plain = clean(hit.title.replace(/\s*[-_|]\s*(?:手机知网|中国知网|知网阅读|知网|CNKI)\s*$/i, ""));
+  const host = hostOf(hit.url);
+  if (!onSite(host, "cnki.net") && !(onSite(host, "cnki.com.cn") && cnkiArticleCode(hit.url))) return undefined;
+  // 知网空间的标题是“题名 - 题名”
+  const doubled = hit.title.match(/^(.{4,}?)\s+-\s+(.{4,})$/);
+  const title0 = doubled && clean(doubled[1]) === clean(doubled[2]) ? doubled[1] : hit.title;
+  const plain = clean(title0.replace(/\s*[-_|]\s*(?:手机知网|中国知网|知网阅读|知网空间|知网|CNKI)\s*$/i, ""));
   let title: string | undefined;
   let venue: string | undefined;
   let year: number | undefined;
   let issue: string | undefined;
-  const m = plain.match(/^(.*)-([^-]+?)(\d{4})年(\d{1,2})期$/);
+  // 增刊的期号是“S1”“Z1”：“题名-原子能科学技术2015年S1期”
+  const m = plain.match(/^(.*)-([^-]+?)(\d{4})年([0-9]{1,2}|[SZ][0-9]{1,2})期$/);
   if (m) {
     [title, venue] = [clean(m[1]), clean(m[2])];
     year = validYear(Number(m[3]));
@@ -135,20 +188,20 @@ export function parseCnki(hit: SearchHit): WorkRecord | undefined {
     title = plain;
     // 摘要的最后两行通常是刊名和“1983年03期”
     const ls = lines(hit.summary);
-    const at = ls.findIndex((line) => /^\d{4}年\d{1,2}期$/.test(line));
+    const at = ls.findIndex((line) => /^\d{4}年(?:\d{1,2}|[SZ]\d{1,2})期$/.test(line));
     if (at > 0) {
       venue = ls[at - 1].length <= 30 ? ls[at - 1] : undefined;
-      const parts = ls[at].match(/^(\d{4})年(\d{1,2})期$/)!;
+      const parts = ls[at].match(/^(\d{4})年(\d{1,2}|[SZ]\d{1,2})期$/)!;
       year = validYear(Number(parts[1]));
       issue = issueOf(parts[2]);
     }
   }
   // 网址里的文献编号（刊物代码 + 年 + 期 + 序号）也带年期：SHEH198303003
   if (!year) {
-    const code = hit.url.match(/\/([A-Z]{2,8})(\d{4})(\d{2})\d{3}(?:\.html?)?(?:[?#]|$)/);
+    const code = cnkiArticleCode(hit.url)?.match(/^[A-Z]{2,8}(\d{4})([0-9A-Z]{2})\d{3,4}$/);
     if (code) {
-      year = validYear(Number(code[2]));
-      issue = issueOf(code[3]);
+      year = validYear(Number(code[1]));
+      issue = issueOf(code[2]);
     }
   }
   if (!title || !year) return undefined;
@@ -202,16 +255,14 @@ export function sameTitle(a: string, b: string): boolean {
 export async function cnJournalSearch(
   title: string, signal?: AbortSignal,
 ): Promise<{ records: WorkRecord[]; searches: number; supplementError?: string }> {
-  const query = clean(title).slice(0, MAX_QUERY - SITES.length - 1);
-  const records = parseHits(await deepseekSearch(`${query} ${SITES}`, 8, signal));
+  const records = await cnSiteSearch(title, signal);
   let searches = 1;
   let supplementError: string | undefined;
   const strong = records.filter((rec) => sameTitle(rec.title, title));
   if (strong.length && !strong.some((rec) => rec.authors.length)) {
     searches++;
     try {
-      const extra = parseHits(await deepseekSearch(`${query} site:cqvip.com`, 5, signal));
-      for (const rec of extra) if (!records.some((r) => r.url === rec.url)) records.push(rec);
+      for (const rec of await cqvipSearch(title, signal)) if (!records.some((r) => r.url === rec.url)) records.push(rec);
     } catch (error) {
       if (signal?.aborted || !(error instanceof UpstreamError)) throw error;
       supplementError = error.message;
@@ -219,4 +270,21 @@ export async function cnJournalSearch(
   }
   records.sort((a, b) => Number(b.authors.length > 0) - Number(a.authors.length > 0));
   return { records, searches, supplementError };
+}
+
+const siteQuery = (title: string, sites: string) => `${clean(title).slice(0, MAX_QUERY - sites.length - 1)} ${sites}`;
+
+/** 第一轮：按题名在知网、万方、维普三站检索 */
+export async function cnSiteSearch(title: string, signal?: AbortSignal): Promise<WorkRecord[]> {
+  return parseHits(await deepseekSearch(siteQuery(title, SITES), 8, signal));
+}
+
+/** 只查维普：同题名的知网、万方记录没有作者时，维普的结果常带作者 */
+export async function cqvipSearch(title: string, signal?: AbortSignal): Promise<WorkRecord[]> {
+  return parseHits(await deepseekSearch(siteQuery(title, "site:cqvip.com"), 5, signal));
+}
+
+/** 不限站点按题名检索：找期刊官网的文章页（也常带出前两轮没找到的知网文章页） */
+export async function openWebSearch(title: string, signal?: AbortSignal): Promise<SearchHit[]> {
+  return deepseekSearch(clean(title).slice(0, MAX_QUERY), 10, signal);
 }

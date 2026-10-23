@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { formatGbt } from "../format";
 import { parseReference } from "../extract";
 import { scoreCandidate } from "../match";
-import { cnJournalSearch, deepseekSearch, parseCnki, parseCqvip, parseHits, parseWanfang, sameTitle, type SearchHit } from "../sources/cnweb";
+import { clearSearchCache, cnJournalSearch, deepseekSearch, parseCnki, parseCqvip, parseHits, parseWanfang, sameTitle, type SearchHit } from "../sources/cnweb";
 import type { WorkRecord } from "../types";
 
 // Synthetic search results in the formats DeepSeek Search returned for CQVIP, CNKI and Wanfang on 2026-10-17;
@@ -64,6 +64,20 @@ describe("parsing Chinese journal article pages", () => {
     expect(parseWanfang({ ...wanfang, url: "https://d.wanfangdata.com.cn/thesis/Ch1UaGVzaXM" })).toBeUndefined();
   });
 
+  it("reads CNKI Space and Xuewen pages, taking year and issue from the article code", () => {
+    expect(parseCnki({ ...cnki, title: "城市绿地降温效应的多尺度研究 - 城市绿地降温效应的多尺度研究", url: "https://www.cnki.com.cn/Article/CJFDTOTAL-CSDL202103002.htm#1", summary: "" }))
+      .toMatchObject({ site: "知网", title: "城市绿地降温效应的多尺度研究", year: 2021, issue: "3" });
+    expect(parseCnki({ ...cnki, title: "城市绿地降温效应的多尺度研究", url: "https://xuewen.cnki.net/CJFD-CSDL202103002.html", summary: "" }))
+      .toMatchObject({ year: 2021, issue: "3" });
+    // 知网空间的百科、学者页不是论文页
+    expect(parseCnki({ ...cnki, url: "https://wiki.cnki.com.cn/HotWord/5624395.htm" })).toBeUndefined();
+  });
+
+  it("reads the volume when CQVIP writes it without 第", () => {
+    const rec = parseCqvip({ ...cqvipDoc, summary: "来源：《测试地理学报》 • 2025年26卷 4期84-92 ，共9页" });
+    expect(rec).toMatchObject({ venue: "测试地理学报", year: 2025, volume: "26", issue: "4", pages: "84-92" });
+  });
+
   it("keeps only article pages of the three sites", () => {
     const other = hit({ title: "城市绿地降温效应的多尺度研究", url: "https://example.org/blog", summary: "作者：张三\n出处：《测试地理学报》2021年第3期" });
     expect(parseHits([other, cqvipMobile, cqvipMobile, wanfang]).map((r) => r.site)).toEqual(["维普", "万方"]);
@@ -104,6 +118,8 @@ describe("DeepSeek Search client", () => {
   beforeEach(() => {
     vi.stubEnv("DEEPSEEK_API_KEY", "fixture-key-never-real");
     vi.stubEnv("DEEPSEEK_BASE_URL", "");
+    // 成功的搜索结果会缓存 6 小时，各测试之间要清掉
+    clearSearchCache();
   });
   afterEach(() => {
     vi.unstubAllGlobals();
@@ -193,6 +209,19 @@ describe("DeepSeek Search client", () => {
   it.each([[402, /余额不足/], [429, /频繁/], [500, /暂时不可用/]])("reports HTTP %s as an unavailable source, not as no results", async (status, message) => {
     vi.stubGlobal("fetch", async () => new Response("{}", { status }));
     await expect(deepseekSearch("测试", 5)).rejects.toMatchObject({ message: expect.stringMatching(message), status });
+  });
+
+  it("retries once after a connection timeout, but not twice", async () => {
+    const timeoutError = () => Object.assign(new TypeError("fetch failed"), { cause: { code: "UND_ERR_CONNECT_TIMEOUT" } });
+    let n = 0;
+    vi.stubGlobal("fetch", async () => {
+      if (n++ === 0) throw timeoutError();
+      return Response.json({ results: [api(cnki)] });
+    });
+    expect((await deepseekSearch("重试一次", 5)).map((h) => h.url)).toEqual([cnki.url]);
+    expect(n).toBe(2);
+    vi.stubGlobal("fetch", async () => { throw timeoutError(); });
+    await expect(deepseekSearch("一直连不上", 5)).rejects.toThrow(/连接失败/);
   });
 
   it("refuses to run without a key", async () => {

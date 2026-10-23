@@ -176,6 +176,18 @@ describe("Netlify route-wide request deadline", () => {
     await vi.advanceTimersByTimeAsync(60_000);
   });
 
+  it.each(["check", "agent"] as const)("hands %s's 50-second deadline to the Chinese journal lookup, and none elsewhere", async (route) => {
+    const { POST } = await routes[route]();
+    const started = Date.now();
+    await (await POST(input(route))).text();
+    expect(pending[route].mock.calls[0][2].deadline).toBe(started + 50_000);
+    vi.stubEnv("NEXT_PUBLIC_DEPLOY_TARGET", "");
+    vi.resetModules();
+    const local = await routes[route]();
+    await (await local.POST(input(route))).text();
+    expect(pending[route].mock.calls[1][2].deadline).toBeUndefined();
+  });
+
   it.each(Object.keys(routes) as Route[])("does not impose Netlify's deadline on %s outside that deployment", async (route) => {
     vi.stubEnv("NEXT_PUBLIC_DEPLOY_TARGET", "");
     const { POST } = await routes[route]();

@@ -4,7 +4,8 @@ import type { CheckEvent, ParsedRef, WorkRecord } from "@/lib/verify/types";
 
 const ai = vi.hoisted(() => ({ status: vi.fn(), prepare: vi.fn() }));
 const sources = vi.hoisted(() => ({ crossref: vi.fn(), search: vi.fn(), registry: vi.fn(), csl: vi.fn(), openalex: vi.fn(), openalexSearch: vi.fn() }));
-vi.mock("@/lib/ai", () => ({ getAIStatus: ai.status, prepareAIReferences: ai.prepare }));
+// 没有 DeepSeek 搜索配置：中文期刊联网核查这一步跳过（见 cnjournal.ts）
+vi.mock("@/lib/ai", () => ({ getAIStatus: ai.status, prepareAIReferences: ai.prepare, deepseekConfiguration: () => ({ apiKey: "", model: "", endpoint: undefined, searchEndpoint: undefined }) }));
 vi.mock("@/lib/verify/sources/crossref", () => ({ crossrefByDoi: sources.crossref, crossrefSearch: sources.search }));
 vi.mock("@/lib/verify/sources/doi", () => ({ doiRegistry: sources.registry, doiCsl: sources.csl }));
 vi.mock("@/lib/verify/sources/openalex", () => ({ openalexByDoi: sources.openalex, openalexSearchTitle: sources.openalexSearch }));

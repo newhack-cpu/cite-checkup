@@ -325,7 +325,9 @@ describe("Chinese journal search (DeepSeek Search over CNKI, Wanfang and CQVIP)"
   };
 
   it("confirms a Chinese journal article through a CQVIP page that lists the authors", async () => {
-    const world = serve({ turns: [searchCn], search: [[cnkiHit, cqvipHit]] });
+    // 规则核验里的联网核查按原题名查过（三站、不限站点各一次，都没有结果）；模型换一种写法再查才找到
+    const variant = turn([{ name: "search_cn_journals", args: { title: "城市绿地降温效应 多尺度", reason: "换个写法再查" } }]);
+    const world = serve({ turns: [variant], search: [[], [], [cnkiHit, cqvipHit]] });
     const steps: CheckStep[] = [];
     const result = await (await agent()).runAgent(CN, 1, { onStep: (s) => steps.push(s) });
     expect(result.agent).toMatchObject({ before: { verdict: "unverifiable" }, outcome: "confirmed", toolCalls: 1 });
@@ -334,7 +336,7 @@ describe("Chinese journal search (DeepSeek Search over CNKI, Wanfang and CQVIP)"
     expect(result.match).toMatchObject({ source: "web", site: "维普", url: cqvipHit.url });
     expect(result.suggestion).toBe("张三, 李四. 城市绿地降温效应的多尺度研究[J]. 测试地理学报, 2021(3): 12-20.");
     expect(steps[0].detail).toMatch(/^中文期刊检索（知网、万方、维普）.*维普/);
-    expect(world.calls.filter((c) => c === "api.deepseek.com/v1/tools/search")).toHaveLength(1);
+    expect(world.calls.filter((c) => c === "api.deepseek.com/v1/tools/search")).toHaveLength(3);
   });
 
   it("offers a CNKI page without authors only as a candidate, with its link", async () => {
@@ -351,7 +353,8 @@ describe("Chinese journal search (DeepSeek Search over CNKI, Wanfang and CQVIP)"
 
   it("keeps the CNKI candidate when the CQVIP follow-up search fails", async () => {
     const steps: CheckStep[] = [];
-    serve({ turns: [searchCn], search: [[cnkiHit], 429] });
+    // 依次是：规则核验的三站检索、补查维普（429，不缓存）、不限站点检索；AI 检索的三站检索命中缓存，补查维普再遇 429
+    serve({ turns: [searchCn], search: [[cnkiHit], 429, [], 429] });
     const result = await (await agent()).runAgent(CN, 1, { onStep: (s) => steps.push(s) });
     expect(result.verdict).toBe("near_match");
     expect(result.match).toMatchObject({ site: "知网", url: cnkiHit.url });
@@ -378,9 +381,11 @@ describe("Chinese journal search (DeepSeek Search over CNKI, Wanfang and CQVIP)"
 
   it("accepts the second finish, and an immediate finish on an English citation", async () => {
     const finish = turn([{ name: "finish", args: { note: "结束" } }]);
-    const world = serve({ turns: [finish, finish] });
-    expect((await (await agent()).runAgent(CN, 1)).agent).toMatchObject({ rounds: 2, toolCalls: 0 });
-    expect(world.calls).not.toContain("api.deepseek.com/v1/tools/search");
+    serve({ turns: [finish, finish] });
+    const steps: CheckStep[] = [];
+    expect((await (await agent()).runAgent(CN, 1, { onStep: (s) => steps.push(s) })).agent).toMatchObject({ rounds: 2, toolCalls: 0 });
+    // 规则核验里的联网核查照常进行；模型自己一次检索都没做
+    expect(steps.filter((s) => s.action === "agent_search")).toEqual([]);
     serve({ turns: [finish] });
     expect((await (await agent()).runAgent(BOOK, 1)).agent).toMatchObject({ rounds: 1, toolCalls: 0 });
   });

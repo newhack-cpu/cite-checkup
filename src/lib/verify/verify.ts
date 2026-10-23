@@ -2,13 +2,16 @@
 // 1. 有 DOI → Crossref 直查；查不到再问 doi.org 这个 DOI 是否注册、取元数据
 // 2. DOI 没对上同一篇 → Crossref 整条引文模糊检索
 // 3. 还没找到且是英文文献 → OpenAlex 题名检索兜底（消耗额度，按请求限次）
-// 4. 选出最佳候选，逐字段比对后给出结论；所有"建议写法"都来自数据库记录
+// 4. 还没找到且是中文期刊论文 → DeepSeek 搜索接口在知网、万方、维普找原文页，再读原文页面补作者（见 cnjournal.ts；没配置密钥时跳过）
+// 5. 选出最佳候选，逐字段比对后给出结论；所有"建议写法"都来自数据库记录或原文页面
 
+import { chineseJournalView, defaultCnBudget, lookupChineseJournal, type CnBudget, type CnLookup } from "./cnjournal";
 import { suggestCitation } from "./format";
 import { UpstreamError } from "./http";
 import { nameOnly, notReference } from "./extract";
 import { dice, normalizeText, stripRetractionPrefix } from "./normalize";
 import {
+  chineseOrganizationCited,
   fieldChecks,
   formatAuthorsShort,
   fuzzyRecall,
@@ -17,6 +20,7 @@ import {
   scoreCandidate,
   venueSimilarity,
   versionedRecord,
+  webVerdict,
   type MatchScore,
 } from "./match";
 import { crossrefByDoi, crossrefJournals, crossrefSearch } from "./sources/crossref";
@@ -28,6 +32,8 @@ export interface VerifyContext {
   /** 本次请求里还允许发起几次 OpenAlex 题名检索 */
   openalexBudget: { left: number };
   signal?: AbortSignal;
+  /** 中文期刊联网核查的额度和时限；没配置 DeepSeek 密钥时不传，这一步跳过、结论照旧 */
+  cn?: CnBudget;
 }
 
 interface Ranked {
@@ -39,6 +45,8 @@ interface DoiEvidence {
   doiRecord?: WorkRecord;
   registry?: RegistryStatus;
   openalexSkipped?: boolean;
+  /** 已经到知网、万方、维普联网查过（查到与否都算） */
+  cnSearched?: boolean;
 }
 
 const OUT_OF_SCOPE: Partial<Record<RefKind, string>> = {
@@ -67,6 +75,10 @@ const SOURCE_LABEL: Record<WorkRecord["source"], string> = {
   datacite: "DataCite",
   web: "中文学术网页",
 };
+
+const sourceName = (rec: WorkRecord) => (rec.source === "web" && rec.site ? rec.site : SOURCE_LABEL[rec.source]);
+/** 记录里有起止页（“12-20”），拼出的规范写法才不会比引文少页码 */
+const fullPages = (rec: WorkRecord) => /\d\s*[-–]\s*\d/.test(rec.pages ?? "");
 
 /** AI 检索 Agent 追加的候选和检索步骤；候选一样要经过规则逐字段比对 */
 export interface ExtraEvidence {
@@ -141,13 +153,16 @@ function rank(ref: ParsedRef, candidates: WorkRecord[]): Ranked[] {
   const list: Ranked[] = [];
   for (const rec of candidates) {
     if (!rec.title) continue;
-    // 知网、维普同一篇文章的两条网页结果题名相同，按链接区分，否则带作者的维普记录会被去重掉
-    const key = rec.doi ?? (rec.source === "web" && rec.url ? rec.url : rec.title.toLowerCase());
+    // 网页记录按链接区分：知网、维普同一篇文章的两条结果题名相同，带作者的维普记录不能被去重掉；
+    // 期刊官网记录的 DOI 也常与 Crossref 里只有英文题名的记录相同，同样不能按 DOI 去重掉（T110）
+    const key = rec.source === "web" && rec.url ? `web ${rec.url}` : rec.doi ?? rec.title.toLowerCase();
     if (seen.has(key)) continue;
     seen.add(key);
     list.push({ rec, score: scoreCandidate(ref, rec) });
   }
-  return list.sort((a, b) => Number(b.score.same) - Number(a.score.same) || b.score.composite - a.score.composite);
+  // 同一篇中文文章常有几条网页记录（知网、维普、期刊官网）：能下结论的排前面，核实优先于作者不符
+  const decided = (r: Ranked) => (r.rec.source !== "web" || !r.score.same ? 0 : { verified: 2, mismatch: 1, incomplete: 0 }[webVerdict(r.score)]);
+  return list.sort((a, b) => Number(b.score.same) - Number(a.score.same) || decided(b) - decided(a) || b.score.composite - a.score.composite);
 }
 
 /** 4xx（429 除外）是数据源拒绝了这次查询本身，不是限流；429、5xx 和网络错误才可能是暂时的 */
@@ -334,13 +349,41 @@ export async function verifyReference(ref: ParsedRef, ctx: VerifyContext, extra?
       ranked = rank(ref, candidates);
     }
 
+    // 中文期刊论文：到知网、万方、维普和期刊官网找原文页、补作者。英文译名附中文原文的引文按方括号里的中文原文比对
+    const view = ctx.cn && !ranked[0]?.score.same ? chineseJournalView(ref) : undefined;
+    let cn: CnLookup | undefined;
+    let viewBest: Ranked | undefined;
+    if (view && ctx.cn) {
+      cn = await lookupChineseJournal(view, steps, ctx.signal, ctx.cn);
+      evidence.cnSearched = cn.searched;
+      if (view === ref) {
+        candidates.push(...cn.records);
+        ranked = rank(ref, candidates);
+      } else {
+        viewBest = rank(view, cn.records)[0];
+      }
+    }
+    const withCn = (result: RefResult): RefResult => {
+      if (!cn?.notes.length) return result;
+      return { ...result, notes: [...result.notes, ...cn.notes] };
+    };
+    // 方括号里的中文原文另作一份解析：结论按它给，卡片上仍显示整条引文
+    const asWhole = (result: RefResult): RefResult => withCn({
+      ...result, raw: ref.raw, parsed: ref,
+      notes: [...result.notes, "引文的英文译名无法与中文网页记录比对，已按方括号里的中文原文核对"],
+    });
+
     const best = ranked[0];
+    if (!best?.score.same && viewBest?.score.same && view) {
+      return asWhole(judgeSame(view, viewBest.rec, viewBest.score, steps, evidence));
+    }
     if (best?.score.same) {
       let rec = best.rec;
       const extraNotes: string[] = [];
       let score = await withVenueAlias(ref, rec, best.score, steps, ctx, extraNotes);
-      // Crossref 撤稿元数据可能不完整，同样需要 OpenAlex 交叉核对。
-      if (rec.doi && rec.source !== "openalex" && rec.retraction?.status !== "retracted" && rec.retraction?.status !== "withdrawn") {
+      // Crossref 撤稿元数据可能不完整，同样需要 OpenAlex 交叉核对。中文网页记录（知网、期刊官网）的 DOI 多由 ISTIC、知网注册，
+      // OpenAlex 基本没有，这里不查（结论里注明没有核对撤稿状态）
+      if (rec.doi && rec.source !== "openalex" && rec.source !== "web" && rec.retraction?.status !== "retracted" && rec.retraction?.status !== "withdrawn") {
         const doi = rec.doi;
         try {
           const matched = rec;
@@ -375,9 +418,10 @@ export async function verifyReference(ref: ParsedRef, ctx: VerifyContext, extra?
       const result = judgeSame(ref, rec, score, steps, evidence);
       result.notes.push(...extraNotes);
       if (extraNotes.some((n) => n.includes("撤稿状态交叉核验未完成"))) result.summary += "；撤稿状态交叉核验未完成";
-      return result;
+      return withCn(result);
     }
-    const result = judgeNotSame(ref, best, steps, evidence);
+    if (!best?.score.partial && viewBest?.score.partial && view) return asWhole(judgeNotSame(view, viewBest, steps, evidence));
+    const result = withCn(judgeNotSame(ref, best, steps, evidence));
     // 只有"两个数据源都检索不到"这一种查无此文需要再确认期刊收录范围；DOI 证据不受影响
     if (result.verdict === "not_found" && !ref.doi && ref.venueGuess && ref.year) {
       const gap = await coverageGap(ref.venueGuess, ref.year, steps, ctx);
@@ -472,23 +516,34 @@ function judgeSame(ref: ParsedRef, rec: WorkRecord, s: MatchScore, steps: CheckS
   const issues: string[] = [];
   const notes: string[] = [];
   const fields = fieldChecks(ref, rec, s);
+  const web = rec.source === "web";
+  const site = sourceName(rec);
+  // 中文网页记录的提示写明是哪个网站的记录（“知网记录”“期刊官网记录”），其余沿用“数据库”
+  const db = web ? `${site}${/[A-Za-z]$/.test(site) ? " " : ""}记录` : "数据库记录";
 
   if (ref.doi && rec.doi && ref.doi !== rec.doi) {
     if (ev.registry?.exists === false) issues.push(`引用中的 DOI ${ref.doi} 并不存在，正确 DOI 应为 ${rec.doi}`);
     else if (ev.doiRecord && ev.doiRecord.doi !== rec.doi)
       issues.push(`引用中的 DOI 指向另一篇文献《${short(ev.doiRecord.title)}》，正确 DOI 应为 ${rec.doi}`);
-    else issues.push(`DOI 与数据库记录不一致，数据库记录为 ${rec.doi}`);
+    else issues.push(`DOI 与${db}不一致，${db}为 ${rec.doi}`);
+  } else if (ref.doi && !rec.doi) {
+    // 网页记录没有 DOI 时，引文里的 DOI 仍要看注册情况：没注册、指向别的文献都算写错
+    if (ev.registry?.exists === false) issues.push(`引用中的 DOI ${ref.doi} 在 doi.org 查无注册记录`);
+    else if (ev.doiRecord && !scoreCandidate(ref, ev.doiRecord).same) issues.push(`引用中的 DOI 指向另一篇文献《${short(ev.doiRecord.title)}》`);
   }
   // 数据库记录可能是另一版本、转载或软件包的总 DOI：年份差得远时提示核对版本，不算写错
   const otherVersion = s.yearDiff !== undefined && s.yearDiff > 1 && yearVaries(ref, rec);
   if (s.authorRatio !== undefined) {
-    if (s.authorsReordered) notes.push(`引用列出的作者都在数据库记录中，但顺序不同（数据库为 ${formatAuthorsShort(rec.authors)}）；Crossref 的中文记录有时把作者顺序登记错，请以原文为准`);
-    else if (s.authorRatio === 0) issues.push(`作者与数据库记录不符，数据库作者为 ${formatAuthorsShort(rec.authors)}`);
-    else if (s.firstAuthor === "mismatch") issues.push(`第一作者不符，数据库第一作者为 ${formatAuthorsShort(rec.authors.slice(0, 1))}`);
+    const names = formatAuthorsShort(rec.authors);
+    // 知网、期刊官网的作者顺序可靠，顺序不同算写错；Crossref 的中文记录有时把顺序登记错，只提示
+    if (s.authorsReordered && web) issues.push(`作者顺序与${db}不一致，${db}的顺序为 ${names}`);
+    else if (s.authorsReordered) notes.push(`引用列出的作者都在数据库记录中，但顺序不同（数据库为 ${names}）；Crossref 的中文记录有时把作者顺序登记错，请以原文为准`);
+    else if (s.authorRatio === 0) issues.push(web ? `作者与${db}不符，${db}的作者为 ${names}` : `作者与数据库记录不符，数据库作者为 ${names}`);
+    else if (s.firstAuthor === "mismatch") issues.push(web ? `第一作者不符，${db}的第一作者为 ${formatAuthorsShort(rec.authors.slice(0, 1))}` : `第一作者不符，数据库第一作者为 ${formatAuthorsShort(rec.authors.slice(0, 1))}`);
     else if ((s.authorOrderOk === false || s.authorListMismatch) && versionedRecord(ref, rec))
-      notes.push(`软件、数据集的作者名单随版本变化，数据库记录的作者为 ${formatAuthorsShort(rec.authors)}，请核对所引版本`);
-    else if (s.authorOrderOk === false) issues.push(`作者顺序与数据库不一致，数据库顺序为 ${formatAuthorsShort(rec.authors)}`);
-    else if (s.authorListMismatch) issues.push(`引用中有作者姓名与数据库记录不符，数据库作者为 ${formatAuthorsShort(rec.authors)}`);
+      notes.push(`软件、数据集的作者名单随版本变化，数据库记录的作者为 ${names}，请核对所引版本`);
+    else if (s.authorOrderOk === false) issues.push(web ? `作者顺序与${db}不一致，${db}的顺序为 ${names}` : `作者顺序与数据库不一致，数据库顺序为 ${names}`);
+    else if (s.authorListMismatch) issues.push(web ? `引用中有作者姓名与${db}不符，${db}的作者为 ${names}` : `引用中有作者姓名与数据库记录不符，数据库作者为 ${names}`);
   }
   if (s.yearDiff !== undefined) {
     const dbYears = recordYears(rec).join(" / ");
@@ -513,8 +568,11 @@ function judgeSame(ref: ParsedRef, rec: WorkRecord, s: MatchScore, steps: CheckS
     fields,
     issues,
     notes,
-    suggestion: suggestCitation(rec, ref.raw),
+    // 知网页面没有卷号和印刷页码、期刊官网有时只给起始页，拼出的写法会丢掉引文里正确的卷页：网页记录有完整起止页才给规范写法
+    suggestion: web && !fullPages(rec) ? undefined : suggestCitation(rec, ref.raw),
   };
+
+  if (web) return judgeWeb(ref, rec, s, common, site, db);
 
   if (rec.retraction) {
     const r = rec.retraction;
@@ -528,11 +586,53 @@ function judgeSame(ref: ParsedRef, rec: WorkRecord, s: MatchScore, steps: CheckS
   }
 
   const confidence = Math.min(0.98, 0.55 + s.composite * 0.45);
-  const src = `（来源：${rec.source === "web" && rec.site ? rec.site : SOURCE_LABEL[rec.source]}）`;
+  const src = `（来源：${site}）`;
   if (issues.length) {
     return { ...common, verdict: "mismatch", confidence, summary: `文献存在，但有 ${issues.length} 处信息与数据库记录不一致${src}` };
   }
   return { ...common, verdict: "verified", confidence, summary: `已核实：与数据库记录一致${src}` };
+}
+
+/**
+ * 中文网页记录（知网、维普、期刊官网，卷页可能取自 Crossref）确认是同一篇之后：
+ * 作者对得上、年份一致、卷期页至少一项一致才算已核实；作者对不上算信息有误；
+ * 只差作者核对不了、年份差一年或卷期页对不上时仍是相近候选，附原文链接请人工核对
+ */
+function judgeWeb(
+  ref: ParsedRef,
+  rec: WorkRecord,
+  s: MatchScore,
+  common: Omit<RefResult, "verdict" | "confidence" | "summary">,
+  site: string,
+  db: string,
+): RefResult {
+  const confidence = Math.min(0.98, 0.55 + s.composite * 0.45);
+  const src = `（来源：${site}）`;
+  if (common.issues.length) {
+    return { ...common, verdict: "mismatch", confidence, summary: `文献存在，但有 ${common.issues.length} 处信息与${db}不一致${src}` };
+  }
+  if (webVerdict(s) === "verified") {
+    return {
+      ...common, verdict: "verified", confidence,
+      notes: [...common.notes, `${site.split("、")[0]}的页面不标注撤稿，这一条没有核对撤稿状态`],
+      summary: `已核实：与${db}一致${src}`,
+    };
+  }
+  const rule = "已核实需要题名、刊名、年份、作者都对得上，并且卷号、期号或起始页至少一项与记录一致";
+  if (s.yearDiff !== 0) {
+    return {
+      ...common, verdict: "near_match", matchStatus: "candidate", confidence: 0.6,
+      summary: `在${site}找到题名、作者、刊名一致的文章，但年份相差一年（引用 ${ref.year}，${db} ${recordYears(rec).join(" / ")}），请打开链接核对`,
+      notes: [...common.notes, `${rule}；这一条年份差一年，可能是在线首发与刊期年份不同，不能确认，也不算写错`],
+    };
+  }
+  const where = [rec.year ? `${rec.year} 年` : "", rec.volume ? `第 ${rec.volume} 卷` : "", rec.issue ? `第 ${rec.issue} 期` : "", rec.pages ? ` ${rec.pages} 页` : ""].join("");
+  const missing = rec.volume ? "" : rec.issue ? "，没有卷号" : "，没有卷期";
+  return {
+    ...common, verdict: "near_match", matchStatus: "candidate", confidence: 0.6,
+    summary: `在${site}找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（${db}为 ${where}${missing}），请打开链接核对卷期页码`,
+    notes: [...common.notes, `${rule}；这一条只差卷期页码：引文写的卷号、期号、起始页在${db}里都对不上或没有，不能确认，也不算写错`],
+  };
 }
 
 function judgeNotSame(ref: ParsedRef, best: Ranked | undefined, steps: CheckStep[], ev: DoiEvidence): RefResult {
@@ -543,8 +643,8 @@ function judgeNotSame(ref: ParsedRef, best: Ranked | undefined, steps: CheckStep
         match: near.rec,
         matchStatus: "candidate" as const,
         fields: fieldChecks(ref, near.rec, near.score),
-        // 知网、万方的网页记录没有作者，拼出的写法缺作者，复制过去反而丢信息，不给
-        suggestion: near.rec.source === "web" && near.rec.authors.length === 0 ? undefined : suggestCitation(near.rec, ref.raw),
+        // 知网、万方的网页记录没有作者或完整页码，拼出的写法缺项，复制过去反而丢信息，不给
+        suggestion: near.rec.source === "web" && (near.rec.authors.length === 0 || !fullPages(near.rec)) ? undefined : suggestCitation(near.rec, ref.raw),
       }
     : {};
 
@@ -620,18 +720,25 @@ function judgeNotSame(ref: ParsedRef, best: Ranked | undefined, steps: CheckStep
       summary: "这段文字看起来不像参考文献（没有年份、出处或 DOI），没有核查依据；如果确实是参考文献，请补全后再查",
     };
   }
-  // AI 检索在知网、万方、维普找到题名相近的文章、但不能确认是同一篇：给出候选和来源链接，请人工核对。
-  // 知网、万方的结果页没有作者，最常见的就是这种情况
+  // 在知网、万方、维普或期刊官网找到题名相近的文章、但不能确认是同一篇：给出候选和来源链接，请人工核对。
+  // 知网、万方的搜索结果没有作者、原文页面又没读到时，最常见的就是这种情况
   if (near?.rec.source === "web") {
     const site = near.rec.site ?? "中文学术网站";
     const s = near.score;
     // 题名、年份一致，记录有刊名时刊名也一致：多半就是这一篇，只差作者核对不了
     const consistent = s.titleScore >= 0.9 && s.yearDiff === 0 && (!near.rec.venue || (s.venueScore ?? 0) >= 0.6);
     const what = `题名、${near.rec.venue ? "刊名、" : ""}年份`;
+    if (near.rec.authors.length && consistent && chineseOrganizationCited(ref)) {
+      return {
+        ...b, ...nearPart, verdict: "near_match", confidence: 0.5,
+        notes: [`引文署名是单位，${site}记录列的是执笔人（${formatAuthorsShort(near.rec.authors, 3)}），没法逐个比对；请打开来源页面核对`],
+        summary: `在${site}找到${what}一致的文章；引文署名是单位，没法与${site}记录的作者比对，请打开链接核对`,
+      };
+    }
     if (near.rec.authors.length === 0) {
       return {
         ...b, ...nearPart, verdict: "near_match", confidence: 0.5,
-        notes: [`${site}的搜索结果没有作者信息，无法确认是不是同一篇；请打开来源页面核对作者`],
+        notes: [`${site}的搜索结果没有作者信息，原文页面也没有读到，无法确认是不是同一篇；请打开来源页面核对作者`],
         summary: consistent
           ? `在${site}找到${what}一致的文章，但没有作者信息，请打开链接核对作者`
           : `在${site}找到相近文章，但没有作者信息，不能确认是同一篇，请人工核对`,
@@ -646,7 +753,10 @@ function judgeNotSame(ref: ParsedRef, best: Ranked | undefined, steps: CheckStep
   if (ref.lang === "zh") {
     return {
       ...b, verdict: "unverifiable", confidence: 0,
-      summary: "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+      // 联网查过也只说“没找到题名一致的”，查不到不代表不存在
+      summary: ev.cnSearched
+        ? "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查"
+        : "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
     };
   }
   // 只找到相近候选：哪项信息写错要以确认同一篇为前提，所以单列为"相近候选"，不算信息有误
@@ -701,9 +811,18 @@ function judgeNotSame(ref: ParsedRef, best: Ranked | undefined, steps: CheckStep
 export async function verifyAll(
   refs: ParsedRef[],
   onResult: (r: RefResult) => void,
-  opts: { concurrency?: number; openalexBudget?: number; signal?: AbortSignal } = {},
+  opts: {
+    concurrency?: number;
+    openalexBudget?: number;
+    signal?: AbortSignal;
+    /** 中文期刊联网核查：不传时配置了 DeepSeek 密钥就按默认额度开启；false 关闭 */
+    cn?: CnBudget | false;
+    /** 整个请求的时限（毫秒时间戳），快到时不再开始新的中文期刊联网核查 */
+    deadline?: number;
+  } = {},
 ): Promise<void> {
-  const ctx: VerifyContext = { openalexBudget: { left: opts.openalexBudget ?? 20 }, signal: opts.signal };
+  const cn = opts.cn === false ? undefined : opts.cn ?? defaultCnBudget(opts.deadline);
+  const ctx: VerifyContext = { openalexBudget: { left: opts.openalexBudget ?? 20 }, signal: opts.signal, cn };
   let next = 0;
   const workers = Array.from({ length: Math.min(opts.concurrency ?? 3, refs.length) }, async () => {
     while (next < refs.length && !opts.signal?.aborted) {

@@ -44,7 +44,7 @@ const failure = (text: string): CallToolResult => ({ isError: true, content: [{ 
 /** 给调用方模型看的纯文本：每条一行结论，问题和规范写法附在下面 */
 function referenceReport(results: RefResult[], counts: Record<Verdict, number>): string {
   const head = VERDICTS.filter((v) => counts[v]).map((v) => `${VERDICT_META[v].label} ${counts[v]}`).join("，");
-  const lines = [`共 ${results.length} 条：${head}。结论来自 Crossref / doi.org / OpenAlex 的逐字段比对；查不到不等于编造。`
+  const lines = [`共 ${results.length} 条：${head}。结论来自 Crossref / doi.org / OpenAlex（中文期刊论文另查知网、维普、期刊官网的原文页）的逐字段比对；查不到不等于编造。`
     + (counts.near_match ? "相近候选只是找到了相近的记录、未能确认是同一篇，不算信息有误，需要人工核对。" : "")];
   for (const r of results) {
     const label = VERDICT_META[r.verdict].label;
@@ -76,7 +76,9 @@ export function createCiteCheckupServer(options: ServerOptions = {}): McpServer 
       "a language model. 'mismatch' means the same work was confirmed but some fields are wrong, or the cited DOI is unregistered or points " +
       "to another work. 'near_match' means only a similar record was found and it could not be confirmed as the same work: it is not a " +
       "confirmed error, and its citation must not replace the original until a person has checked it. 'not_found' or 'unverifiable' is " +
-      "not proof of fabrication (books, theses, web pages and Chinese journals are poorly covered). " +
+      "not proof of fabrication (books, theses, web pages and Chinese journals are poorly covered). When a DeepSeek key is configured, Chinese " +
+      "journal articles that Crossref does not confirm are also looked up with the DeepSeek search API (a search engine, not a language model) " +
+      "on CNKI, Wanfang, CQVIP and the journal's own site; authors and volume/issue are read from those pages and judged by the same rules. " +
       `Accepts GB/T 7714, APA, IEEE and similar styles, at most ${MAX_CHECK_REFS} entries. Summaries are in Simplified Chinese.`,
     inputSchema: {
       references: z.string().min(1).max(MAX_CHECK_CHARS)

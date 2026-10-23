@@ -228,10 +228,10 @@ export function ResultCard({
                   href={result.match.url}
                   target="_blank"
                   rel="noreferrer noopener"
-                  title="AI 检索在中文学术网站找到的论文页，可打开核对作者、刊名和年期"
+                  title="联网检索在知网、万方、维普或期刊官网找到的论文页，可打开核对作者、刊名和卷期"
                   className="inline-flex min-h-7 items-center text-[12.5px] text-ink-faint underline decoration-dotted underline-offset-4 hover:text-seal"
                 >
-                  打开{result.match.site ?? "来源"}页面
+                  打开{(result.match.site ?? "来源").split("、")[0]}页面
                 </a>
               )}
               <span className="ml-auto flex items-center gap-1">

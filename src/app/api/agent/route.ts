@@ -64,7 +64,7 @@ export async function POST(request: Request) {
       work.onTimeout(() => send({ type: "fatal", message: "AI 检索超时，尚未完成，原有结论保持不变，请稍后重试" }));
       void (async () => {
         try {
-          const result = await work.run(() => runAgent(input.raw, input.index, { signal: work.signal, onStep: (step) => send({ type: "step", step }) }));
+          const result = await work.run(() => runAgent(input.raw, input.index, { signal: work.signal, deadline: work.deadline, onStep: (step) => send({ type: "step", step }) }));
           send({ type: "result", result });
         } catch {
           if (!work.signal.aborted) send({ type: "fatal", message: "AI 检索中断了，原有结论保持不变，请稍后重试" });
