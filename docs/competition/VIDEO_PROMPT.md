@@ -1,17 +1,32 @@
 # 重做演示视频：交给 GPT 的任务说明
 
-用法：等 `PROJECT_STATE.md` 顶部写明“视频前的改动已完成并提交”后，把下面整段（从“你在”开始）发给 GPT。旧成片是 10-14 版，里面没有拍照识别、AI 检索 Agent、隐藏提示词、开放全文论断核查和 MCP。
+用法：功能冻结、所有改动（包括另一个会话的中文期刊检索）都已提交并部署之后，把下面整段（从“你在”开始）发给 GPT。现有成片是 10-18 版（7:44，按 474c66a 录制），之后又加了：界面改版、开场动画和新手引导（10-20），论断范围复核（10-19～10-20），只贴 DOI 补全和规范参考文献（10-22）。
 
 ---
 
-你在 `D:\Darks\projects\cite-checkup` 仓库里工作，这是传智杯 AI WEB 网页开发挑战赛的参赛作品《引用体检》。任务：按当前版本重新制作正式演示视频，替换 10-14 的旧成片。
+你在 `D:\Darks\projects\cite-checkup` 仓库里工作，这是传智杯 AI WEB 网页开发挑战赛的参赛作品《引用体检》。任务：按当前版本重新制作正式演示视频，替换 10-18 的成片；时间允许时，老师操作教程也按 `media/video-2026-10-18/tutorial-narration.json` 重录，时间不够先保证正式片。
 
 **先读这些文件，以它们为准：**
 
 - `docs/competition/OFFICIAL_REQUIREMENTS.md`：官方要求（5–8 分钟、MP4、不低于 1080p、普通话讲解，可配字幕）。
 - `docs/competition/DEMO_SCRIPT.md`：分镜、每段的真实操作、录制前准备和异常分支。
 - `docs/competition/narration.json`：逐字讲稿，10 章。
-- `docs/competition/media/README.md`：上次的流程（`generate-narration.ps1` → `prepare_media.py` → `record-demo.cjs` → `assemble_demo.py`）。`record-demo.cjs` 还是 10-14 旧分镜（会点“AI 辅助解析”、等旧页面文字），要按新分镜重写，不要硬套。
+- `docs/competition/media/README.md`：上次的流程（`generate-narration.ps1` → `prepare_media.py` → `record-demo.cjs` → `assemble_demo.py`）。`record-demo.cjs`、`record-ending.cjs` 是按 10-18 的界面写的，10-20 改版后很多按钮名和位置都变了（见下表），要按新分镜重写，不要硬套。
+
+**10-20 改版后界面的变化（录屏脚本要跟着改）：**
+
+| 旧界面 | 现在 |
+|---|---|
+| 左栏“送检单” | 页面上方的大输入框（`#refs`），结果在输入框下面 |
+| “标准核验 / AI 辅助解析”单选 | “AI 辅助解析”开关（`role=switch`，默认关，关着就是标准核验） |
+| “导入 PDF / Word / TXT” | “导入文件” |
+| “拍照 / 截图识别” | “截图识别”（要等 `/api/vision` 确认视觉模型可用才出现，慢网络下会晚几秒） |
+| “展开详情 / 收起” | 卡片右下角“详情 / 收起” |
+| “只看有问题的” | 结果上方筛选栏的“需要处理” |
+| 两个大标签卡 | 页眉中间的分段切换“参考文献体检 / 正文论断核查” |
+| 没有 | 首次来访的落印开场动画和“第一次来？”邀请卡（“先不用 / 带我看看”），页眉“怎么用”可重看；本地记录键 `cite-intro`、`cite-tour` |
+| 没有 | 体检完成后的“规范参考文献”按钮和面板：GB/T 7714 / APA 切换、“复制全部” |
+| 没有 | 只贴 DOI 的条目按 DOI 补全，结论写“已按 DOI 查到这篇文献” |
 - `PROJECT_STATE.md` 顶部和 `docs/competition/SUBMISSION_CHECKLIST.md`。
 
 **硬性要求：**
@@ -22,7 +37,7 @@
 4. 讲稿要与画面一致。讲稿里的数字（测试数、盲测结果）以仓库当前的 `README.md` 和技术说明 PDF 为准；对不上就先改 `narration.json` 再录，并把改动告诉我。
 5. 旁白：
    - 如果我提供了自己的普通话录音（每章一个 wav，放在 `docs/competition/media/narration/human/`），就用我的录音；
-   - 否则用合成音，但不要再用 Windows 慧慧。改用自然的中文神经网络音色（例如 edge-tts 的 `zh-CN-YunxiNeural` 或 `zh-CN-XiaoxiaoNeural`），用之前先问我选哪个，并在 `docs/competition/media/README.md` 里写明是合成音。
+   - 否则用合成音：沿用 10-18 我选定的 edge-tts `zh-CN-YunxiNeural` 云希男声，不要用 Windows 慧慧，并在 `docs/competition/media/README.md` 里写明是合成音。讲稿里写成“国标格式”的地方不要改回“GB/T 7714”（合成音会把数字读错）。
    - 不使用任何 MiniMax 的工具或服务。
 6. 加中文字幕：由 `narration.json` 生成 SRT 并烧录进画面，字号适中，不遮挡操作区域。
 7. 画面 1920×1080，H.264 + AAC 的 MP4，总时长 5:00–8:00，目标约 7:40，不要超过 8:00。长等待可以剪短，但要在画面上标“等待已缩短”；不能用静止画面或循环画面凑时长。
