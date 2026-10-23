@@ -10,6 +10,9 @@ import { Gate } from "../throttle";
 import type { CheckStep, RefResult } from "../types";
 import { verifyAll, verifyReference } from "../verify";
 
+// 请求页面前会做 DNS 解析，确认是公网地址；测试不联网，一律解析到文档用的公网地址
+vi.mock("node:dns/promises", () => ({ lookup: vi.fn(async () => [{ address: "203.0.113.10", family: 4 }]) }));
+
 // 题名、作者、刊名都是编的；页面结构照 2026-10-19 实测的手机知网文章页、知网期刊页和期刊官网文章页
 const TITLE = "城市绿地降温效应的多尺度研究";
 const CITED = `张三, 李四. ${TITLE}[J]. 测试地理学报, 2021, 41(3): 12-20.`;

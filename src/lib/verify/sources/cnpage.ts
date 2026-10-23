@@ -6,7 +6,10 @@
 // 3. 知网的期刊页：刊物的 ISSN，供 Crossref 按卷、页定位。
 // 只读、不登录、不碰验证码页，请求头如实写明是本工具；有的期刊官网会拒绝这样的请求（HTTP 403），这时跳过。
 // 学校 WebVPN 镜像、文库、学术搜索聚合站、机构知识库这类转载站一律不当来源。
+// 网址来自搜索结果，服务器替用户去请求：只请求公网地址，跳转逐跳检查，防止被引去访问本机、内网或云服务器元数据地址（SSRF）。
 
+import { lookup } from "node:dns/promises";
+import { isIP } from "node:net";
 import { readBoundedBytes } from "../../claims/io";
 import { decodeEntities, isCjk, stripTags } from "../normalize";
 import { Gate, TtlCache } from "../throttle";
@@ -17,6 +20,38 @@ const USER_AGENT = "Mozilla/5.0 (compatible; cite-checkup/0.1; +https://github.c
 // 知网页面平时 1 秒内返回，偶尔要 10 秒以上（2026-10-19 本机实测）；单条文献另有总时限
 const PAGE_TIMEOUT_MS = 12_000;
 const MAX_PAGE_BYTES = 1_500_000;
+const MAX_REDIRECTS = 5;
+
+/** 本机、内网、链路本地（含云服务器元数据 169.254.169.254）、组播和保留地址 */
+export function privateAddress(address: string): boolean {
+  const ip = /^::ffff:/i.test(address) && isIP(address.slice(7)) === 4 ? address.slice(7) : address;
+  if (isIP(ip) === 4) {
+    const [a, b, c] = ip.split(".").map(Number);
+    return a === 0 || a === 10 || a === 127 || a >= 224
+      || (a === 100 && b >= 64 && b <= 127)
+      || (a === 169 && b === 254)
+      || (a === 172 && b >= 16 && b <= 31)
+      || (a === 192 && b === 168)
+      || (a === 192 && b === 0 && c === 0);
+  }
+  const v6 = ip.toLowerCase();
+  return v6 === "::" || v6 === "::1" || /^f[cd][0-9a-f]{2}:/.test(v6) || /^fe[89ab][0-9a-f]:/.test(v6);
+}
+
+/** 不能请求时返回原因：只允许 http(s)、默认端口、不带账号，主机名解析出的每个地址都要是公网地址 */
+export async function unsafeTarget(url: URL, resolve: typeof lookup = lookup): Promise<string | undefined> {
+  if (url.protocol !== "http:" && url.protocol !== "https:") return "网址协议不支持";
+  if (url.username || url.password) return "网址带账号信息";
+  if (url.port && url.port !== "80" && url.port !== "443") return "网址端口不是常见的网页端口";
+  const host = url.hostname.replace(/^\[|\]$/g, "");
+  if (isIP(host)) return privateAddress(host) ? "网址指向本机或内网地址" : undefined;
+  try {
+    const addresses = await resolve(host, { all: true, verbatim: true });
+    return addresses.length && addresses.every((a) => !privateAddress(a.address)) ? undefined : "网址指向本机或内网地址";
+  } catch {
+    return "网址的域名解析失败";
+  }
+}
 
 export interface PageResult<T> {
   value?: T;
@@ -123,17 +158,32 @@ async function fetchHtml(url: string, signal?: AbortSignal): Promise<Fetched> {
   return gateFor(host).run(async (): Promise<Fetched> => {
     const timeout = AbortSignal.timeout(PAGE_TIMEOUT_MS);
     const combined = signal ? AbortSignal.any([signal, timeout]) : timeout;
-    let response: Response;
-    try {
-      response = await fetch(url, {
-        headers: { "User-Agent": USER_AGENT, Accept: "text/html,application/xhtml+xml" },
-        redirect: "follow", cache: "no-store", signal: combined,
-      });
-    } catch {
-      signal?.throwIfAborted();
-      return { reason: timeout.aborted ? "页面连接超时" : "页面连接失败", transient: true };
+    // 自己处理跳转：每一跳的目标都先检查是不是公网地址
+    let finalUrl = url;
+    let response: Response | undefined;
+    for (let hop = 0; hop <= MAX_REDIRECTS; hop++) {
+      const blocked = await unsafeTarget(new URL(finalUrl));
+      if (blocked) return { reason: `${blocked}，已跳过` };
+      try {
+        response = await fetch(finalUrl, {
+          headers: { "User-Agent": USER_AGENT, Accept: "text/html,application/xhtml+xml" },
+          redirect: "manual", cache: "no-store", signal: combined,
+        });
+      } catch {
+        signal?.throwIfAborted();
+        return { reason: timeout.aborted ? "页面连接超时" : "页面连接失败", transient: true };
+      }
+      const location = response.status >= 300 && response.status < 400 ? response.headers.get("location") : null;
+      if (!location) break;
+      void response.body?.cancel().catch(() => {});
+      try {
+        finalUrl = new URL(location, finalUrl).toString();
+      } catch {
+        return { reason: "页面跳转的网址无效" };
+      }
+      response = undefined;
     }
-    const finalUrl = response.url || url;
+    if (!response) return { reason: "页面跳转次数过多，已跳过" };
     // 跳到登录、验证码或镜像页面的不读
     if (/(?:^|\/)(?:verify|captcha|login|signin|passport|sso|auth)(?=[/.?]|$)/i.test(new URL(finalUrl).pathname) || reprintSite(finalUrl)) {
       void response.body?.cancel().catch(() => {});
