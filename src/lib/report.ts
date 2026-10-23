@@ -1,7 +1,58 @@
 import { agentSummary } from "./agent-stream";
 import { VERDICT_META, VERDICT_ORDER } from "./verdict-meta";
+import { formatApa, formatGbt } from "./verify/format";
 import type { ParsedRef, RefResult, Verdict } from "./verify/types";
 import { localTime } from "./report-html";
+
+export type CitationStyle = "gbt" | "apa";
+
+/** 规范参考文献里的一条：rewritten 为 true 时 text 是按数据库记录重写的，否则是原文；note 是要附在末尾的提醒 */
+export interface StandardEntry {
+  index: number;
+  text: string;
+  rewritten: boolean;
+  note?: string;
+  /** 没查完时没有 */
+  verdict?: Verdict;
+}
+
+const LEADING_NUMBER = /^\s*(?:\[\d+\]|\d+[.、)])\s*/;
+const REWRITABLE: Verdict[] = ["verified", "mismatch", "retracted", "concern"];
+
+/**
+ * 整份参考文献按一种格式重排：确认是同一篇、而且服务端给过规范写法的条目（建议写法缺作者等信息时服务端不给），
+ * 按所选格式用数据库记录重写；相近候选、查不到、待人工、没查完的保留原文并注明原因，不替用户猜。
+ * GB/T 7714 用顺序编码，保持原来的顺序和序号；APA 按第一作者排序、不编号。
+ */
+export function standardEntries(refs: ParsedRef[], results: Map<number, RefResult>, style: CitationStyle): StandardEntry[] {
+  const entries = refs.map((ref): StandardEntry => {
+    const r = results.get(ref.index);
+    const keep = (note?: string): StandardEntry => ({ index: ref.index, text: ref.raw.replace(LEADING_NUMBER, "").trim(), rewritten: false, note, verdict: r?.verdict });
+    if (!r || r.verdict === "error") return keep("未完成核查");
+    if (r.match && r.suggestion && r.matchStatus === "confirmed" && REWRITABLE.includes(r.verdict)) {
+      const note = r.verdict === "retracted" ? "已撤稿 / 撤回，建议删除或替换" : r.verdict === "concern" ? "期刊发布关注声明，请审慎核查" : undefined;
+      return { index: ref.index, text: style === "gbt" ? formatGbt(r.match) : formatApa(r.match), rewritten: true, note, verdict: r.verdict };
+    }
+    switch (r.verdict) {
+      case "verified": return keep("已核实，数据库记录不全，保留原文");
+      case "near_match": return keep("仅找到相近候选，请人工确认是否同一篇");
+      case "mismatch": return keep(r.matchStatus === "candidate" ? "DOI 有误，仅找到相近候选，请人工确认是否同一篇" : "信息有误，请核对");
+      case "not_found": return keep("疑似不存在，请核实或删除");
+      default: return keep("请人工核查");
+    }
+  });
+  if (style === "apa") {
+    const collator = new Intl.Collator("zh-Hans-CN-u-co-pinyin", { sensitivity: "base", numeric: true });
+    entries.sort((a, b) => collator.compare(a.text, b.text));
+  }
+  return entries;
+}
+
+export function buildStandardList(refs: ParsedRef[], results: Map<number, RefResult>, style: CitationStyle): string {
+  return standardEntries(refs, results, style)
+    .map((e) => `${style === "gbt" ? `[${e.index}] ` : ""}${e.text}${e.note ? ` 【${e.note}】` : ""}`)
+    .join("\n");
+}
 
 export function buildFixedList(refs: ParsedRef[], results: Map<number, RefResult>): string {
   return refs.map(ref => {

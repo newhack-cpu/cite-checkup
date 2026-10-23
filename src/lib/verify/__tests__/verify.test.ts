@@ -435,3 +435,55 @@ describe("request cancellation", () => {
     expect(calls).toEqual(["api.crossref.org/works", "api.openalex.org/works", "api.crossref.org/journals"]);
   });
 });
+
+describe("entries that are only a DOI", () => {
+  it.each([
+    "10.9999/regression",
+    "https://doi.org/10.9999/regression",
+    "DOI：10.9999/regression",
+    "[3] doi:10.9999/regression",
+  ])("completes %s from its DOI record instead of calling it fabricated", async (text) => {
+    const calls = fixture();
+    const result = await check(text);
+    expect(result.verdict).toBe("verified");
+    expect(result.matchStatus).toBe("confirmed");
+    expect(result.summary).toContain("已按 DOI 查到");
+    expect(result.issues).toEqual([]);
+    expect(result.suggestion).toContain("Deep learning");
+    expect(result.fields.find((f) => f.field === "title")).toMatchObject({ status: "missing", actual: "Deep learning" });
+    // 不需要整条引文检索
+    expect(calls).not.toContain("api.crossref.org/works");
+  });
+
+  it("still reports a retracted work given only its DOI", async () => {
+    fixture(record, { retracted: true });
+    const result = await check("10.9999/regression");
+    expect(result.verdict).toBe("retracted");
+    expect(result.issues[0]).toContain("撤稿");
+  });
+
+  it("still reports an unregistered DOI given on its own, without repeating steps", async () => {
+    vi.stubGlobal("fetch", async (input: string) => {
+      const url = new URL(input);
+      if (url.hostname === "api.crossref.org") {
+        if (url.pathname === "/works") return Response.json({ message: { items: [] } });
+        return new Response("Resource not found.", { status: 404 });
+      }
+      if (url.hostname === "doi.org") return Response.json([{ DOI: "10.9999/missing", status: "DOI does not exist" }]);
+      if (url.hostname === "api.openalex.org") return Response.json({ results: [] });
+      throw new Error(`Unexpected fixture request: ${url.hostname}`);
+    });
+    const result = await check("10.9999/missing");
+    expect(result.verdict).toBe("not_found");
+    expect(result.issues.join("")).toContain("查无注册记录");
+    expect(result.steps.filter((s) => s.action === "doi_registry")).toHaveLength(1);
+  });
+
+  it("still compares a DOI written inside a full citation", async () => {
+    fixture();
+    const result = await check("LeCun, Y., et al. (2015). Deep learning. Nature, 521(7553), 436-444. DOI: 10.9999/regression");
+    expect(result.verdict).toBe("verified");
+    expect(result.summary).not.toContain("已按 DOI 查到");
+    expect(result.fields.find((f) => f.field === "title")?.status).toBe("match");
+  });
+});

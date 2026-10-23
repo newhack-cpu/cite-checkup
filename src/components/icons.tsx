@@ -18,4 +18,5 @@ export const IconDownload = (p: SVGProps<SVGSVGElement>) => <Icon {...p}><path d
 export const IconCheck = (p: SVGProps<SVGSVGElement>) => <Icon {...p}><path d="M5 12.5l4.5 4.5L19 7.5" /></Icon>;
 export const IconSpark = (p: SVGProps<SVGSVGElement>) => <Icon {...p}><path d="M12 3.5l1.9 5.1 5.1 1.9-5.1 1.9L12 17.5l-1.9-5.1L5 10.5l5.1-1.9z" /><path d="M19 16.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z" /></Icon>;
 export const IconStop = (p: SVGProps<SVGSVGElement>) => <Icon {...p}><rect x="6.5" y="6.5" width="11" height="11" rx="2" /></Icon>;
+export const IconList = (p: SVGProps<SVGSVGElement>) => <Icon {...p}><path d="M9.5 6.5h10M9.5 12h10M9.5 17.5h10" /><path d="M4.5 6.5h.01M4.5 12h.01M4.5 17.5h.01" strokeWidth={2.6} /></Icon>;
 export const IconShield = (p: SVGProps<SVGSVGElement>) => <Icon {...p}><path d="M12 3.5l7 2.6v5.3c0 4.3-2.9 7.6-7 9.1-4.1-1.5-7-4.8-7-9.1V6.1z" /><path d="M9 12l2.2 2.2L15.5 10" /></Icon>;

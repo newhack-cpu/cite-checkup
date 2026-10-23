@@ -158,6 +158,102 @@ function upstreamSummary(err: UpstreamError): string {
     : "数据源暂时不可用（可能被限流），请稍后重试";
 }
 
+/** 整条只有一个 DOI（可带序号、“doi:” 或 doi.org 链接），没有题名、作者可以比对 */
+const BARE_DOI_RE = /^(?:\[\d+\]\s*|\d+[.、)]\s*)?(?:doi\s*[:：]?\s*|(?:https?:\/\/)?(?:dx\.)?doi\.org\/)?10\.\d{4,9}\/\S+$/i;
+
+/**
+ * 只贴了 DOI 的条目：拿 DOI 记录去和空的题名、作者比对，只会得出“不是同一篇”，以前因此误判成“DOI 指向另一篇文献，疑似编造”。
+ * 按 DOI 查到记录就是这一篇：补全信息、照常到 OpenAlex 核对撤稿、给出规范写法。
+ * 查不到记录时返回 undefined，交给常规流程判断 DOI 是否存在（请求有缓存，不会重复访问数据源）。
+ */
+async function verifyBareDoi(ref: ParsedRef, doi: string, ctx: VerifyContext, steps: CheckStep[]): Promise<RefResult | undefined> {
+  let rec: WorkRecord | undefined;
+  if (!DATACITE_PREFIXES.some((p) => doi.startsWith(p))) {
+    const cr = await step(steps, "doi_lookup", () => crossrefByDoi(doi, ctx.signal), (r) =>
+      r.record
+        ? { detail: `Crossref：DOI ${doi} 对应《${short(r.record.title)}》`, ok: true }
+        : { detail: `Crossref 中没有 DOI ${doi}`, ok: false },
+    );
+    rec = cr.record;
+  }
+  if (!rec) {
+    const registry = await step(steps, "doi_registry", () => doiRegistry(doi, ctx.signal), (r) =>
+      r.exists === true
+        ? { detail: `doi.org：该 DOI 已在 ${r.ra} 注册`, ok: true }
+        : r.exists === false
+          ? { detail: "doi.org：该 DOI 未注册（不存在）", ok: false }
+          : { detail: "doi.org：无法确认该 DOI 的注册状态", ok: false },
+    );
+    if (!registry.exists) return undefined;
+    const csl = await step(steps, "doi_csl", () => doiCsl(doi, ctx.signal), (r) =>
+      r.record
+        ? { detail: `doi.org 内容协商：取得《${short(r.record.title)}》的元数据`, ok: true }
+        : { detail: "该 DOI 的注册机构不提供元数据", ok: false },
+    );
+    if (!csl.record) return undefined;
+    rec = csl.record;
+  }
+
+  const issues: string[] = [];
+  const notes = ["引文只写了 DOI，没有题名、作者可以比对：题名、作者、期刊等信息都按 DOI 从数据库补全"];
+  if (rec.doi && rec.source !== "openalex" && rec.retraction?.status !== "retracted" && rec.retraction?.status !== "withdrawn") {
+    const matched = rec;
+    const recDoi = rec.doi;
+    try {
+      const oa = await step(steps, "openalex_lookup", () => openalexByDoi(recDoi, ctx.signal), (r) => {
+        if (r.merged) {
+          const { detail, ok } = mergedLookup(matched, r.merged);
+          return { detail, ok };
+        }
+        return {
+          detail: r.record ? (r.record.retraction ? "OpenAlex：该文献已被标记撤稿" : "OpenAlex：未发现撤稿标记") : "OpenAlex 中没有该 DOI，撤稿状态交叉核验未完成",
+          ok: !!r.record,
+        };
+      });
+      if (oa.record?.retraction) rec = { ...rec, retraction: oa.record.retraction };
+      if (oa.merged) {
+        const note = mergedLookup(matched, oa.merged).note;
+        if (note) notes.push(note);
+      } else if (!oa.record) notes.push("OpenAlex 未收录该 DOI，撤稿状态交叉核验未完成，请人工核对出版社页面");
+    } catch {
+      ctx.signal?.throwIfAborted();
+      notes.push("OpenAlex 暂时不可用，撤稿状态交叉核验未完成，请稍后重试或核对出版社页面");
+    }
+  }
+
+  const fields: RefResult["fields"] = [
+    { field: "title", status: "missing", actual: rec.subtitle ? `${rec.title}: ${rec.subtitle}` : rec.title },
+    { field: "authors", status: "missing", actual: rec.authors.length ? formatAuthorsShort(rec.authors) : undefined },
+    { field: "year", status: "missing", actual: recordYears(rec).join(" / ") || undefined },
+    ...(rec.venue ? [{ field: "venue" as const, status: "missing" as const, actual: rec.venue }] : []),
+    { field: "doi", status: "match", cited: doi, actual: rec.doi ?? doi },
+  ];
+  const result: RefResult = {
+    ...base(ref, steps),
+    verdict: "verified",
+    confidence: 0.95,
+    summary: `已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：${SOURCE_LABEL[rec.source]}）`,
+    match: rec,
+    matchStatus: "confirmed",
+    fields,
+    issues,
+    notes,
+    // 中文记录给 GB/T 7714，其余给 APA；整份换格式在“规范参考文献”里选
+    suggestion: suggestCitation(rec, rec.title),
+  };
+  if (rec.retraction) {
+    const r = rec.retraction;
+    const what = { retracted: "已被撤稿", withdrawn: "已被撤回", concern: "被期刊发布了关注声明（Expression of Concern）" }[r.status];
+    const src =
+      r.source === "retraction-watch" ? "Retraction Watch" : r.source === "publisher" ? "出版社" : r.source === "openalex" ? "OpenAlex" : r.source === "crossref-title" ? "Crossref 题名前缀" : r.source;
+    issues.unshift(`该文献${r.date ? `于 ${r.date} ` : ""}${what}${src ? `（来源：${src}）` : ""}${r.noticeDoi ? `，声明 DOI：${r.noticeDoi}` : ""}`);
+    result.verdict = r.status === "concern" ? "concern" : "retracted";
+    result.summary = r.status === "concern" ? `文献存在，但${what}，请阅读声明并谨慎引用` : `文献存在，但${what}，不宜作为论据引用`;
+  }
+  if (notes.some((n) => n.includes("撤稿状态交叉核验未完成"))) result.summary += "；撤稿状态交叉核验未完成";
+  return result;
+}
+
 export async function verifyReference(ref: ParsedRef, ctx: VerifyContext, extra?: ExtraEvidence): Promise<RefResult> {
   const steps: CheckStep[] = [];
   const candidates: WorkRecord[] = [];
@@ -165,6 +261,11 @@ export async function verifyReference(ref: ParsedRef, ctx: VerifyContext, extra?
 
   try {
     ctx.signal?.throwIfAborted();
+    if (ref.doi && !extra && BARE_DOI_RE.test(ref.raw.trim())) {
+      const bare = await verifyBareDoi(ref, ref.doi, ctx, steps);
+      if (bare) return bare;
+      steps.length = 0;
+    }
     if (ref.doi) {
       const doi = ref.doi;
       if (!DATACITE_PREFIXES.some((p) => doi.startsWith(p))) {

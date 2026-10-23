@@ -2,11 +2,11 @@
 
 import { useState, type ReactNode } from "react";
 import { inkDrop, scrollBehavior, useCountUp, useGlide } from "@/lib/motion";
-import { buildFixedList, buildReportMarkdown } from "@/lib/report";
+import { buildFixedList, buildReportMarkdown, buildStandardList, standardEntries, type CitationStyle } from "@/lib/report";
 import { localDate, reportHtml, saveFile } from "@/lib/report-html";
 import { VERDICT_META, VERDICT_ORDER } from "@/lib/verdict-meta";
 import type { ParsedRef, RefResult, Verdict } from "@/lib/verify/types";
-import { IconCheck, IconCopy, IconDownload } from "./icons";
+import { IconCheck, IconCopy, IconDownload, IconList } from "./icons";
 
 export type Filter = "all" | "attention" | Verdict;
 /** 需要处理：确认有问题的条目。相近候选没有确认哪里写错，不算在内，单独提示人工核对 */
@@ -34,6 +34,9 @@ export function ReportSummary({
 }) {
   const [copied, setCopied] = useState(false);
   const [copyError, setCopyError] = useState(false);
+  const [standardOpen, setStandardOpen] = useState(false);
+  const [style, setStyle] = useState<CitationStyle>("gbt");
+  const [standardCopied, setStandardCopied] = useState(false);
   const counts: Partial<Record<Verdict, number>> = {};
   for (const r of results.values()) counts[r.verdict] = (counts[r.verdict] ?? 0) + 1;
   const done = results.size;
@@ -51,6 +54,10 @@ export function ReportSummary({
       : { value: verified, label: verified === total ? "条全部核实" : "条已核实", color: "var(--color-jade)" };
   const shown = useCountUp(headline.value);
   const [glideRef, pillRef] = useGlide<HTMLDivElement>();
+  // 规范参考文献只在体检完成后给；重新体检时自动收起
+  const showStandard = standardOpen && finished;
+  const entries = showStandard ? standardEntries(refs, results, style) : [];
+  const rewritten = entries.filter((e) => e.rewritten).length;
   const activeColor = filter === "all" ? "var(--color-ink)" : filter === "attention" ? "var(--color-seal)" : VERDICT_META[filter].color;
 
   // 默认给可直接打开、打印的网页；需要纯文本的另给 Markdown
@@ -100,6 +107,19 @@ export function ReportSummary({
               {copied ? <IconCheck className="text-[15px] text-jade" /> : <IconCopy className="text-[15px]" />}
               {copied ? "已复制到剪贴板" : "复制修正版清单"}
             </button>
+            <button
+              type="button"
+              disabled={!finished}
+              aria-expanded={showStandard}
+              aria-controls="standard-list"
+              onPointerDown={(e) => inkDrop(e, "rgb(184 50 42 / 0.18)")}
+              onClick={() => setStandardOpen((open) => !open)}
+              className={`${ghost} ${showStandard ? "border-seal/45 text-seal" : ""}`}
+              title="整份参考文献统一成 GB/T 7714 或 APA：数据库确认是同一篇的按记录重写，其余保留原文并注明原因"
+            >
+              <IconList className="text-[15px]" />
+              规范参考文献
+            </button>
             <button type="button" onClick={() => download("html")} onPointerDown={(e) => inkDrop(e, "rgb(184 50 42 / 0.18)")} disabled={running} title="网页格式，双击用浏览器打开，可直接打印或另存为 PDF" className={ghost}>
               <IconDownload className="text-[15px]" />
               下载核查报告
@@ -125,6 +145,62 @@ export function ReportSummary({
             ) : null,
           )}
           {done < total && <div className="h-full flex-1" style={{ background: "repeating-linear-gradient(-45deg, transparent 0 5px, rgb(29 26 22 / 0.1) 5px 6px)" }} />}
+        </div>
+
+        {/* 规范参考文献：整份换成一种格式，数据库没确认的保留原文 */}
+        <div id="standard-list" className="collapsible" data-open={showStandard} inert={!showStandard}>
+          <div>
+            <div className="mt-6 rounded-2xl border border-rule bg-paper/50 p-4 sm:p-5">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="min-w-0 max-w-xl">
+                  <h3 className="text-[15px] font-semibold text-ink">规范参考文献</h3>
+                  <p className="mt-1 text-[12.5px] leading-6 text-ink-faint">数据库确认是同一篇的，按所选格式用数据库记录重写；其余保留原文，末尾注明原因，请人工处理后再用。</p>
+                </div>
+                <div role="radiogroup" aria-label="引文格式" className="inline-grid shrink-0 grid-cols-2 rounded-full border border-rule bg-paper-deep/70 p-1 text-[13px]">
+                  {([["gbt", "GB/T 7714"], ["apa", "APA 第 7 版"]] as const).map(([value, text]) => (
+                    <label key={value} className={`cursor-pointer whitespace-nowrap rounded-full px-3.5 py-1.5 text-center transition duration-300 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-seal ${style === value ? "bg-card font-semibold text-ink shadow-[0_1px_2px_rgb(40_28_14/0.12)]" : "text-ink-soft hover:text-ink"}`}>
+                      <input type="radio" name="citation-style" checked={style === value} onChange={() => { setStyle(value); setStandardCopied(false); }} className="sr-only" />
+                      {text}
+                    </label>
+                  ))}
+                </div>
+              </div>
+              {/* 列表可能比框高、要滚动：能用键盘聚焦后滚动 */}
+              <ol tabIndex={0} aria-label="规范参考文献列表" className="mt-4 max-h-80 space-y-2 overflow-y-auto rounded-xl border border-hair bg-card px-4 py-3 font-serif text-[14px] leading-7 text-ink focus-visible:outline-2 focus-visible:outline-seal">
+                {entries.map((e) => (
+                  <li key={e.index} className={`break-words ${e.rewritten ? "" : "text-ink-soft"}`}>
+                    {style === "gbt" && <span className="mr-1.5 tabular text-ink-faint">[{e.index}]</span>}
+                    {e.text}
+                    {e.note && <span className={`ml-1 font-sans text-[12.5px] ${e.verdict === "verified" ? "text-ink-faint" : "text-seal"}`}>【{e.note}】</span>}
+                  </li>
+                ))}
+              </ol>
+              <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
+                <p className="text-[12.5px] text-ink-faint">
+                  按数据库重写 <span className="font-semibold tabular text-ink-soft">{rewritten}</span> 条 · 保留原文 <span className="font-semibold tabular text-ink-soft">{entries.length - rewritten}</span> 条
+                  {style === "apa" && " · APA 按第一作者排序，不编号"}
+                </p>
+                <button
+                  type="button"
+                  onPointerDown={(e) => inkDrop(e, "rgb(184 50 42 / 0.18)")}
+                  onClick={async () => {
+                    try {
+                      await navigator.clipboard.writeText(buildStandardList(refs, results, style));
+                      setCopyError(false);
+                      setStandardCopied(true);
+                      setTimeout(() => setStandardCopied(false), 1800);
+                    } catch {
+                      setCopyError(true);
+                    }
+                  }}
+                  className={ghost}
+                >
+                  {standardCopied ? <IconCheck className="text-[15px] text-jade" /> : <IconCopy className="text-[15px]" />}
+                  {standardCopied ? "已复制到剪贴板" : "复制全部"}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

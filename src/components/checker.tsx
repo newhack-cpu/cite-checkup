@@ -41,7 +41,7 @@ const CHECKS = ["DOI 是否注册", "题名、作者、年份、期刊是否一�
 /** 图例只放常见的六种；关注声明和出错很少见，出现时在结果里有说明 */
 const LEGEND: Verdict[] = ["verified", "mismatch", "near_match", "not_found", "retracted", "unverifiable"];
 const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
-const PLACEHOLDER = "[1] 作者. 题名[J]. 刊名, 年, 卷(期): 页码.\n[2] Author, A. (2023). Title. Journal, 12(3), 45–67.\n\n每条一行，或用 [1]、1. 这类序号分隔；支持 GB/T 7714、APA、IEEE 等格式";
+const PLACEHOLDER = "[1] 作者. 题名[J]. 刊名, 年, 卷(期): 页码.\n[2] Author, A. (2023). Title. Journal, 12(3), 45–67.\n\n每条一行，或用 [1]、1. 这类序号分隔；支持 GB/T 7714、APA、IEEE 等格式，只贴 DOI 也行";
 const noSubscribe = () => () => {};
 
 export function Checker() {

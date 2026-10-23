@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildFixedList, buildReportMarkdown } from "../report";
+import { buildFixedList, buildReportMarkdown, buildStandardList, standardEntries } from "../report";
 import { parseReference } from "../verify/extract";
 import type { RefResult } from "../verify/types";
 const refs = [parseReference("Original reference 2020.", 1), parseReference("Another reference 2021.", 2)];
@@ -64,5 +64,51 @@ describe("report exports", () => {
     expect(text).toContain("AI 检索理由：按书名加作者检索");
     expect(text).toContain("AI 检索：AI 检索 1 次找到候选，规则逐字段比对确认是同一篇");
     expect(text).toContain("结论由规则复核给出");
+  });
+});
+
+describe("standard reference list", () => {
+  const record = { source: "crossref" as const, doi: "10.1162/neco.1997.9.8.1735", title: "Long Short-Term Memory", authors: [{ family: "Hochreiter", given: "Sepp" }, { family: "Schmidhuber", given: "Jürgen" }], year: 1997, venue: "Neural Computation", volume: "9", issue: "8", pages: "1735-1780", type: "journal-article" };
+  const zhRecord = { source: "crossref" as const, title: "深度学习研究综述", authors: [{ family: "张", given: "三" }], year: 2020, venue: "计算机学报", volume: "43", issue: "1", pages: "1-20", type: "journal-article" };
+  const list = [
+    parseReference("[1] Hochreiter S. Long short term memory. 1997.", 1),
+    parseReference("Wang X. A made-up paper. Journal of Nothing, 2021.", 2),
+    parseReference("张三. 深度学习研究综述[J]. 计算机学报, 2020.", 3),
+    parseReference("Smith J. Similar title. 2019.", 4),
+  ];
+  const done = (index: number, extra: Partial<RefResult>): [number, RefResult] => [index, { ...base, index, raw: list[index - 1].raw, parsed: list[index - 1], ...extra }];
+  const results = new Map<number, RefResult>([
+    done(1, { verdict: "mismatch", matchStatus: "confirmed", match: record, suggestion: "x" }),
+    done(2, { verdict: "not_found", suggestion: undefined }),
+    done(3, { verdict: "verified", matchStatus: "confirmed", match: zhRecord, suggestion: "y" }),
+    done(4, { verdict: "near_match", matchStatus: "candidate", match: record, suggestion: "z" }),
+  ]);
+
+  it("rewrites confirmed entries from the database record in GB/T 7714 and keeps the order and numbers", () => {
+    const text = buildStandardList(list, results, "gbt").split("\n");
+    expect(text[0]).toBe("[1] HOCHREITER S, SCHMIDHUBER J. Long Short-Term Memory[J]. Neural Computation, 1997, 9(8): 1735-1780. DOI: 10.1162/neco.1997.9.8.1735.");
+    expect(text[1]).toBe("[2] Wang X. A made-up paper. Journal of Nothing, 2021. 【疑似不存在，请核实或删除】");
+    expect(text[2]).toBe("[3] 张三. 深度学习研究综述[J]. 计算机学报, 2020, 43(1): 1-20.");
+    expect(text[3]).toBe("[4] Smith J. Similar title. 2019. 【仅找到相近候选，请人工确认是否同一篇】");
+  });
+
+  it("sorts APA entries by first author without numbers", () => {
+    const text = buildStandardList(list, results, "apa").split("\n");
+    expect(text).toHaveLength(4);
+    expect(text.some((line) => /^\[\d+\]/.test(line))).toBe(false);
+    expect(text.indexOf("Hochreiter, S., & Schmidhuber, J. (1997). Long Short-Term Memory. Neural Computation, 9(8), 1735–1780. https://doi.org/10.1162/neco.1997.9.8.1735")).toBeLessThan(text.findIndex((line) => line.startsWith("Smith J.")));
+  });
+
+  it("never rewrites a candidate, and marks unfinished and retracted entries", () => {
+    const more = new Map(results);
+    more.set(1, { ...results.get(1)!, verdict: "retracted" });
+    more.delete(2);
+    const entries = standardEntries(list, more, "gbt");
+    expect(entries[0]).toMatchObject({ rewritten: true, note: "已撤稿 / 撤回，建议删除或替换" });
+    expect(entries[1]).toMatchObject({ rewritten: false, note: "未完成核查" });
+    expect(entries[3]).toMatchObject({ rewritten: false, text: "Smith J. Similar title. 2019." });
+    // 服务端没给规范写法（记录缺作者等）时，已核实的也保留原文
+    more.set(3, { ...results.get(3)!, suggestion: undefined });
+    expect(standardEntries(list, more, "gbt")[2]).toMatchObject({ rewritten: false, note: "已核实，数据库记录不全，保留原文" });
   });
 });
