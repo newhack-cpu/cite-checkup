@@ -1,0 +1,315 @@
+{
+ "ranAt": "2026-10-20T00:41:59.370Z",
+ "dataset": "blind-2026-10-16b",
+ "lang": "zh",
+ "mode": "rules",
+ "total": 24,
+ "seconds": 49.785,
+ "cnSearch": true,
+ "counts": {
+  "verified": 4,
+  "mismatch": 0,
+  "near_match": 6,
+  "not_found": 0,
+  "retracted": 0,
+  "concern": 0,
+  "unverifiable": 14,
+  "error": 0
+ },
+ "falseAlarms": 6,
+ "falseAlarmsNew": 0,
+ "calibers": {
+  "falseAlarms": "旧口径：信息有误（标注允许的除外）、相近候选、疑似不存在都算误报，与 2026-10-16 及以前的结果文件同一口径",
+  "falseAlarmsNew": "新口径：相近候选不算误报（只找到相近记录、没有确认是同一篇），条数见 counts.near_match"
+ },
+ "results": [
+  {
+   "id": "B088",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2008 年第 5 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "中国南方2008年1月罕见低温雨雪冰冻灾害发生的原因及其与气候变暖的关系",
+    "year": 2008,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/QXXB200805014.html"
+   }
+  },
+  {
+   "id": "B089",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B090",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.11975/j.issn.1002-6819.202402090",
+    "title": "考虑倒伏与粮仓容积的再生稻头季机收路径规划",
+    "year": 2024,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://www.aeeisp.com/nygcxb/cn/article/Y2024/I12/33"
+   }
+  },
+  {
+   "id": "B091",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B092",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "B093",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "B094",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B095",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B096",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B097",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B098",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2011 年第 14 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "固碳微生物分子生态学研究",
+    "year": 2011,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/ZNYK201114011.html"
+   }
+  },
+  {
+   "id": "B099",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在期刊官网找到相近文章，但不能确认是同一篇，请人工核对",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.11766/trxb202112180686",
+    "title": "土壤团聚体的形成和稳定机制：研究进展与展望",
+    "year": 2023,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "http://pedologica.issas.ac.cn/trxben/article/abstract/trxb202112180686"
+   }
+  },
+  {
+   "id": "B100",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在维普找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "助力农村新能源革命的多中心数字供应链生态之路——基于国家电投—兰考县域分布式光伏项目的案例研究",
+    "year": 2026,
+    "source": "web",
+    "site": "维普",
+    "url": "https://mqikan.cqvip.com/article/ArticleDetail?id=7202756458"
+   }
+  },
+  {
+   "id": "B101",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B102",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "国际月球科研站资源利用发展路线战略构想",
+    "year": 2024,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/YHXB202404013.html"
+   }
+  },
+  {
+   "id": "B103",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B104",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "贝叶斯优化方法和应用综述",
+    "year": 2018,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/RJXB201810011.html"
+   }
+  },
+  {
+   "id": "B105",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B106",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到相近文章，但没有作者信息，不能确认是同一篇，请人工核对",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "基于PMC指数模型的数字乡村政策量化评价研究",
+    "year": 2023,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/XDGL202301014.html"
+   }
+  },
+  {
+   "id": "B107",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在期刊官网找到相近文章，但不能确认是同一篇，请人工核对",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.12677/ojfr.2018.52009",
+    "title": "草鱼、赤眼鳟及杂交F1对嗜水气单胞菌、GCRV的抗性比较研究",
+    "year": 2018,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://www.hanspub.org/journal/cta?PaperID=25617"
+   }
+  },
+  {
+   "id": "B108",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B109",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.7541/2020.046",
+    "title": "性类固醇激素对黄颡鱼雌雄生长二态性的影响",
+    "year": 2020,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "http://ssswxb.ihb.ac.cn/cn/article/id/9daef56d-afef-4a38-accf-928ef6f3b987"
+   }
+  },
+  {
+   "id": "B110",
+   "verdict": "unverifiable",
+   "summary": "专利类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "patent"
+  },
+  {
+   "id": "B111",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  }
+ ]
+}

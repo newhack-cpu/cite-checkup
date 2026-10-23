@@ -1,0 +1,333 @@
+{
+ "ranAt": "2026-10-20T00:43:19.889Z",
+ "dataset": "blind-2026-10-17",
+ "lang": "zh",
+ "mode": "rules",
+ "total": 24,
+ "seconds": 73.121,
+ "cnSearch": true,
+ "counts": {
+  "verified": 4,
+  "mismatch": 0,
+  "near_match": 9,
+  "not_found": 0,
+  "retracted": 0,
+  "concern": 0,
+  "unverifiable": 11,
+  "error": 0
+ },
+ "falseAlarms": 9,
+ "falseAlarmsNew": 0,
+ "calibers": {
+  "falseAlarms": "旧口径：信息有误（标注允许的除外）、相近候选、疑似不存在都算误报，与 2026-10-16 及以前的结果文件同一口径",
+  "falseAlarmsNew": "新口径：相近候选不算误报（只找到相近记录、没有确认是同一篇），条数见 counts.near_match"
+ },
+ "results": [
+  {
+   "id": "B088",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "基于轨道机动的高轨目标自主感知技术",
+    "year": 2021,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/HFYG202101002.html"
+   }
+  },
+  {
+   "id": "B089",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.3969/j.issn.1674-1579.2021.01.001",
+    "title": "美国高轨天基态势感知技术发展与启示",
+    "year": 2021,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://aca.spacejournal.cn/article/doi/10.3969/j.issn.1674-1579.2021.01.001"
+   }
+  },
+  {
+   "id": "B090",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2024 年第 13 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "微球递药系统的开发及其疾病治疗应用",
+    "year": 2024,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/KXTB202413014.html"
+   }
+  },
+  {
+   "id": "B091",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B092",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B093",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B094",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2023 年第 15 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "把握机会窗口期减缓气候变化对中国居民健康影响",
+    "year": 2023,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/KXTB202315006.html"
+   }
+  },
+  {
+   "id": "B095",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B096",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B097",
+   "verdict": "unverifiable",
+   "summary": "专利类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "patent"
+  },
+  {
+   "id": "B098",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2014 年第 4 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "论新一代牵引供电系统及其关键技术",
+    "year": 2014,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/XNJT201404001.html"
+   }
+  },
+  {
+   "id": "B099",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2024 年第 6 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "长江江豚保护进展与工作展望",
+    "year": 2024,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/SSWX202406018.html"
+   }
+  },
+  {
+   "id": "B100",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "B101",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B102",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到相近文章，但没有作者信息，不能确认是同一篇，请人工核对",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "密度对玉米产量(>15000kg·hm~(-2))及其产量构成因子的影响",
+    "year": 2012,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/ZNYK201216030.html"
+   }
+  },
+  {
+   "id": "B103",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2023 年第 9 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "unknown",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "农业强国背景下新一轮粮食产能提升潜力与实施路径研究",
+    "year": 2023,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/JJZH202309007.html"
+   }
+  },
+  {
+   "id": "B104",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2010 年第 1 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "低温弱光胁迫及恢复对切花菊光合作用和叶绿素荧光参数的影响",
+    "year": 2010,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/YYSB201001004.html"
+   }
+  },
+  {
+   "id": "B105",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "气候变化背景下中国农业气候资源变化Ⅸ.中国农业气候资源时空变化特征",
+    "year": 2011,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://www.cjae.net/cn/y2011/v22/i12/3177"
+   }
+  },
+  {
+   "id": "B106",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B107",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B108",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B109",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "科普场馆特效影院弘扬科学家精神的实践与思考——以科学家精神主题电影展映等活动为例",
+    "year": 2022,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/JRKR202204008.html"
+   }
+  },
+  {
+   "id": "B110",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.16708/j.cnki.1000-758x.2024.0087",
+    "title": "鹊桥二号轨道与嫦娥六号任务匹配性设计和飞行实践",
+    "year": 2024,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://journal26.magtechjournal.com/kjkxjs/CN/Y2024/V44/I6/16"
+   }
+  },
+  {
+   "id": "B111",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2018 年第 2 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "深空微波测距测速现状及发展建议",
+    "year": 2018,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/SKTC201802005.html"
+   }
+  }
+ ]
+}

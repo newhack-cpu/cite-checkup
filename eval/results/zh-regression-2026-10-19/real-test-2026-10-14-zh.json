@@ -1,0 +1,361 @@
+{
+ "ranAt": "2026-10-20T00:40:14.774Z",
+ "dataset": "test-2026-10-14",
+ "lang": "zh",
+ "mode": "rules",
+ "total": 24,
+ "seconds": 57.649,
+ "cnSearch": true,
+ "counts": {
+  "verified": 12,
+  "mismatch": 0,
+  "near_match": 4,
+  "not_found": 0,
+  "retracted": 0,
+  "concern": 0,
+  "unverifiable": 8,
+  "error": 0
+ },
+ "falseAlarms": 4,
+ "falseAlarmsNew": 0,
+ "calibers": {
+  "falseAlarms": "旧口径：信息有误（标注允许的除外）、相近候选、疑似不存在都算误报，与 2026-10-16 及以前的结果文件同一口径",
+  "falseAlarmsNew": "新口径：相近候选不算误报（只找到相近记录、没有确认是同一篇），条数见 counts.near_match"
+ },
+ "results": [
+  {
+   "id": "T096",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "match": {
+    "doi": "10.1360/zd-2015-45-7-982",
+    "title": "黄河流域硅的组成与输出",
+    "year": 2015,
+    "source": "crossref",
+    "url": "https://doi.org/10.1360/zd-2015-45-7-982"
+   }
+  },
+  {
+   "id": "T097",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.13961/j.cnki.stbctb.2018.02.003",
+    "title": "近150年来长江入海流量变化的趋势、阶段与多尺度周期",
+    "year": 2018,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "http://stbctb.cnjournals.com/stbctb/article/abstract/20180203"
+   }
+  },
+  {
+   "id": "T098",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2023 年第 11 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "unknown",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "西藏羊八井地热田SOTEM探测及热储结构分析",
+    "year": 2023,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/DQWX202311029.html"
+   }
+  },
+  {
+   "id": "T099",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "T100",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2018 年第 4 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "微型飞行器的低雷诺数、非定常气动设计与分析",
+    "year": 2018,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/UMST201804003.html"
+   }
+  },
+  {
+   "id": "T101",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2016 年第 1 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "微型飞行器的设计原则和策略",
+    "year": 2016,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/HKXB201601006.html"
+   }
+  },
+  {
+   "id": "T102",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1360/sste-2021-0197",
+    "title": "中国陆地生态系统碳汇估算<bold>: </bold>方法<bold>、</bold>进展<bold>、</bold>展望",
+    "year": 2022,
+    "source": "crossref",
+    "url": "https://doi.org/10.1360/sste-2021-0197"
+   }
+  },
+  {
+   "id": "T103",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "match": {
+    "doi": "10.1360/sste-2022-0011",
+    "title": "试论陆地生态系统碳汇在<bold>&ldquo;</bold>碳中和<bold>&rdquo;</bold>目标中的作用",
+    "year": 2022,
+    "source": "crossref",
+    "url": "https://doi.org/10.1360/sste-2022-0011"
+   }
+  },
+  {
+   "id": "T104",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "T105",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.3969/j.issn.2095-1191.2015.4.626",
+    "title": "非洲大蜗牛在中国的研究现状及展望",
+    "year": 2015,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "http://nfnyxb.xml-journal.net/cn/article/doi/10.3969/j.issn.2095-1191.2015.4.626"
+   }
+  },
+  {
+   "id": "T106",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "T107",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "conference",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.3969/j.issn.1000-3045.2014.04.014",
+    "title": "大数据 大科学 大发现——大数据与科学发现国际研讨会综述",
+    "year": 2014,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "http://old2022.bulletin.cas.cn/zgkxyyk/ch/reader/view_abstract.aspx?file_no=20140414&flag=1"
+   }
+  },
+  {
+   "id": "T108",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "T109",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章；引文署名是单位，没法与知网记录的作者比对，请打开链接核对",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "山西襄汾县陶寺城址祭祀区大型建筑基址2003年发掘简报",
+    "year": 2004,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/KAGU200407001.html"
+   }
+  },
+  {
+   "id": "T110",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.3724/sp.j.1006.2017.00811",
+    "title": "油菜素内酯合成和信号转导基因在马铃薯块茎贮藏期间的表达变化及对萌芽的影响",
+    "year": 2017,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://zwxb.chinacrops.org/CN/Y2017/V43/I06/811"
+   }
+  },
+  {
+   "id": "T111",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.3724/sp.j.1006.2019.84063",
+    "title": "挥发性抑芽物质对马铃薯块茎萌芽的影响及其作用机制",
+    "year": 2019,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://zwxb.chinacrops.org/CN/abstract/abstract6610.shtml?st=aipub"
+   }
+  },
+  {
+   "id": "T112",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "unknown",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "剪叶对春油菜源库关系的影响",
+    "year": 2012,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/NMGN201203011.html"
+   }
+  },
+  {
+   "id": "T113",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "T114",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "古盐度定量研究方法综述",
+    "year": 2003,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/YQCS200305001.html"
+   }
+  },
+  {
+   "id": "T115",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "T116",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.3724/1000-6915.jrme.2024.0410",
+    "title": "斜坡单元尺寸和滑坡取样方式对区域滑坡易发性评价的影响",
+    "year": 2025,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://rockmech.whrsm.ac.cn/EN/10.3724/1000-6915.jrme.2024.0410"
+   }
+  },
+  {
+   "id": "T117",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "match": {
+    "doi": "10.3799/dqkx.2022.419",
+    "title": "机器学习在滑坡智能防灾减灾中的应用与发展趋势",
+    "year": 2023,
+    "source": "crossref",
+    "url": "https://doi.org/10.3799/dqkx.2022.419"
+   }
+  },
+  {
+   "id": "T118",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "T119",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "unknown",
+   "zhJournal": true,
+   "cnSearched": true
+  }
+ ]
+}

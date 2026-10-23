@@ -2,6 +2,7 @@
 // 比较本系统的三档做法和“直接问 AI”。
 //   rules-crossref  本系统，只用 Crossref 和 DOI 注册查询（消融：去掉 OpenAlex 兜底）
 //   rules           本系统标准核验
+//   rules-cn        标准核验 + 中文期刊联网核查（10-20 加入标准核验后补跑中文条目，需要 DEEPSEEK_API_KEY）
 //   agent           标准核验后，对“无法核验 / 相近候选”的条目再点“AI 继续查”
 //   ai-flash / ai-pro                 直接问 DeepSeek（深度思考，不联网），模型自己下结论
 //   ai-flash-search / ai-pro-search   DeepSeek 深度思考 + 联网搜索工具（最多 3 次），模型自己下结论
@@ -17,6 +18,7 @@ import { parseReference } from "../src/lib/verify/extract";
 import { dice } from "../src/lib/verify/normalize";
 import { crossrefByDoi } from "../src/lib/verify/sources/crossref";
 import { deepseekSearch } from "../src/lib/verify/sources/cnweb";
+import { defaultCnBudget } from "../src/lib/verify/cnjournal";
 import { doiCsl, doiRegistry } from "../src/lib/verify/sources/doi";
 import type { RefResult } from "../src/lib/verify/types";
 import { verifyReference } from "../src/lib/verify/verify";
@@ -99,11 +101,15 @@ function ours(r: RefResult, ms: number): Output {
   };
 }
 
-async function runRules(system: "rules-crossref" | "rules") {
+async function runRules(system: "rules-crossref" | "rules" | "rules-cn") {
   const outputs = force ? {} : load(system);
   const todo = items.filter((it) => !outputs[it.id]);
   // 与界面相同的单条核验；OpenAlex 题名检索额度：去掉 OpenAlex 的消融为 0，标准核验按条数给足
-  const ctx = { openalexBudget: { left: system === "rules-crossref" ? 0 : todo.length } };
+  // rules-cn 的联网核查额度也按条数给足，没有整体时限
+  const cn = system === "rules-cn" ? defaultCnBudget() : undefined;
+  if (system === "rules-cn" && !cn) throw new Error("rules-cn 需要 DEEPSEEK_API_KEY");
+  if (cn) cn.left = Math.max(cn.left, todo.length);
+  const ctx = { openalexBudget: { left: system === "rules-crossref" ? 0 : todo.length }, cn };
   await pool(todo, 3, async (it) => {
     const t = Date.now();
     const r = await verifyReference(parseReference(it.raw, 1), ctx);
@@ -260,9 +266,9 @@ async function runAI(system: string, model: string, search: boolean) {
 
 // ---------- 汇总 ----------
 
-const SYSTEMS = ["rules-crossref", "rules", "agent", "ai-flash", "ai-pro", "ai-flash-search", "ai-pro-search"];
+const SYSTEMS = ["rules-crossref", "rules", "rules-cn", "agent", "ai-flash", "ai-pro", "ai-flash-search", "ai-pro-search"];
 const LABEL: Record<string, string> = {
-  "rules-crossref": "本系统：只用 Crossref", rules: "本系统：规则核验", agent: "本系统：规则 + AI 继续查",
+  "rules-crossref": "本系统：只用 Crossref", rules: "本系统：规则核验", "rules-cn": "本系统：规则核验 + 中文期刊联网核查", agent: "本系统：规则 + AI 继续查",
   "ai-flash": "直接问 AI（flash，不联网）", "ai-pro": "直接问 AI（pro，不联网）",
   "ai-flash-search": "AI + 联网搜索（flash）", "ai-pro-search": "AI + 联网搜索（pro）",
 };
@@ -399,7 +405,7 @@ if (args.includes("--score")) {
 } else {
   const systems = (option("systems") ?? "").split(",").filter(Boolean);
   for (const system of systems) {
-    if (system === "rules-crossref" || system === "rules") await runRules(system);
+    if (system === "rules-crossref" || system === "rules" || system === "rules-cn") await runRules(system);
     else if (system === "agent") await runAgentSystem();
     else if (system === "ai-flash") await runAI(system, "deepseek-flash", false);
     else if (system === "ai-pro") await runAI(system, "deepseek-v4-pro", false);

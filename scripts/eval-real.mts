@@ -6,11 +6,15 @@
 //   --openalex=N  OpenAlex 题名检索最多 N 次（默认按条数给足；额度紧时用来封顶，结果文件会记下）
 //   --quiet  只打印汇总，不逐条列出被标为有问题的条目
 //   --out    明细写到指定文件（默认 eval/results/real-<数据集>-<模式>.json，会覆盖上一次的结果）
+//   --no-cn  不做中文期刊联网核查（DeepSeek 搜索接口 + 原文页面），用来和此前的结果对照；默认配置了密钥就做，每条都给额度
+//   --lang=zh  只跑中文（或 en）条目，用于回归中文期刊联网核查（中文条目不用 OpenAlex 题名检索，不耗额度）
 // 网络需要代理时，可先设置环境变量 NODE_USE_ENV_PROXY=1，让 Node 使用 HTTPS_PROXY。
+// 知网走代理很慢、常连不上，评测时把它排除在代理之外：NO_PROXY=localhost,127.0.0.1,::1,.local,.cnki.net,.cnki.com.cn
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, dirname, join } from "node:path";
 import { prepareAIReferences } from "../src/lib/ai";
+import { chineseJournalView, cnSearchConfigured } from "../src/lib/verify/cnjournal";
 import { parseReference } from "../src/lib/verify/extract";
 import { VERDICTS, type ParsedRef, type RefResult, type Verdict } from "../src/lib/verify/types";
 import { verifyAll } from "../src/lib/verify/verify";
@@ -35,7 +39,11 @@ const file = args.find((a) => !a.startsWith("--"));
 if (!file) throw new Error("请指定数据集文件，例如 eval/real-world/dev-2026-10-14.json");
 const useAI = args.includes("--ai");
 const quiet = args.includes("--quiet");
-const { name, cases } = JSON.parse(readFileSync(file, "utf8")) as { name: string; cases: Case[] };
+const langArg = args.find((a) => a.startsWith("--lang="))?.slice("--lang=".length);
+if (langArg !== undefined && langArg !== "zh" && langArg !== "en") throw new Error("--lang 只能是 zh 或 en");
+const dataset = JSON.parse(readFileSync(file, "utf8")) as { name: string; cases: Case[] };
+const name = dataset.name;
+const cases = langArg ? dataset.cases.filter((c) => c.label.lang === langArg) : dataset.cases;
 
 const AI_BATCH = 40;
 let aiFallbackBatches = 0;
@@ -66,7 +74,9 @@ const results: RefResult[] = [];
 const openalexArg = args.find((a) => a.startsWith("--openalex="));
 const openalexBudget = openalexArg ? Number(openalexArg.slice("--openalex=".length)) : cases.length;
 if (!Number.isInteger(openalexBudget) || openalexBudget < 0) throw new Error("--openalex= 需要非负整数");
-await verifyAll(refs, (r) => results.push(r), { concurrency: 3, openalexBudget });
+// 中文期刊联网核查：评测时每条都给额度（线上每次请求默认 30 条），不设整体时限
+const cnEnabled = !args.includes("--no-cn") && cnSearchConfigured();
+await verifyAll(refs, (r) => results.push(r), { concurrency: 3, openalexBudget, cn: cnEnabled ? { left: cases.length } : false });
 results.sort((a, b) => a.index - b.index);
 const seconds = (Date.now() - started) / 1000;
 
@@ -99,6 +109,14 @@ row("英文", results.filter((r) => cases[r.index - 1].label.lang === "en"));
 row("中文", results.filter((r) => cases[r.index - 1].label.lang === "zh"));
 const kinds = [...new Set(cases.map((c) => c.label.kind).filter((k): k is string => !!k))];
 if (kinds.length > 1) for (const k of kinds) row(`类型 ${k}`, results.filter((r) => cases[r.index - 1].label.kind === k));
+// 中文期刊论文：解析为期刊论文、题名（或方括号里的中文原文题名）是中文的条目，正是联网核查的对象
+const zhJournal = (r: RefResult) => cases[r.index - 1].label.lang === "zh" && !!chineseJournalView(r.parsed);
+row("中文期刊论文", results.filter(zhJournal));
+const zhj = results.filter(zhJournal);
+const share = (k: number) => (zhj.length ? `${k} 条（${((k / zhj.length) * 100).toFixed(0)}%）` : "-");
+const bySite = Object.entries(zhj.filter((r) => r.verdict === "verified").reduce<Record<string, number>>((m, r) => ((m[r.match?.site ?? r.match?.source ?? "?"] = (m[r.match?.site ?? r.match?.source ?? "?"] ?? 0) + 1), m), {}));
+console.log(`中文期刊论文 ${zhj.length} 条：待人工（无法核验）${share(zhj.filter((r) => r.verdict === "unverifiable").length)}，相近候选 ${share(zhj.filter((r) => r.verdict === "near_match").length)}，已核实 ${share(zhj.filter((r) => r.verdict === "verified").length)}（${bySite.map(([k, v]) => `${k} ${v}`).join("、") || "无"}），信息有误 ${share(zhj.filter((r) => r.verdict === "mismatch").length)}`);
+console.log(`中文期刊联网核查：${cnEnabled ? `已开启，实际查了 ${results.filter((r) => r.steps.some((st) => st.action === "cn_search")).length} 条` : "未开启"}`);
 
 // 按旧口径列出，相近候选也在里面，方便逐条复核
 const flagged = results.filter((r) => alarm(r, "old") || r.verdict === "error");
@@ -121,12 +139,14 @@ writeFileSync(
     {
       ranAt: new Date().toISOString(),
       dataset: name,
+      lang: langArg,
       mode: useAI ? "ai" : "rules",
       total: cases.length,
       seconds,
       aiFallbackBatches: useAI ? aiFallbackBatches : undefined,
       ai: useAI ? aiStats : undefined,
       openalexBudget: openalexArg ? openalexBudget : undefined,
+      cnSearch: cnEnabled,
       counts: Object.fromEntries(VERDICTS.map((v) => [v, results.filter((r) => r.verdict === v).length])),
       // falseAlarms 保持此前结果文件的口径（相近候选也算），falseAlarmsNew 是新口径
       falseAlarms: results.filter((r) => alarm(r, "old")).length,
@@ -143,7 +163,16 @@ writeFileSync(
         issues: r.issues,
         kind: r.parsed.kind,
         aiFields: r.parsed.aiFields,
-        match: r.match ? { doi: r.match.doi, title: r.match.title, year: r.match.year, source: r.match.source } : undefined,
+        zhJournal: zhJournal(r) || undefined,
+        cnSearched: r.steps.some((st) => st.action === "cn_search") || undefined,
+        // 中文期刊联网核查的每一步，逐条复核时对照（✗ 表示这一步没取到）
+        cnSteps: r.steps.some((st) => st.action.startsWith("cn_")) ? r.steps.filter((st) => st.action.startsWith("cn_")).map((st) => `${st.ok ? "" : "✗ "}${st.detail}`) : undefined,
+        notes: r.notes.length ? r.notes : undefined,
+        match: r.match ? {
+          doi: r.match.doi, title: r.match.title, year: r.match.year, source: r.match.source, site: r.match.site, url: r.match.url,
+          // 中文网页记录逐条复核时要看作者和卷期页
+          ...(r.match.source === "web" ? { authors: r.match.authors.map((a) => a.family + (a.given ?? "")).join("、"), venue: r.match.venue, volume: r.match.volume, issue: r.match.issue, pages: r.match.pages } : {}),
+        } : undefined,
       })),
     },
     null,

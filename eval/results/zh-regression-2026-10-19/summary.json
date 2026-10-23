@@ -1,0 +1,1088 @@
+{
+ "comparedAt": "2026-10-20T00:45:57.074Z",
+ "method": "各集合的中文条目用 eval:real --lang=zh 重跑（中文期刊联网核查开启，每条都给额度），与该集合上一次的规则结果按条目编号比较；这些集合都已看过，只能做回归、不能报效果。误报按 real-results.ts 的两种口径：旧口径含相近候选，新口径不含。",
+ "summary": {
+  "zh": {
+   "total": 156,
+   "before": {
+    "verified": 12,
+    "mismatch": 0,
+    "near_match": 0,
+    "not_found": 0,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 143,
+    "error": 1
+   },
+   "after": {
+    "verified": 46,
+    "mismatch": 0,
+    "near_match": 39,
+    "not_found": 0,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 71,
+    "error": 0
+   },
+   "falseAlarmsBefore": {
+    "old": 0,
+    "new": 0
+   },
+   "falseAlarmsAfter": {
+    "old": 39,
+    "new": 0
+   }
+  },
+  "zhJournal": {
+   "total": 122,
+   "before": {
+    "verified": 10,
+    "mismatch": 0,
+    "near_match": 0,
+    "not_found": 0,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 111,
+    "error": 1
+   },
+   "after": {
+    "verified": 44,
+    "mismatch": 0,
+    "near_match": 39,
+    "not_found": 0,
+    "retracted": 0,
+    "concern": 0,
+    "unverifiable": 39,
+    "error": 0
+   },
+   "falseAlarmsBefore": {
+    "old": 0,
+    "new": 0
+   },
+   "falseAlarmsAfter": {
+    "old": 39,
+    "new": 0
+   }
+  }
+ },
+ "sets": [
+  {
+   "dataset": "dev-2026-10-14",
+   "now": "eval/results/zh-regression-2026-10-19/real-dev-2026-10-14-zh.json",
+   "before": "eval/results/real-dev-2026-10-17-rules.json",
+   "ranAt": "2026-10-20T00:39:08.659Z",
+   "zh": {
+    "total": 36,
+    "before": {
+     "verified": 3,
+     "mismatch": 0,
+     "near_match": 0,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 33,
+     "error": 0
+    },
+    "after": {
+     "verified": 12,
+     "mismatch": 0,
+     "near_match": 9,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 15,
+     "error": 0
+    },
+    "falseAlarmsBefore": {
+     "old": 0,
+     "new": 0
+    },
+    "falseAlarmsAfter": {
+     "old": 9,
+     "new": 0
+    }
+   },
+   "zhJournal": {
+    "total": 31,
+    "before": {
+     "verified": 3,
+     "mismatch": 0,
+     "near_match": 0,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 28,
+     "error": 0
+    },
+    "after": {
+     "verified": 12,
+     "mismatch": 0,
+     "near_match": 9,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 10,
+     "error": 0
+    },
+    "falseAlarmsBefore": {
+     "old": 0,
+     "new": 0
+    },
+    "falseAlarmsAfter": {
+     "old": 9,
+     "new": 0
+    }
+   },
+   "changes": [
+    {
+     "id": "D075",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+     "source": "期刊官网",
+     "url": "https://actamicro.ijournals.cn/actamicrocn/article/abstract/20220801"
+    },
+    {
+     "id": "D078",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/JGDJ200408001.html"
+    },
+    {
+     "id": "D079",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在维普找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+     "source": "维普",
+     "url": "https://www.cqvip.com/doc/journal/7101843297?sign=aca0991d878d81845c5f2fcb07bdcdc08f569134833bf05d2437cefac1c844c0&expireTime=1800061133556&resourceId=7101843297&type=1#1"
+    },
+    {
+     "id": "D085",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+     "source": "期刊官网",
+     "url": "https://www.geores.com.cn/dqkxjz/CN/10.11867/j.issn.1001-8166.2022.055"
+    },
+    {
+     "id": "D086",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2014 年第 3 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/XNMZ201403018.html"
+    },
+    {
+     "id": "D087",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2014 年第 4 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/KXSD201404005.html"
+    },
+    {
+     "id": "D088",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+     "source": "期刊官网",
+     "url": "https://www.cjae.net/CN/abstract/abstract26419.shtml"
+    },
+    {
+     "id": "D089",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2010 年第 8 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/NHBH201008031.html"
+    },
+    {
+     "id": "D091",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2017 年第 24 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/NYGU201724002.html"
+    },
+    {
+     "id": "D092",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2019 年第 18 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/NYGU201918001.html"
+    },
+    {
+     "id": "D093",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2018 年第 11 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/NYJX201811008.html"
+    },
+    {
+     "id": "D094",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与维普记录一致（来源：维普）",
+     "source": "维普",
+     "url": "http://m.qikan.cqvip.com/Article/ArticleDetail?id=1002474170&from=article_ArticleDetail"
+    },
+    {
+     "id": "D095",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与知网记录一致（来源：知网）",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/SHEH198303003.html"
+    },
+    {
+     "id": "D097",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在期刊官网找到相近文章，但不能确认是同一篇，请人工核对",
+     "source": "期刊官网",
+     "url": "https://www.agrijournal.com.cn/article/detail/1404F296-1358-42E5-A83C-5221DCE75C85"
+    },
+    {
+     "id": "D099",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网、Crossref 记录一致（来源：期刊官网、Crossref）",
+     "source": "期刊官网、Crossref",
+     "url": "http://ssswxb.ihb.ac.cn/article/cstr/32229.14.SSSWXB.2025.0201"
+    },
+    {
+     "id": "D102",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与知网记录一致（来源：知网）",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/KJDB202417003.html"
+    },
+    {
+     "id": "D103",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与知网记录一致（来源：知网）",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/XUXI202309018.html"
+    },
+    {
+     "id": "D107",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与知网记录一致（来源：知网）",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/YSLX202004011.html"
+    }
+   ]
+  },
+  {
+   "dataset": "test-2026-10-14",
+   "now": "eval/results/zh-regression-2026-10-19/real-test-2026-10-14-zh.json",
+   "before": "eval/results/real-test-2026-10-17-rules.json",
+   "ranAt": "2026-10-20T00:40:14.774Z",
+   "zh": {
+    "total": 24,
+    "before": {
+     "verified": 4,
+     "mismatch": 0,
+     "near_match": 0,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 20,
+     "error": 0
+    },
+    "after": {
+     "verified": 12,
+     "mismatch": 0,
+     "near_match": 4,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 8,
+     "error": 0
+    },
+    "falseAlarmsBefore": {
+     "old": 0,
+     "new": 0
+    },
+    "falseAlarmsAfter": {
+     "old": 4,
+     "new": 0
+    }
+   },
+   "zhJournal": {
+    "total": 17,
+    "before": {
+     "verified": 2,
+     "mismatch": 0,
+     "near_match": 0,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 15,
+     "error": 0
+    },
+    "after": {
+     "verified": 10,
+     "mismatch": 0,
+     "near_match": 4,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 3,
+     "error": 0
+    },
+    "falseAlarmsBefore": {
+     "old": 0,
+     "new": 0
+    },
+    "falseAlarmsAfter": {
+     "old": 4,
+     "new": 0
+    }
+   },
+   "changes": [
+    {
+     "id": "T097",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+     "source": "期刊官网",
+     "url": "http://stbctb.cnjournals.com/stbctb/article/abstract/20180203"
+    },
+    {
+     "id": "T098",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2023 年第 11 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/DQWX202311029.html"
+    },
+    {
+     "id": "T100",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2018 年第 4 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/UMST201804003.html"
+    },
+    {
+     "id": "T101",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2016 年第 1 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/HKXB201601006.html"
+    },
+    {
+     "id": "T105",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+     "source": "期刊官网",
+     "url": "http://nfnyxb.xml-journal.net/cn/article/doi/10.3969/j.issn.2095-1191.2015.4.626"
+    },
+    {
+     "id": "T107",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+     "source": "期刊官网",
+     "url": "http://old2022.bulletin.cas.cn/zgkxyyk/ch/reader/view_abstract.aspx?file_no=20140414&flag=1"
+    },
+    {
+     "id": "T109",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、刊名、年份一致的文章；引文署名是单位，没法与知网记录的作者比对，请打开链接核对",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/KAGU200407001.html"
+    },
+    {
+     "id": "T110",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+     "source": "期刊官网",
+     "url": "https://zwxb.chinacrops.org/CN/Y2017/V43/I06/811"
+    },
+    {
+     "id": "T111",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+     "source": "期刊官网",
+     "url": "https://zwxb.chinacrops.org/CN/abstract/abstract6610.shtml?st=aipub"
+    },
+    {
+     "id": "T112",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与知网记录一致（来源：知网）",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/NMGN201203011.html"
+    },
+    {
+     "id": "T114",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与知网记录一致（来源：知网）",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/YQCS200305001.html"
+    },
+    {
+     "id": "T116",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+     "source": "期刊官网",
+     "url": "https://rockmech.whrsm.ac.cn/EN/10.3724/1000-6915.jrme.2024.0410"
+    }
+   ]
+  },
+  {
+   "dataset": "blind-2026-10-16",
+   "now": "eval/results/zh-regression-2026-10-19/real-blind-2026-10-16-zh.json",
+   "before": "eval/results/real-blind-2026-10-16-rules.json",
+   "ranAt": "2026-10-20T00:41:01.843Z",
+   "zh": {
+    "total": 24,
+    "before": {
+     "verified": 3,
+     "mismatch": 0,
+     "near_match": 0,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 20,
+     "error": 1
+    },
+    "after": {
+     "verified": 6,
+     "mismatch": 0,
+     "near_match": 8,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 10,
+     "error": 0
+    },
+    "falseAlarmsBefore": {
+     "old": 0,
+     "new": 0
+    },
+    "falseAlarmsAfter": {
+     "old": 8,
+     "new": 0
+    }
+   },
+   "zhJournal": {
+    "total": 20,
+    "before": {
+     "verified": 3,
+     "mismatch": 0,
+     "near_match": 0,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 16,
+     "error": 1
+    },
+    "after": {
+     "verified": 6,
+     "mismatch": 0,
+     "near_match": 8,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 6,
+     "error": 0
+    },
+    "falseAlarmsBefore": {
+     "old": 0,
+     "new": 0
+    },
+    "falseAlarmsAfter": {
+     "old": 8,
+     "new": 0
+    }
+   },
+   "changes": [
+    {
+     "id": "B088",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2022 年第 12 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/JSYS202212021.html"
+    },
+    {
+     "id": "B095",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2025 年第 5 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/RGJT202505006.html"
+    },
+    {
+     "id": "B096",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+     "source": "期刊官网",
+     "url": "http://rgjtxb.jtxb.cn/CN/Y2015/V44/I12/3406"
+    },
+    {
+     "id": "B097",
+     "before": "error",
+     "after": "verified",
+     "summary": "已核实：与数据库记录一致（来源：Crossref）",
+     "source": "crossref",
+     "url": "https://doi.org/10.1360/n072017-00235"
+    },
+    {
+     "id": "B100",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在万方找到题名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+     "source": "万方",
+     "url": "https://d.wanfangdata.com.cn/periodical/kxtb202026006"
+    },
+    {
+     "id": "B103",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2023 年第 9 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/NYDX202309008.html"
+    },
+    {
+     "id": "B104",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2024 年第 1 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/SXGS202401023.html"
+    },
+    {
+     "id": "B105",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2024 年第 3 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/HJHX202403022.html"
+    },
+    {
+     "id": "B106",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2016 年第 6 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/HYHJ201606003.html"
+    },
+    {
+     "id": "B108",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与知网记录一致（来源：知网）",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/DBDX201406025.html"
+    },
+    {
+     "id": "B109",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2004 年第 2 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/GNCQ200402000.html"
+    }
+   ]
+  },
+  {
+   "dataset": "blind-2026-10-16b",
+   "now": "eval/results/zh-regression-2026-10-19/real-blind-2026-10-16b-zh.json",
+   "before": "eval/results/real-blind-2026-10-16b-rules.json",
+   "ranAt": "2026-10-20T00:41:59.370Z",
+   "zh": {
+    "total": 24,
+    "before": {
+     "verified": 0,
+     "mismatch": 0,
+     "near_match": 0,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 24,
+     "error": 0
+    },
+    "after": {
+     "verified": 4,
+     "mismatch": 0,
+     "near_match": 6,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 14,
+     "error": 0
+    },
+    "falseAlarmsBefore": {
+     "old": 0,
+     "new": 0
+    },
+    "falseAlarmsAfter": {
+     "old": 6,
+     "new": 0
+    }
+   },
+   "zhJournal": {
+    "total": 18,
+    "before": {
+     "verified": 0,
+     "mismatch": 0,
+     "near_match": 0,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 18,
+     "error": 0
+    },
+    "after": {
+     "verified": 4,
+     "mismatch": 0,
+     "near_match": 6,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 8,
+     "error": 0
+    },
+    "falseAlarmsBefore": {
+     "old": 0,
+     "new": 0
+    },
+    "falseAlarmsAfter": {
+     "old": 6,
+     "new": 0
+    }
+   },
+   "changes": [
+    {
+     "id": "B088",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2008 年第 5 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/QXXB200805014.html"
+    },
+    {
+     "id": "B090",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+     "source": "期刊官网",
+     "url": "https://www.aeeisp.com/nygcxb/cn/article/Y2024/I12/33"
+    },
+    {
+     "id": "B098",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2011 年第 14 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/ZNYK201114011.html"
+    },
+    {
+     "id": "B099",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在期刊官网找到相近文章，但不能确认是同一篇，请人工核对",
+     "source": "期刊官网",
+     "url": "http://pedologica.issas.ac.cn/trxben/article/abstract/trxb202112180686"
+    },
+    {
+     "id": "B100",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在维普找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+     "source": "维普",
+     "url": "https://mqikan.cqvip.com/article/ArticleDetail?id=7202756458"
+    },
+    {
+     "id": "B102",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与知网记录一致（来源：知网）",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/YHXB202404013.html"
+    },
+    {
+     "id": "B104",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与知网记录一致（来源：知网）",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/RJXB201810011.html"
+    },
+    {
+     "id": "B106",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到相近文章，但没有作者信息，不能确认是同一篇，请人工核对",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/XDGL202301014.html"
+    },
+    {
+     "id": "B107",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在期刊官网找到相近文章，但不能确认是同一篇，请人工核对",
+     "source": "期刊官网",
+     "url": "https://www.hanspub.org/journal/cta?PaperID=25617"
+    },
+    {
+     "id": "B109",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+     "source": "期刊官网",
+     "url": "http://ssswxb.ihb.ac.cn/cn/article/id/9daef56d-afef-4a38-accf-928ef6f3b987"
+    }
+   ]
+  },
+  {
+   "dataset": "blind-2026-10-17",
+   "now": "eval/results/zh-regression-2026-10-19/real-blind-2026-10-17-zh.json",
+   "before": "eval/results/real-blind-2026-10-17-rules.json",
+   "ranAt": "2026-10-20T00:43:19.889Z",
+   "zh": {
+    "total": 24,
+    "before": {
+     "verified": 0,
+     "mismatch": 0,
+     "near_match": 0,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 24,
+     "error": 0
+    },
+    "after": {
+     "verified": 4,
+     "mismatch": 0,
+     "near_match": 9,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 11,
+     "error": 0
+    },
+    "falseAlarmsBefore": {
+     "old": 0,
+     "new": 0
+    },
+    "falseAlarmsAfter": {
+     "old": 9,
+     "new": 0
+    }
+   },
+   "zhJournal": {
+    "total": 16,
+    "before": {
+     "verified": 0,
+     "mismatch": 0,
+     "near_match": 0,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 16,
+     "error": 0
+    },
+    "after": {
+     "verified": 4,
+     "mismatch": 0,
+     "near_match": 9,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 3,
+     "error": 0
+    },
+    "falseAlarmsBefore": {
+     "old": 0,
+     "new": 0
+    },
+    "falseAlarmsAfter": {
+     "old": 9,
+     "new": 0
+    }
+   },
+   "changes": [
+    {
+     "id": "B088",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/HFYG202101002.html"
+    },
+    {
+     "id": "B089",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+     "source": "期刊官网",
+     "url": "https://aca.spacejournal.cn/article/doi/10.3969/j.issn.1674-1579.2021.01.001"
+    },
+    {
+     "id": "B090",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2024 年第 13 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/KXTB202413014.html"
+    },
+    {
+     "id": "B094",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2023 年第 15 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/KXTB202315006.html"
+    },
+    {
+     "id": "B098",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2014 年第 4 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/XNJT201404001.html"
+    },
+    {
+     "id": "B099",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2024 年第 6 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/SSWX202406018.html"
+    },
+    {
+     "id": "B102",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到相近文章，但没有作者信息，不能确认是同一篇，请人工核对",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/ZNYK201216030.html"
+    },
+    {
+     "id": "B103",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2023 年第 9 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/JJZH202309007.html"
+    },
+    {
+     "id": "B104",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2010 年第 1 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/YYSB201001004.html"
+    },
+    {
+     "id": "B105",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+     "source": "期刊官网",
+     "url": "https://www.cjae.net/cn/y2011/v22/i12/3177"
+    },
+    {
+     "id": "B109",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与知网记录一致（来源：知网）",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/JRKR202204008.html"
+    },
+    {
+     "id": "B110",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+     "source": "期刊官网",
+     "url": "https://journal26.magtechjournal.com/kjkxjs/CN/Y2024/V44/I6/16"
+    },
+    {
+     "id": "B111",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2018 年第 2 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/SKTC201802005.html"
+    }
+   ]
+  },
+  {
+   "dataset": "blind-2026-10-17b",
+   "now": "eval/results/zh-regression-2026-10-19/real-blind-2026-10-17b-zh.json",
+   "before": "eval/results/real-blind-2026-10-17b-rules.json",
+   "ranAt": "2026-10-20T00:44:25.382Z",
+   "zh": {
+    "total": 24,
+    "before": {
+     "verified": 2,
+     "mismatch": 0,
+     "near_match": 0,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 22,
+     "error": 0
+    },
+    "after": {
+     "verified": 8,
+     "mismatch": 0,
+     "near_match": 3,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 13,
+     "error": 0
+    },
+    "falseAlarmsBefore": {
+     "old": 0,
+     "new": 0
+    },
+    "falseAlarmsAfter": {
+     "old": 3,
+     "new": 0
+    }
+   },
+   "zhJournal": {
+    "total": 20,
+    "before": {
+     "verified": 2,
+     "mismatch": 0,
+     "near_match": 0,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 18,
+     "error": 0
+    },
+    "after": {
+     "verified": 8,
+     "mismatch": 0,
+     "near_match": 3,
+     "not_found": 0,
+     "retracted": 0,
+     "concern": 0,
+     "unverifiable": 9,
+     "error": 0
+    },
+    "falseAlarmsBefore": {
+     "old": 0,
+     "new": 0
+    },
+    "falseAlarmsAfter": {
+     "old": 3,
+     "new": 0
+    }
+   },
+   "changes": [
+    {
+     "id": "B085",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2020 年第 3 期，没有卷号），请打开链接核对卷期页码",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/DQWX202003003.html"
+    },
+    {
+     "id": "B090",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在知网找到相近文章，但没有作者信息，不能确认是同一篇，请人工核对",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/YCXB200512007.html"
+    },
+    {
+     "id": "B098",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+     "source": "期刊官网",
+     "url": "https://zwxb.chinacrops.org/EN/abstract/abstract7698.shtml"
+    },
+    {
+     "id": "B100",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与知网记录一致（来源：知网）",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/GJXZ202307009.html"
+    },
+    {
+     "id": "B103",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+     "source": "期刊官网",
+     "url": "https://pubs.cstam.org.cn/em/article/Y2021/I9/146"
+    },
+    {
+     "id": "B104",
+     "before": "unverifiable",
+     "after": "near_match",
+     "summary": "在万方找到题名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+     "source": "万方",
+     "url": "https://d.wanfangdata.com.cn/periodical/jzjgxb201807012"
+    },
+    {
+     "id": "B105",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与知网记录一致（来源：知网）",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/YZJS2015S1033.html"
+    },
+    {
+     "id": "B106",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与知网记录一致（来源：知网）",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/HJSU202210012.html"
+    },
+    {
+     "id": "B107",
+     "before": "unverifiable",
+     "after": "verified",
+     "summary": "已核实：与知网记录一致（来源：知网）",
+     "source": "知网",
+     "url": "https://wap.cnki.net/touch/web/Journal/Article/TRYJ201608012.html"
+    }
+   ]
+  }
+ ],
+ "nearMatchReview": {
+  "reviewedAt": "2026-10-19",
+  "method": "逐条对照 39 条相近候选的候选题名、刊名、年份与引文原文",
+  "sameArticle": 38,
+  "differentArticle": 1,
+  "differentArticleIds": [
+   "blind-2026-10-16b:B106"
+  ],
+  "notes": [
+   "38 条候选就是引文的那篇文章：26 条作者、刊名、年份都对上，只是引文只写“卷: 页”、知网记录没有卷号且页码是期内页码（卷期页码没能核对）；6 条知网、万方或维普的记录没读到作者（原文页面超时、拒绝访问或没有作者）；3 条题名一致但年份或刊名有出入；1 条引文署名是单位（考古简报），知网列的是执笔人。",
+   "blind-2026-10-16b:B106 引的是《基于PMC指数模型的长江经济带数字乡村政策评价》（统计与决策），候选是知网上题名相近的另一篇《基于PMC指数模型的数字乡村政策量化评价研究》（现代管理科学）；卡片写的是“找到相近文章，但没有作者信息，不能确认是同一篇”，没有说成同一篇。",
+   "以上集合都在开发中看过，只能说明没有新增误报，不能当作效果；效果见 real-blind-zh-2026-10-19 的一次性运行与复核。"
+  ]
+ }
+}

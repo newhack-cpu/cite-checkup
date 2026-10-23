@@ -1,0 +1,1328 @@
+{
+ "ranAt": "2026-10-20T00:48:55.241Z",
+ "dataset": "blind-zh-2026-10-19",
+ "mode": "rules",
+ "total": 90,
+ "seconds": 136.07,
+ "cnSearch": true,
+ "counts": {
+  "verified": 16,
+  "mismatch": 0,
+  "near_match": 11,
+  "not_found": 0,
+  "retracted": 0,
+  "concern": 0,
+  "unverifiable": 61,
+  "error": 2
+ },
+ "falseAlarms": 11,
+ "falseAlarmsNew": 0,
+ "calibers": {
+  "falseAlarms": "旧口径：信息有误（标注允许的除外）、相近候选、疑似不存在都算误报，与 2026-10-16 及以前的结果文件同一口径",
+  "falseAlarmsNew": "新口径：相近候选不算误报（只找到相近记录、没有确认是同一篇），条数见 counts.near_match"
+ },
+ "results": [
+  {
+   "id": "B001",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「动物宿主-肠道微生物代谢轴研究进展」：4 篇论文页，题名一致的 0 篇",
+    "不限站点检索「动物宿主-肠道微生物代谢轴研究进展」：10 条结果，题名一致、可能是期刊官网文章页的 0 条"
+   ]
+  },
+  {
+   "id": "B002",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B003",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2018 年第 2 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「专家视角:《上海市城市总体规划(2017-2035年)》解读」：7 篇论文页，题名一致的 1 篇",
+    "手机知网文章页 HCSG201802012：作者 本刊编辑部；上海城市规划 2018 年 第 2 期",
+    "不限站点检索「专家视角:《上海市城市总体规划(2017-2035年)》解读」：10 条结果，题名一致、可能是期刊官网文章页的 0 条",
+    "知网期刊页 HCSG：ISSN 1673-8985",
+    "✗ Crossref 按 ISSN 1673-8985、2018 年检索：0 条记录，第 2 卷起始页 52 的 0 条"
+   ],
+   "notes": [
+    "已核实需要题名、刊名、年份、作者都对得上，并且卷号、期号或起始页至少一项与记录一致；这一条只差卷期页码：引文写的卷号、期号、起始页在知网记录里都对不上或没有，不能确认，也不算写错",
+    "引文的英文译名无法与中文网页记录比对，已按方括号里的中文原文核对"
+   ],
+   "match": {
+    "title": "专家视角:《上海市城市总体规划(2017—2035年)》解读",
+    "year": 2018,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/HCSG201802012.html",
+    "authors": "本刊编辑部",
+    "venue": "上海城市规划",
+    "issue": "2"
+   }
+  },
+  {
+   "id": "B004",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「VSG控制下直驱风机惯量支撑能力定量分析」：没有找到论文页",
+    "不限站点检索「VSG控制下直驱风机惯量支撑能力定量分析」：10 条结果，题名一致、可能是期刊官网文章页的 3 条",
+    "✗ 期刊官网 epjournal.csee.org.cn：页面没有文章元数据",
+    "✗ 期刊官网 ntps.epri.sgcc.com.cn：页面连接失败"
+   ]
+  },
+  {
+   "id": "B005",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「面向新能源电力系统频率时空动态的节点等效惯量指标及其应用」：3 篇论文页，题名一致的 0 篇",
+    "不限站点检索「面向新能源电力系统频率时空动态的节点等效惯量指标及其应用」：10 条结果，题名一致、可能是期刊官网文章页的 1 条",
+    "✗ 期刊官网 ntps.epri.sgcc.com.cn：页面连接失败"
+   ]
+  },
+  {
+   "id": "B006",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B007",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "notes": [
+    "建议补充 DOI：10.3724/sp.j.1001.2009.00271"
+   ],
+   "match": {
+    "doi": "10.3724/sp.j.1001.2009.00271",
+    "title": "Research on Evolutionary Multi-Objective Optimization Algorithms",
+    "year": 2009,
+    "source": "crossref",
+    "url": "https://doi.org/10.3724/sp.j.1001.2009.00271"
+   }
+  },
+  {
+   "id": "B008",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2023 年第 9 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「基于小波分析的荒漠草原土壤湿度周期变化特征」：4 篇论文页，题名一致的 1 篇",
+    "手机知网文章页 ZGCD202309010：作者 常耀文, 吴一晗, 刘霞, 吴傲 等；中国草地学报 2023 年 第 9 期",
+    "不限站点检索「基于小波分析的荒漠草原土壤湿度周期变化特征」：10 条结果，题名一致、可能是期刊官网文章页的 0 条",
+    "知网期刊页 ZGCD：ISSN 1673-5021",
+    "✗ Crossref 按 ISSN 1673-5021、2023 年检索：0 条记录，第 45 卷起始页 87 的 0 条"
+   ],
+   "notes": [
+    "已核实需要题名、刊名、年份、作者都对得上，并且卷号、期号或起始页至少一项与记录一致；这一条只差卷期页码：引文写的卷号、期号、起始页在知网记录里都对不上或没有，不能确认，也不算写错",
+    "引文的英文译名无法与中文网页记录比对，已按方括号里的中文原文核对"
+   ],
+   "match": {
+    "title": "基于小波分析的荒漠草原土壤湿度周期变化特征",
+    "year": 2023,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/ZGCD202309010.html",
+    "authors": "常耀文、吴一晗、刘霞、吴傲、张瑞强、海春兴、范兆飞",
+    "venue": "中国草地学报",
+    "issue": "9"
+   }
+  },
+  {
+   "id": "B009",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "B010",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「闽江口半咸水芦苇潮汐沼泽湿地甲烷动态」：2 篇论文页，题名一致的 0 篇",
+    "不限站点检索「闽江口半咸水芦苇潮汐沼泽湿地甲烷动态」：10 条结果，题名一致、可能是期刊官网文章页的 1 条",
+    "期刊官网 www.geog.com.cn：作者 仝川, 黄佳芳, 王维奇, 廖稷 等；地理学报 2012 年 第 67 卷 第 9 期 1165-1180 页"
+   ],
+   "notes": [
+    "建议补充 DOI：10.11821/xb201209002",
+    "期刊官网的页面不标注撤稿，这一条没有核对撤稿状态",
+    "引文的英文译名无法与中文网页记录比对，已按方括号里的中文原文核对"
+   ],
+   "match": {
+    "doi": "10.11821/xb201209002",
+    "title": "闽江口半咸水芦苇潮汐沼泽湿地甲烷动态",
+    "year": 2012,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://www.geog.com.cn/CN/10.11821/xb201209002",
+    "authors": "仝川、黄佳芳、王维奇、廖稷、刘泽雄、曾从盛",
+    "venue": "地理学报",
+    "volume": "67",
+    "issue": "9",
+    "pages": "1165-1180"
+   }
+  },
+  {
+   "id": "B011",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「中国东南沿海短叶茳芏潮汐沼泽湿地甲烷动态」：4 篇论文页，题名一致的 0 篇",
+    "不限站点检索「中国东南沿海短叶茳芏潮汐沼泽湿地甲烷动态」：10 条结果，题名一致、可能是期刊官网文章页的 1 条",
+    "✗ 期刊官网 lygc.lknet.ac.cn：页面没有文章元数据"
+   ]
+  },
+  {
+   "id": "B012",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B013",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B014",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2002 年第 3 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「橡胶树白粉病防治决策模型研究」：2 篇论文页，题名一致的 1 篇",
+    "手机知网文章页 RDZX200203004：作者 余卓桐, 肖倩莼, 黄武仁, 陈永强 等；热带作物学报 2002 年 第 3 期",
+    "不限站点检索「橡胶树白粉病防治决策模型研究」：10 条结果，题名一致、可能是期刊官网文章页的 0 条",
+    "知网期刊页 RDZX：ISSN 1000-2561",
+    "✗ Crossref 按 ISSN 1000-2561、2002 年检索：0 条记录，第 23 卷起始页 27 的 0 条"
+   ],
+   "notes": [
+    "已核实需要题名、刊名、年份、作者都对得上，并且卷号、期号或起始页至少一项与记录一致；这一条只差卷期页码：引文写的卷号、期号、起始页在知网记录里都对不上或没有，不能确认，也不算写错",
+    "引文的英文译名无法与中文网页记录比对，已按方括号里的中文原文核对"
+   ],
+   "match": {
+    "title": "橡胶树白粉病防治决策模型研究",
+    "year": 2002,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/RDZX200203004.html",
+    "authors": "余卓桐、肖倩莼、黄武仁、陈永强、伍树明、范会雄、陈仕廉、苏彰前",
+    "venue": "热带作物学报",
+    "issue": "3"
+   }
+  },
+  {
+   "id": "B015",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "B016",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "notes": [
+    "建议补充 DOI：10.1360/tb-2022-1192"
+   ],
+   "match": {
+    "doi": "10.1360/tb-2022-1192",
+    "title": "Multiscale wave dissipation characteristics of tight sandstone strata and a double-fractal structure model",
+    "year": 2023,
+    "source": "crossref",
+    "url": "https://doi.org/10.1360/tb-2022-1192"
+   }
+  },
+  {
+   "id": "B017",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2006 年第 3 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「东天山大地构造演化的成矿示踪」：2 篇论文页，题名一致的 0 篇",
+    "不限站点检索「东天山大地构造演化的成矿示踪」：10 条结果，题名一致、可能是期刊官网文章页的 2 条",
+    "手机知网文章页 DIZI200603001：作者 王京彬, 王玉往, 何志军；中国地质 2006 年 第 3 期",
+    "✗ 期刊官网 geochina.cgs.gov.cn：页面连接失败",
+    "✗ 期刊官网 www.cgsjournals.com：页面返回 HTTP 403",
+    "知网期刊页 DIZI：ISSN 1000-3657",
+    "✗ Crossref 按 ISSN 1000-3657、2006 年检索：0 条记录，第 33 卷起始页 461 的 0 条"
+   ],
+   "notes": [
+    "已核实需要题名、刊名、年份、作者都对得上，并且卷号、期号或起始页至少一项与记录一致；这一条只差卷期页码：引文写的卷号、期号、起始页在知网记录里都对不上或没有，不能确认，也不算写错"
+   ],
+   "match": {
+    "title": "东天山大地构造演化的成矿示踪",
+    "year": 2006,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/DIZI200603001.html",
+    "authors": "王京彬、王玉往、何志军",
+    "venue": "中国地质",
+    "issue": "3"
+   }
+  },
+  {
+   "id": "B018",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「东天山东戈壁钼矿床辉钼矿Re-Os年龄及印支期成矿事件」：3 篇论文页，题名一致的 0 篇",
+    "不限站点检索「东天山东戈壁钼矿床辉钼矿Re-Os年龄及印支期成矿事件」：10 条结果，题名一致、可能是期刊官网文章页的 1 条",
+    "✗ 期刊官网 m.cgl.org.cn：页面连接失败"
+   ]
+  },
+  {
+   "id": "B019",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "B020",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B021",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2023 年第 25 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「氢键有机框架材料在电化学能源存储和转换中的研究进展」：6 篇论文页，题名一致的 1 篇",
+    "手机知网文章页 KXTB202325011：作者 方晨晨, 许雪凤, 张校源, 代黎明 等；科学通报 2023 年 第 25 期",
+    "不限站点检索「氢键有机框架材料在电化学能源存储和转换中的研究进展」：10 条结果，题名一致、可能是期刊官网文章页的 0 条",
+    "知网期刊页 KXTB：ISSN 0023-074X",
+    "✗ Crossref 按 ISSN 0023-074X、2023 年检索：20 条记录，第 68 卷起始页 3335 的 0 条"
+   ],
+   "notes": [
+    "已核实需要题名、刊名、年份、作者都对得上，并且卷号、期号或起始页至少一项与记录一致；这一条只差卷期页码：引文写的卷号、期号、起始页在知网记录里都对不上或没有，不能确认，也不算写错",
+    "引文的英文译名无法与中文网页记录比对，已按方括号里的中文原文核对"
+   ],
+   "match": {
+    "title": "氢键有机框架材料在电化学能源存储和转换中的研究进展",
+    "year": 2023,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/KXTB202325011.html",
+    "authors": "方晨晨、许雪凤、张校源、代黎明、姚方磊、张文耀、付永胜、孙敬文、朱俊武",
+    "venue": "科学通报",
+    "issue": "25"
+   }
+  },
+  {
+   "id": "B022",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "B023",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B024",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2024 年第 19 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「原子制造的物质科学基础」：6 篇论文页，题名一致的 1 篇",
+    "手机知网文章页 KXTB202419012：作者 戴庆, 宋凤麒, 潘曹峰, 刘开辉 等；科学通报 2024 年 第 19 期",
+    "不限站点检索「原子制造的物质科学基础」：10 条结果，题名一致、可能是期刊官网文章页的 0 条",
+    "知网期刊页 KXTB：ISSN 0023-074X",
+    "✗ Crossref 按 ISSN 0023-074X、2024 年检索：20 条记录，第 69 卷起始页 2777 的 0 条"
+   ],
+   "notes": [
+    "已核实需要题名、刊名、年份、作者都对得上，并且卷号、期号或起始页至少一项与记录一致；这一条只差卷期页码：引文写的卷号、期号、起始页在知网记录里都对不上或没有，不能确认，也不算写错",
+    "引文的英文译名无法与中文网页记录比对，已按方括号里的中文原文核对"
+   ],
+   "match": {
+    "title": "原子制造的物质科学基础",
+    "year": 2024,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/KXTB202419012.html",
+    "authors": "戴庆、宋凤麒、潘曹峰、刘开辉、姚广保、郑浩、谭元植、潘金波、杜灵杰、黄璞、王曾晖、陈辉、张晨栋、费付聪、徐红星、戴亚飞",
+    "venue": "科学通报",
+    "issue": "19"
+   }
+  },
+  {
+   "id": "B025",
+   "verdict": "unverifiable",
+   "summary": "专利类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "patent"
+  },
+  {
+   "id": "B026",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「降低变压器的损耗提高变压器效率」：8 篇论文页，题名一致的 0 篇",
+    "不限站点检索「降低变压器的损耗提高变压器效率」：10 条结果，题名一致、可能是期刊官网文章页的 0 条"
+   ]
+  },
+  {
+   "id": "B027",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「修改版晕动症易感性问卷用于晕船易感性判断」：2 篇论文页，题名一致的 0 篇",
+    "不限站点检索「修改版晕动症易感性问卷用于晕船易感性判断」：10 条结果，题名一致、可能是期刊官网文章页的 1 条",
+    "✗ 期刊官网 xuebao.smmu.edu.cn：页面连接失败"
+   ]
+  },
+  {
+   "id": "B028",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2018 年第 3 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「论东亚夏季风的特征、驱动力与年代际变化」：4 篇论文页，题名一致的 1 篇",
+    "手机知网文章页 DQXK201803006：作者 丁一汇, 司东, 柳艳菊, 王遵娅 等；大气科学 2018 年 第 3 期",
+    "不限站点检索「论东亚夏季风的特征、驱动力与年代际变化」：10 条结果，题名一致、可能是期刊官网文章页的 1 条",
+    "✗ 期刊官网 www.iapjournals.ac.cn：页面返回 HTTP 403",
+    "知网期刊页 DQXK：ISSN 1006-9895",
+    "✗ Crossref 按 ISSN 1006-9895、2018 年检索：0 条记录，第 42 卷起始页 533 的 0 条"
+   ],
+   "notes": [
+    "已核实需要题名、刊名、年份、作者都对得上，并且卷号、期号或起始页至少一项与记录一致；这一条只差卷期页码：引文写的卷号、期号、起始页在知网记录里都对不上或没有，不能确认，也不算写错"
+   ],
+   "match": {
+    "title": "论东亚夏季风的特征、驱动力与年代际变化",
+    "year": 2018,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/DQXK201803006.html",
+    "authors": "丁一汇、司东、柳艳菊、王遵娅、李怡、赵亮、宋亚芳",
+    "venue": "大气科学",
+    "issue": "3"
+   }
+  },
+  {
+   "id": "B029",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「TraCE-21ka的模拟评估及误差分析」：没有找到论文页",
+    "不限站点检索「TraCE-21ka的模拟评估及误差分析」：10 条结果，题名一致、可能是期刊官网文章页的 0 条"
+   ]
+  },
+  {
+   "id": "B030",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「作物种子三维数字化方法研究」：4 篇论文页，题名一致的 0 篇",
+    "不限站点检索「作物种子三维数字化方法研究」：10 条结果，题名一致、可能是期刊官网文章页的 0 条"
+   ]
+  },
+  {
+   "id": "B031",
+   "verdict": "unverifiable",
+   "summary": "标准类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "standard"
+  },
+  {
+   "id": "B032",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2019 年第 10 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「基于重要性—绩效表现分析的上海苏州河滨水空间文化性生态系统服…」：3 篇论文页，题名一致的 1 篇",
+    "手机知网文章页 FJYL201910024：作者 王敏, 邱明, 汪洁琼, 彭英；风景园林 2019 年 第 10 期",
+    "不限站点检索「基于重要性—绩效表现分析的上海苏州河滨水空间文化性生态系统服…」：10 条结果，题名一致、可能是期刊官网文章页的 2 条",
+    "✗ 期刊官网 www.lalavision.com：页面返回 HTTP 403",
+    "✗ 期刊官网 aipub.cn：页面没有文章元数据",
+    "知网期刊页 FJYL：ISSN 1673-1530",
+    "✗ Crossref 按 ISSN 1673-1530、2019 年检索：0 条记录，第 26 卷起始页 107 的 0 条"
+   ],
+   "notes": [
+    "已核实需要题名、刊名、年份、作者都对得上，并且卷号、期号或起始页至少一项与记录一致；这一条只差卷期页码：引文写的卷号、期号、起始页在知网记录里都对不上或没有，不能确认，也不算写错"
+   ],
+   "match": {
+    "title": "基于重要性——绩效表现分析的上海苏州河滨水空间文化性生态系统服务供需关系分析与优化",
+    "year": 2019,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/FJYL201910024.html",
+    "authors": "王敏、邱明、汪洁琼、彭英",
+    "venue": "风景园林",
+    "issue": "10"
+   }
+  },
+  {
+   "id": "B033",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「植物分子生物学研究极具前景的模式系统——小立碗藓」：4 篇论文页，题名一致的 0 篇",
+    "不限站点检索「植物分子生物学研究极具前景的模式系统——小立碗藓」：10 条结果，题名一致、可能是期刊官网文章页的 0 条"
+   ]
+  },
+  {
+   "id": "B034",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B035",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在期刊官网找到相近文章，但不能确认是同一篇，请人工核对",
+   "issues": [],
+   "kind": "unknown",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「美国荒野地游客教育系统及对我国的借鉴意义」：4 篇论文页，题名一致的 0 篇",
+    "不限站点检索「美国荒野地游客教育系统及对我国的借鉴意义」：10 条结果，题名一致、可能是期刊官网文章页的 1 条",
+    "期刊官网 www.agrijournal.com.cn：作者 杜颖, 蔡君；四川林勘设计 第 1 期"
+   ],
+   "notes": [
+    "期刊官网上有题名相近的文章，但作者、年份或刊名没有吻合到能确认是同一篇；请打开来源页面核对"
+   ],
+   "match": {
+    "title": "美国荒野地游客教育系统及对我国的借鉴意义",
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://www.agrijournal.com.cn/article/detail/8C24ACED-F53E-4675-89A7-2EF7D0D26798",
+    "authors": "杜颖、蔡君",
+    "venue": "四川林勘设计",
+    "issue": "1"
+   }
+  },
+  {
+   "id": "B036",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「贵州晴隆大厂锑矿床辉锑矿中流体包裹体的红外显微测温学研究」：3 篇论文页，题名一致的 1 篇",
+    "手机知网文章页 YSXB201504002：作者 苏文超, 朱路艳, 格西, 沈能平 等；岩石学报 2015 年 第 4 期"
+   ],
+   "notes": [
+    "知网的页面不标注撤稿，这一条没有核对撤稿状态"
+   ],
+   "match": {
+    "title": "贵州晴隆大厂锑矿床辉锑矿中流体包裹体的红外显微测温学研究",
+    "year": 2015,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/YSXB201504002.html",
+    "authors": "苏文超、朱路艳、格西、沈能平、张兴春、胡瑞忠",
+    "venue": "岩石学报",
+    "issue": "4"
+   }
+  },
+  {
+   "id": "B037",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「贵州望谟上大坪萤石矿床地质特征、控矿因素及找矿标志」：3 篇论文页，题名一致的 0 篇",
+    "不限站点检索「贵州望谟上大坪萤石矿床地质特征、控矿因素及找矿标志」：10 条结果，题名一致、可能是期刊官网文章页的 2 条",
+    "✗ 期刊官网 zhaokuang.cgl.org.cn：页面没有文章元数据",
+    "✗ 期刊官网 aipub.cn：页面没有文章元数据"
+   ]
+  },
+  {
+   "id": "B038",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「面向大规模低地球轨道卫星网络的星间链路连接策略」：7 篇论文页，题名一致的 1 篇",
+    "手机知网文章页 TXXB202408008：作者 燕锋, 聂浩俭, 夏玮玮, 沈连丰；通信学报 2024 年 第 8 期"
+   ],
+   "notes": [
+    "知网的页面不标注撤稿，这一条没有核对撤稿状态"
+   ],
+   "match": {
+    "title": "面向大规模低地球轨道卫星网络的星间链路连接策略",
+    "year": 2024,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/TXXB202408008.html",
+    "authors": "燕锋、聂浩俭、夏玮玮、沈连丰",
+    "venue": "通信学报",
+    "issue": "8"
+   }
+  },
+  {
+   "id": "B039",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「网络卫星在轨分布式协同任务调度方法」：1 篇论文页，题名一致的 0 篇",
+    "不限站点检索「网络卫星在轨分布式协同任务调度方法」：9 条结果，题名一致、可能是期刊官网文章页的 0 条",
+    "手机知网文章页 HEBG201902026：作者 张科科, 孙煜坤, 夏磊, 朱振才 等；哈尔滨工程大学学报 2019 年 第 2 期"
+   ],
+   "notes": [
+    "知网的页面不标注撤稿，这一条没有核对撤稿状态"
+   ],
+   "match": {
+    "title": "网络卫星在轨分布式协同任务调度方法",
+    "year": 2019,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/HEBG201902026.html",
+    "authors": "张科科、孙煜坤、夏磊、朱振才、王静",
+    "venue": "哈尔滨工程大学学报",
+    "issue": "2"
+   }
+  },
+  {
+   "id": "B040",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「国际人才跨区域自由流动机制创新研究——基于美国国家科学基金委…」：6 篇论文页，题名一致的 1 篇",
+    "手机知网文章页 QUIT202101015：作者 寸守栋；企业经济 2021 年 第 1 期"
+   ],
+   "notes": [
+    "知网的页面不标注撤稿，这一条没有核对撤稿状态"
+   ],
+   "match": {
+    "title": "国际人才跨区域自由流动机制创新研究——基于美国国家科学基金委（NSF）案例研究与借鉴",
+    "year": 2021,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/QUIT202101015.html",
+    "authors": "寸守栋",
+    "venue": "企业经济",
+    "issue": "1"
+   }
+  },
+  {
+   "id": "B041",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「对我国科研资助体系存在问题及深化体制改革的思考」：4 篇论文页，题名一致的 1 篇",
+    "手机知网文章页 ZKJJ201101010：作者 姚玉鹏；中国科学基金 2011 年 第 1 期"
+   ],
+   "notes": [
+    "知网的页面不标注撤稿，这一条没有核对撤稿状态"
+   ],
+   "match": {
+    "title": "对我国科研资助体系存在问题及深化体制改革的思考",
+    "year": 2011,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/ZKJJ201101010.html",
+    "authors": "姚玉鹏",
+    "venue": "中国科学基金",
+    "issue": "1"
+   }
+  },
+  {
+   "id": "B042",
+   "verdict": "error",
+   "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+   "issues": [
+    "api.crossref.org 返回 429"
+   ],
+   "kind": "journal",
+   "zhJournal": true
+  },
+  {
+   "id": "B043",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "journal"
+  },
+  {
+   "id": "B044",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "B045",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "B046",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「Cu纳米团簇发光性能和结构的研究」：6 篇论文页，题名一致的 2 篇",
+    "手机知网文章页 HJSU201409004：作者 葛梦然, 李丹丹, 姚涛, 潘国强；核技术 2014 年 第 9 期"
+   ],
+   "notes": [
+    "知网的页面不标注撤稿，这一条没有核对撤稿状态"
+   ],
+   "match": {
+    "title": "Cu纳米团簇发光性能和结构的研究",
+    "year": 2014,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/HJSU201409004.html",
+    "authors": "葛梦然、李丹丹、姚涛、潘国强",
+    "venue": "核技术",
+    "issue": "9"
+   }
+  },
+  {
+   "id": "B047",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「基于PILATUS探测器的von Hamos构型X射线发射谱…」：2 篇论文页，题名一致的 2 篇",
+    "手机知网文章页 HJSU202209001：作者 顾颂琦, 梅丙宝, 姜政, 黄宇营；核技术 2022 年 第 9 期"
+   ],
+   "notes": [
+    "知网的页面不标注撤稿，这一条没有核对撤稿状态"
+   ],
+   "match": {
+    "title": "基于PILATUS探测器的von Hamos构型X射线发射谱谱仪及数据获取",
+    "year": 2022,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/HJSU202209001.html",
+    "authors": "顾颂琦、梅丙宝、姜政、黄宇营",
+    "venue": "核技术",
+    "issue": "9"
+   }
+  },
+  {
+   "id": "B048",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "B049",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2021 年第 9 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「弱筋小麦品质评价指标研究」：4 篇论文页，题名一致的 1 篇",
+    "手机知网文章页 HNXB202109005：作者 李曼, 张晓, 刘大同, 江伟 等；核农学报 2021 年 第 9 期",
+    "不限站点检索「弱筋小麦品质评价指标研究」：10 条结果，题名一致、可能是期刊官网文章页的 0 条",
+    "知网期刊页 HNXB：ISSN 1000-8551",
+    "✗ Crossref 按 ISSN 1000-8551、2021 年检索：0 条记录，第 35 卷起始页 1979 的 0 条"
+   ],
+   "notes": [
+    "已核实需要题名、刊名、年份、作者都对得上，并且卷号、期号或起始页至少一项与记录一致；这一条只差卷期页码：引文写的卷号、期号、起始页在知网记录里都对不上或没有，不能确认，也不算写错"
+   ],
+   "match": {
+    "title": "弱筋小麦品质评价指标研究",
+    "year": 2021,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/HNXB202109005.html",
+    "authors": "李曼、张晓、刘大同、江伟、高德荣、张勇",
+    "venue": "核农学报",
+    "issue": "9"
+   }
+  },
+  {
+   "id": "B050",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2018 年第 4 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "unknown",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「中国传统园林中的景境观念与营造」：5 篇论文页，题名一致的 1 篇",
+    "手机知网文章页 SDJZ201804007：作者 顾凯；时代建筑 2018 年 第 4 期",
+    "不限站点检索「中国传统园林中的景境观念与营造」：10 条结果，题名一致、可能是期刊官网文章页的 0 条"
+   ],
+   "notes": [
+    "已核实需要题名、刊名、年份、作者都对得上，并且卷号、期号或起始页至少一项与记录一致；这一条只差卷期页码：引文写的卷号、期号、起始页在知网记录里都对不上或没有，不能确认，也不算写错"
+   ],
+   "match": {
+    "title": "中国传统园林中的景境观念与营造",
+    "year": 2018,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/SDJZ201804007.html",
+    "authors": "顾凯",
+    "venue": "时代建筑",
+    "issue": "4"
+   }
+  },
+  {
+   "id": "B051",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B052",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「多次冲击荷载作用下花岗岩动态累计损伤特性」：5 篇论文页，题名一致的 1 篇",
+    "手机知网文章页 SYLX201606013：作者 李地元, 孙小磊, 周子龙, 蔡鑫 等；实验力学 2016 年 第 6 期"
+   ],
+   "notes": [
+    "知网的页面不标注撤稿，这一条没有核对撤稿状态"
+   ],
+   "match": {
+    "title": "多次冲击荷载作用下花岗岩动态累计损伤特性",
+    "year": 2016,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/SYLX201606013.html",
+    "authors": "李地元、孙小磊、周子龙、蔡鑫、邱加冬",
+    "venue": "实验力学",
+    "issue": "6"
+   }
+  },
+  {
+   "id": "B053",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「冲击岩爆试验系统研发及试验」：3 篇论文页，题名一致的 1 篇",
+    "手机知网文章页 YSLX201409001：作者 何满潮, 刘冬桥, 宫伟力, 汪承超 等；岩石力学与工程学报 2014 年 第 9 期"
+   ],
+   "notes": [
+    "知网的页面不标注撤稿，这一条没有核对撤稿状态"
+   ],
+   "match": {
+    "title": "冲击岩爆试验系统研发及试验",
+    "year": 2014,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/YSLX201409001.html",
+    "authors": "何满潮、刘冬桥、宫伟力、汪承超、孔杰、杜帅、张珅",
+    "venue": "岩石力学与工程学报",
+    "issue": "9"
+   }
+  },
+  {
+   "id": "B054",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「新冠疫情管控措施对郑州市PM2.5浓度、粒径分布、组分和来源…」：1 篇论文页，题名一致的 1 篇",
+    "手机知网文章页 HJKZ202206002：作者 黄兵役, 王申博, 和兵, 薛若雨 等；环境科学 2022 年 第 6 期"
+   ],
+   "notes": [
+    "知网的页面不标注撤稿，这一条没有核对撤稿状态"
+   ],
+   "match": {
+    "title": "新冠疫情管控措施对郑州市PM_(2.5)浓度、粒径分布、组分和来源的影响",
+    "year": 2022,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/HJKZ202206002.html",
+    "authors": "黄兵役、王申博、和兵、薛若雨、高更宇、张瑞芹",
+    "venue": "环境科学",
+    "issue": "6"
+   }
+  },
+  {
+   "id": "B055",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B056",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「计及虚拟电厂市场交易的主动配电网两阶段优化调度」：1 篇论文页，题名一致的 0 篇",
+    "不限站点检索「计及虚拟电厂市场交易的主动配电网两阶段优化调度」：10 条结果，题名一致、可能是期刊官网文章页的 2 条",
+    "期刊官网 www.cepc.com.cn：作者 邓靖微, 李华强, 温丰瑞, 王俊翔 等；电力建设 2021 年 第 42 卷 第 9 期 22-31 页"
+   ],
+   "notes": [
+    "建议补充 DOI：10.12204/j.issn.1000-7229.2021.09.003",
+    "期刊官网的页面不标注撤稿，这一条没有核对撤稿状态"
+   ],
+   "match": {
+    "doi": "10.12204/j.issn.1000-7229.2021.09.003",
+    "title": "计及虚拟电厂市场交易的主动配电网两阶段优化调度",
+    "year": 2021,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://www.cepc.com.cn/CN/Y2021/V42/I9/22",
+    "authors": "邓靖微、李华强、温丰瑞、王俊翔、谢康胜、金智博",
+    "venue": "电力建设",
+    "volume": "42",
+    "issue": "9",
+    "pages": "22-31"
+   }
+  },
+  {
+   "id": "B057",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「面向多场景辅助服务的大规模电动汽车聚合可调度容量建模」：2 篇论文页，题名一致的 0 篇",
+    "不限站点检索「面向多场景辅助服务的大规模电动汽车聚合可调度容量建模」：10 条结果，题名一致、可能是期刊官网文章页的 0 条"
+   ]
+  },
+  {
+   "id": "B058",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "✗ 知网 / 万方 / 维普检索「微波间歇干燥对玉米籽粒中淀粉理化特性的影响」：5 篇论文页，题名一致的 0 篇",
+    "不限站点检索「微波间歇干燥对玉米籽粒中淀粉理化特性的影响」：10 条结果，题名一致、可能是期刊官网文章页的 2 条",
+    "✗ 期刊官网 zgspxb.cnjournals.org：页面没有文章元数据",
+    "✗ 期刊官网 aipub.cn：页面没有文章元数据"
+   ]
+  },
+  {
+   "id": "B059",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「基于55K SNP芯片的小麦籽粒主要品质性状的全基因组关联分…」：3 篇论文页，题名一致的 1 篇",
+    "✗ 维普检索「基于55K SNP芯片的小麦籽粒主要品质性状的全基因组关联分…」：2 篇论文页，题名一致且带作者的 0 篇",
+    "不限站点检索「基于55K SNP芯片的小麦籽粒主要品质性状的全基因组关联分…」：10 条结果，题名一致、可能是期刊官网文章页的 2 条",
+    "期刊官网 zwxb.chinacrops.org：作者 彭小爱, 卢茂昂, 张玲, 刘童 等；作物学报 2024 年 第 50 卷 第 8 期 1948-1960 页"
+   ],
+   "notes": [
+    "建议补充 DOI：10.3724/sp.j.1006.2024.31052",
+    "期刊官网的页面不标注撤稿，这一条没有核对撤稿状态"
+   ],
+   "match": {
+    "doi": "10.3724/sp.j.1006.2024.31052",
+    "title": "基于55K SNP芯片的小麦籽粒主要品质性状的全基因组关联分析",
+    "year": 2024,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://zwxb.chinacrops.org/EN/10.3724/SP.J.1006.2024.31052",
+    "authors": "彭小爱、卢茂昂、张玲、刘童、曹磊、宋有洪、郑文寅、何贤芳、朱玉磊",
+    "venue": "作物学报",
+    "volume": "50",
+    "issue": "8",
+    "pages": "1948-1960"
+   }
+  },
+  {
+   "id": "B060",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "cnSteps": [
+    "知网 / 万方 / 维普检索「新质生产力评价指标体系构建及测度分析——基于“投入-过程-产…」：3 篇论文页，题名一致的 1 篇",
+    "手机知网文章页 KYGL202502001：作者 陈钰芬, 杨双双, 胡思慧；科研管理 2025 年 第 2 期"
+   ],
+   "notes": [
+    "知网的页面不标注撤稿，这一条没有核对撤稿状态"
+   ],
+   "match": {
+    "title": "新质生产力评价指标体系构建及测度分析——基于“投入-过程-产出”视角",
+    "year": 2025,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/KYGL202502001.html",
+    "authors": "陈钰芬、杨双双、胡思慧",
+    "venue": "科研管理",
+    "issue": "2"
+   }
+  },
+  {
+   "id": "B061",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B062",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B063",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B064",
+   "verdict": "error",
+   "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+   "issues": [
+    "api.crossref.org 返回 429"
+   ],
+   "kind": "unknown"
+  },
+  {
+   "id": "B065",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B066",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B067",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B068",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B069",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B070",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B071",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B072",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B073",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B074",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B075",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B076",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B077",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B078",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B079",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B080",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B081",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B082",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B083",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B084",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B085",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B086",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B087",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B088",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B089",
+   "verdict": "unverifiable",
+   "summary": "开放数据库对中文文献收录有限，未检索到不代表不存在，请到知网 / 万方核查",
+   "issues": [],
+   "kind": "unknown"
+  },
+  {
+   "id": "B090",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  }
+ ]
+}

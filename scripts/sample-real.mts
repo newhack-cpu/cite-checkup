@@ -1,6 +1,8 @@
 // 从 Crossref 抽一批新的真实参考文献评测集：按出版社随机抽 2023 年后发表、带参考文献列表的论文，
 // 每篇随机取几条 unstructured 原文。所有条目都出自已发表论文，视为真实存在。
-// 用法：pnpm sample:real --out=eval/real-world/blind-xxxx.json [--per-group=12] [--seed=1]
+// 用法：pnpm sample:real --out=eval/real-world/blind-xxxx.json [--per-group=12] [--seed=1] [--zh]
+//   --zh  只抽中文参考文献：科学出版社 10.3724、中国科学 10.1360、物理学报 10.7498 三组（2026-10-19 实测只有这三个前缀
+//         在 Crossref 存了中文参考文献原文），每组默认 30 条，用来检验中文期刊联网核查
 // 已有集合（eval/real-world/*.json）用过的源论文会被排除，保证新集合来自不同论文。
 // 抽样只统计条数、不打印条目内容：盲测集在规则定稿前不应被查看。
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -16,7 +18,8 @@ const option = (name: string) => process.argv.find((a) => a.startsWith(`--${name
 const out = option("out");
 if (!out) throw new Error("请用 --out= 指定输出文件，例如 eval/real-world/blind-2026-10-15.json");
 if (existsSync(out)) throw new Error(`${out} 已存在，不覆盖`);
-const perGroup = Number(option("per-group") ?? 12);
+const zhOnly = process.argv.includes("--zh");
+const perGroup = Number(option("per-group") ?? (zhOnly ? 30 : 12));
 let seed = Number(option("seed") ?? 1);
 const random = () => ((seed = (seed * 1103515245 + 12345) % 2 ** 31) / 2 ** 31);
 
@@ -34,6 +37,11 @@ const GROUPS: Group[] = [
   { name: "PLOS", filter: "member:340", lang: "en" },
   { name: "中国科学（中文参考文献）", filter: "prefix:10.1360", lang: "zh" },
   { name: "科学出版社 10.3724（中文参考文献）", filter: "prefix:10.3724", lang: "zh" },
+];
+const ZH_GROUPS: Group[] = [
+  { name: "中国科学（中文参考文献）", filter: "prefix:10.1360", lang: "zh" },
+  { name: "科学出版社 10.3724（中文参考文献）", filter: "prefix:10.3724", lang: "zh" },
+  { name: "物理学报 10.7498（中文参考文献）", filter: "prefix:10.7498", lang: "zh" },
 ];
 
 const mailto = process.env.CROSSREF_MAILTO?.trim();
@@ -56,8 +64,12 @@ async function sample(group: Group): Promise<Work[]> {
   });
   if (mailto) params.set("mailto", mailto);
   for (let attempt = 0; attempt < 3; attempt++) {
-    const res = await fetch(`https://api.crossref.org/works?${params}`, { headers, signal: AbortSignal.timeout(60_000) });
-    if (res.ok) return ((await res.json()) as { message: { items: Work[] } }).message.items;
+    try {
+      const res = await fetch(`https://api.crossref.org/works?${params}`, { headers, signal: AbortSignal.timeout(60_000) });
+      if (res.ok) return ((await res.json()) as { message: { items: Work[] } }).message.items;
+    } catch {
+      // 连接被重置、超时：等一会儿再试
+    }
     await new Promise((r) => setTimeout(r, 3000 * (attempt + 1)));
   }
   throw new Error(`${group.name}：Crossref 抽样失败`);
@@ -65,8 +77,10 @@ async function sample(group: Group): Promise<Work[]> {
 
 const HAN = /\p{Script=Han}{4,}/u;
 const cases: { id: string; group: string; sourcePaper: string; raw: string; assertedDoi: string | null; label: { lang: "en" | "zh" } }[] = [];
-for (const group of GROUPS) {
-  const works = (await sample(group)).filter((w) => !used.has(w.DOI.toLowerCase()));
+for (const group of zhOnly ? ZH_GROUPS : GROUPS) {
+  // 只有一半左右的论文带中文参考文献，一次抽 40 篇常凑不满 30 条：--zh 时再抽三轮（共约 160 篇）再挑
+  let works = (await sample(group)).filter((w) => !used.has(w.DOI.toLowerCase()));
+  if (zhOnly) for (let round = 0; round < 3; round++) works = [...works, ...(await sample(group)).filter((w) => !used.has(w.DOI.toLowerCase()) && !works.some((x) => x.DOI === w.DOI))];
   const picked: typeof cases = [];
   for (const work of works) {
     if (picked.length >= perGroup) break;
@@ -87,9 +101,13 @@ cases.forEach((c, i) => (c.id = `B${String(i + 1).padStart(3, "0")}`));
 const name = out.split(/[\\/]/).pop()!.replace(/\.json$/, "");
 writeFileSync(out, JSON.stringify({
   name,
-  description: "盲测集：与 dev、test 来自不同论文和不同的出版社组合；抽样后、规则定稿前不查看条目，只运行一次",
+  description: zhOnly
+    ? "中文参考文献盲测集：检验中文期刊联网核查；与已有集合来自不同论文，抽样后、规则定稿前不查看条目，只运行一次"
+    : "盲测集：与 dev、test 来自不同论文和不同的出版社组合；抽样后、规则定稿前不查看条目，只运行一次",
   createdAt: new Date().toISOString(),
-  method: "Crossref /works?filter=member 或 prefix,has-references:true,from-pub-date:2023-01-01,type:journal-article&sample=40，按出版社各抽若干篇已发表论文（排除已有集合用过的源论文），每篇随机取至多 2 条 unstructured 原文。所有条目都出自已发表论文，视为真实存在的文献。",
+  method: zhOnly
+    ? "Crossref /works?filter=prefix:10.1360 / 10.3724 / 10.7498,has-references:true,from-pub-date:2023-01-01,type:journal-article&sample=40，每组抽四轮（排除已有集合用过的源论文），每篇随机取至多 2 条含 4 个以上连续汉字的 unstructured 原文。所有条目都出自已发表论文，视为真实存在的文献；文献类型不在抽样时筛选，评测时按解析出的类型分组报告。"
+    : "Crossref /works?filter=member 或 prefix,has-references:true,from-pub-date:2023-01-01,type:journal-article&sample=40，按出版社各抽若干篇已发表论文（排除已有集合用过的源论文），每篇随机取至多 2 条 unstructured 原文。所有条目都出自已发表论文，视为真实存在的文献。",
   cases,
 }, null, 1));
 console.log(`共 ${cases.length} 条，写入 ${out}`);

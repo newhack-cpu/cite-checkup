@@ -1,0 +1,343 @@
+{
+ "ranAt": "2026-10-20T00:41:01.843Z",
+ "dataset": "blind-2026-10-16",
+ "lang": "zh",
+ "mode": "rules",
+ "total": 24,
+ "seconds": 39.201,
+ "cnSearch": true,
+ "counts": {
+  "verified": 6,
+  "mismatch": 0,
+  "near_match": 8,
+  "not_found": 0,
+  "retracted": 0,
+  "concern": 0,
+  "unverifiable": 10,
+  "error": 0
+ },
+ "falseAlarms": 8,
+ "falseAlarmsNew": 0,
+ "calibers": {
+  "falseAlarms": "旧口径：信息有误（标注允许的除外）、相近候选、疑似不存在都算误报，与 2026-10-16 及以前的结果文件同一口径",
+  "falseAlarmsNew": "新口径：相近候选不算误报（只找到相近记录、没有确认是同一篇），条数见 counts.near_match"
+ },
+ "results": [
+  {
+   "id": "B087",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B088",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2022 年第 12 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "大口径射电望远镜面板日照热变形分析",
+    "year": 2022,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/JSYS202212021.html"
+   }
+  },
+  {
+   "id": "B089",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B090",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B091",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B092",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "match": {
+    "doi": "10.1360/n072022-0210",
+    "title": "青藏高原碳汇现状及其未来趋势",
+    "year": 2023,
+    "source": "crossref",
+    "url": "https://doi.org/10.1360/n072022-0210"
+   }
+  },
+  {
+   "id": "B093",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "B094",
+   "verdict": "unverifiable",
+   "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "report"
+  },
+  {
+   "id": "B095",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2025 年第 5 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "Li_2MoO_4晶体的坩埚下降法生长及其发光性能",
+    "year": 2025,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/RGJT202505006.html"
+   }
+  },
+  {
+   "id": "B096",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "钼酸锌晶体生长与发光特性研究",
+    "year": 2015,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "http://rgjtxb.jtxb.cn/CN/Y2015/V44/I12/3406"
+   }
+  },
+  {
+   "id": "B097",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "match": {
+    "doi": "10.1360/n072017-00235",
+    "title": "华北中生代镁铁质岩浆作用与克拉通减薄和破坏",
+    "year": 2018,
+    "source": "crossref",
+    "url": "https://doi.org/10.1360/n072017-00235"
+   }
+  },
+  {
+   "id": "B098",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "match": {
+    "doi": "10.1360/sste-2025-0334",
+    "title": "地幔地球化学的建立和发展",
+    "year": 2026,
+    "source": "crossref",
+    "url": "https://doi.org/10.1360/sste-2025-0334"
+   }
+  },
+  {
+   "id": "B099",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "unknown",
+   "zhJournal": true,
+   "match": {
+    "doi": "10.1360/csb1980-25-2-85",
+    "title": "单斜蓝硒铜矿——一种新的亚硒酸盐矿物",
+    "year": 1980,
+    "source": "crossref",
+    "url": "https://doi.org/10.1360/csb1980-25-2-85"
+   }
+  },
+  {
+   "id": "B100",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在万方找到题名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "环境中硒的迁移、微生物转化及纳米硒应用研究进展",
+    "year": 2020,
+    "source": "web",
+    "site": "万方",
+    "url": "https://d.wanfangdata.com.cn/periodical/kxtb202026006"
+   }
+  },
+  {
+   "id": "B101",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B102",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B103",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2023 年第 9 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "柿品种杂交亲和性研究",
+    "year": 2023,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/NYDX202309008.html"
+   }
+  },
+  {
+   "id": "B104",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2024 年第 1 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "常山胡柚种质资源收集开发利用研究进展",
+    "year": 2024,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/SXGS202401023.html"
+   }
+  },
+  {
+   "id": "B105",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2024 年第 3 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "广东省大亚湾和红海湾表层沉积物重金属分布特征及风险评价",
+    "year": 2024,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/HJHX202403022.html"
+   }
+  },
+  {
+   "id": "B106",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2016 年第 6 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "海州湾岩芯沉积物重金属污染评价和来源分析",
+    "year": 2016,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/HYHJ201606003.html"
+   }
+  },
+  {
+   "id": "B107",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B108",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "基于两阶段法地铁盾构开挖对邻近桩基影响分析",
+    "year": 2014,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/DBDX201406025.html"
+   }
+  },
+  {
+   "id": "B109",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2004 年第 2 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "Ⅰ-型锗基笼形物—极有希望的热电材料",
+    "year": 2004,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/GNCQ200402000.html"
+   }
+  },
+  {
+   "id": "B110",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  }
+ ]
+}

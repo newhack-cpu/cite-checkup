@@ -1,0 +1,353 @@
+{
+ "ranAt": "2026-10-20T00:44:25.382Z",
+ "dataset": "blind-2026-10-17b",
+ "lang": "zh",
+ "mode": "rules",
+ "total": 24,
+ "seconds": 56.9,
+ "cnSearch": true,
+ "counts": {
+  "verified": 8,
+  "mismatch": 0,
+  "near_match": 3,
+  "not_found": 0,
+  "retracted": 0,
+  "concern": 0,
+  "unverifiable": 13,
+  "error": 0
+ },
+ "falseAlarms": 3,
+ "falseAlarmsNew": 0,
+ "calibers": {
+  "falseAlarms": "旧口径：信息有误（标注允许的除外）、相近候选、疑似不存在都算误报，与 2026-10-16 及以前的结果文件同一口径",
+  "falseAlarmsNew": "新口径：相近候选不算误报（只找到相近记录、没有确认是同一篇），条数见 counts.near_match"
+ },
+ "results": [
+  {
+   "id": "B085",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2020 年第 3 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "青藏高原东南缘地震各向异性及其深部构造意义",
+    "year": 2020,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/DQWX202003003.html",
+    "authors": "高原、石玉涛、王琼",
+    "venue": "地球物理学报",
+    "issue": "3"
+   }
+  },
+  {
+   "id": "B086",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "match": {
+    "doi": "10.1360/sste-2020-0242",
+    "title": "汶川<bold>-</bold>芦山地震间的空区危险性研究<bold>: </bold>现状<bold>、</bold>思考和挑战",
+    "year": 2021,
+    "source": "crossref",
+    "url": "https://doi.org/10.1360/sste-2020-0242"
+   }
+  },
+  {
+   "id": "B087",
+   "verdict": "unverifiable",
+   "summary": "专利类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "patent"
+  },
+  {
+   "id": "B088",
+   "verdict": "unverifiable",
+   "summary": "专利类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "patent"
+  },
+  {
+   "id": "B089",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B090",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到相近文章，但没有作者信息，不能确认是同一篇，请人工核对",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "异质性生境对半红树植物海漆(Excoecaria agallocha)居群遗传结构的影响",
+    "year": 2005,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/YCXB200512007.html",
+    "authors": "",
+    "venue": "遗传学报",
+    "issue": "12"
+   }
+  },
+  {
+   "id": "B091",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B092",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B093",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "match": {
+    "doi": "10.1360/sste-2019-0226",
+    "title": "大陆深俯冲的深浅动力学响应<bold>: </bold>来自帕米尔高原地壳精细结构的约束",
+    "year": 2020,
+    "source": "crossref",
+    "url": "https://doi.org/10.1360/sste-2019-0226"
+   }
+  },
+  {
+   "id": "B094",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "B095",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B096",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B097",
+   "verdict": "unverifiable",
+   "summary": "网页 / 电子资源类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "web"
+  },
+  {
+   "id": "B098",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.3724/sp.j.1006.2023.23032",
+    "title": "种植密度对不同生育期玉米品种光温资源利用率和产量的影响",
+    "year": 2023,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://zwxb.chinacrops.org/EN/abstract/abstract7698.shtml",
+    "authors": "吴希、王家瑞、郝淼艺、张宏军、张仁和",
+    "venue": "作物学报",
+    "volume": "49",
+    "issue": "4",
+    "pages": "1065-1078"
+   }
+  },
+  {
+   "id": "B099",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B100",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "高校开展有组织科研的组织模式、经验特征与问题对策",
+    "year": 2023,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/GJXZ202307009.html",
+    "authors": "陈霞玲",
+    "venue": "国家教育行政学院学报",
+    "issue": "7"
+   }
+  },
+  {
+   "id": "B101",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B102",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "B103",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.6052/j.issn.1000-4750.2020.09.0649",
+    "title": "箱形柱芯筒式双法兰刚性连接节点平面框架拟静力试验研究",
+    "year": 2021,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://pubs.cstam.org.cn/em/article/Y2021/I9/146",
+    "authors": "张爱林、王杰、张艳霞、刘安然",
+    "venue": "工程力学",
+    "volume": "38",
+    "issue": "9",
+    "pages": "146-160"
+   }
+  },
+  {
+   "id": "B104",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在万方找到题名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "方钢管柱-H形钢梁拼接外套筒式中节点静力性能研究",
+    "year": 2018,
+    "source": "web",
+    "site": "万方",
+    "url": "https://d.wanfangdata.com.cn/periodical/jzjgxb201807012",
+    "authors": "",
+    "issue": "7"
+   }
+  },
+  {
+   "id": "B105",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "非能动先进核电厂主给水管道水锤模拟计算",
+    "year": 2015,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/YZJS2015S1033.html",
+    "authors": "盛美玲、田卫卫、丘锦萌、李军、于沛",
+    "venue": "原子能科学技术",
+    "issue": "S1"
+   }
+  },
+  {
+   "id": "B106",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "铅铋次临界堆XADS束流超功率事故研究",
+    "year": 2022,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/HJSU202210012.html",
+    "authors": "张玲、辜峙钘、戴嘉宁、欧文澜、潘麒文、龚政宇、张牧昊",
+    "venue": "核技术",
+    "issue": "10"
+   }
+  },
+  {
+   "id": "B107",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "昆明市常见绿化植物冬季固碳释氧能力研究",
+    "year": 2016,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/TRYJ201608012.html",
+    "authors": "刘雪莲、何云玲、张淑洁、陈军文",
+    "venue": "生态环境学报",
+    "issue": "8"
+   }
+  },
+  {
+   "id": "B108",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  }
+ ]
+}

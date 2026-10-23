@@ -1,0 +1,509 @@
+{
+ "ranAt": "2026-10-20T00:39:08.659Z",
+ "dataset": "dev-2026-10-14",
+ "lang": "zh",
+ "mode": "rules",
+ "total": 36,
+ "seconds": 93.422,
+ "cnSearch": true,
+ "counts": {
+  "verified": 12,
+  "mismatch": 0,
+  "near_match": 9,
+  "not_found": 0,
+  "retracted": 0,
+  "concern": 0,
+  "unverifiable": 15,
+  "error": 0
+ },
+ "falseAlarms": 9,
+ "falseAlarmsNew": 0,
+ "calibers": {
+  "falseAlarms": "旧口径：信息有误（标注允许的除外）、相近候选、疑似不存在都算误报，与 2026-10-16 及以前的结果文件同一口径",
+  "falseAlarmsNew": "新口径：相近候选不算误报（只找到相近记录、没有确认是同一篇），条数见 counts.near_match"
+ },
+ "results": [
+  {
+   "id": "D073",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "D074",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "D075",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.13343/j.cnki.wsxb.20210697",
+    "title": "非共生固氮菌及其固氮作用",
+    "year": 2022,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://actamicro.ijournals.cn/actamicrocn/article/abstract/20220801"
+   }
+  },
+  {
+   "id": "D076",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "match": {
+    "doi": "10.1360/tb-2022-0837",
+    "title": "The accuracy measurement of carrier mobility of cubic boron arsenide",
+    "year": 2022,
+    "source": "crossref",
+    "url": "https://doi.org/10.1360/tb-2022-0837"
+   }
+  },
+  {
+   "id": "D077",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "match": {
+    "doi": "10.3788/lop54.030002",
+    "title": "Research Progress in Ultrafast Dynamics of Plasmonic Hot Electrons",
+    "year": 2017,
+    "source": "crossref",
+    "url": "https://doi.org/10.3788/lop54.030002"
+   }
+  },
+  {
+   "id": "D078",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "飞秒超快动力学过程及飞秒检测",
+    "year": 2004,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/JGDJ200408001.html"
+   }
+  },
+  {
+   "id": "D079",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在维普找到题名、刊名、年份一致的文章，但没有作者信息，请打开链接核对作者",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "方解石晶体定向性对水的拉曼光谱影响的实验评估——天然包裹体盐度的测定",
+    "year": 2020,
+    "source": "web",
+    "site": "维普",
+    "url": "https://www.cqvip.com/doc/journal/7101843297?sign=aca0991d878d81845c5f2fcb07bdcdc08f569134833bf05d2437cefac1c844c0&expireTime=1800061133556&resourceId=7101843297&type=1#1"
+   }
+  },
+  {
+   "id": "D080",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "D081",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "D082",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "D083",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "D084",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与数据库记录一致（来源：Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "match": {
+    "doi": "10.1360/zd2010-40-6-768",
+    "title": "中国1990和2000基准年湿地变化遥感",
+    "year": 2010,
+    "source": "crossref",
+    "url": "https://doi.org/10.1360/zd2010-40-6-768"
+   }
+  },
+  {
+   "id": "D085",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.11867/j.issn.1001-8166.2022.055",
+    "title": "内陆水体初级生产力评估方法研究进展",
+    "year": 2023,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://www.geores.com.cn/dqkxjz/CN/10.11867/j.issn.1001-8166.2022.055"
+   }
+  },
+  {
+   "id": "D086",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2014 年第 3 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "天津地区大气降水中氢氧稳定同位素特征及影响因素研究",
+    "year": 2014,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/XNMZ201403018.html"
+   }
+  },
+  {
+   "id": "D087",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2014 年第 4 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "中国红树林的分布、面积和树种组成",
+    "year": 2014,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/KXSD201404005.html"
+   }
+  },
+  {
+   "id": "D088",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.13287/j.1001-9332.202311.006",
+    "title": "甲烷排放部分抵消湿地生态系统碳汇功能:全球数据分析",
+    "year": 2023,
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://www.cjae.net/CN/abstract/abstract26419.shtml"
+   }
+  },
+  {
+   "id": "D089",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2010 年第 8 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "基于氮排放数据的中国大陆大气氮素湿沉降量估算",
+    "year": 2010,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/NHBH201008031.html"
+   }
+  },
+  {
+   "id": "D090",
+   "verdict": "unverifiable",
+   "summary": "学位论文类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "thesis"
+  },
+  {
+   "id": "D091",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2017 年第 24 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "玉米免耕播种机主动式秸秆移位防堵装置的设计与试验",
+    "year": 2017,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/NYGU201724002.html"
+   }
+  },
+  {
+   "id": "D092",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2019 年第 18 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "全秸硬茬地小麦播种机碎秸导流装置参数设计与优化",
+    "year": 2019,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/NYGU201918001.html"
+   }
+  },
+  {
+   "id": "D093",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在知网找到题名、作者、刊名、年份一致的文章，但卷期页码没能核对（知网记录为 2018 年第 11 期，没有卷号），请打开链接核对卷期页码",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "免耕播种机凹面爪式清茬机构仿真与试验",
+    "year": 2018,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/NYJX201811008.html"
+   }
+  },
+  {
+   "id": "D094",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与维普记录一致（来源：维普）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "但开风气不为师——费孝通学科建设思想访谈",
+    "year": 1997,
+    "source": "web",
+    "site": "维普",
+    "url": "http://m.qikan.cqvip.com/Article/ArticleDetail?id=1002474170&from=article_ArticleDetail"
+   }
+  },
+  {
+   "id": "D095",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "社会学调查要发展",
+    "year": 1983,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/SHEH198303003.html"
+   }
+  },
+  {
+   "id": "D096",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "D097",
+   "verdict": "near_match",
+   "matchStatus": "candidate",
+   "summary": "在期刊官网找到相近文章，但不能确认是同一篇，请人工核对",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "黑水虻幼虫粉替代鱼粉对黄颡鱼幼鱼生长性能、肌肉品质及血清生化指标的影响",
+    "source": "web",
+    "site": "期刊官网",
+    "url": "https://www.agrijournal.com.cn/article/detail/1404F296-1358-42E5-A83C-5221DCE75C85"
+   }
+  },
+  {
+   "id": "D098",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "D099",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与期刊官网、Crossref 记录一致（来源：期刊官网、Crossref）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "doi": "10.3724/1000-3207.2025.2025.0201",
+    "title": "产朊假丝酵母替代鱼粉蛋白对克氏原螯虾幼虾生长性能、抗氧化能力和消化系统组织形态的影响",
+    "year": 2025,
+    "source": "web",
+    "site": "期刊官网、Crossref",
+    "url": "http://ssswxb.ihb.ac.cn/article/cstr/32229.14.SSSWXB.2025.0201"
+   }
+  },
+  {
+   "id": "D100",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "D101",
+   "verdict": "unverifiable",
+   "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+   "issues": [],
+   "kind": "book"
+  },
+  {
+   "id": "D102",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "美国芯片补贴“护栏条款”对中国的影响及应对建议",
+    "year": 2024,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/KJDB202417003.html"
+   }
+  },
+  {
+   "id": "D103",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "社会脆弱性问题研究进展评述与展望",
+    "year": 2023,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/XUXI202309018.html"
+   }
+  },
+  {
+   "id": "D104",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "D105",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "D106",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  },
+  {
+   "id": "D107",
+   "verdict": "verified",
+   "matchStatus": "confirmed",
+   "summary": "已核实：与知网记录一致（来源：知网）",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true,
+   "match": {
+    "title": "基于9种机器学习算法的岩爆预测研究",
+    "year": 2020,
+    "source": "web",
+    "site": "知网",
+    "url": "https://wap.cnki.net/touch/web/Journal/Article/YSLX202004011.html"
+   }
+  },
+  {
+   "id": "D108",
+   "verdict": "unverifiable",
+   "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+   "issues": [],
+   "kind": "journal",
+   "zhJournal": true,
+   "cnSearched": true
+  }
+ ]
+}

@@ -1,0 +1,908 @@
+{
+ "name": "blind-zh-2026-10-19",
+ "description": "中文参考文献盲测集：检验中文期刊联网核查；与已有集合来自不同论文，抽样后、规则定稿前不查看条目，只运行一次",
+ "createdAt": "2026-10-20T00:07:41.965Z",
+ "method": "Crossref /works?filter=prefix:10.1360 / 10.3724 / 10.7498,has-references:true,from-pub-date:2023-01-01,type:journal-article&sample=40，每组抽四轮（排除已有集合用过的源论文），每篇随机取至多 2 条含 4 个以上连续汉字的 unstructured 原文。所有条目都出自已发表论文，视为真实存在的文献；文献类型不在抽样时筛选，评测时按解析出的类型分组报告。",
+ "cases": [
+  {
+   "id": "B001",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssv-2024-0321",
+   "raw": "Pi Y, Gao K, Zhu W Y. Advances in host-microbe metabolic axis (in Chinese). Acta Microbiol Sin, 2017, 57: 161‒169 [皮宇, 高侃, 朱伟云. 动物宿主-肠道微生物代谢轴研究进展. 微生物学报, 2017, 57: 161‒169].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B002",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sst-2022-0261",
+   "raw": "Shi Y X, Chai X X. Control is for better development—On the strategic thought of Shanghai Master Plan (in Chinese). City Plan Rev, 1985, 1: 7–10 [史玉雪, 柴锡贤. 控制是为了更好地发展——略论上海总体规划的战略思想.城市规划, 1985, 1: 7–10].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B003",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sst-2022-0261",
+   "raw": "Editorial Department. Expert perspective: Interpretation of Shanghai Urban Master Plan (2017-2035) (in Chinese). Shanghai Urban Plan Rev, 2018, 2: 52–56 [本刊编辑部. 专家视角:《上海市城市总体规划(2017-2035年)》解读. 上海城市规划, 2018, 2: 52–56].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B004",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sst-2025-0116",
+   "raw": "Han P P, Chen P F, Ding M, et al. Quantitative analysis of inertia support capability of direct-drive wind turbines under VSG control (in Chinese). Power Syst Technol, 2025, 49: 501–510 [韩平平, 陈鹏飞, 丁明, 等. VSG控制下直驱风机惯量支撑能力定量分析. 电网技术, 2025, 49: 501–510].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B005",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sst-2025-0116",
+   "raw": "Liu J H, Wang C, Bi T S. Node equivalent inertia index for temporal-spatial frequency dynamics of renewable energy power system and its applications (in Chinese). Proc CSEE, 2023, 43: 7773–7789 [刘家豪, 王程, 毕天姝. 面向新能源电力系统频率时空动态的节点等效惯量指标及其应用. 中国电机工程学报, 2023, 43: 7773–7789].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B006",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssi-2021-0190",
+   "raw": "Chen X Y, Gao Y Z, Tang H L, et al. Research progress on big data security technology. Sci Sin Inform, 2020, 50: 25--66 [陈性元, 高元照, 唐慧林, 等. 大数据安全技术研究进展. 中国科学: 信息科学, 2020, 50: 25--66.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B007",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssi-2021-0190",
+   "raw": "Gong M G, Jiao L C, Yang D D, et al. Research on evolutionary multi-objective optimization algorithms. J Softw, 2009, 20: 271--289 [公茂果, 焦李成, 杨咚咚, 等. 进化多目标优化算法研究. 软件学报, 2009, 20: 271--289.",
+   "assertedDoi": "10.3724/SP.J.1001.2009.00271",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B008",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/tb-2024-0639",
+   "raw": "Chang Y W, Wu Y H, Liu X, et al. Periodic variations of soil moisture in desert steppe based on wavelet analysis (in Chinese). Chin J Grassl, 2023, 45: 87–97 [常耀文, 吴一晗, 刘霞, 等. 基于小波分析的荒漠草原土壤湿度周期变化特征. 中国草地学报, 2023, 45: 87–97].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B009",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/tb-2024-0639",
+   "raw": "Tan X X. Research and application of deep learning methods in net ecosystem carbon exchange simulation (in Chinese). Master Thesis. Beijing: Beijing Forestry University, 2022 [谭新新. 深度学习方法在净生态系统碳交换量模拟中的研究及应用. 硕士学位论文. 北京: 北京林业大学, 2022].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B010",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/tb-2024-1345",
+   "raw": "Tong C, Huang J F, Wang W Q, et al. Methane dynamics of a brackish-water tidal Phragmites australis marsh in the Minjiang River estuary (in Chinese). Acta Geogr Sin, 2012b, 67:1165-1180 [仝川, 黄佳芳, 王维奇, 等. 闽江口半咸水芦苇潮汐沼泽湿地甲烷动态. 地理学报, 2012, 67: 1165‒1180].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B011",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/tb-2024-1345",
+   "raw": "Tong C, Yao S, Wang W Q, et al. Methane dynamics in a Cyperus malaccensis tidal marsh in southeast China (in Chinese). Sci China Earth Sci, 2012a, 42:723-735. [仝川, 姚顺, 王维奇, 等. 中国东南沿海短叶茳芏潮汐沼泽湿地甲烷动态. 中国科学: 地球科学, 2012, 42: 723‒735].",
+   "assertedDoi": "10.1360/zd-2012-42-5-723",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B012",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/csb-2025-5400",
+   "raw": "Editorial Office of EPE. The technology status and development trend of ion implantation (in Chinese). Equip Electron Products Manuf, 2009, (10): 1–8 [电子工业专用设备编辑部. 离子注入技术现状与发展趋势. 电子工业专用设备, 2009, (10): 1–8].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B013",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssv-2024-0194",
+   "raw": "Ministry of Agriculture and Rural Affairs of the People’s Republic of China. Technical Code of Practice for Diagnosis and Control of Corynespora Leaf Fall Disease in Rubber Tree NY/T3006-2016 (in Chinese). Beijing: China Standard Press, 2016. [中华人民共和国农业农村部. 橡胶树棒孢霉落叶病诊断与防治技术规程NY/T3006-2016. 北京: 中国标准出版社, 2016.].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B014",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssv-2024-0194",
+   "raw": "Yu Z T, Xiao Q C, Huang W R, et al. Study on decision model for prevention and control of rubber tree powdery mildew (in Chinese). J Trop Crops, 2002, 23: 27–31 [余卓桐, 肖倩莼, 黄武仁, 等. 橡胶树白粉病防治决策模型研究. 热带作物学报, 2002, 23: 27–31].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B015",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/tb-2024-0697",
+   "raw": "Zhong X. Creation of photoperiod/thermosensitive genic male sterility lines by base editor in rice (in Chinese). Master Disserrtation. Shanghai: Shanghai Normal University, 2023 [钟祥. 利用碱基编辑创制水稻光温敏位点. 硕士学位论文. 上海: 上海师范大学, 2023].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B016",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/tb-2023-0274",
+   "raw": "Ma R P, Ba J, Fu L Y. Multiscale wave dissipation characteristics of tight sandstone strata and a double-fractal structure model (in Chinese). Chin Sci Bull, 2023, 68: 3506–3517 [马汝鹏, 巴晶, 符力耘. 致密砂岩层系多尺度波耗散规律及双重分形结构模型. 科学通报, 2023, 68: 3506–3517].",
+   "assertedDoi": "10.1360/TB-2022-1192",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B017",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2024-0274",
+   "raw": "王京彬, 王玉往, 何志军. 2006. 东天山大地构造演化的成矿示踪. 中国地质, 33: 461–469.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B018",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2024-0274",
+   "raw": "吴艳爽, 项楠, 汤好书, 周可法, 杨永飞. 2013. 东天山东戈壁钼矿床辉钼矿Re-Os年龄及印支期成矿事件. 岩石学报, 29: 121–130.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B019",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/tb-2025-0143",
+   "raw": "Luo W T. National multi-center study on allergen sensitization patterns and risk factors of allergic diseases based on the biobank resource sharing platform (in Chinese). Doctor Dissertation. Guangzhou: Guangdong Medical University, 2023 [罗文婷. 基于生物样本库资源共享平台开展的全国多中心过敏性疾病过敏原致敏模式和危险因素研究. 博士学位论文. 广州: 广州医科大学, 2023].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B020",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/tb-2025-0143",
+   "raw": "Qiao B S. Color Atlas of Air-Borne Pollens and Plants in China (in Chinese). Beijing: Peking Union Medical College Press, 2005 [乔秉善. 中国气传花粉和植物彩色图谱. 北京: 中国协和医科大学出版社, 2005].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B021",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/csb-2025-5732",
+   "raw": "Fang C, Xu X, Zhang X, et al. Hydrogen-bonded organic frameworks and their derived materials for electrochemical energy storage and conversion (in Chinese). Chin Sci Bull, 2023, 68: 3335–3352 [方晨晨, 许雪凤, 张校源, 等. 氢键有机框架材料在电化学能源存储和转换中的研究进展. 科学通报, 2023, 68: 3335–3352].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B022",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssc-2025-0146",
+   "raw": "Huang JF. Metal content, leaching characteristics and environmental risk assessment of electronic components on waste printed circuit boards. Dissertation for Master’s Degree. Mianyang: Southwest University of Science and Technology, 2022 (in Chinese) [黄金凤. 废电路板元器件金属含量及其浸出特性与环境风险评价. 硕士学位论文. 绵阳: 西南科技大学, 2022].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B023",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssc-2025-0146",
+   "raw": "Zhou QF, Cheng JH, Gong LL. Technology of Comprehensive Utilization of Electronic Waste Resources. Beijing: Chemical Industry Press, 2017. 163–164 (in Chinese) [周全法, 程洁红, 龚林林. 电子废物资源综合利用技术. 北京: 化学工业出版社, 2017. 163–164].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B024",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/csb-2025-5167",
+   "raw": "Dai Q, Song F Q, Pan C F, et al. The fundamental physical science of atom manufacturing (in Chinese). Chin Sci Bull, 2024, 69: 2777–2788 [戴庆, 宋凤麒, 潘曹峰, 等. 原子制造的物质科学基础. 科学通报, 2024, 69: 2777–2788].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B025",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sspma-2024-0455",
+   "raw": "Pang J, Zhao F, Xu J, et al. Preparation method of amorphous alloy motor core, core and motor (in Chinese). China Patent, CN114244037B, 2023-09-15 [庞靖, 赵菲, 徐津, 等. 非晶合金电机铁芯的制备方法、铁芯及电机. 中国专利, CN114244037B, 2023-09-15].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B026",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sspma-2024-0455",
+   "raw": "Liu X R. Reduce the losses of transformers to improve their efficiency (in Chinese). Electric Age, 2010, 12: 74–76 [刘喜荣. 降低变压器的损耗提高变压器效率. 电气时代, 2010, 12: 74–76].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B027",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/ssv-2024-0081",
+   "raw": "Pan L L, Wang J J, Qi R R, et al. Application of revised MSSQ for seasickness susceptibility evaluation (in Chinese). Acad J Nav Med Univ, 2016, 37: 5 [潘磊磊, 王俊骎, 祁瑞瑞, 等. 修改版晕动症易感性问卷用于晕船易感性判断. 第二军医大学学报, 2016, 37: 5].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B028",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2024-0147",
+   "raw": "丁一汇, 司东, 柳艳菊, 王遵娅, 李怡, 赵亮, 宋亚芳. 2018. 论东亚夏季风的特征、驱动力与年代际变化. 大气科学, 42: 533–558.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B029",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/sste-2024-0147",
+   "raw": "于天雷, 程军, 郭品文. 2023. TraCE-21ka的模拟评估及误差分析. 大气科学学报, 46: 790–800.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B030",
+   "group": "中国科学（中文参考文献）",
+   "sourcePaper": "10.1360/tb-2023-1203",
+   "raw": "Zhang Y H, Guo X Y, Lu X J, et al. Study on three-dimensional digitization method of crop seeds (in Chinese). Seed, 2022, 41: 121–125 [张云鹤, 郭新宇, 卢宪菊, 等. 作物种子三维数字化方法研究. 种子, 2022, 41: 121–125].",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B031",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.fjyl.202307100311",
+   "raw": "中华人民共和国住房和城乡建设部.城市绿地分类标准: CJJ/T85-2017[S].北京: 中国建筑工业出版社, 2017..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B032",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.fjyl.202307100311",
+   "raw": "王 敏, 邱 明, 汪 洁琼. 基于重要性—绩效表现分析的上海苏州河滨水空间文化性生态系统服务供需关系分析与优化. 风景园林, 2019, 26: 107-112.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B033",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/sp.j.1249.2025.05513",
+   "raw": "赵奂，赵晓刚，何奕昆，等．植物分子生物学研究极具前景的模式系统——小立碗藓［J］．植物学通报，2004，21（2）：129-138..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B034",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.fjyl.202311020494",
+   "raw": "黑龙江省统计局, 国家统计局黑龙江调查总队.2023年黑龙江省国民经济和社会发展统计公报[EB/OL].(2024-06-11)[2024-08-20]. https://www.hlj.gov.cn/hlj/c108419/202406/c00_31742258.shtml..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B035",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.fjyl.202311020494",
+   "raw": "杜 颖, 蔡 君. 美国荒野地游客教育系统及对我国的借鉴意义. 四川林勘设计, 2008, 39-43.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B036",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.1000-4734.2025.45.061",
+   "raw": "苏文超, 朱路艳, 格西, 等. 贵州晴隆大厂锑矿床辉锑矿中流体包裹体的红外显微测温学研究[J]. 岩石学报, 2015, 31(4): 918–924..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B037",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.1000-4734.2025.45.061",
+   "raw": "刘添益, 钱富武, 杨云杰. 贵州望谟上大坪萤石矿床地质特征、控矿因素及找矿标志[J]. 矿产与地质, 2023, 37(4): 737–743..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B038",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/zrht.1674-5825.2026056",
+   "raw": "燕锋，聂浩俭，夏玮玮，等. 面向大规模低地球轨道卫星网络的星间链路连接策略[J]. 通信学报，2024，45（8）：100-109..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B039",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/zrht.1674-5825.2026056",
+   "raw": "张科科，孙煜坤，夏磊，等. 网络卫星在轨分布式协同任务调度方法[J]. 哈尔滨工程大学学报，2019，40（2）：393-399..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B040",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/bnsfc-2025-0207",
+   "raw": "寸守栋. 国际人才跨区域自由流动机制创新研究——基于美国国家科学基金委（NSF）案例研究与借鉴. 企业经济，2021，40（1）：128—134..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B041",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/bnsfc-2025-0207",
+   "raw": "姚玉鹏. 对我国科研资助体系存在问题及深化体制改革的思考. 中国科学基金，2011，25（1）：26—29..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B042",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/sp.j.1123.2025.11005",
+   "raw": "周莲，李敏，黄哲群，等. 实验室研究与探索，2023，42（1）：235.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B043",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/sp.j.1123.2025.11005",
+   "raw": "刘占芳，李斌，徐建中，等. 质谱学报，2014，35（6）：54.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B044",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/aauj.2026090",
+   "raw": "杨靖.党参毛状根转化体系建立及基于党参全基因组SPL家族鉴定与CpSPL10功能研究［D］.西安：陕西师范大学，2020：16-17..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B045",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/aauj.2026090",
+   "raw": "王琰.紫薇不同花色种质资源的杂交育种与遗传转化体系的建立［D］.武汉：华中农业大学，2024：85..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B046",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.0253-3219.2026.hjs.49.250326",
+   "raw": "葛梦然, 李丹丹, 姚涛, 等. Cu纳米团簇发光性能和结构的研究[J]. 核技术, 2014, 37(9): 090104...",
+   "assertedDoi": "10.11889/j.0253-3219.2014.hjs.37.090104",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B047",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.0253-3219.2026.hjs.49.250326",
+   "raw": "顾颂琦, 梅丙宝, 姜政, 等. 基于PILATUS探测器的von Hamos构型X射线发射谱谱仪及数据获取[J]. 核技术, 2022, 45(9): 090101...",
+   "assertedDoi": "10.11889/j.0253-3219.2022.hjs.45.090101",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B048",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/sp.j.1006.2023.21026",
+   "raw": "陈满峰. 弱筋小麦面粉理化品质性状遗传变异、肥料运筹及其与酥性饼干品质的关系. 扬州大学硕士学位论文, 江苏扬州, 2008. Chen M F. The Variation of Flour Quality Characters and the Fertilizer Operations in Chinese soft Wheat and Correlation with the Short Biscuit Quality. MS Thesis of Yangzhou University, Yangzhou, Jiangsu, China, 2008 (in Chinese with English abstract)..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B049",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/sp.j.1006.2023.21026",
+   "raw": "李曼, 张晓, 刘大同, 江伟, 高德荣, 张勇. 弱筋小麦品质评价指标研究. 核农学报, 2021, 35: 1979-1986. Li M, Zhang X, Liu D T, Jiang W, Gao D R, Zhang Y. Research on quality evaluation indices of weak gluten wheat. J Nucl Agric Sci, 2021, 35: 1979-1986 (in Chinese with English abstract)..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B050",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.fjyl.202312140565",
+   "raw": "顾 凯. 中国传统园林中的景境观念与营造. 时代建筑, 2018, 24-31.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B051",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.fjyl.202312140565",
+   "raw": "翁心存.翁心存日记[M].北京: 中华书局, 2011: 646..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B052",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/1000-6915.jrme.2024.0684",
+   "raw": "李地元，孙小磊，周子龙，等. 多次冲击荷载作用下花岗岩动态累计损伤特性[J]. 实验力学，2016，31(6)：827–835.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B053",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/1000-6915.jrme.2024.0684",
+   "raw": "何满潮，刘冬桥，宫伟力，等. 冲击岩爆试验系统研发及试验[J]. 岩石力学与工程学报，2014，33(9)：1 729–1 739.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B054",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/ee.1672-9250.2025.53.047",
+   "raw": "黄兵役, 王申博, 和兵, 等. 新冠疫情管控措施对郑州市PM2.5浓度、粒径分布、组分和来源的影响[J]. 环境科学, 2022, 43(6): 2840–2850..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B055",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/ee.1672-9250.2025.53.047",
+   "raw": "天津市统计局. 统计年鉴2019[EB/OL]. (2020–05–09) [2025-02-11]. https://stats.tj.gov.cn/nianjian/2019nj/zk/indexch.htm..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B056",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.2097-4981.jecc-2025-0028",
+   "raw": "邓靖微, 李华强, 温丰瑞, 等. 计及虚拟电厂市场交易的主动配电网两阶段优化调度[J]. 电力建设, 2021, 42(9): 22–31..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B057",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.2097-4981.jecc-2025-0028",
+   "raw": "王杨洋, 茆美琴, 杨铖, 等. 面向多场景辅助服务的大规模电动汽车聚合可调度容量建模[J]. 电力系统自动化, 2024, 48(7): 103–115..",
+   "assertedDoi": "10.33142/hst.v7i4.12260",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B058",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/sp.j.1006.2025.43031",
+   "raw": "王新智, 王天池, 吴玉柱, 刘景圣, 许秀颖, 赵城彬. 微波间歇干燥对玉米籽粒中淀粉理化特性的影响. 中国食品学报, 2024, 24(2): 179-190..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B059",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/sp.j.1006.2025.43031",
+   "raw": "彭小爱, 卢茂昂, 张玲, 刘童, 曹磊, 宋有洪, 郑文寅, 何贤芳, 朱玉磊. 基于55K SNP芯片的小麦籽粒主要品质性状的全基因组关联分析. 作物学报, 2024, 50: 1948-1960..",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B060",
+   "group": "科学出版社 10.3724（中文参考文献）",
+   "sourcePaper": "10.3724/j.issn.1671-4342.20260050",
+   "raw": "陈钰芬，杨双双，胡思慧. 新质生产力评价指标体系构建及测度分析——基于“投入-过程-产出”视角［J］.科研管理，2025，46（2）：1-11.",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B061",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.72.20222192",
+   "raw": "Jiang J H, Yu S X, Kou N, Ding Z, Zhang Z P 2021 <i>Acta Phys. Sin.</i> <b>70</b> 238401<br/>蒋基恒, 余世星, 寇娜, 丁召, 张正平 2021 物理学报 <b>70</b> 238401",
+   "assertedDoi": "10.7498/aps.70.20211119",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B062",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.72.20222192",
+   "raw": "Dai Y R, Ding D S 2011 <i>Acta Phys. Sin.</i> <b>60</b> 124302<br/>戴玉蓉, 丁德胜 2011 物理学报 <b>60</b> 124302",
+   "assertedDoi": "10.7498/aps.60.124302",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B063",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.73.20241075",
+   "raw": "Hu Z T, Shu X, Wang X, Li Y, Xu R, Hong F, Ma Z Q, Jiang Z M, Xu F 2022 <i>Acta Phys. Sin.</i> <b>71</b> 116801<br/>胡紫婷, 舒鑫, 王香, 李跃, 徐闰, 洪峰, 马忠权, 蒋最敏, 徐飞 2022 物理学报 <b>71</b> 116801",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B064",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.73.20241075",
+   "raw": "Wang A W, Zhu L P, Shan Y S, Liu P, Cao X L, Cao B Q 2024 <i>Acta Phys. Sin.</i> <b>73</b> 058503<br/>王爱伟, 祝鲁平, 单衍苏, 刘鹏, 曹学蕾, 曹丙强 2024 物理学报 <b>73</b> 058503",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B065",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.74.20250657",
+   "raw": "An M R, Li S L, Su M J, Deng Q, Song H Y 2022 <i>Acta Phys. Sin.</i> <b>71</b> 243101<br/>安敏荣, 李思澜, 宿梦嘉, 邓琼, 宋海洋 2022 物理学报 <b>71</b> 243101",
+   "assertedDoi": "10.7498/aps.71.20221368",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B066",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.74.20250657",
+   "raw": "Zhang X Y, Wu W H, Wang J Y, Zhang Y, Zhai W, Wei B B 2024 <i>Acta Phys. Sin.</i> <b>73</b> 184301<br/>张心怡, 吴文华, 王建元, 张颖, 翟薇, 魏炳波 2024 物理学报 <b>73</b> 184301",
+   "assertedDoi": "10.7498/aps.73.20240721",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B067",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.72.20222143",
+   "raw": "Zhou H L, Wu F, Zhang Z H, Zhang Y, Ye L H 2022 <i>Chin. J. Lumin.</i> <b>43</b> 192<br/>周慧丽, 吴锋, 张志宏, 张雁, 叶林华 2022 发光学报 <b>43</b> 192",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B068",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.72.20222143",
+   "raw": "Wu Z L, Wu H M, Tang L D, Li Y, Guo Y, Yao Z 2017 <i>Acta Photonica Sin.</i> <b>46</b> 0916003<br/>吴中立, 吴红梅, 唐立丹, 李煜, 郭宇, 姚震 2017 光子学报 <b>46</b> 0916003",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B069",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.74.20250959",
+   "raw": "Sun Z W, He Y, Tang Y Z 2021 <i>Acta Phys. Sin.</i> <b>70</b> 060201<br/>孙志伟, 何燕, 唐元政 2021 物理学报 <b>70</b> 060201",
+   "assertedDoi": "10.7498/aps.70.20201523",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B070",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.74.20250959",
+   "raw": "Zhang Q L, Wang R F, Zhou T, Wang Y J, Liu Q 2023 <i>Acta Phys. Sin.</i> <b>72</b> 084207<br/>章其林, 王瑞丰, 周同, 王允杰, 刘琪 2023 物理学报 <b>72</b> 084207",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B071",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.74.20250930",
+   "raw": "Ye X M, Zhang X S, Li M L, Li C X 2018 <i>Acta Phys. Sin.</i> <b>67</b> 114702<br/>叶学民, 张湘珊, 李明兰, 李春曦 2018 物理学报 <b>67</b> 114702",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B072",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.74.20250930",
+   "raw": "Mei T, Chen Z X, Yang L, Zhu H M, Miao R C 2020 <i>Acta Phys. Sin.</i> <b>69</b> 224701<br/>梅涛, 陈占秀, 杨历, 朱洪漫, 苗瑞灿 2020 物理学报 <b>69</b> 224701",
+   "assertedDoi": "10.7498/aps.69.20200491",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B073",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.74.20250824",
+   "raw": "Qi J C, Ye L L, Chen R C, Xie H L, Ren Y Q, Du G H, Deng B, Xiao T Q 2014 <i>Acta Phys. Sin.</i> <b>63</b> 104202<br/>戚俊成, 叶琳琳, 陈荣昌, 谢红兰, 任玉琦, 杜国浩, 邓彪, 肖体乔 2014 物理学报 <b>63</b> 104202",
+   "assertedDoi": "10.7498/aps.63.104202",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B074",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.74.20250824",
+   "raw": "Zhou G Z, Tong Y J, Chen C, Ren Y Y, Wang Y D, Xiao T Q 2011 <i>Acta Phys. Sin.</i> <b>60</b> 028701<br/>周光照, 佟亚军, 陈灿, 任玉琦, 王玉丹, 肖体乔 2011 物理学报 <b>60</b> 028701",
+   "assertedDoi": "10.7498/aps.60.028701",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B075",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.73.20232010",
+   "raw": "Liu N-S, Wang C, Ji W 2022 <i>Acta Phys. Sin.</i> <b>71</b> 127504<br/>刘南舒, 王聪, 季威 2022 物理学报 <b>71</b> 127504",
+   "assertedDoi": "10.7498/aps.71.20220301",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B076",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.73.20232010",
+   "raw": "Xiao H, Mi M J, Wang Y L 2021 <i>Acta Phys. Sin.</i> <b>70</b> 127503<br/>肖寒, 弭孟娟, 王以林 2021 物理学报 <b>70</b> 127503",
+   "assertedDoi": "10.7498/aps.70.20202204",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B077",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.73.20231235",
+   "raw": "Xiang J, Zheng C Y, Liu Z J 2010 <i>Acta. Phys. Sin.</i> <b>59</b> 8717<br/>项江, 郑春阳, 刘占军 2010 物理学报 <b>59</b> 8717",
+   "assertedDoi": "10.7498/aps.59.744",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B078",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.73.20231235",
+   "raw": "Wang W X, Chang T Q, Shu X M 1994 <i>Acta. Phys. Sin.</i> <b>43</b> 766<br/>汪卫星, 常铁强, 苏秀敏 1994 物理学报 <b>43</b> 766",
+   "assertedDoi": "10.7498/aps.43.766",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B079",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.74.20241709",
+   "raw": "Pu P, Xu C, Xie S Y 2011 <i>Acta Phys. -Chim. Sin.</i> <b>27</b> 2227<br/>蒲鹏, 徐灿, 解淑玉 2011 物理化学学报 <b>27</b> 2227",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B080",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.74.20241709",
+   "raw": "Xue F, Du J F, Fan Y M, Shi M J, Zhou X Y, Han R D, Wu J H 2002 <i>Acta Phys. Sin.</i> <b>51</b> 763<br/>薛飞, 杜江峰, 范扬眉, 石名俊, 周先意, 韩荣典, 吴季辉 2002 物理学报 <b>51</b> 763",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B081",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.73.20241176",
+   "raw": "Li K, Li X, Li J, Xie J M 2019 <i>J. Inorg. Mater.</i> <b>34</b> 611<br/>李凯, 李霄, 李箭, 谢佳苗 2019 无机材料学报 <b>34</b> 611",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B082",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.73.20241176",
+   "raw": "Shen S L, Zhang X K, Wan X W, Zheng K Q, Ling Y H, Wang S R 2022 <i>Acta Phys. Sin.</i> <b>71</b> 164401<br/>申双林, 张小坤, 万兴文, 郑克晴, 凌意瀚, 王绍荣 2022 物理学报 <b>71</b> 164401",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B083",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.73.20240840",
+   "raw": "Lin J R, Zhu J G, Zhang H L, Yang X Y, Ye S H 2012 <i>Chin. J. Sci. Instrum.</i> <b>33</b> 463<br/>林嘉睿, 邾继贵, 张皓琳, 杨学友, 叶声华 2012 仪器仪表学报 <b>33</b> 463",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B084",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.73.20240840",
+   "raw": "Liang X, Lin J R, Wu T F, Zhao H, Zhu J G 2022 <i>Acta Phys. Sin.</i> <b>71</b> 090602<br/>梁旭, 林嘉睿, 吴腾飞, 赵晖, 邾继贵 2022 物理学报 <b>71</b> 090602",
+   "assertedDoi": "10.7498/aps.71.20212073",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B085",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.73.20240554",
+   "raw": "Zheng X, Sun Y R, Chen J J, Hu S M 2018 <i>Acta Phys. Sin.</i> <b>67</b> 164203<br/>郑昕, 孙羽, 陈娇娇, 胡水明 2018 物理学报 <b>67</b> 164203",
+   "assertedDoi": "10.7498/aps.67.20180914",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B086",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.72.20231007",
+   "raw": "Yang L, Yan H J, Zhang J L, Hua Y, Ren C S 2014 <i>High Voltage Engineering</i> <b>40</b> 2113<br/>杨亮, 闫慧杰, 张俊龙, 滑跃, 任春生 2014 高电压技术 <b>40</b> 2113",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B087",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.72.20231007",
+   "raw": "Gao Z X, Huang J G, Han J W, Yang X Z, Feng C H 2010 <i>Spacecraft Environment Engineering</i> <b>27</b> 285<br/>高著秀, 黄建国, 韩建伟, 杨宣宗, 冯春华 2010 航天器环境工程 <b>27</b> 285",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B088",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.72.20222270",
+   "raw": "Xu W X, Liang X G, Xu X H, Zhu Y 2020 <i>Acta Phys. Sin.</i> <b>69</b> 196601<br/>徐文雪, 梁新刚, 徐向华, 祝渊 2020 物理学报 <b>69</b> 196601",
+   "assertedDoi": "10.7498/aps.69.20200737",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B089",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.72.20230464",
+   "raw": "Bi K X, Wan Q, Shu Z W, Shao G L, Jin Y Y, Zhu M J, Lin J, Liu H W, Liu H Z, Chen Y Q, Liu S, Duan H G 2020 <i>Sci. China Mater.</i> <b>63</b> 1076<br/>毕开西, 万强, 舒志文, 邵功磊, 靳媛媛, 朱梦剑, 林均, 刘华伟, 刘怀志, 陈艺勤, 刘松, 段辉高 2020 中国科学-材料 <b>63</b> 1076",
+   "assertedDoi": "10.1007/s40843-019-1259-6",
+   "label": {
+    "lang": "zh"
+   }
+  },
+  {
+   "id": "B090",
+   "group": "物理学报 10.7498（中文参考文献）",
+   "sourcePaper": "10.7498/aps.72.20212272",
+   "raw": "Zhang H L 2012 <i>Theoretical Acoustics</i> (Beijing: Higher Education Press) p12 (in Chinese)<br/>张海澜 2012 理论声学(修订版) (北京: 高等教育出版社) 第12页",
+   "assertedDoi": null,
+   "label": {
+    "lang": "zh"
+   }
+  }
+ ]
+}

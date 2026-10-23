@@ -1,0 +1,750 @@
+{
+ "dataset": "blind-zh-2026-10-19",
+ "resultFile": "eval/results/real-blind-zh-2026-10-19-rules.json",
+ "ranAt": "2026-10-20T00:48:55.241Z",
+ "ranOnce": true,
+ "code": "52a4906 加上本次未提交的中文期刊联网核查改动（核验引擎此后没有再改，随本记录一起提交）",
+ "environment": "本机，NODE_USE_ENV_PROXY=1，NO_PROXY 含 .cnki.net、.cnki.com.cn（知网直连，其余走代理）；中文期刊联网核查每条都给额度，没有整体时限",
+ "sample": "科学出版社 10.3724、中国科学 10.1360、物理学报 10.7498 三组各 30 条中文参考文献，来自 52 篇未用过的论文；抽样后只看了各组和各类型的条数，规则定稿后只运行这一次",
+ "reviewedAt": "2026-10-21",
+ "reviewer": "开发方逐条复核，没有第二人独立标注",
+ "baselineMethod": "没有另跑“关闭联网核查”的对照：联网核查只在 Crossref 没确认之后才做，结论来自网页记录的条目在没有它时都会是“无法核验”（中文条目不会出相近候选），据此从这次结果推出基线",
+ "summary": {
+  "all": {
+   "total": 90,
+   "after": {
+    "unverifiable": 61,
+    "near_match": 11,
+    "verified": 16,
+    "error": 2
+   },
+   "baselineWithoutCn": {
+    "unverifiable": 86,
+    "verified": 2,
+    "error": 2
+   },
+   "pendingShare": {
+    "baseline": 0.956,
+    "after": 0.678
+   },
+   "falseAlarms": {
+    "newCaliber": {
+     "baseline": 0,
+     "after": 0
+    },
+    "oldCaliber": {
+     "baseline": 0,
+     "after": 11
+    }
+   }
+  },
+  "zhJournal": {
+   "total": 40,
+   "after": {
+    "unverifiable": 13,
+    "near_match": 11,
+    "verified": 15,
+    "error": 1
+   },
+   "baselineWithoutCn": {
+    "unverifiable": 38,
+    "verified": 1,
+    "error": 1
+   },
+   "pendingShare": {
+    "baseline": 0.95,
+    "after": 0.325
+   },
+   "falseAlarms": {
+    "newCaliber": {
+     "baseline": 0,
+     "after": 0
+    },
+    "oldCaliber": {
+     "baseline": 0,
+     "after": 11
+    }
+   }
+  }
+ },
+ "checks": {
+  "verifiedCorrect": "16/16：14 条来自联网核查（知网 11、期刊官网 3），都与引文是同一篇；另 2 条是 Crossref 原本就能核实的（B007、B016）",
+  "nearMatchSameArticle": "11/11 的候选就是引文的那篇文章：10 条知网记录的作者、刊名、年份都对上，只是引文只写“卷: 页”、知网没有卷号，卷期页码核对不了（其中 B003 署名“本刊编辑部”，知网也是）；1 条期刊官网页面没有年份（B035）",
+  "falseAlarms": "信息有误 0、疑似不存在 0；按旧口径（相近候选也算）是 11 条，全部是上面说的同一篇文章、只是不能确认",
+  "errors": "2 条（B042、B064）是 Crossref 限流 429，与本功能无关"
+ },
+ "categories": {
+  "联网检索没找到": 13,
+  "解析没取到中文题名": 2,
+  "相近候选（同一篇）": 11,
+  "核实正确": 16,
+  "覆盖范围外类型": 17,
+  "数据源限流": 2,
+  "引文没有题名": 29
+ },
+ "findings": [
+  "28 条物理类引文（物理学报、发光学报等）写成“作者 年份 刊名 卷 页”，没有题名，按题名的联网核查用不上；这些刊在 Crossref 有 DOI，下一步可以按刊名、卷、页到 Crossref 定位，但这批已经看过，不能再用来检验这项改进",
+  "2 条英文译名附中文原文的引文没认出中文原文（B002 题名后的句点没有空格，B006 方括号没闭合）",
+  "13 条中文期刊论文三站和不限站点都没搜到题名一致的页面，或官网页面连不上、没有元数据：主要卡在搜索引擎的收录",
+  "没有用编造的中文引文测过这批样本；拼凑式编造（真题名配假作者）由单元测试和浏览器实测覆盖"
+ ],
+ "rows": [
+  {
+   "id": "B001",
+   "verdict": "unverifiable",
+   "category": "联网检索没找到",
+   "correct": true,
+   "note": "知网、万方、维普和不限站点检索都没找到题名一致、读得到作者的页面（或官网页面连不上、没有元数据）；查不到不代表不存在"
+  },
+  {
+   "id": "B002",
+   "verdict": "unverifiable",
+   "category": "解析没取到中文题名",
+   "correct": true,
+   "note": "英文译名后的方括号里有中文原文，但题名后的句点紧跟刊名、没有空格，规则没取出中文题名，没有做联网核查"
+  },
+  {
+   "id": "B003",
+   "verdict": "near_match",
+   "category": "相近候选（同一篇）",
+   "correct": true,
+   "source": "知网",
+   "note": "候选就是引文的那篇文章（知网：专家视角:《上海市城市总体规划(2017—2035年)》解读；本刊编辑部）；引文只写“卷: 页”，知网记录没有卷号、页码是期内页码，卷期页码核对不了。没有断言写错，只是不能确认"
+  },
+  {
+   "id": "B004",
+   "verdict": "unverifiable",
+   "category": "联网检索没找到",
+   "correct": true,
+   "note": "知网、万方、维普和不限站点检索都没找到题名一致、读得到作者的页面（或官网页面连不上、没有元数据）；查不到不代表不存在"
+  },
+  {
+   "id": "B005",
+   "verdict": "unverifiable",
+   "category": "联网检索没找到",
+   "correct": true,
+   "note": "知网、万方、维普和不限站点检索都没找到题名一致、读得到作者的页面（或官网页面连不上、没有元数据）；查不到不代表不存在"
+  },
+  {
+   "id": "B006",
+   "verdict": "unverifiable",
+   "category": "解析没取到中文题名",
+   "correct": true,
+   "note": "方括号里的中文原文没有闭合（Crossref 存的原文缺“]”），没认出中文原文；Crossref 也没核实到"
+  },
+  {
+   "id": "B007",
+   "verdict": "verified",
+   "category": "核实正确",
+   "correct": true,
+   "source": "crossref",
+   "note": "Crossref 记录与引文（英文译名或中文原文）是同一篇，标准流程原本就能核实"
+  },
+  {
+   "id": "B008",
+   "verdict": "near_match",
+   "category": "相近候选（同一篇）",
+   "correct": true,
+   "source": "知网",
+   "note": "候选就是引文的那篇文章（知网：基于小波分析的荒漠草原土壤湿度周期变化特征；常耀文、吴一晗、刘霞、吴傲、张瑞强、海春兴、范兆飞）；引文只写“卷: 页”，知网记录没有卷号、页码是期内页码，卷期页码核对不了。没有断言写错，只是不能确认"
+  },
+  {
+   "id": "B009",
+   "verdict": "unverifiable",
+   "category": "覆盖范围外类型",
+   "correct": true,
+   "note": "学位论文，按规则不查，判待人工"
+  },
+  {
+   "id": "B010",
+   "verdict": "verified",
+   "category": "核实正确",
+   "correct": true,
+   "source": "期刊官网",
+   "note": "期刊官网记录与引文是同一篇：题名、作者、刊名、年份一致，2012 第 67 卷 第 9 期 1165-1180 页"
+  },
+  {
+   "id": "B011",
+   "verdict": "unverifiable",
+   "category": "联网检索没找到",
+   "correct": true,
+   "note": "知网、万方、维普和不限站点检索都没找到题名一致、读得到作者的页面（或官网页面连不上、没有元数据）；查不到不代表不存在"
+  },
+  {
+   "id": "B012",
+   "verdict": "unverifiable",
+   "category": "覆盖范围外类型",
+   "correct": true,
+   "note": "报告，按规则不查，判待人工"
+  },
+  {
+   "id": "B013",
+   "verdict": "unverifiable",
+   "category": "覆盖范围外类型",
+   "correct": true,
+   "note": "图书，按规则不查，判待人工"
+  },
+  {
+   "id": "B014",
+   "verdict": "near_match",
+   "category": "相近候选（同一篇）",
+   "correct": true,
+   "source": "知网",
+   "note": "候选就是引文的那篇文章（知网：橡胶树白粉病防治决策模型研究；余卓桐、肖倩莼、黄武仁、陈永强、伍树明、范会雄、陈仕廉、苏彰前）；引文只写“卷: 页”，知网记录没有卷号、页码是期内页码，卷期页码核对不了。没有断言写错，只是不能确认"
+  },
+  {
+   "id": "B015",
+   "verdict": "unverifiable",
+   "category": "覆盖范围外类型",
+   "correct": true,
+   "note": "学位论文，按规则不查，判待人工"
+  },
+  {
+   "id": "B016",
+   "verdict": "verified",
+   "category": "核实正确",
+   "correct": true,
+   "source": "crossref",
+   "note": "Crossref 记录与引文（英文译名或中文原文）是同一篇，标准流程原本就能核实"
+  },
+  {
+   "id": "B017",
+   "verdict": "near_match",
+   "category": "相近候选（同一篇）",
+   "correct": true,
+   "source": "知网",
+   "note": "候选就是引文的那篇文章（知网：东天山大地构造演化的成矿示踪；王京彬、王玉往、何志军）；引文只写“卷: 页”，知网记录没有卷号、页码是期内页码，卷期页码核对不了。没有断言写错，只是不能确认"
+  },
+  {
+   "id": "B018",
+   "verdict": "unverifiable",
+   "category": "联网检索没找到",
+   "correct": true,
+   "note": "知网、万方、维普和不限站点检索都没找到题名一致、读得到作者的页面（或官网页面连不上、没有元数据）；查不到不代表不存在"
+  },
+  {
+   "id": "B019",
+   "verdict": "unverifiable",
+   "category": "覆盖范围外类型",
+   "correct": true,
+   "note": "学位论文，按规则不查，判待人工"
+  },
+  {
+   "id": "B020",
+   "verdict": "unverifiable",
+   "category": "覆盖范围外类型",
+   "correct": true,
+   "note": "图书，按规则不查，判待人工"
+  },
+  {
+   "id": "B021",
+   "verdict": "near_match",
+   "category": "相近候选（同一篇）",
+   "correct": true,
+   "source": "知网",
+   "note": "候选就是引文的那篇文章（知网：氢键有机框架材料在电化学能源存储和转换中的研究进展；方晨晨、许雪凤、张校源、代黎明、姚方磊、张文耀、付永胜、孙敬文、朱俊武）；引文只写“卷: 页”，知网记录没有卷号、页码是期内页码，卷期页码核对不了。没有断言写错，只是不能确认"
+  },
+  {
+   "id": "B022",
+   "verdict": "unverifiable",
+   "category": "覆盖范围外类型",
+   "correct": true,
+   "note": "学位论文，按规则不查，判待人工"
+  },
+  {
+   "id": "B023",
+   "verdict": "unverifiable",
+   "category": "覆盖范围外类型",
+   "correct": true,
+   "note": "图书，按规则不查，判待人工"
+  },
+  {
+   "id": "B024",
+   "verdict": "near_match",
+   "category": "相近候选（同一篇）",
+   "correct": true,
+   "source": "知网",
+   "note": "候选就是引文的那篇文章（知网：原子制造的物质科学基础；戴庆、宋凤麒、潘曹峰、刘开辉、姚广保、郑浩、谭元植、潘金波、杜灵杰、黄璞、王曾晖、陈辉、张晨栋、费付聪、徐红星、戴亚飞）；引文只写“卷: 页”，知网记录没有卷号、页码是期内页码，卷期页码核对不了。没有断言写错，只是不能确认"
+  },
+  {
+   "id": "B025",
+   "verdict": "unverifiable",
+   "category": "覆盖范围外类型",
+   "correct": true,
+   "note": "专利，按规则不查，判待人工"
+  },
+  {
+   "id": "B026",
+   "verdict": "unverifiable",
+   "category": "联网检索没找到",
+   "correct": true,
+   "note": "知网、万方、维普和不限站点检索都没找到题名一致、读得到作者的页面（或官网页面连不上、没有元数据）；查不到不代表不存在"
+  },
+  {
+   "id": "B027",
+   "verdict": "unverifiable",
+   "category": "联网检索没找到",
+   "correct": true,
+   "note": "知网、万方、维普和不限站点检索都没找到题名一致、读得到作者的页面（或官网页面连不上、没有元数据）；查不到不代表不存在"
+  },
+  {
+   "id": "B028",
+   "verdict": "near_match",
+   "category": "相近候选（同一篇）",
+   "correct": true,
+   "source": "知网",
+   "note": "候选就是引文的那篇文章（知网：论东亚夏季风的特征、驱动力与年代际变化；丁一汇、司东、柳艳菊、王遵娅、李怡、赵亮、宋亚芳）；引文只写“卷: 页”，知网记录没有卷号、页码是期内页码，卷期页码核对不了。没有断言写错，只是不能确认"
+  },
+  {
+   "id": "B029",
+   "verdict": "unverifiable",
+   "category": "联网检索没找到",
+   "correct": true,
+   "note": "知网、万方、维普和不限站点检索都没找到题名一致、读得到作者的页面（或官网页面连不上、没有元数据）；查不到不代表不存在"
+  },
+  {
+   "id": "B030",
+   "verdict": "unverifiable",
+   "category": "联网检索没找到",
+   "correct": true,
+   "note": "知网、万方、维普和不限站点检索都没找到题名一致、读得到作者的页面（或官网页面连不上、没有元数据）；查不到不代表不存在"
+  },
+  {
+   "id": "B031",
+   "verdict": "unverifiable",
+   "category": "覆盖范围外类型",
+   "correct": true,
+   "note": "标准，按规则不查，判待人工"
+  },
+  {
+   "id": "B032",
+   "verdict": "near_match",
+   "category": "相近候选（同一篇）",
+   "correct": true,
+   "source": "知网",
+   "note": "候选就是引文的那篇文章（知网：基于重要性——绩效表现分析的上海苏州河滨水空间文化性生态系统服务供需关系分析与优化；王敏、邱明、汪洁琼、彭英）；引文只写“卷: 页”，知网记录没有卷号、页码是期内页码，卷期页码核对不了。没有断言写错，只是不能确认"
+  },
+  {
+   "id": "B033",
+   "verdict": "unverifiable",
+   "category": "联网检索没找到",
+   "correct": true,
+   "note": "知网、万方、维普和不限站点检索都没找到题名一致、读得到作者的页面（或官网页面连不上、没有元数据）；查不到不代表不存在"
+  },
+  {
+   "id": "B034",
+   "verdict": "unverifiable",
+   "category": "覆盖范围外类型",
+   "correct": true,
+   "note": "网页，按规则不查，判待人工"
+  },
+  {
+   "id": "B035",
+   "verdict": "near_match",
+   "category": "相近候选（同一篇）",
+   "correct": true,
+   "source": "期刊官网",
+   "note": "候选就是引文的那篇文章（期刊官网：美国荒野地游客教育系统及对我国的借鉴意义；杜颖、蔡君）；期刊官网页面没有年份，年份核对不了。没有断言写错，只是不能确认"
+  },
+  {
+   "id": "B036",
+   "verdict": "verified",
+   "category": "核实正确",
+   "correct": true,
+   "source": "知网",
+   "note": "知网记录与引文是同一篇：题名、作者、刊名、年份一致，2015 第 4 期"
+  },
+  {
+   "id": "B037",
+   "verdict": "unverifiable",
+   "category": "联网检索没找到",
+   "correct": true,
+   "note": "知网、万方、维普和不限站点检索都没找到题名一致、读得到作者的页面（或官网页面连不上、没有元数据）；查不到不代表不存在"
+  },
+  {
+   "id": "B038",
+   "verdict": "verified",
+   "category": "核实正确",
+   "correct": true,
+   "source": "知网",
+   "note": "知网记录与引文是同一篇：题名、作者、刊名、年份一致，2024 第 8 期"
+  },
+  {
+   "id": "B039",
+   "verdict": "verified",
+   "category": "核实正确",
+   "correct": true,
+   "source": "知网",
+   "note": "知网记录与引文是同一篇：题名、作者、刊名、年份一致，2019 第 2 期"
+  },
+  {
+   "id": "B040",
+   "verdict": "verified",
+   "category": "核实正确",
+   "correct": true,
+   "source": "知网",
+   "note": "知网记录与引文是同一篇：题名、作者、刊名、年份一致，2021 第 1 期"
+  },
+  {
+   "id": "B041",
+   "verdict": "verified",
+   "category": "核实正确",
+   "correct": true,
+   "source": "知网",
+   "note": "知网记录与引文是同一篇：题名、作者、刊名、年份一致，2011 第 1 期"
+  },
+  {
+   "id": "B042",
+   "verdict": "error",
+   "category": "数据源限流",
+   "correct": null,
+   "note": "Crossref 返回 429，没有走到中文联网核查；与本功能无关，稍后重试即可"
+  },
+  {
+   "id": "B043",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "引文只写了作者、刊名、年卷期页，没有题名，按题名查不了"
+  },
+  {
+   "id": "B044",
+   "verdict": "unverifiable",
+   "category": "覆盖范围外类型",
+   "correct": true,
+   "note": "学位论文，按规则不查，判待人工"
+  },
+  {
+   "id": "B045",
+   "verdict": "unverifiable",
+   "category": "覆盖范围外类型",
+   "correct": true,
+   "note": "学位论文，按规则不查，判待人工"
+  },
+  {
+   "id": "B046",
+   "verdict": "verified",
+   "category": "核实正确",
+   "correct": true,
+   "source": "知网",
+   "note": "知网记录与引文是同一篇：题名、作者、刊名、年份一致，2014 第 9 期"
+  },
+  {
+   "id": "B047",
+   "verdict": "verified",
+   "category": "核实正确",
+   "correct": true,
+   "source": "知网",
+   "note": "知网记录与引文是同一篇：题名、作者、刊名、年份一致，2022 第 9 期"
+  },
+  {
+   "id": "B048",
+   "verdict": "unverifiable",
+   "category": "覆盖范围外类型",
+   "correct": true,
+   "note": "学位论文，按规则不查，判待人工"
+  },
+  {
+   "id": "B049",
+   "verdict": "near_match",
+   "category": "相近候选（同一篇）",
+   "correct": true,
+   "source": "知网",
+   "note": "候选就是引文的那篇文章（知网：弱筋小麦品质评价指标研究；李曼、张晓、刘大同、江伟、高德荣、张勇）；引文只写“卷: 页”，知网记录没有卷号、页码是期内页码，卷期页码核对不了。没有断言写错，只是不能确认"
+  },
+  {
+   "id": "B050",
+   "verdict": "near_match",
+   "category": "相近候选（同一篇）",
+   "correct": true,
+   "source": "知网",
+   "note": "候选就是引文的那篇文章（知网：中国传统园林中的景境观念与营造；顾凯）；引文只写“卷: 页”，知网记录没有卷号、页码是期内页码，卷期页码核对不了。没有断言写错，只是不能确认"
+  },
+  {
+   "id": "B051",
+   "verdict": "unverifiable",
+   "category": "覆盖范围外类型",
+   "correct": true,
+   "note": "图书，按规则不查，判待人工"
+  },
+  {
+   "id": "B052",
+   "verdict": "verified",
+   "category": "核实正确",
+   "correct": true,
+   "source": "知网",
+   "note": "知网记录与引文是同一篇：题名、作者、刊名、年份一致，2016 第 6 期"
+  },
+  {
+   "id": "B053",
+   "verdict": "verified",
+   "category": "核实正确",
+   "correct": true,
+   "source": "知网",
+   "note": "知网记录与引文是同一篇：题名、作者、刊名、年份一致，2014 第 9 期"
+  },
+  {
+   "id": "B054",
+   "verdict": "verified",
+   "category": "核实正确",
+   "correct": true,
+   "source": "知网",
+   "note": "知网记录与引文是同一篇：题名、作者、刊名、年份一致，2022 第 6 期"
+  },
+  {
+   "id": "B055",
+   "verdict": "unverifiable",
+   "category": "覆盖范围外类型",
+   "correct": true,
+   "note": "网页，按规则不查，判待人工"
+  },
+  {
+   "id": "B056",
+   "verdict": "verified",
+   "category": "核实正确",
+   "correct": true,
+   "source": "期刊官网",
+   "note": "期刊官网记录与引文是同一篇：题名、作者、刊名、年份一致，2021 第 42 卷 第 9 期 22-31 页"
+  },
+  {
+   "id": "B057",
+   "verdict": "unverifiable",
+   "category": "联网检索没找到",
+   "correct": true,
+   "note": "知网、万方、维普和不限站点检索都没找到题名一致、读得到作者的页面（或官网页面连不上、没有元数据）；查不到不代表不存在"
+  },
+  {
+   "id": "B058",
+   "verdict": "unverifiable",
+   "category": "联网检索没找到",
+   "correct": true,
+   "note": "知网、万方、维普和不限站点检索都没找到题名一致、读得到作者的页面（或官网页面连不上、没有元数据）；查不到不代表不存在"
+  },
+  {
+   "id": "B059",
+   "verdict": "verified",
+   "category": "核实正确",
+   "correct": true,
+   "source": "期刊官网",
+   "note": "期刊官网记录与引文是同一篇：题名、作者、刊名、年份一致，2024 第 50 卷 第 8 期 1948-1960 页"
+  },
+  {
+   "id": "B060",
+   "verdict": "verified",
+   "category": "核实正确",
+   "correct": true,
+   "source": "知网",
+   "note": "知网记录与引文是同一篇：题名、作者、刊名、年份一致，2025 第 2 期"
+  },
+  {
+   "id": "B061",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B062",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B063",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B064",
+   "verdict": "error",
+   "category": "数据源限流",
+   "correct": null,
+   "note": "Crossref 返回 429，没有走到中文联网核查；与本功能无关，稍后重试即可"
+  },
+  {
+   "id": "B065",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B066",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B067",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B068",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B069",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B070",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B071",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B072",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B073",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B074",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B075",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B076",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B077",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B078",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B079",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B080",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B081",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B082",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B083",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B084",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B085",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B086",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B087",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B088",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B089",
+   "verdict": "unverifiable",
+   "category": "引文没有题名",
+   "correct": true,
+   "note": "物理类期刊“作者 年份 刊名 卷 页”的写法，没有题名，联网核查按题名查不了；Crossref 也没核实到（另记为后续改进）"
+  },
+  {
+   "id": "B090",
+   "verdict": "unverifiable",
+   "category": "覆盖范围外类型",
+   "correct": true,
+   "note": "图书，按规则不查，判待人工"
+  }
+ ]
+}
