@@ -36,6 +36,7 @@ export const STEP_SOURCE: Record<CheckStep["action"], string> = {
   doi_lookup: "Crossref",
   doi_registry: "doi.org",
   doi_csl: "doi.org",
+  doi_chndoi: "中国 DOI",
   crossref_search: "Crossref",
   crossref_journal: "Crossref",
   openalex_lookup: "OpenAlex",

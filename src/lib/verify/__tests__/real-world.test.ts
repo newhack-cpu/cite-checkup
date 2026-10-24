@@ -5,6 +5,9 @@ import { detectKind, extractDoi, extractYear, guessAuthors, guessTitle, guessVen
 import { fieldChecks, scoreCandidate, venueSimilarity } from "../match";
 import type { WorkRecord } from "../types";
 
+// 知网登记的 DOI 会读中国 DOI 注册机构的解析页，取页前要解析域名；测试里固定成公网地址，不联网
+vi.mock("node:dns/promises", () => ({ lookup: vi.fn(async () => [{ address: "203.0.113.10", family: 4 }]) }));
+
 const RAW = {
   D003: "Council, E. (2002). Council Directive 2001/110/EC of 20 December 2001 relating to honey. In (pp. p. 47–52). Official Journal of the European Communities: Official Journal of the European Communities.",
   D005: "Onenerk AM, Ozdemir HG, Ozkara S, Aker Vardar F, Ustaalioglu Oven B. KRAS/NRAS mutational analysis and clinicopathologic correlation of colorectal carcinoma: a single institute experience from Turkey. J Med Surg Res 2021;VIII:1022–9.",

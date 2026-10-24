@@ -4,6 +4,7 @@
 //    知网页面上的页码多是期内页码，和引文、印刷版的卷内页码对不上（23 条里只有 1 条一致），所以不取页码。
 // 2. 期刊官网的文章页：citation_* / DC.* / PRISM 元数据（作者、刊名、卷、期、页、DOI、ISSN）。
 // 3. 知网的期刊页：刊物的 ISSN，供 Crossref 按卷、页定位。
+// 4. 中国 DOI 注册机构的解析页：知网登记的 DOI 登记的是哪篇论文（题名、作者）。
 // 只读、不登录、不碰验证码页，请求头如实写明是本工具；有的期刊官网会拒绝这样的请求（HTTP 403），这时跳过。
 // 学校 WebVPN 镜像、文库、学术搜索聚合站、机构知识库这类转载站一律不当来源。
 // 网址来自搜索结果，服务器替用户去请求：只请求公网地址，跳转逐跳检查，防止被引去访问本机、内网或云服务器元数据地址（SSRF）。
@@ -428,6 +429,28 @@ export function fetchJournalArticle(url: string, citedTitleHan: boolean, signal?
       },
     };
   });
+}
+
+/**
+ * 中国 DOI 注册机构（chndoi.org）的解析页 → 这个 DOI 登记的题名、作者。知网（CNKI）登记的 DOI 不支持 doi.org 内容协商，
+ * 这一页就是它在 DOI 系统里登记的落地页；页上“来源”“出版年”多是空的（2026-10-23 实测），所以只用来判断 DOI 属于哪篇
+ */
+export function parseChndoi(html: string, doi: string, url: string): PageResult<WorkRecord> {
+  const field = (label: string) => clean(html.match(new RegExp(`<label>\\s*${label}\\s*[：:]\\s*</label>([^<]*)`))?.[1] ?? "");
+  const title = field("题名");
+  if (!title || field("DOI码").toLowerCase() !== doi.toLowerCase()) return { reason: "解析页上没有这个 DOI 的登记信息" };
+  const venue = field("来源");
+  return {
+    value: {
+      source: "doi-csl", doi: doi.toLowerCase(), title, authors: splitNames([field("作者")]), venue: venue || undefined,
+      year: validYear(Number(field("出版年"))), type: "journal-article", url,
+    },
+  };
+}
+
+export function fetchChndoi(doi: string, signal?: AbortSignal): Promise<PageResult<WorkRecord>> {
+  const url = `https://www.chndoi.org/Resolution/Handler?doi=${encodeURIComponent(doi)}`;
+  return cachedPage(url, signal, (html) => parseChndoi(html, doi, url));
 }
 
 /** 知网文献编号开头的字母是刊物代码 */

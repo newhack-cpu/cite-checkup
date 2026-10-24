@@ -113,6 +113,8 @@ export interface CheckStep {
     | "doi_lookup"
     | "doi_registry"
     | "doi_csl"
+    /** 知网登记的 DOI：读中国 DOI 注册机构的解析页，看这个 DOI 登记的是哪篇论文 */
+    | "doi_chndoi"
     | "crossref_search"
     | "crossref_journal"
     | "openalex_lookup"

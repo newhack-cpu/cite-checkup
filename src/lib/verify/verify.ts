@@ -1,5 +1,5 @@
 // 单条文献的核验流程：
-// 1. 有 DOI → Crossref 直查；查不到再问 doi.org 这个 DOI 是否注册、取元数据
+// 1. 有 DOI → Crossref 直查；查不到再问 doi.org 这个 DOI 是否注册、取元数据；知网登记的 DOI 取不到元数据，读中国 DOI 注册机构的解析页看它登记的是哪篇
 // 2. DOI 没对上同一篇 → Crossref 整条引文模糊检索
 // 3. 还没找到且是英文文献 → OpenAlex 题名检索兜底（消耗额度，按请求限次）
 // 4. 还没找到且是中文期刊论文 → DeepSeek 搜索接口在知网、万方、维普找原文页，再读原文页面补作者（见 cnjournal.ts；没配置密钥时跳过）
@@ -9,7 +9,7 @@ import { chineseJournalView, defaultCnBudget, lookupChineseJournal, type CnBudge
 import { suggestCitation } from "./format";
 import { UpstreamError } from "./http";
 import { nameOnly, notReference } from "./extract";
-import { dice, normalizeText, stripRetractionPrefix } from "./normalize";
+import { dice, isCjk, normalizeText, stripRetractionPrefix } from "./normalize";
 import {
   chineseOrganizationCited,
   fieldChecks,
@@ -24,6 +24,7 @@ import {
   type MatchScore,
 } from "./match";
 import { crossrefByDoi, crossrefJournals, crossrefSearch } from "./sources/crossref";
+import { fetchChndoi } from "./sources/cnpage";
 import { doiCsl, doiRegistry, type RegistryStatus } from "./sources/doi";
 import { openalexByDoi, openalexSearchTitle, openalexSourceTitles } from "./sources/openalex";
 import type { CheckStep, ParsedRef, RefKind, RefResult, WorkRecord } from "./types";
@@ -47,6 +48,8 @@ interface DoiEvidence {
   openalexSkipped?: boolean;
   /** 已经到知网、万方、维普联网查过（查到与否都算） */
   cnSearched?: boolean;
+  /** 知网登记的 DOI：中国 DOI 注册机构登记的题名、作者与引文一致。登记信息没有年份、期刊和卷期页，只说明 DOI 属于这一篇 */
+  doiRegistered?: WorkRecord;
 }
 
 const OUT_OF_SCOPE: Partial<Record<RefKind, string>> = {
@@ -309,6 +312,19 @@ export async function verifyReference(ref: ParsedRef, ctx: VerifyContext, extra?
         }
       }
       if (evidence.doiRecord) candidates.push(evidence.doiRecord);
+      else if (evidence.registry?.ra === "CNKI") {
+        // 知网登记的 DOI 取不到元数据：读中国 DOI 注册机构的解析页，只用来判断这个 DOI 登记的是不是这一篇；
+        // 登记信息没有年份、期刊和卷期页，不当作候选，也不据此判已核实
+        const reg = await step(steps, "doi_chndoi", () => fetchChndoi(doi, ctx.signal), (r) =>
+          r.value
+            ? { detail: `中国 DOI 注册机构：该 DOI 登记的是《${short(r.value.title)}》（${formatAuthorsShort(r.value.authors, 3) || "作者不详"}）`, ok: true }
+            : { detail: `中国 DOI 注册机构的解析页：${r.reason ?? "没有读到登记信息"}`, ok: false },
+        );
+        const owner = reg.value ? doiOwner(ref, reg.value) : undefined;
+        // 登记的是另一篇：和 DOI 指向别的文献一样处理（DOI 去掉，免得按“DOI 一致”认成同一篇）
+        if (owner === "other") evidence.doiRecord = { ...reg.value!, doi: undefined };
+        else if (owner === "same") evidence.doiRegistered = reg.value;
+      }
     }
 
     const doiIsSame = evidence.doiRecord ? scoreCandidate(ref, evidence.doiRecord).same : false;
@@ -445,6 +461,18 @@ export async function verifyReference(ref: ParsedRef, ctx: VerifyContext, extra?
   }
 }
 
+/**
+ * 中国 DOI 注册机构登记的题名、作者和引文比：same 是这一篇（题名几乎一致、第一作者对上）；
+ * other 是另一篇（题名明显不同、第一作者也对不上）；中文题名对英文译名这类比不了的，以及介于两者之间的，都不下判断
+ */
+function doiOwner(ref: ParsedRef, rec: WorkRecord): "same" | "other" | undefined {
+  if (!ref.titleGuess || isCjk(ref.titleGuess.trim()[0] ?? "") !== isCjk(rec.title.trim()[0] ?? "")) return undefined;
+  const s = scoreCandidate(ref, { ...rec, doi: undefined });
+  if (s.titleScore >= 0.9 && s.firstAuthor === "match") return "same";
+  if (s.titleScore < 0.5 && s.firstAuthor === "mismatch") return "other";
+  return undefined;
+}
+
 /** 判"期刊名不符"之前，先查该刊登记过的其他名称（外文刊名、旧刊名、缩写） */
 async function withVenueAlias(
   ref: ParsedRef,
@@ -530,6 +558,7 @@ function judgeSame(ref: ParsedRef, rec: WorkRecord, s: MatchScore, steps: CheckS
     // 网页记录没有 DOI 时，引文里的 DOI 仍要看注册情况：没注册、指向别的文献都算写错
     if (ev.registry?.exists === false) issues.push(`引用中的 DOI ${ref.doi} 在 doi.org 查无注册记录`);
     else if (ev.doiRecord && !scoreCandidate(ref, ev.doiRecord).same) issues.push(`引用中的 DOI 指向另一篇文献《${short(ev.doiRecord.title)}》`);
+    else if (ev.doiRegistered) notes.push("中国 DOI 注册机构登记的题名、作者与引文一致，DOI 属于这一篇");
   }
   // 数据库记录可能是另一版本、转载或软件包的总 DOI：年份差得远时提示核对版本，不算写错
   const otherVersion = s.yearDiff !== undefined && s.yearDiff > 1 && yearVaries(ref, rec);
@@ -693,6 +722,13 @@ function judgeNotSame(ref: ParsedRef, best: Ranked | undefined, steps: CheckStep
   }
 
   if (ref.doi && ev.registry?.exists) {
+    if (ev.doiRegistered) {
+      return {
+        ...b, verdict: "unverifiable", confidence: 0,
+        notes: [`中国 DOI 注册机构登记的题名、作者与引文一致，文献存在（${ev.doiRegistered.url}）；登记信息里没有年份、期刊和卷期页，这几项请对照原文核对`],
+        summary: "DOI 登记的题名、作者与引文一致；年份、期刊、卷期页没有可比对的记录，请人工核对",
+      };
+    }
     return {
       ...b, verdict: "unverifiable", confidence: 0,
       notes: [`DOI 已在 ${ev.registry.ra ?? "注册机构"} 注册，可打开 https://doi.org/${ref.doi} 人工核对`],
