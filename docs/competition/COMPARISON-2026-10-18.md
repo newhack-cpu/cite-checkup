@@ -85,12 +85,27 @@
 - 联网 AI 用的是我们搭的工具调用流程，不等于聊天网页里的“联网搜索”模式。
 - 数据集在规则定稿后构建、只跑这一轮；但真实正确类来自已经看过的盲测集，本系统在这些条目上的表现与盲测时相同，不是新的独立评估。
 
+## 补跑：标准体检加入中文期刊联网核查之后（10-22）
+
+10-20 起标准体检会对 Crossref 没确认的中文期刊论文做联网核查（见 [README](../../README.md#中文期刊联网核查评测)）。这批 20 条中文 10-18 已经看过，只能算回归：用 `--systems=rules-cn` 重跑了一次，没有重算上面的汇总表（[逐条结果](../../eval/results/compare-2026-10-18/rules-cn.json)）。
+
+| 中文 20 条 | 已核实 | 相近候选 | 信息有误 / 疑似不存在 | 待人工 |
+|---|---|---|---|---|
+| 真实 10 条：规则核验（10-18） | 1 | 0 | 0 / 0 | 9 |
+| 真实 10 条：加联网核查 | 3（知网 2、Crossref 1） | 7 | 0 / 0 | 0 |
+| 虚构 10 条：规则核验（10-18） | 0 | 0 | 0 / 0 | 10 |
+| 虚构 10 条：加联网核查 | 0 | 1 | 0 / 0 | 9 |
+
+虚构那 1 条相近候选是知网上题名相近的另一篇（《高校教师数字素养的构成要素及提升路径研究》，湖北师范大学学报（哲学社会科学版），2025），卡片写的是“没有作者信息，不能确认是同一篇”。真实的 7 条相近候选与中文回归时的结论相同，回归复核时这些候选都是引文那篇：3 条作者、刊名、年份都对上，只是知网没有卷号、卷期页码核对不了；3 条在知网或万方的记录没有作者；1 条是同一篇，但期刊官网只给了英文刊名。联网核查让这 20 条平均每条约 12 秒（规则核验约 2 秒）。
+
 ## 复现
 
 ```bash
 NODE_USE_ENV_PROXY=1 pnpm exec tsx scripts/build-compare-set.mts
 NODE_USE_ENV_PROXY=1 pnpm exec tsx scripts/eval-compare.mts --systems=rules-crossref,rules,agent,ai-flash,ai-pro,ai-flash-search,ai-pro-search
 NODE_USE_ENV_PROXY=1 pnpm exec tsx scripts/eval-compare.mts --score
+# 10-22 补跑中文（知网不走代理：NO_PROXY 加 .cnki.net、.cnki.com.cn）
+NODE_USE_ENV_PROXY=1 pnpm exec tsx scripts/eval-compare.mts --systems=rules-cn --ids=Z-R01,Z-R02,Z-R03,Z-R04,Z-R05,Z-R06,Z-R07,Z-R08,Z-R09,Z-R10,Z-F01,Z-F02,Z-F03,Z-F04,Z-F05,Z-F06,Z-F07,Z-F08,Z-F09,Z-F10
 ```
 
 逐条原始输出（含模型的判断理由）在 [`eval/results/compare-2026-10-18/`](../../eval/results/compare-2026-10-18/)，汇总在 `summary.json` 和 `summary.md`。需要 `DEEPSEEK_API_KEY`；外部数据库和模型会变化，重跑数字可能不同。
