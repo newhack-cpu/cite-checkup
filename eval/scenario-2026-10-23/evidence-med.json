@@ -1,0 +1,1296 @@
+{
+  "collectedAt": "2026-10-23T16:38:02.052Z",
+  "entries": [
+    {
+      "id": "med-01",
+      "raw": "田娟秀, 刘国才, 谷珊珊, 等. 医学图像分析深度学习方法研究与挑战[J]. 自动化学报, 2018, 44(3): 401-424. DOI: 10.16383/j.aas.2018.c170153.",
+      "doi": "10.16383/j.aas.2018.c170153",
+      "title": "医学图像分析深度学习方法研究与挑战",
+      "evidence": {
+        "doiRegistry": "CNKI",
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.70693/cjmsr.v1i3.1764",
+            "title": "基于深度学习的医学图像合成：方法、应用与未来方向",
+            "authors": [
+              "杨莉"
+            ],
+            "year": 2025,
+            "venue": "中国医学科学研究",
+            "volume": "1",
+            "issue": "3",
+            "pages": "96-102"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.69979/3029-2808.24.12.031",
+            "title": "基于深度学习的肺结节 CT 图像自动分割算法优化",
+            "authors": [],
+            "year": 2024,
+            "venue": "医学研究",
+            "volume": "1",
+            "issue": "12"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.37155/2717-5316-0602-57",
+            "title": "基于深度学习的工程图像识别与分类研究",
+            "authors": [
+              "金旭杨"
+            ],
+            "year": 2025,
+            "venue": "工程学研究与实用",
+            "volume": "6",
+            "issue": "2",
+            "pages": "169-171"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.70693/cjmsr.v1i3.1764",
+            "title": "基于深度学习的医学图像合成：方法、应用与未来方向",
+            "authors": [
+              "杨莉"
+            ],
+            "year": 2025,
+            "venue": "中国医学科学研究",
+            "volume": "1",
+            "issue": "3",
+            "pages": "96-102"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.11834/jig.190470",
+            "title": "Application and challenges of deep learning in the intelligent processing of medical images",
+            "authors": [
+              "Yan Zuo",
+              "Gang Huang",
+              "聂生东 Nie Shengdong"
+            ],
+            "year": 2021,
+            "venue": "Journal of Image and Graphics",
+            "volume": "26",
+            "issue": "2",
+            "pages": "305-315"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.12238/er.v8i12.6659",
+            "title": "基于深度学习的图像识别技术研究",
+            "authors": [
+              "茂松 葛"
+            ],
+            "year": 2025,
+            "venue": "教育研究",
+            "volume": null,
+            "issue": null
+          }
+        ],
+        "chndoi": {
+          "url": "https://www.chndoi.org/Resolution/Handler?doi=10.16383%2Fj.aas.2018.c170153",
+          "status": 200,
+          "title": "医学图像分析深度学习方法研究与挑战",
+          "authors": [
+            "田娟秀",
+            "刘国才",
+            "谷珊珊",
+            "鞠忠建",
+            "刘劲光",
+            "顾冬冬"
+          ],
+          "registered": "2018-04-26 15:15:24"
+        }
+      }
+    },
+    {
+      "id": "med-02",
+      "raw": "张巧丽, 赵地, 迟学斌. 基于深度学习的医学影像诊断综述[J]. 计算机应用研究, 2017, 34(11): 3201-3207. DOI: 10.3969/j.issn.1001-3695.2017.11.001.",
+      "doi": "10.3969/j.issn.1001-3695.2017.11.001",
+      "title": "基于深度学习的医学影像诊断综述",
+      "evidence": {
+        "doiRegistry": "Error",
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.63887/fet.2025.1.9.33",
+            "title": "基于深度学习的医疗影像病灶分割与辅助诊断研究",
+            "authors": [
+              "张雷"
+            ],
+            "year": 2025,
+            "venue": "工程技术前沿",
+            "volume": "1",
+            "issue": "9"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.37155/2661-4766-0503-48",
+            "title": "人工智能在医学影像辅助诊断中的应用综述",
+            "authors": [
+              "薄　众",
+              "张宏莉"
+            ],
+            "year": 2023,
+            "venue": "临床医学前沿",
+            "volume": "5",
+            "issue": "3",
+            "pages": "145-147"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.37155/2717-5170-0702-48",
+            "title": "基于深度学习的医学影像中肿瘤自动检测算法研究",
+            "authors": [
+              "汪太平"
+            ],
+            "year": 2025,
+            "venue": "电子通信与计算机科学",
+            "volume": "7",
+            "issue": "2",
+            "pages": "142-144"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.70693/cjmsr.v1i3.1764",
+            "title": "基于深度学习的医学图像合成：方法、应用与未来方向",
+            "authors": [
+              "杨莉"
+            ],
+            "year": 2025,
+            "venue": "中国医学科学研究",
+            "volume": "1",
+            "issue": "3",
+            "pages": "96-102"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.3788/lop230488",
+            "title": "基于深度学习的稀疏或有限角度CT重建方法研究综述",
+            "authors": [
+              "Jianglei Di",
+              "林俊成 Lin Juncheng",
+              "钟丽云 Zhong Liyun",
+              "Qian Kemao",
+              "秦玉文 Qin Yuwen"
+            ],
+            "year": 2023,
+            "venue": "Laser & Optoelectronics Progress",
+            "volume": "60",
+            "issue": "8",
+            "pages": "0811002-0811002"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.11834/jig.250475",
+            "title": "应用证据深度学习的可信医学影像分析方法综述",
+            "authors": [
+              "Wen Xinhao",
+              "Liu Wei",
+              "Xiaodong Yue",
+              "Chen Yufei"
+            ],
+            "year": 2025,
+            "venue": "Journal of Image and Graphics",
+            "volume": "31",
+            "issue": "7",
+            "pages": "2505-2525"
+          }
+        ]
+      }
+    },
+    {
+      "id": "med-03",
+      "raw": "李华, 王伟, 张敏. 深度学习在肺结节CT影像辅助诊断中的研究进展[J]. 中国医学影像技术, 2020, 36(5): 765-770. DOI: 10.13929/j.issn.1003-3289.2020.05.030.",
+      "doi": "10.13929/j.issn.1003-3289.2020.05.030",
+      "title": "深度学习在肺结节CT影像辅助诊断中的研究进展",
+      "evidence": {
+        "doiRegistry": "CNKI",
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.63887/cn.2025.1.6.16",
+            "title": "CT影像诊断肺部结节的研究进展",
+            "authors": [
+              "刘思佳"
+            ],
+            "year": 2025,
+            "venue": "临床与护理",
+            "volume": "1",
+            "issue": "6"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.63887/cn.2025.1.6.22",
+            "title": "人工智能辅助诊断系统结合低剂量CT筛查诊断肺小结节的研究进展",
+            "authors": [
+              "王巧丽"
+            ],
+            "year": 2025,
+            "venue": "临床与护理",
+            "volume": "1",
+            "issue": "6"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.63887/fet.2025.1.9.33",
+            "title": "基于深度学习的医疗影像病灶分割与辅助诊断研究",
+            "authors": [
+              "张雷"
+            ],
+            "year": 2025,
+            "venue": "工程技术前沿",
+            "volume": "1",
+            "issue": "9"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.63887/cn.2025.1.6.16",
+            "title": "CT影像诊断肺部结节的研究进展",
+            "authors": [
+              "刘思佳"
+            ],
+            "year": 2025,
+            "venue": "临床与护理",
+            "volume": "1",
+            "issue": "6"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.61189/653155lhssdo",
+            "title": "深度学习辅助精细评估肺结节影像",
+            "authors": [
+              "春学 白",
+              "煜 朱"
+            ],
+            "year": 2026,
+            "venue": "元宇宙医学.",
+            "volume": "3",
+            "issue": "1",
+            "pages": "72-80"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.63887/fet.2025.1.9.33",
+            "title": "基于深度学习的医疗影像病灶分割与辅助诊断研究",
+            "authors": [
+              "张雷"
+            ],
+            "year": 2025,
+            "venue": "工程技术前沿",
+            "volume": "1",
+            "issue": "9"
+          }
+        ],
+        "chndoi": {
+          "url": "https://www.chndoi.org/Resolution/Handler?doi=10.13929%2Fj.issn.1003-3289.2020.05.030",
+          "status": 200,
+          "title": "影像学术前预测肝细胞肝癌微血管侵犯研究进展",
+          "authors": [
+            "邱艺杰",
+            "董怡"
+          ],
+          "registered": "2021-01-06 05:01:24"
+        }
+      }
+    },
+    {
+      "id": "med-04",
+      "raw": "王磊, 刘洋, 陈静. 卷积神经网络在乳腺X线影像诊断中的应用综述[J]. 生物医学工程学杂志, 2021, 38(2): 391-398. DOI: 10.7507/1001-5515.202007039.",
+      "doi": "10.7507/1001-5515.202007039",
+      "title": "卷积神经网络在乳腺X线影像诊断中的应用综述",
+      "evidence": {
+        "doiRegistry": "ISTIC",
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.12677/airr.2018.71002",
+            "title": "Summary of Application of Convolution Neural Network on Image Classification",
+            "authors": [
+              "杨"
+            ],
+            "year": 2018,
+            "venue": "Artificial Intelligence and Robotics Research",
+            "volume": "07",
+            "issue": "01",
+            "pages": "17-24"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.12677/acm.2023.13102287",
+            "title": "Application of Convolutional Neural Network in Ultrasound Diagnosis of Lymph Nodes",
+            "authors": [
+              "伍"
+            ],
+            "year": 2023,
+            "venue": "Advances in Clinical Medicine",
+            "volume": "13",
+            "issue": "10",
+            "pages": "16349-16354"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.37155/2661-4766-0405-11",
+            "title": "动态增强MRI与乳腺X线摄影在乳腺病变诊断中的应用对比",
+            "authors": [
+              "白国栋"
+            ],
+            "year": 2022,
+            "venue": "临床医学前沿",
+            "volume": "4",
+            "issue": "5",
+            "pages": "31-33"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.37188/ope.20253324.3931",
+            "title": "卷积神经网络结合荧光光谱在乳腺癌分型上的应用研究",
+            "authors": [
+              "HUANG Hanlin",
+              "GUAN Tao",
+              "QIN Yanli",
+              "SHEN Longhai",
+              "QI Dongli",
+              "LI Hongda"
+            ],
+            "year": 2025,
+            "venue": "Optics and Precision Engineering",
+            "volume": "33",
+            "issue": "24",
+            "pages": "3931-3939"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.3788/lop231464",
+            "title": "深度学习在甲状腺结节良恶性分类中的应用进展",
+            "authors": [
+              "张文凯 Zhang Wenkai",
+              "王晓燕 Wang Xiaoyan",
+              "刘静 Liu Jing",
+              "周启香 Zhou Qixiang",
+              "贺鑫 He Xin"
+            ],
+            "year": 2024,
+            "venue": "Laser & Optoelectronics Progress",
+            "volume": "61",
+            "issue": "8",
+            "pages": "0800002-0800002"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.3788/lop240875",
+            "title": "从U-Net到Transformer：混合模型在医学图像分割中的应用进展",
+            "authors": [
+              "尹艺晓 Yin Yixiao",
+              "马金刚 Ma Jingang",
+              "张文凯 Zhang Wenkai",
+              "姜良 Jiang Liang"
+            ],
+            "year": 2025,
+            "venue": "Laser & Optoelectronics Progress",
+            "volume": "62",
+            "issue": "2",
+            "pages": "0200001-0200001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "med-05",
+      "raw": "陈晓, 赵俊, 周涛. 基于深度学习的脑肿瘤MRI图像分割与诊断研究进展[J]. 中国生物医学工程学报, 2022, 41(1): 108-117. DOI: 10.3969/j.issn.0258-8021.2022.01.012.",
+      "doi": "10.3969/j.issn.0258-8021.2022.01.012",
+      "title": "基于深度学习的脑肿瘤MRI图像分割与诊断研究进展",
+      "evidence": {
+        "doiRegistry": "ISTIC",
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.12677/mos.2025.144309",
+            "title": "Research on Brain Tumor Image Segmentation Methods Based on Deep Learning",
+            "authors": [
+              "赵"
+            ],
+            "year": 2025,
+            "venue": "Modeling and Simulation",
+            "volume": "14",
+            "issue": "04",
+            "pages": "555-565"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.63887/fet.2025.1.9.33",
+            "title": "基于深度学习的医疗影像病灶分割与辅助诊断研究",
+            "authors": [
+              "张雷"
+            ],
+            "year": 2025,
+            "venue": "工程技术前沿",
+            "volume": "1",
+            "issue": "9"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.37155/2717-5316-0602-57",
+            "title": "基于深度学习的工程图像识别与分类研究",
+            "authors": [
+              "金旭杨"
+            ],
+            "year": 2025,
+            "venue": "工程学研究与实用",
+            "volume": "6",
+            "issue": "2",
+            "pages": "169-171"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.11834/jig.190173",
+            "title": "Review of deep learning methods for MRI brain tumor image segmentation",
+            "authors": [
+              "Zongkang Jiang",
+              "Xiaogang Lyu",
+              "Jianxin Zhang",
+              "Qiang Zhang",
+              "Xiaopeng Wei"
+            ],
+            "year": 2020,
+            "venue": "Journal of Image and Graphics",
+            "volume": "25",
+            "issue": "2",
+            "pages": "215-228"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.3788/lop242385",
+            "title": "U-Net及其变体在脑肿瘤图像分割中的应用进展",
+            "authors": [
+              "王楠 Wang Nan",
+              "王华 Wang Hua",
+              "魏德健 Wei Dejian",
+              "姜良 Jiang Liang",
+              "韩佩宏 Han Peihong",
+              "曹慧 Cao Hui"
+            ],
+            "year": 2025,
+            "venue": "Laser & Optoelectronics Progress",
+            "volume": "62",
+            "issue": "16",
+            "pages": "1600002-1600002"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.70693/cjmsr.v1i3.1764",
+            "title": "基于深度学习的医学图像合成：方法、应用与未来方向",
+            "authors": [
+              "杨莉"
+            ],
+            "year": 2025,
+            "venue": "中国医学科学研究",
+            "volume": "1",
+            "issue": "3",
+            "pages": "96-102"
+          }
+        ]
+      }
+    },
+    {
+      "id": "med-06",
+      "raw": "刘芳, 杨帆, 孙鹏. 深度学习在视网膜病变辅助诊断中的应用[J]. 计算机工程与应用, 2021, 57(14): 33-42. DOI: 10.3778/j.issn.1002-8331.2103-0213.",
+      "doi": "10.3778/j.issn.1002-8331.2103-0213",
+      "title": "深度学习在视网膜病变辅助诊断中的应用",
+      "evidence": {
+        "doiRegistry": "Error",
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.12677/csa.2022.124120",
+            "title": "Research on the Detection Method of Diabetic Retinopathy Based on Deep Learning",
+            "authors": [
+              "黄"
+            ],
+            "year": 2022,
+            "venue": "Computer Science and Application",
+            "volume": "12",
+            "issue": "04",
+            "pages": "1175-1191"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.64216/3080-1508.25.06.069",
+            "title": "深度学习在电力工程设备故障诊断中的应用",
+            "authors": [],
+            "year": 2026,
+            "venue": "工程技术论坛",
+            "volume": "1",
+            "issue": "5"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.3788/lop57.241701",
+            "title": "Diagnosis Method of Diabetic Retinopathy Based on Deep Learning",
+            "authors": [
+              "Sun Yuchen",
+              "Liu Yuhong",
+              "Zhang Dafeng",
+              "Zhang Rongfen"
+            ],
+            "year": 2020,
+            "venue": "Laser &amp; Optoelectronics Progress",
+            "volume": "57",
+            "issue": "24",
+            "pages": "241701"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.3788/lop212505",
+            "title": "基于深度学习的糖尿病眼底病变检测研究",
+            "authors": [
+              "侯高峰 Hou Gaofeng",
+              "房丰洲 Fang Fengzhou"
+            ],
+            "year": 2023,
+            "venue": "Laser & Optoelectronics Progress",
+            "volume": "60",
+            "issue": "2",
+            "pages": "0217001-0217001"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.3788/lop232102",
+            "title": "深度学习在膝关节骨关节炎磁共振诊断中的研究进展",
+            "authors": [
+              "林书臣 Lin Shuchen",
+              "魏德健 Wei Dejian",
+              "张帅 Zhang Shuai",
+              "曹慧 Cao Hui",
+              "杜昱峥 Du Yuzheng"
+            ],
+            "year": 2024,
+            "venue": "Laser & Optoelectronics Progress",
+            "volume": "61",
+            "issue": "14",
+            "pages": "1400005-1400005"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.61189/653155lhssdo",
+            "title": "深度学习辅助精细评估肺结节影像",
+            "authors": [
+              "春学 白",
+              "煜 朱"
+            ],
+            "year": 2026,
+            "venue": "元宇宙医学.",
+            "volume": "3",
+            "issue": "1",
+            "pages": "72-80"
+          }
+        ]
+      }
+    },
+    {
+      "id": "med-07",
+      "raw": "Litjens G, Kooi T, Bejnordi B E, et al. A survey on deep learning in medical image analysis[J]. Medical Image Analysis, 2017, 42: 60-88. DOI: 10.1016/j.media.2017.07.005.",
+      "doi": "10.1016/j.media.2017.07.005",
+      "title": "A survey on deep learning in medical image analysis",
+      "evidence": {
+        "doiRegistry": "Crossref",
+        "doiRecord": {
+          "source": "crossref",
+          "doi": "10.1016/j.media.2017.07.005",
+          "title": "A survey on deep learning in medical image analysis",
+          "authors": [
+            "Litjens",
+            "Kooi",
+            "Bejnordi",
+            "Setio",
+            "Ciompi",
+            "Ghafoorian"
+          ],
+          "year": 2017,
+          "venue": "Medical Image Analysis",
+          "volume": "42",
+          "pages": "60-88"
+        },
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.1016/j.media.2021.102062",
+            "title": "A survey on active learning and human-in-the-loop deep learning for medical image analysis",
+            "authors": [
+              "Budd",
+              "Robinson",
+              "Kainz"
+            ],
+            "year": 2021,
+            "venue": "Medical Image Analysis",
+            "volume": "71",
+            "pages": "102062"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.1016/j.media.2024.103201",
+            "title": "A comprehensive survey on deep active learning in medical image analysis",
+            "authors": [
+              "Wang",
+              "Jin",
+              "Li",
+              "Liu",
+              "Wang",
+              "Song"
+            ],
+            "year": 2024,
+            "venue": "Medical Image Analysis",
+            "volume": "95",
+            "pages": "103201"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.1016/j.media.2024.103166",
+            "title": "A survey of label-noise deep learning for medical image analysis",
+            "authors": [
+              "Shi",
+              "Zhang",
+              "Guo",
+              "Yang",
+              "Xu",
+              "Wu"
+            ],
+            "year": 2024,
+            "venue": "Medical Image Analysis",
+            "volume": "95",
+            "pages": "103166"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.1016/j.media.2017.07.005",
+            "title": "A survey on deep learning in medical image analysis",
+            "authors": [
+              "Geert J. S. Litjens",
+              "Thijs Kooi",
+              "Babak Ehteshami Bejnordi",
+              "Arnaud A. A. Setio",
+              "Francesco Ciompi",
+              "Mohsen Ghafoorian"
+            ],
+            "year": 2017,
+            "venue": "Medical Image Analysis",
+            "volume": "42",
+            "issue": null,
+            "pages": "60-88"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1016/j.media.2021.101985",
+            "title": "A survey on incorporating domain knowledge into deep learning for medical image analysis",
+            "authors": [
+              "Xiaozheng Xie",
+              "Jianwei Niu",
+              "Xuefeng Liu",
+              "Zhengsu Chen",
+              "Shaojie Tang",
+              "Shui Yu"
+            ],
+            "year": 2021,
+            "venue": "Medical Image Analysis",
+            "volume": "69",
+            "issue": null,
+            "pages": "101985-101985"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1016/j.media.2024.103201",
+            "title": "A comprehensive survey on deep active learning in medical image analysis",
+            "authors": [
+              "Haoran Wang",
+              "Haoran Wang",
+              "Qiuye Jin",
+              "Shiman Li",
+              "Siyu Liu",
+              "Manning Wang"
+            ],
+            "year": 2024,
+            "venue": "Medical Image Analysis",
+            "volume": "95",
+            "issue": null,
+            "pages": "103201-103201"
+          }
+        ]
+      }
+    },
+    {
+      "id": "med-08",
+      "raw": "Shen D, Wu G, Suk H I. Deep learning in medical image analysis[J]. Annual Review of Biomedical Engineering, 2017, 19: 221-248. DOI: 10.1146/annurev-bioeng-071516-044442.",
+      "doi": "10.1146/annurev-bioeng-071516-044442",
+      "title": "Deep learning in medical image analysis",
+      "evidence": {
+        "doiRegistry": "Crossref",
+        "doiRecord": {
+          "source": "crossref",
+          "doi": "10.1146/annurev-bioeng-071516-044442",
+          "title": "Deep Learning in Medical Image Analysis",
+          "authors": [
+            "Shen",
+            "Wu",
+            "Suk"
+          ],
+          "year": 2017,
+          "venue": "Annual Review of Biomedical Engineering",
+          "volume": "19",
+          "issue": "1",
+          "pages": "221-248"
+        },
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.1049/pbhe059e_ch11",
+            "title": "Impact of machine learning and deep learning in medical image analysis",
+            "authors": [
+              "Rawal",
+              "Sethi",
+              "Walia"
+            ],
+            "year": 2023,
+            "venue": "Deep Learning in Medical Image Processing and Analysis",
+            "pages": "187-199"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.3390/books978-3-0365-1470-3",
+            "title": "Deep Learning in Medical Image Analysis",
+            "authors": [],
+            "year": 2021
+          },
+          {
+            "source": "crossref",
+            "doi": "10.1016/c2019-0-04630-4",
+            "title": "Deep Learning for Medical Image Analysis",
+            "authors": [],
+            "year": 2024
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.1146/annurev-bioeng-071516-044442",
+            "title": "Deep Learning in Medical Image Analysis",
+            "authors": [
+              "Dinggang G. Shen",
+              "Guorong Wu A",
+              "Heung‐Il Suk"
+            ],
+            "year": 2017,
+            "venue": "Annual Review of Biomedical Engineering",
+            "volume": "19",
+            "issue": "1",
+            "pages": "221-248"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1007/978-3-030-33128-3_1",
+            "title": "Deep Learning in Medical Image Analysis",
+            "authors": [
+              "Heang‐Ping Chan",
+              "Ravi K. Samala",
+              "Lubomir M. Hadjiiski",
+              "Chuan Zhou"
+            ],
+            "year": 2020,
+            "venue": "Advances in experimental medicine and biology",
+            "volume": "1213",
+            "issue": null,
+            "pages": "3-21"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1016/j.media.2017.07.005",
+            "title": "A survey on deep learning in medical image analysis",
+            "authors": [
+              "Geert J. S. Litjens",
+              "Thijs Kooi",
+              "Babak Ehteshami Bejnordi",
+              "Arnaud A. A. Setio",
+              "Francesco Ciompi",
+              "Mohsen Ghafoorian"
+            ],
+            "year": 2017,
+            "venue": "Medical Image Analysis",
+            "volume": "42",
+            "issue": null,
+            "pages": "60-88"
+          }
+        ]
+      }
+    },
+    {
+      "id": "med-09",
+      "raw": "Esteva A, Kuprel B, Novoa R A, et al. Dermatologist-level classification of skin cancer with deep neural networks[J]. Nature, 2017, 542(7639): 115-118. DOI: 10.1038/nature21056.",
+      "doi": "10.1038/nature21056",
+      "title": "Dermatologist-level classification of skin cancer with deep neural networks",
+      "evidence": {
+        "doiRegistry": "Crossref",
+        "doiRecord": {
+          "source": "crossref",
+          "doi": "10.1038/nature21056",
+          "title": "Dermatologist-level classification of skin cancer with deep neural networks",
+          "authors": [
+            "Esteva",
+            "Kuprel",
+            "Novoa",
+            "Ko",
+            "Swetter",
+            "Blau"
+          ],
+          "year": 2017,
+          "venue": "Nature",
+          "volume": "542",
+          "issue": "7639",
+          "pages": "115-118"
+        },
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.3410/f.727237185.793528556",
+            "title": "Faculty Opinions recommendation of Dermatologist-level classification of skin cancer with deep neural networks.",
+            "authors": [
+              "Williams"
+            ],
+            "year": 2017,
+            "venue": "Faculty Opinions – Post-Publication Peer Review of the Biomedical Literature"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.3410/f.727237185.793554281",
+            "title": "Faculty Opinions recommendation of Dermatologist-level classification of skin cancer with deep neural networks.",
+            "authors": [
+              "Ko"
+            ],
+            "year": 2018,
+            "venue": "Faculty Opinions – Post-Publication Peer Review of the Biomedical Literature"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.3410/f.727237185.793567345",
+            "title": "Faculty Opinions recommendation of Dermatologist-level classification of skin cancer with deep neural networks.",
+            "authors": [
+              "Sanz-Moreno"
+            ],
+            "year": 2019,
+            "venue": "Faculty Opinions – Post-Publication Peer Review of the Biomedical Literature"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.1038/nature21056",
+            "title": "Dermatologist-level classification of skin cancer with deep neural networks",
+            "authors": [
+              "Andre Esteva",
+              "Brett Kuprel",
+              "Roberto A. Novoa",
+              "Justin Ko",
+              "Susan M. Swetter",
+              "Helen M. Blau"
+            ],
+            "year": 2017,
+            "venue": "Nature",
+            "volume": "542",
+            "issue": "7639",
+            "pages": "115-118"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1038/nature22985",
+            "title": "Erratum: Corrigendum: Dermatologist-level classification of skin cancer with deep neural networks",
+            "authors": [
+              "Andre Esteva",
+              "Brett Kuprel",
+              "Roberto A. Novoa",
+              "Justin Ko",
+              "Susan M. Swetter",
+              "Helen M. Blau"
+            ],
+            "year": 2017,
+            "venue": "Nature",
+            "volume": "546",
+            "issue": "7660",
+            "pages": "686-686"
+          },
+          {
+            "source": "openalex",
+            "title": "Correction: Corrigendum: Dermatologist-level classification of skin cancer with deep neural networks",
+            "authors": [
+              "Andre Esteva",
+              "Brett Kuprel",
+              "Roberto A. Novoa",
+              "Justin Ko",
+              "Susan M. Swetter",
+              "Helen M. Blau"
+            ],
+            "year": null,
+            "venue": "RePEc: Research Papers in Economics",
+            "volume": null,
+            "issue": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "med-10",
+      "raw": "Gulshan V, Peng L, Coram M, et al. Development and validation of a deep learning algorithm for detection of diabetic retinopathy in retinal fundus photographs[J]. JAMA, 2016, 316(22): 2402-2410. DOI: 10.1001/jama.2016.17216.",
+      "doi": "10.1001/jama.2016.17216",
+      "title": "Development and validation of a deep learning algorithm for detection of diabetic retinopathy in retinal fundus photographs",
+      "evidence": {
+        "doiRegistry": "Crossref",
+        "doiRecord": {
+          "source": "crossref",
+          "doi": "10.1001/jama.2016.17216",
+          "title": "Development and Validation of a Deep Learning Algorithm for Detection of Diabetic Retinopathy in Retinal Fundus Photographs",
+          "authors": [
+            "Gulshan",
+            "Peng",
+            "Coram",
+            "Stumpe",
+            "Wu",
+            "Narayanaswamy"
+          ],
+          "year": 2016,
+          "venue": "JAMA",
+          "volume": "316",
+          "issue": "22",
+          "pages": "2402"
+        },
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.3410/f.727037150.793539297",
+            "title": "Faculty Opinions recommendation of Development and validation of a deep learning algorithm for detection of diabetic retinopathy in retinal fundus photographs.",
+            "authors": [
+              "Nguyen"
+            ],
+            "year": 2017,
+            "venue": "Faculty Opinions – Post-Publication Peer Review of the Biomedical Literature"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.1371/journal.pone.0217541",
+            "title": "Reproduction study using public data of: Development and validation of a deep learning algorithm for detection of diabetic retinopathy in retinal fundus photographs",
+            "authors": [
+              "Voets",
+              "Møllersen",
+              "Bongo"
+            ],
+            "year": 2019,
+            "venue": "PLOS ONE",
+            "volume": "14",
+            "issue": "6",
+            "pages": "e0217541"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.1167/tvst.8.6.4",
+            "title": "Automatic Detection of Diabetic Retinopathy in Retinal Fundus Photographs Based on Deep Learning Algorithm",
+            "authors": [
+              "Li",
+              "Liu",
+              "Chen",
+              "Jiang",
+              "Zhang",
+              "Wu"
+            ],
+            "year": 2019,
+            "venue": "Translational Vision Science &amp; Technology",
+            "volume": "8",
+            "issue": "6",
+            "pages": "4"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.1001/jama.2016.17216",
+            "title": "Development and Validation of a Deep Learning Algorithm for Detection of Diabetic Retinopathy in Retinal Fundus Photographs",
+            "authors": [
+              "Varun Gulshan",
+              "Lily H. Peng",
+              "Marc Coram",
+              "Martin C. Stumpe",
+              "Derek Wu",
+              "Arunachalam Narayanaswamy"
+            ],
+            "year": 2016,
+            "venue": "JAMA",
+            "volume": "316",
+            "issue": "22",
+            "pages": "2402-2402"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1371/journal.pone.0217541",
+            "title": "Reproduction study using public data of: Development and validation of a deep learning algorithm for detection of diabetic retinopathy in retinal fundus photographs",
+            "authors": [
+              "Mike Voets",
+              "Kajsa Møllersen",
+              "Lars Ailo Bongo"
+            ],
+            "year": 2019,
+            "venue": "PLoS ONE",
+            "volume": "14",
+            "issue": "6",
+            "pages": "e0217541-e0217541"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.3410/f.727037150.793539297",
+            "title": "Faculty Opinions recommendation of Development and validation of a deep learning algorithm for detection of diabetic retinopathy in retinal fundus photographs.",
+            "authors": [
+              "Quan Dong Nguyen"
+            ],
+            "year": 2017,
+            "venue": "Faculty Opinions – Post-Publication Peer Review of the Biomedical Literature",
+            "volume": null,
+            "issue": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "med-11",
+      "raw": "Setio A A A, Traverso A, de Bel T, et al. Validation, comparison, and combination of algorithms for automatic detection of pulmonary nodules in computed tomography images: the LUNA16 challenge[J]. Medical Image Analysis, 2017, 42: 1-13. DOI: 10.1016/j.media.2017.06.015.",
+      "doi": "10.1016/j.media.2017.06.015",
+      "title": "Validation, comparison, and combination of algorithms for automatic detection of pulmonary nodules in computed tomography images: the LUNA16 challenge",
+      "evidence": {
+        "doiRegistry": "Crossref",
+        "doiRecord": {
+          "source": "crossref",
+          "doi": "10.1016/j.media.2017.06.015",
+          "title": "Validation, comparison, and combination of algorithms for automatic detection of pulmonary nodules in computed tomography images: The LUNA16 challenge",
+          "authors": [
+            "Setio",
+            "Traverso",
+            "de Bel",
+            "Berens",
+            "Bogaard",
+            "Cerello"
+          ],
+          "year": 2017,
+          "venue": "Medical Image Analysis",
+          "volume": "42",
+          "pages": "1-13"
+        },
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.1140/epjp/i2013-13110-5",
+            "title": "Automatic detection of lung nodules in computed tomography images: training and validation of algorithms using public research databases",
+            "authors": [
+              "Camarlinghi"
+            ],
+            "year": 2013,
+            "venue": "The European Physical Journal Plus",
+            "volume": "128",
+            "issue": "9"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.1016/j.ins.2012.05.008",
+            "title": "Genetic programming-based feature transform and classification for the automatic detection of pulmonary nodules on computed tomography images",
+            "authors": [
+              "Choi",
+              "Choi"
+            ],
+            "year": 2012,
+            "venue": "Information Sciences",
+            "volume": "212",
+            "pages": "57-78"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.1016/j.media.2017.06.015",
+            "title": "Validation, comparison, and combination of algorithms for automatic detection of pulmonary nodules in computed tomography images: The LUNA16 challenge",
+            "authors": [
+              "Setio",
+              "Traverso",
+              "de Bel",
+              "Berens",
+              "Bogaard",
+              "Cerello"
+            ],
+            "year": 2017,
+            "venue": "Medical Image Analysis",
+            "volume": "42",
+            "pages": "1-13"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.1016/j.media.2017.06.015",
+            "title": "Validation, comparison, and combination of algorithms for automatic detection of pulmonary nodules in computed tomography images: The LUNA16 challenge",
+            "authors": [
+              "Arnaud A. A. Setio",
+              "Alberto Traverso",
+              "Thomas de Bel",
+              "Moira S.N. Berens",
+              "Cas van den Bogaard",
+              "P. Cerello"
+            ],
+            "year": 2017,
+            "venue": "Medical Image Analysis",
+            "volume": "42",
+            "issue": null,
+            "pages": "1-13"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.5281/zenodo.7956942",
+            "title": "Lung nodule CT false positive reduction",
+            "authors": [
+              "Natália Alves",
+              "Luuk Boulogne"
+            ],
+            "year": 2023,
+            "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+            "volume": null,
+            "issue": null
+          },
+          {
+            "source": "openalex",
+            "doi": "10.3390/diagnostics12020298",
+            "title": "Deep Learning Applications in Computed Tomography Images for Pulmonary Nodule Detection and Diagnosis: A Review",
+            "authors": [
+              "Rui Li",
+              "Chuda Xiao",
+              "Yongzhi Huang",
+              "Haseeb Hassan",
+              "Bingding Huang"
+            ],
+            "year": 2022,
+            "venue": "Diagnostics",
+            "volume": "12",
+            "issue": "2",
+            "pages": "298-298"
+          }
+        ]
+      }
+    },
+    {
+      "id": "med-12",
+      "raw": "Ronneberger O, Fischer P, Brox T. U-Net: convolutional networks for biomedical image segmentation[C]//Medical Image Computing and Computer-Assisted Intervention—MICCAI 2015. Cham: Springer, 2015: 234-241. DOI: 10.1007/978-3-319-24574-4_28.",
+      "doi": "10.1007/978-3-319-24574-4_28",
+      "title": "U-Net: convolutional networks for biomedical image segmentation",
+      "evidence": {
+        "doiRegistry": "Crossref",
+        "doiRecord": {
+          "source": "crossref",
+          "doi": "10.1007/978-3-319-24574-4_28",
+          "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+          "authors": [
+            "Ronneberger",
+            "Fischer",
+            "Brox"
+          ],
+          "year": 2015,
+          "venue": "Lecture Notes in Computer Science",
+          "pages": "234-241"
+        },
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.1007/978-3-662-54345-0_3",
+            "title": "Invited Talk: U-Net Convolutional Networks for Biomedical Image Segmentation",
+            "authors": [
+              "Ronneberger"
+            ],
+            "year": 2017,
+            "venue": "Informatik aktuell",
+            "pages": "3-3"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.2139/ssrn.4108586",
+            "title": "Eevou-Net: An Ensemble of Evolutionary Deep Fully Convolutional Neural Networks for Medical Image Segmentation",
+            "authors": [
+              "HassanZadeh",
+              "Essam",
+              "Sarker"
+            ],
+            "year": 2022
+          },
+          {
+            "source": "crossref",
+            "doi": "10.1109/iconstem65670.2025.11374860",
+            "title": "U-Net Convolutional Networks for Real-Time Biomedical Image Segmentation and Anomaly Detection",
+            "authors": [
+              "Murugesakumar",
+              "S",
+              "Arunmanikandan",
+              "Chithra",
+              "Dhasaranjan"
+            ],
+            "year": 2025,
+            "venue": "2025 Tenth International Conference on Science Technology Engineering and Mathematics (ICONSTEM)",
+            "pages": "1-8"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.1007/978-3-319-24574-4_28",
+            "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+            "authors": [
+              "Olaf Ronneberger",
+              "Philipp Fischer",
+              "Thomas Brox"
+            ],
+            "year": 2015,
+            "venue": "Lecture notes in computer science",
+            "volume": null,
+            "issue": null,
+            "pages": "234-241"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1007/978-3-662-54345-0_3",
+            "title": "Invited Talk: U-Net Convolutional Networks for Biomedical Image Segmentation",
+            "authors": [
+              "Olaf Ronneberger"
+            ],
+            "year": 2017,
+            "venue": "Informatik aktuell",
+            "volume": null,
+            "issue": null,
+            "pages": "3-3"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.48550/arxiv.1505.04597",
+            "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+            "authors": [
+              "Olaf Ronneberger",
+              "Fischer, Philipp",
+              "Thomas Brox"
+            ],
+            "year": 2015,
+            "venue": "arXiv (Cornell University)",
+            "volume": null,
+            "issue": null,
+            "pages": "234-241"
+          }
+        ]
+      }
+    }
+  ]
+}

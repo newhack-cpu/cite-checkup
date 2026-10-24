@@ -1,0 +1,1230 @@
+{
+  "collectedAt": "2026-10-23T16:36:57.864Z",
+  "entries": [
+    {
+      "id": "edu-01",
+      "raw": "连榕, 杨丽娴, 吴兰花. 大学生的专业承诺、学习倦怠的关系与量表编制[J]. 心理学报, 2005, 37(5): 632-636.",
+      "title": "大学生的专业承诺、学习倦怠的关系与量表编制",
+      "evidence": {
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.12677/ap.2019.94085",
+            "title": "Correlation between Professional Commitment and Academic Burnout of College Students",
+            "authors": [
+              "丁"
+            ],
+            "year": 2019,
+            "venue": "Advances in Psychology",
+            "volume": "09",
+            "issue": "04",
+            "pages": "688-694"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.12677/ap.2016.69128",
+            "title": "A Study on the Professional Commitment and Learning Burnout of Undergraduates in Normal School",
+            "authors": [
+              "杨"
+            ],
+            "year": 2016,
+            "venue": "Advances in Psychology",
+            "volume": "06",
+            "issue": "09",
+            "pages": "1005-1013"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.12677/ap.2018.87123",
+            "title": "A Study on the Relationship between Professional Identity and Learning Burnout of College Students",
+            "authors": [
+              "王"
+            ],
+            "year": 2018,
+            "venue": "Advances in Psychology",
+            "volume": "08",
+            "issue": "07",
+            "pages": "1021-1029"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "title": "内外部学习动机对汉语学习者学习倦怠的影响-以泰国曼谷 两所大学为例",
+            "authors": [
+              "Luo Hongwei",
+              "Chou I-Wen"
+            ],
+            "year": 2025,
+            "venue": "Chinese Language and Culture Journal",
+            "volume": null,
+            "issue": null
+          },
+          {
+            "source": "openalex",
+            "doi": "10.12677/ap.2015.52013",
+            "title": "Study on the Relationship between Professional Adaptability and Internet Addiction of College Students",
+            "authors": [
+              "婷婷 胡"
+            ],
+            "year": 2015,
+            "venue": "Advances in Psychology",
+            "volume": "05",
+            "issue": "02",
+            "pages": "90-96"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.3724/sp.j.1042.2025.2069",
+            "title": "中国内地学生学习投入的变迁(2006~2024年)",
+            "authors": [
+              "Zijian Zhang",
+              "Jiwen CHEN",
+              "Shun PENG",
+              "Jiahui WU",
+              "Siqian WANG"
+            ],
+            "year": 2025,
+            "venue": "Advances in Psychological Science",
+            "volume": "33",
+            "issue": "12",
+            "pages": "2069-2082"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edu-02",
+      "raw": "杨丽娴, 连榕. 学习倦怠的研究现状及展望[J]. 集美大学学报(教育科学版), 2005, 6(2): 54-58.",
+      "title": "学习倦怠的研究现状及展望",
+      "evidence": {
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.64216/3080-1494.26.08.086",
+            "title": "学生学习倦怠的心理成因及教育干预策略研究",
+            "authors": [],
+            "year": 2026,
+            "venue": "东方教育学刊",
+            "volume": "2",
+            "issue": "8"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.36012/sde.v2i5.2142",
+            "title": "职业学院学生语文学习倦怠情绪的研究与对策",
+            "authors": [
+              "张"
+            ],
+            "year": 2020,
+            "venue": "教育科学发展",
+            "volume": "2",
+            "issue": "5",
+            "pages": "161-163"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.12677/mm.2024.145109",
+            "title": "Study on the Current Situation and Countermeasures of Job Burnout of Psychiatric Interns",
+            "authors": [
+              "宋"
+            ],
+            "year": 2024,
+            "venue": "Modern Management",
+            "volume": "14",
+            "issue": "05",
+            "pages": "941-947"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.12238/er.v5i4.4625",
+            "title": "大学生学业自我效能感研究综述",
+            "authors": [
+              "淼 刘"
+            ],
+            "year": 2022,
+            "venue": "教育研究",
+            "volume": null,
+            "issue": null
+          },
+          {
+            "source": "openalex",
+            "doi": "10.62836/nursing.v2n1.0537",
+            "title": "三甲医院护士职业倦怠的研究进展",
+            "authors": [
+              "李函幽",
+              "俞春燕",
+              "王鸿燕"
+            ],
+            "year": 2025,
+            "venue": "环球护理学杂志",
+            "volume": null,
+            "issue": null,
+            "pages": "6-10"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.37155/2705-0653-0603-47",
+            "title": "儿科护理实习生职业倦怠现状及职业决策影响因素调查研究",
+            "authors": [
+              "何 利",
+              "林 琳"
+            ],
+            "year": 2024,
+            "venue": "教育理论与应用",
+            "volume": "6",
+            "issue": "3",
+            "pages": "142-144"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edu-03",
+      "raw": "吴艳, 戴晓阳, 温忠麟, 等. 青少年学习倦怠量表的编制[J]. 中国临床心理学杂志, 2010, 18(2): 152-154. DOI: 10.16128/j.cnki.1005-3611.2010.02.011.",
+      "doi": "10.16128/j.cnki.1005-3611.2010.02.011",
+      "title": "青少年学习倦怠量表的编制",
+      "evidence": {
+        "doiRegistry": "CNKI",
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.12677/ass.2020.912275",
+            "title": "Development and Reliability and Validity of College Students’ Learning Burnout Scale",
+            "authors": [
+              "邱"
+            ],
+            "year": 2020,
+            "venue": "Advances in Social Sciences",
+            "volume": "09",
+            "issue": "12",
+            "pages": "1950-1957"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.12677/ae.2025.1581420",
+            "title": "The Relationship between Adolescent Internet Addiction and Classroom Mind-Wandering: The Mediating Role of Learning Burnout",
+            "authors": [
+              "黄"
+            ],
+            "year": 2025,
+            "venue": "Advances in Education",
+            "volume": "15",
+            "issue": "08",
+            "pages": "177-183"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.37155/2717-5650-0602-9",
+            "title": "青少年手机依赖者的心理健康状况及与生活事件、学业倦怠的关系",
+            "authors": [
+              "然"
+            ],
+            "year": 2025,
+            "venue": "国际护理与健康",
+            "volume": "6",
+            "issue": "2",
+            "pages": "26-28"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.37155/2717-5650-0602-9",
+            "title": "青少年手机依赖者的心理健康状况及与生活事件、学业倦怠的关系",
+            "authors": [
+              "孟 然"
+            ],
+            "year": 2025,
+            "venue": "国际护理与健康",
+            "volume": "6",
+            "issue": "2",
+            "pages": "26-28"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.3724/sp.j.1042.2025.2069",
+            "title": "中国内地学生学习投入的变迁(2006~2024年)",
+            "authors": [
+              "Zijian Zhang",
+              "Jiwen CHEN",
+              "Shun PENG",
+              "Jiahui WU",
+              "Siqian WANG"
+            ],
+            "year": 2025,
+            "venue": "Advances in Psychological Science",
+            "volume": "33",
+            "issue": "12",
+            "pages": "2069-2082"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.12677/ap.2017.76097",
+            "title": "The Relationships between Self-Identity and Meaning in Life in University Students: The Role of Learning Burnout",
+            "authors": [
+              "晓玮 张"
+            ],
+            "year": 2017,
+            "venue": "Advances in Psychology",
+            "volume": "07",
+            "issue": "06",
+            "pages": "785-790"
+          }
+        ],
+        "chndoi": {
+          "url": "https://www.chndoi.org/Resolution/Handler?doi=10.16128%2Fj.cnki.1005-3611.2010.02.011",
+          "status": 200,
+          "title": "三等位基因5-HTTLPR与青少年重性抑郁障碍的关联研究",
+          "authors": [
+            "马静",
+            "苏林雁",
+            "禹顺英",
+            "梁珊",
+            "丁军",
+            "冯哲",
+            "杨帆",
+            "高维佳",
+            "林佳妮",
+            "黄春香",
+            "刘铁桥",
+            "谢光荣"
+          ],
+          "registered": "2015-05-18 20:09:15"
+        }
+      }
+    },
+    {
+      "id": "edu-04",
+      "raw": "张阔, 张赛, 董颖红. 积极心理资本: 测量及其与心理健康的关系[J]. 心理与行为研究, 2010, 8(1): 58-64.",
+      "title": "积极心理资本: 测量及其与心理健康的关系",
+      "evidence": {
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.12677/ap.2018.87109",
+            "title": "The Relationship between College Students’ Reinforcement Sensitivity, Positive Psychological Capital and Their Mental Health",
+            "authors": [
+              "杨"
+            ],
+            "year": 2018,
+            "venue": "Advances in Psychology",
+            "volume": "08",
+            "issue": "07",
+            "pages": "911-918"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.12677/ae.2025.154658",
+            "title": "The Relationship between Learning Burnout and Mental Health among Government-Funded Normal University Students: The Mediating Role of Positive Psychological Capital",
+            "authors": [
+              "邓"
+            ],
+            "year": 2025,
+            "venue": "Advances in Education",
+            "volume": "15",
+            "issue": "04",
+            "pages": "1067-1077"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.32629/er.v2i10.2091",
+            "title": "基于积极心理学的初中生心理健康教育校本课程的实践与思考",
+            "authors": [
+              "褚"
+            ],
+            "year": 2019,
+            "venue": "教育研究",
+            "volume": "2",
+            "issue": "10"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "title": "金融机构工作人员工作压力、心理状态 与心理灵活性的关系",
+            "authors": [
+              "崔云龙"
+            ],
+            "year": 2017,
+            "volume": null,
+            "issue": null
+          },
+          {
+            "source": "openalex",
+            "doi": "10.64649/yh.jydk.issn3080-2660.202606028",
+            "title": "心理资本驱动大学生心理健康教育课程的效果探究",
+            "authors": [
+              "萍 杨",
+              "建勋 钟",
+              "善彩 文"
+            ],
+            "year": 2026,
+            "venue": "教研导刊",
+            "volume": null,
+            "issue": null
+          },
+          {
+            "source": "openalex",
+            "doi": "10.32629/er.v2i10.2091",
+            "title": "基于积极心理学的初中生心理健康教育校本课程的实践与思考",
+            "authors": [
+              "容正 褚"
+            ],
+            "year": 2019,
+            "venue": "教育研究",
+            "volume": "2",
+            "issue": "10"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edu-05",
+      "raw": "罗杰, 周瑗, 陈维, 等. 大学生学业倦怠与学习投入的关系: 一个有调节的中介模型[J]. 心理发展与教育, 2020, 36(6): 707-715. DOI: 10.16187/j.cnki.issn1001-4918.2020.06.08.",
+      "doi": "10.16187/j.cnki.issn1001-4918.2020.06.08",
+      "title": "大学生学业倦怠与学习投入的关系: 一个有调节的中介模型",
+      "evidence": {
+        "doiRegistry": "CNKI",
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.12677/ap.2024.148547",
+            "title": "The Relationship between Sleep Hygiene Practice and Insomnia in College Students: A Moderate Mediation Model",
+            "authors": [
+              "陈"
+            ],
+            "year": 2024,
+            "venue": "Advances in Psychology",
+            "volume": "14",
+            "issue": "08",
+            "pages": "292-303"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.12677/ap.2025.154224",
+            "title": "The Relationship between Load Reduction Instruction and Academic Achievement: A Moderated Mediation Model",
+            "authors": [
+              "黎"
+            ],
+            "year": 2025,
+            "venue": "Advances in Psychology",
+            "volume": "15",
+            "issue": "04",
+            "pages": "433-441"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.12677/ap.2024.1412941",
+            "title": "Relationship between Depression Level and Academical Performances in College Students: A Moderated Mediation Model",
+            "authors": [
+              "何"
+            ],
+            "year": 2024,
+            "venue": "Advances in Psychology",
+            "volume": "14",
+            "issue": "12",
+            "pages": "720-734"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.3724/sp.j.1042.2025.2069",
+            "title": "中国内地学生学习投入的变迁(2006~2024年)",
+            "authors": [
+              "Zijian Zhang",
+              "Jiwen CHEN",
+              "Shun PENG",
+              "Jiahui WU",
+              "Siqian WANG"
+            ],
+            "year": 2025,
+            "venue": "Advances in Psychological Science",
+            "volume": "33",
+            "issue": "12",
+            "pages": "2069-2082"
+          },
+          {
+            "source": "openalex",
+            "title": "内外部学习动机对汉语学习者学习倦怠的影响-以泰国曼谷 两所大学为例",
+            "authors": [
+              "Luo Hongwei",
+              "Chou I-Wen"
+            ],
+            "year": 2025,
+            "venue": "Chinese Language and Culture Journal",
+            "volume": null,
+            "issue": null
+          },
+          {
+            "source": "openalex",
+            "doi": "10.64549/jtii.v1i4.89",
+            "title": "生成式人工智能使用对高校师范生的学习投入的影响：职业认同的中介作用",
+            "authors": [
+              "丁梦云",
+              "陈冠宏",
+              "胡裕虹",
+              "李媛媛",
+              "陈晓珊",
+              "梁彦龙"
+            ],
+            "year": 2026,
+            "venue": "跨學科創新與融合研究",
+            "volume": "1",
+            "issue": "4"
+          }
+        ],
+        "chndoi": {
+          "url": "https://www.chndoi.org/Resolution/Handler?doi=10.16187%2Fj.cnki.issn1001-4918.2020.06.08",
+          "status": 200,
+          "title": "高中生感知教师支持与学习投入的关系:学业自我效能感和成就目标定向的链式中介作用",
+          "authors": [
+            "贾绪计",
+            "蔡林",
+            "林琳",
+            "林崇德"
+          ],
+          "registered": "2020-11-24 11:08:46"
+        }
+      }
+    },
+    {
+      "id": "edu-06",
+      "raw": "王鑫强, 张大均. 大学生学业倦怠与主观幸福感的关系: 心理韧性的中介作用[J]. 中国临床心理学杂志, 2012, 20(6): 846-848. DOI: 10.16128/j.cnki.1005-3611.2012.06.028.",
+      "doi": "10.16128/j.cnki.1005-3611.2012.06.028",
+      "title": "大学生学业倦怠与主观幸福感的关系: 心理韧性的中介作用",
+      "evidence": {
+        "doiRegistry": "CNKI",
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.32629/er.v9i6.7175",
+            "title": "大学生学业自我效能感与专业认同的关系——心理弹性的中介作用",
+            "authors": [
+              "张"
+            ],
+            "year": 2026,
+            "venue": "教育研究",
+            "volume": "9",
+            "issue": "6",
+            "pages": "210"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.62662/kxwxz0209003",
+            "title": "中国云南省高校以学习为中心的领导与教师专业学习之关系研究：主观幸福感作为中介",
+            "authors": [],
+            "year": 2025,
+            "venue": "教育科学文献",
+            "volume": "2",
+            "issue": "9"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.12677/ap.2023.137336",
+            "title": "Relationship between Psychological Richness and Subjective Well-Being in College Students: The Chain Mediating Role of Self-Esteem and Meaning in Life",
+            "authors": [
+              "李"
+            ],
+            "year": 2023,
+            "venue": "Advances in Psychology",
+            "volume": "13",
+            "issue": "07",
+            "pages": "2726-2733"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.68070/b196br84",
+            "title": "基于心理资源理论的高职艺术设计学生学业倦怠缓解路径研究",
+            "authors": [
+              "云东 吴",
+              "莹 陈",
+              "维俭 孔",
+              "若凡 林"
+            ],
+            "year": 2026,
+            "venue": "现代教育与教学创新",
+            "volume": "1",
+            "issue": "2"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.32629/mef.v3i6.1646",
+            "title": "大学生情绪调节方式与生活满意度的关系",
+            "authors": [
+              "可欣 初"
+            ],
+            "year": 2020,
+            "venue": "现代教育论坛",
+            "volume": "3",
+            "issue": "6",
+            "pages": "136-136"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.3724/sp.j.1042.2025.2105",
+            "title": "家庭亲密度与幸福感的关系：系统综述和元分析",
+            "authors": [
+              "Yipeng GU",
+              "Jinyuan LIU",
+              "Yali Zhang",
+              "Weihe Li"
+            ],
+            "year": 2025,
+            "venue": "Advances in Psychological Science",
+            "volume": "33",
+            "issue": "12",
+            "pages": "2105-2120"
+          }
+        ],
+        "chndoi": {
+          "url": "https://www.chndoi.org/Resolution/Handler?doi=10.16128%2Fj.cnki.1005-3611.2012.06.028",
+          "status": 200,
+          "title": "中国大学生性健康知识、性态度及性相关行为特点及关系研究",
+          "authors": [
+            "张沛超",
+            "迟新丽",
+            "吴明霞"
+          ],
+          "registered": "2015-05-18 20:13:24"
+        }
+      }
+    },
+    {
+      "id": "edu-07",
+      "raw": "MASLACH C, SCHAUFELI W B, LEITER M P. Job burnout[J]. Annual Review of Psychology, 2001, 52: 397-422. DOI: 10.1146/annurev.psych.52.1.397.",
+      "doi": "10.1146/annurev.psych.52.1.397",
+      "title": "Job burnout",
+      "evidence": {
+        "doiRegistry": "Crossref",
+        "doiRecord": {
+          "source": "crossref",
+          "doi": "10.1146/annurev.psych.52.1.397",
+          "title": "Job Burnout",
+          "authors": [
+            "Maslach",
+            "Schaufeli",
+            "Leiter"
+          ],
+          "year": 2001,
+          "venue": "Annual Review of Psychology",
+          "volume": "52",
+          "issue": "1",
+          "pages": "397-422"
+        },
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.21236/ada406375",
+            "title": "Personality and Job Burnout: Can Coping Skills Reduce Job Burnout",
+            "authors": [
+              "Downey",
+              "Rappoport",
+              "Hemenover"
+            ],
+            "year": 2002
+          },
+          {
+            "source": "crossref",
+            "doi": "10.1037/e573012012-249",
+            "title": "Unpaid overtime, perceived job characteristics and burnout: Unpaid overtime as a job motivation and burnout neutrality factor",
+            "authors": [
+              "Tseng"
+            ],
+            "year": 2008,
+            "venue": "PsycEXTRA Dataset"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.1002/9781394249626.fmatter",
+            "title": "Breaking Point",
+            "authors": [],
+            "year": 2025,
+            "venue": "Breaking Point"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.1111/1467-8721.01258",
+            "title": "Job Burnout",
+            "authors": [
+              "Christina Maslach"
+            ],
+            "year": 2003,
+            "venue": "Current Directions in Psychological Science",
+            "volume": "12",
+            "issue": "5",
+            "pages": "189-192"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1146/annurev.psych.52.1.397",
+            "title": "Job Burnout",
+            "authors": [
+              "Christina Maslach",
+              "Wilmar B. Schaufeli",
+              "Michael P. Leiter"
+            ],
+            "year": 2001,
+            "venue": "Annual Review of Psychology",
+            "volume": "52",
+            "issue": "1",
+            "pages": "397-422"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1177/0149206311415252",
+            "title": "Job Burnout and Employee Engagement",
+            "authors": [
+              "Michael S. Cole",
+              "Frank H. Walter",
+              "Arthur G. Bedeian",
+              "Ernest H. O’Boyle"
+            ],
+            "year": 2011,
+            "venue": "Journal of Management",
+            "volume": "38",
+            "issue": "5",
+            "pages": "1550-1581"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edu-08",
+      "raw": "SCHAUFELI W B, MARTÍNEZ I M, MARQUES PINTO A, et al. Burnout and engagement in university students: a cross-national study[J]. Journal of Cross-Cultural Psychology, 2002, 33(5): 464-481. DOI: 10.1177/0022022102033005003.",
+      "doi": "10.1177/0022022102033005003",
+      "title": "Burnout and engagement in university students: a cross-national study",
+      "evidence": {
+        "doiRegistry": "Crossref",
+        "doiRecord": {
+          "source": "crossref",
+          "doi": "10.1177/0022022102033005003",
+          "title": "Burnout and Engagement in University Students",
+          "authors": [
+            "Schaufeli",
+            "Martínez",
+            "Pinto",
+            "Salanova",
+            "Bakker"
+          ],
+          "year": 2002,
+          "venue": "Journal of Cross-Cultural Psychology",
+          "volume": "33",
+          "issue": "5",
+          "pages": "464-481"
+        },
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.1177/0022022102033005003",
+            "title": "Burnout and Engagement in University Students",
+            "authors": [
+              "Schaufeli",
+              "Martínez",
+              "Pinto",
+              "Salanova",
+              "Bakker"
+            ],
+            "year": 2002,
+            "venue": "Journal of Cross-Cultural Psychology",
+            "volume": "33",
+            "issue": "5",
+            "pages": "464-481"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.1097/md.0000000000010326",
+            "title": "Burnout and study engagement among medical students at Sun Yat-sen University, China",
+            "authors": [
+              "Liu",
+              "Yansane",
+              "Zhang",
+              "Fu",
+              "Hong",
+              "Kalenderian"
+            ],
+            "year": 2018,
+            "venue": "Medicine",
+            "volume": "97",
+            "issue": "15",
+            "pages": "e0326"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.1186/s40359-025-02602-6",
+            "title": "Stress, student burnout and study engagement – a cross-sectional comparison of university students of different academic subjects",
+            "authors": [
+              "Olson",
+              "Oberhoffer-Fritz",
+              "Reiner",
+              "Schulz"
+            ],
+            "year": 2025,
+            "venue": "BMC Psychology",
+            "volume": "13",
+            "issue": "1"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.1016/j.sbspro.2015.03.077",
+            "title": "Learning Motivation, Engagement and Burnout among University Students",
+            "authors": [
+              "Ana‐Maria Cazan"
+            ],
+            "year": 2015,
+            "venue": "Procedia - Social and Behavioral Sciences",
+            "volume": "187",
+            "issue": null,
+            "pages": "413-417"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1007/s40037-020-00637-6",
+            "title": "Burnout and engagement among PhD students in medicine: the BEeP study",
+            "authors": [
+              "Rashmi A. Kusurkar",
+              "Stéphanie M. E. van der Burgt",
+              "Ulviye Isik",
+              "Marianne Mak–van der Vossen",
+              "Janneke A. Wilschut",
+              "Anouk Wouters"
+            ],
+            "year": 2020,
+            "venue": "Perspectives on Medical Education",
+            "volume": "10",
+            "issue": "2",
+            "pages": "110-117"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1016/j.burn.2017.11.001",
+            "title": "Study engagement and burnout profiles among Finnish higher education students",
+            "authors": [
+              "Katariina Salmela‐Aro",
+              "Sanna Read"
+            ],
+            "year": 2017,
+            "venue": "Burnout Research",
+            "volume": "7",
+            "issue": null,
+            "pages": "21-28"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edu-09",
+      "raw": "SALMELA-ARO K, KIURU N, LESKINEN E, et al. School burnout inventory (SBI): reliability and validity[J]. European Journal of Psychological Assessment, 2009, 25(1): 48-57. DOI: 10.1027/1015-5759.25.1.48.",
+      "doi": "10.1027/1015-5759.25.1.48",
+      "title": "School burnout inventory (SBI): reliability and validity",
+      "evidence": {
+        "doiRegistry": "Crossref",
+        "doiRecord": {
+          "source": "crossref",
+          "doi": "10.1027/1015-5759.25.1.48",
+          "title": "School Burnout Inventory (SBI)",
+          "authors": [
+            "Salmela-Aro",
+            "Kiuru",
+            "Leskinen",
+            "Nurmi"
+          ],
+          "year": 2009,
+          "venue": "European Journal of Psychological Assessment",
+          "volume": "25",
+          "issue": "1",
+          "pages": "48-57"
+        },
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.1027/1015-5759.25.1.48",
+            "title": "School Burnout Inventory (SBI)",
+            "authors": [
+              "Salmela-Aro",
+              "Kiuru",
+              "Leskinen",
+              "Nurmi"
+            ],
+            "year": 2009,
+            "venue": "European Journal of Psychological Assessment",
+            "volume": "25",
+            "issue": "1",
+            "pages": "48-57"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.5554/22562087.e1017",
+            "title": "Validity and reliability of the SBI (Spanish Burnout Inventory) in medical surgical specialists",
+            "authors": [
+              "García Borrero",
+              "Aguirre Acevedo",
+              "Zapata Rueda",
+              "García García"
+            ],
+            "year": 2021,
+            "venue": "Colombian Journal of Anesthesiology"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.1037/e604062012-364",
+            "title": "The \"Spanish Burnout Inventory\" (SBI)",
+            "authors": [
+              "Gil-Monte",
+              "Figueiredo-Ferraz"
+            ],
+            "year": 2012,
+            "venue": "PsycEXTRA Dataset"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.1027/1015-5759.25.1.48",
+            "title": "School Burnout Inventory (SBI)",
+            "authors": [
+              "Katariina Salmela‐Aro",
+              "Noona H. Kiuru",
+              "Esko Leskinen",
+              "Jari‐Erik Nurmi"
+            ],
+            "year": 2009,
+            "venue": "European Journal of Psychological Assessment",
+            "volume": "25",
+            "issue": "1",
+            "pages": "48-57"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.3389/fpsyg.2021.774703",
+            "title": "School Burnout Inventory: Factorial Validity, Reliability, and Measurement Invariance in a Chilean Sample of High School Students",
+            "authors": [
+              "Marcos A. Carmona-Halty",
+              "Patricio Mena‐Chamorro",
+              "Geraldy Lorena Sepúlveda-Páez",
+              "Rodrigo Ferrer‐Urbina"
+            ],
+            "year": 2022,
+            "venue": "Frontiers in Psychology",
+            "volume": "12",
+            "issue": null,
+            "pages": "774703-774703"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1026/0049-8637/a000248",
+            "title": "Validation and Reliability of the German Version of the School Burnout Inventory",
+            "authors": [
+              "Frances Hoferichter",
+              "Diana Raufelder",
+              "Sabine Schweder",
+              "Katariina Salmela‐Aro"
+            ],
+            "year": 2022,
+            "venue": "Zeitschrift für Entwicklungspsychologie und Pädagogische Psychologie",
+            "volume": "54",
+            "issue": "1",
+            "pages": "1-14"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edu-10",
+      "raw": "WALBURG V, HAYES J A, NELSON D L, et al. The upside of student burnout: a latent profile analysis[J]. Anxiety, Stress, & Coping, 2021, 34(3): 257-271. DOI: 10.1080/10615806.2020.1847288.",
+      "doi": "10.1080/10615806.2020.1847288",
+      "title": "The upside of student burnout: a latent profile analysis",
+      "evidence": {
+        "doiRegistry": "DOI does not exist",
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.3102/ip.25.2192059",
+            "title": "Early Career Teachers’ Burnout: A Latent Profile Analysis on Early Career Teachers’ Burnout and Experiences",
+            "authors": [
+              "Chen"
+            ],
+            "year": 2025,
+            "venue": "AERA 2025"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.31234/osf.io/as83x",
+            "title": "A Latent Profile Analysis of Student Restudy Decisions - under review",
+            "authors": [
+              "Robey"
+            ],
+            "year": 2019
+          },
+          {
+            "source": "crossref",
+            "doi": "10.36939/ir.202103231319",
+            "title": "Latent Profile Analysis of Manitoban Teachers' Burnout during the COVID-19 Pandemic",
+            "authors": [
+              "Sokal",
+              "Babb",
+              "Trudel"
+            ],
+            "year": 2021
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.3390/jcm14155357",
+            "title": "Neural Correlates of Burnout Syndrome Based on Electroencephalography (EEG)—A Mechanistic Review and Discussion of Burnout Syndrome Cognitive Bias Theory",
+            "authors": [
+              "James Chmiel",
+              "Agnieszka Malinowska"
+            ],
+            "year": 2025,
+            "venue": "Journal of Clinical Medicine",
+            "volume": "14",
+            "issue": "15",
+            "pages": "5357-5357"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.26686/wgtn.14417660.v1",
+            "title": "Primary teacher burnout: Through the lens of theory and experience",
+            "authors": [
+              "Sara Warnock"
+            ],
+            "year": 2021,
+            "volume": null,
+            "issue": null
+          },
+          {
+            "source": "openalex",
+            "doi": "10.26686/wgtn.14417660",
+            "title": "Primary teacher burnout: Through the lens of theory and experience",
+            "authors": [
+              "Sara Warnock"
+            ],
+            "year": 2021,
+            "volume": null,
+            "issue": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "edu-11",
+      "raw": "MAY R W, BAUER K N, FINCHAM F D. School burnout: diminished academic and cognitive performance[J]. Learning and Individual Differences, 2015, 42: 126-131. DOI: 10.1016/j.lindif.2015.07.008.",
+      "doi": "10.1016/j.lindif.2015.07.008",
+      "title": "School burnout: diminished academic and cognitive performance",
+      "evidence": {
+        "doiRegistry": "Crossref",
+        "doiRecord": {
+          "source": "crossref",
+          "doi": "10.1016/j.lindif.2015.07.008",
+          "title": "Can highly intelligent and high-achieving students benefit from training in self-regulated learning in a regular classroom context?",
+          "authors": [
+            "Sontag",
+            "Stoeger"
+          ],
+          "year": 2015,
+          "venue": "Learning and Individual Differences",
+          "volume": "41",
+          "pages": "43-53"
+        },
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.1016/j.lindif.2015.07.015",
+            "title": "School burnout: Diminished academic and cognitive performance",
+            "authors": [
+              "May",
+              "Bauer",
+              "Fincham"
+            ],
+            "year": 2015,
+            "venue": "Learning and Individual Differences",
+            "volume": "42",
+            "pages": "126-131"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.35534/pc.0801011",
+            "title": "The Impact of School Community Sense on Academic Burnout: The Mediating Role of Cognitive Reappraisal",
+            "authors": [
+              "Huang"
+            ],
+            "year": 2026,
+            "venue": "Psychology of China",
+            "volume": "1",
+            "issue": "1",
+            "pages": "66-71"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.21203/rs.3.rs-10310733/v1",
+            "title": "Teacher Burnout and Academic Burnout among Secondary School Students: The Mediating Roles of Academic Self-Efficacy and Negative Academic Emotions in a Multilevel Model",
+            "authors": [
+              "BAI",
+              "YAN"
+            ],
+            "year": 2026
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.1016/j.lindif.2015.07.015",
+            "title": "School burnout: Diminished academic and cognitive performance",
+            "authors": [
+              "Ross W. May",
+              "Kristina N. Bauer",
+              "Frank D. Fincham"
+            ],
+            "year": 2015,
+            "venue": "Learning and Individual Differences",
+            "volume": "42",
+            "issue": null,
+            "pages": "126-131"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.3390/ijerph18042145",
+            "title": "Burnout and Cognitive Performance",
+            "authors": [
+              "Panagiota Koutsimani",
+              "Anthony Montgomery",
+              "Elvira V. Masoura",
+              "Efharis P. Panagopoulou"
+            ],
+            "year": 2021,
+            "venue": "International Journal of Environmental Research and Public Health",
+            "volume": "18",
+            "issue": "4",
+            "pages": "2145-2145"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.3390/ijerph17093058",
+            "title": "Trait Emotional Intelligence and School Burnout: The Mediating Role of Resilience and Academic Anxiety in High School",
+            "authors": [
+              "Caterina Fiorilli",
+              "Eleonora Farina",
+              "Ilaria Buonomo",
+              "Sebastiano Costa",
+              "Luciano Romano",
+              "Rosalba Larcan"
+            ],
+            "year": 2020,
+            "venue": "International Journal of Environmental Research and Public Health",
+            "volume": "17",
+            "issue": "9",
+            "pages": "3058-3058"
+          }
+        ]
+      }
+    },
+    {
+      "id": "edu-12",
+      "raw": "KILROY S, BANKS T, CROWLEY M, et al. The impact of a mindfulness-based intervention on burnout in university students: a randomized controlled trial[J]. Journal of American College Health, 2022, 70(6): 1701-1709. DOI: 10.1080/07448481.2020.1806859.",
+      "doi": "10.1080/07448481.2020.1806859",
+      "title": "The impact of a mindfulness-based intervention on burnout in university students: a randomized controlled trial",
+      "evidence": {
+        "doiRegistry": "DOI does not exist",
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.1007/s12671-023-02092-w",
+            "title": "Do Mindfulness-Based Interventions Reduce Burnout of College Students in China? A Randomized Controlled Trial",
+            "authors": [
+              "Gan",
+              "Xue",
+              "Chen"
+            ],
+            "year": 2023,
+            "venue": "Mindfulness",
+            "volume": "14",
+            "issue": "4",
+            "pages": "880-890"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.3389/fpsyg.2026.1745444",
+            "title": "Effects of a piano music listening intervention on depression, academic burnout, and mindfulness: evidence from a randomized controlled trial among Chinese university students",
+            "authors": [
+              "Yang",
+              "Yuan",
+              "Zheng"
+            ],
+            "year": 2026,
+            "venue": "Frontiers in Psychology",
+            "volume": "17"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.14264/uql.2020.17",
+            "title": "Development of a student tailored mindfulness app intervention for weight loss and weight related behaviours, and stress in university students: a randomized controlled trial",
+            "authors": [
+              "Lyzwinski"
+            ],
+            "year": null
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.1007/s11606-017-4249-x",
+            "title": "Mindfulness-Based Stress Reduction for Residents: A Randomized Controlled Trial",
+            "authors": [
+              "Hanne Verweij",
+              "Hiske van Ravesteijn",
+              "Madelon L. M. van Hooff",
+              "Antoine L. M. Lagro-Janssen",
+              "Anne E. M. Speckens"
+            ],
+            "year": 2017,
+            "venue": "Journal of General Internal Medicine",
+            "volume": "33",
+            "issue": "4",
+            "pages": "429-436"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1080/0142159x.2017.1394999",
+            "title": "Mindfulness interventions in medical education: A systematic review of their impact on medical student stress, depression, fatigue and burnout",
+            "authors": [
+              "Zahra Daya",
+              "Jasmine Heath Hearn"
+            ],
+            "year": 2017,
+            "venue": "Medical Teacher",
+            "volume": "40",
+            "issue": "2",
+            "pages": "146-153"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1007/s12671-020-01328-3",
+            "title": "Mindfulness-Based Programs in the Workplace: a Meta-Analysis of Randomized Controlled Trials",
+            "authors": [
+              "Ruben Vonderlin",
+              "Miriam Biermann",
+              "Martin Bohus",
+              "Lisa Lyssenko"
+            ],
+            "year": 2020,
+            "venue": "Mindfulness",
+            "volume": "11",
+            "issue": "7",
+            "pages": "1579-1598"
+          }
+        ]
+      }
+    }
+  ]
+}

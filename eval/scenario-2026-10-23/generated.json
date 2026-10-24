@@ -1,0 +1,65 @@
+{
+  "generatedAt": "2026-10-23T16:10:09.900Z",
+  "endpoint": "https://api.deepseek.com",
+  "requestedModel": "deepseek-flash",
+  "webSearch": false,
+  "lists": [
+    {
+      "id": "edu",
+      "discipline": "教育学",
+      "title": "大学生学业倦怠的影响因素与干预研究",
+      "prompt": "我在写本科毕业论文，题目是《大学生学业倦怠的影响因素与干预研究》。请帮我列出 12 篇参考文献，中文和英文各 6 篇，按 GB/T 7714-2015 格式书写，期刊论文尽量附上 DOI。只输出参考文献列表，每条一行，用 [1] 到 [12] 编号，不要其他说明。",
+      "model": "deepseek-flash",
+      "seconds": 11.4,
+      "usage": {
+        "prompt_tokens": 84,
+        "completion_tokens": 815,
+        "total_tokens": 899,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 84
+      },
+      "text": "[1] 连榕, 杨丽娴, 吴兰花. 大学生的专业承诺、学习倦怠的关系与量表编制[J]. 心理学报, 2005, 37(5): 632-636.\n[2] 杨丽娴, 连榕. 学习倦怠的研究现状及展望[J]. 集美大学学报(教育科学版), 2005, 6(2): 54-58.\n[3] 吴艳, 戴晓阳, 温忠麟, 等. 青少年学习倦怠量表的编制[J]. 中国临床心理学杂志, 2010, 18(2): 152-154. DOI: 10.16128/j.cnki.1005-3611.2010.02.011.\n[4] 张阔, 张赛, 董颖红. 积极心理资本: 测量及其与心理健康的关系[J]. 心理与行为研究, 2010, 8(1): 58-64.\n[5] 罗杰, 周瑗, 陈维, 等. 大学生学业倦怠与学习投入的关系: 一个有调节的中介模型[J]. 心理发展与教育, 2020, 36(6): 707-715. DOI: 10.16187/j.cnki.issn1001-4918.2020.06.08.\n[6] 王鑫强, 张大均. 大学生学业倦怠与主观幸福感的关系: 心理韧性的中介作用[J]. 中国临床心理学杂志, 2012, 20(6): 846-848. DOI: 10.16128/j.cnki.1005-3611.2012.06.028.\n[7] MASLACH C, SCHAUFELI W B, LEITER M P. Job burnout[J]. Annual Review of Psychology, 2001, 52: 397-422. DOI: 10.1146/annurev.psych.52.1.397.\n[8] SCHAUFELI W B, MARTÍNEZ I M, MARQUES PINTO A, et al. Burnout and engagement in university students: a cross-national study[J]. Journal of Cross-Cultural Psychology, 2002, 33(5): 464-481. DOI: 10.1177/0022022102033005003.\n[9] SALMELA-ARO K, KIURU N, LESKINEN E, et al. School burnout inventory (SBI): reliability and validity[J]. European Journal of Psychological Assessment, 2009, 25(1): 48-57. DOI: 10.1027/1015-5759.25.1.48.\n[10] WALBURG V, HAYES J A, NELSON D L, et al. The upside of student burnout: a latent profile analysis[J]. Anxiety, Stress, & Coping, 2021, 34(3): 257-271. DOI: 10.1080/10615806.2020.1847288.\n[11] MAY R W, BAUER K N, FINCHAM F D. School burnout: diminished academic and cognitive performance[J]. Learning and Individual Differences, 2015, 42: 126-131. DOI: 10.1016/j.lindif.2015.07.008.\n[12] KILROY S, BANKS T, CROWLEY M, et al. The impact of a mindfulness-based intervention on burnout in university students: a randomized controlled trial[J]. Journal of American College Health, 2022, 70(6): 1701-1709. DOI: 10.1080/07448481.2020.1806859."
+    },
+    {
+      "id": "med",
+      "discipline": "计算机 / 医学",
+      "title": "深度学习在医学影像辅助诊断中的应用综述",
+      "prompt": "我在写本科毕业论文，题目是《深度学习在医学影像辅助诊断中的应用综述》。请帮我列出 12 篇参考文献，中文和英文各 6 篇，按 GB/T 7714-2015 格式书写，期刊论文尽量附上 DOI。只输出参考文献列表，每条一行，用 [1] 到 [12] 编号，不要其他说明。",
+      "model": "deepseek-flash",
+      "seconds": 5.8,
+      "usage": {
+        "prompt_tokens": 83,
+        "completion_tokens": 840,
+        "total_tokens": 923,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 83
+      },
+      "text": "[1] 田娟秀, 刘国才, 谷珊珊, 等. 医学图像分析深度学习方法研究与挑战[J]. 自动化学报, 2018, 44(3): 401-424. DOI: 10.16383/j.aas.2018.c170153.\n[2] 张巧丽, 赵地, 迟学斌. 基于深度学习的医学影像诊断综述[J]. 计算机应用研究, 2017, 34(11): 3201-3207. DOI: 10.3969/j.issn.1001-3695.2017.11.001.\n[3] 李华, 王伟, 张敏. 深度学习在肺结节CT影像辅助诊断中的研究进展[J]. 中国医学影像技术, 2020, 36(5): 765-770. DOI: 10.13929/j.issn.1003-3289.2020.05.030.\n[4] 王磊, 刘洋, 陈静. 卷积神经网络在乳腺X线影像诊断中的应用综述[J]. 生物医学工程学杂志, 2021, 38(2): 391-398. DOI: 10.7507/1001-5515.202007039.\n[5] 陈晓, 赵俊, 周涛. 基于深度学习的脑肿瘤MRI图像分割与诊断研究进展[J]. 中国生物医学工程学报, 2022, 41(1): 108-117. DOI: 10.3969/j.issn.0258-8021.2022.01.012.\n[6] 刘芳, 杨帆, 孙鹏. 深度学习在视网膜病变辅助诊断中的应用[J]. 计算机工程与应用, 2021, 57(14): 33-42. DOI: 10.3778/j.issn.1002-8331.2103-0213.\n[7] Litjens G, Kooi T, Bejnordi B E, et al. A survey on deep learning in medical image analysis[J]. Medical Image Analysis, 2017, 42: 60-88. DOI: 10.1016/j.media.2017.07.005.\n[8] Shen D, Wu G, Suk H I. Deep learning in medical image analysis[J]. Annual Review of Biomedical Engineering, 2017, 19: 221-248. DOI: 10.1146/annurev-bioeng-071516-044442.\n[9] Esteva A, Kuprel B, Novoa R A, et al. Dermatologist-level classification of skin cancer with deep neural networks[J]. Nature, 2017, 542(7639): 115-118. DOI: 10.1038/nature21056.\n[10] Gulshan V, Peng L, Coram M, et al. Development and validation of a deep learning algorithm for detection of diabetic retinopathy in retinal fundus photographs[J]. JAMA, 2016, 316(22): 2402-2410. DOI: 10.1001/jama.2016.17216.\n[11] Setio A A A, Traverso A, de Bel T, et al. Validation, comparison, and combination of algorithms for automatic detection of pulmonary nodules in computed tomography images: the LUNA16 challenge[J]. Medical Image Analysis, 2017, 42: 1-13. DOI: 10.1016/j.media.2017.06.015.\n[12] Ronneberger O, Fischer P, Brox T. U-Net: convolutional networks for biomedical image segmentation[C]//Medical Image Computing and Computer-Assisted Intervention—MICCAI 2015. Cham: Springer, 2015: 234-241. DOI: 10.1007/978-3-319-24574-4_28."
+    },
+    {
+      "id": "econ",
+      "discipline": "经济学",
+      "title": "数字普惠金融对农村居民消费的影响",
+      "prompt": "我在写本科毕业论文，题目是《数字普惠金融对农村居民消费的影响》。请帮我列出 12 篇参考文献，中文和英文各 6 篇，按 GB/T 7714-2015 格式书写，期刊论文尽量附上 DOI。只输出参考文献列表，每条一行，用 [1] 到 [12] 编号，不要其他说明。",
+      "model": "deepseek-flash",
+      "seconds": 6.5,
+      "usage": {
+        "prompt_tokens": 83,
+        "completion_tokens": 740,
+        "total_tokens": 823,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 83
+      },
+      "text": "[1] 黄益平, 黄卓. 中国的数字金融发展: 现在与未来[J]. 经济学(季刊), 2018, 17(4): 1489-1502. DOI: 10.13821/j.cnki.ceq.2018.03.09.\n[2] 谢绚丽, 沈艳, 张皓星, 等. 数字金融能促进创业吗?——来自中国的证据[J]. 经济学(季刊), 2018, 17(4): 1557-1580. DOI: 10.13821/j.cnki.ceq.2018.03.12.\n[3] 易行健, 周利. 数字普惠金融发展是否显著影响了居民消费——来自中国家庭的微观证据[J]. 金融研究, 2018(11): 47-67.\n[4] 张勋, 万广华, 张佳佳, 等. 数字经济、普惠金融与包容性增长[J]. 经济研究, 2019, 54(8): 71-86.\n[5] 郭峰, 王靖一, 王芳, 等. 测度中国数字普惠金融发展: 指数编制与空间特征[J]. 经济学(季刊), 2020, 19(4): 1401-1418. DOI: 10.13821/j.cnki.ceq.2020.03.12.\n[6] 傅秋子, 黄益平. 数字金融对农村金融需求的异质性影响——来自中国家庭金融调查与北京大学数字普惠金融指数的证据[J]. 金融研究, 2018(11): 68-84.\n[7] OZILI P K. Impact of digital finance on financial inclusion and stability[J]. Borsa Istanbul Review, 2018, 18(4): 329-340. DOI: 10.1016/j.bir.2017.12.003.\n[8] JACK W, RAY A. The Indian demonetization and digital payments: a natural experiment in digital financial inclusion[R]. Cambridge: MIT, 2019.\n[9] SURYONO A, LAW S H, TRINUGROHO W. Digital financial inclusion and consumption smoothing in Indonesia[J]. Asian-Pacific Economic Literature, 2022, 36(1): 58-76. DOI: 10.1111/apel.12346.\n[10] DEMIRGÜÇ-KUNT A, KLAPPER L, SINGER D, et al. The Global Findex Database 2017: measuring financial inclusion and the fintech revolution[R]. Washington, D.C.: World Bank, 2018. DOI: 10.1596/978-1-4648-1259-0.\n[11] BECK T, PAMUK H, RAMRATTAN R, et al. Payment instruments, finance and development[J]. Journal of Development Economics, 2018, 133: 162-186. DOI: 10.1016/j.jdeveco.2018.01.005.\n[12] AGARWAL S, ALWESATTO S, PRASAD E. Digital financial inclusion and consumption: evidence from mobile money in India[J]. Journal of Financial Economics, 2023, 149(2): 245-268. DOI: 10.1016/j.jfineco.2023.05.004."
+    }
+  ]
+}

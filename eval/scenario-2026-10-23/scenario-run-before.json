@@ -1,0 +1,524 @@
+{
+  "ranAt": "2026-10-24T04:54:55.271Z",
+  "cn": true,
+  "options": {
+    "concurrency": 3,
+    "openalexBudget": 20
+  },
+  "lists": [
+    {
+      "id": "edu",
+      "title": "大学生学业倦怠的影响因素与干预研究",
+      "refs": 12,
+      "seconds": 10.932
+    },
+    {
+      "id": "med",
+      "title": "深度学习在医学影像辅助诊断中的应用综述",
+      "refs": 12,
+      "seconds": 20.646
+    },
+    {
+      "id": "econ",
+      "title": "数字普惠金融对农村居民消费的影响",
+      "refs": 12,
+      "seconds": 10.082
+    }
+  ],
+  "summary": {
+    "refs": 36,
+    "fabricated": {
+      "total": 11,
+      "manual": 4,
+      "caught": 7
+    },
+    "realCorrect": {
+      "total": 22,
+      "correct": 18,
+      "manual": 4
+    },
+    "realWithError": {
+      "total": 3,
+      "missed": 1,
+      "caught": 1,
+      "false_alarm": 1
+    },
+    "verdicts": {
+      "verified": 19,
+      "unverifiable": 8,
+      "not_found": 8,
+      "mismatch": 1
+    },
+    "secondsPerList": [
+      10.932,
+      20.646,
+      10.082
+    ]
+  },
+  "rows": [
+    {
+      "id": "edu-01",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与知网记录一致（来源：知网）",
+      "issues": [],
+      "fields": [],
+      "matchStatus": "confirmed",
+      "steps": "crossref_search cn_search cn_page",
+      "raw": "连榕, 杨丽娴, 吴兰花. 大学生的专业承诺、学习倦怠的关系与量表编制[J]. 心理学报, 2005, 37(5): 632-636."
+    },
+    {
+      "id": "edu-02",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与知网记录一致（来源：知网）",
+      "issues": [],
+      "fields": [],
+      "matchStatus": "confirmed",
+      "steps": "crossref_search cn_search cn_page",
+      "raw": "杨丽娴, 连榕. 学习倦怠的研究现状及展望[J]. 集美大学学报(教育科学版), 2005, 6(2): 54-58."
+    },
+    {
+      "id": "edu-03",
+      "label": "real_with_error",
+      "verdict": "verified",
+      "outcome": "missed",
+      "summary": "已核实：与知网记录一致（来源：知网）",
+      "issues": [],
+      "fields": [
+        "doi:missing"
+      ],
+      "matchStatus": "confirmed",
+      "steps": "doi_lookup× doi_registry doi_csl× crossref_search cn_search cn_page",
+      "raw": "吴艳, 戴晓阳, 温忠麟, 等. 青少年学习倦怠量表的编制[J]. 中国临床心理学杂志, 2010, 18(2): 152-154. DOI: 10.16128/j.cnki.1005-3611.2010.02.011."
+    },
+    {
+      "id": "edu-04",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与知网记录一致（来源：知网）",
+      "issues": [],
+      "fields": [],
+      "matchStatus": "confirmed",
+      "steps": "crossref_search cn_search cn_page",
+      "raw": "张阔, 张赛, 董颖红. 积极心理资本: 测量及其与心理健康的关系[J]. 心理与行为研究, 2010, 8(1): 58-64."
+    },
+    {
+      "id": "edu-05",
+      "label": "fabricated",
+      "verdict": "unverifiable",
+      "outcome": "manual",
+      "summary": "DOI 已注册，但注册机构不提供可比对的元数据，请人工核对",
+      "issues": [],
+      "fields": [],
+      "steps": "doi_lookup× doi_registry doi_csl× crossref_search cn_search× cn_search",
+      "raw": "罗杰, 周瑗, 陈维, 等. 大学生学业倦怠与学习投入的关系: 一个有调节的中介模型[J]. 心理发展与教育, 2020, 36(6): 707-715. DOI: 10.16187/j.cnki.issn1001-4918.2020.06.08."
+    },
+    {
+      "id": "edu-06",
+      "label": "fabricated",
+      "verdict": "unverifiable",
+      "outcome": "manual",
+      "summary": "DOI 已注册，但注册机构不提供可比对的元数据，请人工核对",
+      "issues": [],
+      "fields": [],
+      "steps": "doi_lookup× doi_registry doi_csl× crossref_search cn_search× cn_search",
+      "raw": "王鑫强, 张大均. 大学生学业倦怠与主观幸福感的关系: 心理韧性的中介作用[J]. 中国临床心理学杂志, 2012, 20(6): 846-848. DOI: 10.16128/j.cnki.1005-3611.2012.06.028."
+    },
+    {
+      "id": "edu-07",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与数据库记录一致（来源：Crossref）",
+      "issues": [],
+      "fields": [],
+      "suggestion": "MASLACH C, SCHAUFELI WB, LEITER MP. Job Burnout[J]. Annual Review of Psychology, 2001, 52(1): 397-422. DOI: 10.1146/annurev.psych.52.1.397.",
+      "matchStatus": "confirmed",
+      "steps": "doi_lookup openalex_lookup",
+      "raw": "MASLACH C, SCHAUFELI W B, LEITER M P. Job burnout[J]. Annual Review of Psychology, 2001, 52: 397-422. DOI: 10.1146/annurev.psych.52.1.397."
+    },
+    {
+      "id": "edu-08",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与数据库记录一致（来源：Crossref）",
+      "issues": [],
+      "fields": [],
+      "suggestion": "SCHAUFELI WB, MARTÍNEZ IM, PINTO AM, et al. Burnout and Engagement in University Students: A Cross-National Study[J]. Journal of Cross-Cultural Psychology, 2002, 33(5): 464-481. DOI: 10.1177/0022022102033005003.",
+      "matchStatus": "confirmed",
+      "steps": "doi_lookup openalex_lookup",
+      "raw": "SCHAUFELI W B, MARTÍNEZ I M, MARQUES PINTO A, et al. Burnout and engagement in university students: a cross-national study[J]. Journal of Cross-Cultural Psychology, 2002, 33(5): 464-481. DOI: 10.1177/0022022102033005003."
+    },
+    {
+      "id": "edu-09",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与数据库记录一致（来源：Crossref）",
+      "issues": [],
+      "fields": [],
+      "suggestion": "SALMELA-ARO K, KIURU N, LESKINEN E, et al. School Burnout Inventory (SBI): Reliability and Validity[J]. European Journal of Psychological Assessment, 2009, 25(1): 48-57. DOI: 10.1027/1015-5759.25.1.48.",
+      "matchStatus": "confirmed",
+      "steps": "doi_lookup openalex_lookup",
+      "raw": "SALMELA-ARO K, KIURU N, LESKINEN E, et al. School burnout inventory (SBI): reliability and validity[J]. European Journal of Psychological Assessment, 2009, 25(1): 48-57. DOI: 10.1027/1015-5759.25.1.48."
+    },
+    {
+      "id": "edu-10",
+      "label": "fabricated",
+      "verdict": "not_found",
+      "outcome": "caught",
+      "summary": "DOI 未注册，且检索不到同名文献，疑似编造",
+      "issues": [
+        "DOI 10.1080/10615806.2020.1847288 在 doi.org 查无注册记录",
+        "Crossref 中也检索不到题名、作者相符的文献"
+      ],
+      "fields": [],
+      "steps": "doi_lookup× doi_registry× crossref_search openalex_search×",
+      "raw": "WALBURG V, HAYES J A, NELSON D L, et al. The upside of student burnout: a latent profile analysis[J]. Anxiety, Stress, & Coping, 2021, 34(3): 257-271. DOI: 10.1080/10615806.2020.1847288."
+    },
+    {
+      "id": "edu-11",
+      "label": "real_with_error",
+      "verdict": "mismatch",
+      "outcome": "caught",
+      "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+      "issues": [
+        "引用中的 DOI 指向另一篇文献《Can highly intelligent and high-achievin…》，正确 DOI 应为 10.1016/j.lindif.2015.07.015"
+      ],
+      "fields": [
+        "doi:mismatch"
+      ],
+      "suggestion": "MAY RW, BAUER KN, FINCHAM FD. School burnout: Diminished academic and cognitive performance[J]. Learning and Individual Differences, 2015, 42: 126-131. DOI: 10.1016/j.lindif.2015.07.015.",
+      "matchStatus": "confirmed",
+      "steps": "doi_lookup crossref_search openalex_lookup",
+      "raw": "MAY R W, BAUER K N, FINCHAM F D. School burnout: diminished academic and cognitive performance[J]. Learning and Individual Differences, 2015, 42: 126-131. DOI: 10.1016/j.lindif.2015.07.008."
+    },
+    {
+      "id": "edu-12",
+      "label": "fabricated",
+      "verdict": "not_found",
+      "outcome": "caught",
+      "summary": "DOI 未注册，且检索不到同名文献，疑似编造",
+      "issues": [
+        "DOI 10.1080/07448481.2020.1806859 在 doi.org 查无注册记录",
+        "Crossref 中也检索不到题名、作者相符的文献"
+      ],
+      "fields": [],
+      "steps": "doi_lookup× doi_registry× crossref_search openalex_search×",
+      "raw": "KILROY S, BANKS T, CROWLEY M, et al. The impact of a mindfulness-based intervention on burnout in university students: a randomized controlled trial[J]. Journal of American College Health, 2022, 70(6): 1701-1709. DOI: 10.1080/07448481.2020.1806859."
+    },
+    {
+      "id": "med-01",
+      "label": "real_correct",
+      "verdict": "unverifiable",
+      "outcome": "manual",
+      "summary": "DOI 已注册，但注册机构不提供可比对的元数据，请人工核对",
+      "issues": [],
+      "fields": [],
+      "steps": "doi_lookup× doi_registry doi_csl× crossref_search cn_search× cn_search",
+      "raw": "田娟秀, 刘国才, 谷珊珊, 等. 医学图像分析深度学习方法研究与挑战[J]. 自动化学报, 2018, 44(3): 401-424. DOI: 10.16383/j.aas.2018.c170153."
+    },
+    {
+      "id": "med-02",
+      "label": "real_with_error",
+      "verdict": "not_found",
+      "outcome": "false_alarm",
+      "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+      "issues": [
+        "DOI 10.3969/j.issn.1001-3695.2017.11.001 实际指向《计算智能研究综述》（作者不详，2017），与引用内容不符",
+        "检索不到与引用题名、作者相符的文献"
+      ],
+      "fields": [],
+      "steps": "doi_lookup× doi_registry doi_csl crossref_search cn_search× cn_search",
+      "raw": "张巧丽, 赵地, 迟学斌. 基于深度学习的医学影像诊断综述[J]. 计算机应用研究, 2017, 34(11): 3201-3207. DOI: 10.3969/j.issn.1001-3695.2017.11.001."
+    },
+    {
+      "id": "med-03",
+      "label": "fabricated",
+      "verdict": "unverifiable",
+      "outcome": "manual",
+      "summary": "DOI 已注册，但注册机构不提供可比对的元数据，请人工核对",
+      "issues": [],
+      "fields": [],
+      "steps": "doi_lookup× doi_registry doi_csl× crossref_search cn_search× cn_search",
+      "raw": "李华, 王伟, 张敏. 深度学习在肺结节CT影像辅助诊断中的研究进展[J]. 中国医学影像技术, 2020, 36(5): 765-770. DOI: 10.13929/j.issn.1003-3289.2020.05.030."
+    },
+    {
+      "id": "med-04",
+      "label": "fabricated",
+      "verdict": "not_found",
+      "outcome": "caught",
+      "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+      "issues": [
+        "DOI 10.7507/1001-5515.202007039 实际指向《基于改进卷积神经网络的房颤筛查算法》（作者不详，2021），与引用内容不符",
+        "检索不到与引用题名、作者相符的文献"
+      ],
+      "fields": [],
+      "steps": "doi_lookup× doi_registry doi_csl crossref_search cn_search× cn_search",
+      "raw": "王磊, 刘洋, 陈静. 卷积神经网络在乳腺X线影像诊断中的应用综述[J]. 生物医学工程学杂志, 2021, 38(2): 391-398. DOI: 10.7507/1001-5515.202007039."
+    },
+    {
+      "id": "med-05",
+      "label": "fabricated",
+      "verdict": "not_found",
+      "outcome": "caught",
+      "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+      "issues": [
+        "DOI 10.3969/j.issn.0258-8021.2022.01.012 实际指向《基于MRI的精神分裂症阴性症状脑影像研究进展》（作者不详，2022），与引用内容不符",
+        "检索不到与引用题名、作者相符的文献"
+      ],
+      "fields": [],
+      "steps": "doi_lookup× doi_registry doi_csl crossref_search cn_search× cn_search",
+      "raw": "陈晓, 赵俊, 周涛. 基于深度学习的脑肿瘤MRI图像分割与诊断研究进展[J]. 中国生物医学工程学报, 2022, 41(1): 108-117. DOI: 10.3969/j.issn.0258-8021.2022.01.012."
+    },
+    {
+      "id": "med-06",
+      "label": "fabricated",
+      "verdict": "not_found",
+      "outcome": "caught",
+      "summary": "DOI 未注册，且检索不到同名文献，疑似编造",
+      "issues": [
+        "DOI 10.3778/j.issn.1002-8331.2103-0213 在 doi.org 查无注册记录",
+        "Crossref 中也检索不到题名、作者相符的文献"
+      ],
+      "fields": [],
+      "steps": "doi_lookup× doi_registry× crossref_search cn_search× cn_search",
+      "raw": "刘芳, 杨帆, 孙鹏. 深度学习在视网膜病变辅助诊断中的应用[J]. 计算机工程与应用, 2021, 57(14): 33-42. DOI: 10.3778/j.issn.1002-8331.2103-0213."
+    },
+    {
+      "id": "med-07",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与数据库记录一致（来源：Crossref）",
+      "issues": [],
+      "fields": [],
+      "suggestion": "LITJENS G, KOOI T, BEJNORDI BE, et al. A survey on deep learning in medical image analysis[J]. Medical Image Analysis, 2017, 42: 60-88. DOI: 10.1016/j.media.2017.07.005.",
+      "matchStatus": "confirmed",
+      "steps": "doi_lookup openalex_lookup",
+      "raw": "Litjens G, Kooi T, Bejnordi B E, et al. A survey on deep learning in medical image analysis[J]. Medical Image Analysis, 2017, 42: 60-88. DOI: 10.1016/j.media.2017.07.005."
+    },
+    {
+      "id": "med-08",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与数据库记录一致（来源：Crossref）",
+      "issues": [],
+      "fields": [],
+      "suggestion": "SHEN D, WU G, SUK H-I. Deep Learning in Medical Image Analysis[J]. Annual Review of Biomedical Engineering, 2017, 19(1): 221-248. DOI: 10.1146/annurev-bioeng-071516-044442.",
+      "matchStatus": "confirmed",
+      "steps": "doi_lookup openalex_lookup",
+      "raw": "Shen D, Wu G, Suk H I. Deep learning in medical image analysis[J]. Annual Review of Biomedical Engineering, 2017, 19: 221-248. DOI: 10.1146/annurev-bioeng-071516-044442."
+    },
+    {
+      "id": "med-09",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与数据库记录一致（来源：Crossref）",
+      "issues": [],
+      "fields": [],
+      "suggestion": "ESTEVA A, KUPREL B, NOVOA RA, et al. Dermatologist-level classification of skin cancer with deep neural networks[J]. Nature, 2017, 542(7639): 115-118. DOI: 10.1038/nature21056.",
+      "matchStatus": "confirmed",
+      "steps": "doi_lookup openalex_lookup",
+      "raw": "Esteva A, Kuprel B, Novoa R A, et al. Dermatologist-level classification of skin cancer with deep neural networks[J]. Nature, 2017, 542(7639): 115-118. DOI: 10.1038/nature21056."
+    },
+    {
+      "id": "med-10",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与数据库记录一致（来源：Crossref）",
+      "issues": [],
+      "fields": [],
+      "suggestion": "GULSHAN V, PENG L, CORAM M, et al. Development and Validation of a Deep Learning Algorithm for Detection of Diabetic Retinopathy in Retinal Fundus Photographs[J]. JAMA, 2016, 316(22): 2402. DOI: 10.1001/jama.2016.17216.",
+      "matchStatus": "confirmed",
+      "steps": "doi_lookup openalex_lookup",
+      "raw": "Gulshan V, Peng L, Coram M, et al. Development and validation of a deep learning algorithm for detection of diabetic retinopathy in retinal fundus photographs[J]. JAMA, 2016, 316(22): 2402-2410. DOI: 10.1001/jama.2016.17216."
+    },
+    {
+      "id": "med-11",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与数据库记录一致（来源：Crossref）",
+      "issues": [],
+      "fields": [],
+      "suggestion": "SETIO AAA, TRAVERSO A, DE BEL T, et al. Validation, comparison, and combination of algorithms for automatic detection of pulmonary nodules in computed tomography images: The LUNA16 challenge[J]. Medical Image Analysis, 2017, 42: 1-13. DOI: 10.1016/j.media.2017.06.015.",
+      "matchStatus": "confirmed",
+      "steps": "doi_lookup openalex_lookup",
+      "raw": "Setio A A A, Traverso A, de Bel T, et al. Validation, comparison, and combination of algorithms for automatic detection of pulmonary nodules in computed tomography images: the LUNA16 challenge[J]. Medical Image Analysis, 2017, 42: 1-13. DOI: 10.1016/j.media.2017.06.015."
+    },
+    {
+      "id": "med-12",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与数据库记录一致（来源：Crossref）",
+      "issues": [],
+      "fields": [
+        "venue:partial"
+      ],
+      "suggestion": "RONNEBERGER O, FISCHER P, BROX T. U-Net: Convolutional Networks for Biomedical Image Segmentation[J]. Lecture Notes in Computer Science, 2015: 234-241. DOI: 10.1007/978-3-319-24574-4_28.",
+      "matchStatus": "confirmed",
+      "steps": "doi_lookup openalex_lookup",
+      "raw": "Ronneberger O, Fischer P, Brox T. U-Net: convolutional networks for biomedical image segmentation[C]//Medical Image Computing and Computer-Assisted Intervention—MICCAI 2015. Cham: Springer, 2015: 234-241. DOI: 10.1007/978-3-319-24574-4_28."
+    },
+    {
+      "id": "econ-01",
+      "label": "real_correct",
+      "verdict": "unverifiable",
+      "outcome": "manual",
+      "summary": "DOI 已注册，但注册机构不提供可比对的元数据，请人工核对",
+      "issues": [],
+      "fields": [],
+      "steps": "doi_lookup× doi_registry doi_csl× crossref_search cn_search× cn_search",
+      "raw": "黄益平, 黄卓. 中国的数字金融发展: 现在与未来[J]. 经济学(季刊), 2018, 17(4): 1489-1502. DOI: 10.13821/j.cnki.ceq.2018.03.09."
+    },
+    {
+      "id": "econ-02",
+      "label": "real_correct",
+      "verdict": "unverifiable",
+      "outcome": "manual",
+      "summary": "DOI 已注册，但注册机构不提供可比对的元数据，请人工核对",
+      "issues": [],
+      "fields": [],
+      "steps": "doi_lookup× doi_registry doi_csl× crossref_search cn_search cn_search× cn_search cn_page×",
+      "raw": "谢绚丽, 沈艳, 张皓星, 等. 数字金融能促进创业吗?——来自中国的证据[J]. 经济学(季刊), 2018, 17(4): 1557-1580. DOI: 10.13821/j.cnki.ceq.2018.03.12."
+    },
+    {
+      "id": "econ-03",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与知网记录一致（来源：知网）",
+      "issues": [],
+      "fields": [],
+      "matchStatus": "confirmed",
+      "steps": "crossref_search cn_search cn_page",
+      "raw": "易行健, 周利. 数字普惠金融发展是否显著影响了居民消费——来自中国家庭的微观证据[J]. 金融研究, 2018(11): 47-67."
+    },
+    {
+      "id": "econ-04",
+      "label": "real_correct",
+      "verdict": "unverifiable",
+      "outcome": "manual",
+      "summary": "开放数据库和知网、万方、维普联网检索都没能核对到这篇文章；查不到不代表不存在，请人工核查",
+      "issues": [],
+      "fields": [],
+      "steps": "crossref_search cn_search× cn_search",
+      "raw": "张勋, 万广华, 张佳佳, 等. 数字经济、普惠金融与包容性增长[J]. 经济研究, 2019, 54(8): 71-86."
+    },
+    {
+      "id": "econ-05",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与知网记录一致（来源：知网）",
+      "issues": [],
+      "fields": [
+        "doi:missing"
+      ],
+      "matchStatus": "confirmed",
+      "steps": "doi_lookup× doi_registry doi_csl× crossref_search cn_search cn_page",
+      "raw": "郭峰, 王靖一, 王芳, 等. 测度中国数字普惠金融发展: 指数编制与空间特征[J]. 经济学(季刊), 2020, 19(4): 1401-1418. DOI: 10.13821/j.cnki.ceq.2020.03.12."
+    },
+    {
+      "id": "econ-06",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与期刊官网记录一致（来源：期刊官网）",
+      "issues": [],
+      "fields": [],
+      "suggestion": "傅秋子, 黄益平. 数字金融对农村金融需求的异质性影响——来自中国家庭金融调查与北京大学数字普惠金融指数的证据[J]. 金融研究, 2018, 461(11): 68-84.",
+      "matchStatus": "confirmed",
+      "steps": "crossref_search cn_search× cn_search cn_page",
+      "raw": "傅秋子, 黄益平. 数字金融对农村金融需求的异质性影响——来自中国家庭金融调查与北京大学数字普惠金融指数的证据[J]. 金融研究, 2018(11): 68-84."
+    },
+    {
+      "id": "econ-07",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与数据库记录一致（来源：Crossref）",
+      "issues": [],
+      "fields": [],
+      "suggestion": "OZILI PK. Impact of digital finance on financial inclusion and stability[J]. Borsa Istanbul Review, 2018, 18(4): 329-340. DOI: 10.1016/j.bir.2017.12.003.",
+      "matchStatus": "confirmed",
+      "steps": "doi_lookup openalex_lookup",
+      "raw": "OZILI P K. Impact of digital finance on financial inclusion and stability[J]. Borsa Istanbul Review, 2018, 18(4): 329-340. DOI: 10.1016/j.bir.2017.12.003."
+    },
+    {
+      "id": "econ-08",
+      "label": "fabricated",
+      "verdict": "unverifiable",
+      "outcome": "manual",
+      "summary": "报告类文献不在开放学术数据库的覆盖范围内，请人工核查",
+      "issues": [],
+      "fields": [],
+      "steps": "crossref_search",
+      "raw": "JACK W, RAY A. The Indian demonetization and digital payments: a natural experiment in digital financial inclusion[R]. Cambridge: MIT, 2019."
+    },
+    {
+      "id": "econ-09",
+      "label": "fabricated",
+      "verdict": "not_found",
+      "outcome": "caught",
+      "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+      "issues": [
+        "DOI 10.1111/apel.12346 实际指向《Remittances and income inequality in the Philippines》（Akçay S，2021），与引用内容不符",
+        "检索不到与引用题名、作者相符的文献"
+      ],
+      "fields": [],
+      "steps": "doi_lookup crossref_search openalex_search×",
+      "raw": "SURYONO A, LAW S H, TRINUGROHO W. Digital financial inclusion and consumption smoothing in Indonesia[J]. Asian-Pacific Economic Literature, 2022, 36(1): 58-76. DOI: 10.1111/apel.12346."
+    },
+    {
+      "id": "econ-10",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与数据库记录一致（来源：Crossref）",
+      "issues": [],
+      "fields": [],
+      "suggestion": "DEMIRGUC-KUNT A, KLAPPER L, SINGER D, et al. The Global Findex Database 2017: Measuring Financial Inclusion and the Fintech Revolution[M]. 2018. DOI: 10.1596/978-1-4648-1259-0.",
+      "matchStatus": "confirmed",
+      "steps": "doi_lookup openalex_lookup",
+      "raw": "DEMIRGÜÇ-KUNT A, KLAPPER L, SINGER D, et al. The Global Findex Database 2017: measuring financial inclusion and the fintech revolution[R]. Washington, D.C.: World Bank, 2018. DOI: 10.1596/978-1-4648-1259-0."
+    },
+    {
+      "id": "econ-11",
+      "label": "real_correct",
+      "verdict": "verified",
+      "outcome": "correct",
+      "summary": "已核实：与数据库记录一致（来源：Crossref）",
+      "issues": [],
+      "fields": [],
+      "suggestion": "BECK T, PAMUK H, RAMRATTAN R, et al. Payment instruments, finance and development[J]. Journal of Development Economics, 2018, 133: 162-186. DOI: 10.1016/j.jdeveco.2018.01.005.",
+      "matchStatus": "confirmed",
+      "steps": "doi_lookup openalex_lookup",
+      "raw": "BECK T, PAMUK H, RAMRATTAN R, et al. Payment instruments, finance and development[J]. Journal of Development Economics, 2018, 133: 162-186. DOI: 10.1016/j.jdeveco.2018.01.005."
+    },
+    {
+      "id": "econ-12",
+      "label": "fabricated",
+      "verdict": "not_found",
+      "outcome": "caught",
+      "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+      "issues": [
+        "DOI 10.1016/j.jfineco.2023.05.004 实际指向《Financing the litigation arms race》（Antill S, Grenadier SR，2023），与引用内容不符",
+        "检索不到与引用题名、作者相符的文献"
+      ],
+      "fields": [],
+      "steps": "doi_lookup crossref_search openalex_search×",
+      "raw": "AGARWAL S, ALWESATTO S, PRASAD E. Digital financial inclusion and consumption: evidence from mobile money in India[J]. Journal of Financial Economics, 2023, 149(2): 245-268. DOI: 10.1016/j.jfineco.2023.05.004."
+    }
+  ]
+}

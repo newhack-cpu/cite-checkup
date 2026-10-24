@@ -1,0 +1,938 @@
+{
+  "ranAt": "2026-10-23T16:27:40.360Z",
+  "source": "Crossref /works?sample, type:journal-article",
+  "summary": {
+    "sampled": 30,
+    "completed": 30,
+    "fieldsAllConsistent": 30,
+    "verdicts": {
+      "verified": 30
+    },
+    "medianSeconds": 1.704
+  },
+  "rows": [
+    {
+      "doi": "10.2139/ssrn.4282757",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 5.104,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "A Deep Learning-Based Approach to Solve the Height-Slope Ambiguity in Phase Measuring Deflectometry",
+        "authors": [
+          "Ma",
+          "Fan",
+          "LI"
+        ],
+        "year": 2022,
+        "venue": "SSRN Electronic Journal",
+        "doi": "10.2139/ssrn.4282757"
+      },
+      "generated": "MA T, FAN X, LI C, et al. A Deep Learning-Based Approach to Solve the Height-Slope Ambiguity in Phase Measuring Deflectometry[J]. SSRN Electronic Journal, 2022. DOI: 10.2139/ssrn.4282757."
+    },
+    {
+      "doi": "10.1097/00000658-195312000-00024",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 10.114,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "PANIC IN DIASTER",
+        "authors": [
+          "CHURCHILL"
+        ],
+        "year": 1953,
+        "venue": "Annals of Surgery",
+        "volume": "138",
+        "issue": "6",
+        "pages": "935-936",
+        "doi": "10.1097/00000658-195312000-00024"
+      },
+      "generated": "CHURCHILL ED. PANIC IN DIASTER[J]. Annals of Surgery, 1953, 138(6): 935-936. DOI: 10.1097/00000658-195312000-00024."
+    },
+    {
+      "doi": "10.1080/1523908x.2024.2364620",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 10.292,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Behind the curtains of deliberation: unveiling climate policy and behavioural challenges through a mini-public in Spain",
+        "authors": [
+          "Galende-Sánchez",
+          "Sorman",
+          "González-Eguino"
+        ],
+        "year": 2024,
+        "venue": "Journal of Environmental Policy &amp; Planning",
+        "volume": "26",
+        "issue": "4",
+        "pages": "402-416",
+        "doi": "10.1080/1523908x.2024.2364620"
+      },
+      "generated": "GALENDE-SÁNCHEZ E, SORMAN AH, GONZÁLEZ-EGUINO M, et al. Behind the curtains of deliberation: unveiling climate policy and behavioural challenges through a mini-public in Spain[J]. Journal of Environmental Policy & Planning, 2024, 26(4): 402-416. DOI: 10.1080/1523908x.2024.2364620."
+    },
+    {
+      "doi": "10.1007/s00332-017-9368-3",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 4.422,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Adaptive Predictor-Based Output Feedback Control for a Class of Unknown MIMO Linear Systems",
+        "authors": [
+          "Nguyen",
+          "Leonessa"
+        ],
+        "year": 2017,
+        "venue": "Journal of Nonlinear Science",
+        "volume": "27",
+        "issue": "4",
+        "pages": "1257-1290",
+        "doi": "10.1007/s00332-017-9368-3"
+      },
+      "generated": "NGUYEN CH, LEONESSA A. Adaptive Predictor-Based Output Feedback Control for a Class of Unknown MIMO Linear Systems[J]. Journal of Nonlinear Science, 2017, 27(4): 1257-1290. DOI: 10.1007/s00332-017-9368-3."
+    },
+    {
+      "doi": "10.1080/00021369.1972.10860221",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.347,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Studies on Oxidation-Reduction Potentials (ORP) of Microbial Cultures",
+        "authors": [
+          "Hongo",
+          "Ishizaki",
+          "Uyeda"
+        ],
+        "year": 1972,
+        "venue": "Agricultural and Biological Chemistry",
+        "volume": "36",
+        "issue": "1",
+        "pages": "141-145",
+        "doi": "10.1080/00021369.1972.10860221"
+      },
+      "generated": "HONGO M, ISHIZAKI A, UYEDA M. Studies on Oxidation-Reduction Potentials (ORP) of Microbial Cultures: Part I. l -Glutamic Acid Fermentation[J]. Agricultural and Biological Chemistry, 1972, 36(1): 141-145. DOI: 10.1080/00021369.1972.10860221."
+    },
+    {
+      "doi": "10.1111/j.1742-6723.2012.01611.x",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.634,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Practical communication guide for paediatric procedures",
+        "authors": [
+          "Stock",
+          "Hill",
+          "Babl"
+        ],
+        "year": 2012,
+        "venue": "Emergency Medicine Australasia",
+        "volume": "24",
+        "issue": "6",
+        "pages": "641-646",
+        "doi": "10.1111/j.1742-6723.2012.01611.x"
+      },
+      "generated": "STOCK A, HILL A, BABL FE. Practical communication guide for paediatric procedures[J]. Emergency Medicine Australasia, 2012, 24(6): 641-646. DOI: 10.1111/j.1742-6723.2012.01611.x."
+    },
+    {
+      "doi": "10.5209/geop.88856",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.171,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Lo que la geografía debe ser",
+        "authors": [
+          "Kropotkin"
+        ],
+        "year": 2023,
+        "venue": "Geopolítica(s). Revista de estudios sobre espacio y poder",
+        "volume": "14",
+        "issue": "1",
+        "pages": "117-132",
+        "doi": "10.5209/geop.88856"
+      },
+      "generated": "KROPOTKIN P. Lo que la geografía debe ser[J]. Geopolítica(s). Revista de estudios sobre espacio y poder, 2023, 14(1): 117-132. DOI: 10.5209/geop.88856."
+    },
+    {
+      "doi": "10.3917/dhs.049.0103",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.272,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "L’individualité contre le spectacle social, conflit du théâtre allemand des Lumières",
+        "authors": [
+          "Jobez"
+        ],
+        "year": 2017,
+        "venue": "Dix-huitième siècle",
+        "volume": "n° 49",
+        "issue": "1",
+        "pages": "103-117",
+        "doi": "10.3917/dhs.049.0103"
+      },
+      "generated": "JOBEZ R. L’individualité contre le spectacle social, conflit du théâtre allemand des Lumières[J]. Dix-huitième siècle, 2017, n° 49(1): 103-117. DOI: 10.3917/dhs.049.0103."
+    },
+    {
+      "doi": "10.14381/nmh.2015.12.30.48.43",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 2.214,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "해기옹 금령의 한시연구* -간정일록의 유배시를 중심으로-",
+        "authors": [
+          "Lee"
+        ],
+        "year": 2015,
+        "venue": "THE NAMMYONGHAK STUDY",
+        "volume": "48",
+        "pages": "43-68",
+        "doi": "10.14381/nmh.2015.12.30.48.43"
+      },
+      "generated": "LEE Y-S. 해기옹 금령의 한시연구* -간정일록의 유배시를 중심으로-[J]. THE NAMMYONGHAK STUDY, 2015, 48: 43-68. DOI: 10.14381/nmh.2015.12.30.48.43."
+    },
+    {
+      "doi": "10.35533/ecd.0202.hv",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.556,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Pobreza e inequidad: la historia oficial",
+        "authors": [
+          "Veltmeyer"
+        ],
+        "year": 2012,
+        "venue": "Estudios Críticos del Desarrollo",
+        "volume": "2",
+        "issue": "2",
+        "pages": "199-216",
+        "doi": "10.35533/ecd.0202.hv"
+      },
+      "generated": "VELTMEYER H. Pobreza e inequidad: la historia oficial[J]. Estudios Críticos del Desarrollo, 2012, 2(2): 199-216. DOI: 10.35533/ecd.0202.hv."
+    },
+    {
+      "doi": "10.18848/2325-128x/cgp/a327",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.274,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Enhancing Trustworthiness and Academic Recognition of Practice-Based Research Conducted by Practitioner-Researchers",
+        "authors": [
+          "Liao",
+          "Ma"
+        ],
+        "year": 2026,
+        "venue": "The International Journal of Design Education",
+        "doi": "10.18848/2325-128x/cgp/a327"
+      },
+      "generated": "LIAO Y, MA H. Enhancing Trustworthiness and Academic Recognition of Practice-Based Research Conducted by Practitioner-Researchers[J]. The International Journal of Design Education, 2026. DOI: 10.18848/2325-128x/cgp/a327."
+    },
+    {
+      "doi": "10.3389/fnins.2020.600178",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 2.542,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "PDE10A Inhibitors—Clinical Failure or Window Into Antipsychotic Drug Action?",
+        "authors": [
+          "Menniti",
+          "Chappie",
+          "Schmidt"
+        ],
+        "year": 2021,
+        "venue": "Frontiers in Neuroscience",
+        "volume": "14",
+        "doi": "10.3389/fnins.2020.600178"
+      },
+      "generated": "MENNITI FS, CHAPPIE TA, SCHMIDT CJ. PDE10A Inhibitors—Clinical Failure or Window Into Antipsychotic Drug Action?[J]. Frontiers in Neuroscience, 2021, 14: 600178. DOI: 10.3389/fnins.2020.600178."
+    },
+    {
+      "doi": "10.1007/s10643-022-01397-0",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.984,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Supporting Inclusion in Early Childhood Through Itinerant Service Delivery: A Systematic Literature Review",
+        "authors": [
+          "Ascetta",
+          "Googe",
+          "Garrison"
+        ],
+        "year": 2022,
+        "venue": "Early Childhood Education Journal",
+        "volume": "51",
+        "issue": "8",
+        "pages": "1455-1466",
+        "doi": "10.1007/s10643-022-01397-0"
+      },
+      "generated": "ASCETTA K, GOOGE H, GARRISON R. Supporting Inclusion in Early Childhood Through Itinerant Service Delivery: A Systematic Literature Review[J]. Early Childhood Education Journal, 2022, 51(8): 1455-1466. DOI: 10.1007/s10643-022-01397-0."
+    },
+    {
+      "doi": "10.2307/3576954",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 2.266,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Effect of Hyperthermia on the Repair of Sublethal Radiation Damage in Normal and Membrane Fatty Acid Substituted Fibroblasts",
+        "authors": [
+          "Wolters",
+          "Kelholt",
+          "Konings"
+        ],
+        "year": 1987,
+        "venue": "Radiation Research",
+        "volume": "109",
+        "issue": "2",
+        "pages": "294",
+        "doi": "10.2307/3576954"
+      },
+      "generated": "WOLTERS H, KELHOLT D, KONINGS AWT. Effect of Hyperthermia on the Repair of Sublethal Radiation Damage in Normal and Membrane Fatty Acid Substituted Fibroblasts[J]. Radiation Research, 1987, 109(2): 294. DOI: 10.2307/3576954."
+    },
+    {
+      "doi": "10.5840/humanitas2022351/28",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.296,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "The Mechanics of Freedom",
+        "authors": [
+          "Frohnen"
+        ],
+        "year": 2022,
+        "venue": "Humanitas",
+        "volume": "35",
+        "issue": "1",
+        "pages": "120-124",
+        "doi": "10.5840/humanitas2022351/28"
+      },
+      "generated": "FROHNEN B, THE ACADEMY OF PHILOSOPHY & LETTERS. The Mechanics of Freedom[J]. Humanitas, 2022, 35(1): 120-124. DOI: 10.5840/humanitas2022351/28."
+    },
+    {
+      "doi": "10.1016/0022-2828(81)90207-8",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 2.133,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Oxygenated versus non oxygenated cristalloid cardioplegic solution:Experimental evaluation on ischemic myocardium",
+        "authors": [
+          "TURINETTO"
+        ],
+        "year": 1981,
+        "venue": "Journal of Molecular and Cellular Cardiology",
+        "volume": "13",
+        "pages": "103",
+        "doi": "10.1016/0022-2828(81)90207-8"
+      },
+      "generated": "TURINETTO. Oxygenated versus non oxygenated cristalloid cardioplegic solution:Experimental evaluation on ischemic myocardium[J]. Journal of Molecular and Cellular Cardiology, 1981, 13: 103. DOI: 10.1016/0022-2828(81)90207-8."
+    },
+    {
+      "doi": "10.4161/epi.6.4.14532",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.249,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "DNA methylation: A source of random variation in natural populations",
+        "authors": [
+          "Massicotte",
+          "Whitelaw",
+          "Angers"
+        ],
+        "year": 2011,
+        "venue": "Epigenetics",
+        "volume": "6",
+        "issue": "4",
+        "pages": "421-427",
+        "doi": "10.4161/epi.6.4.14532"
+      },
+      "generated": "MASSICOTTE R, WHITELAW E, ANGERS B. DNA methylation: A source of random variation in natural populations[J]. Epigenetics, 2011, 6(4): 421-427. DOI: 10.4161/epi.6.4.14532."
+    },
+    {
+      "doi": "10.1016/0168-3659(95)00142-5",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.604,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Development and evaluation of a mucoadhesive drug delivery system for dual-controlled delivery of nonoxynol-9",
+        "authors": [
+          "Lee",
+          "Chien"
+        ],
+        "year": 1996,
+        "venue": "Journal of Controlled Release",
+        "volume": "39",
+        "issue": "1",
+        "pages": "93-103",
+        "doi": "10.1016/0168-3659(95)00142-5"
+      },
+      "generated": "LEE C-H, CHIEN YW. Development and evaluation of a mucoadhesive drug delivery system for dual-controlled delivery of nonoxynol-9[J]. Journal of Controlled Release, 1996, 39(1): 93-103. DOI: 10.1016/0168-3659(95)00142-5."
+    },
+    {
+      "doi": "10.2307/3429542",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 2.91,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Tumor Promotion in Rat Liver",
+        "authors": [
+          "Herren",
+          "Pereira"
+        ],
+        "year": 1983,
+        "venue": "Environmental Health Perspectives",
+        "volume": "50",
+        "pages": "123",
+        "doi": "10.2307/3429542"
+      },
+      "generated": "HERREN SL, PEREIRA MA. Tumor Promotion in Rat Liver[J]. Environmental Health Perspectives, 1983, 50: 123. DOI: 10.2307/3429542."
+    },
+    {
+      "doi": "10.3189/s0022143000016439",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.685,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Siple Coast Project research of Crary Ice Rise and the mouths of Ice Streams B and C, West Antarctica: review and new perspectives",
+        "authors": [
+          "Bindschadler"
+        ],
+        "year": 1993,
+        "venue": "Journal of Glaciology",
+        "volume": "39",
+        "issue": "133",
+        "pages": "538-552",
+        "doi": "10.3189/s0022143000016439"
+      },
+      "generated": "BINDSCHADLER R. Siple Coast Project research of Crary Ice Rise and the mouths of Ice Streams B and C, West Antarctica: review and new perspectives[J]. Journal of Glaciology, 1993, 39(133): 538-552. DOI: 10.3189/s0022143000016439."
+    },
+    {
+      "doi": "10.1007/s11606-023-08176-6",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 2.021,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Prevalence and Causes of Diagnostic Errors in Hospitalized Patients Under Investigation for COVID-19",
+        "authors": [
+          "Auerbach",
+          "Astik",
+          "O’Leary"
+        ],
+        "year": 2023,
+        "venue": "Journal of General Internal Medicine",
+        "volume": "38",
+        "issue": "8",
+        "pages": "1902-1910",
+        "doi": "10.1007/s11606-023-08176-6"
+      },
+      "generated": "AUERBACH AD, ASTIK GJ, O’LEARY KJ, et al. Prevalence and Causes of Diagnostic Errors in Hospitalized Patients Under Investigation for COVID-19[J]. Journal of General Internal Medicine, 2023, 38(8): 1902-1910. DOI: 10.1007/s11606-023-08176-6."
+    },
+    {
+      "doi": "10.1002/chin.197221223",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.341,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "ChemInform Abstract: TELOMERISATION UNGESAETTIGTER VERBINDUNGEN MIT PENTACHLORAETHAN UND HERST. POLYCHLORIERTER DIENE",
+        "authors": [
+          "BELYAVSKII",
+          "CHUKOVSKAYA",
+          "FREIDLINA"
+        ],
+        "year": 1972,
+        "venue": "Chemischer Informationsdienst",
+        "volume": "3",
+        "issue": "21",
+        "doi": "10.1002/chin.197221223"
+      },
+      "generated": "BELYAVSKII AB, CHUKOVSKAYA ET, FREIDLINA RK. ChemInform Abstract: TELOMERISATION UNGESAETTIGTER VERBINDUNGEN MIT PENTACHLORAETHAN UND HERST. POLYCHLORIERTER DIENE[J]. Chemischer Informationsdienst, 1972, 3(21): chin.197221223. DOI: 10.1002/chin.197221223."
+    },
+    {
+      "doi": "10.4081/ripppo.2012.106",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.407,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Measuring Attachment and Reflective Functioning in Early Adolescence:An Introduction to the Friends and Family Interview",
+        "authors": [
+          "Kriss",
+          "Steele",
+          "Steele"
+        ],
+        "year": 2013,
+        "venue": "Research in Psychotherapy: Psychopathology, Process and Outcome",
+        "volume": "15",
+        "issue": "2",
+        "pages": "87-95",
+        "doi": "10.4081/ripppo.2012.106"
+      },
+      "generated": "KRISS A, STEELE H, STEELE M. Measuring Attachment and Reflective Functioning in Early Adolescence:An Introduction to the Friends and Family Interview[J]. Research in Psychotherapy: Psychopathology, Process and Outcome, 2013, 15(2): 87-95. DOI: 10.4081/ripppo.2012.106."
+    },
+    {
+      "doi": "10.36930/40340520",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.648,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Інформаційні та лазерні технології оцінювання рівня ризиків від шкідливих викидів техногенними об'єктами",
+        "authors": [
+          "Сікора",
+          "Лиса",
+          "Хиляк"
+        ],
+        "year": 2024,
+        "venue": "Scientific Bulletin of UNFU",
+        "volume": "34",
+        "issue": "5",
+        "pages": "151-169",
+        "doi": "10.36930/40340520"
+      },
+      "generated": "СІКОРА ЛС, ЛИСА НК, ХИЛЯК НА, et al. Інформаційні та лазерні технології оцінювання рівня ризиків від шкідливих викидів техногенними об'єктами[J]. Scientific Bulletin of UNFU, 2024, 34(5): 151-169. DOI: 10.36930/40340520."
+    },
+    {
+      "doi": "10.1186/s13619-026-00287-9",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.941,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Cellular senescence in skeletal muscle regeneration",
+        "authors": [
+          "Liu",
+          "Wang"
+        ],
+        "year": 2026,
+        "venue": "Cell Regeneration",
+        "volume": "15",
+        "issue": "1",
+        "doi": "10.1186/s13619-026-00287-9"
+      },
+      "generated": "LIU X, WANG H. Cellular senescence in skeletal muscle regeneration[J]. Cell Regeneration, 2026, 15(1): 15. DOI: 10.1186/s13619-026-00287-9."
+    },
+    {
+      "doi": "10.1093/cdn/nzac051.045",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.773,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "The Characteristics of Obesogenic Environment and Their Association With BMI Among the Elderly Population in Rural South Korea",
+        "authors": [
+          "Lee",
+          "Jo",
+          "Yoo"
+        ],
+        "year": 2022,
+        "venue": "Current Developments in Nutrition",
+        "volume": "6",
+        "pages": "129",
+        "doi": "10.1093/cdn/nzac051.045"
+      },
+      "generated": "LEE H, JO E, YOO H, et al. The Characteristics of Obesogenic Environment and Their Association With BMI Among the Elderly Population in Rural South Korea[J]. Current Developments in Nutrition, 2022, 6: 129. DOI: 10.1093/cdn/nzac051.045."
+    },
+    {
+      "doi": "10.1093/cdn/nzaa064_001",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.511,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Evaluating the Consistency of the French Nutri-Score Front-of-Pack Scoring System with Canadian Dietary Guidelines",
+        "authors": [
+          "Ahmed",
+          "Dickinson",
+          "Vergeer"
+        ],
+        "year": 2020,
+        "venue": "Current Developments in Nutrition",
+        "volume": "4",
+        "pages": "nzaa064_001",
+        "doi": "10.1093/cdn/nzaa064_001"
+      },
+      "generated": "AHMED M, DICKINSON K, VERGEER L, et al. Evaluating the Consistency of the French Nutri-Score Front-of-Pack Scoring System with Canadian Dietary Guidelines[J]. Current Developments in Nutrition, 2020, 4: nzaa064_001. DOI: 10.1093/cdn/nzaa064_001."
+    },
+    {
+      "doi": "10.1016/j.gca.2022.09.011",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.656,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Photic zone redox oscillations and microbialite development recorded by Early Triassic sediments of the Perth Basin: A geochemical approach",
+        "authors": [
+          "Taniwaki",
+          "Elders",
+          "Böttcher"
+        ],
+        "year": 2022,
+        "venue": "Geochimica et Cosmochimica Acta",
+        "volume": "336",
+        "pages": "188-207",
+        "doi": "10.1016/j.gca.2022.09.011"
+      },
+      "generated": "TANIWAKI T, ELDERS C, BÖTTCHER ME, et al. Photic zone redox oscillations and microbialite development recorded by Early Triassic sediments of the Perth Basin: A geochemical approach[J]. Geochimica et Cosmochimica Acta, 2022, 336: 188-207. DOI: 10.1016/j.gca.2022.09.011."
+    },
+    {
+      "doi": "10.35329/jp.v5i3.6446",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.704,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "PENINGKATAN LITERASI DIGITAL MELALUI PELATIHAN PARTISIPATIF PADA KOMUNITAS SAMPAN INSTITUTE DI PARE-PARE",
+        "authors": [
+          "Indrabayu",
+          "Rahmat",
+          "Dewi"
+        ],
+        "year": 2025,
+        "venue": "SIPISSANGNGI Jurnal Pengabdian Kepada Masyarakat",
+        "volume": "5",
+        "issue": "3",
+        "pages": "221",
+        "doi": "10.35329/jp.v5i3.6446"
+      },
+      "generated": "INDRABAYU I, RAHMAT MA, DEWI DF, et al. PENINGKATAN LITERASI DIGITAL MELALUI PELATIHAN PARTISIPATIF PADA KOMUNITAS SAMPAN INSTITUTE DI PARE-PARE[J]. SIPISSANGNGI Jurnal Pengabdian Kepada Masyarakat, 2025, 5(3): 221. DOI: 10.35329/jp.v5i3.6446."
+    },
+    {
+      "doi": "10.1136/bcr-2024-261637",
+      "verdict": "verified",
+      "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "seconds": 1.707,
+      "checks": {
+        "title": true,
+        "authors": true,
+        "year": true,
+        "venue": true,
+        "volume": true,
+        "issue": true,
+        "pages": true,
+        "doi": true,
+        "inCitation": true
+      },
+      "expected": {
+        "title": "Tubercular pericarditis with effusion and mycotic pseudoaneurysm of arch of aorta",
+        "authors": [
+          "Bala",
+          "Das",
+          "Velayoudam"
+        ],
+        "year": 2025,
+        "venue": "BMJ Case Reports",
+        "volume": "18",
+        "issue": "4",
+        "pages": "e261637",
+        "doi": "10.1136/bcr-2024-261637"
+      },
+      "generated": "BALA K, DAS A, VELAYOUDAM D, et al. Tubercular pericarditis with effusion and mycotic pseudoaneurysm of arch of aorta[J]. BMJ Case Reports, 2025, 18(4): e261637. DOI: 10.1136/bcr-2024-261637."
+    }
+  ]
+}

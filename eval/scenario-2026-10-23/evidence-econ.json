@@ -1,0 +1,1156 @@
+{
+  "collectedAt": "2026-10-23T16:36:56.053Z",
+  "entries": [
+    {
+      "id": "econ-01",
+      "raw": "黄益平, 黄卓. 中国的数字金融发展: 现在与未来[J]. 经济学(季刊), 2018, 17(4): 1489-1502. DOI: 10.13821/j.cnki.ceq.2018.03.09.",
+      "doi": "10.13821/j.cnki.ceq.2018.03.09",
+      "title": "中国的数字金融发展: 现在与未来",
+      "evidence": {
+        "doiRegistry": "CNKI",
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.71411/eaou.2025.v1i1.578",
+            "title": "数字金融如何影响国内外银行业发展与转型",
+            "authors": [
+              "黄伟健"
+            ],
+            "year": 2025,
+            "venue": "Journal of the European Academy Open University",
+            "volume": "1",
+            "issue": "1"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.62989/jcssr2025.2.3.6",
+            "title": "国企政工在数字化转型中的党建宣传角色与发展方向",
+            "authors": [
+              "郑远霞"
+            ],
+            "year": 2025,
+            "venue": "Academic Frontiers Publishing Group",
+            "volume": "2",
+            "issue": "3",
+            "pages": "26-30"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.54254/3049-7825/2025.24031",
+            "title": "守护“钱袋子”的金融长城：中国存款保险制度十年筑基与未来展望",
+            "authors": [
+              "郑"
+            ],
+            "year": 2025,
+            "venue": "人文社会发展",
+            "volume": "2",
+            "issue": "2",
+            "pages": "108-110"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.63887/jfem.2025.1.5.24",
+            "title": "从普惠到养老：数字金融对城镇居民保障水平影响研究",
+            "authors": [
+              "奚菲"
+            ],
+            "year": 2025,
+            "venue": "财经管理",
+            "volume": "1",
+            "issue": "5"
+          },
+          {
+            "source": "openalex",
+            "title": "韩国：数字乐未央——韩国产业结构升级的数字“发动机”",
+            "authors": [
+              "牟清",
+              "费雪域"
+            ],
+            "year": 2005,
+            "venue": "21世纪商业评论",
+            "volume": null,
+            "issue": "8",
+            "pages": "108-113"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.65196/yfph6c61",
+            "title": "人工智能重塑国际金融的理论与实践",
+            "authors": [
+              "王晨烨"
+            ],
+            "year": 2026,
+            "venue": "经济与管理发展研究",
+            "volume": "2",
+            "issue": "2",
+            "pages": "7-12"
+          }
+        ],
+        "chndoi": {
+          "url": "https://www.chndoi.org/Resolution/Handler?doi=10.13821%2Fj.cnki.ceq.2018.03.09",
+          "status": 200,
+          "title": "中国的数字金融发展:现在与未来",
+          "authors": [
+            "黄益平",
+            "黄卓"
+          ],
+          "registered": "2018-09-13 16:10:25"
+        }
+      }
+    },
+    {
+      "id": "econ-02",
+      "raw": "谢绚丽, 沈艳, 张皓星, 等. 数字金融能促进创业吗?——来自中国的证据[J]. 经济学(季刊), 2018, 17(4): 1557-1580. DOI: 10.13821/j.cnki.ceq.2018.03.12.",
+      "doi": "10.13821/j.cnki.ceq.2018.03.12",
+      "title": "数字金融能促进创业吗?——来自中国的证据",
+      "evidence": {
+        "doiRegistry": "CNKI",
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.12677/mm.2024.148220",
+            "title": "Whether Digital Financial Inclusion Can Promote Manufacturing Employment in China Scale Growth—Empirical Study Based on Provincial Panel Data",
+            "authors": [
+              "吴"
+            ],
+            "year": 2024,
+            "venue": "Modern Management",
+            "volume": "14",
+            "issue": "08",
+            "pages": "1894-1905"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.12677/orf.2024.143285",
+            "title": "Digital Inclusive Finance and the Intensity of Energy: From the Experimental Evidence in Chinese Cities",
+            "authors": [
+              "谭"
+            ],
+            "year": 2024,
+            "venue": "Operations Research and Fuzziology",
+            "volume": "14",
+            "issue": "03",
+            "pages": "468-478"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.63887/fem.2025.1.7.36",
+            "title": "金融强监管如何赋能企业创新？——来自资管新规的经验证据",
+            "authors": [
+              "谢童"
+            ],
+            "year": 2025,
+            "venue": "经济管理前沿",
+            "volume": "1",
+            "issue": "7"
+          }
+        ],
+        "openalexSearch": [],
+        "chndoi": {
+          "url": "https://www.chndoi.org/Resolution/Handler?doi=10.13821%2Fj.cnki.ceq.2018.03.12",
+          "status": 200,
+          "title": "数字金融能促进创业吗?——来自中国的证据",
+          "authors": [
+            "谢绚丽",
+            "沈艳",
+            "张皓星",
+            "郭峰"
+          ],
+          "registered": "2018-09-13 16:10:25"
+        }
+      }
+    },
+    {
+      "id": "econ-03",
+      "raw": "易行健, 周利. 数字普惠金融发展是否显著影响了居民消费——来自中国家庭的微观证据[J]. 金融研究, 2018(11): 47-67.",
+      "title": "数字普惠金融发展是否显著影响了居民消费——来自中国家庭的微观证据",
+      "evidence": {
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.61369/se.6786",
+            "title": "数字普惠金融发展对居民消费差异的影响研究",
+            "authors": [
+              "周"
+            ],
+            "year": 2024,
+            "venue": "Society and Economy",
+            "volume": "2",
+            "issue": "3",
+            "pages": "38"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.12677/fin.2024.142068",
+            "title": "Does Digital Inclusive Financing Promote “Capacity Expansion and Quality Improvement” of Household Consumption?—Evidence from Provincial Panel Data",
+            "authors": [
+              "王"
+            ],
+            "year": 2024,
+            "venue": "Finance",
+            "volume": "14",
+            "issue": "02",
+            "pages": "630-642"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.64090/3105-0964.20250205",
+            "title": "数字普惠金融对农村居民消费的影响研究",
+            "authors": [
+              "赵"
+            ],
+            "year": 2025,
+            "venue": "社会经济与发展",
+            "volume": "1",
+            "issue": "2",
+            "pages": "5-5"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.64083/etm2630119",
+            "title": "数字普惠金融对农村居民消费升级的影响机制与案例研究",
+            "authors": [
+              "雨涵 王",
+              "涵 查"
+            ],
+            "year": 2026,
+            "venue": "教育教学与管理",
+            "volume": "2",
+            "issue": "1"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.63887/jfem.2025.1.5.24",
+            "title": "从普惠到养老：数字金融对城镇居民保障水平影响研究",
+            "authors": [
+              "奚菲"
+            ],
+            "year": 2025,
+            "venue": "财经管理",
+            "volume": "1",
+            "issue": "5"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.70693/rwsk.v1i6.1126",
+            "title": "数字普惠金融对城乡居民消费支出的影响研究",
+            "authors": [
+              "刘文烨",
+              "徐瑞阳",
+              "慈立鑫"
+            ],
+            "year": 2025,
+            "venue": "人文与社会科学学刊",
+            "volume": "1",
+            "issue": "6",
+            "pages": "201-206"
+          }
+        ]
+      }
+    },
+    {
+      "id": "econ-04",
+      "raw": "张勋, 万广华, 张佳佳, 等. 数字经济、普惠金融与包容性增长[J]. 经济研究, 2019, 54(8): 71-86.",
+      "title": "数字经济、普惠金融与包容性增长",
+      "evidence": {
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.12677/fin.2020.104026",
+            "title": "Research on the Relationship between Digital Inclusive Finance and Rural Inclusive Growth",
+            "authors": [
+              "胡"
+            ],
+            "year": 2020,
+            "venue": "Finance",
+            "volume": "10",
+            "issue": "04",
+            "pages": "259-266"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.69979/3029-2700.25.02.032",
+            "title": "数字普惠金融能抑制股价同步性吗？",
+            "authors": [],
+            "year": 2025,
+            "venue": "社会企业经济发展",
+            "volume": "2",
+            "issue": "2"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.12677/sa.2025.142042",
+            "title": "Study on the Impact of Digital Inclusive Finance on Regional Economic Growth",
+            "authors": [
+              "李"
+            ],
+            "year": 2025,
+            "venue": "Statistics and Application",
+            "volume": "14",
+            "issue": "02",
+            "pages": "126-138"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.18306/dlkxjz.2026.03.011",
+            "title": "武陵山片区数字普惠金融与包容性绿色增长的时空适配及影响因素",
+            "authors": [
+              "Chang Gan",
+              "Zhangjie SHU",
+              "Yuan YANG",
+              "Kai WANG"
+            ],
+            "year": 2026,
+            "venue": "地理科学进展",
+            "volume": "45",
+            "issue": "3",
+            "pages": "602-617"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.32629/ej.v9i8.3618",
+            "title": "数字金融的长尾价值与发展困境分析——基于普惠金融视角",
+            "authors": [
+              "小欣 廖"
+            ],
+            "year": 2026,
+            "venue": "经济学",
+            "volume": null,
+            "issue": null
+          },
+          {
+            "source": "openalex",
+            "doi": "10.18306/dlkxjz.2023.02.016",
+            "title": "Evolution and prospect of financial inclusion research in China from the perspective of financial geography",
+            "authors": [
+              "Baoyu Peng",
+              "Bo Zhang",
+              "Wei Sun"
+            ],
+            "year": 2023,
+            "venue": "地理科学进展",
+            "volume": "42",
+            "issue": "2",
+            "pages": "406-416"
+          }
+        ]
+      }
+    },
+    {
+      "id": "econ-05",
+      "raw": "郭峰, 王靖一, 王芳, 等. 测度中国数字普惠金融发展: 指数编制与空间特征[J]. 经济学(季刊), 2020, 19(4): 1401-1418. DOI: 10.13821/j.cnki.ceq.2020.03.12.",
+      "doi": "10.13821/j.cnki.ceq.2020.03.12",
+      "title": "测度中国数字普惠金融发展: 指数编制与空间特征",
+      "evidence": {
+        "doiRegistry": "CNKI",
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.62836/jem.v1n1.0163",
+            "title": "中国数字普惠金融时空格局动态演化及驱动力分析",
+            "authors": [
+              "金莹",
+              "王征兵"
+            ],
+            "year": 2024,
+            "venue": "环球经济与管理杂志"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.32629/ej.v9i3.3456",
+            "title": "数字普惠金融赋能乡村发展的机制、困境与路径",
+            "authors": [
+              "张"
+            ],
+            "year": 2026,
+            "venue": "经济学",
+            "volume": "9",
+            "issue": "3",
+            "pages": "110"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.69979/3029-2700.25.02.032",
+            "title": "数字普惠金融能抑制股价同步性吗？",
+            "authors": [],
+            "year": 2025,
+            "venue": "社会企业经济发展",
+            "volume": "2",
+            "issue": "2"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.32629/ej.v9i8.3618",
+            "title": "数字金融的长尾价值与发展困境分析——基于普惠金融视角",
+            "authors": [
+              "小欣 廖"
+            ],
+            "year": 2026,
+            "venue": "经济学",
+            "volume": null,
+            "issue": null
+          },
+          {
+            "source": "openalex",
+            "doi": "10.62836/jem.v1n1.0163",
+            "title": "中国数字普惠金融时空格局动态演化及驱动力分析",
+            "authors": [
+              "金莹",
+              "王征兵"
+            ],
+            "year": 2024,
+            "venue": "环球经济与管理杂志",
+            "volume": null,
+            "issue": null
+          },
+          {
+            "source": "openalex",
+            "doi": "10.63887/fem.2025.1.5.27",
+            "title": "金融科技发展影响金融机构布局了吗？",
+            "authors": [
+              "黄真辉"
+            ],
+            "year": 2025,
+            "venue": "经济管理前沿",
+            "volume": "1",
+            "issue": "5"
+          }
+        ],
+        "chndoi": {
+          "url": "https://www.chndoi.org/Resolution/Handler?doi=10.13821%2Fj.cnki.ceq.2020.03.12",
+          "status": 200,
+          "title": "测度中国数字普惠金融发展:指数编制与空间特征",
+          "authors": [
+            "郭峰",
+            "王靖一",
+            "王芳",
+            "孔涛",
+            "张勋",
+            "程志云"
+          ],
+          "registered": "2020-08-13 11:25:59"
+        }
+      }
+    },
+    {
+      "id": "econ-06",
+      "raw": "傅秋子, 黄益平. 数字金融对农村金融需求的异质性影响——来自中国家庭金融调查与北京大学数字普惠金融指数的证据[J]. 金融研究, 2018(11): 68-84.",
+      "title": "数字金融对农村金融需求的异质性影响——来自中国家庭金融调查与北京大学数字普惠金融指数的证据",
+      "evidence": {
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.61369/ied.6992",
+            "title": "数字普惠金融对农村金融市场结构的影响研究",
+            "authors": [
+              "李",
+              "吕",
+              "魏"
+            ],
+            "year": 2024,
+            "venue": "International Economy and Development",
+            "volume": "2",
+            "issue": "3",
+            "pages": "116"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.64216/3080-1486.25.07.021",
+            "title": "数字普惠金融对农村家庭风险性金融资产配置的动态影响",
+            "authors": [
+              "刘捷，杨婷婷，周思雨，刘滢滢"
+            ],
+            "year": 2025,
+            "venue": "社会经济导刊",
+            "volume": "1",
+            "issue": "7"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.64083/etm2630119",
+            "title": "数字普惠金融对农村居民消费升级的影响机制与案例研究",
+            "authors": [
+              "王",
+              "查"
+            ],
+            "year": 2026,
+            "venue": "教育教学与管理",
+            "volume": "2",
+            "issue": "1"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.70693/rwsk.v1i6.1126",
+            "title": "数字普惠金融对城乡居民消费支出的影响研究",
+            "authors": [
+              "刘文烨",
+              "徐瑞阳",
+              "慈立鑫"
+            ],
+            "year": 2025,
+            "venue": "人文与社会科学学刊",
+            "volume": "1",
+            "issue": "6",
+            "pages": "201-206"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.64083/etm2630119",
+            "title": "数字普惠金融对农村居民消费升级的影响机制与案例研究",
+            "authors": [
+              "雨涵 王",
+              "涵 查"
+            ],
+            "year": 2026,
+            "venue": "教育教学与管理",
+            "volume": "2",
+            "issue": "1"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.62836/ssr.v3n4.1427",
+            "title": "数字普惠金融对农村居民文教娱乐支出的影响研究",
+            "authors": [
+              "冯辰元"
+            ],
+            "year": 2026,
+            "venue": "环球社科评论",
+            "volume": null,
+            "issue": null,
+            "pages": "102-110"
+          }
+        ]
+      }
+    },
+    {
+      "id": "econ-07",
+      "raw": "OZILI P K. Impact of digital finance on financial inclusion and stability[J]. Borsa Istanbul Review, 2018, 18(4): 329-340. DOI: 10.1016/j.bir.2017.12.003.",
+      "doi": "10.1016/j.bir.2017.12.003",
+      "title": "Impact of digital finance on financial inclusion and stability",
+      "evidence": {
+        "doiRegistry": "Crossref",
+        "doiRecord": {
+          "source": "crossref",
+          "doi": "10.1016/j.bir.2017.12.003",
+          "title": "Impact of digital finance on financial inclusion and stability",
+          "authors": [
+            "Ozili"
+          ],
+          "year": 2018,
+          "venue": "Borsa Istanbul Review",
+          "volume": "18",
+          "issue": "4",
+          "pages": "329-340"
+        },
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.1016/j.bir.2017.12.003",
+            "title": "Impact of digital finance on financial inclusion and stability",
+            "authors": [
+              "Ozili"
+            ],
+            "year": 2018,
+            "venue": "Borsa Istanbul Review",
+            "volume": "18",
+            "issue": "4",
+            "pages": "329-340"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.1016/j.frl.2024.106238",
+            "title": "Impact of fiscal spending, financial inclusion on financial stability",
+            "authors": [
+              "Duan",
+              "Ni"
+            ],
+            "year": 2024,
+            "venue": "Finance Research Letters",
+            "volume": "69",
+            "pages": "106238"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.2139/ssrn.5072846",
+            "title": "The Impact of Digital Finance on Financial Inclusion in East African Countries",
+            "authors": [
+              "Bedada"
+            ],
+            "year": 2024
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.1016/j.bir.2017.12.003",
+            "title": "Impact of digital finance on financial inclusion and stability",
+            "authors": [
+              "Peterson K Ozili"
+            ],
+            "year": 2018,
+            "venue": "Borsa Istanbul Review",
+            "volume": "18",
+            "issue": "4",
+            "pages": "329-340"
+          },
+          {
+            "source": "openalex",
+            "title": "Impact of Digital Finance on Financial Inclusion and Stability",
+            "authors": [
+              "Peterson K Ozili"
+            ],
+            "year": 2018,
+            "venue": "Munich Personal RePEc Archive (Ludwig Maximilian University of Munich)",
+            "volume": null,
+            "issue": null
+          },
+          {
+            "source": "openalex",
+            "doi": "10.24136/oc.3046",
+            "title": "The impact of digital finance and financial inclusion on banking stability: International evidence",
+            "authors": [
+              "Sorin Gabriel Anton",
+              "Anca Elena Nucu"
+            ],
+            "year": 2024,
+            "venue": "Oeconomia Copernicana",
+            "volume": "15",
+            "issue": "2",
+            "pages": "563-593"
+          }
+        ]
+      }
+    },
+    {
+      "id": "econ-08",
+      "raw": "JACK W, RAY A. The Indian demonetization and digital payments: a natural experiment in digital financial inclusion[R]. Cambridge: MIT, 2019.",
+      "title": "The Indian demonetization and digital payments: a natural experiment in digital financial inclusion",
+      "evidence": {
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.31871/ijntr.6.4.4",
+            "title": "Impact of Demonetization on Financial Inclusion and Digital Payments",
+            "authors": [
+              "Veen",
+              "Kamboj"
+            ],
+            "year": 2020,
+            "venue": "International Journal of New Technology and Research",
+            "volume": "6",
+            "issue": "4"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.4324/9781003401452-18",
+            "title": "Digital Payments for Deepening Financial Inclusion and Democratising Financial Ecosystems in Africa",
+            "authors": [
+              "Rambe"
+            ],
+            "year": 2024,
+            "venue": "Blockchain, Metaverse, and Digital Payments",
+            "pages": "219-237"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.21275/sr240315175717",
+            "title": "Status and Trends of Digital Payments in Jharkhand Post-Demonetization",
+            "authors": [
+              "Kuldeep Guria"
+            ],
+            "year": 2024,
+            "venue": "International Journal of Science and Research (IJSR)",
+            "volume": "13",
+            "issue": "3",
+            "pages": "1938-1942"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "title": "Challenging the dominant narratives of a Digital Financial Inclusion",
+            "authors": [
+              "Ishita Ghosh"
+            ],
+            "year": 2018,
+            "venue": "eScholarship (California Digital Library)",
+            "volume": null,
+            "issue": null
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1007/s40012-021-00330-x",
+            "title": "Emerging insights from digital solutions in financial inclusion",
+            "authors": [
+              "Sharon Buteau",
+              "Preethi Rao",
+              "Fabrizio Valenti"
+            ],
+            "year": 2021,
+            "venue": "CSI Transactions on ICT",
+            "volume": "9",
+            "issue": "2",
+            "pages": "105-114"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.2139/ssrn.7588139",
+            "title": "The Inflationary Dynamics of Financial Inclusion: Assessing the Impact of Credit Accessibility and Digital Payments on Consumer Spending in India",
+            "authors": [
+              "Saji Vithal Vernekar"
+            ],
+            "year": 2026,
+            "venue": "SSRN Electronic Journal",
+            "volume": null,
+            "issue": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "econ-09",
+      "raw": "SURYONO A, LAW S H, TRINUGROHO W. Digital financial inclusion and consumption smoothing in Indonesia[J]. Asian-Pacific Economic Literature, 2022, 36(1): 58-76. DOI: 10.1111/apel.12346.",
+      "doi": "10.1111/apel.12346",
+      "title": "Digital financial inclusion and consumption smoothing in Indonesia",
+      "evidence": {
+        "doiRegistry": "Crossref",
+        "doiRecord": {
+          "source": "crossref",
+          "doi": "10.1111/apel.12346",
+          "title": "Remittances and income inequality in the Philippines",
+          "authors": [
+            "Akçay"
+          ],
+          "year": 2021,
+          "venue": "Asian-Pacific Economic Literature",
+          "volume": "36",
+          "issue": "1",
+          "pages": "30-47"
+        },
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.2139/ssrn.4815031",
+            "title": "Health Shocks and Consumption Smoothing: The Role of Digital Financial Inclusion",
+            "authors": [
+              "Liu",
+              "Xu",
+              "Gong",
+              "Ma"
+            ],
+            "year": 2024
+          },
+          {
+            "source": "crossref",
+            "doi": "10.14418/wes01.1.737",
+            "title": "Financial Access and Consumption Smoothing in Indonesia",
+            "authors": [
+              "Blas"
+            ],
+            "year": null
+          },
+          {
+            "source": "crossref",
+            "doi": "10.71465/ajbd3434",
+            "title": "Digital Financial Inclusion, Household Consumption Smoothing, and Income Inequality: Evidence from Micro-Level Data in China",
+            "authors": [
+              "Ming Guo"
+            ],
+            "year": 2025,
+            "venue": "American Journal Of Big Data",
+            "volume": "6",
+            "issue": "3",
+            "pages": "87-108"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.1080/23311975.2024.2322778",
+            "title": "The nexus of digital financial inclusion, digital financial literacy and demographic factors: lesson from Indonesia",
+            "authors": [
+              "Umi Widyastuti",
+              "Dwi Kismayanti Respati",
+              "Vera Intanie Dewi",
+              "Abdul Mukti Soma"
+            ],
+            "year": 2024,
+            "venue": "Cogent Business & Management",
+            "volume": "11",
+            "issue": "1"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.59091/1410-8046.2070",
+            "title": "A New Economic Perspective: Understanding the Impact of Digital Financial Inclusion on Indonesian Households’ Consumption",
+            "authors": [
+              "N Alwahidin",
+              "Arlita Aristianingsih Jufra",
+              "Beti Mulu",
+              "Kiki Novita Sari"
+            ],
+            "year": 2023,
+            "venue": "Bulletin of Monetary Economics and Banking",
+            "volume": "26",
+            "issue": "2",
+            "pages": "211-252"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.5267/j.ijdns.2021.5.004",
+            "title": "The role of financial technology to increase financial inclusion in Indonesia",
+            "authors": [
+              "Florentina Kurniasari",
+              "Ardi Gunardi",
+              "Farica Perdana Putri",
+              "Andy Firmansyah"
+            ],
+            "year": 2021,
+            "venue": "International Journal of Data and Network Science",
+            "volume": null,
+            "issue": null,
+            "pages": "391-400"
+          }
+        ]
+      }
+    },
+    {
+      "id": "econ-10",
+      "raw": "DEMIRGÜÇ-KUNT A, KLAPPER L, SINGER D, et al. The Global Findex Database 2017: measuring financial inclusion and the fintech revolution[R]. Washington, D.C.: World Bank, 2018. DOI: 10.1596/978-1-4648-1259-0.",
+      "doi": "10.1596/978-1-4648-1259-0",
+      "title": "The Global Findex Database 2017: measuring financial inclusion and the fintech revolution",
+      "evidence": {
+        "doiRegistry": "Crossref",
+        "doiRecord": {
+          "source": "crossref",
+          "doi": "10.1596/978-1-4648-1259-0",
+          "title": "The Global Findex Database 2017: Measuring Financial Inclusion and the Fintech Revolution",
+          "authors": [
+            "Demirguc-Kunt",
+            "Klapper",
+            "Singer",
+            "Ansar",
+            "Hess"
+          ],
+          "year": 2018
+        },
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.1596/978-1-4648-1259-0",
+            "title": "The Global Findex Database 2017: Measuring Financial Inclusion and the Fintech Revolution",
+            "authors": [
+              "Demirguc-Kunt",
+              "Klapper",
+              "Singer",
+              "Ansar",
+              "Hess"
+            ],
+            "year": 2018
+          },
+          {
+            "source": "crossref",
+            "doi": "10.1596/978-1-4648-1259-0_ch3",
+            "title": "Payments",
+            "authors": [
+              "Demirgüç-Kunt",
+              "Klapper",
+              "Singer",
+              "Ansar",
+              "Hess"
+            ],
+            "year": 2018,
+            "venue": "The Global Findex Database 2017: Measuring Financial Inclusion and the Fintech Revolution",
+            "pages": "43-52"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.1596/978-1-4648-1259-0_ch2",
+            "title": "The Unbanked",
+            "authors": [
+              "Demirgüç-Kunt",
+              "Klapper",
+              "Singer",
+              "Ansar",
+              "Hess"
+            ],
+            "year": 2018,
+            "venue": "The Global Findex Database 2017: Measuring Financial Inclusion and the Fintech Revolution",
+            "pages": "35-41"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.1596/978-1-4648-1259-0",
+            "title": "The Global Findex Database 2017: Measuring Financial Inclusion and the Fintech Revolution",
+            "authors": [
+              "Asli Demirgüç‐Kunt",
+              "Leora F. Klapper",
+              "Dorothe Singer",
+              "Saniya Ansar",
+              "Jake Hess"
+            ],
+            "year": 2018,
+            "venue": "World Bank, Washington, DC eBooks",
+            "volume": null,
+            "issue": null
+          },
+          {
+            "source": "openalex",
+            "title": "The Global Findex Database 2017: Measuring Financial Inclusion and the Fintech Revolution",
+            "authors": [
+              "World Bank [WB]"
+            ],
+            "year": null,
+            "venue": "RePEc: Research Papers in Economics",
+            "volume": null,
+            "issue": null
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1093/wber/lhz013",
+            "title": "The Global Findex Database 2017: Measuring Financial Inclusion and Opportunities to Expand Access to and Use of Financial Services*",
+            "authors": [
+              "Asli Demirgüç‐Kunt",
+              "Leora F. Klapper",
+              "Dorothe Singer",
+              "Saniya Ansar",
+              "Jake Hess"
+            ],
+            "year": 2019,
+            "venue": "The World Bank Economic Review",
+            "volume": "34",
+            "issue": "Supplement_1",
+            "pages": "S2-S8"
+          }
+        ]
+      }
+    },
+    {
+      "id": "econ-11",
+      "raw": "BECK T, PAMUK H, RAMRATTAN R, et al. Payment instruments, finance and development[J]. Journal of Development Economics, 2018, 133: 162-186. DOI: 10.1016/j.jdeveco.2018.01.005.",
+      "doi": "10.1016/j.jdeveco.2018.01.005",
+      "title": "Payment instruments, finance and development",
+      "evidence": {
+        "doiRegistry": "Crossref",
+        "doiRecord": {
+          "source": "crossref",
+          "doi": "10.1016/j.jdeveco.2018.01.005",
+          "title": "Payment instruments, finance and development",
+          "authors": [
+            "Beck",
+            "Pamuk",
+            "Ramrattan",
+            "Uras"
+          ],
+          "year": 2018,
+          "venue": "Journal of Development Economics",
+          "volume": "133",
+          "pages": "162-186"
+        },
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.1016/j.jdeveco.2018.01.005",
+            "title": "Payment instruments, finance and development",
+            "authors": [
+              "Beck",
+              "Pamuk",
+              "Ramrattan",
+              "Uras"
+            ],
+            "year": 2018,
+            "venue": "Journal of Development Economics",
+            "volume": "133",
+            "pages": "162-186"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.17016/feds.2006.01",
+            "title": "Families' Use of Payment Instruments During a Decade of Change in the U.S. Payment System",
+            "authors": [
+              "Klee"
+            ],
+            "year": 2006,
+            "venue": "Finance and Economics Discussion Series",
+            "volume": "2006.0",
+            "issue": "1",
+            "pages": "1-52"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.46299/isg.2024.mono.econ.1.5.1",
+            "title": "OPTIMIZATION OF ECOSYSTEM PAYMENT SCHEMES FOR WETLANDS",
+            "authors": [
+              "Kolmakova"
+            ],
+            "year": 2024,
+            "venue": "ECONOMY, FINANCE, MANAGEMENT: WORLD PROBLEMS AND DEVELOPMENT PROSPECTS",
+            "pages": "153-160"
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.1016/j.jdeveco.2018.01.005",
+            "title": "Payment instruments, finance and development",
+            "authors": [
+              "Thorsten Beck",
+              "Haki Pamuk",
+              "Ravindra Ramrattan",
+              "Burak R. Uras"
+            ],
+            "year": 2018,
+            "venue": "Journal of Development Economics",
+            "volume": "133",
+            "issue": null,
+            "pages": "162-186"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1007/978-3-031-14410-3_41",
+            "title": "Evolution of Payment Instruments and Their Development in the Digital Economy",
+            "authors": [
+              "Natalia Alekseevna Lazareva",
+              "Irina G. Zaiceva",
+              "Звягина Елена Михайловна"
+            ],
+            "year": 2022,
+            "venue": "Springer proceedings in business and economics",
+            "volume": null,
+            "issue": null,
+            "pages": "397-404"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.3390/en14248213",
+            "title": "Energy Losses Due to Imperfect Payment Infrastructure and Payment Instruments",
+            "authors": [
+              "Oleksandr Melnychenko"
+            ],
+            "year": 2021,
+            "venue": "Energies",
+            "volume": "14",
+            "issue": "24",
+            "pages": "8213-8213"
+          }
+        ]
+      }
+    },
+    {
+      "id": "econ-12",
+      "raw": "AGARWAL S, ALWESATTO S, PRASAD E. Digital financial inclusion and consumption: evidence from mobile money in India[J]. Journal of Financial Economics, 2023, 149(2): 245-268. DOI: 10.1016/j.jfineco.2023.05.004.",
+      "doi": "10.1016/j.jfineco.2023.05.004",
+      "title": "Digital financial inclusion and consumption: evidence from mobile money in India",
+      "evidence": {
+        "doiRegistry": "Crossref",
+        "doiRecord": {
+          "source": "crossref",
+          "doi": "10.1016/j.jfineco.2023.05.004",
+          "title": "Financing the litigation arms race",
+          "authors": [
+            "Antill",
+            "Grenadier"
+          ],
+          "year": 2023,
+          "venue": "Journal of Financial Economics",
+          "volume": "149",
+          "issue": "2",
+          "pages": "218-234"
+        },
+        "crossrefSearch": [
+          {
+            "source": "crossref",
+            "doi": "10.2139/ssrn.6992922",
+            "title": "Digital Financial Inclusion and Renewable Energy Consumption: Evidence from Latin America",
+            "authors": [
+              "Said"
+            ],
+            "year": 2026
+          },
+          {
+            "source": "crossref",
+            "doi": "10.1016/j.worlddev.2026.107377",
+            "title": "Digital financial inclusion and transitory consumption: Household-level evidence from India",
+            "authors": [
+              "Kumar",
+              "Mallick",
+              "Sinha"
+            ],
+            "year": 2026,
+            "venue": "World Development",
+            "volume": "204",
+            "pages": "107377"
+          },
+          {
+            "source": "crossref",
+            "doi": "10.2139/ssrn.5239440",
+            "title": "Mobile Money and Financial Inclusion: International Evidence from Informal Sector Enterprises in Asia and Africa",
+            "authors": [
+              "Khan"
+            ],
+            "year": 2025
+          }
+        ],
+        "openalexSearch": [
+          {
+            "source": "openalex",
+            "doi": "10.1016/j.respol.2018.12.010",
+            "title": "Mobile phones for financial inclusion: What explains the diffusion of mobile money innovations?",
+            "authors": [
+              "Addisu A. Lashitew",
+              "Rob J.M. van Tulder",
+              "Yann Liasse"
+            ],
+            "year": 2019,
+            "venue": "Research Policy",
+            "volume": "48",
+            "issue": "5",
+            "pages": "1201-1215"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1016/j.worlddev.2026.107377",
+            "title": "Digital financial inclusion and transitory consumption: Household-level evidence from India",
+            "authors": [
+              "Abhishek Kumar",
+              "Sushanta Mallick",
+              "Apra Sinha"
+            ],
+            "year": 2026,
+            "venue": "World Development",
+            "volume": "204",
+            "issue": null,
+            "pages": "107377-107377"
+          },
+          {
+            "source": "openalex",
+            "doi": "10.1111/joes.12372",
+            "title": "MOBILE MONEY, FINANCIAL INCLUSION AND DEVELOPMENT: A REVIEW WITH REFERENCE TO AFRICAN EXPERIENCE",
+            "authors": [
+              "Ahmad Hassan Ahmad",
+              "Christopher J. Green",
+              "Fei Jiang"
+            ],
+            "year": 2020,
+            "venue": "Journal of Economic Surveys",
+            "volume": "34",
+            "issue": "4",
+            "pages": "753-792"
+          }
+        ]
+      }
+    }
+  ]
+}
