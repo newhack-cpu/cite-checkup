@@ -1,0 +1,109 @@
+{
+ "url": "https://www.modelscope.cn/studios/kgkvybu111111/cite-checkup?mode=full",
+ "startedAt": "2026-10-23T22:45:30-0700",
+ "cases": [
+  "edu-03",
+  "edu-05",
+  "med-01",
+  "econ-03",
+  "lecun",
+  "bare-doi"
+ ],
+ "runs": [
+  {
+   "label": "desktop",
+   "appShownSeconds": 5.4,
+   "readySeconds": 6.3,
+   "checkSeconds": 8.9,
+   "results": [
+    {
+     "case": "edu-03",
+     "summary": "文献存在，但有 1 处信息与知网记录不一致（来源：知网）",
+     "chndoiStep": true,
+     "doiPointsElsewhere": true
+    },
+    {
+     "case": "edu-05",
+     "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+     "chndoiStep": true,
+     "doiPointsElsewhere": true
+    },
+    {
+     "case": "med-01",
+     "summary": "DOI 登记的题名、作者与引文一致；年份、期刊、卷期页没有可比对的记录，请人工核对",
+     "chndoiStep": true,
+     "doiPointsElsewhere": false
+    },
+    {
+     "case": "econ-03",
+     "summary": "已核实：与知网记录一致（来源：知网）",
+     "chndoiStep": false,
+     "doiPointsElsewhere": false
+    },
+    {
+     "case": "lecun",
+     "summary": "已核实：与数据库记录一致（来源：Crossref）",
+     "chndoiStep": false,
+     "doiPointsElsewhere": false
+    },
+    {
+     "case": "bare-doi",
+     "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+     "chndoiStep": false,
+     "doiPointsElsewhere": false
+    }
+   ],
+   "axe": [],
+   "noHorizontalOverflow": true,
+   "appConsoleErrors": []
+  },
+  {
+   "label": "mobile",
+   "appShownSeconds": 2.6,
+   "readySeconds": 3.1,
+   "checkSeconds": 1.3,
+   "results": [
+    {
+     "case": "edu-03",
+     "summary": "文献存在，但有 1 处信息与知网记录不一致（来源：知网）",
+     "chndoiStep": true,
+     "doiPointsElsewhere": true
+    },
+    {
+     "case": "edu-05",
+     "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+     "chndoiStep": true,
+     "doiPointsElsewhere": true
+    },
+    {
+     "case": "med-01",
+     "summary": "DOI 登记的题名、作者与引文一致；年份、期刊、卷期页没有可比对的记录，请人工核对",
+     "chndoiStep": true,
+     "doiPointsElsewhere": false
+    },
+    {
+     "case": "econ-03",
+     "summary": "已核实：与知网记录一致（来源：知网）",
+     "chndoiStep": false,
+     "doiPointsElsewhere": false
+    },
+    {
+     "case": "lecun",
+     "summary": "已核实：与数据库记录一致（来源：Crossref）",
+     "chndoiStep": false,
+     "doiPointsElsewhere": false
+    },
+    {
+     "case": "bare-doi",
+     "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+     "chndoiStep": false,
+     "doiPointsElsewhere": false
+    }
+   ],
+   "axe": [],
+   "noHorizontalOverflow": true,
+   "appConsoleErrors": []
+  }
+ ],
+ "finishedAt": "2026-10-23T22:46:01-0700"
+}
