@@ -49,10 +49,10 @@ OPENING = set('（《「『“‘【〔')
 # 英文、数字及其间的标点和短横（"10–12"、"5.5–5.8"、"5%–19%"）作为一个断行单位
 UNIT_RE = re.compile(r'[A-Za-z0-9@#&+_/.:=~*^<>|\'",;!?()\[\]±%–-]+|\s|.')
 
-def prewrap(text, style, width):
+def prewrap(text, style, width, hang=3):
     """正文自己断行：英文单词不拆开，闭合标点挂在行尾、不出现在行首，开括号不留在行尾。"""
     font, size = STYLES[style].fontName, STYLES[style].fontSize
-    hard = width + 3  # 版心实际宽度；挂在行尾的标点不能超过它，否则 reportlab 会再折一次
+    hard = width + hang  # 版心实际宽度；挂在行尾的标点不能超过它，否则 reportlab 会再折一次
     lines = []
     for raw in text.split('\n'):
         units = []
@@ -79,15 +79,17 @@ def prewrap(text, style, width):
 # 正文框宽 491；预断行时留 3pt 余量，避免和 reportlab 自己的测量差一点而又折出一行
 BODY_WIDTH = 488
 
-def para(text, style='body', width=None):
+def para(text, style='body', width=None, hang=3):
     if width:
-        return Paragraph('<br/>'.join(html.escape(line) for line in prewrap(text, style, width)), STYLES[style])
+        return Paragraph('<br/>'.join(html.escape(line) for line in prewrap(text, style, width, hang)), STYLES[style])
     return Paragraph(html.escape(text).replace('\n', '<br/>'), STYLES[style])
 
 def table(headers, rows, widths=None):
-    content = [[para(v, 'tablehead') for v in headers]]
-    content += [[para(str(v), 'table') for v in row] for row in rows]
-    t = Table(content, colWidths=widths or [491/len(headers)]*len(headers), hAlign='LEFT')
+    widths = widths or [491/len(headers)]*len(headers)
+    # 单元格也自己断行，免得逗号、分号落到行首：按去掉左右内边距（各 9pt）后的宽度断，标点不挂出格
+    content = [[para(v, 'tablehead', w - 18.5, 0) for v, w in zip(headers, widths)]]
+    content += [[para(str(v), 'table', w - 18.5, 0) for v, w in zip(row, widths)] for row in rows]
+    t = Table(content, colWidths=widths, hAlign='LEFT')
     t.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), RED),
         ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.HexColor('#f0eee6'), PAPER]),
@@ -166,6 +168,8 @@ overflow=[]
 for idx,page in enumerate(DATA['pages'],1):
     background(c,idx,len(DATA['pages']),page['title'])
     story=blocks(page)
+    if stringWidth(page['title'],'CNHead',23) > 491:
+        overflow.append({'page':idx,'titleTooWide':page['title']})
     frame=Frame(52,61,491,H-178,leftPadding=0,rightPadding=0,topPadding=0,bottomPadding=0,showBoundary=0)
     frame.addFromList(story,c)
     if story:

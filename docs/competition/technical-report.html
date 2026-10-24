@@ -4,22 +4,23 @@
 <p class="callout">产品主张：每一个判断，都应能回到数据库记录或原文片段。</p>
 <h2>项目摘要</h2>
 <p>参考文献的书目真实性与正文论断的证据支持是两个问题。本项目把它们分为独立工作区：前者用公开学术数据库逐字段核对题名、作者、年份、期刊与 DOI；后者先检索证据片段，再由 DeepSeek 判断一条论断与材料的关系。</p>
-<p>在规则核验之外加入了五项 AI 能力：受约束的字段解析、对查不到条目的 AI 检索 Agent、拍照 / 截图识别参考文献、读取开放全文并混合检索的论断 RAG，以及把核验工具开放给其他 AI 的 MCP Server。导入文档时还会检查读者看不见、AI 却会读到的隐藏提示词。模型输出都经过结构与原文校验，真伪结论由规则或带原文引句的判断给出。</p>
-<p>和“直接问 AI”的对照实验（130 条构造引文）中，不联网的 DeepSeek 把 23%–33% 的编造引文说成真实，本系统为 0；本系统说“已核实”的条目全部正确，改正写法全部来自数据库记录（第 11 节）。</p>
+<p>在规则核验之外接入了六项 AI 能力：受约束的字段解析、对查不到条目的 AI 检索 Agent、标准体检里的中文期刊联网核查、拍照 / 截图识别参考文献、读取开放全文并混合检索的论断 RAG，以及把核验工具开放给其他 AI 的 MCP Server。查完还能把整份参考文献统一成 GB/T 7714 或 APA，只贴 DOI 也能补全。导入文档时会检查读者看不见、AI 却会读到的隐藏提示词。模型和搜索只提供候选或依据，真伪结论由规则或带原文引句的判断给出。</p>
+<p>和“直接问 AI”的对照实验（130 条构造引文）中，不联网的 DeepSeek 把 23%–33% 的编造引文说成真实，本系统为 0；本系统说“已核实”的条目全部正确，改正写法全部来自数据库记录（第 15 节）。开发方场景测试中，让 DeepSeek 按三个论文题目写出 36 条参考文献，逐条查证有 11 条是编造：本系统查出 10 条、1 条交人工，没有把编造的说成真实，22 条写对的真实文献没有误报；3 条写错的真文献查出 2 条，1 条被误判为编造（第 14 节）。</p>
 <table><thead><tr><th>项目项</th><th>当前信息</th></tr></thead><tbody>
 <tr><td>参赛方向</td><td>第九届传智杯 · AI WEB 网页开发挑战赛</td></tr>
 <tr><td>运行形态</td><td>Next.js 16 Web 应用 + stdio MCP Server；魔搭创空间公网演示（免费 Docker 资源）</td></tr>
-<tr><td>AI 提供方</td><td>DeepSeek（deepseek-flash）：函数调用、多轮工具调用、图片输入；Search 接口用于中文期刊检索</td></tr>
-<tr><td>材料日期</td><td>2026-10-19；技术验收版</td></tr>
+<tr><td>AI 提供方</td><td>DeepSeek（deepseek-flash）：函数调用、多轮工具调用、图片输入；Search 接口（搜索引擎）用于中文期刊联网核查</td></tr>
+<tr><td>材料日期</td><td>2026-10-23；技术验收版</td></tr>
 <tr><td>代码仓库</td><td>GitHub 公开仓库，保留真实提交历史</td></tr>
 <tr><td>学校、队伍与成员</td><td>待本人补充真实身份及分工；本材料不编造团队信息</td></tr>
 </tbody></table>
 <p class="small">文档范围：项目概述、需求分析、架构、AI 技术、核心实现、测试与部署、创新和展望。本文不构成官方成绩、临床或学术结论认证。</p>
-<footer>技术验收版 · 2026-10-19 · 团队身份信息待补充 · 01 / 15</footer></article>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 01 / 21</footer></article>
 <article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>01 需求与问题边界</h1>
-<p>目标用户是需要复核 AI 辅助写作引用的学生、研究者与写作辅导人员。当前尚无真实用户访谈或使用效果研究，因此这里是产品需求假设与已实现任务范围。</p>
+<p>目标用户是需要复核 AI 辅助写作引用的学生、研究者与写作辅导人员。还没有完成真实用户研究（老师试用的记录表已备好），这里是产品需求假设与已实现的任务范围；第 14 节用开发方场景测试检验了两种最常见的用法。</p>
 <table><thead><tr><th>用户要解决的问题</th><th>产品行为</th><th>不能据此推出</th></tr></thead><tbody>
 <tr><td>引用是否真实、字段有无写错</td><td>数据库核验与逐字段差异</td><td>查不到就一定是编造</td></tr>
+<tr><td>参考文献要整理成规范格式</td><td>规范参考文献：整份统一成 GB/T 7714 或 APA，只贴 DOI 也能补全</td><td>没确认的条目也能照抄</td></tr>
 <tr><td>查不到的条目还能不能找到</td><td>AI 检索 Agent 多轮检索，规则确认候选</td><td>Agent 没找到就是编造</td></tr>
 <tr><td>纸质论文、扫描件里的参考文献</td><td>拍照 / 截图识别，对照原图确认后再核验</td><td>识别结果不必核对</td></tr>
 <tr><td>引用是否支持正文一句话</td><td>读取开放全文、检索片段、关系判断、原文引句</td><td>存在文献就支持论断</td></tr>
@@ -30,13 +31,13 @@
 <p>论断证据核查回答有限材料中的关系问题：支持、部分支持、矛盾或证据不足。它不是事实搜索引擎；DOI 只能读到开放获取全文（Europe PMC、arXiv），其余只有摘要。用户文本仅标为用户提供，系统不认证其真实性。</p>
 <h2>验收标准</h2>
 <p>正常输入要能形成可复核结果；错误、缺配置、取消与证据缺失要有不同状态；导入和识别的文字在应用前可检查；对外展示的功能、测试数字与实际文件一致。性能、准确率与市场价值没有测量依据时不作量化承诺。</p>
-<footer>技术验收版 · 2026-10-19 · 团队身份信息待补充 · 02 / 15</footer></article>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 02 / 21</footer></article>
 <article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>02 系统架构与数据流</h1>
 <p>前端采用 Next.js App Router、React、TypeScript 和 Tailwind CSS。服务端模块把文件提取、规则核验与模型调用隔开，模型密钥不进入客户端。</p>
 <div class="lane"><div class="node">文件 / 粘贴 / 截图<br>预览与确认</div><div class="node">规则或 AI 解析<br>原文依据验证</div><div class="node">数据库核验<br>+ AI 检索 Agent</div></div>
 <div class="lane"><div class="node">一条论断 + 来源<br>开放全文 / 摘要 / 自备文</div><div class="node">混合检索<br>BM25 + 扩展 + 重排</div><div class="node">DeepSeek + 输出校验<br>关系与原文位置</div></div>
 <table><thead><tr><th>边界</th><th>实现职责</th></tr></thead><tbody>
-<tr><td>页面与组件</td><td>首次来访的开场动画与 6 步新手引导；输入、来源范围、进度、取消、结果与报告；手机布局</td></tr>
+<tr><td>页面与组件</td><td>单栏工作台、按结论筛选（含“需要处理”）、规范参考文献面板；首次来访的开场动画与 6 步新手引导；进度、取消、报告；手机布局</td></tr>
 <tr><td>/api/check · /api/agent</td><td>流式参考文献核验；单条 AI 检索的逐步结果</td></tr>
 <tr><td>/api/import · /api/vision</td><td>文件提取与隐藏文字检测；图片识别参考文献</td></tr>
 <tr><td>/api/claims</td><td>证据获取、混合检索、模型判断与引用校验</td></tr>
@@ -45,12 +46,25 @@
 </tbody></table>
 <h2>信任边界</h2>
 <p>公开数据库响应、用户文件、图片和模型输出都视为外部输入。数据库结果不等于真实世界全部知识；上传文字不等于可信论文；模型文本也不直接成为程序事实。每条链路在输入、来源、结构和输出位置上设置校验。</p>
-<footer>技术验收版 · 2026-10-19 · 团队身份信息待补充 · 03 / 15</footer></article>
-<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>03 参考文献：工具调用与事实核验</h1>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 03 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>03 AI 技术选型、集成方式与优化策略</h1>
+<p>所有 AI 能力都用 DeepSeek 一家的接口。选型理由：中文理解好；支持 Function Calling、多轮工具调用和图片输入；另有搜索接口可以查中文期刊；国内可直接访问，部署和计费简单。没有做多模型的质量和成本对照，所以不声称它最优。</p>
+<table><thead><tr><th>能力</th><th>模型 / 接口与集成方式</th><th>优化策略</th></tr></thead><tbody>
+<tr><td>字段解析</td><td>deepseek-flash，verify_references 函数调用；只把规则解析不出题名的条目交给模型摘字段，逐条核对确是原文片段</td><td>规则能解析的不发给模型；失败、超额（单次 20,000 字符）时明确回退规则</td></tr>
+<tr><td>AI 检索 Agent</td><td>deepseek-flash 多轮工具调用，6 个白名单工具：Crossref、OpenAlex、DataCite、DOI、中文期刊搜索、finish</td><td>规则确认同一篇就停；每条最多 4 次检索、4 轮、80 秒；候选一律交规则复核</td></tr>
+<tr><td>中文期刊联网核查</td><td>DeepSeek 搜索接口（搜索引擎，不是大模型）查知网、万方、维普和期刊官网原文页，读出作者、卷期后交规则比对</td><td>每次请求最多 30 条、单条 25 秒；按站点限速、页面缓存 6 小时；只请求公网地址，防 SSRF</td></tr>
+<tr><td>截图识别</td><td>DeepSeek 图片输入，submit_references 函数调用；只转写、不判断，确认后再由规则核验</td><td>浏览器先缩到 2048 像素以内、去掉 EXIF；最多 4 张；看不清写 [?]</td></tr>
+<tr><td>论断 RAG</td><td>扩展检索词、重排、judge_claim 三次结构化调用，初判矛盾时再加 check_scope；引句逐字核对并定位</td><td>没有向量接口，用 BM25 与扩展检索词融合补跨语言召回；范围复核纠正“以总体否定子类”</td></tr>
+<tr><td>MCP Server</td><td>官方 TypeScript SDK，stdio；verify_references、check_claim 两个只读工具</td><td>与网页端共用逻辑和限额；逐条发送进度</td></tr>
+</tbody></table>
+<h2>共同的约束</h2>
+<p>模型输出一律当作外部输入：只接受白名单工具和字段，长度、格式、出处逐项校验。模型和搜索只提供候选或依据，文献真伪、是否同一篇由规则判定；任何一步失败都标为未完成，不会替换成“支持”或“已核实”。</p>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 04 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>04 参考文献：工具调用与事实核验</h1>
 <p>选用 DeepSeek 复用现有配置与中文交互能力，采用受约束的 Function Calling。当前没有与其他模型做质量或成本对照实验，因此不声称它是最优模型。</p>
 <h2>集成方式</h2>
 <p>标准模式由规则提取条目和字段；AI 模式只把规则解析不出题名的条目用 verify_references 工具交给模型摘字段，逐条校验确是原文片段。模型不能增删条目、改写原文、覆盖已有错误证据或调用任意工具。</p>
-<p>有 DOI 时先取元数据；必要时核对 DOI 注册与内容协商结果。整条引文通过 Crossref 模糊检索，英文条目必要时使用 OpenAlex 兜底。匹配与结论由程序依据取得的数据执行。</p>
+<p>有 DOI 时先取元数据；必要时核对 DOI 注册与内容协商结果；知网登记的 DOI 取不到元数据，就读中国 DOI 注册机构的解析页，看它登记的是哪篇。整条引文通过 Crossref 模糊检索，英文条目必要时使用 OpenAlex 兜底，中文期刊论文再做联网核查（第 5 节）。匹配与结论由程序依据取得的数据执行。</p>
 <table><thead><tr><th>关键保护</th><th>用户可见结果</th></tr></thead><tbody>
 <tr><td>作者、年份、期刊依据保留</td><td>模型不能把原文中的错误提前修掉</td></tr>
 <tr><td>同篇判定独立于相近候选</td><td>只有相近候选时单列，不算信息有误，保留原文</td></tr>
@@ -62,8 +76,23 @@
 <h2>用真实论文的参考文献调规则</h2>
 <p>评测集从 Crossref 按出版社随机抽取 2023 年后发表的论文，再从其参考文献中随机取原文，每一条都真实存在。dev 108 条用于调规则；test 119 条在规则定稿前不看、只跑一次。2026-10-15 的修复把 test 误报从 16.0% 降到 10.1%（逐条复核）。</p>
 <p>10-16 起，每修一轮规则就另抽一批没看过的新数据，只运行一次：第二至第五批的误报（逐条复核）分别是 9.1%、11.7%、18.0% 和 5.6%；不算相近候选，第四、五批为 15.3% 和 4.6%。修过的类型在看过的集合上清零，新数据上又出现新的长尾：作者段格式、会议与机构报告、专利、标准、法院文件、工作论文等。第五批最低，但区间与前三批重叠、样本小，不能当作总体误报率；第四、五批还分别标出 3 条和 1 条真写错的引文。</p>
-<footer>技术验收版 · 2026-10-19 · 团队身份信息待补充 · 04 / 15</footer></article>
-<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>04 AI 检索 Agent：模型规划检索，规则判定结论</h1>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 05 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>05 中文期刊联网核查：找原文页，规则下结论</h1>
+<p>知网、万方、维普没有开放接口，Crossref 与 OpenAlex 收录的中文期刊文章很少，以前中文期刊论文几乎全判“待人工”。现在 Crossref 没确认的会自动多查一步；搜索和页面只提供候选，结论仍由规则给出。</p>
+<div class="lane"><div class="node">DeepSeek 搜索接口<br>知网 / 万方 / 维普按题名</div><div class="node">补作者：维普结果<br>→ 手机知网文章页</div><div class="node">不限站点：期刊官网元数据<br>→ Crossref 按 ISSN、卷、页</div></div>
+<div class="lane"><div class="node">转载站不当来源<br>WebVPN 镜像、文库、知识库</div><div class="node">规则逐字段比对<br>题名、刊名、年份、作者、卷期页</div><div class="node">结论写明来源<br>知网 / 维普 / 期刊官网 / Crossref</div></div>
+<table><thead><tr><th>结论</th><th>条件</th></tr></thead><tbody>
+<tr><td>已核实</td><td>题名、刊名、年份一致，作者对得上，卷号、期号或起始页至少一项与记录一致</td></tr>
+<tr><td>相近候选 + 链接</td><td>只差作者核对不了，或作者对上但卷期页码核对不了（如引文只写“卷: 页”，知网没有卷号）</td></tr>
+<tr><td>信息有误</td><td>题名、刊名、年份对上而作者对不上（“真题名配假作者”是常见的拼凑式编造）</td></tr>
+<tr><td>无法核验</td><td>联网也核对不到；查不到不说明文献不存在</td></tr>
+</tbody></table>
+<h2>读页面的做法与边界</h2>
+<p>DeepSeek 的搜索接口是搜索引擎，不是大模型。手机知网文章页内嵌的数据带作者、刊名、年、期（实测 23 条取到 22 条），页码多是期内页码，不取；期刊官网读 citation_* / DC.* / PRISM 元数据。只读、不登录，请求头写明本工具。搜索每秒不超过 4 次；每次请求最多查 30 条，单条最多 25 秒，Netlify 离 50 秒时限不到 8 秒不再开始；没配置密钥时整步跳过。</p>
+<h2>评测</h2>
+<p>回归（看过的 122 条中文期刊论文）：待人工 91% → 32%，信息有误、疑似不存在仍为 0。新样本（规则定稿后只运行一次）：40 条中文期刊论文待人工 95% → 32.5%，已核实 15 条全对，相近候选 11 条都是引文那篇，信息有误 0。</p>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 06 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>06 AI 检索 Agent：模型规划检索，规则下结论</h1>
 <p>对“无法核验 / 只找到相近候选”的条目，用户可点“AI 继续查”。DeepSeek 阅读原文、已解析字段和已经查过的路径，自己决定下一步调用哪个工具，每一步实时显示在卡片上。</p>
 <div class="lane"><div class="node">阅读引文与已查路径<br>规划下一步</div><div class="node">调用工具：Crossref / OpenAlex<br>DataCite / DOI / 中文期刊搜索</div><div class="node">结果 + 规则比对提示<br>回传模型</div></div>
 <div class="lane"><div class="node">规则确认同一篇即停<br>每条最多 4 次检索</div><div class="node">全部候选交给规则<br>逐字段复核</div><div class="node">展示每一步理由<br>与追查前的结论</div></div>
@@ -71,14 +100,14 @@
 <tr><td>工具白名单</td><td>search_crossref、search_openalex（每条最多 1 次）、search_datacite、lookup_doi、search_cn_journals、finish</td></tr>
 <tr><td>参数校验</td><td>工具名、字段、长度、年份范围、DOI 格式；DOI 只能查引文或检索结果中出现过的</td></tr>
 <tr><td>不能下结论</td><td>模型不能指定哪一篇算数，不能制造“疑似不存在”；含真伪判断词的小结不显示</td></tr>
-<tr><td>中文期刊</td><td>DeepSeek 搜索接口按题名查知网、万方、维普的论文页，站点由服务端限定；没有作者的结果不确认同一篇，只给带链接的相近候选</td></tr>
+<tr><td>中文期刊</td><td>search_cn_journals 按题名查知网、万方、维普的论文页，站点由服务端限定；标准体检已先自动查过一次（第 5 节），模型可换写法再查</td></tr>
 <tr><td>预算与失败</td><td>每条最多 4 次检索、4 轮模型调用、80 秒；失败或超时保持原结论并如实说明</td></tr>
 </tbody></table>
 <h2>评测与复核</h2>
 <p>dev 61 条可追查：确认 3 条，均为已核实。test 58 条是 Agent 的盲测：确认 7 条（4 条已核实、3 条信息有误），没有失败，也没有变成“疑似不存在”；每条平均约 3 次检索、5.5–5.8 千 token、10–12 秒。</p>
-<p>盲测 7 条逐条复核：1 条匹配到同一作者的新文章，1 条是报告的旧版本，据此补了两条保守规则。中文条目原来一条也找不到：10-17 额度给足重测 53 条，仍是 0 条。加上中文期刊联网搜索后，dev、test 和只运行一次的第五批共 75 条中文条目，找到三站论文页 33 条：维普带作者、规则确认 1 条；题名、年份等一致、只差作者 26 条；没有一条变成“疑似不存在”，也没有把别的文章确认成同一篇。</p>
-<footer>技术验收版 · 2026-10-19 · 团队身份信息待补充 · 05 / 15</footer></article>
-<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>05 论断：开放全文、混合检索与带引句判断</h1>
+<p>盲测 7 条逐条复核：1 条匹配到同一作者的新文章，1 条是报告的旧版本，据此补了两条保守规则。中文条目原来一条也找不到：10-17 额度给足重测 53 条，仍是 0 条。加上中文期刊联网搜索后，dev、test 和只运行一次的第五批共 75 条中文条目，找到三站论文页 33 条：维普带作者、规则确认 1 条；题名、年份等一致、只差作者 26 条；没有一条变成“疑似不存在”，也没有把别的文章确认成同一篇。这是 10-17 只在 AI 继续查里做的结果，标准体检加入联网核查后的结果见第 5 节。</p>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 07 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>07 论断：开放全文、混合检索与带引句判断</h1>
 <p>论断接口每次接收一条论断，使用 DOI 或用户文本中的一种。DOI 优先读取开放获取全文，只访问固定的白名单数据源，不接受模型或用户指定的任意地址。</p>
 <div class="lane"><div class="node">取得证据<br>开放全文 / 摘要 / 用户文本</div><div class="node">分块<br>1,200 字符、重叠 160</div><div class="node">混合检索<br>BM25 + 模型扩展检索词</div></div>
 <div class="lane"><div class="node">模型重排<br>20 段候选 → 6 段</div><div class="node">judge_claim<br>四类关系 + 原文引句</div><div class="node">校验引句与位置<br>展示范围与局限</div></div>
@@ -88,8 +117,8 @@
 <p>多于 6 段时，原论断的 BM25（英文按词、中文按相邻两字）与模型扩展检索词（中英文同义词、缩写）的 BM25 按倒数排名融合取 20 段，再由模型按 0–3 分重排，取前 6 段交给判断。两步输出逐项校验：检索词不能含网址，重排只能用候选片段的编号；失败时退回词面检索并在结果中说明。DeepSeek 没有向量接口，所以没有做向量检索。</p>
 <h2>输出约束</h2>
 <p>judge_claim 输出结论、解释与引句；服务端核对片段编号与逐字引句，返回规范化文本中的字符区间。初判为“与证据矛盾”时再做一次范围复核：模型逐个列出论断的限定词（文献类型、人群、年份等），对照引句和引句所在段落，判断有没有单独报告；有没覆盖的就改判“证据不足”并注明。起因是只拿到摘要时，“GPT-4 引用的书籍章节七成是编造的”会被摘要里 GPT-4 总体 18% 判成矛盾。47 条论断（三篇论文摘要 + 合成材料）各判 3 次、跑两轮：不该判矛盾的 178 次里，只判定错判 38 次，加复核后 0 次；该判矛盾的 102 次里错改 1 次。引句可定位不保证解释正确；该流程不独立核验撤稿状态。</p>
-<footer>技术验收版 · 2026-10-19 · 团队身份信息待补充 · 06 / 15</footer></article>
-<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>06 论断检索评测</h1>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 08 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>08 论断检索评测</h1>
 <p>三篇 CC BY 开放获取论文（Walters &amp; Wilder 2023、Kung 等 2023、Bhattacharyya 等 2023），评测时经 Europe PMC 实时获取全文，与产品同一条路径。24 条原文支持的论断：每篇 4 条英文转述、4 条中文表述，用词刻意与原文不同，并标注出处句子。</p>
 <table><thead><tr><th>检索方式</th><th>前 6 段命中率</th><th>MRR</th><th>中文 12 条命中率</th></tr></thead><tbody>
 <tr><td>词面 BM25（升级前）</td><td>75%</td><td>0.61</td><td>50%</td></tr>
@@ -102,8 +131,8 @@
 <p>样本小；论断由评测者通读全文后编写，而且都是原文支持的说法。三篇论文都不长（14–31 段），重排的 20 段候选覆盖了文档的大部分，长文档上的提升可能更小。这里只评检索，没有评判断准确率。</p>
 <h2>一次真实页面核查</h2>
 <p>生产构建中输入中文论断“即使用 GPT-4，它引用的书籍章节里也有七成是编造的”和 DOI 10.1038/s41598-023-41032-5：结果为“证据支持”，引句来自论文 Results 一节的原文，判断范围标为 Europe PMC 开放全文，并列出检索方式与扩展检索词。这句话在摘要里没有。</p>
-<footer>技术验收版 · 2026-10-19 · 团队身份信息待补充 · 07 / 15</footer></article>
-<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>07 多模态：拍照 / 截图识别参考文献</h1>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 09 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>09 多模态：拍照 / 截图识别参考文献</h1>
 <p>扫描版 PDF 没有文字层、纸质论文只能拍照时，用户上传 1–4 张图片或在参考文献框里直接粘贴截图，由 DeepSeek 视觉模型逐条转写。</p>
 <div class="lane"><div class="node">浏览器重绘图片<br>≤2048 像素、去 EXIF</div><div class="node">按文件头识别格式<br>PNG / JPEG / WebP / GIF</div><div class="node">视觉模型<br>submit_references</div></div>
 <div class="lane"><div class="node">逐条原样转写<br>看不清写 [?]</div><div class="node">与原图一起预览<br>可直接修改</div><div class="node">确认后填入<br>由规则核验真伪</div></div>
@@ -116,8 +145,8 @@
 <h2>评测</h2>
 <p>用 16 条真实文献生成英文截图、中文截图，以及加了纸张底色、倾斜、模糊、噪点和 JPEG 压缩的中英混排“手机照片”：16/16 逐字一致，字符错误率 0%，每张 3–5 秒。识别结果和标准答案分别送去核验，结论完全一致。</p>
 <p>这是印刷体合成样本，只说明链路可用、转写不会改变结论；真实拍照的反光、透视和手写批注没有覆盖，所以界面要求对照原图逐条核对。</p>
-<footer>技术验收版 · 2026-10-19 · 团队身份信息待补充 · 08 / 15</footer></article>
-<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>08 文档导入与隐藏提示词检测</h1>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 10 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>10 文档导入与隐藏提示词检测</h1>
 <p>导入模块只提取可读文本：PDF.js 读取 PDF 文字层，yauzl 与 saxes 解析 DOCX；文字预览确认后才填入。扫描件没有文字层时，引导用户截图走图片识别。</p>
 <h2>为什么要查隐藏文字</h2>
 <p>2025 年 7 月，日经亚洲报道 17 篇 arXiv 预印本用白字或极小字号藏了“只给正面评价”之类写给 AI 审稿工具的指令（Sugiyama &amp; Eguchi, 2025）；Lin 的评论文章统计到 18 篇（arXiv:2507.06185）。本项目会把论文交给 AI 解析和论断核查，导入时必须先查一遍。</p>
@@ -130,15 +159,15 @@
 <p>PDF.js 的文字条目不带颜色，取绘图指令又会解码图片（被本项目的解码器防护拦截），因此在已校验哈希的 worker 后追加只读钩子，在提取文字的同一遍里跟踪填充色和渲染模式，不改变提取结果。</p>
 <p>像写给 AI 的指令一律列出并从导入文字中去掉；不像指令的，白字短于 40 字、其他方式短于 12 字的按正常排版保留，扫描件的 OCR 文字层只提示，但要求页面画了覆盖过半版面的图像（或文字几乎全部不可见），OCR 层里像指令的行照样报告。自家 11 页技术说明 PDF 的 24 处深色表头白字没有一处被误报。</p>
 <p class="small">资源边界：文件 8 MiB、PDF 100 页、文字 160,000 字符；PDF 单解码缓冲 8 MiB、每文档累计 32 MiB；DOCX 限制条目、展开体积与压缩比，拒绝宏、XML 实体和不安全路径。被图片盖住、透明、裁剪或批注里的文字不在检测范围内。</p>
-<footer>技术验收版 · 2026-10-19 · 团队身份信息待补充 · 09 / 15</footer></article>
-<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>09 MCP Server、可控性与隐私</h1>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 11 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>11 MCP Server、可控性与隐私</h1>
 <p>pnpm mcp 以 stdio 启动 MCP Server（官方 TypeScript SDK 1.31.0），把两个只读工具开放给 Claude、Cursor 等 MCP 客户端，结论与网页端同源。</p>
 <table><thead><tr><th>工具</th><th>输入</th><th>输出</th></tr></thead><tbody>
 <tr><td>verify_references</td><td>参考文献列表（最多 80 条 / 60,000 字符）</td><td>每条结论、问题、匹配记录与规范写法；逐条发送进度通知</td></tr>
 <tr><td>check_claim</td><td>论断，加 doi 或 evidence_text</td><td>四类关系与逐字核对过的原文引句</td></tr>
 </tbody></table>
 <table><thead><tr><th>场景</th><th>处理策略</th></tr></thead><tbody>
-<tr><td>标准文献核查</td><td>只向公开数据库查询引文，不请求语言模型</td></tr>
+<tr><td>标准文献核查</td><td>向公开数据库查询引文；中文期刊论文的题名发给 DeepSeek 搜索接口，并读取知网、期刊官网的公开页面；不请求语言模型</td></tr>
 <tr><td>AI 解析 / AI 检索</td><td>向 DeepSeek 发送对应条目；检索工具只访问固定的学术数据源</td></tr>
 <tr><td>图片识别</td><td>图片发给 DeepSeek；上传前重新编码、去掉 EXIF；原图不保存</td></tr>
 <tr><td>论断核查</td><td>发送论断、最多 20 段候选和 6 段证据，不是整个文件</td></tr>
@@ -146,17 +175,31 @@
 <tr><td>失败、中止或无证据</td><td>状态区分；失败不会被替换成支持、矛盾或真实性结论</td></tr>
 </tbody></table>
 <p class="small">限额以 Node 进程为边界，重启会清零，多实例不共享；公网服务需可信代理、共享限流、账户与费用观测。目前未完成完整负载或渗透测试。</p>
-<footer>技术验收版 · 2026-10-19 · 团队身份信息待补充 · 10 / 15</footer></article>
-<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>10 验证方法与实测结果</h1>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 12 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>12 核心功能：规范参考文献与只贴 DOI</h1>
+<p>体检完成后，可以把整份参考文献统一成 GB/T 7714 或 APA；只贴 DOI 的条目按 DOI 补全成完整条目。规范写法只用数据库记录生成，不让模型编写。</p>
+<table><thead><tr><th>情况</th><th>规范参考文献里怎么写</th></tr></thead><tbody>
+<tr><td>数据库确认是同一篇（已核实、有误、撤稿、关注声明）</td><td>按所选格式用数据库记录重写；撤稿、关注声明在末尾注明；APA 按第一作者排序、不编号</td></tr>
+<tr><td>只贴 DOI 或 DOI 链接</td><td>按 DOI 取记录补全题名、作者、期刊、卷期页，照常查撤稿；DOI 未注册的仍判查无此文</td></tr>
+<tr><td>相近候选、查无此文、待人工、未完成</td><td>保留原文，末尾注明原因，不替用户猜</td></tr>
+</tbody></table>
+<h2>修掉的误判</h2>
+<p>做这个功能时发现：只贴一个 DOI 的条目没有题名、作者可比，会被判成“DOI 指向另一篇文献，疑似编造”。现在单独处理：按 DOI 查到记录就是这一篇。随机 DOI 的实测见第 14 节。</p>
+<h2>界面与交互</h2>
+<p>单栏工作台：输入在上、结果在下，结果流式逐条出现；页眉吸顶，两个任务分段切换；结果可按结论筛选，“需要处理”只看有问题的条目；每条可展开字段比对、规范写法和核查过程。首次来访有约 2 秒的开场动画和 6 步新手引导，页眉“怎么用”随时重看；动效都遵循系统的“减少动画”设置。</p>
+<p>自动化可用性走查（本机生产版，不是用户研究）：首页传输约 1 MB（改版前约 2 MB）；桌面、手机首屏都能看到输入框、开始体检和导入按钮；键盘从页首按 3 下 Tab 到输入框；axe-core 在 7 个页面状态下 0 处违规。魔搭公网复测桌面、手机都通过。</p>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 13 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>13 验证方法与实测结果</h1>
 <p>以下记录区分离线固定响应、真实网络与浏览器操作。测试通过只覆盖列出的样本和版本，不推导真实世界总体准确率。</p>
 <table><thead><tr><th>层级</th><th>实测记录</th><th>解释范围</th></tr></thead><tbody>
-<tr><td>自动测试</td><td>42 个文件 643 项；lint、类型检查、生产构建通过</td><td>固定上游响应，覆盖边界与回归</td></tr>
+<tr><td>自动测试</td><td>45 个文件 728 项；lint、类型检查、生产构建通过</td><td>固定上游响应，覆盖边界与回归</td></tr>
 <tr><td>自建文献样例</td><td>29/29；编造 7/7；真实文献误判“不存在” 0/15</td><td>真实联网，自建小样本</td></tr>
 <tr><td>真实论文参考文献</td><td>test 119 条盲测：误报 16.0% → 10.1%（逐条复核）</td><td>10-15 盲测一次</td></tr>
-<tr><td>10-16 两轮修复</td><td>test 误报 12 → 0、第二批盲测 10 → 0；dev 仍为 0，3 条真实错误仍被标出</td><td>修过的集合不再算盲测</td></tr>
+<tr><td>开发方场景测试</td><td>大模型写的 36 条：编造 11 条查出 10 条，写对的 22 条误报 0；只贴 DOI：随机 30 条全部补全</td><td>第 14 节；开发方查证真值</td></tr>
 <tr><td>第二、三批盲测</td><td>逐条复核误报 10/110（9.1%）、13/111（11.7%）</td><td>10-16、10-16 晚各盲测一次</td></tr>
-<tr><td>第四批盲测</td><td>误报 20 条，占 18.0%；不算相近候选 17 条，占 15.3%；另标出 3 条真实错误</td><td>10-17 盲测一次，111 条、63 篇论文</td></tr>
+<tr><td>第四批盲测</td><td>误报 20 条（18.0%）；不算相近候选 17 条（15.3%）；另标出 3 条真实错误</td><td>10-17 盲测一次，111 条、63 篇论文</td></tr>
 <tr><td>第五批盲测</td><td>误报 6 条（5.6%）；不算相近候选 4.6%；另标出 1 条真实错误</td><td>10-17 晚盲测一次，108 条、63 篇论文</td></tr>
+<tr><td>中文期刊联网核查</td><td>新样本待人工 95% → 32.5%，核实全对</td><td>40 条，10-20 只运行一次</td></tr>
 <tr><td>AI 检索 Agent</td><td>test 58 条：确认 7 条，没有判为疑似不存在；中文期刊搜索：75 条找到论文页 33 条，确认 1 条</td><td>test 为首次盲测；中文含第五批 22 条，只运行一次</td></tr>
 <tr><td>图片识别</td><td>16/16 逐字一致，字符错误率 0%</td><td>合成印刷体样本</td></tr>
 <tr><td>论断检索</td><td>前 6 段命中率 75% → 100%，MRR 0.61 → 0.98</td><td>24 条，评测者编写</td></tr>
@@ -164,9 +207,41 @@
 <tr><td>MCP 与真实模型</td><td>两个工具真实调用通过；论断冒烟 4/4</td><td>流程可用，不是准确率</td></tr>
 </tbody></table>
 <h2>评测限制</h2>
-<p>自建样本量小且有选样偏差；合成材料只检查行为，不是真实研究结果。没有跨领域大样本的判断准确率、标注一致性、用户效率或商业转化研究。后四批盲测各约 110 条，误报的 95% 区间在 2.6%–26.2% 之间，同一篇源论文的条目常一起出错；复核由开发方完成，没有独立标注。表中盲测误报都按原口径计（相近候选也算）。</p>
-<footer>技术验收版 · 2026-10-19 · 团队身份信息待补充 · 11 / 15</footer></article>
-<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>11 和“直接问 AI”比：对照实验与消融</h1>
+<p>自建样本小且有选样偏差；没有跨领域大样本的准确率、标注一致性和用户效率研究。后四批盲测各约 110 条，误报 95% 区间 2.6%–26.2%；复核由开发方完成，盲测误报按原口径计（含相近候选）。</p>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 14 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>14 开发方场景测试：代替用户试用</h1>
+<p>老师的试用记录还没有收回，先由开发方按两种最常见的用法测试：让大模型替学生写参考文献，再交给本系统体检；只贴 DOI，生成规范条目。真值都在运行本系统之前查证，每条附可打开的依据（truth.json）。</p>
+<h2>场景一：大模型写的参考文献</h2>
+<p>让 DeepSeek（deepseek-flash）按教育、医学、经济三个论文题目各写 12 条 GB/T 7714 参考文献，中英各半、尽量附 DOI，共 36 条。逐条查 DOI 登记、Crossref、OpenAlex、中国 DOI 注册机构、期刊官网和引用它的论文。每个题目当作一次粘贴，按线上标准体检的参数运行。</p>
+<table><thead><tr><th>查证结果</th><th>条数</th><th>测试时的版本</th><th>修复后</th></tr></thead><tbody>
+<tr><td>编造（查不到这篇）</td><td>11</td><td>查出 7，交人工 4，说成真实 0</td><td>查出 10，交人工 1，说成真实 0</td></tr>
+<tr><td>真实且写对</td><td>22</td><td>核实 18，交人工 4，误报 0</td><td>核实 18，交人工 4，误报 0</td></tr>
+<tr><td>真实但有字段写错</td><td>3</td><td>查出 1；1 条判成已核实；1 条误报</td><td>查出 2；1 条误报</td></tr>
+<tr><td>判“已核实”的是否全对</td><td>—</td><td>19 条中 1 条 DOI 是错的</td><td>18 条全对</td></tr>
+<tr><td>每个题目 12 条用时</td><td>—</td><td>10–21 秒</td><td>9–20 秒</td></tr>
+</tbody></table>
+<h2>测试中发现并修复的问题</h2>
+<p>大模型常给文献配上同刊另一篇论文的 DOI。登记在知网的 DOI 在 doi.org 取不到元数据，系统原来只能判“请人工核对”，有 1 条真文献配错 DOI 还被判成已核实。现在读中国 DOI 注册机构的解析页比对登记的题名、作者：登记的是另一篇，就按“DOI 指向别的文献”处理，3 条编造改为查出，那条真文献改为指出 DOI 写错；登记的就是这一篇时，只说明 DOI 属于它，年份、卷期页仍请人工核对，不据此判已核实；英文写法的中文文献不比对题名。已有评测集里只有 1 条知网 DOI，结论不变。</p>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 15 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>14 场景测试（续）：问题条目与只贴 DOI</h1>
+<p>场景一里误报和交人工的 6 条逐条列出；场景二检验只贴 DOI 时，补全的规范条目是否与数据库记录逐项一致。</p>
+<table><thead><tr><th>引文（编号）</th><th>查证结果</th><th>本系统结论与原因</th></tr></thead><tbody>
+<tr><td>张巧丽等《基于深度学习的医学影像诊断综述》（med-02）</td><td>真实；刊名、卷期页、DOI 都写错</td><td>疑似编造（误报）：DOI 指向另一篇，联网没搜到原文（原文在《计算机科学》）。引文确实要改，但说它不存在是错的</td></tr>
+<tr><td>田娟秀等，《自动化学报》2018（med-01）</td><td>真实且写对</td><td>待人工：知网 DOI 登记的题名、作者与引文一致，年份、卷期页没有可比对的记录</td></tr>
+<tr><td>黄益平等、谢绚丽等，《经济学（季刊）》2018（econ-01、02）</td><td>真实且写对</td><td>待人工：同上</td></tr>
+<tr><td>张勋等，《经济研究》2019（econ-04）</td><td>真实且写对</td><td>待人工：引文没有 DOI，联网检索没返回原文页</td></tr>
+<tr><td>Jack、Ray，MIT 工作论文 2019（econ-08）</td><td>编造</td><td>待人工：报告类不在开放数据库覆盖范围，规则不判真伪</td></tr>
+</tbody></table>
+<h2>场景二：只贴 DOI</h2>
+<p>从 Crossref 随机抽 30 篇期刊论文，每条只贴 DOI，把生成的 GB/T 7714 条目和 Crossref 原始记录逐项对照。</p>
+<table><thead><tr><th>检查项</th><th>结果</th></tr></thead><tbody>
+<tr><td>补全成规范条目</td><td>30/30 判为已核实，生成 GB/T 7714 条目</td></tr>
+<tr><td>题名、前三位作者、年份、刊名、卷、期、页、DOI 8 项都与 Crossref 一致</td><td>第一次 27/30：2 条 Crossref 把作者单位登记成作者，条目多出单位（已修）；1 条是比对脚本没还原刊名里的 &amp;amp;。修复后 30/30</td></tr>
+<tr><td>单条用时</td><td>中位数 1.7 秒</td></tr>
+</tbody></table>
+<p class="small">限制：样本由开发方生成和查证，没有第二人独立标注；场景一只用了一个模型、三个题目，修复前后各运行一次，联网检索结果会随搜索引擎变化。数据与脚本：eval/scenario-2026-10-23/、scripts/scenario-*.mts。</p>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 16 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>15 和“直接问 AI”比：对照实验与消融</h1>
 <p>同一批 130 条构造引文（真实 50、改错一项 40、编造 40，含中文 20），每条真值在构造时确定。交给本系统三档和 DeepSeek 四档（深度思考，逐条单独问，可答“不确定”），这些条件对 AI 有利。</p>
 <table><thead><tr><th>做法</th><th>编造说成真实</th><th>改错说成正确</th><th>改正写法改对</th><th>真实英文有结论</th><th>重问结论相同</th><th>单条用时</th></tr></thead><tbody>
 <tr><td>本系统：只用 Crossref</td><td>0/40</td><td>0/40</td><td>36/36</td><td>18/40</td><td>—</td><td>2.1 秒</td></tr>
@@ -182,8 +257,8 @@
 <p>联网 AI 是真正的对手：flash 联网没有放过编造和改错，覆盖也更广；但 pro 联网仍把 2 条改过 DOI 的引文说成“一致”，确认了 1 条虚构中文文献，两次运行有 17% 结论不同，单条 8–24 秒。本系统说“已核实”的 19 条全对，改正写法全对，重跑结论一致，不调用模型；短处是网页、报告、图书多判“待人工”，也不检查格式是否完整。</p>
 <h2>消融</h2>
 <p>去掉 OpenAlex 兜底，编造条目无法判为疑似不存在（10/30 降到 0）；加上 AI 继续查，中文真实条目 8/10 拿到“已核实”或“题名、刊名、年份一致”的链接，虚构的 0/10；给 AI 加联网，编造说成真实从 13/40 降到 0/40。局限：改错是单字段构造，虚构题名由开发方编写，中文只有 20 条，每档只跑一到两次。</p>
-<footer>技术验收版 · 2026-10-19 · 团队身份信息待补充 · 12 / 15</footer></article>
-<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>12 运行、配置、部署与复现</h1>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 17 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>16 运行、配置、部署与复现</h1>
 <p>源码可在本地运行，另在魔搭创空间部署了公网演示；正式赛事提交由参赛者完成。评审复现应使用自己的服务端密钥，保留时间、输入、模型名称与结果。</p>
 <table><thead><tr><th>步骤</th><th>执行或配置</th></tr></thead><tbody>
 <tr><td>环境</td><td>Node.js 22.13+；pnpm；以 package.json 和 pnpm-lock.yaml 为准</td></tr>
@@ -200,39 +275,52 @@
 <p>没有 AI 密钥时仍可使用标准文献核验；AI 解析、Agent、图片识别和论断判断需要模型配置。公开数据库和模型会变化，复现记录应保存时间、输入、配置的模型名称与结果，不保存密钥。OpenAlex 无 key 时额度很少，连续全量评测会触发 Crossref 限流，评测需分开运行。</p>
 <p>自动测试中的固定上游响应保证可重复性，但不能证明当天外部服务可用；真实联网测试会产生少量模型费用，也不能代替离线边界测试。</p>
 <p class="small">公网演示是官方可选加分项。魔搭演示为单实例免费资源，所有访客共用 AI 调用额度，接近 8 MiB 的上传未验证通过；地址：modelscope.cn/studios/kgkvybu111111/cite-checkup。</p>
-<footer>技术验收版 · 2026-10-19 · 团队身份信息待补充 · 13 / 15</footer></article>
-<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>13 创新点、局限与发展方向</h1>
-<p>创新定位是应用与工程组合：把 AI 引用问题拆成可追溯的事实核验和证据核查，而不是声称新的基础模型或检索算法。</p>
-<table><thead><tr><th>层面</th><th>当前设计价值</th><th>尚缺证据</th></tr></thead><tbody>
-<tr><td>应用</td><td>文献事实与正文证据分开；从格式走向可复核判断</td><td>真实用户规模和效率改善</td></tr>
-<tr><td>技术</td><td>Agent 只找证据、规则下结论；开放全文 + 跨语言混合检索；隐藏提示词检测</td><td>跨模型比较与长文档检索消融</td></tr>
-<tr><td>交互</td><td>保留错误原文、来源范围、失败状态和 Agent 检索理由</td><td>系统可用性研究与无障碍完整评估</td></tr>
-<tr><td>社会价值</td><td>帮写作者发现引用问题，识别写给 AI 的隐藏指令</td><td>真实教学或学术场景的效果研究</td></tr>
-<tr><td>商业</td><td>图书馆、写作中心、期刊投稿前检查</td><td>付费意愿、单位成本、转化及留存</td></tr>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 18 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>17 创新点：技术创新与应用创新</h1>
+<p>创新定位是应用与工程组合：把“引用可不可信”拆成可追溯的事实核验和证据核查，不声称新的基础模型或检索算法。</p>
+<h2>技术创新点</h2>
+<p>1. 检索与裁决分离：大模型和搜索引擎只负责找候选、给依据，是不是同一篇、真伪如何由规则逐字段判定；AI 检索 Agent 不能宣布“不存在”，它找到的候选一律复核。</p>
+<p>2. 中文证据链：用 DeepSeek 搜索接口按题名找知网、万方、维普和期刊官网的原文页，读手机知网内嵌数据和官网元数据补作者、卷期，再按刊物 ISSN、卷、页到 Crossref 定位，作者用汉字与拼音互相比对；知网登记的 DOI 到中国 DOI 注册机构核对它登记的是哪篇。中文期刊论文的待人工从九成多降到约三成，没有新增误报。</p>
+<p>3. 论断 RAG：开放全文优先，BM25 与模型扩展的中英文检索词融合、模型重排，引句逐字核对并定位；初判矛盾时做范围复核，47 条论断上错判矛盾从 38 次降到 0。</p>
+<p>4. 导入与联网安全：在 PDF 文字提取的同一遍里跟踪填充色和渲染模式，检出白字、极小字号、隐藏格式和不可见字符里写给 AI 的指令；服务器替用户访问网页时只请求公网地址。</p>
+<p>5. 工具开放：同一套核验逻辑通过 MCP 开放给 Claude、Cursor 等 AI 工具调用。</p>
+<h2>应用创新点</h2>
+<p>1. 两个问题分开查：参考文献是否存在、信息是否一致，与正文论断是否被原文支持，各有结论和依据。</p>
+<p>2. 不只查错，也帮着改：写错的条目给出数据库里的规范写法，整份列表一键统一成 GB/T 7714 或 APA，只贴 DOI 也能生成。</p>
+<p>3. 每个结论都摆出依据：数据库记录、原文页链接、原文引句和核查过程；查不到不等于编造，相近候选单列，不让用户误改。</p>
+<p>4. 面向中文论文写作：中文界面、GB/T 7714、中文期刊联网核查，魔搭国内公网入口不用登录。</p>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 19 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>18 局限、待验证与发展方向</h1>
+<p>下面是已经知道的短板和还缺的证据；对外介绍和答辩都以此为准。</p>
+<table><thead><tr><th>层面</th><th>尚缺证据</th></tr></thead><tbody>
+<tr><td>应用</td><td>真实用户规模和效率改善（老师试用的记录表已备好，还没有收回记录）</td></tr>
+<tr><td>技术</td><td>跨模型比较；长文档上的检索消融；第二人独立标注</td></tr>
+<tr><td>交互</td><td>真人可用性研究；完整的无障碍评估</td></tr>
+<tr><td>社会价值</td><td>真实教学或学术场景中的效果研究</td></tr>
+<tr><td>商业</td><td>图书馆、写作中心、投稿前检查的付费意愿、单位成本、转化及留存</td></tr>
 </tbody></table>
 <h2>已经明确的局限</h2>
-<p>开放数据库覆盖不完整，知网、万方没有开放接口；联网搜索在 75 条中文条目里找到 33 条的论文页，但知网、万方的结果没有作者，多数只能给带链接的相近候选；中文题名对英文元数据仍无法比对。开放全文只覆盖 Europe PMC 开放获取子集和 arXiv，预印本可能与正式版本不同。图片识别只转写参考文献，未覆盖手写、强反光和严重透视。隐藏文字检测不覆盖被图片盖住、透明、裁剪或批注里的文字。规则只认学术数据库：网页、报告、图书多数判“待人工”，也不检查格式是否完整，这两点联网 AI 做得更好。没有账户、计费与正式运营。</p>
+<p>开放数据库覆盖不完整，知网、万方没有开放接口；中文期刊联网核查后，没看过的中文期刊论文仍有约三成待人工（搜索引擎没收录、物理类引文不写题名），引文只写“卷: 页”时只能给相近候选，境外服务器可能读不到知网页面；中文题名对英文元数据仍无法比对；真论文被写成另一本期刊、配上别的 DOI，而联网又没搜到原文时，会被判“疑似编造”（场景测试 36 条中 1 条）。开放全文只覆盖 Europe PMC 开放获取子集和 arXiv，预印本可能与正式版本不同。图片识别只转写参考文献，未覆盖手写、强反光和严重透视。隐藏文字检测不覆盖被图片盖住、透明、裁剪或批注里的文字。规则只认学术数据库：网页、报告、图书多数判“待人工”，也不检查格式是否完整，这两点联网 AI 做得更好。没有账户、计费与正式运营。</p>
 <h2>下一阶段优先级</h2>
-<p>前三次盲测的误报在 9%–12%，第四批为 18.0%；按第四批的原因修过之后，第五批为 5.6%，但区间与前几批重叠，误报仍是长尾。中文期刊下一步要找能拿到作者的合规数据源；请第二人独立标注、扩大样本；在长文档上做检索消融；找真实写作者试用，测量复核时间与误报成本；网页类引文打开网址核对标题，AI 只给格式完整性建议、不下真伪结论；再决定正式服务、远程 MCP 与机构试点是否值得投入。</p>
-<footer>技术验收版 · 2026-10-19 · 团队身份信息待补充 · 14 / 15</footer></article>
-<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>14 证据索引与提交对应</h1>
+<p>前三次盲测的误报在 9%–12%，第四批为 18.0%；按第四批的原因修过之后，第五批为 5.6%，但区间与前几批重叠，误报仍是长尾。中文期刊下一步按刊名、卷、页定位不写题名的引文，并在魔搭实测知网页面能否读到；请第二人独立标注、扩大样本；在长文档上做检索消融；找真实写作者试用，测量复核时间与误报成本；网页类引文打开网址核对标题，AI 只给格式完整性建议、不下真伪结论；再决定正式服务、远程 MCP 与机构试点是否值得投入。</p>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 20 / 21</footer></article>
+<article class="sheet" contenteditable="true"><div class="eyebrow">引用体检 / CITE CHECKUP · 技术说明</div><h1>19 证据索引与提交对应</h1>
 <p>路径相对项目根目录。复核时先看最终状态文件，再核对实际文件，避免把旧版本验收当成新版本。</p>
 <table><thead><tr><th>证据</th><th>项目内位置 / 说明</th></tr></thead><tbody>
 <tr><td>最终项目状态</td><td>PROJECT_STATE.md；作为索引，关键结果需核对实际文件</td></tr>
-<tr><td>参考文献评测</td><td>eval/real-world/（dev、test 和五批 blind 盲测集）；eval/results/real-*.json（含盲测复核）、curated-2026-10-16-v2.json、ai-parsing-ab-2026-10-17.json</td></tr>
-<tr><td>对照实验与可用性</td><td>eval/compare/、eval/results/compare-2026-10-18/；eval/usability/、eval/results/usability-2026-10-18/</td></tr>
-<tr><td>公网部署</td><td>Dockerfile；docs/deployment/MODELSCOPE.md</td></tr>
-<tr><td>AI 检索 Agent</td><td>eval/results/agent-*-2026-10-15.json、agent-*-2026-10-17-zh.json、agent-*-zh-cnweb.json、deepseek-search-probe-2026-10-17.json</td></tr>
-<tr><td>图片识别与论断检索</td><td>eval/vision/、eval/results/vision-2026-10-16.json；eval/claims-retrieval/、eval/results/retrieval-2026-10-16.json</td></tr>
-<tr><td>隐藏提示词</td><td>src/lib/documents/__tests__/fixtures/generate_hidden.py、generate_ocr.py 及生成的夹具</td></tr>
-<tr><td>MCP 实连</td><td>eval/results/mcp-smoke-2026-10-16T00-35-59-125Z.json</td></tr>
+<tr><td>参考文献评测</td><td>eval/real-world/（dev、test 与六批盲测集）；eval/results/real-*.json（含复核）、zh-regression-2026-10-19/、curated-*.json、ai-parsing-ab-*.json</td></tr>
+<tr><td>场景测试与新功能</td><td>eval/scenario-2026-10-23/（生成的参考文献、真值、两次核查结果、DOI 补全）；scripts/scenario-*.mts</td></tr>
+<tr><td>对照实验与可用性</td><td>eval/compare/、eval/results/compare-2026-10-18/；eval/usability/、eval/results/usability-2026-10-18/、usability-2026-10-20-redesign/</td></tr>
+<tr><td>公网部署与 MCP</td><td>Dockerfile；docs/deployment/MODELSCOPE.md；MCP 实连：eval/results/mcp-smoke-2026-10-16T00-35-59-125Z.json</td></tr>
+<tr><td>AI 检索 Agent</td><td>eval/results/agent-*.json、deepseek-search-probe-2026-10-17.json</td></tr>
+<tr><td>图片识别、论断检索与隐藏提示词</td><td>eval/vision/、eval/results/vision-2026-10-16.json；eval/claims-retrieval/、eval/results/retrieval-2026-10-16.json；src/lib/documents/__tests__/fixtures/generate_hidden.py、generate_ocr.py 及生成的夹具</td></tr>
 <tr><td>讲稿与内容源</td><td>docs/competition/ 下 narration.json、DEMO_SCRIPT.md、DEFENSE_QA.md、technical-content.json</td></tr>
 </tbody></table>
 <h2>官方材料要求对应</h2>
-<p>官方要求技术 PDF 不超过 30 页，包含概述、需求、架构、AI、实现、测试部署和展望。本报告共 15 页，对应这些部分；AI 选型、集成、优化和创新均单独说明。</p>
-<p>正式视频须为 5–8 分钟、MP4、至少 1080p、普通话讲解。代码仓库已公开并保留真实历史；团队资料由参赛者补齐，本轮不代为报名或提交赛事。官方页面核对日期为 2026-10-14。</p>
+<p>官方要求技术 PDF 不超过 30 页，包含概述、需求、架构、AI、实现、测试部署和展望。本报告共 21 页，对应这些部分；AI 选型、集成、优化和创新均单独说明。</p>
+<p>正式视频须为 5–8 分钟、MP4、至少 1080p、普通话讲解。代码仓库已公开并保留真实历史；团队资料由参赛者补齐。官方页面 2026-10-23 再次核对。</p>
 <p class="small">官方来源：https://www.boxuegu.com/matchTrack/detail/?id=10037
 参考：Sugiyama, S., &amp; Eguchi, R. (2025). Nikkei Asia. https://asia.nikkei.com/Business/Technology/Artificial-intelligence/Positive-review-only-Researchers-hide-AI-prompts-in-papers
 参考：Lin, Z. (2025). Hidden Prompts in Manuscripts Exploit AI-Assisted Peer Review. https://doi.org/10.48550/arXiv.2507.06185</p>
-<footer>技术验收版 · 2026-10-19 · 团队身份信息待补充 · 15 / 15</footer></article>
+<footer>技术验收版 · 2026-10-23 · 团队身份信息待补充 · 21 / 21</footer></article>
 </body></html>
