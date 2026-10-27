@@ -1,0 +1,59 @@
+引用体检 · 拍摄用演示输入（配合 SHOOTING_SCRIPT.md，2026-10-26 实测）
+用记事本打开，整行复制粘贴，不要手打。
+
+==================== 启动命令（在 D:\Darks\projects\cite-checkup 打开 PowerShell，逐行运行） ====================
+网站（先确认代理软件开着，端口 7890）：
+
+pnpm build
+$env:NODE_USE_ENV_PROXY='1'
+$env:HTTPS_PROXY='http://127.0.0.1:7890'
+$env:HTTP_PROXY='http://127.0.0.1:7890'
+$env:NO_PROXY='localhost,127.0.0.1,::1,.cnki.net,.cnki.com.cn,.wanfangdata.com.cn,.cqvip.com,.chndoi.org,.deepseek.com'
+pnpm start
+
+MCP 演示客户端（另开一个 PowerShell）：
+
+pnpm exec tsx docs/competition/media/video-2026-10-18/mcp-viewer.mts
+
+==================== 网址 ====================
+本机网站（第 1–7 段）：http://localhost:3210
+MCP 演示客户端（第 8 段）：http://127.0.0.1:3211
+魔搭在线版（第 10 段）：https://www.modelscope.cn/studios/kgkvybu111111/cite-checkup?mode=full
+
+==================== 第 3 段 ====================
+先点“载入示例”（出现 11 条），再把光标放到输入框最后、换行，粘贴下面两行：
+
+[12] 10.1038/nature16961
+[13] 易行健, 周利. 数字普惠金融发展是否显著影响了居民消费——来自中国家庭的微观证据[J]. 金融研究, 2018(11): 47-67.
+
+预期：第 12 条“已按 DOI 查到这篇文献，补全了题名、作者等信息”；第 13 条“已核实：与知网记录一致（来源：知网）”。
+
+==================== 第 4 段 ====================
+清空输入框，粘贴下面一行，点“开始体检”（预期“待人工”），再点这条的“AI 继续查”：
+
+RaïssiC BrissaudJ DrayG PonceletP RocheM TeisseireM.Web analyzing traffic challenge: description and results. In: Proceedings of the ECML/PKDD;2007:47‐52.
+
+预期：先查 Crossref 没找到，再查 OpenAlex 找到，规则确认后变成“已核实（来源：OpenAlex）”。
+
+==================== 第 5 段 ====================
+点“截图识别”，选这张图（合成演示照片）：
+D:\Darks\projects\cite-checkup\eval\vision\out\mixed-photo.jpg
+
+==================== 第 6 段 ====================
+点“导入文件”，选这个 PDF（自制测试 PDF）：
+D:\Darks\projects\cite-checkup\src\lib\documents\__tests__\fixtures\preprint-hidden.pdf
+
+==================== 第 7 段 ====================
+切到“正文论断核查”，证据来源选“通过 DOI 查原文”。
+
+正文中的论断（粘贴到论断框）：
+在这项研究样本中，即使用 GPT-4，它引用的书籍章节也有七成是编造的。
+
+文献 DOI（粘贴到 DOI 框）：
+10.1038/s41598-023-41032-5
+
+预期：证据来自 Europe PMC 开放全文；结论“证据支持”；引句 “Even with GPT-4, however, 70% of the cited book chapters are fabricated.”
+
+==================== 图片素材 ====================
+片头封面（第 0 段）：D:\Darks\projects\cite-checkup\docs\competition\media\slides\slide-01-cover.jpg
+核心设计（第 9 段）：D:\Darks\projects\cite-checkup\docs\competition\media\slides\slide-02-design.jpg

@@ -1,6 +1,7 @@
-"""把答辩准备手册和答辩问答（Markdown）排成 A4 PDF，方便直接发给队员。
+"""把答辩准备手册、答辩问答和视频拍摄脚本（Markdown）排成 A4 PDF，方便直接发给队员。
 
-用法：python docs/competition/build_defense_pdfs.py
+用法：python docs/competition/build_defense_pdfs.py [文件名 ...]
+不带参数时三份都生成；带上文件名（如 SHOOTING_SCRIPT.md）只生成这几份。
 需要 pandoc（Markdown 转网页）和 Playwright（用 Chromium 打印成 PDF）。不联网、不调用模型。
 文中指向仓库文件的相对链接换成 GitHub 上的地址，PDF 里也能点开。
 """
@@ -8,6 +9,7 @@ from pathlib import Path
 import html
 import re
 import subprocess
+import sys
 
 from playwright.sync_api import sync_playwright
 
@@ -19,7 +21,12 @@ REPO = 'https://github.com/newhack-cpu/cite-checkup/blob/main/'
 DOCS = [
     ('DEFENSE_BRIEFING.md', '引用体检-答辩准备手册.pdf', '引用体检 · 答辩准备手册（队员版）', True),
     ('DEFENSE_QA.md', '引用体检-答辩问答.pdf', '引用体检 · 答辩问答', False),
+    ('SHOOTING_SCRIPT.md', '引用体检-视频拍摄脚本.pdf', '引用体检 · 视频拍摄脚本（真人录制版）', True),
 ]
+WANTED = set(sys.argv[1:])
+unknown = WANTED - {name for name, *_ in DOCS}
+if unknown:
+    sys.exit(f'不认识的文件：{", ".join(sorted(unknown))}')
 
 CSS = '''
 @page { size: A4; margin: 17mm 16mm 18mm 16mm; }
@@ -88,6 +95,8 @@ with sync_playwright() as p:
     browser = p.chromium.launch()
     page = browser.new_page()
     for name, pdf_name, title, toc in DOCS:
+        if WANTED and name not in WANTED:
+            continue
         source = HERE / name
         # 样式都内联在网页里，直接交给浏览器渲染，不落临时文件
         page.set_content(to_html(absolute_links(source.read_text(encoding='utf-8'), source), title, toc), wait_until='networkidle')

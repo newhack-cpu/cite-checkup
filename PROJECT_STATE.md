@@ -13,6 +13,9 @@
 - `OFFICIAL_REQUIREMENTS.md` 的“必须坚持的表述”按现状更新（10-14 原版写于检索 Agent、MCP Server 实现之前）；参赛材料目录与提交清单登记新材料。
 - `build_defense_pdfs.py`：pandoc 转网页、Playwright 打印成 A4 PDF，相对链接换成 GitHub 地址；两份 PDF 逐页看过。
 - 待队长：分工、开发过程（是否用 AI 编程等）的统一口径、团队信息；手册和问答里只给原则，不代写。
+- 答辩幻灯片风格：用 Codex 生图试做两页（封面、核心设计），用户认可，“需要时按这个风格做”；全局 npm 的 codex 0.147.0 用不了默认模型 gpt-6-astra，改用桌面端自带内核 codex.exe 0.164.0。两张图存 `docs/competition/media/slides/`（1920×1080 JPG），也用作视频片头和第 9 段。
+- 视频拍摄脚本（真人录制版）`docs/competition/SHOOTING_SCRIPT.md` + `SHOOTING_INPUTS.txt` + PDF 9 页：11 段分镜与台词（约 1300 字，约 7 分钟），按 10-20 后的新界面和 10-23 的功能写。演示输入 10-26 实测：示例加只贴 DOI 和《金融研究》易行健一条（知网核实）；英文会议论文 AI 继续查 Crossref 没找到、OpenAlex 找到，规则确认；论断核查读 Europe PMC 全文判证据支持。本机直连 Europe PMC 超时、走 7890 代理才通，知网等要直连，所以脚本里的启动命令设了 NO_PROXY（国内站点和 DeepSeek 直连）；一次论断核查偶发“未完成”，重试成功。
+- 官方要求复核（赛道接口 + 通知接口，10-26）：材料四项不变（代码仓库、5–8 分钟 1080p MP4 普通话视频、≤30 页 PDF、可选在线演示）；省赛 11-18 截止，预指导 10-31 15:00 前缴费并提交。
 
 ## 2026-10-23（America/Los_Angeles）：技术说明 10-23 版、开发方场景测试、知网 DOI 核对
 
