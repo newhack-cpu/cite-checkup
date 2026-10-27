@@ -1,0 +1,34 @@
+{
+  "startedAt": "2026-10-27T05:29:37.613Z",
+  "completedAt": "2026-10-27T05:29:40.581Z",
+  "durationMs": 2968,
+  "transport": "stdio",
+  "command": "pnpm --silent --dir <project> mcp",
+  "live": true,
+  "client": "cite-checkup-local-demo",
+  "server": {
+    "name": "cite-checkup",
+    "version": "0.2.0"
+  },
+  "tools": [
+    {
+      "name": "verify_references",
+      "title": "核验参考文献",
+      "description": "Check a bibliographic reference list against Crossref, doi.org and OpenAlex. For each entry it returns a rule-based verdict (verified, mismatch, near_match, not_found, retracted, concern, unverifiable, error), the problems found, the matched database record and a citation generated only from that record. Verdicts come from database lookups and field-by-field comparison, never from a language model. 'mismatch' means the same work was confirmed but some fields are wrong, or the cited DOI is unregistered or points to another work. 'near_match' means only a similar record was found and it could not be confirmed as the same work: it is not a confirmed error, and its citation must not replace the original until a person has checked it. 'not_found' or 'unverifiable' is not proof of fabrication (books, theses, web pages and Chinese journals are poorly covered). When a DeepSeek key is configured, Chinese journal articles that Crossref does not confirm are also looked up with the DeepSeek search API (a search engine, not a language model) on CNKI, Wanfang, CQVIP and the journal's own site; authors and volume/issue are read from those pages and judged by the same rules. Accepts GB/T 7714, APA, IEEE and similar styles, at most 80 entries. Summaries are in Simplified Chinese.",
+      "annotations": {
+        "readOnlyHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "check_claim",
+      "title": "核查论断证据",
+      "description": "Assess whether ONE claim from a manuscript is supported by ONE specific source: a DOI, or source text you provide. For a DOI it reads the open-access full text from Europe PMC (JATS) or arXiv when available, otherwise the Crossref/OpenAlex abstract; source.scope in the result says which was used. Short material is searched with BM25; long material with BM25 plus model-expanded Chinese/English query terms, merged by reciprocal rank fusion and reranked by the model to 6 passages. DeepSeek then returns supported, partially_supported, contradicted or insufficient_evidence, and every quotation is verified verbatim against the retrieved passages. Only the retrieved passages are judged, not the whole paper; it does not establish scientific truth. Provide exactly one of doi or evidence_text. The explanation is in Simplified Chinese.",
+      "annotations": {
+        "readOnlyHint": true,
+        "openWorldHint": true
+      }
+    }
+  ]
+}

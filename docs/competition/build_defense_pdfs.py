@@ -18,10 +18,11 @@ ROOT = HERE.parent.parent
 OUT = HERE / 'output' / 'pdf'
 OUT.mkdir(parents=True, exist_ok=True)
 REPO = 'https://github.com/newhack-cpu/cite-checkup/blob/main/'
+# 最后一项是排版方式：brief 手册（带目录，小节可跨页）、qa 问答（一题一节不拆页）、shot 拍摄脚本（一段一张表不拆页）
 DOCS = [
-    ('DEFENSE_BRIEFING.md', '引用体检-答辩准备手册.pdf', '引用体检 · 答辩准备手册（队员版）', True),
-    ('DEFENSE_QA.md', '引用体检-答辩问答.pdf', '引用体检 · 答辩问答', False),
-    ('SHOOTING_SCRIPT.md', '引用体检-视频拍摄脚本.pdf', '引用体检 · 视频拍摄脚本（真人录制版）', True),
+    ('DEFENSE_BRIEFING.md', '引用体检-答辩准备手册.pdf', '引用体检 · 答辩准备手册（队员版）', 'brief'),
+    ('DEFENSE_QA.md', '引用体检-答辩问答.pdf', '引用体检 · 答辩问答', 'qa'),
+    ('SHOOTING_SCRIPT.md', '引用体检-视频拍摄脚本.pdf', '引用体检 · 视频拍摄脚本', 'shot'),
 ]
 WANTED = set(sys.argv[1:])
 unknown = WANTED - {name for name, *_ in DOCS}
@@ -54,7 +55,10 @@ td { padding: 4.5pt 6pt; vertical-align: top; border-bottom: .5pt solid #e2ddd0;
 tr { break-inside: avoid; }
 tbody tr:nth-child(even) td { background: #f5f3ec; }
 hr { border: 0; border-top: .6pt solid #d8d3c4; margin: 14pt 0; }
-.qa section.level3 { break-inside: avoid; }
+.qa section.level3, .shot section.level3 { break-inside: avoid; }
+.shot section.level3 td:first-child { white-space: nowrap; }
+.shot section.level3 td:nth-child(2) { width: 44%; }
+.shot section.level3 code { white-space: nowrap; word-break: normal; }
 nav.toc { margin: 0 0 14pt; padding: 8pt 12pt; border: .6pt solid #d8d3c4; background: #f8f6f0; columns: 2; column-gap: 18pt; font-size: 9.6pt; }
 nav.toc div { break-inside: avoid; }
 nav.toc .title { column-span: all; font-weight: 600; color: #943e32; margin-bottom: 3pt; }
@@ -72,19 +76,17 @@ def absolute_links(markdown: str, source: Path) -> str:
     return re.sub(r'(\[[^\]]*\])\(([^)\s]+)\)', repl, markdown)
 
 
-def to_html(markdown: str, title: str, toc: bool) -> str:
+def to_html(markdown: str, title: str, kind: str) -> str:
     # pandoc 在 Windows 上输出 CRLF；<pre> 里的换行要统一成 LF，否则代码块会多出空行
     body = subprocess.run(
         ['pandoc', '-f', 'gfm', '-t', 'html5', '--section-divs'],
         input=markdown.encode('utf-8'), capture_output=True, check=True,
     ).stdout.decode('utf-8').replace('\r\n', '\n')
-    if toc:
+    if kind == 'brief':
         # --section-divs 把锚点放在外层 <section> 上
         items = re.findall(r'<section id="([^"]+)" class="level2">\s*<h2>(.*?)</h2>', body)
         nav = ''.join(f'<div><a href="#{i}">{t}</a></div>' for i, t in items)
         body = body.replace('</h1>', f'</h1><nav class="toc"><div class="title">目录</div>{nav}</nav>', 1)
-    # 问答一题一节，整节不拆页；手册的小节很长，允许跨页
-    kind = 'brief' if toc else 'qa'
     return f'<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>{html.escape(title)}</title><style>{CSS}</style></head><body class="{kind}">{body}</body></html>'
 
 
@@ -94,12 +96,12 @@ FOOTER = '''<div style="width:100%;font:7.5pt 'Microsoft YaHei',sans-serif;color
 with sync_playwright() as p:
     browser = p.chromium.launch()
     page = browser.new_page()
-    for name, pdf_name, title, toc in DOCS:
+    for name, pdf_name, title, kind in DOCS:
         if WANTED and name not in WANTED:
             continue
         source = HERE / name
         # 样式都内联在网页里，直接交给浏览器渲染，不落临时文件
-        page.set_content(to_html(absolute_links(source.read_text(encoding='utf-8'), source), title, toc), wait_until='networkidle')
+        page.set_content(to_html(absolute_links(source.read_text(encoding='utf-8'), source), title, kind), wait_until='networkidle')
         page.pdf(
             path=str(OUT / pdf_name), format='A4', print_background=True, display_header_footer=True,
             header_template='<div></div>', footer_template=FOOTER.format(title=html.escape(title)),
