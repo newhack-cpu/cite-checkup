@@ -6,6 +6,7 @@
 |---|---|
 | `OFFICIAL_REQUIREMENTS.md` | 2026-10-14 实时核对的官方材料要求及评分口径；“必须坚持的表述”10-26 按现状更新 |
 | `output/pdf/引用体检-技术说明.pdf` | 2026-10-23 版，21 页：AI 技术选型、核心功能、开发方场景测试（两页）、创新点（技术 / 应用）、局限单列，含中文期刊联网核查与知网 DOI 核对；逐页验收见 `eval/results/technical-pdf-2026-10-23/` |
+| `output/docx/引用体检-技术说明.docx` | 技术说明的 Word 版（10-27）：内容与 10-23 PDF 同源，Word 导出同样 21 页、每节一页；团队那一行留“待填写”，由参赛者填好后用 Word 另存为 PDF 提交。由 `build_technical_docx.cjs`（docx-js）生成 |
 | `technical-report.html` | 自含 HTML 阅读/编辑源；修改后需另存，浏览器改动不会自动回写 JSON |
 | `technical-content.json` | 结构化正式内容源；应从此修改内容后重新构建 PDF/HTML |
 | `build_technical_report.py` | 使用 ReportLab 的本地构建脚本，不调用模型或网络 |
