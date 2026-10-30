@@ -4,7 +4,10 @@ import { parseToolCall, ToolArgumentError } from "../tools";
 import { parseReference } from "../../verify/extract";
 import type { CheckStep } from "../../verify/types";
 
-const BOOK = "Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep learning. MIT Press.";
+// 中文期刊检索请求页面前会做 DNS 解析，确认是公网地址；测试不联网，一律解析到文档用的公网地址
+vi.mock("node:dns/promises", () => ({ lookup: vi.fn(async () => [{ address: "203.0.113.10", family: 4 }]) }));
+
+const BOOK ="Goodfellow, I., Bengio, Y., & Courville, A. (2016). Deep learning. MIT Press.";
 const bookRecord = {
   DOI: "10.5555/deep-learning-book", title: ["Deep Learning"], type: "book",
   author: [{ family: "Goodfellow", given: "Ian" }, { family: "Bengio", given: "Yoshua" }, { family: "Courville", given: "Aaron" }],

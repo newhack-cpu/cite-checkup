@@ -380,6 +380,8 @@ describe("time limits, budget and cancellation", () => {
   });
 
   it("spaces DeepSeek searches and limits how many run at once", async () => {
+    // 用假时钟：全部测试并行、机器繁忙时，真实计时器会差十几毫秒（10-29 量到间隔 89 毫秒）
+    vi.useFakeTimers({ toFake: ["setTimeout", "Date"] });
     const gate = new Gate(2, 100);
     let active = 0;
     let peak = 0;
@@ -391,10 +393,13 @@ describe("time limits, budget and cancellation", () => {
       await new Promise((r) => setTimeout(r, 30));
       active--;
     });
-    await Promise.all([task(), task(), task(), task()]);
+    const all = Promise.all([task(), task(), task(), task()]);
+    await vi.runAllTimersAsync();
+    await all;
+    vi.useRealTimers();
     expect(peak).toBeLessThanOrEqual(2);
-    // 计时器有几毫秒的误差
-    for (let i = 1; i < starts.length; i++) expect(starts[i] - starts[i - 1]).toBeGreaterThanOrEqual(90);
+    expect(starts).toHaveLength(4);
+    for (let i = 1; i < starts.length; i++) expect(starts[i] - starts[i - 1]).toBeGreaterThanOrEqual(100);
   });
 
   it("lets a queued request be cancelled", async () => {

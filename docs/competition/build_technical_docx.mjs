@@ -2,29 +2,32 @@
  * 技术说明的 Word 版：内容和 build_technical_report.py 生成的 PDF 同源（technical-content.json），
  * 给参赛者自己填团队信息，再用 Word 另存为 PDF。
  *
- * 用法：node docs/competition/build_technical_docx.cjs
+ * 用法：node docs/competition/build_technical_docx.mjs
  * 需要 docx（npm install -g docx），项目里没装时到 npm 全局目录找。不联网、不调用模型。
  * 版心、字号、行距照 PDF 设置，每个 page 占一页（页标题用“标题 1”，小节用“标题 2”）。
  * 和 PDF 只差三处：团队那一行换成“待填写”，材料日期去掉“技术验收版”，页脚不再写“团队身份信息待补充”。
  */
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+import fs from 'node:fs';
+import path from 'node:path';
+import { execSync } from 'node:child_process';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
-function loadDocx() {
+// 按文件地址导入 ES 模块时不解析 package.json，要直接写到 docx 的入口文件
+async function loadDocx() {
   try {
-    return require('docx');
+    return await import('docx');
   } catch {
-    return require(path.join(execSync('npm root -g', { encoding: 'utf8' }).trim(), 'docx'));
+    const root = execSync('npm root -g', { encoding: 'utf8' }).trim();
+    return import(pathToFileURL(path.join(root, 'docx', 'dist', 'index.mjs')).href);
   }
 }
 const {
   Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, Header, Footer, HeadingLevel,
   AlignmentType, BorderStyle, WidthType, ShadingType, VerticalAlign, PageNumber, TabStopType,
   LineRuleType, HeightRule,
-} = loadDocx();
+} = await loadDocx();
 
-const HERE = __dirname;
+const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DATA = JSON.parse(fs.readFileSync(path.join(HERE, 'technical-content.json'), 'utf8').replace(/^﻿/, ''));
 const OUT = path.join(HERE, 'output', 'docx', '引用体检-技术说明.docx');
 
