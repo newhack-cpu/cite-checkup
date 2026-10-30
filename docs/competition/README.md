@@ -5,8 +5,8 @@
 | 文件 | 用途 |
 |---|---|
 | `OFFICIAL_REQUIREMENTS.md` | 2026-10-14 实时核对的官方材料要求及评分口径；“必须坚持的表述”10-26 按现状更新 |
-| `output/pdf/引用体检-技术说明.pdf` | 2026-10-23 版，21 页：AI 技术选型、核心功能、开发方场景测试（两页）、创新点（技术 / 应用）、局限单列，含中文期刊联网核查与知网 DOI 核对；逐页验收见 `eval/results/technical-pdf-2026-10-23/` |
-| `output/docx/引用体检-技术说明.docx` | 技术说明的 Word 版（10-27）：内容与 10-23 PDF 同源，Word 导出同样 21 页、每节一页；团队那一行留“待填写”，由参赛者填好后用 Word 另存为 PDF 提交。由 `build_technical_docx.mjs`（docx-js）生成 |
+| `output/pdf/引用体检-技术说明.pdf` | 2026-10-23 技术验收版（旧版式，不用于提交；提交用下一行 Word 版导出的 PDF），21 页：AI 技术选型、核心功能、开发方场景测试（两页）、创新点（技术 / 应用）、局限单列，含中文期刊联网核查与知网 DOI 核对；逐页验收见 `eval/results/technical-pdf-2026-10-23/` |
+| `output/docx/引用体检-技术说明.docx` | 技术说明 Word 版（10-30 改为正式文档版式）：封面、目录，正文按官方要求分 8 章加附录（项目概述、需求分析、系统架构设计、AI 技术方案、核心功能实现、测试与部署、创新点、总结与展望），黑白三线表，图表按章编号，共 19 页。正文沿用 `technical-content.json`，只改交叉引用编号、自动页数和面向队内的说法。封面 5 处“待填写”由参赛者填好后用 Word 另存为 PDF 提交。由 `build_technical_docx.mjs`（docx-js）生成，`finish_technical_docx.py` 用本机 Word 更新目录页码并清理文档属性 |
 | `technical-report.html` | 自含 HTML 阅读/编辑源；修改后需另存，浏览器改动不会自动回写 JSON |
 | `technical-content.json` | 结构化正式内容源；应从此修改内容后重新构建 PDF/HTML |
 | `build_technical_report.py` | 使用 ReportLab 的本地构建脚本，不调用模型或网络 |
