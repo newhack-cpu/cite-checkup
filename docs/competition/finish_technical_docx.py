@@ -1,6 +1,6 @@
 """用本机 Word 更新技术说明 Word 版的目录页码和域，再把文档属性里的作者改回“引用体检项目组”。
 
-用法：python docs/competition/finish_technical_docx.py [预览 PDF 路径]
+用法：python docs/competition/finish_technical_docx.py [预览 PDF 路径] [Word 文件，默认技术说明]
 先运行 build_technical_docx.mjs。只在装了 Word 的 Windows 上用：这台电脑 PowerShell 调 Word COM 会报类型库错误，
 所以用 cscript 跑 JScript 晚绑定。开着 Word 时不运行，免得动到正在编辑的文档；结束时退出它自己启动的 Word。
 """
@@ -56,6 +56,8 @@ def clean_properties(path: Path) -> None:
 if word_running():
     sys.exit('Word 正在运行：先保存并关闭 Word 再执行，免得影响正在编辑的文档。')
 preview = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else None
+if len(sys.argv) > 2:
+    DOCX = Path(sys.argv[2]).resolve()
 with tempfile.TemporaryDirectory() as tmp:
     work = Path(tmp)
     (work / 'update.js').write_text(JS, encoding='ascii')

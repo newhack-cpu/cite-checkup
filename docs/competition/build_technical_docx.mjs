@@ -11,6 +11,7 @@
  * 删去面向队内的说法；团队信息、材料日期移到封面（待填写）；第 8 章补一段由项目摘要原句组成的总结。
  * 另按报名表“作品介绍文档”的 7 项要求补了：1.2–1.5 节（使用方式、亮点、AI 落地与测试、发表获奖与来源，
  * 内容取自试用指南和本文已有数字）、7 幅界面截图（media/doc-shots/，魔搭公网实际操作截取）和附录 A.2 对照表。
+ * 同时生成《作品介绍》（output/docx/引用体检-作品介绍.docx）：按报名表那 7 项逐条写，内容取自本文，细节引向技术说明。
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -348,12 +349,12 @@ const center = (text, font, size, before = 0, after = 0) =>
   new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before, after, line: Math.round(size * 15), lineRule: LineRuleType.AT_LEAST }, children: [new TextRun({ text, font, size })] });
 const FIELDS = [['作品名称', '引用体检'], ['参赛赛道', 'AI WEB 网页开发挑战赛'], ['学　　校', '待填写'], ['队伍名称', '待填写'], ['队　　员', '待填写'], ['指导老师', '待填写'], ['完成日期', '待填写']];
 const infoWidths = [1700, 4300];
-const cover = [
+const coverPage = (kind) => [
   center('第九届传智杯全国大学生数智创新与AI应用大赛', HEI, 32, 1200, 160),
   center('AI WEB 网页开发挑战赛', HEI, 32, 0, 0),
   center('引用体检', HEI, 72, 2000, 240),
   center('受约束文献核验与论断证据核查', HEI, 36, 0, 480),
-  center('技术说明', HEI, 52, 0, 1800),
+  center(kind, HEI, 52, 0, 1800),
   new Table({
     width: { size: infoWidths[0] + infoWidths[1], type: WidthType.DXA }, columnWidths: infoWidths, alignment: AlignmentType.CENTER,
     borders: { top: NONE, bottom: NONE, left: NONE, right: NONE, insideHorizontal: NONE, insideVertical: NONE },
@@ -371,9 +372,9 @@ const toc = [
 
 const blank = () => ({ default: new Header({ children: [new Paragraph({ children: [] })] }) });
 const blankFooter = () => ({ default: new Footer({ children: [new Paragraph({ children: [] })] }) });
-const header = new Header({
+const pageHeader = (text) => new Header({
   children: [new Paragraph({ alignment: AlignmentType.CENTER, border: { bottom: { ...rule(6), space: 2 } }, spacing: exact(14),
-    children: textRuns('引用体检：受约束文献核验与论断证据核查 · 技术说明', { size: 18 }) })],
+    children: textRuns(text, { size: 18 }) })],
 });
 const footer = new Footer({
   children: [new Paragraph({ alignment: AlignmentType.CENTER, spacing: exact(14),
@@ -385,12 +386,84 @@ const doc = new Document({
   subject: '受约束文献核验与论断证据核查技术说明', description: '第九届传智杯 AI WEB 网页开发挑战赛 · 技术说明',
   styles,
   sections: [
-    { properties: { page: PAGE }, headers: blank(), footers: blankFooter(), children: cover },
+    { properties: { page: PAGE }, headers: blank(), footers: blankFooter(), children: coverPage('技术说明') },
     { properties: { page: PAGE }, headers: blank(), footers: blankFooter(), children: toc },
-    { properties: { page: { ...PAGE, pageNumbers: { start: 1 } } }, headers: { default: header }, footers: { default: footer }, children: body },
+    { properties: { page: { ...PAGE, pageNumbers: { start: 1 } } }, headers: { default: pageHeader('引用体检：受约束文献核验与论断证据核查 · 技术说明') }, footers: { default: footer }, children: body },
   ],
 });
 
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, await Packer.toBuffer(doc));
 console.log(JSON.stringify({ docx: OUT, tables: Object.keys(CAPTIONS).length }));
+
+// ---------- 作品介绍：按报名表“作品介绍文档”的 7 项逐条写，内容取自上文，细节引向技术说明 ----------
+const INTRO_OUT = path.join(HERE, 'output', 'docx', '引用体检-作品介绍.docx');
+const techRefs = { ...REFS };
+// 这里引用的章节号都在技术说明里；截图在本文第 5 节重新编号
+const toIntro = (text) => text
+  .replace(/（见 (?=\d)/g, '（详见技术说明 ').replace(/（见(?=第)/g, '（详见技术说明')
+  .replace('方法见 6.5 节', '方法详见技术说明 6.5 节')
+  .replace('见{表:13:0}', `详见技术说明${techRefs['表:13:0']}`);
+const introText = (title) => INTRO.find((section) => section.title === title).paragraphs.map(toIntro);
+const KEY_TECH = [
+  '（1）前端与服务端：Next.js 16（App Router）、React 19、TypeScript 和 Tailwind CSS；服务端把文件提取、规则核验与模型调用隔开，核验结果逐条流式返回，模型密钥不进入浏览器。',
+  '（2）规则核验：查询 Crossref、OpenAlex、doi.org、DataCite 等开放学术数据库，逐字段比对题名、作者、年份、期刊与 DOI，并核对 Retraction Watch 撤稿数据；文献真伪结论只由规则给出。',
+  '（3）大模型函数调用：DeepSeek（deepseek-flash）通过 Function Calling 输出受约束的结构化结果，用于字段解析和多轮工具调用的 AI 检索 Agent（每条最多 4 次检索、4 轮、80 秒），找到的候选一律交给规则逐字段复核。',
+  '（4）中文期刊联网核查：用 DeepSeek 搜索接口（搜索引擎，不是大模型）按题名查知网、万方、维普和期刊官网的原文页，读取页面元数据补全作者、卷期，再由规则比对。',
+  '（5）论断检索增强生成（RAG）：读取 Europe PMC、arXiv 的开放全文，按 1,200 字符分块（重叠 160），用 BM25 加模型扩展检索词做混合检索，模型从 20 段候选中重排出 6 段，再由 judge_claim 输出四类关系和原文引句；服务端校验引句能在原文中逐字定位。',
+  '（6）多模态识别：浏览器先把图片重绘到 2048 像素以内并去掉 EXIF，DeepSeek 图片输入经 submit_references 函数调用逐条转写，看不清的地方标 [?]，用户对照原图确认后才进入核验。',
+  '（7）文档导入与安全：PDF、Word、TXT 只提取可读文本，检测白色、过小等读者看不见的隐藏文字并从导入内容中去掉；访问期刊官网时只请求公网地址并逐跳检查跳转，防止 SSRF。',
+  '（8）MCP Server：基于官方 SDK，以 stdio 方式提供 verify_references 和 check_claim 两个工具，供支持 MCP 的 AI 工具调用。',
+  '（9）部署：用 Docker 部署在魔搭创空间，提供免登录的公网演示。',
+];
+const SHOT_ORDER = ['results', 'cnki', 'agent', 'standard', 'vision', 'hidden', 'claim'];
+const allShots = Object.values(SCREENSHOTS).flat();
+
+function buildIntro() {
+  body.length = 0;
+  const chapter = (n, title) => { counters.table = 0; counters.figure = 0; heading(1, `${n}　${title}`); };
+  const bodyText = (texts) => { for (const text of texts) body.push(...paras(text, 'Body')); };
+  chapter(1, '项目详情及使用方式');
+  heading(2, '1.1　项目简介');
+  bodyText([DATA.pages[0].lead, DATA.pages[0].blocks[0].text, ...DATA.pages[0].blocks[1].paragraphs.slice(0, 2)]);
+  heading(2, '1.2　使用方式');
+  bodyText(introText('使用方式'));
+  chapter(2, '项目亮点');
+  bodyText(introText('项目亮点'));
+  chapter(3, 'AI 测试技术落地使用情况概述');
+  bodyText(introText('AI 技术落地与测试情况概述'));
+  chapter(4, '项目中涉及的关键技术');
+  body.push(gap(4, true), ...figure(DATA.pages[2].blocks[0]), ...paras(`图 4-1　${CAPTIONS['2:0']}`, 'Caption', { spacing: { before: 60, after: 120, ...exact(20) } }));
+  bodyText(KEY_TECH);
+  chapter(5, '项目相关图片');
+  bodyText(['以下截图均取自魔搭创空间公网演示的实际运行结果。']);
+  for (const id of SHOT_ORDER) {
+    const shot = allShots.find((entry) => entry.id === id);
+    const label = `图 5-${++counters.figure}`;
+    REFS[`图:${id}`] = label;
+    body.push(...screenshot(shot, `${label}　${shot.caption}`));
+  }
+  const origin = introText('发表、获奖与项目来源');
+  chapter(6, '发表与获奖情况');
+  bodyText([origin[0]]);
+  chapter(7, '在其他项目基础上的优化说明');
+  bodyText([origin[1]]);
+  for (const line of ['在线演示：https://www.modelscope.cn/studios/kgkvybu111111/cite-checkup?mode=full', '代码仓库：https://github.com/newhack-cpu/cite-checkup', '详细的技术方案、测试方法和数据见《引用体检技术说明》。']) {
+    body.push(...paras(line, 'Note'));
+  }
+}
+// 截图编号在第 5 节才定下来，第 1 节引用要第二遍才能填上
+for (const key of Object.keys(REFS)) delete REFS[key];
+buildIntro();
+buildIntro();
+const introDoc = new Document({
+  creator: '引用体检项目组', lastModifiedBy: '引用体检项目组', title: '引用体检：作品介绍',
+  subject: '受约束文献核验与论断证据核查作品介绍', description: '第九届传智杯 AI WEB 网页开发挑战赛 · 作品介绍',
+  styles,
+  sections: [
+    { properties: { page: PAGE }, headers: blank(), footers: blankFooter(), children: coverPage('作品介绍') },
+    { properties: { page: { ...PAGE, pageNumbers: { start: 1 } } }, headers: { default: pageHeader('引用体检 · 作品介绍') }, footers: { default: footer }, children: body },
+  ],
+});
+fs.writeFileSync(INTRO_OUT, await Packer.toBuffer(introDoc));
+console.log(JSON.stringify({ docx: INTRO_OUT }));
