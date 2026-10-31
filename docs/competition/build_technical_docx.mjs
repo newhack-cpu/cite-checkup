@@ -9,6 +9,8 @@
  * 版式：封面、目录、正文三节；黑白，宋体正文、黑体标题，三线表，图表按章编号，页脚“第 X 页 共 Y 页”。
  * 正文沿用 JSON 原文，只改这几处：交叉引用按新章节号改写（TEXT_FIXES）；“本报告共 21 页”改为自动页数；
  * 删去面向队内的说法；团队信息、材料日期移到封面（待填写）；第 8 章补一段由项目摘要原句组成的总结。
+ * 另按报名表“作品介绍文档”的 7 项要求补了：1.2–1.5 节（使用方式、亮点、AI 落地与测试、发表获奖与来源，
+ * 内容取自试用指南和本文已有数字）、7 幅界面截图（media/doc-shots/，魔搭公网实际操作截取）和附录 A.2 对照表。
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -25,7 +27,7 @@ async function loadDocx() {
   }
 }
 const {
-  Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, Header, Footer, HeadingLevel, TableOfContents,
+  Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, Header, Footer, HeadingLevel, TableOfContents, ImageRun,
   AlignmentType, BorderStyle, WidthType, VerticalAlign, PageNumber, LineRuleType, HeightRule,
 } = await loadDocx();
 
@@ -85,7 +87,10 @@ const TEXT_FIXES = [
   ['；对外介绍和答辩都以此为准。', '。'],
   ['代码仓库已公开并保留真实历史；团队资料由参赛者补齐。', '代码仓库已公开并保留真实历史。'],
 ];
-const fix = (text) => TEXT_FIXES.reduce((s, [a, b]) => s.split(a).join(b), String(text));
+// {图:id}、{表:页:块} 换成生成时编好的号（正文要生成两遍，第二遍才有编号）
+const REFS = {};
+const fix = (text) => TEXT_FIXES.reduce((s, [a, b]) => s.split(a).join(b), String(text))
+  .replace(/\{(图|表):([^}]+)\}/g, (_, kind, id) => REFS[`${kind}:${id}`] ?? `${kind} ?`);
 
 // 表、图的标题（键为“页序号:块序号”）
 const CAPTIONS = {
@@ -109,6 +114,59 @@ const PRELUDE = {
 // 移到封面的行
 const DROP_ROWS = new Set(['材料日期', '学校、队伍与成员']);
 
+// 报名表“作品介绍文档”要求的使用方式、亮点、AI 落地与测试、发表获奖与来源，接在 1.1 之后
+const INTRO = [
+  { title: '使用方式', paragraphs: [
+    '引用体检是网页应用，打开即可使用，不需要注册登录。公网演示部署在魔搭创空间（https://www.modelscope.cn/studios/kgkvybu111111/cite-checkup?mode=full），首次打开需要等待加载。页面顶部有两个工作区：左边“参考文献体检”，右边“正文论断核查”。第一次打开会播放约 2 秒的开场动画，可以跟着 6 步新手引导熟悉页面，页眉的“怎么用”可随时重看。本文的界面截图均取自魔搭公网演示的实际运行结果。',
+    '（1）粘贴或导入参考文献。把论文末尾的参考文献列表粘贴进输入框，一条一行或带 [1]、1. 这样的序号，GB/T 7714、APA、IEEE 等格式都可以，只贴 DOI 也行；也可以点“导入文件”从 PDF、Word、TXT 中提取参考文献，或点“截图识别”上传参考文献页的照片或截图，对照原图确认后再填入（{图:vision}）。',
+    '（2）开始体检，查看结论。点“开始体检”，每条参考文献陆续盖上结论印章：已核实、有误、相近候选、查无此文、已撤稿 / 关注声明、待人工或未完成。点“需要处理”只看有问题的条目，点“详情”查看逐字段比对、按数据库记录生成的规范写法和每一步核查过程（{图:results}）。中文期刊论文会自动到知网、万方、维普和期刊官网联网核查（{图:cnki}）。',
+    '（3）对查不到的条目让 AI 继续查。“待人工”或“相近候选”的条目可以点“AI 继续查”：DeepSeek 规划检索，换着方式再查几个数据库，每一步都显示出来，找到的候选仍由规则逐字段确认（{图:agent}）。',
+    '（4）导出结果。查完可以“复制修正版清单”（只改写错的条目），点“规范参考文献”把整份列表统一成 GB/T 7714 或 APA（{图:standard}），或“下载核查报告”。导入的 PDF、Word 里如有读者看不见、AI 却会读到的隐藏文字，导入预览时会列出来并去掉（{图:hidden}）。',
+    '正文论断核查：在“正文中的论断”里输入一句话，证据来源选“通过 DOI 查原文”并填它引用文献的 DOI，或选“提供文献正文”粘贴原文段落，然后点“核查论断”。结论分为证据支持、部分支持、与证据矛盾、证据不足四类，并列出判断所依据的原文引句，可展开查看引句在原文中的位置（{图:claim}）。',
+    '所有结论都需要人工复核：查不到不等于编造，工具只帮助把可疑条目挑出来。开发者还可以在本地以 stdio 方式启动 MCP Server，让支持 MCP 的 AI 工具调用核验能力（见 5.4 节）；本地运行与部署方法见 6.5 节。',
+  ] },
+  { title: '项目亮点', paragraphs: [
+    '（1）检索与裁决分离。大模型和搜索只负责找候选、读原文；是不是同一篇、真不真，由规则逐字段判定，每个结论都能回到数据库记录或原文片段（见第 3、4 章）。',
+    '（2）比直接问 AI 可靠。在 130 条构造引文的对照实验中，不联网的 DeepSeek 把 23%–33% 的编造引文说成真实，本系统为 0；本系统说“已核实”的条目全部正确，改正写法全部来自数据库记录（见 6.4 节）。',
+    '（3）中文期刊也能查。知网、万方、维普没有开放接口，标准体检用 DeepSeek 搜索接口找到原文页，再由规则逐字段比对；在规则定稿后只运行一次的 40 条中文期刊论文上，“待人工”从 95% 降到 32.5%，已核实的 15 条全部正确（见 4.3 节）。',
+    '（4）正文论断有原文依据。读取开放全文，经混合检索后由模型判断论断与原文的关系，每个结论都附可在原文中逐字定位的引句（见 4.4 节）。',
+    '（5）贴合论文写作的实际环节：拍照 / 截图识别参考文献、导入文档时检出隐藏提示词、一键规范为 GB/T 7714 或 APA、只贴 DOI 也能补全，并通过 MCP Server 把核验能力开放给其他 AI 工具（见 4.5、5.2–5.4 节）。',
+  ] },
+  { title: 'AI 技术落地与测试情况概述', paragraphs: [
+    '落地情况：项目接入了六项 AI 能力，即受约束的字段解析、对查不到条目的 AI 检索 Agent、标准体检里的中文期刊联网核查、拍照 / 截图识别参考文献、读取开放全文并混合检索的论断核查，以及把核验工具开放给其他 AI 的 MCP Server。前五项在魔搭创空间公网演示中可以直接使用，MCP Server 以 stdio 方式在本地运行。大模型统一使用 DeepSeek（deepseek-flash），中文期刊检索使用 DeepSeek 搜索接口（搜索引擎，不是大模型）。模型和搜索只提供候选或依据，真伪结论由规则或带原文引句的判断给出（见 4.1 节）。',
+    '测试情况：自动测试 45 个文件 728 项，用固定的上游响应覆盖边界与回归。AI 能力逐项单独评测：AI 检索 Agent 在首次盲测的 58 条上确认 7 条，没有判为疑似不存在；图片识别在合成印刷体样本上 16/16 逐字一致；论断检索前 6 段命中率由 75% 提高到 100%；隐藏提示词测试夹具全部检出，自家 PDF 无误报。各项评测的样本与适用范围见{表:13:0}。',
+    '测试中也用到了 AI：开发方场景测试让 DeepSeek 按三个题目写出 36 条参考文献（其中 11 条编造）作为测试样本（见 6.3 节）；对照实验让 DeepSeek 以四种设置逐条判断同一批 130 条构造引文，与本系统比较（见 6.4 节）。',
+  ] },
+  { title: '发表、获奖与项目来源', paragraphs: [
+    '是否发表过或获奖：待填写（没有的话写“本项目此前未公开发表，也未获奖”）。',
+    '是否在其他项目基础上优化：待填写（不是的话写“本项目为本次比赛新开发，不是在其他项目基础上优化”；是的话写明原项目和本次优化的部分）。本项目的代码仓库保留完整开发历史，GitHub 上的首个提交为 2026-10-15。',
+  ] },
+];
+// 界面截图（media/doc-shots/capture.py 在魔搭公网实际操作截取，prepare.py 裁剪），放在对应功能小节末尾；width 单位 cm
+const SHOTS_DIR = path.join(HERE, 'media', 'doc-shots');
+const SCREENSHOTS = {
+  4: [{ id: 'results', file: '01-results.jpg', width: 13, caption: '参考文献体检结果：按“需要处理”筛选并展开字段比对' }],
+  5: [{ id: 'cnki', file: '02-cnki.jpg', width: 14, caption: '中文期刊论文经知网原文页核实' }],
+  6: [{ id: 'agent', file: '04-agent.jpg', width: 14, caption: 'AI 继续查：结论与检索步骤（中间的字段比对略）' }],
+  7: [{ id: 'claim', file: '07-claim.jpg', width: 12, caption: '正文论断核查结果：结论、判断范围与原文引句' }],
+  9: [{ id: 'vision', file: '05-vision.jpg', width: 13, caption: '截图识别：原图与可编辑的识别结果' }],
+  10: [{ id: 'hidden', file: '06-hidden.jpg', width: 14, caption: '导入 PDF 时检出的隐藏提示词' }],
+  12: [{ id: 'standard', file: '03-standard.jpg', width: 13, caption: '一键规范参考文献（GB/T 7714）' }],
+};
+// 附录 A 末尾：报名表“作品介绍文档”要求与章节对应
+const APPENDIX_EXTRA = {
+  title: '作品介绍文档要求对应', caption: '作品介绍文档要求与对应章节', headers: ['作品介绍文档要求', '对应章节'], widths: [230, 261],
+  rows: [
+    ['（1）描述项目详情及使用方式', '第 1–5 章；使用方式见 1.2 节'],
+    ['（2）描述项目的亮点', '1.3 节；创新点见第 7 章'],
+    ['（3）AI 测试技术落地使用情况概述', '1.4 节；AI 技术方案见第 4 章，测试见第 6 章'],
+    ['（4）描述项目中涉及的关键技术', '第 3 章系统架构设计、第 4 章 AI 技术方案、第 5 章核心功能实现'],
+    ['（5）项目相关的图片 / 照片', '第 4、5 章的 7 幅界面截图，第 3、4 章的流程图'],
+    ['（6）项目之前是否发表过或获奖', '1.5 节'],
+    ['（7）若在其他项目基础上优化，说明优化部分', '1.5 节'],
+  ],
+};
+
 const styles = {
   default: { document: { run: { font: SONG, size: 21 }, paragraph: { spacing: exact(20) } } },
   paragraphStyles: [
@@ -126,8 +184,8 @@ const styles = {
     { id: 'TableHead', name: 'Table Head', basedOn: 'TableText', quickFormat: true, run: { font: HEI } },
     { id: 'Caption', name: 'caption', basedOn: 'Normal', next: 'Body', quickFormat: true,
       run: { font: HEI, size: 21 }, paragraph: { alignment: AlignmentType.CENTER, spacing: { before: 120, after: 60, ...exact(20) } } },
-    { id: 'TOC1', name: 'toc 1', basedOn: 'Normal', next: 'Normal', run: { font: HEI, size: 21 }, paragraph: { spacing: { before: 60, ...exact(17) } } },
-    { id: 'TOC2', name: 'toc 2', basedOn: 'Normal', next: 'Normal', run: { size: 21 }, paragraph: { indent: { left: 420 }, spacing: exact(17) } },
+    { id: 'TOC1', name: 'toc 1', basedOn: 'Normal', next: 'Normal', run: { font: HEI, size: 21 }, paragraph: { spacing: { before: 40, ...exact(15.5) } } },
+    { id: 'TOC2', name: 'toc 2', basedOn: 'Normal', next: 'Normal', run: { size: 21 }, paragraph: { indent: { left: 420 }, spacing: exact(15.5) } },
   ],
 };
 
@@ -184,6 +242,29 @@ function figure(block) {
   return out;
 }
 
+/** JPEG 的宽、高（读 SOF 段） */
+function jpegSize(buf) {
+  for (let i = 2; i < buf.length;) {
+    if (buf[i] !== 0xff) { i++; continue; }
+    const marker = buf[i + 1];
+    if (marker >= 0xc0 && marker <= 0xc3) return [buf.readUInt16BE(i + 7), buf.readUInt16BE(i + 5)];
+    i += 2 + buf.readUInt16BE(i + 2);
+  }
+  throw new Error('不是 JPEG');
+}
+
+/** 界面截图居中，图题在下；图片段落用自动行距，固定行距会把图片裁掉 */
+function screenshot(shot, captionText) {
+  const data = fs.readFileSync(path.join(SHOTS_DIR, shot.file));
+  const [w, h] = jpegSize(data);
+  const width = Math.round((shot.width / 2.54) * 96);
+  return [
+    new Paragraph({ alignment: AlignmentType.CENTER, keepNext: true, spacing: { before: 120, line: 240, lineRule: LineRuleType.AUTO },
+      children: [new ImageRun({ type: 'jpg', data, transformation: { width, height: Math.round((width * h) / w) }, altText: { title: shot.caption, description: shot.caption, name: shot.id } })] }),
+    ...paras(captionText, 'Caption', { spacing: { before: 60, after: 120, ...exact(20) } }),
+  ];
+}
+
 // ---------- 正文 ----------
 const body = [];
 const counters = { table: 0, figure: 0 };
@@ -195,7 +276,11 @@ function heading(level, text) {
 /** 一页内容放进当前章节；sub 生成下一级小节号 */
 function emit(pageIndex, chapter, sub, level) {
   const page = DATA.pages[pageIndex];
-  const caption = (kind, key) => `${kind === 'table' ? '表' : '图'} ${chapter}-${++counters[kind]}　${CAPTIONS[key]}`;
+  const caption = (kind, key, title = CAPTIONS[key]) => {
+    const label = `${kind === 'table' ? '表' : '图'} ${chapter}-${++counters[kind]}`;
+    REFS[`${label[0]}:${key}`] = label;
+    return `${label}　${title}`;
+  };
   const prelude = PRELUDE[pageIndex];
   if (prelude) {
     heading(level, `${sub()}　${prelude.title}`);
@@ -221,25 +306,42 @@ function emit(pageIndex, chapter, sub, level) {
       throw new Error(`未知的内容块：${block.type}`);
     }
   });
-}
-
-let chapterNo = 0;
-for (const chapter of OUTLINE) {
-  const label = chapter.appendix ?? String(++chapterNo);
-  counters.table = 0; counters.figure = 0;
-  heading(1, chapter.appendix ? `附录 ${label}　${chapter.title}` : `${label}　${chapter.title}`);
-  if (chapter.page !== undefined) {
-    let n = 0;
-    emit(chapter.page, label, () => `${label}.${++n}`, 2);
-  } else {
-    chapter.children.forEach((child, i) => {
-      const num = `${label}.${i + 1}`;
-      heading(2, `${num}　${child.title}`);
-      let n = 0;
-      for (const p of child.pages ?? [child.page]) emit(p, label, () => `${num}.${++n}`, 3);
-    });
+  for (const shot of SCREENSHOTS[pageIndex] ?? []) body.push(...screenshot(shot, caption('figure', shot.id, shot.caption)));
+  if (pageIndex === 0) {
+    for (const section of INTRO) {
+      heading(level, `${sub()}　${section.title}`);
+      for (const text of section.paragraphs) body.push(...paras(text, 'Body'));
+    }
+  }
+  if (pageIndex === 20) {
+    heading(level, `${sub()}　${APPENDIX_EXTRA.title}`);
+    body.push(...paras(caption('table', 'A2', APPENDIX_EXTRA.caption), 'Caption', { keepNext: true }), dataTable(APPENDIX_EXTRA), gap(6));
   }
 }
+
+function buildBody() {
+  body.length = 0;
+  let chapterNo = 0;
+  for (const chapter of OUTLINE) {
+    const label = chapter.appendix ?? String(++chapterNo);
+    counters.table = 0; counters.figure = 0;
+    heading(1, chapter.appendix ? `附录 ${label}　${chapter.title}` : `${label}　${chapter.title}`);
+    if (chapter.page !== undefined) {
+      let n = 0;
+      emit(chapter.page, label, () => `${label}.${++n}`, 2);
+    } else {
+      chapter.children.forEach((child, i) => {
+        const num = `${label}.${i + 1}`;
+        heading(2, `${num}　${child.title}`);
+        let n = 0;
+        for (const page of child.pages ?? [child.page]) emit(page, label, () => `${num}.${++n}`, 3);
+      });
+    }
+  }
+}
+// 第一遍得到图表编号，第二遍把正文里的 {图:…}、{表:…} 换成编号
+buildBody();
+buildBody();
 
 // ---------- 封面、目录 ----------
 const center = (text, font, size, before = 0, after = 0) =>
