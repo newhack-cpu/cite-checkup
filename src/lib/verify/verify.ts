@@ -582,6 +582,11 @@ function judgeSame(ref: ParsedRef, rec: WorkRecord, s: MatchScore, steps: CheckS
       notes.push(`年份相差一年（引用 ${ref.year}，数据库 ${dbYears}），可能是在线发表与正式出版年份不同`);
   }
   if (s.titleMissing) notes.push("引用中没有写题名，已按作者、刊名、卷号和页码与数据库记录核对");
+  if (s.crossLanguage) {
+    notes.push("DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文");
+    if (s.citedVolumeWrong) issues.push(`卷号不符：引用写 ${s.citedVolumeWrong}，DOI 登记为 ${rec.volume}`);
+    if (s.citedPageWrong) issues.push(`起始页不符：引用写 ${s.citedPageWrong}，DOI 登记的页码为 ${rec.pages}`);
+  }
   if (fields.find((f) => f.field === "venue")?.status === "mismatch")
     issues.push(`期刊名不符：引用写「${ref.venueGuess}」，数据库记录为「${rec.venue}」`);
   if (fields.find((f) => f.field === "title")?.status === "partial") notes.push("题名与数据库记录不完全一致，请核对用词");

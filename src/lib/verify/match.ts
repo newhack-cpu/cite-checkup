@@ -47,6 +47,11 @@ export interface MatchScore {
   venueCited: boolean;
   /** 引文 DOI 与数据库 DOI 是否一致；任一方没有 DOI 时为 undefined */
   doiMatch?: boolean;
+  /** DOI 相同，但引文题名和登记题名语种不同（中文引文对只登记英文题名的记录），题名没法比，改比作者、年份和卷页 */
+  crossLanguage?: boolean;
+  /** 跨语种比对时，引文写的卷号、起始页与记录不同；值是引文的写法 */
+  citedVolumeWrong?: string;
+  citedPageWrong?: string;
   /** 用于在候选之间排序的综合分 */
   composite: number;
   same: boolean;
@@ -234,6 +239,18 @@ export function recordYears(rec: WorkRecord): number[] {
   return [...new Set([rec.year, ...(rec.years ?? [])].filter((y): y is number => y !== undefined))];
 }
 
+/** GB/T 7714 著录里的卷号和起始页：“2016, 37(8): 1084-1089”“2016(8): 1084-1089”；认不出时返回 undefined */
+function citedLocator(plain: string): { volume?: string; page: string } | undefined {
+  const m = /(?<!\d)(?:19|20)\d{2}[a-z]?\s*[,，]?\s*(\d{1,4})?\s*(?:[(（][^)）]{1,8}[)）])?\s*[:：]\s*[eE]?(\d{1,8})/.exec(plain);
+  return m ? { volume: m[1], page: m[2] } : undefined;
+}
+
+/** 两个卷号或页码数值相同（登记记录的页码常带前导零：0906 ↔ 906） */
+function sameNumber(a: string, b: string): boolean {
+  const digits = (s: string) => s.trim().replace(/^[eE]/, "");
+  return /^\d+$/.test(digits(a)) && /^\d+$/.test(digits(b)) && Number(digits(a)) === Number(digits(b));
+}
+
 export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
   const rawSet = tokenSet(ref.raw);
   const main = stripRetractionPrefix(rec.title);
@@ -252,6 +269,9 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
     ? 1 : recall(ref.titleGuess, tokenSet(full));
   const titleScore = ref.titleGuess ? 0.65 * forward + 0.35 * backward : forward;
   const titleMissing = titleScore < 0.5 && !ref.titleGuess && leftoverWords(plain, rec) <= 2;
+  const doiMatch = ref.doi && rec.doi ? ref.doi.toLowerCase() === rec.doi.toLowerCase() : undefined;
+  // 很多中文期刊在 Crossref 只登记英文题名和拼音作者：DOI 相同而题名语种不同时，题名比不上不说明是另一篇
+  const crossLanguage = !!doiMatch && !!ref.titleGuess && titleScore < 0.5 && HAN_RE.test(ref.titleGuess) !== HAN_RE.test(main);
 
   // 跨文字比对：引文是汉字姓名而记录是拼音（窦杰 ↔ Dou J），或反过来，先把汉字一侧转成拼音
   const recordHan = rec.authors.some((a) => isCjk(a.family.trim()[0] ?? ""));
@@ -273,6 +293,13 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
     && people.every((a) => locateAuthor(a, rawNorm, rawCompact) < 0);
   const reprint = orgCited && VERSIONED_KINDS.has(ref.kind);
   if (orgCited) people = [];
+  // 同一 DOI 的汉字引文对拼音记录：出版方常把拼音姓名的姓和名登记反（杨敏 ↔ family "Min", given "Yang"），反过来对得更多就按反的算
+  const crossScriptDoi = !!doiMatch && citedHan && !recordHan && people.length > 0;
+  if (crossScriptDoi) {
+    const hits = (list: Author[]) => list.slice(0, 3).filter((a) => locateAuthor(a, rawNorm, rawCompact) >= 0).length;
+    const swapped = people.map((a) => (a.given ? { ...a, family: a.given, given: a.family } : a));
+    if (hits(swapped) > hits(people)) people = swapped;
+  }
   const considered = people.slice(0, 3);
   const positions = people.map((a) => locateAuthor(a, rawNorm, rawCompact));
   const found = positions.filter((p) => p >= 0);
@@ -282,7 +309,8 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
   const authorOrderOk = found.length >= 2 && new Set(found).size === found.length
     ? found.every((p, i) => i === 0 || p > found[i - 1]) : undefined;
   let authorListMismatch: boolean | undefined;
-  if (citedAuthors && people.length) {
+  // 拼音记录常只登记部分作者、名字写法不一（"ZHU Ying 祝"），逐个姓名比对会误报；这种情况只看第一作者和前三位的比例
+  if (citedAuthors && people.length && !crossScriptDoi) {
     const initialsOf = (s: string) => normalizeText(s).split(" ").filter(Boolean).map((p) => p[0]).join("");
     const known = new Set(people.flatMap((a) => {
       const names = normalizeText(`${a.family} ${a.given ?? ""}`).split(" ");
@@ -321,6 +349,8 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
     authorsReordered = cited.length > 0 && cited.every((name) => recorded.has(name))
       && (authorOrderOk === false || firstAuthor === "mismatch" || (authorRatio ?? 1) < 0.5);
   }
+  // 拼音记录的作者顺序同样常登记错，只提示、不算写错
+  if (crossScriptDoi && authorOrderOk === false) authorsReordered = true;
 
   const years = recordYears(rec);
   const yearDiff = ref.year && years.length ? Math.min(...years.map((y) => Math.abs(ref.year! - y))) : undefined;
@@ -342,7 +372,12 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
     }
   }
 
-  const doiMatch = ref.doi && rec.doi ? ref.doi.toLowerCase() === rec.doi.toLowerCase() : undefined;
+  const locator = crossLanguage ? citedLocator(plain) : undefined;
+  const recordPage = rec.pages?.split(/[-–]/)[0];
+  const volumeFits = locator?.volume && rec.volume ? sameNumber(locator.volume, rec.volume) : volumeHit;
+  const pageFits = locator && recordPage ? sameNumber(locator.page, recordPage) : pageHit;
+  const citedVolumeWrong = locator?.volume && rec.volume && !volumeFits ? locator.volume : undefined;
+  const citedPageWrong = locator && recordPage && !pageFits ? locator.page : undefined;
 
   const yearScore = yearDiff === undefined ? 0.5 : yearDiff === 0 ? 1 : yearDiff === 1 ? 0.6 : 0;
   // 没写题名的引文，题名分换成卷号、页码的吻合程度，否则同一篇也会排在别的候选后面
@@ -366,6 +401,14 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
     same = true;
   } else if (reprint) {
     same = false;
+  } else if (crossLanguage) {
+    // 作者对得上时，年、卷、起始页有两项一致就是这一篇（剩下一项写错由 judgeSame 指出）；网络首发的记录还没有卷页，有几项比几项。
+    // 真实 DOI 配虚构作者、同刊另一篇的 DOI 都过不了作者这一关。记录没有作者时三项都要一致
+    const agree = Number(yearOk) + Number(volumeFits) + Number(pageFits);
+    const known = Number(yearDiff !== undefined) + Number(!!rec.volume) + Number(!!recordPage);
+    same = firstAuthor === "match" && (authorRatio ?? 0) >= 0.5
+      ? agree >= 1 && agree >= Math.min(2, known)
+      : firstAuthor === "unknown" && agree === 3;
   } else if (yearDiff !== undefined && yearDiff > 1 && editionsLikely(ref, rec) && (titleScore < 0.95 || firstAuthor === "mismatch")) {
     // 图书、报告、网页年份差得远时，常是同一作者的另一部作品、新版或转载：题名几乎逐字一致、第一作者也对得上才算同一篇
     same = false;
@@ -393,7 +436,7 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
 
   return {
     titleScore, titleMissing, authorRatio, firstAuthor, authorOrderOk, authorListMismatch, authorsReordered, yearDiff, volumeHit, pageHit,
-    issueHit, venueScore, venueCited, doiMatch, composite, same, partial,
+    issueHit, venueScore, venueCited, doiMatch, crossLanguage, citedVolumeWrong, citedPageWrong, composite, same, partial,
   };
 }
 
@@ -429,7 +472,7 @@ export function fieldChecks(ref: ParsedRef, rec: WorkRecord, s: MatchScore): Fie
 
   checks.push({
     field: "title",
-    status: s.titleMissing ? "missing" : s.titleScore >= 0.9 ? "match" : s.titleScore >= 0.6 ? "partial" : "mismatch",
+    status: s.titleMissing || s.crossLanguage ? "missing" : s.titleScore >= 0.9 ? "match" : s.titleScore >= 0.6 ? "partial" : "mismatch",
     cited: ref.titleGuess,
     actual: rec.subtitle ? `${rec.title}: ${rec.subtitle}` : rec.title,
   });

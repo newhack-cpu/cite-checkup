@@ -487,3 +487,102 @@ describe("entries that are only a DOI", () => {
     expect(result.fields.find((f) => f.field === "title")?.status).toBe("match");
   });
 });
+
+describe("Chinese citation against a DOI record registered only in English", () => {
+  const item: CrossrefItem = {
+    DOI: "10.1360/zd-2013-43-7-1195",
+    title: ["Age of the top of the Laobao Formation in Jiangkou, Guizhou and its correlation"],
+    author: [{ family: "Qian", given: "Zhikuan" }, { family: "Xing", given: "Lecai" }, { family: "Liu", given: "Shirong" }],
+    issued: { "date-parts": [[2013]] },
+    "container-title": ["Scientia Sinica Terrae"],
+    volume: "43",
+    issue: "7",
+    page: "1195-1206",
+    type: "journal-article",
+  };
+  const cite = (authors: string, tail: string) =>
+    `${authors}. 贵州江口平引老堡组顶部的锆石年龄与对比意义[J]. 中国科学: 地球科学, ${tail}. DOI: 10.1360/zd-2013-43-7-1195.`;
+  const authors = "钱志宽, 邢乐才, 刘世荣, 等";
+
+  it("verifies the real citation instead of saying the DOI points to another work", async () => {
+    fixture(item);
+    const result = await check(cite(authors, "2013, 43(7): 1195-1206"));
+    expect(result.verdict).toBe("verified");
+    expect(result.issues).toEqual([]);
+    expect(result.notes.join()).toContain("没有比对题名");
+    expect(result.fields?.find((f) => f.field === "title")?.status).toBe("missing");
+  });
+
+  it("names the wrong year, volume or start page once the work is confirmed", async () => {
+    fixture(item);
+    const year = await check(cite(authors, "2016, 43(7): 1195-1206"));
+    expect(year.verdict).toBe("mismatch");
+    expect(year.issues.join()).toContain("年份不符");
+
+    const page = await check(cite(authors, "2013, 43(7): 2084-2095"));
+    expect(page.verdict).toBe("mismatch");
+    expect(page.issues.join()).toContain("起始页不符");
+
+    const volume = await check(cite(authors, "2013, 45(7): 1195-1206"));
+    expect(volume.verdict).toBe("mismatch");
+    expect(volume.issues.join()).toContain("卷号不符");
+  });
+
+  it("still reports a real DOI paired with invented authors", async () => {
+    fixture(item);
+    const result = await check(cite("赵明远, 孙浩然, 周文博", "2013, 43(7): 1195-1206"));
+    expect(result.verdict).toBe("not_found");
+    expect(result.issues.join()).toContain("实际指向");
+  });
+
+  it("still reports another paper's DOI when two locator fields differ", async () => {
+    fixture(item);
+    const result = await check(cite(authors, "2015, 45(7): 1195-1206"));
+    expect(result.matchStatus).not.toBe("confirmed");
+    expect(result.issues.join()).toContain("实际指向");
+  });
+
+  it("requires all of year, volume and page when the record has no authors", async () => {
+    fixture({ ...item, author: undefined });
+    expect((await check(cite(authors, "2013, 43(7): 1195-1206"))).matchStatus).toBe("confirmed");
+    fixture({ ...item, author: undefined });
+    expect((await check(cite(authors, "2013, 43(7): 2084-2095"))).matchStatus).not.toBe("confirmed");
+  });
+
+  it("handles pinyin names registered with family and given swapped", async () => {
+    fixture({ ...item, author: [{ family: "Zhikuan", given: "Qian" }, { family: "Lecai", given: "Xing" }, { family: "Shirong", given: "Liu" }] });
+    const result = await check(cite(authors, "2013, 43(7): 1195-1206"));
+    expect(result.verdict).toBe("verified");
+    expect(result.issues).toEqual([]);
+  });
+
+  it("does not call a partial pinyin author list an error", async () => {
+    fixture({ ...item, author: [{ family: "QIAN", given: "Z" }] });
+    expect((await check(cite(authors, "2013, 43(7): 1195-1206"))).verdict).toBe("verified");
+  });
+
+  it("only notes a pinyin author list in a different order", async () => {
+    fixture({ ...item, author: [{ family: "Xing", given: "Lecai" }, { family: "Qian", given: "Zhikuan" }, { family: "Liu", given: "Shirong" }] });
+    const reordered = await check(cite(authors, "2013, 43(7): 1195-1206"));
+    expect(reordered.verdict).toBe("verified");
+    expect(reordered.notes.join()).toContain("顺序不同");
+  });
+
+  it("confirms an online-first record that has no volume or pages yet by author and year", async () => {
+    fixture({ ...item, volume: undefined, issue: undefined, page: undefined });
+    expect((await check(cite(authors, "2013, 43(7): 1195-1206"))).verdict).toBe("verified");
+    fixture({ ...item, volume: undefined, issue: undefined, page: undefined });
+    expect((await check(cite(authors, "2016, 43(7): 1195-1206"))).matchStatus).not.toBe("confirmed");
+  });
+
+  it("accepts leading zeros in the registered page", async () => {
+    fixture({ ...item, page: "01195-01206" });
+    expect((await check(cite(authors, "2013, 43(7): 1195-1206"))).verdict).toBe("verified");
+  });
+
+  it("leaves same-language title comparison unchanged", async () => {
+    fixture({ ...item, title: ["完全不同的另一篇论文的题名关于海洋生物多样性"] });
+    const result = await check(cite(authors, "2013, 43(7): 1195-1206"));
+    expect(result.matchStatus).not.toBe("confirmed");
+  });
+});
