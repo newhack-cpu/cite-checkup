@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-import { useGlide } from "@/lib/motion";
+import { settleEntrances, useGlide } from "@/lib/motion";
 import { TOUR_OPEN } from "@/lib/onboarding";
 import { Checker } from "./checker";
 import { ClaimChecker } from "./claim-checker";
@@ -25,14 +25,22 @@ export function Workbench() {
   const buttons = useRef<(HTMLButtonElement | null)[]>([]);
   const [glideRef, pillRef] = useGlide<HTMLDivElement>();
 
+  const mainRef = useRef<HTMLElement>(null);
+
   const select = (id: TabId) => {
+    if (id === active) return;
+    // 两个面板里已有的内容不再重播入场，切过去只有整块面板一次很短的淡入
+    settleEntrances(mainRef.current);
     setActive(id);
     setSwitched(true);
   };
 
   // 新手引导讲的都是“参考文献体检”页，打开引导时切回这一页
   useEffect(() => {
-    const show = () => setActive("references");
+    const show = () => {
+      settleEntrances(mainRef.current);
+      setActive("references");
+    };
     window.addEventListener(TOUR_OPEN, show);
     return () => window.removeEventListener(TOUR_OPEN, show);
   }, []);
@@ -104,7 +112,7 @@ export function Workbench() {
         </div>
       </header>
 
-      <main data-switched={switched ? "" : undefined} className="mx-auto max-w-5xl px-5 pb-20 pt-8 sm:px-8 md:pt-12">
+      <main ref={mainRef} data-switched={switched ? "" : undefined} className="mx-auto max-w-5xl px-5 pb-20 pt-8 sm:px-8 md:pt-12">
         <div role="tabpanel" id="panel-references" aria-labelledby="tab-references" hidden={active !== "references"}>
           <Checker />
         </div>

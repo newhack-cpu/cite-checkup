@@ -1,0 +1,89 @@
+{
+  "introDoneMs": 2618,
+  "firstLoadRunning": 0,
+  "afterRun": {
+    "cards": 11,
+    "cardsPlayed": 0,
+    "cardAnim": [
+      "enter-up"
+    ],
+    "cardOpacity": [
+      "1"
+    ],
+    "stampKinds": [
+      {
+        "anim": "stamp",
+        "transform": "matrix(0.99863, -0.052336, 0.052336, 0.99863, 0, 0)",
+        "rotate": "none",
+        "played": false
+      }
+    ],
+    "revealPlayed": "0/9",
+    "headerRevealPlayed": 0
+  },
+  "afterSwitchBack": {
+    "cards": 11,
+    "cardsPlayed": 11,
+    "cardAnim": [
+      "none"
+    ],
+    "cardOpacity": [
+      "1"
+    ],
+    "stampKinds": [
+      {
+        "anim": "none",
+        "transform": "matrix(0.99863, -0.052336, 0.052336, 0.99863, 0, 0)",
+        "rotate": "none",
+        "played": true
+      }
+    ],
+    "revealPlayed": "9/9",
+    "headerRevealPlayed": 0
+  },
+  "filterBack60ms": "quick,quick,quick,played,quick,played,played,played,played,quick,quick",
+  "afterFilter": {
+    "cards": 11,
+    "cardsPlayed": 5,
+    "cardAnim": [
+      "enter-up",
+      "none"
+    ],
+    "cardOpacity": [
+      "1"
+    ],
+    "stampKinds": [
+      {
+        "anim": "none",
+        "transform": "none",
+        "rotate": "-3deg",
+        "played": false
+      },
+      {
+        "anim": "none",
+        "transform": "matrix(0.99863, -0.052336, 0.052336, 0.99863, 0, 0)",
+        "rotate": "none",
+        "played": true
+      }
+    ],
+    "revealPlayed": "9/9",
+    "headerRevealPlayed": 0
+  },
+  "rerunFirstCards": {
+    "n": 11,
+    "played": 0,
+    "quick": 0,
+    "anim": [
+      "enter-up"
+    ]
+  },
+  "rerunStamps": [
+    "stamp|false"
+  ],
+  "tourSwitchedBack": {
+    "refsHidden": false,
+    "selected": "true"
+  },
+  "errors": [],
+  "phoneOverflow": false
+}

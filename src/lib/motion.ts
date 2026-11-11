@@ -6,6 +6,17 @@ const reducedMotion = () => typeof window !== "undefined" && window.matchMedia("
 /** 脚本里的平滑滚动：减少动画时直接跳到位置 */
 export const scrollBehavior = (): ScrollBehavior => (reducedMotion() ? "auto" : "smooth");
 
+/**
+ * 入场动画每个元素只播一次。切换任务时面板用 hidden 收起（display: none），再显示时浏览器会把里面的 CSS 动画
+ * 全部从头重播：标题、输入卡、每张结果卡、每枚印章各来一遍，切换一次要 1.3 秒才稳定（11-10 实测）。
+ * 所以切换前给已经在页面里的入场元素打上 data-played，样式里据此关掉动画；之后新出现的元素没有这个标记，照常入场。
+ */
+export function settleEntrances(root: HTMLElement | null) {
+  root?.querySelectorAll<HTMLElement>(".reveal, .enter, .animate-stamp").forEach((el) => {
+    el.dataset.played = "";
+  });
+}
+
 /** 在 .ink 按钮里、指尖按下的位置放一滴“朱砂”，晕开后自己移除 */
 export function inkDrop(event: PointerEvent<HTMLElement>, color?: string) {
   if (reducedMotion()) return;
@@ -60,6 +71,8 @@ export function useGlide<T extends HTMLElement, P extends HTMLElement = HTMLSpan
         pill.style.opacity = "0";
         return;
       }
+      // 所在面板被收起（display: none）时量到的全是 0：保持原样，免得再显示时高亮块从一个点重新长出来
+      if (el.offsetWidth === 0 && el.offsetHeight === 0) return;
       const first = pill.dataset.placed !== "true";
       if (first) pill.style.transition = "none";
       pill.style.transform = `translate(${el.offsetLeft}px, ${el.offsetTop}px)`;

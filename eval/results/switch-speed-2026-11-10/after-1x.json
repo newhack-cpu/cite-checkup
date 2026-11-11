@@ -1,0 +1,130 @@
+{
+  "url": "http://localhost:3210",
+  "cpuThrottle": 1.0,
+  "steps": {
+    "empty: refs -> claims": {
+      "settledMs": 384,
+      "visibleMs": 210,
+      "maxFrameGapMs": 21,
+      "frames": 55,
+      "peakAnimations": 4,
+      "animations": [
+        "panel-in",
+        "transition:color",
+        "transition:transform"
+      ]
+    },
+    "empty: claims -> refs": {
+      "settledMs": 365,
+      "visibleMs": 192,
+      "maxFrameGapMs": 7,
+      "frames": 54,
+      "peakAnimations": 4,
+      "animations": [
+        "panel-in",
+        "transition:color",
+        "transition:transform"
+      ]
+    },
+    "results: refs -> claims": {
+      "settledMs": 366,
+      "visibleMs": 193,
+      "maxFrameGapMs": 8,
+      "frames": 54,
+      "peakAnimations": 4,
+      "animations": [
+        "panel-in",
+        "transition:color",
+        "transition:transform"
+      ]
+    },
+    "results: claims -> refs": {
+      "settledMs": 372,
+      "visibleMs": 199,
+      "maxFrameGapMs": 7,
+      "frames": 54,
+      "peakAnimations": 4,
+      "animations": [
+        "panel-in",
+        "transition:color",
+        "transition:transform"
+      ]
+    },
+    "filter: all -> attention": {
+      "settledMs": 369,
+      "visibleMs": 1,
+      "maxFrameGapMs": 7,
+      "frames": 54,
+      "peakAnimations": 5,
+      "animations": [
+        "transition:background-color",
+        "transition:color",
+        "transition:transform",
+        "transition:width"
+      ]
+    },
+    "filter: attention -> all": {
+      "settledMs": 372,
+      "visibleMs": 150,
+      "maxFrameGapMs": 12,
+      "frames": 54,
+      "peakAnimations": 11,
+      "animations": [
+        "enter-up",
+        "transition:background-color",
+        "transition:color",
+        "transition:transform",
+        "transition:width"
+      ]
+    },
+    "filter: all -> verified": {
+      "settledMs": 369,
+      "visibleMs": 0,
+      "maxFrameGapMs": 7,
+      "frames": 54,
+      "peakAnimations": 5,
+      "animations": [
+        "transition:background-color",
+        "transition:color",
+        "transition:transform",
+        "transition:width"
+      ]
+    },
+    "filter: verified -> all": {
+      "settledMs": 371,
+      "visibleMs": 149,
+      "maxFrameGapMs": 14,
+      "frames": 54,
+      "peakAnimations": 14,
+      "animations": [
+        "enter-up",
+        "transition:background-color",
+        "transition:color",
+        "transition:transform",
+        "transition:width"
+      ]
+    },
+    "detail: expand": {
+      "settledMs": 403,
+      "visibleMs": null,
+      "maxFrameGapMs": 8,
+      "frames": 59,
+      "peakAnimations": 3,
+      "animations": [
+        "transition:grid-template-rows",
+        "transition:opacity",
+        "transition:rotate"
+      ]
+    }
+  },
+  "cards": 11,
+  "filters": [
+    "全部 11",
+    "需要处理 5",
+    "查无此文 2",
+    "已撤稿 1",
+    "有误 2",
+    "已核实 5",
+    "待人工 1"
+  ]
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "run": 1,
+    "platformDomMs": 13825,
+    "painted": 87994,
+    "frameUrl": "https://kgkvybu111111-cite-checkup.ms.show/",
+    "interactiveMs": 89943,
+    "slowest": [
+      [
+        "3in5wh4refj2-.js",
+        514,
+        2698,
+        39315
+      ],
+      [
+        "25qqqxvokvslg.js",
+        514,
+        2631,
+        7346
+      ],
+      [
+        "40aj-5k3mok3a.js",
+        514,
+        2630,
+        6205
+      ],
+      [
+        "10r15tkbikbc9.js",
+        514,
+        2630,
+        49354
+      ],
+      [
+        "turbopack-3-ry682tkyiqk.js",
+        514,
+        2595,
+        4240
+      ],
+      [
+        "2en4_wc97rb5_.js",
+        514,
+        2472,
+        72293
+      ]
+    ],
+    "nav": {
+      "ttfb": 504,
+      "dcl": 1111,
+      "load": 0
+    }
+  },
+  {
+    "run": 2,
+    "platformDomMs": 2801,
+    "painted": 12170,
+    "frameUrl": "https://kgkvybu111111-cite-checkup.ms.show/",
+    "interactiveMs": 14210,
+    "slowest": [
+      [
+        "3in5wh4refj2-.js",
+        413,
+        2373,
+        39315
+      ],
+      [
+        "noto-serif-sc-107-wght-normal.1g42j7o7_5",
+        757,
+        2029,
+        80104
+      ],
+      [
+        "lxgwwenkai-regular-subset-118.2rc45d_7cm",
+        768,
+        2018,
+        44476
+      ],
+      [
+        "lxgwwenkai-regular-subset-117.1bv7gjik2v",
+        768,
+        2018,
+        49700
+      ],
+      [
+        "lxgwwenkai-regular-subset-113.0q6ba_azq5",
+        773,
+        2012,
+        56288
+      ],
+      [
+        "noto-serif-sc-119-wght-normal.3k7timy4s4",
+        737,
+        2007,
+        105264
+      ]
+    ],
+    "nav": {
+      "ttfb": 399,
+      "dcl": 776,
+      "load": 2796
+    }
+  }
+]

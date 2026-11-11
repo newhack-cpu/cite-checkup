@@ -1,0 +1,142 @@
+{
+  "url": "http://localhost:3210",
+  "cpuThrottle": 1.0,
+  "steps": {
+    "empty: refs -> claims": {
+      "settledMs": 1330,
+      "visibleMs": 747,
+      "maxFrameGapMs": 28,
+      "frames": 176,
+      "peakAnimations": 10,
+      "animations": [
+        "enter-up",
+        "panel-in",
+        "reveal-up",
+        "transition:color",
+        "transition:transform"
+      ]
+    },
+    "empty: claims -> refs": {
+      "settledMs": 1268,
+      "visibleMs": 726,
+      "maxFrameGapMs": 8,
+      "frames": 184,
+      "peakAnimations": 8,
+      "animations": [
+        "panel-in",
+        "reveal-up",
+        "transition:color",
+        "transition:transform"
+      ]
+    },
+    "results: refs -> claims": {
+      "settledMs": 1313,
+      "visibleMs": 729,
+      "maxFrameGapMs": 8,
+      "frames": 190,
+      "peakAnimations": 10,
+      "animations": [
+        "enter-up",
+        "panel-in",
+        "reveal-up",
+        "transition:color",
+        "transition:transform"
+      ]
+    },
+    "results: claims -> refs": {
+      "settledMs": 1283,
+      "visibleMs": 421,
+      "maxFrameGapMs": 11,
+      "frames": 184,
+      "peakAnimations": 34,
+      "animations": [
+        "enter-up",
+        "panel-in",
+        "reveal-up",
+        "stamp",
+        "transition:color",
+        "transition:height",
+        "transition:transform",
+        "transition:width"
+      ]
+    },
+    "filter: all -> attention": {
+      "settledMs": 574,
+      "visibleMs": 9,
+      "maxFrameGapMs": 10,
+      "frames": 82,
+      "peakAnimations": 5,
+      "animations": [
+        "transition:background-color",
+        "transition:color",
+        "transition:transform",
+        "transition:width"
+      ]
+    },
+    "filter: attention -> all": {
+      "settledMs": 962,
+      "visibleMs": 733,
+      "maxFrameGapMs": 8,
+      "frames": 140,
+      "peakAnimations": 17,
+      "animations": [
+        "enter-up",
+        "stamp",
+        "transition:background-color",
+        "transition:color",
+        "transition:transform",
+        "transition:width"
+      ]
+    },
+    "filter: all -> verified": {
+      "settledMs": 563,
+      "visibleMs": 2,
+      "maxFrameGapMs": 8,
+      "frames": 82,
+      "peakAnimations": 5,
+      "animations": [
+        "transition:background-color",
+        "transition:color",
+        "transition:transform",
+        "transition:width"
+      ]
+    },
+    "filter: verified -> all": {
+      "settledMs": 959,
+      "visibleMs": 737,
+      "maxFrameGapMs": 9,
+      "frames": 139,
+      "peakAnimations": 23,
+      "animations": [
+        "enter-up",
+        "stamp",
+        "transition:background-color",
+        "transition:color",
+        "transition:transform",
+        "transition:width"
+      ]
+    },
+    "detail: expand": {
+      "settledMs": 556,
+      "visibleMs": null,
+      "maxFrameGapMs": 14,
+      "frames": 78,
+      "peakAnimations": 3,
+      "animations": [
+        "transition:grid-template-rows",
+        "transition:opacity",
+        "transition:rotate"
+      ]
+    }
+  },
+  "cards": 11,
+  "filters": [
+    "全部 11",
+    "需要处理 5",
+    "查无此文 2",
+    "已撤稿 1",
+    "有误 2",
+    "已核实 5",
+    "待人工 1"
+  ]
+}

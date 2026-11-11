@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { agentSummary } from "@/lib/agent-stream";
 import { inkDrop } from "@/lib/motion";
 import { FIELD_LABEL, STEP_SOURCE, VERDICT_META } from "@/lib/verdict-meta";
@@ -14,6 +14,9 @@ const FIELD_MARK: Record<FieldCheck["status"], { sign: string; text: string; col
   mismatch: { sign: "✗", text: "不符", color: "var(--color-seal)" },
   missing: { sign: "—", text: "未提供", color: "var(--color-ink-faint)" },
 };
+
+/** 已经在页面上显示过的结论（按对象记，重新体检或 AI 继续查会换成新对象）。换筛选条件时结果卡会重新挂载，靠它区分“刚查出来”和“又出现一次” */
+const shown = new WeakSet<RefResult>();
 
 function DoiLink({ doi }: { doi: string }) {
   return (
@@ -199,11 +202,16 @@ export function ResultCard({
   const [open, setOpen] = useState<boolean | null>(null);
   const expanded = open ?? problem;
   const meta = verdict ? VERDICT_META[verdict] : undefined;
+  // 这条结论以前已经显示过：这张卡是换筛选条件后重新出现的，不是刚查出来的。快速出齐，印章不再落一次
+  const [settled] = useState(() => !!result && shown.has(result));
+  useEffect(() => {
+    if (result) shown.add(result);
+  }, [result]);
 
   return (
     <article
-      className="card enter relative overflow-hidden transition-shadow duration-500 hover:shadow-[0_1px_0_rgb(255_255_255/0.85)_inset,0_22px_44px_-26px_rgb(40_28_14/0.38)]"
-      style={{ "--d": `${Math.min(order, 12) * 35}ms` } as CSSProperties}
+      className={`card enter relative overflow-hidden transition-shadow duration-500 hover:shadow-[0_1px_0_rgb(255_255_255/0.85)_inset,0_22px_44px_-26px_rgb(40_28_14/0.38)] ${settled ? "enter-quick" : ""}`}
+      style={{ "--d": `${Math.min(order, 8) * 25}ms` } as CSSProperties}
       aria-busy={!result && !stopped}
     >
       {/* 左侧结论色条：出结论时由浅变成结论色 */}
@@ -212,7 +220,7 @@ export function ResultCard({
       <div className="grid gap-x-5 gap-y-2.5 p-4 pl-5 sm:grid-cols-[6.25rem_minmax(0,1fr)] sm:p-5 sm:pl-6">
         <div className="flex items-center gap-2.5 sm:flex-col sm:items-start sm:gap-2 sm:pt-0.5">
           <span className="font-mono text-[12px] text-ink-faint tabular">{String(refItem.index).padStart(2, "0")}</span>
-          {verdict ? <Stamp verdict={verdict} /> : stopped ? <Stamp verdict="error" /> : <PendingStamp />}
+          {verdict ? <Stamp verdict={verdict} still={settled} /> : stopped ? <Stamp verdict="error" /> : <PendingStamp />}
         </div>
 
         <div className="min-w-0">

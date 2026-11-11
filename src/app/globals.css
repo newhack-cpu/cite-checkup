@@ -131,8 +131,8 @@ body {
 
 /* ---------- 入场：依次浮现，带一点景深模糊；--d 是各自的延迟 ---------- */
 .reveal {
-  animation: reveal-up 0.9s var(--ease-expo) both;
-  animation-delay: calc(var(--intro-offset) + var(--d, 0ms));
+  animation: reveal-up 0.6s var(--ease-expo) both;
+  animation-delay: calc(var(--intro-offset) + var(--d, 0ms) * 0.6);
 }
 @keyframes reveal-up {
   from {
@@ -146,26 +146,40 @@ body {
     filter: none;
   }
 }
-/* 切换任务时新面板淡入（首次加载由各块自己的入场负责，避免叠两层动画） */
+/* 切换任务时新面板淡入（首次加载由各块自己的入场负责，避免叠两层动画）。
+   只有这一层、0.2 秒：面板里已有的内容由 settleEntrances 标成 data-played，不再各自重播；
+   不加模糊，整块面板（十几张结果卡）逐帧模糊在慢机器上会掉帧 */
 [data-switched] [role="tabpanel"]:not([hidden]) {
-  animation: panel-in 0.55s var(--ease-expo) both;
+  animation: panel-in 0.2s ease-out both;
 }
 @keyframes panel-in {
   from {
     opacity: 0;
-    transform: translateY(10px);
-    filter: blur(4px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
     transform: none;
-    filter: none;
   }
 }
 /* 结果逐条浮入；--d 用来错开 */
 .enter {
-  animation: enter-up 0.6s var(--ease-expo) both;
+  animation: enter-up 0.45s var(--ease-expo) both;
   animation-delay: var(--d, 0ms);
+}
+/* 换筛选条件时重新出现的结果卡：结论早就有了，快速出齐，不错开 */
+.enter-quick {
+  animation-duration: 0.22s;
+  animation-delay: 0s;
+}
+/* 已经入场过的元素（见 motion.ts 的 settleEntrances）：切换任务再显示时保持原样。印章的倾斜原本由动画末帧留着，这里补上 */
+[data-played].reveal,
+[data-played].enter {
+  animation: none;
+}
+[data-played].animate-stamp {
+  animation: none;
+  transform: rotate(-3deg);
 }
 @keyframes enter-up {
   from {
@@ -211,9 +225,9 @@ body {
   pointer-events: none;
   opacity: 0; /* 量好位置之前不显示 */
   transition:
-    transform 0.55s var(--ease-spring),
-    width 0.55s var(--ease-spring),
-    height 0.55s var(--ease-spring),
+    transform 0.36s var(--ease-spring),
+    width 0.36s var(--ease-spring),
+    height 0.36s var(--ease-spring),
     background-color 0.3s ease,
     opacity 0.3s ease;
 }
@@ -224,8 +238,8 @@ body {
   grid-template-rows: 0fr;
   opacity: 0;
   transition:
-    grid-template-rows 0.55s var(--ease-expo),
-    opacity 0.35s ease;
+    grid-template-rows 0.4s var(--ease-expo),
+    opacity 0.25s ease;
 }
 .collapsible[data-open="true"] {
   grid-template-rows: 1fr;
