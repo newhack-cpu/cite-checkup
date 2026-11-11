@@ -28,7 +28,7 @@
 | ✅ | 停止核查、截断流检测、未完成报告标注；下载包含原文、问题、数据库记录与查询过程的报告（网页文件，可直接打开、打印或另存为 PDF；另有 Markdown 版） |
 | ✅ | 上手引导：第一次打开有约 2 秒开场动画（只播一次，点一下可跳过；系统设了“减少动画”就不播）和 6 步新手引导（压暗页面、朱笔圈出要讲的地方，旁边一张批注卡），最后一步一键载入示例并体检；页眉“怎么用”随时重看；输入框里 Ctrl / ⌘ + Enter 直接开始 |
 | ✅ | 界面：单栏工作台，输入在上、结果在下；宽屏页眉吸顶，两个任务一键切换；结果可按结论筛选（含“需要处理”），筛选栏随滚动吸顶，详情平滑展开；动效（滑动高亮、数字滚动、按下晕开、逐条入场）都遵循系统“减少动画”设置 |
-| ✅ | 论断证据核查（RAG）：DOI 优先读取开放获取全文（Europe PMC / arXiv），没有时用摘要；长材料用混合检索（词面 + 模型扩展中英文检索词 + 模型重排）；四类判断、原文引句与定位 |
+| ✅ | 论断证据核查（RAG）：DOI 优先读取开放获取全文（Europe PMC / arXiv），没有时用摘要；长材料用混合检索（词面 + 本机向量语义召回 + 模型扩展中英文检索词 + 模型重排）；四类判断、原文引句与定位 |
 | ✅ | PDF 文字层 / DOCX / TXT 导入：提取预览、全文或参考文献区域选择、确认后替换输入 |
 | ✅ | AI 检索 Agent：对“无法核验 / 只有相近候选”的条目，由 DeepSeek 规划检索、调用 Crossref / OpenAlex / DataCite / DOI 工具，中文期刊用 DeepSeek 联网搜索查知网、万方、维普的论文页，每一步实时显示；候选仍由规则逐字段确认 |
 | ✅ | 拍照 / 截图识别：上传或直接粘贴参考文献页的截图、手机照片、扫描件截图，DeepSeek 视觉模型逐条转写，对照原图确认后再由规则核验 |
@@ -153,6 +153,8 @@ cp .env.example .env.local   # Windows PowerShell 使用 Copy-Item .env.example 
 pnpm dev                     # http://localhost:3210
 ```
 
+可选：`node scripts/fetch-embedding-model.mjs` 把论断检索用的向量模型（multilingual-e5-small，约 135 MB，MIT 许可）从魔搭下载到 `models/`，每个文件核对 SHA-256。不下载也能用，论断检索只是少一路向量召回；Docker 构建时会自动下载。
+
 已有 `.env.local` 时请直接编辑，不要覆盖。建议设置 `CROSSREF_MAILTO`；要启用 AI 模式，填入服务端 `DEEPSEEK_API_KEY`，可选 `DEEPSEEK_MODEL`（默认 `deepseek-flash`）与 `DEEPSEEK_BASE_URL`（默认 `https://api.deepseek.com`）。修改配置后重启服务。没有密钥也可使用标准核验。
 
 生产构建与启动：`pnpm build`，然后 `pnpm start --port 3210`。
@@ -172,7 +174,7 @@ pnpm sample:real --out=eval/real-world/blind-新日期.json   # 从 Crossref 抽
 pnpm eval:real eval/real-world/dev-2026-10-14.json --lang=zh   # 只跑中文条目（含中文期刊联网核查）；--no-cn 关闭联网核查对照
 pnpm smoke:ai   # 需服务运行及有效密钥；真实DeepSeek工具调用+数据库核验
 pnpm smoke:claims # 真实摘要 + 合成材料支持/矛盾/不足；产生少量模型用量
-pnpm eval:retrieval # 论断检索评测：三篇开放全文、24 条论断，对比词面 / 扩展 / 混合检索
+pnpm eval:retrieval # 论断检索评测：三篇开放全文、24 条论断，对比词面 / 向量 / 扩展 / 混合检索（先运行 node scripts/fetch-embedding-model.mjs）
 pnpm eval:agent eval/real-world/dev-2026-10-14.json eval/results/real-dev-2026-10-15-v2-rules.json  # AI 检索 Agent 评测
 pnpm smoke:mcp    # 用 stdio 启动 MCP Server，真实调用两个工具
 python eval/vision/generate.py && pnpm eval:vision  # 图片识别评测：生成图片并逐字比对、对比核验结论
@@ -558,6 +560,21 @@ OpenAlex 用量比预计少得多：三项评测分别只用了约 8、2、2 次
 - 中文论断对英文原文时，词面检索只找到一半，查询扩展补上了跨语言的那一半，重排把出处片段排到了第 1 位（23/24）；
 - 局限：样本小，论断由评测者编写，而且都是原文支持的说法；三篇论文都不长（14–31 段），重排的 20 段候选覆盖了文档的大部分，长文档上重排的提升可能没这么大。这里只评检索，没有评判断。
 
+**2026-11-12 加入向量召回后重跑**（同一批 24 条，[记录](eval/results/retrieval-2026-11-12-vector.json)）。向量模型是在服务器本机运行的 multilingual-e5-small（ONNX 量化版，384 维），不调用外部接口：
+
+| 检索方式 | 调用大模型 | 全部 24 条命中率 | MRR | 英文 12 条 | 中文 12 条 |
+|---|---|---:|---:|---:|---:|
+| 词面 BM25 | 否 | 75% | 0.61 | 100% | 50% |
+| 只用向量 | 否 | 88% | 0.66 | 83% | 92% |
+| 词面 + 向量（排名融合） | 否 | 96% | 0.75 | 100% | 92% |
+| 词面 + 扩展词 + 重排（加向量之前的默认） | 是 | 100% | 0.98 | 100% | 100% |
+| 词面 + 扩展词 + 向量 + 重排（现在的默认） | 是 | 100% | 0.98 | 100% | 100% |
+
+- 向量召回的作用在不调用大模型的那两行：中文论断对英文原文，词面检索只找到一半，加上向量是 92%。查询扩展或重排失败、超时的时候，系统原来只能退回词面检索，现在退回的是“词面 + 向量”；
+- 完整流程在这批数据上本来就是 100%，加向量后没有变化，不能据此说“检索更准了”；
+- 只用向量时英文反而漏了 2 条（数字、专有名词多的句子，词面检索更拿手），所以是并进融合，而不是替换词面检索；
+- 三篇全文第一次向量化在开发机上用时 1.1–4.9 秒，同一篇再查命中进程内缓存。
+
 ### 参考文献规则核验明细
 
 明细：[dev 修复后](eval/results/real-dev-2026-10-15-rules.json) · [dev 修复前](eval/results/real-dev-2026-10-14-rules.json) · [test 修复后](eval/results/real-test-2026-10-15-rules.json) · [test 修复前](eval/results/real-test-2026-10-15-baseline-rules.json) · [dev 10-16](eval/results/real-dev-2026-10-16-rules.json) · [test 10-16](eval/results/real-test-2026-10-16-rules.json) · [新盲测集](eval/results/real-blind-2026-10-16-rules.json) · [新盲测集复核](eval/results/real-blind-2026-10-16-adjudication.json) · [10-16 逐条对比](eval/results/real-regression-2026-10-16.json) · [dev 10-16 晚](eval/results/real-dev-2026-10-16-v2-rules.json) · [test 10-16 晚](eval/results/real-test-2026-10-16-v2-rules.json) · [10-16 晚逐条对比](eval/results/real-regression-2026-10-16-v2.json) · [第三批盲测](eval/results/real-blind-2026-10-16b-rules.json) · [第三批盲测复核](eval/results/real-blind-2026-10-16b-adjudication.json) · [第四批盲测](eval/results/real-blind-2026-10-17-rules.json) · [第四批盲测复核](eval/results/real-blind-2026-10-17-adjudication.json)。
@@ -611,8 +628,8 @@ Claude Desktop（`claude_desktop_config.json`）或 Cursor（`.cursor/mcp.json`�
 - **AI 检索**：`GET /api/agent` 返回可用状态；`POST /api/agent` 接收 `{raw, index}`（单条引文，最多 2,000 字符），以 NDJSON 逐步返回 `step`，最后返回规则复核后的 `result`（含 `agent` 追查记录：工具调用次数、模型轮数、token、追查前结论）。实现见 `src/lib/agent/`。
 - **论断 RAG**：`GET /api/claims` 返回配置与限制；`POST /api/claims` 接收 `{claim, doi}` 或 `{claim, evidenceText, evidenceLabel?}`。
   - DOI 证据依次尝试：Europe PMC 开放全文（JATS XML，去掉参考文献、表格和公式）、arXiv 预印本 PDF（DOI 本身是 arXiv，或出版社在 Crossref 登记了预印本），PDF 走与导入相同的安全解析器和隐藏文字检测；都没有时用 Crossref / OpenAlex 摘要。
-  - 固定分块后，长材料（多于 6 段）用混合检索：原论断的 BM25 与模型扩展检索词（`expand_query`，中英文同义词、缩写）的 BM25 按倒数排名融合取 20 段，再由模型按 0–3 分重排（`rank_evidence`），取前 6 段；任一步失败都退回词面检索并在结果里说明。
-  - DeepSeek `judge_claim` 输出支持、部分支持、矛盾或不足；服务端校验来源 ID、片段 ID、原文引句及位置。DeepSeek 没有向量接口，所以没有用向量检索。实现见 `src/lib/claims/`（`fulltext.ts`、`assist.ts`、`retrieval.ts`）。
+  - 固定分块后，长材料（多于 6 段）用混合检索，三路召回：原论断的 BM25、模型扩展检索词（`expand_query`，中英文同义词、缩写）的 BM25、本机向量模型的语义相似度（`embedding.ts`，multilingual-e5-small，中文片段切成 420 字小窗分别编码取最相近的一窗）。三路按倒数排名融合取 20 段，再由模型按 0–3 分重排（`rank_evidence`），取前 6 段；任一步失败都退回其余几路并在结果里说明。
+  - DeepSeek `judge_claim` 输出支持、部分支持、矛盾或不足；服务端校验来源 ID、片段 ID、原文引句及位置。DeepSeek 没有向量接口（2026-11-12 实测 `/embeddings` 返回 404），向量模型在服务器本机用 onnxruntime 运行：不需要密钥，论断和原文不会为了向量化发给第三方。模型把工具名多写成一个参数字段（`{"call": "judge_claim", …}`）时只去掉这个字段，其余照常严格校验（`src/lib/tool-args.ts`）。实现见 `src/lib/claims/`（`fulltext.ts`、`assist.ts`、`retrieval.ts`、`embedding.ts`）。
 - **数据源**：Crossref REST API、doi.org（注册查询 + 内容协商）、OpenAlex API、DataCite API；中文期刊联网核查用 DeepSeek Search API（只认知网、万方、维普的期刊论文页），并直接读取手机知网文章页、知网期刊页和期刊官网文章页的元数据
 - **字体**：思源宋体、霞鹜文楷、IBM Plex Mono，均自托管并按字符分片加载（不依赖 Google Fonts）
 

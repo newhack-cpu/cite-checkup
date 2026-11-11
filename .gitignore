@@ -66,6 +66,16 @@ docs/competition/media/video-2026-10-18/verification-frames/
 docs/competition/media/video-2026-10-18/**/*.log
 docs/competition/media/video-2026-10-18/*.mp3
 
+# 2026-10-29 录制参考版：保留脚本和验收摘要，媒体及过程缓存留在本机
+docs/competition/media/reference-video-2026-10-29/audio/
+docs/competition/media/reference-video-2026-10-29/capture/
+docs/competition/media/reference-video-2026-10-29/edit/
+docs/competition/media/reference-video-2026-10-29/rehearsal/
+docs/competition/media/reference-video-2026-10-29/verification-frames/
+docs/competition/media/reference-video-2026-10-29/mcp/
+docs/competition/media/reference-video-2026-10-29/**/*.log
+docs/competition/media/reference-video-2026-10-29/capture-manifest.json
+
 # 验收过程中的截图、日志和备份快照（结论已写在同目录的 json / md 里）
 eval/**/*.png
 eval/**/*.zip
@@ -77,3 +87,5 @@ eval/vision/out/
 # 本机浏览器自动化留下的页面快照和截图（复评结论写在 eval/review-* 的 md 里）
 .playwright-cli/
 /output/
+# 向量模型文件：由 scripts/fetch-embedding-model.mjs 下载，不进仓库
+/models/

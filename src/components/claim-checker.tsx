@@ -9,7 +9,7 @@ import { DocumentImport } from "./document-import";
 import { IconArrow, IconChevron, IconDownload, IconShield, IconStop } from "./icons";
 
 const COLORS: Record<ClaimVerdict, string> = { supported: "var(--color-jade)", partially_supported: "var(--color-amber)", contradicted: "var(--color-seal)", insufficient_evidence: "var(--color-slate)" };
-const METHOD_LABEL: Record<ClaimResult["coverage"]["method"], string> = { "hybrid-v1": "混合检索（词面 + 模型扩展检索词 + 模型重排）", "bm25-en-zh-v1": "词面检索", "all-chunks": "材料较短，全部片段参与判断" };
+const METHOD_LABEL: Record<ClaimResult["coverage"]["method"], string> = { "hybrid-v2": "混合检索（词面 + 向量语义 + 模型扩展检索词 + 模型重排）", "hybrid-v1": "混合检索（词面 + 模型扩展检索词 + 模型重排）", "bm25-en-zh-v1": "词面检索", "all-chunks": "材料较短，全部片段参与判断" };
 const DEMO_EVIDENCE = "以下为功能演示用的虚构研究片段，不是真实论文。\n\n研究方法：本研究招募了40名大学生，将他们随机分为学习计划组和对照组，各20人。干预持续四周。研究仅测量这40名参与者的课程测验成绩。\n\n研究结果：学习计划组与对照组的平均成绩差异没有达到统计显著性。研究没有观察到学习计划能提高考试成绩的可靠证据。\n\n研究局限：样本规模小，干预时间短，无法将结果推广到所有年龄段的学生，也不能推断长期学习效果。";
 const field = "w-full rounded-xl border border-rule bg-card px-3.5 py-2.5 text-[14.5px] leading-7 text-ink outline-none transition focus-visible:border-seal/50 focus-visible:ring-4 focus-visible:ring-seal/10 disabled:opacity-60";
 const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
@@ -184,6 +184,7 @@ export function ClaimChecker() {
                 <p>判断范围：{result.source?.scope === "full_text" ? `${result.source.label}，只核查召回的片段` : result.source?.scope === "abstract" ? "仅数据库摘要，未核查全文" : result.source ? "仅用户提供的文本，来源未经独立认证" : "尚未取得可用证据"}</p>
                 {result.source && <p className="break-words">来源：{result.source.title || result.source.label}{result.source.doi && <> · <a className="break-all underline" href={`https://doi.org/${encodeURI(result.source.doi)}`} target="_blank" rel="noreferrer">{result.source.doi}</a></>}{result.source.scope === "full_text" && result.source.url && <> · <a className="break-all underline" href={result.source.url} target="_blank" rel="noreferrer">全文</a></>}</p>}
                 <p>检索到 {result.coverage.retrievedChunks} / {result.coverage.totalChunks} 个片段，{result.coverage.retrievedChars.toLocaleString()} 字符{METHOD_LABEL[result.coverage.method] ? ` · ${METHOD_LABEL[result.coverage.method]}` : ""}。</p>
+                {result.coverage.embedding && <p>向量召回：本机运行 {result.coverage.embedding}，不调用外部接口</p>}
                 {result.coverage.expansion?.length ? <p className="break-words">扩展检索词：{result.coverage.expansion.join("、")}</p> : null}
               </div>
               {result.warnings.length > 0 && <ul className="mt-4 space-y-1.5 text-[13px] leading-6 text-amber">{result.warnings.map((warning, index) => <li key={index}>注：{warning}</li>)}</ul>}

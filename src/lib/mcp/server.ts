@@ -120,7 +120,8 @@ export function createCiteCheckupServer(options: ServerOptions = {}): McpServer 
       "Assess whether ONE claim from a manuscript is supported by ONE specific source: a DOI, or source text you provide. For a DOI " +
       "it reads the open-access full text from Europe PMC (JATS) or arXiv when available, otherwise the Crossref/OpenAlex abstract; " +
       "source.scope in the result says which was used. Short material is searched with BM25; long material with BM25 plus " +
-      "model-expanded Chinese/English query terms, merged by reciprocal rank fusion and reranked by the model to 6 passages. " +
+      "model-expanded Chinese/English query terms plus local multilingual embedding recall (when the embedding model is installed), " +
+      "merged by reciprocal rank fusion and reranked by the model to 6 passages. " +
       "DeepSeek then returns supported, partially_supported, contradicted or insufficient_evidence, and every quotation is verified " +
       "verbatim against the retrieved passages. Only the retrieved passages are judged, not the whole paper; it does not establish " +
       "scientific truth. Provide exactly one of doi or evidence_text. The explanation is in Simplified Chinese.",

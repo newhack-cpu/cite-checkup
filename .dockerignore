@@ -12,6 +12,8 @@
 !tsconfig.json
 !src/
 !src/**
+!scripts/
+!scripts/fetch-embedding-model.mjs
 !public/
 !public/**
 

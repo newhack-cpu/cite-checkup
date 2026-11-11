@@ -46,11 +46,12 @@ export async function checkClaim(raw: ClaimInput, options: { signal?: AbortSigna
       if (!allChunks.length) throw new ClaimError("NO_EVIDENCE", "没有可用的证据正文，本次核查未完成");
       let chunks: EvidenceChunk[];
       if (allChunks.length > MAX_RETRIEVED_CHUNKS) {
-        // 长材料：BM25 + 跨语言查询扩展，排名融合后由模型重排，取前 6 段
+        // 长材料：BM25 + 跨语言查询扩展 + 本机向量召回，排名融合后由模型重排，取前 6 段
         const hybrid = await hybridRetrieve(input.claim, allChunks, signal);
         chunks = hybrid.chunks;
         result.coverage.method = hybrid.method;
         if (hybrid.expansion?.length) result.coverage.expansion = hybrid.expansion;
+        if (hybrid.embedding) result.coverage.embedding = hybrid.embedding;
         result.warnings.push(...hybrid.warnings);
       } else {
         chunks = retrieveEvidence(input.claim, allChunks);

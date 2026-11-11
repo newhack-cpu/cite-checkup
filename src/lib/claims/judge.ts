@@ -1,4 +1,4 @@
-import { unwrapToolArguments } from "../tool-args";
+import { cleanToolArguments } from "../tool-args";
 import { ClaimError } from "./errors";
 import { record } from "./request";
 import type { ClaimCitation, ClaimVerdict, EvidenceChunk } from "./types";
@@ -67,5 +67,5 @@ export function completionArguments(value: unknown): unknown {
   if (choice.finish_reason !== "tool_calls" || !record(choice.message) || choice.message.role !== "assistant" || !Array.isArray(choice.message.tool_calls) || choice.message.tool_calls.length !== 1) throw invalid();
   const call = choice.message.tool_calls[0];
   if (!record(call) || call.type !== "function" || typeof call.id !== "string" || !call.id || !record(call.function) || call.function.name !== "judge_claim" || typeof call.function.arguments !== "string" || call.function.arguments.length > 24_000) throw invalid();
-  try { return unwrapToolArguments(JSON.parse(call.function.arguments)); } catch { throw invalid(); }
+  try { return cleanToolArguments(JSON.parse(call.function.arguments), "judge_claim"); } catch { throw invalid(); }
 }

@@ -3,7 +3,7 @@
 import { deepseekConfiguration } from "../ai";
 import { readBoundedJson, retryableTransport } from "../claims/io";
 import { UPLOAD_LIMIT_BYTES, UPLOAD_LIMIT_MIB } from "../deployment-limits";
-import { unwrapToolArguments } from "../tool-args";
+import { cleanToolArguments } from "../tool-args";
 
 export const VISION_LIMITS = {
   images: 4,
@@ -80,7 +80,7 @@ export function parseTranscription(body: unknown): { entries: string[]; tokens?:
       typeof call.function.arguments !== "string" || call.function.arguments.length > 200_000) throw invalid();
   let args: unknown;
   try {
-    args = unwrapToolArguments(JSON.parse(call.function.arguments));
+    args = cleanToolArguments(JSON.parse(call.function.arguments), "submit_references");
   } catch {
     throw invalid();
   }

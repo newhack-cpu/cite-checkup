@@ -1,6 +1,6 @@
 // Server-side only: callers must use this from API routes, never client components.
 // The model supplies extraction arguments; only the deterministic engine may issue verdicts.
-import { unwrapToolArguments } from "../tool-args";
+import { cleanToolArguments } from "../tool-args";
 import { extractDoi, nameOnly, parseReference, splitReferences } from "../verify/extract";
 import { alnum } from "../verify/normalize";
 import type { ParsedRef } from "../verify/types";
@@ -276,7 +276,7 @@ function completionArguments(value: unknown): unknown {
   }
   if (call.function.arguments.length > MAX_ARGUMENT_CHARS) throw new AIError("AI 工具参数过长");
   try {
-    return unwrapToolArguments(JSON.parse(call.function.arguments));
+    return cleanToolArguments(JSON.parse(call.function.arguments), "verify_references");
   } catch {
     throw new AIError("AI 工具参数不是有效的 JSON 格式");
   }

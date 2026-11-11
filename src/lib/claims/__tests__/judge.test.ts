@@ -26,8 +26,22 @@ describe("model evidence boundary", () => {
     // 2026-10-15 实测 DeepSeek 返回 {"arguments": {...}}，判断本身正确却被整体拒绝
     const body = (args: unknown) => ({ choices: [{ finish_reason: "tool_calls", message: { role: "assistant", tool_calls: [{ id: "c1", type: "function", function: { name: "judge_claim", arguments: JSON.stringify(args) } }] } }] });
     expect(validateJudgment(completionArguments(body({ arguments: judgment })), chunks).verdict).toBe("contradicted");
-    expect(() => validateJudgment(completionArguments(body({ arguments: judgment, call: "judge_claim" })), chunks)).toThrow();
+    expect(() => validateJudgment(completionArguments(body({ arguments: judgment, extra: "x" })), chunks)).toThrow();
     expect(() => validateJudgment(completionArguments(body({ arguments: { ...judgment, citations: [{ sourceId: "s", chunkId: "s-c1", quote: "invented quote" }] } })), chunks)).toThrow();
+  });
+
+  it("accepts arguments that repeat the tool name as a field, and nothing else extra", () => {
+    // 2026-11-12 实测：演示论断连续 4 次返回 {"call": "judge_claim", verdict, explanation, citations}，判断和引句都对却被整体拒绝
+    const body = (args: unknown) => ({ choices: [{ finish_reason: "tool_calls", message: { role: "assistant", tool_calls: [{ id: "c1", type: "function", function: { name: "judge_claim", arguments: JSON.stringify(args) } }] } }] });
+    expect(validateJudgment(completionArguments(body({ call: "judge_claim", ...judgment })), chunks).verdict).toBe("contradicted");
+    expect(validateJudgment(completionArguments(body({ name: "judge_claim", arguments: judgment })), chunks).citations).toHaveLength(1);
+    expect(validateJudgment(completionArguments(body({ arguments: { ...judgment, call: "judge_claim" } })), chunks).verdict).toBe("contradicted");
+    // 值不是本次的工具名、是对象，或者还有别的多余字段：照旧拒绝
+    expect(() => validateJudgment(completionArguments(body({ call: "another_tool", ...judgment })), chunks)).toThrow();
+    expect(() => validateJudgment(completionArguments(body({ call: { name: "judge_claim" }, ...judgment })), chunks)).toThrow();
+    expect(() => validateJudgment(completionArguments(body({ call: "judge_claim", ...judgment, confidence: 0.9 })), chunks)).toThrow();
+    // 引句仍须逐字来自原文
+    expect(() => validateJudgment(completionArguments(body({ call: "judge_claim", ...judgment, citations: [{ sourceId: "s", chunkId: "s-c1", quote: "a clear clinical benefit" }] })), chunks)).toThrow();
   });
 
   it.each(["supported", "partially_supported", "contradicted"])("rejects %s without a verifiable citation", (verdict) => {

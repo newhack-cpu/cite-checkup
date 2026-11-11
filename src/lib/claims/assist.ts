@@ -1,7 +1,8 @@
-// Server only. 混合检索的两个模型步骤：跨语言查询扩展、候选片段重排；以及“与证据矛盾”初判的范围复核。
-// 前两步只决定“把哪些片段交给判断”，不产生结论；范围复核只会把矛盾改判为证据不足，不会产生新的支持或矛盾结论。
+// Server only. 混合检索：词面检索、向量召回（embedding.ts，本机模型）和两个大模型步骤（跨语言查询扩展、候选片段重排）；以及“与证据矛盾”初判的范围复核。
+// 检索各步只决定“把哪些片段交给判断”，不产生结论；范围复核只会把矛盾改判为证据不足，不会产生新的支持或矛盾结论。
 // 输出逐项校验，失败或不合规时由调用方退回原有结果。
-import { unwrapToolArguments } from "../tool-args";
+import { cleanToolArguments } from "../tool-args";
+import { EMBEDDING_MODEL, embeddingAvailable, rankByEmbedding } from "./embedding";
 import { readBoundedJson, retryableTransport, withDeadline } from "./io";
 import { configuration } from "./model";
 import { record } from "./request";
@@ -41,7 +42,7 @@ async function callTool(name: string, description: string, parameters: Record<st
     const call = record(choice) && choice.finish_reason === "tool_calls" && record(choice.message) && Array.isArray(choice.message.tool_calls) && choice.message.tool_calls.length === 1
       ? choice.message.tool_calls[0] : undefined;
     if (!record(call) || !record(call.function) || call.function.name !== name || typeof call.function.arguments !== "string" || call.function.arguments.length > 24_000) throw new AssistError("shape");
-    try { return unwrapToolArguments(JSON.parse(call.function.arguments)); } catch { throw new AssistError("json"); }
+    try { return cleanToolArguments(JSON.parse(call.function.arguments), name); } catch { throw new AssistError("json"); }
   }, signal, ms);
 }
 
@@ -148,19 +149,40 @@ function fuse(lists: EvidenceChunk[][], k = 20): EvidenceChunk[] {
 
 export interface HybridRetrieval {
   chunks: EvidenceChunk[];
-  method: "hybrid-v1" | "bm25-en-zh-v1";
+  /** hybrid-v2：有向量召回参与；hybrid-v1：只有词面检索加模型扩展 / 重排；bm25-en-zh-v1：只有词面检索 */
+  method: "hybrid-v2" | "hybrid-v1" | "bm25-en-zh-v1";
   expansion?: string[];
+  /** 向量召回用的模型；这一路没参与时不给 */
+  embedding?: string;
   /** 合并后的候选数（重排前） */
   candidates: number;
   warnings: string[];
 }
 
+/** 向量召回最多等多久：模型在本机 CPU 上算，长文第一次要几秒；超时就不等这一路 */
+const VECTOR_DEADLINE_MS = 25_000;
+
+/** 向量召回一路：不可用返回 null；超时或出错记一条说明后返回 null，不影响其余几路 */
+async function vectorList(claim: string, chunks: EvidenceChunk[], signal: AbortSignal, warnings: string[]): Promise<EvidenceChunk[] | null> {
+  if (!embeddingAvailable()) return null;
+  try {
+    return await withDeadline((inner) => rankByEmbedding(claim, chunks, PER_QUERY, inner), signal, VECTOR_DEADLINE_MS);
+  } catch {
+    signal.throwIfAborted();
+    warnings.push("向量召回未完成，本次没有用语义相似度找片段。");
+    return null;
+  }
+}
+
 /**
- * 混合检索：原始论断的 BM25 + 模型扩展词（中英文同义词）的 BM25，按排名融合取最多 20 段，再由模型按 0–3 分重排，取前 6 段。
- * expand / rerank 可单独关闭，expansion 可传入已有的扩展词（评测对照用）；任一步失败都退回已有的排序并在 warnings 里说明。
+ * 混合检索，三路召回：原始论断的 BM25、模型扩展词（中英文同义词）的 BM25、本机向量模型的语义相似度。
+ * 三路按排名融合取最多 20 段，再由模型按 0–3 分重排，取前 6 段。
+ * expand / rerank / vector 可单独关闭，expansion 可传入已有的扩展词（评测对照用）；任一步失败都退回已有的排序并在 warnings 里说明。
  */
-export async function hybridRetrieve(claim: string, chunks: EvidenceChunk[], signal: AbortSignal, options: { expand?: boolean; rerank?: boolean; expansion?: string[] } = {}): Promise<HybridRetrieval> {
+export async function hybridRetrieve(claim: string, chunks: EvidenceChunk[], signal: AbortSignal, options: { expand?: boolean; rerank?: boolean; vector?: boolean; expansion?: string[] } = {}): Promise<HybridRetrieval> {
   const warnings: string[] = [];
+  // 向量在本机算、扩展词要等模型回话，两件事同时进行
+  const vectorTask = options.vector === false ? Promise.resolve(null) : vectorList(claim, chunks, signal, warnings);
   // 评测时可传入已算好的扩展词，避免同一条论断扩展两次
   let expansion: string[] | undefined = options.expansion;
   let modelUsed = !!expansion;
@@ -176,6 +198,8 @@ export async function hybridRetrieve(claim: string, chunks: EvidenceChunk[], sig
   }
   const lists = [rankEvidence(termWeights(claim), chunks, PER_QUERY)];
   if (expansion?.length) lists.push(rankEvidence(termWeights(expansion.join("\n")), chunks, PER_QUERY));
+  const semantic = await vectorTask;
+  if (semantic?.length) lists.push(semantic);
   const pool = fuse(lists).slice(0, POOL);
   let ranked = pool;
   if (options.rerank !== false && pool.length > MAX_RETRIEVED_CHUNKS) {
@@ -190,5 +214,8 @@ export async function hybridRetrieve(claim: string, chunks: EvidenceChunk[], sig
       warnings.push("候选片段的模型重排未完成，按词面检索排名取片段。");
     }
   }
-  return { chunks: ranked.slice(0, MAX_RETRIEVED_CHUNKS), method: modelUsed ? "hybrid-v1" : "bm25-en-zh-v1", expansion, candidates: pool.length, warnings };
+  return {
+    chunks: ranked.slice(0, MAX_RETRIEVED_CHUNKS), method: semantic?.length ? "hybrid-v2" : modelUsed ? "hybrid-v1" : "bm25-en-zh-v1",
+    expansion, embedding: semantic?.length ? EMBEDDING_MODEL : undefined, candidates: pool.length, warnings,
+  };
 }

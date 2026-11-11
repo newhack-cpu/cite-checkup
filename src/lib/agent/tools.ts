@@ -1,6 +1,6 @@
 // AI 检索 Agent 可以调用的工具。只能查固定的几个学术数据源，参数逐项校验；
 // 返回给模型的是精简后的候选和规则比对提示，返回给界面的是一句中文说明。
-import { unwrapToolArguments } from "../tool-args";
+import { cleanToolArguments } from "../tool-args";
 import { extractDoi } from "../verify/extract";
 import { formatAuthorsShort, scoreCandidate } from "../verify/match";
 import { cnJournalSearch } from "../verify/sources/cnweb";
@@ -154,7 +154,7 @@ export function parseToolCall(name: string, argumentsJson: string): ToolArgs {
   if (!Object.hasOwn(ALLOWED_KEYS, name)) throw new ToolArgumentError(`没有名为 ${name.slice(0, 40)} 的工具`);
   let args: unknown;
   try {
-    args = unwrapToolArguments(JSON.parse(argumentsJson));
+    args = cleanToolArguments(JSON.parse(argumentsJson), name);
   } catch {
     throw new ToolArgumentError("参数不是有效的 JSON");
   }

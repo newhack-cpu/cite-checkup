@@ -22,8 +22,9 @@ export function buildClaimReport(result: ClaimResult): string {
   if (result.source?.doi) lines.push(`DOI：${safe(result.source.doi)}`);
   if (result.source?.title) lines.push(`文献题名：${safe(result.source.title)}`);
   if (result.source?.scope === "full_text" && result.source.url) lines.push(`全文地址：${safe(result.source.url)}`);
-  const method = { "hybrid-v1": "混合检索（词面 + 模型扩展检索词 + 模型重排）", "bm25-en-zh-v1": "词面检索", "all-chunks": "材料较短，全部片段参与判断" }[result.coverage.method];
+  const method = { "hybrid-v2": "混合检索（词面 + 向量语义 + 模型扩展检索词 + 模型重排）", "hybrid-v1": "混合检索（词面 + 模型扩展检索词 + 模型重排）", "bm25-en-zh-v1": "词面检索", "all-chunks": "材料较短，全部片段参与判断" }[result.coverage.method];
   lines.push(`检索覆盖：${result.coverage.retrievedChunks} / ${result.coverage.totalChunks} 个片段，${result.coverage.retrievedChars} 字符${method ? `；${method}` : ""}`);
+  if (result.coverage.embedding) lines.push(`向量召回：本机运行 ${safe(result.coverage.embedding)}，不调用外部接口`);
   if (result.coverage.expansion?.length) lines.push(`扩展检索词：${result.coverage.expansion.map(safe).join("、")}`);
   lines.push("");
   for (const warning of result.warnings) lines.push(`- 边界提示：${safe(warning)}`);

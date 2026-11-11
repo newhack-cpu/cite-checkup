@@ -1,0 +1,930 @@
+{
+ "ranAt": "2026-11-11T15:32:38.560Z",
+ "dataset": "claims-retrieval-2026-10-16",
+ "model": "deepseek-flash",
+ "embedding": "multilingual-e5-small",
+ "embedSeconds": {
+  "walters2023": 4.915,
+  "kung2023": 2.706,
+  "bhattacharyya2023": 1.07
+ },
+ "chunksPerDoc": {
+  "walters2023": 25,
+  "kung2023": 31,
+  "bhattacharyya2023": 14
+ },
+ "topK": 6,
+ "inAbstract": 2,
+ "summary": {
+  "all": {
+   "bm25": {
+    "n": 24,
+    "recall": 0.75,
+    "mrr": 0.614
+   },
+   "vector": {
+    "n": 24,
+    "recall": 0.875,
+    "mrr": 0.656
+   },
+   "bm25+vector": {
+    "n": 24,
+    "recall": 0.958,
+    "mrr": 0.75
+   },
+   "expanded": {
+    "n": 24,
+    "recall": 1,
+    "mrr": 0.816
+   },
+   "hybrid-v1": {
+    "n": 24,
+    "recall": 1,
+    "mrr": 0.979
+   },
+   "hybrid": {
+    "n": 24,
+    "recall": 1,
+    "mrr": 0.979
+   }
+  },
+  "en": {
+   "bm25": {
+    "n": 12,
+    "recall": 1,
+    "mrr": 0.769
+   },
+   "vector": {
+    "n": 12,
+    "recall": 0.833,
+    "mrr": 0.658
+   },
+   "bm25+vector": {
+    "n": 12,
+    "recall": 1,
+    "mrr": 0.743
+   },
+   "expanded": {
+    "n": 12,
+    "recall": 1,
+    "mrr": 0.861
+   },
+   "hybrid-v1": {
+    "n": 12,
+    "recall": 1,
+    "mrr": 1
+   },
+   "hybrid": {
+    "n": 12,
+    "recall": 1,
+    "mrr": 1
+   }
+  },
+  "zh": {
+   "bm25": {
+    "n": 12,
+    "recall": 0.5,
+    "mrr": 0.458
+   },
+   "vector": {
+    "n": 12,
+    "recall": 0.917,
+    "mrr": 0.653
+   },
+   "bm25+vector": {
+    "n": 12,
+    "recall": 0.917,
+    "mrr": 0.757
+   },
+   "expanded": {
+    "n": 12,
+    "recall": 1,
+    "mrr": 0.771
+   },
+   "hybrid-v1": {
+    "n": 12,
+    "recall": 1,
+    "mrr": 0.958
+   },
+   "hybrid": {
+    "n": 12,
+    "recall": 1,
+    "mrr": 0.958
+   }
+  }
+ },
+ "rows": [
+  {
+   "id": "W1",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "vector": 1,
+    "bm25+vector": 1,
+    "expanded": 1,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "GPT-4 fabricated citations",
+    "hallucinated references GPT-4",
+    "book chapters fabricated references",
+    "citation type distribution",
+    "fake references ChatGPT",
+    "GPT-4 虚构参考文献",
+    "GPT-4 幻觉引用",
+    "图书章节 虚假引用",
+    "参考文献类型 分布",
+    "引用错误率 大语言模型",
+    "fabricated citations rate",
+    "reference hallucination rate",
+    "scholarly references LLM",
+    "book chapter citations proportion"
+   ],
+   "warnings": [],
+   "vectorSeconds": 4.915,
+   "seconds": 11.354
+  },
+  {
+   "id": "W2",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 2,
+    "vector": 0,
+    "bm25+vector": 4,
+    "expanded": 1,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "ChatGPT citation links",
+    "citation link accuracy",
+    "hallucinated citations",
+    "broken links citations",
+    "wrong URL citations",
+    "reference verification LLM",
+    "ChatGPT 引用链接",
+    "引用链接错误率",
+    "虚假引用",
+    "参考文献链接失效",
+    "生成式搜索引用准确性",
+    "citation error rate"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.017,
+   "seconds": 4.751
+  },
+  {
+   "id": "W3",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "vector": 5,
+    "bm25+vector": 2,
+    "expanded": 2,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "generated papers length",
+    "word count",
+    "2000 words",
+    "target length",
+    "paper length requirement",
+    "generated text length",
+    "论文长度",
+    "字数统计",
+    "两千字",
+    "目标字数",
+    "生成长度",
+    "论文篇幅",
+    "length constraint",
+    "output length"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.012,
+   "seconds": 5.052
+  },
+  {
+   "id": "W4",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 3,
+    "vector": 1,
+    "bm25+vector": 1,
+    "expanded": 1,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "reference formatting errors",
+    "title capitalization",
+    "capitalization errors references",
+    "bibliography formatting problems",
+    "generated references accuracy",
+    "citation formatting errors",
+    "title case errors",
+    "参考文献格式错误",
+    "标题大小写",
+    "参考文献著录错误",
+    "引文格式问题",
+    "自动生成参考文献",
+    "参考文献准确性",
+    "most frequent error type"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.017,
+   "seconds": 5.967
+  },
+  {
+   "id": "W5",
+   "lang": "zh",
+   "inAbstract": true,
+   "rank": {
+    "bm25": 1,
+    "vector": 1,
+    "bm25+vector": 1,
+    "expanded": 1,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "GPT-3.5 fabricated citations",
+    "hallucinated references ChatGPT",
+    "fake citations rate",
+    "reference fabrication LLM",
+    "GPT-3.5 编造引文",
+    "虚构参考文献",
+    "幻觉引用率",
+    "ChatGPT 参考文献 真实性",
+    "citation accuracy large language model",
+    "bibliographic hallucination",
+    "GPT-3.5 生成引文",
+    "reference verification ChatGPT",
+    "fabricated references percentage",
+    "引文 捏造 比例"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.013,
+   "seconds": 5.325
+  },
+  {
+   "id": "W6",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "vector": 1,
+    "bm25+vector": 1,
+    "expanded": 1,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "Google Scholar",
+    "PubMed",
+    "Scopus",
+    "WorldCat",
+    "citation verification",
+    "reference checking",
+    "existence of cited references",
+    "bibliographic database search",
+    "谷歌学术",
+    "引文核实",
+    "参考文献真实性",
+    "文献检索来源",
+    "数据库检索",
+    "引文存在性",
+    "参考文献核查",
+    "书目数据库"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.016,
+   "seconds": 4.055
+  },
+  {
+   "id": "W7",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 0,
+    "vector": 0,
+    "bm25+vector": 0,
+    "expanded": 2,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "文献综述",
+    "literature review",
+    "systematic review",
+    "narrative review",
+    "实证研究",
+    "empirical study",
+    "fabricated data",
+    "编造数据",
+    "伪造结果",
+    "fabrication",
+    "research misconduct",
+    "学术不端",
+    "methods and results",
+    "方法与结果",
+    "review mislabeled as empirical",
+    "综述与实证研究混淆"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.013,
+   "seconds": 4.966
+  },
+  {
+   "id": "W8",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 0,
+    "vector": 1,
+    "bm25+vector": 1,
+    "expanded": 1,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "online publication date",
+    "original publication date",
+    "earlier publication date",
+    "date of publication error",
+    "citation date error",
+    "reference list accuracy",
+    "bibliographic reference errors",
+    "online first date",
+    "在线发布日期",
+    "最初出版日期",
+    "出版日期错误",
+    "参考文献著录错误",
+    "引文日期准确性",
+    "早期文献",
+    "电子预出版日期",
+    "书目信息错误"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.012,
+   "seconds": 5.97
+  },
+  {
+   "id": "K1",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "vector": 1,
+    "bm25+vector": 1,
+    "expanded": 1,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "two physicians rated answers",
+    "两位医生评分",
+    "accuracy rating",
+    "准确性评分",
+    "concordance rating",
+    "一致性评分",
+    "insight rating",
+    "洞察力评分",
+    "independent rating blinded",
+    "独立盲法评分",
+    "inter-rater reliability",
+    "评分者间信度",
+    "physician reviewers blinded",
+    "医生评审者盲法",
+    "answer quality assessment",
+    "答案质量评估"
+   ],
+   "warnings": [],
+   "vectorSeconds": 2.706,
+   "seconds": 7.69
+  },
+  {
+   "id": "K2",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "vector": 1,
+    "bm25+vector": 1,
+    "expanded": 1,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "items with pictures excluded",
+    "clinical photographs removed",
+    "graphs excluded from test set",
+    "figure-containing items dropped",
+    "image-based questions filtered",
+    "multimodal items excluded",
+    "含图片题目 排除",
+    "临床照片 剔除",
+    "图表题 过滤",
+    "测试集 图像题 移除",
+    "视觉元素 题目 删除",
+    "模型测试 数据筛选"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.012,
+   "seconds": 5.533
+  },
+  {
+   "id": "K3",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "vector": 0,
+    "bm25+vector": 1,
+    "expanded": 1,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "general chatbot",
+    "通用聊天机器人",
+    "biomedical literature trained model",
+    "生物医学文献训练模型",
+    "domain-specific language model",
+    "领域专用语言模型",
+    "BioGPT",
+    "PubMedBERT",
+    "ChatGPT",
+    "GPT-4",
+    "LLM performance comparison",
+    "大语言模型性能比较",
+    "biomedical question answering",
+    "生物医学问答",
+    "benchmark accuracy",
+    "基准准确率"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.009,
+   "seconds": 5.123
+  },
+  {
+   "id": "K4",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 5,
+    "vector": 1,
+    "bm25+vector": 3,
+    "expanded": 2,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "correctly answered questions",
+    "wrongly answered questions",
+    "explanation richness",
+    "insight",
+    "explanation quality",
+    "answer correctness",
+    "question answering",
+    "答对的问题",
+    "答错的问题",
+    "解释丰富度",
+    "洞察",
+    "解释质量",
+    "答案正确性",
+    "问答"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.011,
+   "seconds": 5.134
+  },
+  {
+   "id": "K5",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 0,
+    "vector": 2,
+    "bm25+vector": 4,
+    "expanded": 2,
+    "hybrid-v1": 2,
+    "hybrid": 2
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "ChatGPT answer explanation consistency",
+    "answer-explanation agreement rate",
+    "self-consistency of explanations",
+    "faithfulness of explanations",
+    "rationale-answer alignment",
+    "LLM explanation consistency evaluation",
+    "ChatGPT 答案与解释一致性",
+    "解释忠实度",
+    "答案与理由一致性",
+    "自洽性评估",
+    "大语言模型解释质量",
+    "95% consistency rate"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.01,
+   "seconds": 5.411
+  },
+  {
+   "id": "K6",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 0,
+    "vector": 3,
+    "bm25+vector": 3,
+    "expanded": 1,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "valuable insight",
+    "有价值的见解",
+    "90% of responses",
+    "九成回答",
+    "proportion of responses containing insight",
+    "insight rate",
+    "answer quality evaluation",
+    "回答质量评估",
+    "useful information",
+    "有用信息",
+    "response-level analysis",
+    "response annotation",
+    "insightful responses percentage",
+    "包含见解的比例",
+    "LLM response evaluation",
+    "大模型回答评估"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.01,
+   "seconds": 5.584
+  },
+  {
+   "id": "K7",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "vector": 2,
+    "bm25+vector": 1,
+    "expanded": 2,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "ChatGPT accuracy",
+    "USMLE Step 1 performance",
+    "ChatGPT 准确率",
+    "USMLE Step 1 得分",
+    "three examinations comparison",
+    "三项考试 比较",
+    "large language model medical exam",
+    "大语言模型 医学考试",
+    "Step 2 CK Step 3 performance",
+    "ChatGPT exam question answering",
+    "医学执照考试 表现",
+    "accuracy lowest exam",
+    "GPT-4 USMLE scores",
+    "multiple choice question accuracy"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.009,
+   "seconds": 4.848
+  },
+  {
+   "id": "K8",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "vector": 3,
+    "bm25+vector": 1,
+    "expanded": 1,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "350 items",
+    "350 道题目",
+    "screening process",
+    "筛选",
+    "coding stage",
+    "编码阶段",
+    "item pool",
+    "题库",
+    "inclusion criteria",
+    "纳入标准",
+    "number of items retained",
+    "保留题目数量",
+    "screening and coding",
+    "筛选与编码",
+    "final sample of items",
+    "最终题目样本"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.013,
+   "seconds": 4.553
+  },
+  {
+   "id": "B1",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 5,
+    "vector": 1,
+    "bm25+vector": 2,
+    "expanded": 3,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "AI-generated text detection",
+    "machine-written text detection",
+    "generated paper detection tool",
+    "AI text detector accuracy",
+    "false positive rate detection",
+    "LLM-generated academic text",
+    "人工智能生成文本检测",
+    "机器生成论文检测",
+    "AI写作检测工具",
+    "检测准确率 假阳性",
+    "生成论文 全文检测",
+    "大语言模型 学术写作"
+   ],
+   "warnings": [],
+   "vectorSeconds": 1.07,
+   "seconds": 5.428
+  },
+  {
+   "id": "B2",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "vector": 1,
+    "bm25+vector": 1,
+    "expanded": 1,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "health inequities",
+    "健康不平等",
+    "prevention research",
+    "预防研究",
+    "fabricated references",
+    "invented citations",
+    "伪造参考文献",
+    "虚构引用",
+    "reference accuracy",
+    "参考文献准确性",
+    "citation fabrication rate",
+    "hallucinated references",
+    "bibliographic errors",
+    "share of fabricated citations",
+    "topic comparison of citation errors",
+    "论文主题与引用造假"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.014,
+   "seconds": 4.307
+  },
+  {
+   "id": "B3",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "vector": 2,
+    "bm25+vector": 1,
+    "expanded": 1,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "reference errors",
+    "citation errors",
+    "fabricated references",
+    "hallucinated citations",
+    "chatbot output references",
+    "large language model citations",
+    "peer-reviewed articles accuracy",
+    "reference accuracy comparison",
+    "参考文献错误",
+    "引用错误",
+    "虚构参考文献",
+    "聊天机器人引用",
+    "大语言模型 参考文献",
+    "同行评审论文 准确性",
+    "文献引用准确性",
+    "错误引用率"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.013,
+   "seconds": 4.249
+  },
+  {
+   "id": "B4",
+   "lang": "en",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 1,
+    "vector": 5,
+    "bm25+vector": 3,
+    "expanded": 1,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "sample size",
+    "adequate sample size",
+    "reference list",
+    "number of references",
+    "study design",
+    "statistical power",
+    "样本量",
+    "样本量充足",
+    "参考文献数量",
+    "参考文献",
+    "研究设计",
+    "统计效能",
+    "minimum sample size",
+    "power analysis",
+    "bibliography size",
+    "文献计量"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.011,
+   "seconds": 4.136
+  },
+  {
+   "id": "B5",
+   "lang": "zh",
+   "inAbstract": true,
+   "rank": {
+    "bm25": 1,
+    "vector": 1,
+    "bm25+vector": 1,
+    "expanded": 1,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "reference errors",
+    "reference accuracy",
+    "citation errors",
+    "PMID errors",
+    "PubMed identifier incorrect",
+    "reference list errors",
+    "bibliographic errors",
+    "error rate by element",
+    "参考文献 错误",
+    "参考文献 著录错误",
+    "引文准确性",
+    "PMID 编号 错误",
+    "PubMed 编号 著录",
+    "参考文献 要素 错误率",
+    "文献著录 差错分析",
+    "期刊论文 参考文献 核查"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.01,
+   "seconds": 4.832
+  },
+  {
+   "id": "B6",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 2,
+    "vector": 6,
+    "bm25+vector": 2,
+    "expanded": 2,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "systematic review",
+    "系统综述",
+    "reference checking",
+    "参考文献核查",
+    "independent screening",
+    "独立筛选",
+    "two reviewers",
+    "两名研究者",
+    "Medline",
+    "PubMed",
+    "Google Scholar",
+    "谷歌学术",
+    "Directory of Open Access Journals",
+    "DOAJ",
+    "开放获取期刊目录",
+    "reference list verification"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.01,
+   "seconds": 3.516
+  },
+  {
+   "id": "B7",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 0,
+    "vector": 1,
+    "bm25+vector": 1,
+    "expanded": 1,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "resource constraints",
+    "limited resources",
+    "did not verify",
+    "not verified",
+    "accuracy of article content",
+    "full text accuracy",
+    "manuscript content",
+    "study limitations",
+    "资源限制",
+    "未核实",
+    "论文正文",
+    "内容准确性",
+    "研究局限",
+    "未验证",
+    "全文内容",
+    "准确性核查"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.009,
+   "seconds": 4.069
+  },
+  {
+   "id": "B8",
+   "lang": "zh",
+   "inAbstract": false,
+   "rank": {
+    "bm25": 0,
+    "vector": 1,
+    "bm25+vector": 1,
+    "expanded": 4,
+    "hybrid-v1": 1,
+    "hybrid": 1
+   },
+   "hybridMethod": "hybrid-v2",
+   "expansion": [
+    "fabricated references",
+    "编造参考文献",
+    "reference fabrication rate",
+    "参考文献造假比例",
+    "respiratory medicine publications",
+    "呼吸科 论文",
+    "pulmonology journals",
+    "呼吸医学期刊",
+    "citation fabrication",
+    "虚假引用 撤稿",
+    "retraction rate by specialty",
+    "各学科撤稿率比较",
+    "reference accuracy study",
+    "参考文献准确性 调查",
+    "bibliographic errors by discipline",
+    "学术不端 学科分布"
+   ],
+   "warnings": [],
+   "vectorSeconds": 0.007,
+   "seconds": 5.382
+  }
+ ]
+}

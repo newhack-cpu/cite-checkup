@@ -1,12 +1,17 @@
-// 论断检索评测：同一批论断、同一份全文，对比三种检索方式召回的前 6 段是否包含标注的出处句子。
+// 论断检索评测：同一批论断、同一份全文，对比几种检索方式召回的前 6 段是否包含标注的出处句子。
 //   bm25        原论断的词面检索（中英文词 + 汉字 bigram）
+//   vector      只用本机向量模型的语义相似度（multilingual-e5-small，不调用大模型）
+//   bm25+vector 词面 + 向量两路按排名融合（不调用大模型）
 //   expanded    原论断 + 模型扩展检索词，两路 BM25 按排名融合
-//   hybrid      expanded 的前 20 段再由模型重排（产品默认）
+//   hybrid-v1   expanded 的前 20 段再由模型重排（加向量召回之前的产品默认）
+//   hybrid      词面 + 扩展词 + 向量三路融合，再由模型重排（产品默认）
+// 向量模型要先运行 node scripts/fetch-embedding-model.mjs 下载到 models/。
 // 用法：pnpm eval:retrieval [--out=eval/results/retrieval-xxx.json]
 // 需要 .env.local 里的 DEEPSEEK_API_KEY；全文通过 Europe PMC 实时获取，不写入仓库。网络需要代理时先设置 NODE_USE_ENV_PROXY=1。
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { expandQuery, hybridRetrieve } from "../src/lib/claims/assist";
+import { EMBEDDING_MODEL, embeddingAvailable, rankByEmbedding } from "../src/lib/claims/embedding";
 import { europePmcFullText } from "../src/lib/claims/fulltext";
 import { chunkEvidence, MAX_RETRIEVED_CHUNKS, normalizeEvidence, rankEvidence, retrieveEvidence, termWeights } from "../src/lib/claims/retrieval";
 import type { EvidenceChunk } from "../src/lib/claims/types";
@@ -44,7 +49,10 @@ for (const doc of dataset.documents) {
   console.log(`${doc.id}：${text.length.toLocaleString()} 字符，${docs.get(doc.id)!.chunks.length} 段`);
 }
 
-const methods = ["bm25", "expanded", "hybrid"] as const;
+if (!embeddingAvailable()) throw new Error("没有找到向量模型，请先运行 node scripts/fetch-embedding-model.mjs");
+const methods = ["bm25", "vector", "bm25+vector", "expanded", "hybrid-v1", "hybrid"] as const;
+// 每篇全文第一次向量化的耗时（之后同一篇命中进程内缓存）
+const embedSeconds: Record<string, number> = {};
 const rows = [];
 for (const c of dataset.cases) {
   const doc = docs.get(c.doc)!;
@@ -56,20 +64,28 @@ for (const c of dataset.cases) {
   let expansion: string[] | undefined;
   let expandError: string | undefined;
   try { expansion = await expandQuery(c.claim, signal); } catch (error) { expandError = (error as Error).message || "failed"; }
-  const expanded = expansion ? fuseTop(c.claim, expansion, doc.chunks) : bm25;
+  const expanded = expansion ? fuseTop([rankEvidence(termWeights(c.claim), doc.chunks, 12), rankEvidence(termWeights(expansion.join("\n")), doc.chunks, 12)]) : bm25;
+  const vectorStarted = Date.now();
+  const vectorAll = (await rankByEmbedding(c.claim, doc.chunks, 12, signal)) ?? [];
+  const vectorSeconds = (Date.now() - vectorStarted) / 1000;
+  embedSeconds[c.doc] ??= vectorSeconds;
+  const bm25Vector = fuseTop([rankEvidence(termWeights(c.claim), doc.chunks, 12), vectorAll]);
+  const v1 = await hybridRetrieve(c.claim, doc.chunks, signal, { ...(expansion ? { expansion } : { expand: false }), vector: false });
   const hybrid = await hybridRetrieve(c.claim, doc.chunks, signal, expansion ? { expansion } : { expand: false });
   const row = {
     id: c.id, lang: c.lang, inAbstract: golds.some(([g0]) => doc.abstractEnd > 0 && g0 < doc.abstractEnd),
-    rank: { bm25: firstHit(bm25, golds), expanded: firstHit(expanded, golds), hybrid: firstHit(hybrid.chunks, golds) },
-    hybridMethod: hybrid.method, expansion: hybrid.expansion, expandError, warnings: hybrid.warnings, seconds: (Date.now() - started) / 1000,
+    rank: {
+      bm25: firstHit(bm25, golds), vector: firstHit(vectorAll.slice(0, MAX_RETRIEVED_CHUNKS), golds), "bm25+vector": firstHit(bm25Vector, golds),
+      expanded: firstHit(expanded, golds), "hybrid-v1": firstHit(v1.chunks, golds), hybrid: firstHit(hybrid.chunks, golds),
+    },
+    hybridMethod: hybrid.method, expansion: hybrid.expansion, expandError, warnings: [...new Set([...v1.warnings, ...hybrid.warnings])], vectorSeconds, seconds: (Date.now() - started) / 1000,
   };
   rows.push(row);
-  console.log(`${c.id} [${c.lang}] bm25=${row.rank.bm25 || "-"} expanded=${row.rank.expanded || "-"} hybrid=${row.rank.hybrid || "-"}${hybrid.warnings.length ? `（${hybrid.warnings.join("；")}）` : ""}`);
+  console.log(`${c.id} [${c.lang}] ${methods.map((m) => `${m}=${row.rank[m] || "-"}`).join(" ")}${row.warnings.length ? `（${row.warnings.join("；")}）` : ""}`);
 }
 
-/** 与 hybridRetrieve 相同的两路融合，但不重排，用来单独看查询扩展的作用 */
-function fuseTop(claim: string, terms: string[], chunks: EvidenceChunk[]): EvidenceChunk[] {
-  const lists = [rankEvidence(termWeights(claim), chunks, 12), rankEvidence(termWeights(terms.join("\n")), chunks, 12)];
+/** 与 hybridRetrieve 相同的排名融合，但不重排，用来单独看每一路召回的作用 */
+function fuseTop(lists: EvidenceChunk[][]): EvidenceChunk[] {
   const fused = new Map<string, { chunk: EvidenceChunk; score: number }>();
   for (const list of lists) list.forEach((chunk, rank) => {
     const entry = fused.get(chunk.id) ?? { chunk, score: 0 };
@@ -90,9 +106,10 @@ for (const group of ["all", "en", "zh"]) {
 }
 const inAbstract = rows.filter((r) => r.inAbstract).length;
 mkdirSync(join("eval", "results"), { recursive: true });
-writeFileSync(out, JSON.stringify({ ranAt: new Date().toISOString(), dataset: dataset.name, model: process.env.DEEPSEEK_MODEL || "deepseek-flash", topK: MAX_RETRIEVED_CHUNKS, inAbstract, summary, rows }, null, 1));
+writeFileSync(out, JSON.stringify({ ranAt: new Date().toISOString(), dataset: dataset.name, model: process.env.DEEPSEEK_MODEL || "deepseek-flash", embedding: EMBEDDING_MODEL, embedSeconds, chunksPerDoc: Object.fromEntries([...docs].map(([id, d]) => [id, d.chunks.length])), topK: MAX_RETRIEVED_CHUNKS, inAbstract, summary, rows }, null, 1));
 console.log("\n前 6 段命中率 / MRR：");
 for (const [group, values] of Object.entries(summary)) {
   console.log(`  ${group}（${values.bm25.n} 条）：${methods.map((m) => `${m} ${(values[m].recall * 100).toFixed(0)}% / ${values[m].mrr.toFixed(2)}`).join("，")}`);
 }
+console.log(`每篇全文第一次向量化用时（秒）：${Object.entries(embedSeconds).map(([id, s]) => `${id} ${s.toFixed(1)}`).join("，")}`);
 console.log(`出处句子在摘要里的有 ${inAbstract}/${rows.length} 条；明细写入 ${out}`);

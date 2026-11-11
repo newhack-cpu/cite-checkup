@@ -56,8 +56,10 @@ export interface ClaimResult {
     totalChunks: number;
     retrievedChunks: number;
     retrievedChars: number;
-    /** all-chunks: short material sent whole; hybrid-v1: BM25 + model query expansion + model reranking */
-    method: "bm25-en-zh-v1" | "hybrid-v1" | "all-chunks";
+    /** all-chunks: short material sent whole; hybrid-v1: BM25 + model query expansion + model reranking; hybrid-v2: the same plus local embedding recall */
+    method: "bm25-en-zh-v1" | "hybrid-v1" | "hybrid-v2" | "all-chunks";
+    /** Local embedding model used for semantic recall; absent when that leg did not take part */
+    embedding?: string;
     /** Model-generated search terms used for hybrid retrieval (cross-language synonyms) */
     expansion?: string[];
   };
