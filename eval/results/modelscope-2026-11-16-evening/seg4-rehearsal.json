@@ -1,0 +1,29 @@
+{
+  "before": [
+    "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+    "图书类文献不在开放学术数据库的覆盖范围内，请人工核查"
+  ],
+  "panelBefore": "有 2 条数据库没查到或只找到相近候选。可以交给 AI 换检索策略逐条再查；找到的候选仍由规则逐字段比对，AI 不能改结论。\n\nAI 继续查这 2 条",
+  "panelTimeline": [
+    [
+      0.0,
+      "AI 正在追查第 1 / 2 条（第 01 条，检索步骤显示在它的卡片上）\n\n停止追查"
+    ],
+    [
+      2.0,
+      "AI 正在追查第 2 / 2 条（第 02 条，检索步骤显示在它的卡片上） · 已确认 1 条，结论不变 0 条\n\n停止追查"
+    ],
+    [
+      82.1,
+      "AI 追查了 2 条，共发起 5 次检索：1 条找到并由规则确认是同一篇，1 条没有找到能确认的记录、结论不变。"
+    ]
+  ],
+  "after": [
+    "已核实：与数据库记录一致（来源：OpenAlex）",
+    "图书类文献不在开放学术数据库的覆盖范围内，请人工核查"
+  ],
+  "agentLines": [
+    "AI 检索 2 次找到候选，规则逐字段比对确认是同一篇（追查前：检索覆盖不完整，暂时无法确认，请人工核查或稍后重试） | AI 检索「按标题检索该会议论文记录」Crossref 检索「Web analyzing traffic challeng…」（2007±1 年）：5 条候选，最接近《Description of Ontologies》（2008）4ms | AI 检索「在开放索引中查找该ECML/PKDD论文」OpenAlex 题名检索「Web analyzing traffic challeng…」（2007±1 年）：1 条候选，最接近《Web Analyzing Traffic Challenge: Descrip…》（Raïssi C, Brissaud J 等，2007）缓存",
+    "AI 检索 3 次，没有找到能由规则确认的同一篇，结论不变 | 注：AI 检索超时，已用已经找到的候选做规则复核 | AI 检索「检索周志华2016年《机器学习》图书的DOI记录」Crossref 检索「机器学习」（作者 周志华，2016±1 年）：5 条候选，最接近《Structure Design of Single Camera Omnidi…》（Song Ya 宋, Chai Xinghua 柴 等，2016）3974ms | AI 检索「在DataCite中查找该图书或相关记录」DataCite 检索「机器学习 周志华」：5 条候选，最接近《Forest aboveground biomass of Northeast …》（Zhou Y, Feng L 等，2026）3715ms"
+  ]
+}
