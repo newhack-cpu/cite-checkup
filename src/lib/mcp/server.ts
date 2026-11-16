@@ -59,13 +59,17 @@ function referenceReport(results: RefResult[], counts: Record<Verdict, number>):
 export interface ServerOptions {
   /** 单次核验最多发起几次 OpenAlex 题名检索（无 key 时每天额度有限） */
   openalexBudget?: number;
+  /** 论断核查的模型额度。网络入口每个请求新建一个服务实例，要传进程内共用的一份，否则每次都重新计数 */
+  claimLimits?: ReturnType<typeof createClaimLimits>;
+  /** 调用方标识（网络入口传访客 IP）：有它时论断核查另按每个调用方每分钟 6 次限次 */
+  clientKey?: string;
 }
 
 export function createCiteCheckupServer(options: ServerOptions = {}): McpServer {
   // 0.2.0：结论新增 near_match（只找到相近候选，不算信息有误）
   const server = new McpServer({ name: "cite-checkup", version: "0.2.0" });
   // 论断核查要调用模型，和网页接口一样限次，防止客户端模型反复调用
-  const claimLimits = createClaimLimits();
+  const claimLimits = options.claimLimits ?? createClaimLimits();
 
   server.registerTool("verify_references", {
     title: "核验参考文献",
@@ -142,6 +146,7 @@ export function createCiteCheckupServer(options: ServerOptions = {}): McpServer 
     },
     annotations: { readOnlyHint: true, openWorldHint: true },
   }, async ({ claim, doi, evidence_text, evidence_label }, extra) => {
+    if (options.clientKey !== undefined && !claimLimits.allowRequest(options.clientKey)) return failure("论断核查请求过于频繁（每分钟最多 6 次），请稍后再试。");
     const slot = claimLimits.reserve(claim.length + 7_200);
     if (slot.error) return failure(slot.error);
     try {
