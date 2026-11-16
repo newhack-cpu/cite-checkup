@@ -1,0 +1,104 @@
+{
+ "url": "http://localhost:3210/",
+ "method": "Edge + Playwright，PerformanceObserver 取 LCP/CLS/长任务，CDP 模拟手机网络与 CPU；每种条件 3 次取中位数；不是 Lighthouse 评分",
+ "desktop": {
+  "ttfb": 16,
+  "fcp": 468,
+  "domInteractive": 175.0,
+  "load": 298.0,
+  "lcp": 468,
+  "cls": 0.0,
+  "tbt": 5,
+  "jsKB": 178.0,
+  "totalKB": 1287.0,
+  "requests": 31
+ },
+ "desktopRuns": [
+  {
+   "ttfb": 20.90000000037253,
+   "fcp": 648,
+   "domInteractive": 67,
+   "load": 301.30000000074506,
+   "lcp": 648,
+   "cls": 0,
+   "tbt": 94,
+   "jsKB": 177.884765625,
+   "totalKB": 1287.0302734375,
+   "requests": 31
+  },
+  {
+   "ttfb": 16,
+   "fcp": 468,
+   "domInteractive": 180.89999999850988,
+   "load": 297.8999999985099,
+   "lcp": 468,
+   "cls": 7.654320987654322e-05,
+   "tbt": 5,
+   "jsKB": 177.884765625,
+   "totalKB": 1287.0302734375,
+   "requests": 31
+  },
+  {
+   "ttfb": 14.900000000372529,
+   "fcp": 428,
+   "domInteractive": 175.30000000074506,
+   "load": 264.2000000011176,
+   "lcp": 456,
+   "cls": 7.654320987654322e-05,
+   "tbt": 0,
+   "jsKB": 177.884765625,
+   "totalKB": 1287.0302734375,
+   "requests": 31
+  }
+ ],
+ "mobile": {
+  "ttfb": 163.0,
+  "fcp": 1420,
+  "domInteractive": 1394.0,
+  "load": 6855.0,
+  "lcp": 4220,
+  "cls": 0.116,
+  "tbt": 1043,
+  "jsKB": 178.0,
+  "totalKB": 1287.0,
+  "requests": 31
+ },
+ "mobileRuns": [
+  {
+   "ttfb": 159.19999999925494,
+   "fcp": 1352,
+   "domInteractive": 1220.199999999255,
+   "load": 6854.799999998882,
+   "lcp": 4220,
+   "cls": 0.11592822229094998,
+   "tbt": 1043,
+   "jsKB": 177.884765625,
+   "totalKB": 1287.0302734375,
+   "requests": 31
+  },
+  {
+   "ttfb": 163.09999999962747,
+   "fcp": 1920,
+   "domInteractive": 2435.0999999996275,
+   "load": 6930.9000000003725,
+   "lcp": 4816,
+   "cls": 0.11592822229094998,
+   "tbt": 1395,
+   "jsKB": 177.884765625,
+   "totalKB": 1287.0302734375,
+   "requests": 31
+  },
+  {
+   "ttfb": 165.60000000149012,
+   "fcp": 1420,
+   "domInteractive": 1394.1000000014901,
+   "load": 6846.9000000003725,
+   "lcp": 4056,
+   "cls": 0.11622174914287065,
+   "tbt": 1035,
+   "jsKB": 177.884765625,
+   "totalKB": 1287.0302734375,
+   "requests": 31
+  }
+ ]
+}

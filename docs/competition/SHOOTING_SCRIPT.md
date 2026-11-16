@@ -2,7 +2,7 @@
 
 > 每一段只写三件事：**时间**、**画面 / 点击**、**台词**。全程在魔搭公网上操作，只有第 8 段（MCP）在本机。
 > 2026-10-26 已在魔搭公网按本脚本完整走了一遍，各段结果都和下面写的一致（记录在 [eval/results/modelscope-2026-10-26/](../../eval/results/modelscope-2026-10-26/)）。
-> 2026-11-16 按新版界面更新：第 3 段末尾加“导出 BibTeX”，第 4 段改成批量追查，第 9 段测试数改为 783；第 5 段起各段整体顺延约 10 秒，成片约 7 分 10 秒。改动的几步当天在魔搭公网走过（[eval/results/modelscope-2026-11-16-evening/](../../eval/results/modelscope-2026-11-16-evening/)）。
+> 2026-11-16 按新版界面更新：第 3 段末尾加“导出 BibTeX”，第 4 段改成批量追查，第 9 段测试数改为 783；片头后加 15 秒 AI 六项对照图（第 0 段第二行）；第 1 段起各段整体顺延约 15 秒，第 5 段起再顺延约 10 秒，成片约 7 分 25 秒。改动的几步当天在魔搭公网走过（[eval/results/modelscope-2026-11-16-evening/](../../eval/results/modelscope-2026-11-16-evening/)）。
 
 | 项目 | 内容 |
 |---|---|
@@ -10,7 +10,7 @@
 | 成片 | 5–8 分钟（目标 7 分钟），1920×1080，MP4，普通话配音，可加字幕 |
 | 要粘贴的文字 | [SHOOTING_INPUTS.txt](SHOOTING_INPUTS.txt)，用记事本打开复制，别从 PDF 复制 |
 | 要上传的文件 | [media/shooting-inputs/](media/shooting-inputs/) 里的 `mixed-photo.jpg`、`preprint-hidden.pdf` |
-| 图片 | [media/slides/](media/slides/) 里的 `slide-01-cover.jpg`（封面）、`slide-02-design.jpg`（核心设计） |
+| 图片 | [media/slides/](media/slides/) 里的 `slide-01-cover.jpg`（封面）、`slide-03-ai-map.jpg`（AI 六项对照）、`slide-02-design.jpg`（核心设计） |
 
 ## 分镜
 
@@ -19,6 +19,7 @@
 | 时间 | 画面 / 点击 | 台词 |
 |---|---|---|
 | 0:00–0:10 | 全屏放封面图 `slide-01-cover.jpg` | 大家好，我们的作品叫“引用体检”，帮写论文的人检查参考文献靠不靠得住。 |
+| 0:10–0:25 | 全屏放 AI 六项对照图 `slide-03-ai-map.jpg`，鼠标或剪辑高亮从上往下扫过六行 | 作品用到了大模型、Agent、检索增强、多模态、安全控制和 MCP 六类 AI 技术。每一项都落在真实功能上，右边写着它在视频第几段演示。 |
 
 ### 第 1 段　要解决的问题（0:10–0:45）
 

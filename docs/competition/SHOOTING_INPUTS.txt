@@ -50,4 +50,5 @@ pnpm exec tsx docs/competition/media/video-2026-10-18/mcp-viewer.mts
 
 ==================== 图片 ====================
 片头封面（第 0、10 段）：docs\competition\media\slides\slide-01-cover.jpg
+AI 六项对照（第 0 段第二行）：docs\competition\media\slides\slide-03-ai-map.jpg
 核心设计（第 9 段）：docs\competition\media\slides\slide-02-design.jpg
