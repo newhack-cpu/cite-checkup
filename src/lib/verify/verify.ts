@@ -26,6 +26,7 @@ import {
 import { crossrefByDoi, crossrefJournals, crossrefSearch } from "./sources/crossref";
 import { fetchChndoi } from "./sources/cnpage";
 import { doiCsl, doiRegistry, type RegistryStatus } from "./sources/doi";
+import { translationAuthorConflict } from "./translation";
 import { openalexByDoi, openalexSearchTitle, openalexSourceTitles } from "./sources/openalex";
 import type { CheckStep, ParsedRef, RefKind, RefResult, WorkRecord } from "./types";
 
@@ -273,6 +274,37 @@ async function verifyBareDoi(ref: ParsedRef, doi: string, ctx: VerifyContext, st
 }
 
 export async function verifyReference(ref: ParsedRef, ctx: VerifyContext, extra?: ExtraEvidence): Promise<RefResult> {
+  return withTranslationAuthors(ref, await verifyCore(ref, ctx, extra));
+}
+
+const TRANSLATION_AUTHORS_ISSUE = "引文附的英文译名里，作者与中文作者对不上：";
+
+/**
+ * 引文附英文译名（或英文在前、方括号附中文原文）时，比对两段作者：拼音作者大多在中文作者和数据库记录的作者里都找不到，
+ * 说明译名换成了另一组人，引文本身自相矛盾。有已确认的同一篇记录时才改结论（已核实 → 信息有误）；
+ * 没有确认的记录时，作者名单可能只写了前几位、英文著录又换了顺序，只提示不改结论
+ */
+function withTranslationAuthors(ref: ParsedRef, result: RefResult): RefResult {
+  const confirmed = result.matchStatus !== "candidate" && (result.verdict === "verified" || result.verdict === "mismatch") ? result.match : undefined;
+  const conflict = translationAuthorConflict(ref, confirmed?.authors ?? []);
+  if (!conflict) return result;
+  const shown = conflict.unmatched.slice(0, 3).join("、") + (conflict.unmatched.length > 3 ? " 等" : "");
+  const detail = `${TRANSLATION_AUTHORS_ISSUE}${shown} 在中文作者（${conflict.han.join("、")}）${confirmed ? "和数据库登记的作者" : ""}里都找不到对应的人`;
+  if (!confirmed) return { ...result, notes: [...result.notes, `${detail}；可能是英文著录只列了其他几位作者，请对照原文核对`] };
+  const issue = `${detail}，请按原文改正英文译名的作者`;
+  if (result.verdict === "mismatch") return { ...result, issues: [...result.issues, issue] };
+  // 保留来源和其后的附注（如“；撤稿状态交叉核验未完成”）
+  const source = result.summary.match(/（来源：[^）]*）.*$/)?.[0] ?? "";
+  return {
+    ...result,
+    verdict: "mismatch",
+    confidence: Math.min(result.confidence, 0.85),
+    issues: [...result.issues, issue],
+    summary: `文献存在，但引文附的英文译名里作者与中文作者不是同一批人${source}`,
+  };
+}
+
+async function verifyCore(ref: ParsedRef, ctx: VerifyContext, extra?: ExtraEvidence): Promise<RefResult> {
   const steps: CheckStep[] = [];
   const candidates: WorkRecord[] = [];
   const evidence: DoiEvidence = {};

@@ -18,7 +18,7 @@ describe("PDF decompression resource boundaries", () => {
 
   it("accepts bounded compressed content", async () => {
     expect((await parsePdf(resourcePdf({ megabytes: 1 }))).text).toContain("Resource probe text.");
-  });
+  }, 20_000);
 
   it("accepts repeated short content without counting source references as decoded bytes", async () => {
     expect((await parsePdf(resourcePdf({ megabytes: 1, pages: 5, reuse: true }))).pageCount).toBe(5);

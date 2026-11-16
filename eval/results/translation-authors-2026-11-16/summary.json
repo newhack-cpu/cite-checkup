@@ -1,0 +1,382 @@
+{
+ "date": "2026-11-16",
+ "set": "cite-checkup-paper data/zhset-dev bilingual subset (40: real 20, C1 20)",
+ "engine": "working tree after translation.ts, before commit",
+ "cn": "DeepSeek search on",
+ "before": "DOI items from results-system-titleproof-20261115.jsonl (no-DOI items were not in that run)",
+ "tally": {
+  "C1/DOI/mismatch": 9,
+  "C1/DOI/near_match": 1,
+  "C1/noDOI/mismatch": 6,
+  "C1/noDOI/near_match": 2,
+  "C1/noDOI/unverifiable": 2,
+  "real/DOI/near_match": 1,
+  "real/DOI/verified": 9,
+  "real/noDOI/near_match": 2,
+  "real/noDOI/unverifiable": 2,
+  "real/noDOI/verified": 6
+ },
+ "rows": [
+  {
+   "id": "Q0008",
+   "type": "C1",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "mismatch",
+   "translationIssue": true,
+   "translationNote": false
+  },
+  {
+   "id": "Q0010",
+   "type": "C1",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "mismatch",
+   "translationIssue": true,
+   "translationNote": false
+  },
+  {
+   "id": "Q0012",
+   "type": "real",
+   "hasDoi": false,
+   "before": null,
+   "after": "verified",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0021",
+   "type": "real",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "verified",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0026",
+   "type": "C1",
+   "hasDoi": false,
+   "before": null,
+   "after": "mismatch",
+   "translationIssue": true,
+   "translationNote": false
+  },
+  {
+   "id": "Q0028",
+   "type": "real",
+   "hasDoi": false,
+   "before": null,
+   "after": "near_match",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0034",
+   "type": "real",
+   "hasDoi": false,
+   "before": null,
+   "after": "near_match",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0055",
+   "type": "C1",
+   "hasDoi": false,
+   "before": null,
+   "after": "near_match",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0059",
+   "type": "C1",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "mismatch",
+   "translationIssue": true,
+   "translationNote": false
+  },
+  {
+   "id": "Q0070",
+   "type": "C1",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "mismatch",
+   "translationIssue": true,
+   "translationNote": false
+  },
+  {
+   "id": "Q0076",
+   "type": "real",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "verified",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0082",
+   "type": "C1",
+   "hasDoi": false,
+   "before": null,
+   "after": "unverifiable",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0103",
+   "type": "real",
+   "hasDoi": true,
+   "before": "near_match",
+   "after": "near_match",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0120",
+   "type": "C1",
+   "hasDoi": false,
+   "before": null,
+   "after": "mismatch",
+   "translationIssue": true,
+   "translationNote": false
+  },
+  {
+   "id": "Q0128",
+   "type": "C1",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "mismatch",
+   "translationIssue": true,
+   "translationNote": false
+  },
+  {
+   "id": "Q0131",
+   "type": "real",
+   "hasDoi": false,
+   "before": null,
+   "after": "verified",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0137",
+   "type": "real",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "verified",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0152",
+   "type": "C1",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "mismatch",
+   "translationIssue": true,
+   "translationNote": false
+  },
+  {
+   "id": "Q0162",
+   "type": "C1",
+   "hasDoi": false,
+   "before": null,
+   "after": "near_match",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0185",
+   "type": "real",
+   "hasDoi": false,
+   "before": null,
+   "after": "unverifiable",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0186",
+   "type": "real",
+   "hasDoi": false,
+   "before": null,
+   "after": "verified",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0197",
+   "type": "real",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "verified",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0200",
+   "type": "C1",
+   "hasDoi": false,
+   "before": null,
+   "after": "mismatch",
+   "translationIssue": true,
+   "translationNote": false
+  },
+  {
+   "id": "Q0202",
+   "type": "real",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "verified",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0212",
+   "type": "real",
+   "hasDoi": false,
+   "before": null,
+   "after": "unverifiable",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0232",
+   "type": "C1",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "mismatch",
+   "translationIssue": true,
+   "translationNote": false
+  },
+  {
+   "id": "Q0243",
+   "type": "C1",
+   "hasDoi": false,
+   "before": null,
+   "after": "mismatch",
+   "translationIssue": true,
+   "translationNote": false
+  },
+  {
+   "id": "Q0246",
+   "type": "C1",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "mismatch",
+   "translationIssue": true,
+   "translationNote": false
+  },
+  {
+   "id": "Q0249",
+   "type": "real",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "verified",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0259",
+   "type": "real",
+   "hasDoi": false,
+   "before": null,
+   "after": "verified",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0263",
+   "type": "real",
+   "hasDoi": false,
+   "before": null,
+   "after": "verified",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0269",
+   "type": "real",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "verified",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0271",
+   "type": "C1",
+   "hasDoi": false,
+   "before": null,
+   "after": "unverifiable",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0276",
+   "type": "C1",
+   "hasDoi": true,
+   "before": "near_match",
+   "after": "near_match",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0292",
+   "type": "real",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "verified",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0312",
+   "type": "C1",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "mismatch",
+   "translationIssue": true,
+   "translationNote": false
+  },
+  {
+   "id": "Q0317",
+   "type": "real",
+   "hasDoi": true,
+   "before": "verified",
+   "after": "verified",
+   "translationIssue": false,
+   "translationNote": false
+  },
+  {
+   "id": "Q0321",
+   "type": "C1",
+   "hasDoi": false,
+   "before": null,
+   "after": "mismatch",
+   "translationIssue": true,
+   "translationNote": false
+  },
+  {
+   "id": "Q0324",
+   "type": "C1",
+   "hasDoi": false,
+   "before": null,
+   "after": "mismatch",
+   "translationIssue": true,
+   "translationNote": false
+  },
+  {
+   "id": "Q0343",
+   "type": "real",
+   "hasDoi": false,
+   "before": null,
+   "after": "verified",
+   "translationIssue": false,
+   "translationNote": false
+  }
+ ],
+ "note": "Dev set, seen during development; not a blind test. Screenshots: local dev server, Edge via Playwright."
+}

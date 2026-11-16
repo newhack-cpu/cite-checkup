@@ -11,13 +11,18 @@ const HAN_NAME_RE = /^\p{Script=Han}{2,4}$/u;
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
+/** 汉字姓名里姓占几个字：复姓（欧阳、司马…）且姓名至少 3 字时为 2，否则为 1 */
+export function hanFamilyLength(name: string): 1 | 2 {
+  return name.length >= 3 && COMPOUND_SURNAMES.has(name.slice(0, 2)) ? 2 : 1;
+}
+
 /** "窦杰" → { family: "Dou", given: "Jie" }；"欧阳修" → { family: "Ouyang", given: "Xiu" }。不是 2–4 个汉字时返回 undefined */
 export function romanizeHanName(name: string): Author | undefined {
   const s = name.replace(/\s+/g, "");
   if (!HAN_NAME_RE.test(s)) return undefined;
   const syllables = pinyin(s, { toneType: "none", type: "array", surname: "head", v: false }).map((x) => x.replace(/ü/g, "u"));
   if (syllables.length !== s.length || syllables.some((x) => !/^[a-z]+$/.test(x))) return undefined;
-  const familyLength = s.length >= 3 && COMPOUND_SURNAMES.has(s.slice(0, 2)) ? 2 : 1;
+  const familyLength = hanFamilyLength(s);
   return { family: capitalize(syllables.slice(0, familyLength).join("")), given: capitalize(syllables.slice(familyLength).join("")) };
 }
 

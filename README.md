@@ -89,7 +89,7 @@ Crossref 整条引文模糊检索 ──仍未找到且为英文──► OpenAl
 
 **中文期刊联网核查（标准体检）**：知网、万方、维普没有开放接口，Crossref 和 OpenAlex 对中文期刊文章收录有限，以前标准核验里的中文期刊论文几乎全判“待人工”（四批盲测 96 条中文里 90 条）。2026-10-19 起，Crossref 没确认的中文期刊论文，标准体检会多做一步（[cnjournal.ts](src/lib/verify/cnjournal.ts)、[cnpage.ts](src/lib/verify/sources/cnpage.ts)）：
 
-1. 用 DeepSeek 的 Search 接口（[`/v1/tools/search`](https://api-docs.deepseek.com/guides/search/)，DeepSeek 自研的搜索引擎，不是大模型）按题名检索，限定知网、万方、维普三站，从搜索结果解析题名、作者、刊名、年期。英文译名后面用方括号附了中文原文的引文，按方括号里的中文原文查。
+1. 用 DeepSeek 的 Search 接口（[`/v1/tools/search`](https://api-docs.deepseek.com/guides/search/)，DeepSeek 自研的搜索引擎，不是大模型）按题名检索，限定知网、万方、维普三站，从搜索结果解析题名、作者、刊名、年期。英文译名后面用方括号附了中文原文的引文，按方括号里的中文原文查。中文条目附英文译名的（或反过来），另外比对两段作者（[translation.ts](src/lib/verify/translation.ts)）：译名里过半数的拼音作者在中文作者和数据库登记的作者里都找不到对应的人时，有已确认记录就由“已核实”改判“信息有误”，没有就只提示。
 2. 搜索结果没有作者时补作者，拿到能下结论的记录就停：
    - 维普的结果本身带作者；
    - 读手机知网文章页（`wap.cnki.net/touch/web/Journal/Article/文献编号.html`）：页面内嵌的数据带作者、刊名、年、期，10-19 实测 23 条取到 22 条。知网阅读页 `read.cnki.net` 现在返回 404，DeepSeek 的 Fetch 取回的正文也没有作者，所以不走这两条路；知网页面上的页码多是期内页码，和印刷页码对不上（23 条里只有 1 条一致），不取；
