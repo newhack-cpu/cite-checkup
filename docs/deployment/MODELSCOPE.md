@@ -5,7 +5,7 @@
 ## 访问入口
 
 - 老师试用：[引用体检 · 魔搭](https://www.modelscope.cn/studios/kgkvybu111111/cite-checkup?mode=full)。已用全新、未登录的浏览器实际完成核查和报告下载，不需要安装软件或本机持续开机。
-- 管理页面：[创空间详情](https://modelscope.cn/studios/kgkvybu111111/cite-checkup)。应用域名是 `kgkvybu111111-cite-checkup.ms.show`，平台通过正常页面和 iframe 建立访客访问；直接用 curl 请求该域名会遇到平台鉴权提示，不要给老师部署令牌。
+- 管理页面：[创空间详情](https://modelscope.cn/studios/kgkvybu111111/cite-checkup)。应用域名是 `kgkvybu111111-cite-checkup.ms.show`，平台通过正常页面和 iframe 建立访客访问。2026-11-16 实测这个域名也能直接访问（浏览器和官方 MCP SDK 客户端可以，不带浏览器标识的命令行请求会被网关拦）；远程 MCP 入口是 `https://kgkvybu111111-cite-checkup.ms.show/api/mcp`。网关提示的 `api-inference.modelscope.net` 专用地址要魔搭账号令牌，不给评委用。不要给老师部署令牌。
 - 本次使用账号实际返回的免费 2 核 / 8 GB Docker 资源，没有启用付费硬件。DeepSeek 请求仍消耗原项目的模型额度。
 
 ## 本次验证与限制
@@ -58,3 +58,7 @@ docker run --rm --name cite-checkup-local -p 127.0.0.1:7860:7860 --env-file .env
 - [Next.js standalone 输出](https://nextjs.org/docs/app/api-reference/config/next-config-js/output)
 
 准备文件、实际构建、最终云端验收分别记录，不将三者混写。
+
+## 评审期间保活
+
+魔搭免费空间闲置后可能休眠，评委第一次打开会等很久。`docs/deployment/keepalive.py` 用无界面的 Edge 打开创空间页面、等应用出现，并顺带请求一次 `/api/agent`，日志写在 `output/keepalive/log.jsonl`（不进 Git）。2026-11-16 在本机 Windows 任务计划程序里注册了任务 `cite-checkup-modelscope-keepalive`：每天 8:00 起每小时一次、持续 15 小时，2026-12-31 后失效；只在这台电脑开机时运行。手动试跑两次，分别 12.7 秒、29.8 秒打开应用。不再需要时在任务计划程序里删掉这个任务即可。

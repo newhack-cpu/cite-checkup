@@ -65,13 +65,13 @@
     <tr>
       <td><span class="item">安全可控</span><span class="pts">4 分</span></td>
       <td><div class="what">检测写给 AI 的隐藏指令；模型不决定真伪；只访问公网地址，密钥只在服务端</div>
-          <div class="proof">白字、极小字号等隐藏文字逐条列出，并从导入内容中去掉</div></td>
+          <div class="proof">红队评测：20 个藏了指令的用例，0 例被诱导成“支持”</div></td>
       <td class="seg">视频<b>第 6 段</b></td>
     </tr>
     <tr>
       <td><span class="item">MCP</span><span class="pts">4 分</span></td>
-      <td><div class="what">官方 SDK 实现的 MCP 服务：核验参考文献、核查论断两个工具，返回结构化结果</div>
-          <div class="proof">Claude、Cursor 等 AI 工具可以直接调用</div></td>
+      <td><div class="what">官方 SDK 实现的 MCP 服务：核验参考文献、核查论断两个工具，本地或远程都能连</div>
+          <div class="proof">魔搭上开放远程入口，Claude、Cursor 等填一个地址就能调用</div></td>
       <td class="seg">视频<b>第 8 段</b></td>
     </tr>
   </table>
