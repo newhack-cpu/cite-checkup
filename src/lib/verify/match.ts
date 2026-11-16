@@ -280,6 +280,31 @@ function pinyinNameFits(name: string, author: Author): boolean {
     || (recorded.endsWith(family) && recorded.length > family.length && recorded[0] === initial);
 }
 
+const letters = (s: string) => s.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase().replace(/[^a-z]/g, "");
+const titleCase = (s: string) => s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
+
+/**
+ * Crossref 有时把中国作者的姓和名登记反了（机械工程学报 10.3901/JME.2020.11.161：杨敏登记成 family "Min"、given "YANG"），
+ * 照登记生成的规范写法就成了 "MIN Y"。引文写的是汉字作者、记录是拼音时逐位对照：比得上的位置全都是“姓名对调才对得上”、
+ * 且 given 登记的是完整的姓（至少两位）时，返回把拼音作者姓和名调回来的记录，只用于生成规范写法。
+ * 任何一位按原顺序就对得上、对不上、或只登记了首字母，都返回 undefined，不动
+ */
+export function citedNameOrder(ref: ParsedRef, rec: WorkRecord): WorkRecord | undefined {
+  const names = ref.authorsGuess ? hanNames(ref.authorsGuess) : [];
+  const compared = Math.min(names.length, rec.authors.length);
+  if (compared < 2) return undefined;
+  for (let i = 0; i < compared; i++) {
+    const a = rec.authors[i];
+    const roman = romanizeHanName(names[i]);
+    if (!roman || /\p{Script=Han}/u.test(`${a.family}${a.given ?? ""}`)) return undefined;
+    const [family, given, citedFamily, citedGiven] = [a.family, a.given ?? "", roman.family, roman.given ?? ""].map(letters);
+    if (!given || !citedGiven || family === citedFamily || family !== citedGiven || given !== citedFamily) return undefined;
+  }
+  const swap = (a: Author): Author =>
+    /\p{Script=Han}/u.test(a.family) || letters(a.given ?? "").length < 2 ? a : { family: titleCase(a.given!.trim()), given: titleCase(a.family.trim()) };
+  return { ...rec, authors: rec.authors.map(swap) };
+}
+
 export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
   const rawSet = tokenSet(ref.raw);
   const main = stripRetractionPrefix(rec.title);

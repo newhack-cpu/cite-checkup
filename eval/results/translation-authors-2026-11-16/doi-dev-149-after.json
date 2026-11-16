@@ -1,0 +1,1640 @@
+[
+ {
+  "id": "Q0002",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "notes": [],
+  "suggestion": "钱志宽, 邢乐才, 刘世荣, 等. 贵州江口平引老堡组顶部的锆石SHRIMP年龄与对比意义[J]. SCIENTIA SINICA Terrae, 2013, 43(7): 1195-1206. DOI: 10.1360/zd-2013-43-7-1195.",
+  "cited": "钱志宽, 邢乐才, 刘世荣, 等. 贵州江口平引老堡组顶部的锆石SHRIMP年龄"
+ },
+ {
+  "id": "Q0007",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/JSJF201001008.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "HUANG X, DING W, DU Q. Parametric Surface Mesh Generation Based on Advancing Front Technique: Parametric Surface Mesh Generation Based on Advancing Front Technique[J]. Journal of Computer-Aided Design & Computer Graphics, 2010, 22(1): 51-59. DOI: 10.3724/sp.j.1089.2010.10435.",
+  "cited": "黄晓东, 丁问司, 杜群贵. 基于波前法的参数曲面有限元网格生成算法[J]. 计"
+ },
+ {
+  "id": "Q0008",
+  "verdict": "mismatch",
+  "summary": "文献存在，但引文附的英文译名里作者与中文作者不是同一批人（来源：Crossref）",
+  "issues": [
+   "引文附的英文译名里，作者与中文作者对不上：Hou Z Q、Chen J、Zhai M G 在中文作者（程刚、杜言鲁、齐媛）和数据库登记的作者里都找不到对应的人，请按原文改正英文译名的作者"
+  ],
+  "notes": [
+   "题名与数据库记录不完全一致，请核对用词",
+   "数据库登记的拼音作者姓和名顺序颠倒（登记为 Gang C, Yanlu D, Yuan Q 等），规范写法已按引文的汉字作者调回"
+  ],
+  "suggestion": "CHENG G, DU Y, QI Y, et al. New-type gimbal mount of airborne optoelectronic platform and its key technologies[J]. Journal of Applied Optics, 2022, 43(4): 577-582. DOI: 10.5768/jao202243.0409003.",
+  "cited": "程刚, 杜言鲁, 齐媛, 等. 新型机载光电平台万向架及其关键技术[J]. 应用"
+ },
+ {
+  "id": "Q0003",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与记录不一致（来源：知网、Crossref）",
+  "issues": [
+   "起始页不符：引用写 1084，DOI 登记的页码为 906-911"
+  ],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/FGXB201608002.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "NING ZHANG-LEI 宁, YANG DAN-DAN 杨, LEI XI-TING 雷, et al. Room Temperature Synthesis of Samarium Pyrazine-2,3,5,6-tetracarboxylate Coordination Polymers via A Fast Precipitation Method and Their Luminescent Properties[J]. Chinese Journal of Luminescence, 2016, 37(8): 906-911. DOI: 10.3788/fgxb20163708.0906.",
+  "cited": "宁张磊, 杨丹丹, 雷晰婷, 等. 室温快速液相沉淀法制备吡嗪四甲酸钐配合物及其"
+ },
+ {
+  "id": "Q0001",
+  "verdict": "not_found",
+  "summary": "DOI 未注册，且检索不到同名文献，疑似编造",
+  "issues": [
+   "DOI 10.3799/dqkx.2018.627 在 doi.org 查无注册记录",
+   "Crossref 中也检索不到题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "邱凯华, 段雨宁, 薛芳志. 湖南柿竹园钨锡多金属矿床中铜矿化特征及其成矿规律["
+ },
+ {
+  "id": "Q0010",
+  "verdict": "mismatch",
+  "summary": "文献存在，但引文附的英文译名里作者与中文作者不是同一批人（来源：Crossref）",
+  "issues": [
+   "引文附的英文译名里，作者与中文作者对不上：Huang Xiaodong、Ding Wensi、Du Qungui 在中文作者（邵海东、肖一鸣、闵志闪）和数据库登记的作者里都找不到对应的人，请按原文改正英文译名的作者"
+  ],
+  "notes": [
+   "题名与数据库记录不完全一致，请核对用词"
+  ],
+  "suggestion": "Blockchain and Edge Computing Enabled Federated Learning Fault Diagnosis Framework[J]. Journal of Mechanical Engineering, 2023, 59(21): 283. DOI: 10.3901/jme.2023.21.283.",
+  "cited": "邵海东, 肖一鸣, 闵志闪, 等. 区块链和边缘计算赋能的联邦学习故障诊断框架["
+ },
+ {
+  "id": "Q0016",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "notes": [],
+  "suggestion": "王家鼎, 许元珺, 张登飞, 等. 黄土振动促渗效应研究[J]. SCIENTIA SINICA Terrae, 2021, 51(5): 763-782. DOI: 10.1360/sste-2020-0293.",
+  "cited": "王家鼎, 许元珺, 张登飞, 等. 黄土振动促渗效应研究[J]. 中国科学（地球"
+ },
+ {
+  "id": "Q0021",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "notes": [
+   "题名与数据库记录不完全一致，请核对用词"
+  ],
+  "suggestion": "ZHANG Y, ZHANG J, REN Z, et al. Policies and planning for advancing scientific data development in BRICS[J]. China Scientific Data, 2024, 9(1): fpage-lpage. DOI: 10.11922/11-6035.csd.2023.0137.zh.",
+  "cited": "张耀南, 张杰, 任泽瑶, 等. 金砖国家科学数据发展政策与规划[J]. 中国科"
+ },
+ {
+  "id": "Q0023",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "张书飞, 戴明, 刘华雪. 广东沿海近20年球形棕囊藻赤潮暴发规律及成因分析[J"
+ },
+ {
+  "id": "Q0009",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "石莉, 桂静, 吴克勤. 海洋酸化及国际研究动态[J]. 海洋科学进展, 201"
+ },
+ {
+  "id": "Q0025",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与知网记录不一致（来源：知网）",
+  "issues": [
+   "引用中的 DOI 指向另一篇文献《Development of solvent extraction separa…》"
+  ],
+  "notes": [],
+  "cited": "刘长宇, 董绍俊. 水质生化需氧量快速检测新方法研究进展——现场、实时和就地监测"
+ },
+ {
+  "id": "Q0014",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：The operation was aborted due to timeout"
+  ],
+  "notes": [],
+  "cited": "钱冬, 杨国梁, 刘问. 罗氏沼虾苗肌肉白浊病病原的初步研究[J]. 水生生物学"
+ },
+ {
+  "id": "Q0036",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：The operation was aborted due to timeout"
+  ],
+  "notes": [],
+  "cited": "雷知迪, 邓荣兵, 邓海啸, 等. 低温环境对超导腔位移振动特性影响的实验研究["
+ },
+ {
+  "id": "Q0038",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "notes": [],
+  "suggestion": "程邦波, 徐冰, 罗勇, 等. 全球变化和人类可持续发展: 挑战与对策[J]. Chinese Science Bulletin, 2013, 58(21): 2100-2106. DOI: 10.1360/csb2013-58-21-2100.",
+  "cited": "程邦波, 徐冰, 罗勇, 等. 全球变化和人类可持续发展: 挑战与对策[J]. "
+ },
+ {
+  "id": "Q0027",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "陈玉爽, 田健, 丁梦婷, 等. 基于流热固耦合的U型管式熔盐换热器温度场与应力"
+ },
+ {
+  "id": "Q0041",
+  "verdict": "not_found",
+  "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+  "issues": [
+   "DOI 10.1360/tb-2024-1135 实际指向《Development and application of organelle gene editing techno…》（Zhu Y, Tai L, Zhang J 等，2025），与引用内容不符",
+   "检索不到与引用题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "陈国利, 黄垒. 化学氧化升级回收聚烯烃塑料研究进展及挑战[J]. 科学通报, "
+ },
+ {
+  "id": "Q0024",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "李春梅, 林娟. 豆粕发酵工艺优化及发酵豆粕替代部分鱼粉对大黄鱼的饲喂效果[J]"
+ },
+ {
+  "id": "Q0048",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/KXTB201814003.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "BAO X. Nano confinement and catalytic conversion of energy molecules[J]. Chinese Science Bulletin, 2018, 63(14): 1265-1274. DOI: 10.1360/n972018-00441.",
+  "cited": "包信和. 纳米限域及能源分子的催化转化[J]. 科学通报, 2018, 63(1"
+ },
+ {
+  "id": "Q0049",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与记录不一致（来源：知网、Crossref）",
+  "issues": [
+   "起始页不符：引用写 390，DOI 登记的页码为 548-552"
+  ],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/SZDL201206015.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "LIU Z-H, ZHENG Y-Y, GONG Y-X, et al. Direct conversion from cassava to bioethanol with a recombinant strain of yeast: Direct conversion from cassava to bioethanol with a recombinant strain of yeast[J]. JOURNAL OF SHENZHEN UNIVERSITY SCIENCE AND ENGINEERING, 2012, 29(6): 548-552. DOI: 10.3724/sp.j.1249.2012.06548.",
+  "cited": "刘泽寰, 郑阳阳, 龚映雪, 等. 利用重组酵母实现木薯至乙醇的直接转化[J]."
+ },
+ {
+  "id": "Q0047",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "赵晶, 陈然, 郝慧超. 机器学习技术在风景园林中的应用进展与展望[J]. 北京"
+ },
+ {
+  "id": "Q0051",
+  "verdict": "near_match",
+  "summary": "DOI 登记的作者、年份、卷页与引文一致，但登记的题名是另一语种，题名没能核对，请对照原文",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文",
+   "已核实需要题名也对得上；这一条在知网、万方、维普和期刊官网没有找到题名、作者、刊名都对得上的记录，不能确认，也不算写错"
+  ],
+  "suggestion": "ZHANG X, WAN S, LIU W, et al. Stepping into the new age of efficiency and precision: review and prospect of evidence-based research on traditional Chinese medicine for major diseases prevention and treatment[J]. SCIENTIA SINICA Vitae, 2022, 52(6): 823-831. DOI: 10.1360/ssv-2021-0380.",
+  "cited": "张晓雨, 万思琦, 刘文静, 等. 迈入高效精准新时代:中医药防治重大疾病循证分"
+ },
+ {
+  "id": "Q0053",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/KXTB202535012.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "TANG X, ZHANG T, LIU L. From “Empirical Medicine” to “Precision Medicine”: problems, progress and prospects of traditional Chinese medicine prevention and treatment for gastric precancerous lesions in the context of atrophy[J]. Chinese Science Bulletin, 2025, 70(35): 5990-6009. DOI: 10.1360/csb-2025-5422.",
+  "cited": "唐旭东, 张泰, 刘林. 从“经验医学”到“精准医学”——萎缩背景下胃癌前病变中"
+ },
+ {
+  "id": "Q0056",
+  "verdict": "near_match",
+  "summary": "DOI 登记的作者、年份、卷页与引文一致，但登记的题名是另一语种，题名没能核对，请对照原文",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文",
+   "已核实需要题名也对得上；这一条在知网、万方、维普和期刊官网没有找到题名、作者、刊名都对得上的记录，不能确认，也不算写错"
+  ],
+  "suggestion": "HUANG LIN 黄. A review on the climatic regulation effects of afforestation and its impact mechanisms[J]. Acta Ecologica Sinica, 2021, 41(2). DOI: 10.5846/stxb202003290731.",
+  "cited": "黄麟. 造林气候调节效应与影响机理研究进展[J]. 生态学报, 2021, 41"
+ },
+ {
+  "id": "Q0059",
+  "verdict": "mismatch",
+  "summary": "文献存在，但引文附的英文译名里作者与中文作者不是同一批人（来源：Crossref）",
+  "issues": [
+   "引文附的英文译名里，作者与中文作者对不上：Huang Xiaodong、Ding Wensi、Du Qungui 在中文作者（李春来、刘建军、左维）和数据库登记的作者里都找不到对应的人，请按原文改正英文译名的作者"
+  ],
+  "notes": [
+   "题名与数据库记录不完全一致，请核对用词"
+  ],
+  "suggestion": "LI C, LIU J, ZUO W, et al. Progress of China's Lunar Exploration (2011—2020)[J]. Chinese Journal of Space Science, 2021, 41(01): 68-75. DOI: 10.3724/sp.j.0254-6124.2021.0106.",
+  "cited": "李春来, 刘建军, 左维, 等. 中国月球探测进展(2011–2020)[J]."
+ },
+ {
+  "id": "Q0043",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：The operation was aborted due to timeout"
+  ],
+  "notes": [],
+  "cited": "何俊, 赵晓岩, 汪林, 等. BEPCII束损系统研究[J]. 核技术, 20"
+ },
+ {
+  "id": "Q0057",
+  "verdict": "not_found",
+  "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+  "issues": [
+   "DOI 10.5846/stxb201306091556 实际指向《Effects of arbuscular mycorrhizal fungi and plant symbiosis …》（ZHU Ying 祝, XIONG Junlan 熊, LV Guangchao 吕 等，2015），与引用内容不符",
+   "检索不到与引用题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "祝英, 熊俊兰, 吕广超, 等. 丛枝菌根真菌与植物共生对植物水分关系的影响及机"
+ },
+ {
+  "id": "Q0070",
+  "verdict": "mismatch",
+  "summary": "文献存在，但引文附的英文译名里作者与中文作者不是同一批人（来源：Crossref）",
+  "issues": [
+   "引文附的英文译名里，作者与中文作者对不上：Xia C Z、Liu C、Cai Z N 在中文作者（张志斌、杨莹、张小平）和数据库登记的作者里都找不到对应的人，请按原文改正英文译名的作者"
+  ],
+  "notes": [
+   "题名与数据库记录不完全一致，请核对用词"
+  ],
+  "suggestion": "ZHANG ZHIBIN 张, YANG YING 杨, ZHANG XIAOPING 张, et al. Wind speed changes and its influencing factors in Southwestern China[J]. Acta Ecologica Sinica, 2014, 34(2). DOI: 10.5846/stxb201305141051.",
+  "cited": "张志斌, 杨莹, 张小平, 等. 我国西南地区风速变化及其影响因素[J]. 生态"
+ },
+ {
+  "id": "Q0066",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "notes": [],
+  "suggestion": "肖顺平, 黄高明, 刘涛, 等. 基于H/A目标极化分解理论的统计分析[J]. SCIENTIA SINICA Informationis, 2010, 40(1): 102-114. DOI: 10.1360/zf2010-40-1-102.",
+  "cited": "肖顺平, 黄高明, 刘涛, 等. 基于H/A目标极化分解理论的统计分析[J]. "
+ },
+ {
+  "id": "Q0073",
+  "verdict": "not_found",
+  "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+  "issues": [
+   "DOI 10.3901/jme.2018.10.093 实际指向《Microstructure and Mechanical Properties of Al-Cu Joints by …》（FU S，2018），与引用内容不符",
+   "检索不到与引用题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "侯尧华, 张定华, 张莹. 薄壁件加工误差补偿建模与学习控制方法[J]. 机械工"
+ },
+ {
+  "id": "Q0076",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "notes": [
+   "题名与数据库记录不完全一致，请核对用词"
+  ],
+  "suggestion": "TANG X, PAN R, XIONG Z. Abnormal current-dependent intersystem crossing regulatedby the combined interactions of exciton and exciplex statesin rubrene-based light-emitting devices[J]. Chinese Science Bulletin, 2023. DOI: 10.1360/tb-2022-1165.",
+  "cited": "汤仙童, 潘睿亨, 熊祖洪. 红荧烯发光器件中激子和激基复合物共同调控的系间窜越"
+ },
+ {
+  "id": "Q0061",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "董乃勇, 刁琪, 王艳伟. 滴灌水盐调控滨海盐碱地夏季造林土壤盐分与植物生长变化"
+ },
+ {
+  "id": "Q0079",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "梁燕, 饶星晨. 改进YOLOX的遥感图像目标检测算法[J]. 计算机工程与应用"
+ },
+ {
+  "id": "Q0072",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "翟洲燕, 常芳, 李同昇. 陕西省传统村落文化遗产景观基因组图谱研究[J]. 地"
+ },
+ {
+  "id": "Q0084",
+  "verdict": "not_found",
+  "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+  "issues": [
+   "DOI 10.5846/stxb202003290731 实际指向《A review on the climatic regulation effects of afforestation…》（HUANG Lin 黄，2021），与引用内容不符",
+   "检索不到与引用题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "付国峰, 梁超鹏, 金敏静, 等. 林火干扰对亚热带森林碳汇功能的长期影响及其驱"
+ },
+ {
+  "id": "Q0088",
+  "verdict": "not_found",
+  "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+  "issues": [
+   "DOI 10.3788/fgxb20163708.0906 实际指向《Room Temperature Synthesis of Samarium Pyrazine-2,3,5,6-tetr…》（NING Zhang-lei 宁, YANG Dan-dan 杨, LEI Xi-ting 雷 等，2016），与引用内容不符",
+   "检索不到与引用题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "罗玉慧, 谢磊, 夏宇, 等. 水热法制备萘二甲酸铕配合物及其电致发光性能研究["
+ },
+ {
+  "id": "Q0078",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：The operation was aborted due to timeout"
+  ],
+  "notes": [],
+  "cited": "温小波, 库夭梅, 罗静波. 温度、体重及摄食状态对克氏原螯虾代谢的作用[J]."
+ },
+ {
+  "id": "Q0089",
+  "verdict": "not_found",
+  "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+  "issues": [
+   "DOI 10.3901/jme.2020.11.161 实际指向《Adaptive Velocity Planning under Complex Constraints for 5-a…》（Min Y, Xianchao Z, Zeshan Z 等，2020），与引用内容不符",
+   "检索不到与引用题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "陆霞, 董俊秀. 面向曲率突变的高速铣削进给率多目标优化方法[J]. 机械工程学"
+ },
+ {
+  "id": "Q0097",
+  "verdict": "not_found",
+  "summary": "DOI 未注册，且检索不到同名文献，疑似编造",
+  "issues": [
+   "DOI 10.11889/j.0253-3219.2015.hjs.38.522394 在 doi.org 查无注册记录",
+   "Crossref 中也检索不到题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "李艳丽, 夏宏娜, 孙梅健, 等. 液态燃料熔盐堆非能动余热排出系统瞬态特性数值"
+ },
+ {
+  "id": "Q0096",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "方裕强, 涂雪洋, 刘以鑫. 大尺寸2M-WS2柔性超导材料制备与物性研究[J]"
+ },
+ {
+  "id": "Q0086",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "黄建微, 张璇, 李德红, 等. 基于β放射源的组织吸收剂量的量值复现[J]. "
+ },
+ {
+  "id": "Q0099",
+  "verdict": "not_found",
+  "summary": "DOI 未注册，且检索不到同名文献，疑似编造",
+  "issues": [
+   "DOI 10.3321/j.issn:0479-8023.2005.04.265 在 doi.org 查无注册记录",
+   "Crossref 中也检索不到题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "龙琪瑞, 曹慧斌, 许斌斌, 等. 基于InVEST模型的县域生态系统服务功能时"
+ },
+ {
+  "id": "Q0102",
+  "verdict": "near_match",
+  "summary": "DOI 登记的作者、年份、卷页与引文一致，但登记的题名是另一语种，题名没能核对，请对照原文",
+  "issues": [],
+  "notes": [
+   "引用列出的作者都在数据库记录中，但顺序不同（数据库为 Liu S, Hu J）；Crossref 的中文记录有时把作者顺序登记错，请以原文为准",
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文",
+   "已核实需要题名也对得上；这一条在知网、万方、维普和期刊官网没有找到题名、作者、刊名都对得上的记录，不能确认，也不算写错"
+  ],
+  "suggestion": "LIU S, HU J. Fabrication of smart polymeric nanovectors to amplify intracellular oxidative stress for chemodynamic therapy[J]. SCIENTIA SINICA Chimica, 2020, 50(3): 366-376. DOI: 10.1360/ssc-2019-0152.",
+  "cited": "胡进明, 刘世勇. 用于化学动力学疗法的高分子纳米载体研究进展[J]. 中国科学"
+ },
+ {
+  "id": "Q0103",
+  "verdict": "near_match",
+  "summary": "DOI 登记记录的其余信息与引文一致，但引用中有作者在登记的作者里找不到，作者没能核对全，请对照原文（来源：Crossref）",
+  "issues": [],
+  "notes": [
+   "引用中有作者不在 DOI 登记的拼音作者里：张定华、张莹（登记的作者为 HOU Y）；拼音登记常不全，不算写错，请对照原文核对作者",
+   "题名与数据库记录不完全一致，请核对用词",
+   "已核实需要作者也对得上；这一条在知网、万方、维普和期刊官网没有找到题名、作者、刊名都对得上的记录，不能确认，也不算写错"
+  ],
+  "suggestion": "HOU Y. Error Compensation Modeling and Learning Control Method for Thin-walled Part Milling Process[J]. Journal of Mechanical Engineering, 2018, 54(17): 108. DOI: 10.3901/jme.2018.17.108.",
+  "cited": "侯尧华, 张定华, 张莹. 薄壁件加工误差补偿建模与学习控制方法[J]. 机械工"
+ },
+ {
+  "id": "Q0104",
+  "verdict": "near_match",
+  "summary": "DOI 登记的作者、年份、卷页与引文一致，但登记的题名是另一语种，题名没能核对，请对照原文",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文",
+   "已核实需要题名也对得上；这一条在知网、万方、维普和期刊官网没有找到题名、作者、刊名都对得上的记录，不能确认，也不算写错"
+  ],
+  "suggestion": "NING ZHANG-LEI 宁, YANG DAN-DAN 杨, LEI XI-TING 雷, et al. Room Temperature Synthesis of Samarium Pyrazine-2,3,5,6-tetracarboxylate Coordination Polymers via A Fast Precipitation Method and Their Luminescent Properties[J]. Chinese Journal of Luminescence, 2016, 37(8): 906-911. DOI: 10.3788/fgxb20163708.0906.",
+  "cited": "宁张磊, 杨丹丹, 雷晰婷, 等. 室温快速液相沉淀法制备吡嗪四甲酸钐配合物及其"
+ },
+ {
+  "id": "Q0111",
+  "verdict": "mismatch",
+  "summary": "DOI 张冠李戴；另检索到一篇相近的文献，请核对",
+  "issues": [
+   "DOI 10.1360/132012-709 实际指向《Ground-based giant solar telescope of China》（LIU Z, JI H, DENG Y 等，2012），与引用内容不符"
+  ],
+  "notes": [],
+  "cited": "卢通, 夏雷, 胡铮, 等. Zr 基于 Ti 基非晶合金的不同划痕变形行为[J"
+ },
+ {
+  "id": "Q0098",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：The operation was aborted due to timeout"
+  ],
+  "notes": [],
+  "cited": "钱冬, 杨国梁, 刘问. 罗氏沼虾苗肌肉白浊病病原的初步研究[J]. 水生生物学"
+ },
+ {
+  "id": "Q0118",
+  "verdict": "near_match",
+  "summary": "DOI 登记的作者、年份、卷页与引文一致，但登记的题名是另一语种，题名没能核对，请对照原文",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文",
+   "已核实需要题名也对得上；这一条在知网、万方、维普和期刊官网没有找到题名、作者、刊名都对得上的记录，不能确认，也不算写错"
+  ],
+  "suggestion": "XIA C, LIU C, CAI Z, et al. Evaluation of the accuracy of the Sentinel-5 Precursor operational SO<sub>2</sub> products over China[J]. Chinese Science Bulletin, 2020, 65(20): 2106-2111. DOI: 10.1360/tb-2019-0772.",
+  "cited": "夏丛紫, 刘诚, 蔡兆男, 等. 哨兵5号欧洲业务二氧化硫产品在中国的准确性评估"
+ },
+ {
+  "id": "Q0100",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "覃学标, 黄冬梅, 宋巍. 基于YOLOv5模型的鱼类数量统计方法改进研究[J]"
+ },
+ {
+  "id": "Q0123",
+  "verdict": "not_found",
+  "summary": "DOI 未注册，且检索不到同名文献，疑似编造",
+  "issues": [
+   "DOI 10.3969/j.issn.1671-6647.2011.01.474 在 doi.org 查无注册记录",
+   "Crossref 中也检索不到题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "龙萍, 闫亮, 汪明. 近岸养殖海域溶解氧昼夜变化对贝类钙化的影响[J]. 海洋"
+ },
+ {
+  "id": "Q0124",
+  "verdict": "near_match",
+  "summary": "DOI 登记的作者、年份、卷页与引文一致，但登记的题名是另一语种，题名没能核对，请对照原文",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文",
+   "数据库登记的拼音作者姓和名顺序颠倒（登记为 Min Y, Xianchao Z, Zeshan Z 等），规范写法已按引文的汉字作者调回",
+   "已核实需要题名也对得上；这一条在知网、万方、维普和期刊官网没有找到题名、作者、刊名都对得上的记录，不能确认，也不算写错"
+  ],
+  "suggestion": "YANG M, ZHAO X, ZHONG Z, et al. Adaptive Velocity Planning under Complex Constraints for 5-axis CNC Systems[J]. Journal of Mechanical Engineering, 2020, 56(11): 161. DOI: 10.3901/jme.2020.11.161.",
+  "cited": "杨敏, 赵现朝, 钟泽杉, 等. 复杂约束下的五轴数控系统自适应速度规划[J]."
+ },
+ {
+  "id": "Q0128",
+  "verdict": "mismatch",
+  "summary": "文献存在，但引文附的英文译名里作者与中文作者不是同一批人（来源：Crossref）",
+  "issues": [
+   "引文附的英文译名里，作者与中文作者对不上：He Z X、Yan Y H、Ma Q X 在中文作者（祝英、熊俊兰、吕广超）和数据库登记的作者里都找不到对应的人，请按原文改正英文译名的作者"
+  ],
+  "notes": [
+   "题名与数据库记录不完全一致，请核对用词"
+  ],
+  "suggestion": "ZHU YING 祝, XIONG JUNLAN 熊, LV GUANGCHAO 吕, et al. Effects of arbuscular mycorrhizal fungi and plant symbiosis on plant water relation and its mechanism[J]. Acta Ecologica Sinica, 2015, 35(8). DOI: 10.5846/stxb201306091556.",
+  "cited": "祝英, 熊俊兰, 吕广超, 等. 丛枝菌根真菌与植物共生对植物水分关系的影响及机"
+ },
+ {
+  "id": "Q0129",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+  "issues": [
+   "年份不符：引用写 2010，数据库记录为 2012"
+  ],
+  "notes": [
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文"
+  ],
+  "suggestion": "XIA L, XING J, HU Y, et al. Deformation patterns in Zr-based and Ti-based metallic glasses under scratch processes[J]. SCIENTIA SINICA Physica, Mechanica & Astronomica, 2012, 42(6): 603-608. DOI: 10.1360/132012-293.",
+  "cited": "卢通, 夏雷, 胡铮, 等. Zr 基于 Ti 基非晶合金的不同划痕变形行为[J"
+ },
+ {
+  "id": "Q0133",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+  "issues": [
+   "引用中的 DOI 指向另一篇文献《城市和郊区复杂下垫面地气交换湍流通量的观测研究》，正确 DOI 应为 10.1360/sste-2020-0293"
+  ],
+  "notes": [],
+  "suggestion": "王家鼎, 许元珺, 张登飞, 等. 黄土振动促渗效应研究[J]. SCIENTIA SINICA Terrae, 2021, 51(5): 763-782. DOI: 10.1360/sste-2020-0293.",
+  "cited": "王家鼎, 许元珺, 张登飞, 等. 黄土振动促渗效应研究[J]. 中国科学（地球"
+ },
+ {
+  "id": "Q0134",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/JEXK201704012.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "MA M, ZHENG W, XIA B, et al. Interplanetary scintillation observation and analysis using Martian spacecraft downlink signal from VLBI station[J]. SCIENTIA SINICA Technologica, 2017, 47(4): 448-454. DOI: 10.1360/n092016-00223.",
+  "cited": "马茂莉, 郑为民, 夏博, 等. 基于VLBI站接收的火星探测器信号研究行星际闪"
+ },
+ {
+  "id": "Q0137",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "notes": [
+   "题名与数据库记录不完全一致，请核对用词"
+  ],
+  "suggestion": "Blockchain and Edge Computing Enabled Federated Learning Fault Diagnosis Framework[J]. Journal of Mechanical Engineering, 2023, 59(21): 283. DOI: 10.3901/jme.2023.21.283.",
+  "cited": "邵海东, 肖一鸣, 闵志闪, 等. 区块链和边缘计算赋能的联邦学习故障诊断框架["
+ },
+ {
+  "id": "Q0116",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "覃学标, 黄冬梅, 宋巍. 基于YOLOv5模型的鱼类数量统计方法改进研究[J]"
+ },
+ {
+  "id": "Q0141",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "董乃勇, 刁琪, 王艳伟. 滴灌水盐调控滨海盐碱地夏季造林土壤盐分与植物生长变化"
+ },
+ {
+  "id": "Q0147",
+  "verdict": "mismatch",
+  "summary": "DOI 张冠李戴；另检索到一篇相近的文献，请核对",
+  "issues": [
+   "DOI 10.3901/jme.2020.09.223 实际指向《Research Progress in Machining Technology of Nanohole Arrays》（Pengcheng Z, Qiuling W, Feng J 等，2020），与引用内容不符"
+  ],
+  "notes": [],
+  "cited": "杨敏, 赵现朝, 钟泽杉, 等. 复杂约束下的五轴数控系统自适应速度规划[J]."
+ },
+ {
+  "id": "Q0149",
+  "verdict": "near_match",
+  "summary": "DOI 登记的作者、年份、卷页与引文一致，但登记的题名是另一语种，题名没能核对，请对照原文",
+  "issues": [],
+  "notes": [
+   "引用列出的作者都在数据库记录中，但顺序不同（数据库为 ZHANG S, YANG D, XU X）；Crossref 的中文记录有时把作者顺序登记错，请以原文为准",
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文",
+   "已核实需要题名也对得上；这一条在知网、万方、维普和期刊官网没有找到题名、作者、刊名都对得上的记录，不能确认，也不算写错"
+  ],
+  "suggestion": "ZHANG S, YANG D, XU X. Attribution analysis for runoff decline in Yellow River Basin during past fifty years based on Budyko hypothesis[J]. SCIENTIA SINICA Technologica, 2015, 45(10): 1024-1034. DOI: 10.1360/n092015-00013.",
+  "cited": "杨大文, 徐翔宇, 张树磊. 基于水热耦合平衡方程的黄河流域径流演变归因分析[J"
+ },
+ {
+  "id": "Q0152",
+  "verdict": "mismatch",
+  "summary": "文献存在，但引文附的英文译名里作者与中文作者不是同一批人（来源：Crossref）",
+  "issues": [
+   "引文附的英文译名里，作者与中文作者对不上：Shao H D、Xiao Y M、Min Z S 在中文作者（程邦波、徐冰、罗勇）和数据库登记的作者里都找不到对应的人，请按原文改正英文译名的作者"
+  ],
+  "notes": [],
+  "suggestion": "程邦波, 徐冰, 罗勇, 等. 全球变化和人类可持续发展: 挑战与对策[J]. Chinese Science Bulletin, 2013, 58(21): 2100-2106. DOI: 10.1360/csb2013-58-21-2100.",
+  "cited": "程邦波, 徐冰, 罗勇, 等. 全球变化和人类可持续发展: 挑战与对策[J]. "
+ },
+ {
+  "id": "Q0121",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "庞栋, 戚常乐, 叶金云. 发酵棉籽粕替代豆粕对中华绒螯蟹幼蟹生长性能、免疫功能"
+ },
+ {
+  "id": "Q0157",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/JGDJ202103025.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "ZHU HONG 朱, XIE JUNFENG 谢, WU XIANGQIAN 吴, et al. Feasibility of Super-Resolution Reconstruction in Satellite Platform Jitter Detection[J]. Laser & Optoelectronics Progress, 2021, 58(3): 0314004-314004227. DOI: 10.3788/lop202158.0314004.",
+  "cited": "朱红, 谢俊峰, 吴向前, 等. 超分辨率重建在卫星平台颤振探测中的可行性[J]"
+ },
+ {
+  "id": "Q0159",
+  "verdict": "not_found",
+  "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+  "issues": [
+   "DOI 10.1360/tb-2019-0772 实际指向《Evaluation of the accuracy of the Sentinel-5 Precursor opera…》（Xia C, Liu C, Cai Z 等，2020），与引用内容不符",
+   "检索不到与引用题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "刘杰飞, 姚静辉, 汪刚帆, 等. 基于TROPOMI卫星观测的中国东部对流层二"
+ },
+ {
+  "id": "Q0160",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/FGXB201608002.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "NING ZHANG-LEI 宁, YANG DAN-DAN 杨, LEI XI-TING 雷, et al. Room Temperature Synthesis of Samarium Pyrazine-2,3,5,6-tetracarboxylate Coordination Polymers via A Fast Precipitation Method and Their Luminescent Properties[J]. Chinese Journal of Luminescence, 2016, 37(8): 906-911. DOI: 10.3788/fgxb20163708.0906.",
+  "cited": "宁张磊, 杨丹丹, 雷晰婷, 等. 室温快速液相沉淀法制备吡嗪四甲酸钐配合物及其"
+ },
+ {
+  "id": "Q0163",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/STXB202102004.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "HUANG LIN 黄. A review on the climatic regulation effects of afforestation and its impact mechanisms[J]. Acta Ecologica Sinica, 2021, 41(2). DOI: 10.5846/stxb202003290731.",
+  "cited": "黄麟. 造林气候调节效应及其影响机理研究进展[J]. 生态学报, 2021, 4"
+ },
+ {
+  "id": "Q0153",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "王垂瑾, 王尧, 孙悦佳. 岩原鲤仔稚鱼生长发育过程中消化酶活性的变化[J]. "
+ },
+ {
+  "id": "Q0165",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与知网记录不一致（来源：知网）",
+  "issues": [
+   "引用中的 DOI 指向另一篇文献《Effect of Medium-high Temperature Interl…》"
+  ],
+  "notes": [],
+  "cited": "宁张磊, 杨丹丹, 雷晰婷, 等. 室温快速液相沉淀法制备吡嗪四甲酸钐配合物及其"
+ },
+ {
+  "id": "Q0151",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：The operation was aborted due to timeout"
+  ],
+  "notes": [],
+  "cited": "于长明, 吴培阳. 城市绿色空间可步行性评价方法研究综述[J]. 中国园林, 2"
+ },
+ {
+  "id": "Q0169",
+  "verdict": "near_match",
+  "summary": "DOI 登记的作者、年份、卷页与引文一致，但登记的题名是另一语种，题名没能核对，请对照原文",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文",
+   "已核实需要题名也对得上；这一条在知网、万方、维普和期刊官网没有找到题名、作者、刊名都对得上的记录，不能确认，也不算写错"
+  ],
+  "suggestion": "XIA L, XING J, HU Y, et al. Deformation patterns in Zr-based and Ti-based metallic glasses under scratch processes[J]. SCIENTIA SINICA Physica, Mechanica & Astronomica, 2012, 42(6): 603-608. DOI: 10.1360/132012-293.",
+  "cited": "卢通, 夏雷, 胡铮, 等. Zr 基于 Ti 基非晶合金的不同划痕变形行为[J"
+ },
+ {
+  "id": "Q0164",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "张志豪, 姚传伟, 刘勇涛. 复合诱食剂对大黄鱼稚鱼生长性能、摄食、肠道发育、抗"
+ },
+ {
+  "id": "Q0176",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/KXTB202318011.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "TANG X, PAN R, XIONG Z. Abnormal current-dependent intersystem crossing regulatedby the combined interactions of exciton and exciplex statesin rubrene-based light-emitting devices[J]. Chinese Science Bulletin, 2023. DOI: 10.1360/tb-2022-1165.",
+  "cited": "汤仙童, 潘睿亨, 熊祖洪. 红荧烯发光器件中激子和激基复合物共同调控的系间窜越"
+ },
+ {
+  "id": "Q0180",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/GXXB202024007.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "HU FEN 胡, LIN YANG 林, HOU MENGDI 侯, et al. Super-Resolution Reconstruction of Cytoskeleton Image Based on Deep Learning[J]. Acta Optica Sinica, 2020, 40(24): 2410001. DOI: 10.3788/aos202040.2410001.",
+  "cited": "胡芬, 林洋, 侯梦迪, 等. 基于深度学习的细胞骨架图像超分辨重建[J]. 光"
+ },
+ {
+  "id": "Q0182",
+  "verdict": "not_found",
+  "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+  "issues": [
+   "DOI 10.1360/132012-293 实际指向《Deformation patterns in Zr-based and Ti-based metallic glass…》（XIA L, XING J, HU Y 等，2012），与引用内容不符",
+   "检索不到与引用题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "邵磊洋, 谭芳, 邵鹏, 等. Cu 基块体金属玻璃在低温下的剪切带演化与断裂机"
+ },
+ {
+  "id": "Q0187",
+  "verdict": "not_found",
+  "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+  "issues": [
+   "DOI 10.1360/tb-2024-0975 实际指向《Research progress and challenges in the upcycling of polyole…》（Chen G, Huang L，2024），与引用内容不符",
+   "检索不到与引用题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "姚雪杰, 廖萍玲. 酶催化解聚废旧聚酯塑料的研究进展与展望[J]. 科学通报, "
+ },
+ {
+  "id": "Q0166",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "胡田亮, 姜夺玉, 李达, 等. 快谱小堆堆芯三维瞬态核-热-力耦合计算方法研究"
+ },
+ {
+  "id": "Q0191",
+  "verdict": "not_found",
+  "summary": "DOI 未注册，且检索不到同名文献，疑似编造",
+  "issues": [
+   "DOI 10.5846/stxb792130536715 在 doi.org 查无注册记录",
+   "Crossref 中也检索不到题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "高敏萍, 沈鑫玲, 董芳. 施氮对黄土高原春小麦根系形态与水分利用效率的调控效应"
+ },
+ {
+  "id": "Q0194",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "notes": [],
+  "suggestion": "钱志宽, 邢乐才, 刘世荣, 等. 贵州江口平引老堡组顶部的锆石SHRIMP年龄与对比意义[J]. SCIENTIA SINICA Terrae, 2013, 43(7): 1195-1206. DOI: 10.1360/zd-2013-43-7-1195.",
+  "cited": "钱志宽, 邢乐才, 刘世荣, 等. 贵州江口平引老堡组顶部的锆石SHRIMP年龄"
+ },
+ {
+  "id": "Q0195",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与知网记录不一致（来源：知网）",
+  "issues": [
+   "引用中的 DOI 指向另一篇文献《The optimal design of track magneto-rheo…》"
+  ],
+  "notes": [],
+  "cited": "马茂莉, 郑为民, 夏博, 等. 基于VLBI站接收的火星探测器信号研究行星际闪"
+ },
+ {
+  "id": "Q0196",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+  "issues": [
+   "年份不符：引用写 2021，数据库记录为 2018"
+  ],
+  "notes": [
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文"
+  ],
+  "suggestion": "BAO X. Nano confinement and catalytic conversion of energy molecules[J]. Chinese Science Bulletin, 2018, 63(14): 1265-1274. DOI: 10.1360/n972018-00441.",
+  "cited": "包信和. 纳米限域及能源分子的催化转化[J]. 科学通报, 2021, 63(1"
+ },
+ {
+  "id": "Q0197",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "notes": [
+   "题名与数据库记录不完全一致，请核对用词",
+   "数据库登记的拼音作者姓和名顺序颠倒（登记为 Gang C, Yanlu D, Yuan Q 等），规范写法已按引文的汉字作者调回"
+  ],
+  "suggestion": "CHENG G, DU Y, QI Y, et al. New-type gimbal mount of airborne optoelectronic platform and its key technologies[J]. Journal of Applied Optics, 2022, 43(4): 577-582. DOI: 10.5768/jao202243.0409003.",
+  "cited": "程刚, 杜言鲁, 齐媛, 等. 新型机载光电平台万向架及其关键技术[J]. 应用"
+ },
+ {
+  "id": "Q0202",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "notes": [],
+  "suggestion": "程邦波, 徐冰, 罗勇, 等. 全球变化和人类可持续发展: 挑战与对策[J]. Chinese Science Bulletin, 2013, 58(21): 2100-2106. DOI: 10.1360/csb2013-58-21-2100.",
+  "cited": "程邦波, 徐冰, 罗勇, 等. 全球变化和人类可持续发展: 挑战与对策[J]. "
+ },
+ {
+  "id": "Q0173",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：The operation was aborted due to timeout"
+  ],
+  "notes": [],
+  "cited": "彭建, 王仰麟, 陈燕飞. 城市生态系统服务功能价值评估初探--以深圳市为例[J"
+ },
+ {
+  "id": "Q0211",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/STXB201508002.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "ZHU YING 祝, XIONG JUNLAN 熊, LV GUANGCHAO 吕, et al. Effects of arbuscular mycorrhizal fungi and plant symbiosis on plant water relation and its mechanism[J]. Acta Ecologica Sinica, 2015, 35(8). DOI: 10.5846/stxb201306091556.",
+  "cited": "祝英, 熊俊兰, 吕广超, 等. 丛枝菌根真菌与植物共生对植物水分关系的影响及机"
+ },
+ {
+  "id": "Q0188",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "蔡翔舟, 戴志敏, 徐洪杰. 钍基熔盐堆核能系统[J]. 物理, 2014, 4"
+ },
+ {
+  "id": "Q0214",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "年份相差一年（引用 2012，数据库 2013），可能是在线发表与正式出版年份不同",
+   "数据库登记的拼音作者姓和名顺序颠倒（登记为 Zuxia H, Yuehong Y, Qixia M 等），规范写法已按引文的汉字作者调回",
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/SWDY201204017.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "HE Z, YAN Y, MA Q, et al. The bryophyte diversity of the Danxia landform in Hunan, China: The bryophyte diversity of the Danxia landform in Hunan, China[J]. Biodiversity Science, 2013, 20(4): 522-526. DOI: 10.3724/sp.j.1003.2012.05216.",
+  "cited": "何祖霞, 严岳鸿, 马其侠, 等. 湖南丹霞地貌区的苔藓植物多样性[J]. 生物"
+ },
+ {
+  "id": "Q0213",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "陆小军, 刘佳煜, 胡崇庆, 等. 医用放射性废液取样容器尺寸的最优化研究[J]"
+ },
+ {
+  "id": "Q0217",
+  "verdict": "near_match",
+  "summary": "DOI 登记的作者、年份、卷页与引文一致，但登记的题名是另一语种，题名没能核对，请对照原文",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文",
+   "已核实需要题名也对得上；这一条在知网、万方、维普和期刊官网没有找到题名、作者、刊名都对得上的记录，不能确认，也不算写错"
+  ],
+  "suggestion": "CHEN G, HUANG L. Research progress and challenges in the upcycling of polyolefin plastics through chemical oxidation[J]. Chinese Science Bulletin, 2024, 70(18): 2849-2861. DOI: 10.1360/tb-2024-0975.",
+  "cited": "陈国利, 黄垒. 化学氧化升级回收聚烯烃塑料研究进展及挑战[J]. 科学通报, "
+ },
+ {
+  "id": "Q0218",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/WLXB202217036.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "QI Y-P, JIA Y-J, ZHANG T, et al. Dynamically tunable refractive index sensor based on Fano resonance with metal-insulator-metal-graphene nanotube hybrid structure[J]. Acta Physica Sinica, 2022, 71(17): 178101. DOI: 10.7498/aps.71.20220652.",
+  "cited": "祁云平, 贾迎君, 张婷, 等. 基于Fano共振的金属-绝缘体-金属-石墨烯纳"
+ },
+ {
+  "id": "Q0216",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "温小波, 库夭梅, 罗静波. 温度、体重及摄食状态对克氏原螯虾代谢的影响[J]."
+ },
+ {
+  "id": "Q0204",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：The operation was aborted due to timeout"
+  ],
+  "notes": [],
+  "cited": "刘鹏飞, 刘庆慧, 吴垠. 白斑综合征病毒感染凡纳滨对虾(Litopenaeus"
+ },
+ {
+  "id": "Q0231",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/JCXK202206004.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "ZHANG X, WAN S, LIU W, et al. Stepping into the new age of efficiency and precision: review and prospect of evidence-based research on traditional Chinese medicine for major diseases prevention and treatment[J]. SCIENTIA SINICA Vitae, 2022, 52(6): 823-831. DOI: 10.1360/ssv-2021-0380.",
+  "cited": "张晓雨, 万思琦, 刘文静, 等. 迈入高效精准新时代:中医药防治重大疾病循证研"
+ },
+ {
+  "id": "Q0232",
+  "verdict": "mismatch",
+  "summary": "文献存在，但引文附的英文译名里作者与中文作者不是同一批人（来源：Crossref）",
+  "issues": [
+   "引文附的英文译名里，作者与中文作者对不上：Liu Z H、Zheng Y Y、Gong Y X 在中文作者（张耀南、张杰、任泽瑶）和数据库登记的作者里都找不到对应的人，请按原文改正英文译名的作者"
+  ],
+  "notes": [
+   "题名与数据库记录不完全一致，请核对用词"
+  ],
+  "suggestion": "ZHANG Y, ZHANG J, REN Z, et al. Policies and planning for advancing scientific data development in BRICS[J]. China Scientific Data, 2024, 9(1): fpage-lpage. DOI: 10.11922/11-6035.csd.2023.0137.zh.",
+  "cited": "张耀南, 张杰, 任泽瑶, 等. 金砖国家科学数据发展政策与规划[J]. 中国科"
+ },
+ {
+  "id": "Q0219",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "侯权, 关成志, 肖国萍, 等. 固体氧化物电解池尺寸对其性能的影响[J]. 核"
+ },
+ {
+  "id": "Q0221",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "焦小伟, 王凯, 何兆忠, 等. 固态熔盐堆全厂断电ATWS事故工况下的堆芯安全"
+ },
+ {
+  "id": "Q0233",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "notes": [],
+  "suggestion": "朱乔乔, 谢桂青, 韩颖霄. 湖北大冶铜山口铜(钼)矿床中钨矿化特征及其地质意义[J]. Earth Science-Journal of China University of Geosciences, 2019, 44(2): 441. DOI: 10.3799/dqkx.2018.288.",
+  "cited": "朱乔乔, 谢桂青, 韩颖霄. 湖北大冶铜山口铜(钼)矿床中钨矿化特征及其地质意义"
+ },
+ {
+  "id": "Q0241",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "数据库登记的拼音作者姓和名顺序颠倒（登记为 Gang C, Yanlu D, Yuan Q 等），规范写法已按引文的汉字作者调回",
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/YYGX202204003.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "CHENG G, DU Y, QI Y, et al. New-type gimbal mount of airborne optoelectronic platform and its key technologies[J]. Journal of Applied Optics, 2022, 43(4): 577-582. DOI: 10.5768/jao202243.0409003.",
+  "cited": "程刚, 杜言鲁, 齐媛, 等. 新型机载光电平台万向架及其关键技术[J]. 应用"
+ },
+ {
+  "id": "Q0236",
+  "verdict": "not_found",
+  "summary": "DOI 未注册，且检索不到同名文献，疑似编造",
+  "issues": [
+   "DOI 10.1360/n032018-58692 在 doi.org 查无注册记录",
+   "Crossref 中也检索不到题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "莫宁雪, 曾旭晶, 龙国洋. 水中重金属离子电化学传感检测技术研究进展——便携、"
+ },
+ {
+  "id": "Q0246",
+  "verdict": "mismatch",
+  "summary": "文献存在，但引文附的英文译名里作者与中文作者不是同一批人（来源：Crossref）",
+  "issues": [
+   "引文附的英文译名里，作者与中文作者对不上：Zhang Z B、Yang Y、Zhang X P 在中文作者（杨敏、赵现朝、钟泽杉）和数据库登记的作者里都找不到对应的人，请按原文改正英文译名的作者"
+  ],
+  "notes": [
+   "题名与数据库记录不完全一致，请核对用词",
+   "数据库登记的拼音作者姓和名顺序颠倒（登记为 Min Y, Xianchao Z, Zeshan Z 等），规范写法已按引文的汉字作者调回"
+  ],
+  "suggestion": "YANG M, ZHAO X, ZHONG Z, et al. Adaptive Velocity Planning under Complex Constraints for 5-axis CNC Systems[J]. Journal of Mechanical Engineering, 2020, 56(11): 161. DOI: 10.3901/jme.2020.11.161.",
+  "cited": "杨敏, 赵现朝, 钟泽杉, 等. 复杂约束下的五轴数控系统自适应速度规划[J]."
+ },
+ {
+  "id": "Q0237",
+  "verdict": "near_match",
+  "summary": "DOI 登记的作者、年份、卷页与引文一致，但登记的题名是另一语种，题名没能核对，请对照原文",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文",
+   "已核实需要题名也对得上；这一条在知网、万方、维普和期刊官网没有找到题名、作者、刊名都对得上的记录，不能确认，也不算写错"
+  ],
+  "suggestion": "Blockchain and Edge Computing Enabled Federated Learning Fault Diagnosis Framework[J]. Journal of Mechanical Engineering, 2023, 59(21): 283. DOI: 10.3901/jme.2023.21.283.",
+  "cited": "邵海东, 肖一鸣, 闵志闪, 等. 区块链和边缘计算赋能的联邦学习故障诊断框架["
+ },
+ {
+  "id": "Q0249",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "notes": [
+   "题名与数据库记录不完全一致，请核对用词"
+  ],
+  "suggestion": "LI C, LIU J, ZUO W, et al. Progress of China's Lunar Exploration (2011—2020)[J]. Chinese Journal of Space Science, 2021, 41(01): 68-75. DOI: 10.3724/sp.j.0254-6124.2021.0106.",
+  "cited": "李春来, 刘建军, 左维, 等. 中国月球探测进展(2011–2020)[J]."
+ },
+ {
+  "id": "Q0248",
+  "verdict": "not_found",
+  "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+  "issues": [
+   "DOI 10.3788/lop202158.0314004 实际指向《Feasibility of Super-Resolution Reconstruction in Satellite …》（Zhu Hong 朱, Xie Junfeng 谢, Wu Xiangqian 吴 等，2021），与引用内容不符",
+   "检索不到与引用题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "廖芳娟, 戴辉, 万刚勇, 等. 联合卡尔曼滤波的星敏感器在轨低频误差抑制方法["
+ },
+ {
+  "id": "Q0256",
+  "verdict": "not_found",
+  "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+  "issues": [
+   "DOI 10.7498/aps.71.20220652 实际指向《Dynamically tunable refractive index sensor based on Fano re…》（Qi YP, Jia YJ, Zhang T 等，2022），与引用内容不符",
+   "检索不到与引用题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "孟涵, 龚玉娟, 侯艳. 基于表面等离激元耦合的光子晶体光纤-二维材料复合结构温"
+ },
+ {
+  "id": "Q0261",
+  "verdict": "near_match",
+  "summary": "DOI 登记的作者、年份、卷页与引文一致，但登记的题名是另一语种，题名没能核对，请对照原文",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文",
+   "已核实需要题名也对得上；这一条在知网、万方、维普和期刊官网没有找到题名、作者、刊名都对得上的记录，不能确认，也不算写错"
+  ],
+  "suggestion": "CHEN G, HUANG L. Research progress and challenges in the upcycling of polyolefin plastics through chemical oxidation[J]. Chinese Science Bulletin, 2024, 70(18): 2849-2861. DOI: 10.1360/tb-2024-0975.",
+  "cited": "陈国利, 黄垒. 化学氧化升级回收聚烯烃塑料研究现状及挑战[J]. 科学通报, "
+ },
+ {
+  "id": "Q0251",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "张旭之. 中国石油化工发展的若干问题思考[J]. 当代石油石化, 2004, 1"
+ },
+ {
+  "id": "Q0245",
+  "verdict": "not_found",
+  "summary": "DOI 未注册，且检索不到同名文献，疑似编造",
+  "issues": [
+   "DOI 10.11889/j.0253-3219.2015.hjs.38.633548 在 doi.org 查无注册记录",
+   "Crossref 中也检索不到题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "孙峰, 张勇娜, 吴平, 等. 钠冷快堆非能动余热排出系统热工水力特性数值研究["
+ },
+ {
+  "id": "Q0269",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "notes": [
+   "题名与数据库记录不完全一致，请核对用词"
+  ],
+  "suggestion": "ZHANG ZHIBIN 张, YANG YING 杨, ZHANG XIAOPING 张, et al. Wind speed changes and its influencing factors in Southwestern China[J]. Acta Ecologica Sinica, 2014, 34(2). DOI: 10.5846/stxb201305141051.",
+  "cited": "张志斌, 杨莹, 张小平, 等. 我国西南地区风速变化及其影响因素[J]. 生态"
+ },
+ {
+  "id": "Q0267",
+  "verdict": "not_found",
+  "summary": "DOI 未注册，且检索不到同名文献，疑似编造",
+  "issues": [
+   "DOI 10.3724/sp.j.0254-6124.2021.8682 在 doi.org 查无注册记录",
+   "Crossref 中也检索不到题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "蔡彬, 戴雪雨, 赵静, 等. 火星着陆器巡视器协同自主导航与路径规划方法[J]"
+ },
+ {
+  "id": "Q0272",
+  "verdict": "not_found",
+  "summary": "DOI 未注册，且检索不到同名文献，疑似编造",
+  "issues": [
+   "DOI 10.12418/cjan2023.025 在 doi.org 查无注册记录",
+   "Crossref 中也检索不到题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "刘英鑫, 邵萍英. 饲料中添加虾青素对凡纳滨对虾幼虾生长性能、免疫应答及肝胰腺抗"
+ },
+ {
+  "id": "Q0275",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/JBXK201808017.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "LIU C, DONG S. Research progress on the rapid, real time, on line, <italic>in situ</italic> monitoring water quality biochemical oxygen demand[J]. SCIENTIA SINICA Chimica, 2018, 48(8): 956-963. DOI: 10.1360/n032018-00064.",
+  "cited": "刘长宇, 董绍俊. 水质生化需氧量快速检测新方法研究进展——现场、实时和就地监测"
+ },
+ {
+  "id": "Q0276",
+  "verdict": "near_match",
+  "summary": "DOI 登记记录的其余信息与引文一致，但引用中有作者在登记的作者里找不到，作者没能核对全，请对照原文（来源：Crossref）",
+  "issues": [],
+  "notes": [
+   "引用中有作者不在 DOI 登记的拼音作者里：张定华、张莹（登记的作者为 HOU Y）；拼音登记常不全，不算写错，请对照原文核对作者",
+   "题名与数据库记录不完全一致，请核对用词",
+   "已核实需要作者也对得上；这一条在知网、万方、维普和期刊官网没有找到题名、作者、刊名都对得上的记录，不能确认，也不算写错",
+   "引文附的英文译名里，作者与中文作者对不上：Qi Y P、Jia Y J、Zhang T 在中文作者（侯尧华、张定华、张莹）里都找不到对应的人；可能是英文著录只列了其他几位作者，请对照原文核对"
+  ],
+  "suggestion": "HOU Y. Error Compensation Modeling and Learning Control Method for Thin-walled Part Milling Process[J]. Journal of Mechanical Engineering, 2018, 54(17): 108. DOI: 10.3901/jme.2018.17.108.",
+  "cited": "侯尧华, 张定华, 张莹. 薄壁件加工误差补偿建模与学习控制方法[J]. 机械工"
+ },
+ {
+  "id": "Q0277",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与知网记录不一致（来源：知网）",
+  "issues": [
+   "引用中的 DOI 指向另一篇文献《Community diversities of rodents and its…》"
+  ],
+  "notes": [],
+  "cited": "黄麟. 造林气候调节效应及其影响机理研究进展[J]. 生态学报, 2021, 4"
+ },
+ {
+  "id": "Q0279",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/KJKB202101008.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "LI C, LIU J, ZUO W, et al. Progress of China's Lunar Exploration (2011—2020)[J]. Chinese Journal of Space Science, 2021, 41(01): 68-75. DOI: 10.3724/sp.j.0254-6124.2021.0106.",
+  "cited": "李春来, 刘建军, 左维, 等. 中国月球探测进展(2011–2020)[J]."
+ },
+ {
+  "id": "Q0282",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "notes": [
+   "题名与数据库记录不完全一致，请核对用词"
+  ],
+  "suggestion": "肖顺平, 黄高明, 刘涛, 等. 基于H/A目标极化分解理论的统计分析[J]. SCIENTIA SINICA Informationis, 2010, 40(1): 102-114. DOI: 10.1360/zf2010-40-1-102.",
+  "cited": "肖顺平, 黄高明, 刘涛, 等. 基于H/A目标极化分解理论的统计研究[J]. "
+ },
+ {
+  "id": "Q0264",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：The operation was aborted due to timeout"
+  ],
+  "notes": [],
+  "cited": "庞栋, 戚常乐, 叶金云. 发酵棉籽粕替代豆粕对中华绒螯蟹幼蟹生长性能、免疫功能"
+ },
+ {
+  "id": "Q0283",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "郭译文, 李良星, 向祖涛, 等. 面向铅冷快堆主泵数字孪生的多输入PINN代理"
+ },
+ {
+  "id": "Q0287",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/KXGZ202401004.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "ZHANG Y, ZHANG J, REN Z, et al. Policies and planning for advancing scientific data development in BRICS[J]. China Scientific Data, 2024, 9(1): fpage-lpage. DOI: 10.11922/11-6035.csd.2023.0137.zh.",
+  "cited": "张耀南, 张杰, 任泽瑶, 等. 金砖国家科学数据发展政策与规划[J]. 中国科"
+ },
+ {
+  "id": "Q0289",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+  "issues": [
+   "起始页不符：引用写 117，DOI 登记的页码为 161"
+  ],
+  "notes": [
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文",
+   "数据库登记的拼音作者姓和名顺序颠倒（登记为 Min Y, Xianchao Z, Zeshan Z 等），规范写法已按引文的汉字作者调回"
+  ],
+  "suggestion": "YANG M, ZHAO X, ZHONG Z, et al. Adaptive Velocity Planning under Complex Constraints for 5-axis CNC Systems[J]. Journal of Mechanical Engineering, 2020, 56(11): 161. DOI: 10.3901/jme.2020.11.161.",
+  "cited": "杨敏, 赵现朝, 钟泽杉, 等. 复杂约束下的五轴数控系统自适应速度规划[J]."
+ },
+ {
+  "id": "Q0290",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与记录不一致（来源：知网、Crossref）",
+  "issues": [
+   "作者顺序与知网记录不一致，知网记录的顺序为 杨大文, 张树磊, 徐翔宇"
+  ],
+  "notes": [
+   "引用列出的作者都在数据库记录中，但顺序不同（数据库为 ZHANG S, YANG D, XU X）；Crossref 的中文记录有时把作者顺序登记错，请以原文为准",
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/JEXK201510003.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "ZHANG S, YANG D, XU X. Attribution analysis for runoff decline in Yellow River Basin during past fifty years based on Budyko hypothesis[J]. SCIENTIA SINICA Technologica, 2015, 45(10): 1024-1034. DOI: 10.1360/n092015-00013.",
+  "cited": "杨大文, 徐翔宇, 张树磊. 基于水热耦合平衡方程的黄河流域径流变化归因分析[J"
+ },
+ {
+  "id": "Q0292",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "notes": [
+   "题名与数据库记录不完全一致，请核对用词",
+   "数据库登记的拼音作者姓和名顺序颠倒（登记为 Min Y, Xianchao Z, Zeshan Z 等），规范写法已按引文的汉字作者调回"
+  ],
+  "suggestion": "YANG M, ZHAO X, ZHONG Z, et al. Adaptive Velocity Planning under Complex Constraints for 5-axis CNC Systems[J]. Journal of Mechanical Engineering, 2020, 56(11): 161. DOI: 10.3901/jme.2020.11.161.",
+  "cited": "杨敏, 赵现朝, 钟泽杉, 等. 复杂约束下的五轴数控系统自适应速度规划[J]."
+ },
+ {
+  "id": "Q0293",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/STXB201402024.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "ZHANG ZHIBIN 张, YANG YING 杨, ZHANG XIAOPING 张, et al. Wind speed changes and its influencing factors in Southwestern China[J]. Acta Ecologica Sinica, 2014, 34(2). DOI: 10.5846/stxb201305141051.",
+  "cited": "张志斌, 杨莹, 张小平, 等. 我国西南地区风速变化及其影响因素[J]. 生态"
+ },
+ {
+  "id": "Q0273",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：The operation was aborted due to timeout"
+  ],
+  "notes": [],
+  "cited": "王劲峰, 徐成东. 地理探测器：原理与展望[J]. 地理学报, 2017, 72"
+ },
+ {
+  "id": "Q0295",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+  "issues": [
+   "年份不符：引用写 2018，数据库记录为 2016"
+  ],
+  "notes": [
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文"
+  ],
+  "suggestion": "NING ZHANG-LEI 宁, YANG DAN-DAN 杨, LEI XI-TING 雷, et al. Room Temperature Synthesis of Samarium Pyrazine-2,3,5,6-tetracarboxylate Coordination Polymers via A Fast Precipitation Method and Their Luminescent Properties[J]. Chinese Journal of Luminescence, 2016, 37(8): 906-911. DOI: 10.3788/fgxb20163708.0906.",
+  "cited": "宁张磊, 杨丹丹, 雷晰婷, 等. 室温快速液相沉淀法制备吡嗪四甲酸钐配合物及其"
+ },
+ {
+  "id": "Q0284",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "廖雨斌, 冯刚涛, 段强. 饲料中添加复合益生菌对凡纳滨对虾幼虾生长性能、非特异"
+ },
+ {
+  "id": "Q0296",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "粟文, 韩维栋, 谢恩义. 湛江红树林区地埋管网系统中华乌塘鳢保育研究[J]. "
+ },
+ {
+  "id": "Q0297",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "蔡翔舟, 戴志敏, 徐洪杰. 钍基熔盐堆核能系统[J]. 物理, 2016, 4"
+ },
+ {
+  "id": "Q0294",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "梁燕, 饶星晨. 改进YOLOX的遥感图像目标检测算法[J]. 计算机工程与应用"
+ },
+ {
+  "id": "Q0301",
+  "verdict": "near_match",
+  "summary": "DOI 登记的年份、卷页与引文一致，但登记的题名是另一语种、没能核对，引用中还有作者在登记的作者里找不到，请对照原文",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文",
+   "引用中有作者不在 DOI 登记的拼音作者里：张定华、张莹（登记的作者为 HOU Y）；拼音登记常不全，不算写错，请对照原文核对作者",
+   "已核实需要题名也对得上；这一条在知网、万方、维普和期刊官网没有找到题名、作者、刊名都对得上的记录，不能确认，也不算写错"
+  ],
+  "suggestion": "HOU Y. Error Compensation Modeling and Learning Control Method for Thin-walled Part Milling Process[J]. Journal of Mechanical Engineering, 2018, 54(17): 108. DOI: 10.3901/jme.2018.17.108.",
+  "cited": "侯尧华, 张定华, 张莹. 薄壁件加工误差补偿建模与学习控制技术[J]. 机械工"
+ },
+ {
+  "id": "Q0300",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "数据库登记的拼音作者姓和名顺序颠倒（登记为 Dong L, Huilin W, Liang L 等），规范写法已按引文的汉字作者调回",
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/YYGX202205002.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "LIU D, WANG H, LEI L, et al. Design and application of gyro redundant installation in airborne electro-optical system[J]. Journal of Applied Optics, 2022, 43(5): 833-838. DOI: 10.5768/jao202243.0501001.",
+  "cited": "刘栋, 王惠林, 雷亮, 等. 陀螺冗余安装在机载光电系统中的设计与应用[J]."
+ },
+ {
+  "id": "Q0302",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与知网记录不一致（来源：知网）",
+  "issues": [
+   "引用中的 DOI 指向另一篇文献《Enzyme-catalysed <italic>in vivo</italic…》"
+  ],
+  "notes": [],
+  "cited": "包信和. 纳米限域及能源分子的催化转化[J]. 科学通报, 2018, 63(1"
+ },
+ {
+  "id": "Q0303",
+  "verdict": "not_found",
+  "summary": "DOI 未注册，且检索不到同名文献，疑似编造",
+  "issues": [
+   "DOI 10.12171/j.1000-1522.11038826 在 doi.org 查无注册记录",
+   "Crossref 中也检索不到题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "谭磊, 郭国宁, 郑斌燕, 等. 基于眼动追踪的历史文化街区景观视觉质量评价研究"
+ },
+ {
+  "id": "Q0306",
+  "verdict": "not_found",
+  "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+  "issues": [
+   "DOI 10.1360/ssc-2019-0152 实际指向《Fabrication of smart polymeric nanovectors to amplify intrac…》（Liu S, Hu J，2020），与引用内容不符",
+   "检索不到与引用题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "程文, 周玉, 熊海. 基于光热协同的金属有机框架纳米平台构建及肿瘤治疗研究[J"
+ },
+ {
+  "id": "Q0312",
+  "verdict": "mismatch",
+  "summary": "文献存在，但引文附的英文译名里作者与中文作者不是同一批人（来源：Crossref）",
+  "issues": [
+   "引文附的英文译名里，作者与中文作者对不上：Lu T、Xia L、Hu Z 在中文作者（汤仙童、潘睿亨、熊祖洪）和数据库登记的作者里都找不到对应的人，请按原文改正英文译名的作者"
+  ],
+  "notes": [
+   "题名与数据库记录不完全一致，请核对用词"
+  ],
+  "suggestion": "TANG X, PAN R, XIONG Z. Abnormal current-dependent intersystem crossing regulatedby the combined interactions of exciton and exciplex statesin rubrene-based light-emitting devices[J]. Chinese Science Bulletin, 2023. DOI: 10.1360/tb-2022-1165.",
+  "cited": "汤仙童, 潘睿亨, 熊祖洪. 红荧烯发光器件中激子和激基复合物共同调控的系间窜越"
+ },
+ {
+  "id": "Q0311",
+  "verdict": "near_match",
+  "summary": "DOI 登记的年份、卷页与引文一致，但登记的题名是另一语种、没能核对，引用中还有作者在登记的作者里找不到，请对照原文",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文",
+   "引用中有作者不在 DOI 登记的拼音作者里：张定华、张莹（登记的作者为 HOU Y）；拼音登记常不全，不算写错，请对照原文核对作者",
+   "已核实需要题名也对得上；这一条在知网、万方、维普和期刊官网没有找到题名、作者、刊名都对得上的记录，不能确认，也不算写错"
+  ],
+  "suggestion": "HOU Y. Error Compensation Modeling and Learning Control Method for Thin-walled Part Milling Process[J]. Journal of Mechanical Engineering, 2018, 54(17): 108. DOI: 10.3901/jme.2018.17.108.",
+  "cited": "侯尧华, 张定华, 张莹. 薄壁件加工误差补偿建模与学习控制方法[J]. 机械工"
+ },
+ {
+  "id": "Q0307",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "陆小军, 刘佳煜, 胡崇庆, 等. 医用放射性废液取样容器尺寸的最优化研究[J]"
+ },
+ {
+  "id": "Q0313",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "陆小军, 刘佳煜, 胡崇庆, 等. 医用放射性废液取样容器尺寸的最优化研究[J]"
+ },
+ {
+  "id": "Q0317",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "notes": [
+   "题名与数据库记录不完全一致，请核对用词"
+  ],
+  "suggestion": "ZHU YING 祝, XIONG JUNLAN 熊, LV GUANGCHAO 吕, et al. Effects of arbuscular mycorrhizal fungi and plant symbiosis on plant water relation and its mechanism[J]. Acta Ecologica Sinica, 2015, 35(8). DOI: 10.5846/stxb201306091556.",
+  "cited": "祝英, 熊俊兰, 吕广超, 等. 丛枝菌根真菌与植物共生对植物水分关系的影响及机"
+ },
+ {
+  "id": "Q0314",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：The operation was aborted due to timeout"
+  ],
+  "notes": [],
+  "cited": "温小波, 库夭梅, 罗静波. 温度、体重及摄食状态对克氏原螯虾代谢的影响[J]."
+ },
+ {
+  "id": "Q0320",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/STXB202302012.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "LIU TING 刘. Analysis connectivity of urban heat island in a new-type urbanization based on MSPA model[J]. Acta Ecologica Sinica, 2023, 43(2). DOI: 10.5846/stxb202109172619.",
+  "cited": "刘婷, 欧阳帅, 勾蒙蒙. 基于MSPA模型的新型城市热景观连通性分析[J]. "
+ },
+ {
+  "id": "Q0325",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/SZDL201206015.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "LIU Z-H, ZHENG Y-Y, GONG Y-X, et al. Direct conversion from cassava to bioethanol with a recombinant strain of yeast: Direct conversion from cassava to bioethanol with a recombinant strain of yeast[J]. JOURNAL OF SHENZHEN UNIVERSITY SCIENCE AND ENGINEERING, 2012, 29(6): 548-552. DOI: 10.3724/sp.j.1249.2012.06548.",
+  "cited": "刘泽寰, 郑阳阳, 龚映雪, 等. 利用重组酵母实现木薯至乙醇的直接转化[J]."
+ },
+ {
+  "id": "Q0326",
+  "verdict": "verified",
+  "summary": "已核实：题名、作者与知网记录一致，年份、卷页与 DOI 登记记录一致（来源：知网、Crossref）",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同；题名、作者和刊名按知网的记录核对（https://wap.cnki.net/touch/web/Journal/Article/JXXB202109007.html），年份、卷号和起始页按 DOI 登记记录核对"
+  ],
+  "suggestion": "Dynamic Simulation and Experimental Identification for Fatigue Pitting Helical Gear Fault[J]. Journal of Mechanical Engineering, 2021, 57(9): 61. DOI: 10.3901/jme.2021.09.061.",
+  "cited": "陈勇, 李金锴, 臧立彬, 等. 疲劳点蚀斜齿轮动力学仿真预测与故障识别试验研究"
+ },
+ {
+  "id": "Q0315",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：The operation was aborted due to timeout"
+  ],
+  "notes": [],
+  "cited": "夏少雄, 王家群, 潘晓磊, 等. 中国铅基研究堆非能动余热排出系统可靠性分析["
+ },
+ {
+  "id": "Q0318",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "郭译文, 李良星, 向祖涛, 等. 面向铅冷快堆主泵数字孪生的多输入PINN代理"
+ },
+ {
+  "id": "Q0330",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "石莉, 桂静, 吴克勤. 海洋酸化及国际研究动态[J]. 海洋科学进展, 201"
+ },
+ {
+  "id": "Q0335",
+  "verdict": "near_match",
+  "summary": "DOI 登记的作者、年份、卷页与引文一致，但登记的题名是另一语种，题名没能核对，请对照原文",
+  "issues": [],
+  "notes": [
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文",
+   "已核实需要题名也对得上；这一条在知网、万方、维普和期刊官网没有找到题名、作者、刊名都对得上的记录，不能确认，也不算写错"
+  ],
+  "suggestion": "HOU Z, CHEN J, ZHAI M. Current status and frontiers of research on critical mineral resources[J]. Chinese Science Bulletin, 2020, 65(33): 3651-3652. DOI: 10.1360/tb-2020-1417.",
+  "cited": "侯增谦, 陈骏, 翟明国. 战略性关键矿产研究现状与科学前沿[J]. 科学通报,"
+ },
+ {
+  "id": "Q0340",
+  "verdict": "not_found",
+  "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+  "issues": [
+   "DOI 10.3901/jme.2023.21.283 实际指向《Blockchain and Edge Computing Enabled Federated Learning Fau…》（作者不详，2023），与引用内容不符",
+   "检索不到与引用题名、作者相符的文献"
+  ],
+  "notes": [],
+  "cited": "邵海东, 肖一鸣, 闵志闪, 等. 区块链和边缘计算赋能的联邦学习故障诊断框架["
+ },
+ {
+  "id": "Q0342",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+  "issues": [
+   "年份不符：引用写 2009，数据库记录为 2013"
+  ],
+  "notes": [
+   "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文",
+   "数据库登记的拼音作者姓和名顺序颠倒（登记为 Zuxia H, Yuehong Y, Qixia M 等），规范写法已按引文的汉字作者调回"
+  ],
+  "suggestion": "HE Z, YAN Y, MA Q, et al. The bryophyte diversity of the Danxia landform in Hunan, China: The bryophyte diversity of the Danxia landform in Hunan, China[J]. Biodiversity Science, 2013, 20(4): 522-526. DOI: 10.3724/sp.j.1003.2012.05216.",
+  "cited": "何祖霞, 严岳鸿, 马其侠, 等. 湖南丹霞地貌区的苔藓植物多样性[J]. 生物"
+ },
+ {
+  "id": "Q0334",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "赵晶, 陈然, 郝慧超. 机器学习技术在风景园林中的应用进展与展望[J]. 北京"
+ },
+ {
+  "id": "Q0345",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "赵岱寅, 蔡茂雪, 张代钧. 三峡库区消落带表层沉积物生物标志物时空变化与来源分"
+ },
+ {
+  "id": "Q0344",
+  "verdict": "error",
+  "summary": "数据源暂时不可用（可能被限流），请稍后重试",
+  "issues": [
+   "doi.org 请求失败：fetch failed"
+  ],
+  "notes": [],
+  "cited": "林继铭, 田瑞峰, 李凤臣, 等. 液态重金属反应堆工程关键技术研究综述[J]."
+ }
+]

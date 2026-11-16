@@ -12,6 +12,7 @@ import { nameOnly, notReference } from "./extract";
 import { dice, isCjk, normalizeText, stripRetractionPrefix } from "./normalize";
 import {
   chineseOrganizationCited,
+  citedNameOrder,
   fieldChecks,
   formatAuthorsShort,
   fuzzyRecall,
@@ -652,6 +653,10 @@ function judgeSame(ref: ParsedRef, rec: WorkRecord, s: MatchScore, steps: CheckS
     notes.push(otherVersion ? `数据库记录的 DOI 为 ${rec.doi}，可能属于另一版本或转载，核对版本后再决定是否补充` : `建议补充 DOI：${rec.doi}`);
   }
 
+  // 拼音登记把姓和名弄反时，规范写法按引文的汉字作者调回；数据库记录一栏仍显示原登记
+  const reordered = web ? undefined : citedNameOrder(ref, rec);
+  if (reordered) notes.push(`${NAME_ORDER_NOTE}（登记为 ${formatAuthorsShort(rec.authors.slice(0, 3))}${rec.authors.length > 3 ? " 等" : ""}），规范写法已按引文的汉字作者调回`);
+
   const common = {
     ...base(ref, steps),
     match: rec,
@@ -660,7 +665,7 @@ function judgeSame(ref: ParsedRef, rec: WorkRecord, s: MatchScore, steps: CheckS
     issues,
     notes,
     // 知网页面没有卷号和印刷页码、期刊官网有时只给起始页，拼出的写法会丢掉引文里正确的卷页：网页记录有完整起止页才给规范写法
-    suggestion: web && !fullPages(rec) ? undefined : suggestCitation(rec, ref.raw),
+    suggestion: web && !fullPages(rec) ? undefined : suggestCitation(reordered ?? rec, ref.raw),
   };
 
   if (web) return judgeWeb(ref, rec, s, common, site, db);
@@ -692,6 +697,7 @@ function judgeSame(ref: ParsedRef, rec: WorkRecord, s: MatchScore, steps: CheckS
 }
 
 const TITLE_UNCHECKED_NOTE = "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文";
+const NAME_ORDER_NOTE = "数据库登记的拼音作者姓和名顺序颠倒";
 const UNLISTED_AUTHORS_NOTE = "引用中有作者不在 DOI 登记的拼音作者里：";
 
 /**
