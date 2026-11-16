@@ -1,0 +1,37 @@
+# 每次推送到 main、每个拉取请求：类型检查、lint、全部单元测试、生产构建。
+# 测试全部用替身代替外部接口（Crossref、OpenAlex、DeepSeek 等），不需要任何密钥；向量模型在测试里关闭（见 vitest.config.mts）。
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      # 项目 .npmrc 指向国内镜像，方便本机和魔搭构建；GitHub 的机器在境外，改用官方源
+      npm_config_registry: https://registry.npmjs.org/
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm lint
+      - run: pnpm test
+      - run: pnpm build
