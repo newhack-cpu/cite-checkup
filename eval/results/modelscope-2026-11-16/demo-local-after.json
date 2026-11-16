@@ -1,0 +1,243 @@
+[
+ {
+  "line": 1,
+  "raw": "[1] Walters, W. H., & Wilder, E. I. (2023). Fabrication and ",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "fields": {
+   "title": "match",
+   "authors": "match",
+   "year": "match",
+   "venue": "match",
+   "doi": "match"
+  }
+ },
+ {
+  "line": 2,
+  "raw": "[2] LECUN Y, BENGIO Y, HINTON G. Deep learning[J]. Nature, 2",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "fields": {
+   "title": "match",
+   "authors": "match",
+   "year": "match",
+   "venue": "match",
+   "doi": "missing"
+  }
+ },
+ {
+  "line": 3,
+  "raw": "[3] K. He, X. Zhang, S. Ren, and J. Sun, \"Deep residual lear",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "fields": {
+   "title": "match",
+   "authors": "match",
+   "year": "match",
+   "venue": "match",
+   "doi": "missing"
+  }
+ },
+ {
+  "line": 4,
+  "raw": "[4] Hochreiter, S., & Schmidhuber, J. (1997). Long short-ter",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+  "issues": [
+   "期刊名不符：引用写「Neural Networks」，数据库记录为「Neural Computation」"
+  ],
+  "fields": {
+   "title": "match",
+   "authors": "match",
+   "year": "match",
+   "venue": "mismatch",
+   "doi": "missing"
+  }
+ },
+ {
+  "line": 5,
+  "raw": "[5] Vaswani A, Shazeer N, Parmar N, et al. Attention is all ",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：DOI 注册机构）",
+  "issues": [],
+  "fields": {
+   "title": "match",
+   "authors": "match",
+   "year": "match",
+   "venue": "match",
+   "doi": "match"
+  }
+ },
+ {
+  "line": 6,
+  "raw": "[6] Smith, J., & Zhang, L. (2021). Deep reinforcement learni",
+  "verdict": "not_found",
+  "summary": "DOI 未注册，且检索不到同名文献，疑似编造",
+  "issues": [
+   "DOI 10.1038/s41558-021-01234-5 在 doi.org 查无注册记录",
+   "Crossref 中也检索不到题名、作者相符的文献"
+  ],
+  "fields": {}
+ },
+ {
+  "line": 7,
+  "raw": "[7] Wang, L., & Garcia, M. (2015). Neural citation networks ",
+  "verdict": "not_found",
+  "summary": "DOI 指向的是另一篇文献，引用内容疑似编造",
+  "issues": [
+   "DOI 10.1038/nature14539 实际指向《Deep learning》（LeCun Y, Bengio Y, Hinton G，2015），与引用内容不符",
+   "检索不到与引用题名、作者相符的文献"
+  ],
+  "fields": {}
+ },
+ {
+  "line": 8,
+  "raw": "[8] Smith, J., & Brown, K. (2023). Fabrication and errors in",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+  "issues": [
+   "作者与数据库记录不符，数据库作者为 Walters WH, Wilder EI"
+  ],
+  "fields": {
+   "title": "match",
+   "authors": "mismatch",
+   "year": "match",
+   "venue": "match",
+   "doi": "missing"
+  }
+ },
+ {
+  "line": 9,
+  "raw": "[9] Wakefield, A. J., Murch, S. H., Anthony, A., Linnell, J.",
+  "verdict": "retracted",
+  "summary": "文献存在，但已被撤稿，不宜作为论据引用",
+  "issues": [
+   "该文献于 2010-02-06 已被撤稿（来源：Retraction Watch），声明 DOI：10.1016/s0140-6736(10)60175-4"
+  ],
+  "fields": {
+   "title": "match",
+   "authors": "match",
+   "year": "match",
+   "venue": "match",
+   "doi": "match"
+  }
+ },
+ {
+  "line": 10,
+  "raw": "[10] 金旭杨. 基于深度学习的工程图像识别与分类研究[J]. 工程学研究与实用, 2025. DOI: 10.371",
+  "verdict": "verified",
+  "summary": "已核实：与数据库记录一致（来源：Crossref）",
+  "issues": [],
+  "fields": {
+   "title": "match",
+   "authors": "match",
+   "year": "match",
+   "venue": "match",
+   "doi": "match"
+  }
+ },
+ {
+  "line": 11,
+  "raw": "[11] 周志华. 机器学习[M]. 北京: 清华大学出版社, 2016.",
+  "verdict": "unverifiable",
+  "summary": "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+  "issues": [],
+  "fields": {}
+ },
+ {
+  "line": 12,
+  "raw": "[12] 10.1038/nature16961",
+  "verdict": "verified",
+  "summary": "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+  "issues": [],
+  "fields": {
+   "title": "missing",
+   "authors": "missing",
+   "year": "missing",
+   "venue": "missing",
+   "doi": "match"
+  }
+ },
+ {
+  "line": 13,
+  "raw": "[13] 易行健, 周利. 数字普惠金融发展是否显著影响了居民消费——来自中国家庭的微观证据[J]. 金融研究, 201",
+  "verdict": "verified",
+  "summary": "已核实：与知网记录一致（来源：知网）",
+  "issues": [],
+  "fields": {
+   "title": "match",
+   "authors": "match",
+   "year": "match",
+   "venue": "match"
+  }
+ },
+ {
+  "line": 14,
+  "raw": "[1] 宫鹏, 牛振国, 程晓, 等. 中国1990和2000基准年湿地变化遥感[J]. 中国科学: 地球科学, 201",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+  "issues": [
+   "作者与数据库记录不符，数据库作者为 赵魁义, 王晓风, 杨镇钟, 李丹丹, 王坤, 迟耀斌 等"
+  ],
+  "fields": {
+   "title": "match",
+   "authors": "mismatch",
+   "year": "match",
+   "venue": "missing",
+   "doi": "missing"
+  }
+ },
+ {
+  "line": 15,
+  "raw": "[2] 廖宝文, 张乔民. 中国红树林的分布、面积和树种组成[J]. 湿地科学, 2014, 12(4): 435-44",
+  "verdict": "verified",
+  "summary": "已核实：与知网记录一致（来源：知网）",
+  "issues": [],
+  "fields": {
+   "title": "match",
+   "authors": "match",
+   "year": "match",
+   "venue": "match"
+  }
+ },
+ {
+  "line": 16,
+  "raw": "[3] 王韦韦, 朱存玺, 陈黎卿. 玉米免耕播种机主动式秸秆移位防堵装置的设计与试验[J]. 农业工程学报, 2017",
+  "verdict": "verified",
+  "summary": "已核实：与知网记录一致（来源：知网）",
+  "issues": [],
+  "fields": {
+   "title": "match",
+   "authors": "match",
+   "year": "match",
+   "venue": "match"
+  }
+ },
+ {
+  "line": 17,
+  "raw": "[2] LeCun, Y., Bengio, Y., & Hinton, G. (2017). Deep learnin",
+  "verdict": "mismatch",
+  "summary": "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+  "issues": [
+   "年份不符：引用写 2017，数据库记录为 2015"
+  ],
+  "fields": {
+   "title": "match",
+   "authors": "match",
+   "year": "mismatch",
+   "venue": "match",
+   "doi": "missing"
+  }
+ },
+ {
+  "line": 18,
+  "raw": "[1] RaïssiC BrissaudJ DrayG PonceletP RocheM TeisseireM.Web ",
+  "verdict": "unverifiable",
+  "summary": "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试",
+  "issues": [],
+  "fields": {}
+ }
+]

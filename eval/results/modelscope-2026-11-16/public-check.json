@@ -1,0 +1,62 @@
+{
+  "url": "https://www.modelscope.cn/studios/kgkvybu111111/cite-checkup?mode=full",
+  "startedAt": "2026-11-16T11:41:05+0900",
+  "appReadySeconds": 11.9,
+  "claimsStatus": {
+    "available": true,
+    "provider": "DeepSeek",
+    "model": "deepseek-flash",
+    "limits": {
+      "claimChars": 2000,
+      "evidenceChars": 160000,
+      "retrievedChunks": 6
+    },
+    "embedding": {
+      "model": "multilingual-e5-small",
+      "state": "idle"
+    }
+  },
+  "round1": {
+    "seconds": 20.9,
+    "count": 13,
+    "summaries": [
+      "已核实：与数据库记录一致（来源：Crossref）",
+      "已核实：与数据库记录一致（来源：Crossref）",
+      "已核实：与数据库记录一致（来源：Crossref）",
+      "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+      "已核实：与数据库记录一致（来源：DOI 注册机构）",
+      "DOI 未注册，且检索不到同名文献，疑似编造",
+      "DOI 指向的是另一篇文献，引用内容疑似编造",
+      "文献存在，但有 1 处信息与数据库记录不一致（来源：Crossref）",
+      "文献存在，但已被撤稿，不宜作为论据引用",
+      "已核实：与数据库记录一致（来源：Crossref）",
+      "图书类文献不在开放学术数据库的覆盖范围内，请人工核查",
+      "已按 DOI 查到这篇文献，补全了题名、作者等信息（来源：Crossref）",
+      "已核实：与知网记录一致（来源：知网）"
+    ],
+    "sameAsRehearsal": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "headline": "体检完成  5 条需要处理 · 共 13 条  已完成 13 / 13 条 · 用时 19.6 秒"
+  },
+  "round2": {
+    "seconds": 4.6,
+    "summaries": [
+      "已核实：题名、作者与期刊官网记录一致，年份、卷页与 DOI 登记记录一致（来源：期刊官网、Crossref）",
+      "DOI 登记的作者、年份、卷页与引文一致，但登记的题名是另一语种，题名没能核对，请对照原文"
+    ]
+  },
+  "finishedAt": "2026-11-16T11:41:58+0900"
+}
