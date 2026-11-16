@@ -116,7 +116,7 @@
 - **前端与服务端**：Next.js 16（App Router）+ React 19 + TypeScript（严格模式）+ Tailwind CSS 4。网页和接口在同一个 Next.js 应用里，接口是 `src/app/api/*/route.ts`。
 - **大模型**：DeepSeek（`deepseek-flash`）。用到函数调用（Function Calling）、多轮工具调用、图片输入，以及 DeepSeek 的搜索接口（这是搜索引擎，不是大模型）。
 - **数据源**：Crossref、doi.org、OpenAlex、DataCite、中国 DOI 注册机构、Europe PMC、arXiv；中文期刊读知网、万方、维普和期刊官网的公开页面。
-- **部署**：魔搭创空间（Docker，免费 2 核 8 GB），另有 Netlify 备用站；密钥只放在服务端环境变量。
+- **部署**：魔搭创空间（Docker，免费 2 核 8 GB）；密钥只放在服务端环境变量。
 - **规模**：源码约 1.2 万行，测试代码约 6400 行，45 个测试文件 728 项测试；Git 历史 70 多个提交（2026-10-15 首次提交）。
 
 ### 4.2 数据流

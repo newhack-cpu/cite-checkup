@@ -1,12 +1,11 @@
 # 魔搭创空间容器部署
 
-已部署为国内老师试用入口，原 Netlify 网址保留。最新运行状态与验证证据见项目根目录 `PROJECT_STATE.md`。
+已部署为公网演示和老师试用入口，参赛材料只给这一个网址。原 Netlify 站停在 10-18 的版本、不再维护，材料里不再挂它的链接（见 `NETLIFY.md`）。最新运行状态与验证证据见项目根目录 `PROJECT_STATE.md`。
 
 ## 访问入口
 
 - 老师试用：[引用体检 · 魔搭](https://www.modelscope.cn/studios/kgkvybu111111/cite-checkup?mode=full)。已用全新、未登录的浏览器实际完成核查和报告下载，不需要安装软件或本机持续开机。
 - 管理页面：[创空间详情](https://modelscope.cn/studios/kgkvybu111111/cite-checkup)。应用域名是 `kgkvybu111111-cite-checkup.ms.show`，平台通过正常页面和 iframe 建立访客访问；直接用 curl 请求该域名会遇到平台鉴权提示，不要给老师部署令牌。
-- 备用：[Netlify 入口](https://cite-checkup-ql514740.netlify.app)。两处独立部署，GitHub 推送不会自动同时更新。
 - 本次使用账号实际返回的免费 2 核 / 8 GB Docker 资源，没有启用付费硬件。DeepSeek 请求仍消耗原项目的模型额度。
 
 ## 本次验证与限制
