@@ -493,3 +493,99 @@ describe("which references get the Chinese search", () => {
     expect(citedVolumePage(`张三. ${TITLE}[J]. 测试地理学报, 第 41 卷第 3 期, 12-20.`)).toEqual({ volume: "41", firstPage: "12" });
   });
 });
+
+// 2026-11-15：DOI 登记的是英文题名、拼音作者时，题名要在中文来源核对上才判已核实（2026-11-12 审查的“跨语种比对过强”）
+describe("a DOI record in another language needs the title confirmed by a Chinese source", () => {
+  const DOI = "10.99999/j.csdl.2021.03.002";
+  const english = (url: URL) => url.pathname === `/works/${DOI}` ? {
+    message: {
+      DOI, title: ["Multiscale study of cooling by urban green space"], issued: { "date-parts": [[2021, 3]] },
+      author: [{ family: "ZHANG", given: "San" }, { family: "LI", given: "Si" }], volume: "41", issue: "3", page: "12-20",
+      "container-title": ["Acta Test Geographica"], type: "journal-article",
+    },
+  } : undefined;
+  const withDoi = (text: string) => `${text} DOI: ${DOI}.`;
+  /** DOI 记录确认后会到 OpenAlex 交叉核对撤稿：这里一律答“没有收录”，免得当成网络故障去重试 */
+  const world = (w: World) => {
+    const calls = serve(w);
+    const inner = globalThis.fetch as unknown as (input: string, init?: RequestInit) => Promise<Response>;
+    vi.stubGlobal("fetch", async (input: string, init?: RequestInit) =>
+      (new URL(input).hostname === "api.openalex.org" ? new Response("{}", { status: 404 }) : inner(input, init)));
+    return calls;
+  };
+  const status = (result: RefResult, field: string) => result.fields.find((f) => f.field === field)?.status;
+
+  it("verifies once CQVIP confirms title and authors, and keeps the DOI record for year, volume and pages", async () => {
+    world({ sites: [cnkiHit, cqvipHit], crossref: english });
+    const result = await check(withDoi(CITED));
+    expect(result).toMatchObject({ verdict: "verified", matchStatus: "confirmed", issues: [] });
+    expect(result.summary).toContain("题名、作者与维普记录一致");
+    expect(result.match?.doi).toBe(DOI);
+    expect(status(result, "title")).toBe("match");
+    expect(status(result, "authors")).toBe("match");
+    expect(result.notes.join()).not.toContain("没有比对题名");
+    expect(result.notes.join()).toContain("按维普的记录核对");
+  });
+
+  it("reports an invented co-author that the Chinese record does not list", async () => {
+    world({ sites: [cnkiHit, cqvipHit], crossref: english });
+    const result = await check(withDoi(`张三, 李四, 王五. ${TITLE}[J]. 测试地理学报, 2021, 41(3): 12-20.`));
+    expect(result.verdict).toBe("mismatch");
+    expect(result.issues.join()).toContain("作者");
+  });
+
+  it("reports a start page that differs from the DOI record even though the title checks out", async () => {
+    world({ sites: [cnkiHit, cqvipHit], crossref: english });
+    const result = await check(withDoi(`张三, 李四. ${TITLE}[J]. 测试地理学报, 2021, 41(3): 112-120.`));
+    expect(result.verdict).toBe("mismatch");
+    expect(result.issues.join()).toContain("起始页不符");
+  });
+
+  it("stays a near match when no Chinese source carries the title", async () => {
+    world({ sites: [], cqvip: [], open: [], crossref: english });
+    const result = await check(withDoi(CITED));
+    expect(result).toMatchObject({ verdict: "near_match", matchStatus: "candidate", issues: [] });
+    expect(result.summary).toContain("题名没能核对");
+    expect(result.notes.join()).toContain("没有找到题名、作者、刊名都对得上的记录");
+  });
+
+  it("does not verify an unrelated title that merely shares DOI, authors, year and pages", async () => {
+    world({ sites: [cnkiHit, cqvipHit], crossref: english });
+    const result = await check(withDoi("张三, 李四. 量子计算机如何在火星上修建机场[J]. 测试地理学报, 2021, 41(3): 12-20."));
+    expect(result.verdict).toBe("near_match");
+    expect(result.issues).toEqual([]);
+  });
+
+  it("verifies a citation whose DOI record lists only the first author once CQVIP confirms all authors", async () => {
+    // 机械工程学报这类期刊在 Crossref 只登记第一作者（开发集 Q0103）：附英文译名的引文题名比得上，另两位作者要靠中文记录核对
+    // 换一个 DOI：DOI 登记记录在进程里有缓存，沿用上面的 DOI 会拿到前面测试里登记了两位作者的那条
+    const other = "10.99999/j.csdl.2021.03.777";
+    const firstOnly = (url: URL) => url.pathname === `/works/${other}` ? {
+      message: {
+        DOI: other, title: ["Multiscale study of cooling by urban green space"], issued: { "date-parts": [[2021, 3]] },
+        author: [{ family: "ZHANG", given: "San" }], volume: "41", issue: "3", page: "12-20",
+        "container-title": ["Acta Test Geographica"], type: "journal-article",
+      },
+    } : undefined;
+    const bilingual = `${CITED} (Zhang S, Li S. Multiscale study of cooling by urban green space[J]. Acta Test Geogr, 2021, 41(3): 12-20.) DOI: ${other}.`;
+    world({ sites: [cnkiHit, cqvipHit], crossref: firstOnly });
+    const result = await check(bilingual);
+    expect(result).toMatchObject({ verdict: "verified", issues: [] });
+    expect(status(result, "authors")).toBe("match");
+    expect(result.notes.join()).toContain("DOI 登记的拼音作者不全");
+
+    clearSearchCache();
+    world({ sites: [], cqvip: [], open: [], crossref: firstOnly });
+    const alone = await check(bilingual);
+    expect(alone).toMatchObject({ verdict: "near_match", issues: [] });
+    expect(alone.notes.join()).toContain("已核实需要作者也对得上");
+  });
+
+  it("stays a near match when web search is not configured", async () => {
+    world({ crossref: english });
+    // check() 的 cn 参数有默认值，传 undefined 等于没传；这里直接不带 cn 调用
+    const result = await verifyReference(parseReference(withDoi(CITED), 1), { openalexBudget: { left: 0 } });
+    expect(result.verdict).toBe("near_match");
+    expect(result.notes.join()).toContain("没有到知网、万方、维普和期刊官网核对题名");
+  });
+});

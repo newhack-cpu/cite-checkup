@@ -52,6 +52,11 @@ export interface MatchScore {
   /** 跨语种比对时，引文写的卷号、起始页与记录不同；值是引文的写法 */
   citedVolumeWrong?: string;
   citedPageWrong?: string;
+  /**
+   * 同一 DOI 的汉字引文对拼音记录：引文里写了、但在记录的拼音作者里找不到的汉字姓名。
+   * 拼音登记常不全、多音字也会转错，所以不据此说引文写错，只是不能把作者当成“一致”
+   */
+  unlistedAuthors?: string[];
   /** 用于在候选之间排序的综合分 */
   composite: number;
   same: boolean;
@@ -251,6 +256,30 @@ function sameNumber(a: string, b: string): boolean {
   return /^\d+$/.test(digits(a)) && /^\d+$/.test(digits(b)) && Number(digits(a)) === Number(digits(b));
 }
 
+/** 作者段里的汉字姓名（2–4 个汉字，姓名中间的空格去掉）；“等”和认不出的片段不算 */
+function hanNames(authorsGuess: string): string[] {
+  return authorsGuess.split(/\s*[,，、;；]\s*/).map((s) => s.replace(/\s+/g, ""))
+    .filter((s) => /^\p{Script=Han}{2,4}$/u.test(s) && !/^等人?$/.test(s));
+}
+
+/**
+ * 汉字姓名和记录里的一位拼音作者是不是同一个人。拼音登记的写法很乱，尽量往宽里认：
+ * 姓、名哪个在前都行（Qian Zhikuan / Zhikuan Qian），名可以只有首字母（QIAN Z），记录里夹着汉字也算（"ZHU Ying 祝"）。
+ * 转不成拼音的姓名当作对得上，不拿它说事
+ */
+function pinyinNameFits(name: string, author: Author): boolean {
+  const recorded = normalizeText(`${author.family} ${author.given ?? ""}`).replace(/ /g, "");
+  if (!recorded) return false;
+  if (recorded.includes(name)) return true;
+  const roman = romanizeHanName(name);
+  if (!roman) return true;
+  const family = roman.family.toLowerCase();
+  const initial = (roman.given ?? "").toLowerCase()[0] ?? "";
+  if (recorded === family) return true;
+  return (recorded.startsWith(family) && recorded[family.length] === initial)
+    || (recorded.endsWith(family) && recorded.length > family.length && recorded[0] === initial);
+}
+
 export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
   const rawSet = tokenSet(ref.raw);
   const main = stripRetractionPrefix(rec.title);
@@ -351,6 +380,10 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
   }
   // 拼音记录的作者顺序同样常登记错，只提示、不算写错
   if (crossScriptDoi && authorOrderOk === false) authorsReordered = true;
+  // 反过来看引文写的每个汉字姓名在不在记录里：多写一个记录里没有的人（2026-11-12 审查：加一个“张三”仍判已核实、作者标成一致）
+  // 登记记录只有一位作者时，分不清是只登记了第一作者还是本来就一位，所以不按人数猜，找不到就是没核对上
+  const unlistedAuthors = crossScriptDoi
+    ? hanNames(ref.authorsGuess!).filter((name) => !rec.authors.some((a) => pinyinNameFits(name, a))) : undefined;
 
   const years = recordYears(rec);
   const yearDiff = ref.year && years.length ? Math.min(...years.map((y) => Math.abs(ref.year! - y))) : undefined;
@@ -436,7 +469,8 @@ export function scoreCandidate(ref: ParsedRef, rec: WorkRecord): MatchScore {
 
   return {
     titleScore, titleMissing, authorRatio, firstAuthor, authorOrderOk, authorListMismatch, authorsReordered, yearDiff, volumeHit, pageHit,
-    issueHit, venueScore, venueCited, doiMatch, crossLanguage, citedVolumeWrong, citedPageWrong, composite, same, partial,
+    issueHit, venueScore, venueCited, doiMatch, crossLanguage, citedVolumeWrong, citedPageWrong, unlistedAuthors,
+    composite, same, partial,
   };
 }
 
@@ -482,7 +516,7 @@ export function fieldChecks(ref: ParsedRef, rec: WorkRecord, s: MatchScore): Fie
     status:
       s.authorRatio === undefined
         ? "missing"
-        : s.authorsReordered
+        : s.authorsReordered || s.unlistedAuthors?.length
           ? "partial"
           : s.firstAuthor === "match" && s.authorListMismatch !== true && s.authorOrderOk !== false
           && (s.authorRatio >= 0.5 || s.authorListMismatch === false)

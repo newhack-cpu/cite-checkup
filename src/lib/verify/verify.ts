@@ -365,14 +365,26 @@ export async function verifyReference(ref: ParsedRef, ctx: VerifyContext, extra?
       ranked = rank(ref, candidates);
     }
 
+    // DOI 登记记录认定是同一篇，但有东西没核对上：题名语种不同没有比过（MatchScore.crossLanguage），或引文里有作者在登记的
+    // 拼音作者里找不到（unlistedAuthors；有的期刊只登记第一作者）。光凭这样的记录判已核实太强（2026-11-12 审查：题名换成无关的、
+    // 多写一位作者都仍判已核实），要到中文来源把题名、作者核对上才算；见 settleCrossLanguage
+    const unchecked = (r: Ranked) => r.score.same && !!r.score.doiMatch && (!!r.score.crossLanguage || !!r.score.unlistedAuthors?.length);
+    const crossDoi = ranked.some((r) => r.score.same && r.rec.source !== "web" && !unchecked(r)) ? undefined : ranked.find(unchecked);
+    const webSame = (target: ParsedRef, records: WorkRecord[]) => rank(target, records).find((r) => r.rec.source === "web" && r.score.same);
+    // AI 继续查带回来的网页记录已经能核对题名时，不再联网查一遍
+    let titleProof = crossDoi && extra ? webSame(ref, extra.candidates) : undefined;
+
     // 中文期刊论文：到知网、万方、维普和期刊官网找原文页、补作者。英文译名附中文原文的引文按方括号里的中文原文比对
-    const view = ctx.cn && !ranked[0]?.score.same ? chineseJournalView(ref) : undefined;
+    const view = ctx.cn && (crossDoi ? !titleProof : !ranked[0]?.score.same) ? chineseJournalView(ref) : undefined;
     let cn: CnLookup | undefined;
     let viewBest: Ranked | undefined;
     if (view && ctx.cn) {
       cn = await lookupChineseJournal(view, steps, ctx.signal, ctx.cn);
       evidence.cnSearched = cn.searched;
-      if (view === ref) {
+      if (crossDoi) {
+        // 网页记录只用来核对题名和作者，结论仍以 DOI 登记记录为主
+        titleProof = webSame(view, cn.records);
+      } else if (view === ref) {
         candidates.push(...cn.records);
         ranked = rank(ref, candidates);
       } else {
@@ -390,13 +402,14 @@ export async function verifyReference(ref: ParsedRef, ctx: VerifyContext, extra?
     });
 
     const best = ranked[0];
-    if (!best?.score.same && viewBest?.score.same && view) {
+    if (!crossDoi && !best?.score.same && viewBest?.score.same && view) {
       return asWhole(judgeSame(view, viewBest.rec, viewBest.score, steps, evidence));
     }
-    if (best?.score.same) {
-      let rec = best.rec;
+    /** 已认定是同一篇的记录：查刊名别名、到 OpenAlex 交叉核对撤稿和年份，再逐字段下结论 */
+    const confirm = async (found: Ranked): Promise<RefResult> => {
+      let rec = found.rec;
       const extraNotes: string[] = [];
-      let score = await withVenueAlias(ref, rec, best.score, steps, ctx, extraNotes);
+      let score = await withVenueAlias(ref, rec, found.score, steps, ctx, extraNotes);
       // Crossref 撤稿元数据可能不完整，同样需要 OpenAlex 交叉核对。中文网页记录（知网、期刊官网）的 DOI 多由 ISTIC、知网注册，
       // OpenAlex 基本没有，这里不查（结论里注明没有核对撤稿状态）
       if (rec.doi && rec.source !== "openalex" && rec.source !== "web" && rec.retraction?.status !== "retracted" && rec.retraction?.status !== "withdrawn") {
@@ -434,8 +447,18 @@ export async function verifyReference(ref: ParsedRef, ctx: VerifyContext, extra?
       const result = judgeSame(ref, rec, score, steps, evidence);
       result.notes.push(...extraNotes);
       if (extraNotes.some((n) => n.includes("撤稿状态交叉核验未完成"))) result.summary += "；撤稿状态交叉核验未完成";
-      return withCn(result);
+      return result;
+    };
+    if (crossDoi) {
+      const doiResult = await confirm(crossDoi);
+      const target = view ?? ref;
+      const proof = titleProof ? { rec: titleProof.rec, result: judgeSame(target, titleProof.rec, titleProof.score, steps, evidence) } : undefined;
+      const settled = settleCrossLanguage(doiResult, crossDoi.score, proof, !!cn?.searched || (!!extra && !view));
+      return withCn(proof && target !== ref
+        ? { ...settled, notes: [...settled.notes, "引文的英文译名无法与中文网页记录比对，已按方括号里的中文原文核对"] }
+        : settled);
     }
+    if (best?.score.same) return withCn(await confirm(best));
     if (!best?.score.partial && viewBest?.score.partial && view) return asWhole(judgeNotSame(view, viewBest, steps, evidence));
     const result = withCn(judgeNotSame(ref, best, steps, evidence));
     // 只有"两个数据源都检索不到"这一种查无此文需要再确认期刊收录范围；DOI 证据不受影响
@@ -583,10 +606,12 @@ function judgeSame(ref: ParsedRef, rec: WorkRecord, s: MatchScore, steps: CheckS
   }
   if (s.titleMissing) notes.push("引用中没有写题名，已按作者、刊名、卷号和页码与数据库记录核对");
   if (s.crossLanguage) {
-    notes.push("DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文");
+    notes.push(TITLE_UNCHECKED_NOTE);
     if (s.citedVolumeWrong) issues.push(`卷号不符：引用写 ${s.citedVolumeWrong}，DOI 登记为 ${rec.volume}`);
     if (s.citedPageWrong) issues.push(`起始页不符：引用写 ${s.citedPageWrong}，DOI 登记的页码为 ${rec.pages}`);
   }
+  if (s.unlistedAuthors?.length)
+    notes.push(`${UNLISTED_AUTHORS_NOTE}${s.unlistedAuthors.join("、")}（登记的作者为 ${formatAuthorsShort(rec.authors)}）；拼音登记常不全，不算写错，请对照原文核对作者`);
   if (fields.find((f) => f.field === "venue")?.status === "mismatch")
     issues.push(`期刊名不符：引用写「${ref.venueGuess}」，数据库记录为「${rec.venue}」`);
   if (fields.find((f) => f.field === "title")?.status === "partial") notes.push("题名与数据库记录不完全一致，请核对用词");
@@ -624,7 +649,68 @@ function judgeSame(ref: ParsedRef, rec: WorkRecord, s: MatchScore, steps: CheckS
   if (issues.length) {
     return { ...common, verdict: "mismatch", confidence, summary: `文献存在，但有 ${issues.length} 处信息与数据库记录不一致${src}` };
   }
+  if (s.unlistedAuthors?.length) {
+    // 引文里有登记记录找不到的作者：不能说引文写错（拼音登记常不全、写法也乱），也不能当作者已经核对过
+    return {
+      ...common, verdict: "near_match", matchStatus: "candidate", confidence: 0.6,
+      summary: `DOI 登记记录的其余信息与引文一致，但引用中有作者在登记的作者里找不到，作者没能核对全，请对照原文${src}`,
+    };
+  }
   return { ...common, verdict: "verified", confidence, summary: `已核实：与数据库记录一致${src}` };
+}
+
+const TITLE_UNCHECKED_NOTE = "DOI 登记的题名与引文语种不同，没有比对题名；已按作者、年份、卷号和起始页核对，题名请对照原文";
+const UNLISTED_AUTHORS_NOTE = "引用中有作者不在 DOI 登记的拼音作者里：";
+
+/**
+ * DOI 相同、但题名语种不同或拼音作者不全的登记记录怎么下结论。doi 是按登记记录逐字段比对的结果（题名或部分作者没核对上），proof 是中文网页记录
+ * （知网、维普、期刊官网）按题名、作者、刊名确认同一篇之后的结果，没找到时为空。
+ * - 撤稿、关注声明：照常报告
+ * - 没有 proof：年份、卷页与登记不符的照常指出；其余只能是相近候选，题名或作者没核对过不判已核实
+ * - 有 proof：题名、作者、刊名以网页记录为准（汉字对汉字），年份、卷页以 DOI 登记记录为准；两边都没有不符才判已核实
+ */
+function settleCrossLanguage(
+  doi: RefResult,
+  score: MatchScore,
+  proof: { rec: WorkRecord; result: RefResult } | undefined,
+  searched: boolean,
+): RefResult {
+  if (doi.verdict === "retracted" || doi.verdict === "concern") return doi;
+  if (!proof) {
+    if (doi.verdict === "mismatch") return doi;
+    const what = score.crossLanguage ? "题名" : "作者";
+    const why = searched ? "在知网、万方、维普和期刊官网没有找到题名、作者、刊名都对得上的记录" : `没有到知网、万方、维普和期刊官网核对${what}`;
+    const note = `已核实需要${what}也对得上；这一条${why}，不能确认，也不算写错`;
+    // 题名比过、只是作者没核对全：judgeSame 已经给了相近候选和说明
+    if (!score.crossLanguage) return { ...doi, notes: [...doi.notes, note] };
+    const authorsToo = !!score.unlistedAuthors?.length;
+    return {
+      ...doi, verdict: "near_match", matchStatus: "candidate", confidence: 0.6,
+      summary: authorsToo
+        ? "DOI 登记的年份、卷页与引文一致，但登记的题名是另一语种、没能核对，引用中还有作者在登记的作者里找不到，请对照原文"
+        : "DOI 登记的作者、年份、卷页与引文一致，但登记的题名是另一语种，题名没能核对，请对照原文",
+      notes: [...doi.notes, note],
+    };
+  }
+  const site = sourceName(proof.rec);
+  const doiSite = doi.match ? sourceName(doi.match) : "DOI 登记记录";
+  // 题名、作者、刊名三栏换成网页记录的比对结果；年份、DOI 两栏留用登记记录的
+  const fromWeb = new Map(proof.result.fields.filter((f) => f.field === "title" || f.field === "authors" || f.field === "venue").map((f) => [f.field, f]));
+  const fields = [
+    ...doi.fields.map((f) => fromWeb.get(f.field) ?? f),
+    ...[...fromWeb.values()].filter((f) => !doi.fields.some((d) => d.field === f.field)),
+  ];
+  const issues = [...new Set([...proof.result.issues, ...doi.issues])];
+  const notes = [
+    ...doi.notes.filter((n) => n !== TITLE_UNCHECKED_NOTE && !n.startsWith(UNLISTED_AUTHORS_NOTE)),
+    ...proof.result.notes.filter((n) => !n.includes("没有核对撤稿状态") && !n.startsWith("已核实需要") && !doi.notes.includes(n)),
+    `${score.crossLanguage ? "DOI 登记的题名与引文语种不同" : "DOI 登记的拼音作者不全"}；题名、作者和刊名按${site}的记录核对（${proof.rec.url ?? "见核查过程"}），年份、卷号和起始页按 DOI 登记记录核对`,
+  ];
+  const common = { ...doi, fields, issues, notes, matchStatus: "confirmed" as const, confidence: Math.min(0.98, 0.55 + score.composite * 0.45) };
+  const pending = "；撤稿状态交叉核验未完成";
+  const src = `（来源：${site}、${doiSite}）${doi.summary.endsWith(pending) ? pending : ""}`;
+  if (issues.length) return { ...common, verdict: "mismatch", summary: `文献存在，但有 ${issues.length} 处信息与记录不一致${src}` };
+  return { ...common, verdict: "verified", summary: `已核实：题名、作者与${site}记录一致，年份、卷页与 DOI 登记记录一致${src}` };
 }
 
 /**

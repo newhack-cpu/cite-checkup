@@ -504,13 +504,18 @@ describe("Chinese citation against a DOI record registered only in English", () 
     `${authors}. 贵州江口平引老堡组顶部的锆石年龄与对比意义[J]. 中国科学: 地球科学, ${tail}. DOI: 10.1360/zd-2013-43-7-1195.`;
   const authors = "钱志宽, 邢乐才, 刘世荣, 等";
 
-  it("verifies the real citation instead of saying the DOI points to another work", async () => {
+  // 2026-11-15：题名没比过就不判已核实。这一组不联网（没有 ctx.cn），题名核对不了，写对的引文是相近候选、不算写错；
+  // 联网把题名核对上之后判已核实的情形在 cnjournal.test.ts
+  it("neither accuses nor verifies the real citation while the title is unchecked", async () => {
     fixture(item);
     const result = await check(cite(authors, "2013, 43(7): 1195-1206"));
-    expect(result.verdict).toBe("verified");
+    expect(result.verdict).toBe("near_match");
+    expect(result.matchStatus).toBe("candidate");
     expect(result.issues).toEqual([]);
+    expect(result.summary).toContain("题名没能核对");
     expect(result.notes.join()).toContain("没有比对题名");
     expect(result.fields?.find((f) => f.field === "title")?.status).toBe("missing");
+    expect(result.fields?.find((f) => f.field === "authors")?.status).toBe("match");
   });
 
   it("names the wrong year, volume or start page once the work is confirmed", async () => {
@@ -544,40 +549,105 @@ describe("Chinese citation against a DOI record registered only in English", () 
 
   it("requires all of year, volume and page when the record has no authors", async () => {
     fixture({ ...item, author: undefined });
-    expect((await check(cite(authors, "2013, 43(7): 1195-1206"))).matchStatus).toBe("confirmed");
+    const all = await check(cite(authors, "2013, 43(7): 1195-1206"));
+    expect(all.verdict).toBe("near_match");
+    expect(all.issues).toEqual([]);
     fixture({ ...item, author: undefined });
-    expect((await check(cite(authors, "2013, 43(7): 2084-2095"))).matchStatus).not.toBe("confirmed");
+    expect((await check(cite(authors, "2013, 43(7): 2084-2095"))).issues.join()).toContain("实际指向");
   });
 
   it("handles pinyin names registered with family and given swapped", async () => {
     fixture({ ...item, author: [{ family: "Zhikuan", given: "Qian" }, { family: "Lecai", given: "Xing" }, { family: "Shirong", given: "Liu" }] });
     const result = await check(cite(authors, "2013, 43(7): 1195-1206"));
-    expect(result.verdict).toBe("verified");
+    expect(result.verdict).toBe("near_match");
     expect(result.issues).toEqual([]);
+    expect(result.fields?.find((f) => f.field === "authors")?.status).toBe("match");
   });
 
   it("does not call a partial pinyin author list an error", async () => {
     fixture({ ...item, author: [{ family: "QIAN", given: "Z" }] });
-    expect((await check(cite(authors, "2013, 43(7): 1195-1206"))).verdict).toBe("verified");
+    const result = await check(cite(authors, "2013, 43(7): 1195-1206"));
+    expect(result.verdict).toBe("near_match");
+    expect(result.issues).toEqual([]);
+    // 登记记录只有一位作者，引文另外两位核对不了：不算一致，也不算写错
+    expect(result.fields?.find((f) => f.field === "authors")?.status).toBe("partial");
+    expect(result.notes.join()).toContain("不算写错");
   });
 
   it("only notes a pinyin author list in a different order", async () => {
     fixture({ ...item, author: [{ family: "Xing", given: "Lecai" }, { family: "Qian", given: "Zhikuan" }, { family: "Liu", given: "Shirong" }] });
     const reordered = await check(cite(authors, "2013, 43(7): 1195-1206"));
-    expect(reordered.verdict).toBe("verified");
+    expect(reordered.verdict).toBe("near_match");
+    expect(reordered.issues).toEqual([]);
     expect(reordered.notes.join()).toContain("顺序不同");
   });
 
   it("confirms an online-first record that has no volume or pages yet by author and year", async () => {
     fixture({ ...item, volume: undefined, issue: undefined, page: undefined });
-    expect((await check(cite(authors, "2013, 43(7): 1195-1206"))).verdict).toBe("verified");
+    const online = await check(cite(authors, "2013, 43(7): 1195-1206"));
+    expect(online.verdict).toBe("near_match");
+    expect(online.issues).toEqual([]);
     fixture({ ...item, volume: undefined, issue: undefined, page: undefined });
-    expect((await check(cite(authors, "2016, 43(7): 1195-1206"))).matchStatus).not.toBe("confirmed");
+    expect((await check(cite(authors, "2016, 43(7): 1195-1206"))).issues.join()).toContain("实际指向");
   });
 
   it("accepts leading zeros in the registered page", async () => {
     fixture({ ...item, page: "01195-01206" });
-    expect((await check(cite(authors, "2013, 43(7): 1195-1206"))).verdict).toBe("verified");
+    const result = await check(cite(authors, "2013, 43(7): 1195-1206"));
+    expect(result.verdict).toBe("near_match");
+    expect(result.issues).toEqual([]);
+  });
+
+  // 2026-11-12 审查探针（output/review-2026-11-12/probe-cross-language-doi.cjs）的三条合成引文：当时三条都判已核实
+  describe("review probe: what used to pass as verified", () => {
+    const probe: CrossrefItem = {
+      DOI: "10.1234/review-fixture",
+      title: ["Rice yield response to irrigation in field experiments"],
+      author: [{ family: "Wang", given: "Wei" }],
+      issued: { "date-parts": [[2024]] },
+      "container-title": ["Journal of Agriculture"],
+      volume: "12", issue: "3", page: "100-110", type: "journal-article",
+    };
+    const tail = "2024, 12(3): 100-110. DOI: 10.1234/review-fixture.";
+
+    it("does not verify a plausible translation whose title nobody compared", async () => {
+      fixture(probe);
+      const result = await check(`王伟. 田间试验中水稻产量对灌溉的响应[J]. 农业杂志, ${tail}`);
+      expect(result.verdict).toBe("near_match");
+      expect(result.issues).toEqual([]);
+    });
+
+    it("does not mark an invented co-author as matching", async () => {
+      fixture(probe);
+      const result = await check(`王伟, 张三. 田间试验中水稻产量对灌溉的响应[J]. 农业杂志, ${tail}`);
+      expect(result.verdict).toBe("near_match");
+      expect(result.fields?.find((f) => f.field === "authors")?.status).toBe("partial");
+      expect(result.notes.join()).toContain("张三");
+      expect(result.summary).toContain("作者在登记的作者里找不到");
+      expect(result.issues).toEqual([]);
+    });
+
+    it("does not verify an unrelated title and journal on the strength of DOI, author and pages", async () => {
+      fixture(probe);
+      const result = await check(`王伟. 量子计算机如何在火星上修建机场[J]. 航天科学, ${tail}`);
+      expect(result.verdict).toBe("near_match");
+      expect(result.matchStatus).toBe("candidate");
+    });
+  });
+
+  it("holds back verified when the title matches but a cited author is missing from a complete pinyin list", async () => {
+    // 中文著录后附英文译名：题名靠英文译名比上了，不走跨语种分支；多写的作者同样不能悄悄放过
+    const bilingual = (names: string) =>
+      `${names}. 贵州江口平引老堡组顶部的锆石年龄与对比意义[J]. 中国科学: 地球科学, 2013, 43(7): 1195-1206. `
+      + "Age of the top of the Laobao Formation in Jiangkou, Guizhou and its correlation. DOI: 10.1360/zd-2013-43-7-1195.";
+    fixture(item);
+    const real = await check(bilingual("钱志宽, 邢乐才, 刘世荣"));
+    expect(real.verdict).toBe("verified");
+    fixture(item);
+    const padded = await check(bilingual("钱志宽, 邢乐才, 张三"));
+    expect(padded.verdict).toBe("near_match");
+    expect(padded.issues).toEqual([]);
+    expect(padded.notes.join()).toContain("张三");
   });
 
   it("leaves same-language title comparison unchanged", async () => {
