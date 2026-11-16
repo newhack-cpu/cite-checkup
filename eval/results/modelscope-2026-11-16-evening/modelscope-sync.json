@@ -1,0 +1,8 @@
+{
+  "syncedAt": "2026-11-16T10:58:22.634Z",
+  "remote": "https://modelscope.cn/studios/kgkvybu111111/cite-checkup.git",
+  "commit": "18744d8fa4a9508e0960627da514ec6e81fc073c",
+  "sourceFiles": 98,
+  "sensitiveValueMatches": 0,
+  "checkout": "D:\\Darks\\projects\\cite-checkup\\output\\modelscope-2026-10-18\\deploy-repository"
+}

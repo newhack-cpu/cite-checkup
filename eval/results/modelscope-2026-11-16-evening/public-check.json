@@ -1,0 +1,44 @@
+{
+  "url": "https://www.modelscope.cn/studios/kgkvybu111111/cite-checkup?mode=full",
+  "startedAt": "2026-11-16T20:03:30+0900",
+  "appReadySeconds": 8.9,
+  "compareLine": "为什么不直接问 AI：130 条带真值的引文里，不联网的 DeepSeek 把 23%–33% 的编造引文说成真实，本系统为 0",
+  "agentStatus": {
+    "available": true,
+    "provider": "DeepSeek",
+    "model": "deepseek-flash",
+    "limits": {
+      "toolCalls": 4
+    }
+  },
+  "round1": {
+    "seconds": 59.3,
+    "count": 13,
+    "sameAsRehearsal": 13,
+    "diff": []
+  },
+  "round2": {
+    "seconds": 3.6,
+    "summaries": [
+      "已核实：与数据库记录一致（来源：Crossref）",
+      "文献存在，但引文附的英文译名里作者与中文作者不是同一批人（来源：Crossref）"
+    ],
+    "translationIssue": true,
+    "standardList": "[1]YANG M, ZHAO X, ZHONG Z, et al. Adaptive Velocity Planning under Complex Constraints for 5-axis CNC Systems[J]. Journal of Mechanical Engineering, 2020, 56(11): 161. DOI: 10.3901/jme.2020.11.161.\n[2]YANG M, ZHAO X, ZHONG Z, et al. Adaptive Velocity Planning under Complex Constraints for 5-axis CNC Systems[J]. Journal of Mechanical Engineering, 2020, 56(11): 161. DOI: 10.3901/jme.2020.11.161.",
+    "bibtex": "% 引用体检导出（2026-11-16）：只含数据库确认是同一篇的 2 条，字段取自数据库记录。\n\n@article{yang2020,\n  author = {Yang, Min and Zhao, Xianchao and Zhong, Zeshan and Yue, Yi and Gao, Peng and Li, Qiankun},\n  title = {Adaptive Velocity Planning under Complex Constraints for 5-axis CNC Systems},\n  journal = {Journal of Mechanical Engineering},\n  year = {2020},\n  volume = {56},\n  number = {11},\n  pages = {161},\n  doi = {10.3901/jme.2020.11.161}\n}\n\n@article{yang2020a,\n  author = {Yang, Min and Zhao, Xianchao and Zhong, Zeshan and Yue, Yi and Gao, Peng and Li, Qiankun},\n  title = {Adaptive Velocity Planning under Complex Constraints for 5-axis CNC Systems},\n  journal = {Journal of Mechanical Engineering},\n  year = {2020},\n  volume = {56},\n  number = {11},\n  pages = {161},\n  doi = {10.3901/jme.2020.11.161}\n}\n"
+  },
+  "round3": {
+    "checkSeconds": 7.6,
+    "before": [
+      "检索覆盖不完整，暂时无法确认，请人工核查或稍后重试"
+    ],
+    "panelBefore": "有 1 条数据库没查到或只找到相近候选。可以交给 AI 换检索策略逐条再查；找到的候选仍由规则逐字段比对，AI 不能改结论。\n\nAI 继续查这 1 条",
+    "batchSeconds": 9.1,
+    "panelDone": "AI 追查了 1 条，共发起 2 次检索：1 条找到并由规则确认是同一篇，0 条没有找到能确认的记录、结论不变。",
+    "after": [
+      "已核实：与数据库记录一致（来源：OpenAlex）"
+    ]
+  },
+  "pageErrors": [],
+  "finishedAt": "2026-11-16T20:05:09+0900"
+}
