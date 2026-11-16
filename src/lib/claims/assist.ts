@@ -162,14 +162,17 @@ export interface HybridRetrieval {
 /** 向量召回最多等多久：模型在本机 CPU 上算，长文第一次要几秒；超时就不等这一路 */
 const VECTOR_DEADLINE_MS = 25_000;
 
-/** 向量召回一路：不可用返回 null；超时或出错记一条说明后返回 null，不影响其余几路 */
+/**
+ * 向量召回一路：不可用返回 null；超时或出错记一条说明后返回 null，不影响其余几路。
+ * 这个函数任何情况下都不抛错，包括请求被取消：它和查询扩展同时进行，扩展那边先因取消抛错时没有人再等它的结果，
+ * 它要是也抛错就成了没人接的 Promise 拒绝（2026-11-12 审查用探针复现）。取消由调用方在等到结果后自己检查。
+ */
 async function vectorList(claim: string, chunks: EvidenceChunk[], signal: AbortSignal, warnings: string[]): Promise<EvidenceChunk[] | null> {
-  if (!embeddingAvailable()) return null;
   try {
+    if (!embeddingAvailable()) return null;
     return await withDeadline((inner) => rankByEmbedding(claim, chunks, PER_QUERY, inner), signal, VECTOR_DEADLINE_MS);
   } catch {
-    signal.throwIfAborted();
-    warnings.push("向量召回未完成，本次没有用语义相似度找片段。");
+    if (!signal.aborted) warnings.push("向量召回未完成，本次没有用语义相似度找片段。");
     return null;
   }
 }
@@ -199,6 +202,7 @@ export async function hybridRetrieve(claim: string, chunks: EvidenceChunk[], sig
   const lists = [rankEvidence(termWeights(claim), chunks, PER_QUERY)];
   if (expansion?.length) lists.push(rankEvidence(termWeights(expansion.join("\n")), chunks, PER_QUERY));
   const semantic = await vectorTask;
+  signal.throwIfAborted();
   if (semantic?.length) lists.push(semantic);
   const pool = fuse(lists).slice(0, POOL);
   let ranked = pool;

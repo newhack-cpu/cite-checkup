@@ -128,3 +128,26 @@ describe("embedding helpers", () => {
     expect(await actual.rankByEmbedding("任意论断", chunks, 3, new AbortController().signal)).toBeNull();
   });
 });
+
+describe("cancellation while vector recall is still running", () => {
+  it("rejects once for the caller and leaves no unhandled rejection behind", async () => {
+    // 2026-11-12 审查复现：向量召回和查询扩展同时进行，取消时扩展先抛错，向量那一路的拒绝没人接
+    vector.rank = () => new Promise(() => {}); // 向量一直没算完
+    vi.stubGlobal("fetch", vi.fn((_url: string, init: RequestInit) => new Promise((_resolve, reject) => {
+      init.signal!.addEventListener("abort", () => reject(init.signal!.reason), { once: true });
+    })));
+    const unhandled: unknown[] = [];
+    const onUnhandled = (reason: unknown) => { unhandled.push(reason); };
+    process.on("unhandledRejection", onUnhandled);
+    try {
+      const controller = new AbortController();
+      const pending = hybridRetrieve(CLAIM, chunks, controller.signal);
+      setTimeout(() => controller.abort(), 10);
+      await expect(pending).rejects.toMatchObject({ name: "AbortError" });
+      await new Promise((resolve) => setTimeout(resolve, 80));
+      expect(unhandled).toEqual([]);
+    } finally {
+      process.off("unhandledRejection", onUnhandled);
+    }
+  });
+});

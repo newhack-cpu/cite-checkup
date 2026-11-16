@@ -30,21 +30,41 @@ export function embeddingAvailable(): boolean {
 }
 
 let loading: Promise<Extractor | null> | undefined;
+let loadState: "idle" | "loading" | "ready" | "failed" = "idle";
+let loadError: string | undefined;
+let loadMs: number | undefined;
+
+/**
+ * 向量召回的运行状态，随 GET /api/claims 返回：部署后不用翻服务器日志就能看出这一路有没有真正在用。
+ * off 关闭；missing 没有模型文件；idle 还没用过；loading / ready / failed 是加载情况，failed 附一句原因。
+ */
+export function embeddingStatus(): { model: string; state: "off" | "missing" | "idle" | "loading" | "ready" | "failed"; loadMs?: number; error?: string } {
+  const state = modelRoot() === null ? "off" : !embeddingAvailable() ? "missing" : loadState;
+  return { model: EMBEDDING_MODEL, state, ...(loadMs === undefined ? {} : { loadMs }), ...(state === "failed" && loadError ? { error: loadError } : {}) };
+}
 
 /** 进程内只加载一次；加载失败记一次日志，之后不再重试 */
 function extractor(): Promise<Extractor | null> {
   loading ??= (async () => {
     const root = modelRoot();
     if (!root || !embeddingAvailable()) return null;
+    const started = Date.now();
+    loadState = "loading";
     try {
       const { env, pipeline } = await import("@huggingface/transformers");
       // 只读本机文件，库自己不联网取模型
       env.allowRemoteModels = false;
       env.allowLocalModels = true;
       env.localModelPath = root;
-      return (await pipeline("feature-extraction", EMBEDDING_MODEL, { dtype: "q8" })) as unknown as Extractor;
+      const model = (await pipeline("feature-extraction", EMBEDDING_MODEL, { dtype: "q8" })) as unknown as Extractor;
+      loadState = "ready";
+      loadMs = Date.now() - started;
+      return model;
     } catch (error) {
-      console.warn("[embedding] 向量模型加载失败，论断检索退回词面检索：", (error as Error).message);
+      loadState = "failed";
+      // 只留错误类型和开头一段，便于定位缺了哪个依赖；不带调用栈
+      loadError = `${(error as Error).name}: ${String((error as Error).message).replace(/\s+/g, " ").slice(0, 240)}`;
+      console.warn("[embedding] 向量模型加载失败，论断检索退回词面检索：", loadError);
       return null;
     }
   })();

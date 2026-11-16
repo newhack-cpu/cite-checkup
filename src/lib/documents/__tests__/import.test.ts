@@ -165,3 +165,20 @@ describe("reference section selection", () => {
     expect(extractReferenceSection("This sentence mentions references without a heading.")).toBeNull();
   });
 });
+
+describe("whitespace cleanup", () => {
+  it("strips spaces and tabs at line ends only", async () => {
+    const { stripLineEndSpaces } = await import("../import");
+    expect(stripLineEndSpaces("a  \t\nb c \n\n  d\t")).toBe("a\nb c\n\n  d");
+    expect(stripLineEndSpaces("no trailing")).toBe("no trailing");
+  });
+
+  it("imports a TXT with a very long run of spaces without stalling", async () => {
+    // 2026-11-12 审查复现：原来的正则在 8 万个连续空格上要 2.6–3.9 秒，耗时随长度平方增长；15 万个按那个增长要十秒以上
+    const body = `A${" ".repeat(150_000)}Z`;
+    const started = performance.now();
+    const result = await importDocument(new File([body], "spaces.txt"));
+    expect(performance.now() - started).toBeLessThan(1_500);
+    expect(result.text).toBe(body);
+  });
+});

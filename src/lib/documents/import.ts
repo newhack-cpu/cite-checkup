@@ -5,6 +5,19 @@ import { parsePdf } from "./pdf";
 import { extractReferenceSection } from "./references";
 import { DOCUMENT_LIMITS, DocumentImportError, throwIfAborted, type DocumentFormat, type ImportedDocument } from "./types";
 
+/**
+ * 去掉每行末尾的空格和制表符。逐行从行尾往回数，耗时和长度成正比。
+ * 原来用正则 /[ \t]+\n/g：一长串空格后面不是换行时，正则从每个空格起都要扫到这串空格的末尾才放弃，
+ * 8 万个连续空格的 TXT 要卡 2.6–3.9 秒（2026-11-12 审查用探针复现），而且发生在字数上限检查之前。
+ */
+export function stripLineEndSpaces(text: string): string {
+  return text.split("\n").map((line) => {
+    let end = line.length;
+    while (end > 0 && (line[end - 1] === " " || line[end - 1] === "\t")) end--;
+    return end === line.length ? line : line.slice(0, end);
+  }).join("\n");
+}
+
 export async function importDocument(file: File, signal?: AbortSignal): Promise<ImportedDocument> {
   throwIfAborted(signal);
   if (file.size > DOCUMENT_LIMITS.fileBytes) throw new DocumentImportError("FILE_TOO_LARGE", `文件超过 ${UPLOAD_LIMIT_MIB} MiB，请压缩或拆分后导入。`, 413);
@@ -46,7 +59,7 @@ export async function importDocument(file: File, signal?: AbortSignal): Promise<
   const hiddenResult = applyHiddenText(text, hiddenExtras);
   text = hiddenResult.text;
   warnings.push(...hiddenResult.warnings);
-  text = text.replace(/\r\n?/g, "\n").replace(/[ \t]+\n/g, "\n").replace(/\n{4,}/g, "\n\n\n").trim();
+  text = stripLineEndSpaces(text.replace(/\r\n?/g, "\n")).replace(/\n{4,}/g, "\n\n\n").trim();
   if (!text) throw new DocumentImportError("NO_TEXT", "未提取到可用文字。文件可能是图片或扫描件；参考文献可截图后用「拍照 / 截图识别」。");
   if (text.length > DOCUMENT_LIMITS.characters) throw new DocumentImportError("TEXT_TOO_LONG", "文档文字超过 160,000 字符，请拆分后导入。", 413);
   const references = extractReferenceSection(text);

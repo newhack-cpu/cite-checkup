@@ -73,4 +73,6 @@ export interface ClaimServiceStatus {
   provider: "DeepSeek";
   model: string;
   limits: { claimChars: number; evidenceChars: number; retrievedChunks: number };
+  /** Local embedding recall: whether the model file is installed and whether it loaded */
+  embedding: { model: string; state: "off" | "missing" | "idle" | "loading" | "ready" | "failed"; loadMs?: number; error?: string };
 }

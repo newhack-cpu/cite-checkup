@@ -1,3 +1,4 @@
+import { embeddingStatus } from "./embedding";
 import { ClaimError } from "./errors";
 import { readBoundedJson, retryableTransport, withDeadline } from "./io";
 import { completionArguments, validateJudgment } from "./judge";
@@ -19,7 +20,7 @@ export function configuration() {
 
 export function getClaimStatus(): ClaimServiceStatus {
   const { apiKey, model, endpoint } = configuration();
-  return { available: Boolean(apiKey && endpoint), provider: "DeepSeek", model, limits: { claimChars: MAX_CLAIM_CHARS, evidenceChars: MAX_EVIDENCE_CHARS, retrievedChunks: MAX_RETRIEVED_CHUNKS } };
+  return { available: Boolean(apiKey && endpoint), provider: "DeepSeek", model, limits: { claimChars: MAX_CLAIM_CHARS, evidenceChars: MAX_EVIDENCE_CHARS, retrievedChunks: MAX_RETRIEVED_CHUNKS }, embedding: embeddingStatus() };
 }
 
 const SYSTEM = `You are a conservative academic claim-to-evidence assessor. Use ONLY the retrieved evidence chunks supplied in the JSON user message. You have no web, retrieval or other tools, no authority to fetch URLs, and must not use prior knowledge of any paper.
