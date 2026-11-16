@@ -63,7 +63,8 @@ describe("verifyReference suggestion with a reversed pinyin registration", () =>
     expect(r.verdict).toBe("verified");
     expect(r.suggestion).toMatch(/^YANG M, ZHAO X, ZHONG Z, et al\./);
     expect(r.notes.join("")).toContain("数据库登记的拼音作者姓和名顺序颠倒（登记为 Min Y, Xianchao Z, Zeshan Z 等），规范写法已按引文的汉字作者调回");
-    // 数据库记录一栏仍是原登记
+    // 数据库记录一栏仍是原登记；调回的作者另外带给前端（规范参考文献面板、BibTeX 导出用）
     expect(r.match?.authors[0]).toEqual({ family: "Min", given: "YANG" });
+    expect(r.suggestionAuthors?.slice(0, 2)).toEqual([{ family: "Yang", given: "Min" }, { family: "Zhao", given: "Xianchao" }]);
   });
 });

@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 import { inkDrop, scrollBehavior, useCountUp, useGlide } from "@/lib/motion";
+import { buildBibtex } from "@/lib/bibtex";
 import { buildFixedList, buildReportMarkdown, buildStandardList, standardEntries, type CitationStyle } from "@/lib/report";
 import { localDate, reportHtml, saveFile } from "@/lib/report-html";
 import { VERDICT_META, VERDICT_ORDER } from "@/lib/verdict-meta";
@@ -180,6 +181,18 @@ export function ReportSummary({
                   按数据库重写 <span className="font-semibold tabular text-ink-soft">{rewritten}</span> 条 · 保留原文 <span className="font-semibold tabular text-ink-soft">{entries.length - rewritten}</span> 条
                   {style === "apa" && " · APA 按第一作者排序，不编号"}
                 </p>
+                <div className="flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  disabled={rewritten === 0}
+                  onPointerDown={(e) => inkDrop(e, "rgb(184 50 42 / 0.18)")}
+                  onClick={() => saveFile(buildBibtex(refs, results).text, "application/x-bibtex;charset=utf-8", `引用体检-参考文献-${localDate()}.bib`)}
+                  className={ghost}
+                  title="导入 Zotero、EndNote、JabRef 或 LaTeX：只导出数据库确认是同一篇的条目，字段取自数据库记录；其余条目在文件开头注明序号"
+                >
+                  <IconDownload className="text-[15px]" />
+                  导出 BibTeX
+                </button>
                 <button
                   type="button"
                   onPointerDown={(e) => inkDrop(e, "rgb(184 50 42 / 0.18)")}
@@ -198,6 +211,7 @@ export function ReportSummary({
                   {standardCopied ? <IconCheck className="text-[15px] text-jade" /> : <IconCopy className="text-[15px]" />}
                   {standardCopied ? "已复制到剪贴板" : "复制全部"}
                 </button>
+                </div>
               </div>
             </div>
           </div>

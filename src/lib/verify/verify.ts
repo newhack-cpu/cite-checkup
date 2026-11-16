@@ -666,6 +666,7 @@ function judgeSame(ref: ParsedRef, rec: WorkRecord, s: MatchScore, steps: CheckS
     notes,
     // 知网页面没有卷号和印刷页码、期刊官网有时只给起始页，拼出的写法会丢掉引文里正确的卷页：网页记录有完整起止页才给规范写法
     suggestion: web && !fullPages(rec) ? undefined : suggestCitation(reordered ?? rec, ref.raw),
+    ...(reordered ? { suggestionAuthors: reordered.authors } : {}),
   };
 
   if (web) return judgeWeb(ref, rec, s, common, site, db);

@@ -12,11 +12,21 @@ import { readCheckStream } from "@/lib/check-stream";
 import type { CheckEvent, ParsedRef, RefKind, RefResult, Verdict } from "@/lib/verify/types";
 import { ATTENTION, ReportSummary, type Filter } from "./report-summary";
 import { ResultCard, type AgentRunState } from "./result-card";
+import { AGENT_BATCH_SIZE, AgentBatch, type AgentBatchState } from "./agent-batch";
 import { Stamp } from "./seal";
 import { DocumentImport } from "./document-import";
 import { IconArrow, IconCheck, IconChevron, IconShield, IconSpark, IconStop } from "./icons";
 
 type Phase = "idle" | "running" | "done" | "interrupted";
+
+/** 一条 AI 追查的结果，批量追查据此计数 */
+interface AgentOutcome {
+  status: "confirmed" | "unchanged" | "failed";
+  toolCalls?: number;
+  error?: string;
+  /** 被接口限流（429）：批量追查到此为止 */
+  limited?: boolean;
+}
 
 const KIND_LABEL: Record<RefKind, string> = {
   journal: "期刊",
@@ -68,6 +78,9 @@ export function Checker() {
   const phaseRef = useRef<Phase>("idle");
   const [sampleRequest, setSampleRequest] = useState(0);
   const agentAborts = useRef(new Map<number, AbortController>());
+  // 批量追查：整批进度；batchStop 记录用户是否点了停止（停止时正在查的那条不计入“没查完”）
+  const [batch, setBatch] = useState<AgentBatchState | null>(null);
+  const batchStop = useRef(false);
   const reportRef = useRef<HTMLDivElement>(null);
 
   // 输入框里实时识别条目数
@@ -141,14 +154,15 @@ export function Checker() {
   }, []);
 
   function stopAgents() {
+    batchStop.current = true;
     for (const controller of agentAborts.current.values()) controller.abort();
     agentAborts.current.clear();
     setAgentRuns(new Map());
   }
 
-  /** AI 检索单条：每一步实时显示，结束后用规则复核的新结果替换原结论；失败时原结论不变 */
-  async function runAgent(item: ParsedRef) {
-    if (agentAborts.current.has(item.index)) return;
+  /** AI 检索单条：每一步实时显示，结束后用规则复核的新结果替换原结论；失败时原结论不变。返回给批量追查计数用 */
+  async function runAgent(item: ParsedRef): Promise<AgentOutcome> {
+    if (agentAborts.current.has(item.index)) return { status: "failed" };
     const controller = new AbortController();
     agentAborts.current.set(item.index, controller);
     const update = (state?: AgentRunState) => setAgentRuns(prev => {
@@ -168,7 +182,7 @@ export function Checker() {
       });
       if (!res.ok || !res.body) {
         const body = (await res.json().catch(() => ({}))) as { error?: string };
-        throw new Error(body.error ?? `请求失败（${res.status}）`);
+        throw Object.assign(new Error(body.error ?? `请求失败（${res.status}）`), { limited: res.status === 429 });
       }
       const result = await readAgentStream(res.body, item.index, event => {
         if (event.type === "step" && agentAborts.current.get(item.index) === controller) {
@@ -176,22 +190,56 @@ export function Checker() {
           update({ status: "running", steps: [...steps] });
         }
       });
-      if (agentAborts.current.get(item.index) !== controller) return;
+      if (agentAborts.current.get(item.index) !== controller) return { status: "failed" };
       setResults(prev => new Map(prev).set(item.index, result));
       update(undefined);
+      return { status: result.agent?.outcome === "confirmed" ? "confirmed" : "unchanged", toolCalls: result.agent?.toolCalls ?? 0 };
     } catch (err) {
+      const message = (err as Error).message || "网络异常";
       if (agentAborts.current.get(item.index) === controller && !controller.signal.aborted) {
-        update({ status: "failed", steps, error: (err as Error).message || "网络异常" });
+        update({ status: "failed", steps, error: message });
       }
+      return { status: "failed", error: message, limited: (err as { limited?: boolean }).limited === true };
     } finally {
       if (agentAborts.current.get(item.index) === controller) agentAborts.current.delete(item.index);
     }
+  }
+
+  /** 批量追查：把待处理条目按顺序逐条交给 AI（接口限每个访客每分钟 6 次，一批最多 6 条），每条的步骤显示在各自卡片上 */
+  async function runBatch(items: ParsedRef[]) {
+    const queue = items.slice(0, AGENT_BATCH_SIZE);
+    if (!queue.length || batch?.running) return;
+    batchStop.current = false;
+    let state: AgentBatchState = { running: true, total: queue.length, done: 0, confirmed: 0, unchanged: 0, failed: 0, toolCalls: 0 };
+    setBatch(state);
+    for (const item of queue) {
+      if (batchStop.current) break;
+      setBatch(state = { ...state, current: item.index });
+      const outcome = await runAgent(item);
+      if (batchStop.current) break;
+      state = {
+        ...state,
+        done: state.done + 1,
+        confirmed: state.confirmed + (outcome.status === "confirmed" ? 1 : 0),
+        unchanged: state.unchanged + (outcome.status === "unchanged" ? 1 : 0),
+        failed: state.failed + (outcome.status === "failed" ? 1 : 0),
+        toolCalls: state.toolCalls + (outcome.toolCalls ?? 0),
+      };
+      setBatch(state);
+      if (outcome.limited) {
+        state = { ...state, stopped: ` 已触发访问限制（${outcome.error}），等一分钟再继续。` };
+        break;
+      }
+    }
+    if (batchStop.current && !state.stopped) state = { ...state, stopped: " 已停止，没查的条目结论不变。" };
+    setBatch({ ...state, running: false, current: undefined });
   }
 
   async function run() {
     window.dispatchEvent(new Event(RUN_STARTED));
     abortRef.current?.abort();
     stopAgents();
+    setBatch(null);
     const controller = new AbortController();
     abortRef.current = controller;
     setError(null);
@@ -253,6 +301,12 @@ export function Checker() {
         break;
     }
   }
+
+  // 还能交给 AI 追查的条目：数据库没查到、只找到相近候选，且还没追查过、不在追查中
+  const batchCandidates = refs.filter((r) => {
+    const result = results.get(r.index);
+    return !!result && !result.agent && agentEligible(result) && agentRuns.get(r.index)?.status !== "running";
+  });
 
   const visible = filter === "all" ? refs : refs.filter((r) => {
     const verdict = results.get(r.index)?.verdict;
@@ -419,6 +473,20 @@ export function Checker() {
             {agentAvailable && "点击「AI 继续查」时，该条引文会发送给 DeepSeek 规划检索，并用 DeepSeek 联网搜索查询知网、万方、维普的论文页，以及 DataCite 等数据源。"}查不到不等于一定是编造，结果供人工复核参考。
           </p>
         </details>
+        {/* 和“直接问 AI”的对照（2026-10-18，130 条带真值的引文）：数字写在收起的那一行里，不展开也看得到 */}
+        <details className="group text-[12.5px] leading-6 text-ink-faint">
+          <summary className="inline-flex cursor-pointer list-none items-start gap-1.5 rounded-full py-1 transition hover:text-ink-soft [&::-webkit-details-marker]:hidden">
+            <IconSpark className="mt-[5px] shrink-0 text-[13px] text-seal" />
+            <span>
+              为什么不直接问 AI：130 条带真值的引文里，不联网的 DeepSeek 把 <b className="tabular font-semibold text-seal">23%–33%</b> 的编造引文说成真实，本系统为 <b className="tabular font-semibold text-jade">0</b>
+            </span>
+            <IconChevron className="mt-[5px] shrink-0 text-[13px] transition-transform duration-300 group-open:rotate-180" />
+          </summary>
+          <p className="mt-1 max-w-3xl">
+            同一批引文，本系统说“已核实”的 19 条全对，给出的改正写法 36 条全对，同样数据重跑 129/130 条结论相同（另 1 条是数据源临时故障）。让 AI 联网搜索后也很强，网页、图书这类本系统判“待人工”的条目它大多能找到；本系统的长处是每个结论都能回到数据库记录，真伪由规则逐字段判定，不由模型决定。
+            <a href="https://github.com/newhack-cpu/cite-checkup/blob/main/docs/competition/COMPARISON-2026-10-18.md" target="_blank" rel="noreferrer" className="ml-1 underline decoration-dotted underline-offset-4 hover:text-ink-soft">实验方法与数据</a>
+          </p>
+        </details>
       </div>
 
       {/* 体检报告 */}
@@ -433,11 +501,14 @@ export function Checker() {
         {refs.length > 0 && (
           <>
             <ReportSummary refs={refs} results={results} running={running} complete={phase === "done"} elapsedMs={elapsedMs} filter={filter} onFilter={setFilter} />
+            {agentAvailable && phase === "done" && (
+              <AgentBatch eligible={batchCandidates.length} batch={batch} onRun={() => void runBatch(batchCandidates)} onStop={stopAgents} />
+            )}
             <div className="space-y-3">
               {visible.map((r, i) => {
                 const result = results.get(r.index);
                 const state = agentRuns.get(r.index);
-                const canRunAgent = agentAvailable && !running && !!result && !result.agent && agentEligible(result) && state?.status !== "running";
+                const canRunAgent = agentAvailable && !running && !batch?.running && !!result && !result.agent && agentEligible(result) && state?.status !== "running";
                 return (
                   <ResultCard
                     key={`${runId}-${r.index}`}

@@ -1,7 +1,7 @@
 import { agentSummary } from "./agent-stream";
 import { VERDICT_META, VERDICT_ORDER } from "./verdict-meta";
 import { formatApa, formatGbt } from "./verify/format";
-import type { ParsedRef, RefResult, Verdict } from "./verify/types";
+import type { ParsedRef, RefResult, Verdict, WorkRecord } from "./verify/types";
 import { localTime } from "./report-html";
 
 export type CitationStyle = "gbt" | "apa";
@@ -20,6 +20,15 @@ const LEADING_NUMBER = /^\s*(?:\[\d+\]|\d+[.、)])\s*/;
 const REWRITABLE: Verdict[] = ["verified", "mismatch", "retracted", "concern"];
 
 /**
+ * 可以按数据库记录重写的条目对应的记录：确认是同一篇、服务端给过规范写法、结论属于可重写的几类。
+ * 拼音登记把姓和名弄反时，作者换成服务端按引文汉字作者调回的那份（suggestionAuthors）
+ */
+export function rewritableRecord(r: RefResult | undefined): WorkRecord | undefined {
+  if (!r?.match || !r.suggestion || r.matchStatus !== "confirmed" || !REWRITABLE.includes(r.verdict)) return undefined;
+  return r.suggestionAuthors ? { ...r.match, authors: r.suggestionAuthors } : r.match;
+}
+
+/**
  * 整份参考文献按一种格式重排：确认是同一篇、而且服务端给过规范写法的条目（建议写法缺作者等信息时服务端不给），
  * 按所选格式用数据库记录重写；相近候选、查不到、待人工、没查完的保留原文并注明原因，不替用户猜。
  * GB/T 7714 用顺序编码，保持原来的顺序和序号；APA 按第一作者排序、不编号。
@@ -29,9 +38,10 @@ export function standardEntries(refs: ParsedRef[], results: Map<number, RefResul
     const r = results.get(ref.index);
     const keep = (note?: string): StandardEntry => ({ index: ref.index, text: ref.raw.replace(LEADING_NUMBER, "").trim(), rewritten: false, note, verdict: r?.verdict });
     if (!r || r.verdict === "error") return keep("未完成核查");
-    if (r.match && r.suggestion && r.matchStatus === "confirmed" && REWRITABLE.includes(r.verdict)) {
+    const rec = rewritableRecord(r);
+    if (rec) {
       const note = r.verdict === "retracted" ? "已撤稿 / 撤回，建议删除或替换" : r.verdict === "concern" ? "期刊发布关注声明，请审慎核查" : undefined;
-      return { index: ref.index, text: style === "gbt" ? formatGbt(r.match) : formatApa(r.match), rewritten: true, note, verdict: r.verdict };
+      return { index: ref.index, text: style === "gbt" ? formatGbt(rec) : formatApa(rec), rewritten: true, note, verdict: r.verdict };
     }
     switch (r.verdict) {
       case "verified": return keep("已核实，数据库记录不全，保留原文");

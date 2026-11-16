@@ -172,6 +172,8 @@ export interface RefResult {
   fields: FieldCheck[];
   /** 根据数据库记录生成的规范写法，只来自检索结果，绝不由模型生成 */
   suggestion?: string;
+  /** 生成规范写法用的作者：数据库拼音登记把姓和名弄反、已按引文汉字作者调回时才有，其余时候用 match.authors */
+  suggestionAuthors?: Author[];
   steps: CheckStep[];
   parsed: ParsedRef;
   /** 经过 AI 检索 Agent 追查时才有 */
