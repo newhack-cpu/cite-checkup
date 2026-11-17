@@ -1,0 +1,64 @@
+[
+ {
+  "id": "faithful",
+  "expect": "supported",
+  "run": 1,
+  "status": "complete",
+  "verdict": "supported",
+  "scope": "Europe PMC 开放全文",
+  "quote": "Unlike the GPT-3.5 citations, most of the GPT-4 citations refer to works that are verifiably real. Only 18% are fabricat",
+  "warnings": []
+ },
+ {
+  "id": "faithful",
+  "expect": "supported",
+  "run": 2,
+  "status": "complete",
+  "verdict": "supported",
+  "scope": "Europe PMC 开放全文",
+  "quote": "Unlike the GPT-3.5 citations, most of the GPT-4 citations refer to works that are verifiably real. Only 18% are fabricat",
+  "warnings": []
+ },
+ {
+  "id": "broadened-all",
+  "expect": "not supported",
+  "run": 1,
+  "status": "complete",
+  "verdict": "contradicted",
+  "scope": "Europe PMC 开放全文",
+  "quote": "Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated.",
+  "warnings": []
+ },
+ {
+  "id": "broadened-all",
+  "expect": "not supported",
+  "run": 2,
+  "status": "complete",
+  "verdict": "insufficient_evidence",
+  "scope": "Europe PMC 开放全文",
+  "quote": "Within this set of documents, 55% of the GPT-3.5 citations but just 18% of the GPT-4 citations are fabricated.",
+  "warnings": [
+   "模型初判为“与证据矛盾”，范围复核发现引句没有单独报告“全部引用”，已改判为“证据不足”。初判理由：证据直接给出相反的数字：GPT-4 引用中仅 18% 为编造，而 55% 是 GPT-3.5 的编造比例。文中“70%”指的是 GPT-4 所引用的书籍章节（book chapters）中有 70% 是编造的，属于子类结果，不能推广到“全部引用”。因此该主张把子类比例误当作总体比例，与原文总体数据不符。局限：证据来自摘要与结果/讨论段落，未核查全文方法与表格细节。"
+  ]
+ },
+ {
+  "id": "broadened-model",
+  "expect": "not supported",
+  "run": 1,
+  "status": "complete",
+  "verdict": "partially_supported",
+  "scope": "Europe PMC 开放全文",
+  "quote": "Unlike the GPT-3.5 citations, most of the GPT-4 citations refer to works that are verifiably real. Only 18% are fabricat",
+  "warnings": []
+ },
+ {
+  "id": "broadened-model",
+  "expect": "not supported",
+  "run": 2,
+  "status": "complete",
+  "verdict": "partially_supported",
+  "scope": "Europe PMC 开放全文",
+  "quote": "Unlike the GPT-3.5 citations, most of the GPT-4 citations refer to works that are verifiably real. Only 18% are fabricat",
+  "warnings": []
+ }
+]
