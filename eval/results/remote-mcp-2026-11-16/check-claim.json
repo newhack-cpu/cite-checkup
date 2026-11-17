@@ -1,0 +1,21 @@
+{
+ "url": "https://kgkvybu111111-cite-checkup.ms.show/api/mcp",
+ "at": "2026-11-17T09:22:51.241Z",
+ "deployedCommit": "8c3fc76 (GitHub d351c7c)",
+ "checkClaim": {
+  "ms": 3359,
+  "status": "complete",
+  "verdict": "contradicted",
+  "explanation": "证据直接给出相反分布：56% 认为备课时间减少，31% 认为无变化，仅13%认为增加。因此\"绝大多数教师认为备课时间增加\"与文本直接冲突（认为增加的只是少数）。需注意：该文本为用户提供的一段调查描述，未提供样本量、抽样方式、问卷细节，也未核实其真实性；且\"绝大多数\"这一措辞在原文中未出现，但原文的百分比分布足以构成直接"
+ },
+ "verifyReferences": {
+  "verified": 1,
+  "mismatch": 0,
+  "near_match": 0,
+  "not_found": 0,
+  "retracted": 0,
+  "concern": 0,
+  "unverifiable": 0,
+  "error": 0
+ }
+}
