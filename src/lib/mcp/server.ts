@@ -67,7 +67,9 @@ export interface ServerOptions {
 
 export function createCiteCheckupServer(options: ServerOptions = {}): McpServer {
   // 0.2.0：结论新增 near_match（只找到相近候选，不算信息有误）
-  const server = new McpServer({ name: "cite-checkup", version: "0.2.0" });
+  // 两个工具最多接收 4 个字符串字段；先限制整个 arguments 的键/数组元素数量，再进入 Zod 校验。
+  // SDK 1.32.0 默认不启用此保护，必须显式设置；HTTP 与 stdio 共用，长引文仍按字符串长度单独限额。
+  const server = new McpServer({ name: "cite-checkup", version: "0.2.0" }, { maxToolInputElements: 16 });
   // 论断核查要调用模型，和网页接口一样限次，防止客户端模型反复调用
   const claimLimits = options.claimLimits ?? createClaimLimits();
 

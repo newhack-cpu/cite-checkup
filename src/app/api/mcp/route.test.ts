@@ -62,6 +62,19 @@ describe("MCP over Streamable HTTP", () => {
     await client.close();
   });
 
+  it.each([
+    { references: citation, ...Object.fromEntries(Array.from({ length: 16 }, (_, i) => [`extra${i}`, "x"])) },
+    { references: citation, extra: Array.from({ length: 15 }, () => "x") },
+  ])("rejects more than 16 input members before invoking the tool", async (arguments_) => {
+    const client = await connect();
+    const result = await client.callTool({ name: "verify_references", arguments: arguments_ });
+    expect(result.isError).toBe(true);
+    expect(JSON.stringify(result.content)).toContain("maximum of 16 elements");
+    expect(calls.verify).not.toHaveBeenCalled();
+    expect(calls.claim).not.toHaveBeenCalled();
+    await client.close();
+  });
+
   it("answers a browser GET with usage, rejects oversized and malformed bodies, and caps messages per minute", async () => {
     const route = await import("./route");
     const get = await route.GET();
