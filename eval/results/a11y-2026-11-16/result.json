@@ -1,0 +1,29 @@
+{
+ "base": "http://localhost:3210",
+ "axeVersion": "4.14.0",
+ "states": [
+  {
+   "state": "desktop：首页，对照数据展开",
+   "violations": []
+  },
+  {
+   "state": "desktop：结果页，批量追查面板与规范参考文献面板",
+   "violations": []
+  },
+  {
+   "state": "mobile：首页，对照数据展开",
+   "violations": []
+  },
+  {
+   "state": "mobile：结果页，批量追查面板与规范参考文献面板",
+   "violations": []
+  }
+ ],
+ "keyboard": {
+  "reachableByTab": [
+   "AI 继续查这",
+   "为什么不直接问 AI",
+   "导出 BibTeX"
+  ]
+ }
+}

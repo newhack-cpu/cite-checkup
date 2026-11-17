@@ -71,6 +71,24 @@ describe("retrieval augmented claim checking", () => {
     expect(result.warnings.join(" ")).toMatch(/初判为“与证据矛盾”.*已改判为“证据不足”.*总体只有 12%/);
   });
 
+  it("keeps a contradiction when the only uncovered qualifier is a quantity word (11-16 red-team case)", async () => {
+    const quote = "调查显示，使用该软件的教师中，有 56% 认为备课时间有所减少，31% 认为没有变化，13% 认为增加。";
+    const judge = { verdict: "contradicted", explanation: "多数认为减少，认为增加的只有 13%。", citations: [{ sourceId: "source-1", chunkId: "source-1-c1", quote }] };
+    vi.stubGlobal("fetch", byTool(judge, () => reply({ qualifiers: [{ qualifier: "绝大多数", inQuote: false }, { qualifier: "教师", inQuote: true }] }, "tool_calls", "check_scope")));
+    const result = await checkClaim({ claim: "绝大多数教师认为使用该软件后备课时间增加了。", evidenceText: quote });
+    expect(result).toMatchObject({ status: "complete", verdict: "contradicted" });
+    expect(result.warnings.join(" ")).not.toMatch(/已改判/);
+  });
+
+  it("still downgrades when a real scope qualifier is missing alongside a quantity word", async () => {
+    const judge = { verdict: "contradicted", explanation: "总体只有 12%。", citations: [{ sourceId: "source-1", chunkId: "source-1-c1", quote: "Overall, 12% of patients reported side effects." }] };
+    vi.stubGlobal("fetch", byTool(judge, () => reply({ qualifiers: [{ qualifier: "Most", inQuote: false }, { qualifier: "patients over 80", inQuote: false }] }, "tool_calls", "check_scope")));
+    const result = await checkClaim({ claim: "Most patients over 80 reported side effects.", evidenceText: "Overall, 12% of patients reported side effects." });
+    expect(result.verdict).toBe("insufficient_evidence");
+    expect(result.explanation).toContain("“patients over 80”");
+    expect(result.explanation).not.toContain("“Most”");
+  });
+
   it("treats a malformed scope answer as an unfinished review", async () => {
     const judge = { verdict: "contradicted", explanation: "试验未观察到收益。", citations: [{ sourceId: "source-1", chunkId: "source-1-c1", quote: "The trial found no benefit." }] };
     vi.stubGlobal("fetch", byTool(judge, () => reply({ qualifiers: [{ qualifier: "老年患者", inQuote: false, sameScope: false }] }, "tool_calls", "check_scope")));

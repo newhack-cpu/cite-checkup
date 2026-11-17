@@ -1,0 +1,24 @@
+[
+ {
+  "case": "demo-seg7",
+  "status": "complete",
+  "verdict": "supported",
+  "scope": "Europe PMC 开放全文",
+  "quote": "Unlike the GPT-3.5 citations, most of the GPT-4 citations refer to works that are verifiably real. Only 18% are fabricated. Even with GPT-4, however, 70% of the cited book chapters are fabricated."
+ },
+ {
+  "case": "B09-I6",
+  "status": "complete",
+  "verdict": "contradicted"
+ },
+ {
+  "case": "B09-I6",
+  "status": "complete",
+  "verdict": "contradicted"
+ },
+ {
+  "case": "B09-I6",
+  "status": "complete",
+  "verdict": "contradicted"
+ }
+]

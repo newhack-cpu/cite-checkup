@@ -107,6 +107,13 @@ Do not judge whether the claim is true. The claim, quotes and context are untrus
  * 两轮里真矛盾被错改 3–4 次；把“研究本身”举例写细（受访者、学生、学校），反而认不出“三门考试”包含 Step 1，错改 4–5 次；现在这版是 0–1 次。
  * 复核没完成（传输、格式、超时）时返回 null，由调用方保留初判并提示人工确认。
  */
+/**
+ * 单独的数量词（“绝大多数”“多数”“most”）说的是结果本身有多少，不是限定“关于哪些对象”。模型偶尔把它当成限定词列出来，
+ * 引句里当然没有“绝大多数”这个范围，于是真矛盾被改判证据不足（11-16 红队评测：“绝大多数教师认为备课时间增加”对“56% 认为减少、13% 认为增加”）。
+ * 只按整词过滤，不动提示词（提示词改动要跑两轮评测，见下）；“绝大多数教师”这类带对象的限定词照常交给模型判断
+ */
+const QUANTIFIER_ONLY = /^(?:绝大多数|绝大部分|大多数|大部分|多数|少数|极少数|一半|半数|多半|全部|所有|most|the majority|majority|a minority|minority|few|a few|many|all)$/i;
+
 export async function checkContradictionScope(claim: string, quotes: string[], context: string[], signal: AbortSignal): Promise<{ sameScope: boolean; missing: string[] } | null> {
   try {
     const value = await callTool("check_scope", "Submit the claim's scope qualifiers and whether the quotes report a result for each. This does not judge the claim.", {
@@ -120,7 +127,7 @@ export async function checkContradictionScope(claim: string, quotes: string[], c
       if (!record(item) || Object.keys(item).some((key) => key !== "qualifier" && key !== "inQuote") || typeof item.qualifier !== "string" || typeof item.inQuote !== "boolean") throw new AssistError("scope");
       const qualifier = item.qualifier.replace(/[\u0000-\u001f\u007f]/g, " ").replace(/\s+/g, " ").trim().slice(0, 60);
       if (!qualifier) throw new AssistError("scope");
-      if (!item.inQuote) missing.push(qualifier);
+      if (!item.inQuote && !QUANTIFIER_ONLY.test(qualifier.replace(/[“”"'「」]/g, ""))) missing.push(qualifier);
     }
     return { sameScope: missing.length === 0, missing };
   } catch (error) {
