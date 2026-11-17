@@ -18,6 +18,10 @@
 | `DEMO_SCRIPT.md` | 双片分镜、逐项操作、已批准演示输入、评测事实与异常分支 |
 | `VIDEO_PROMPT.md` | 既有正式录制要求（真实运行、讲稿与画面一致、字幕、验收）；本轮音色已选定，双片执行约束见 `media/video-2026-10-18/BRIEF.md` |
 | `TRIAL_GUIDE.md` | 请老师试用的指南：魔搭试用入口、三分钟讲解、试用流程、记录表和 SUS 可用性量表 |
+| `TRIAL_10MIN.md`、`trial-10min.csv` | 10 分钟试用包（11-16）：微信邀请语、5 步操作、只填 5 个数的记录表（CSV 带 BOM，Excel 直接打开）；收回后整理成材料，不编不美化 |
+| `media/slides/slide-03-ai-map.*` | AI 技术深度六项对照卡（11-16）：每项对应的功能、实测数字和视频段落；视频片头后 15 秒、作品介绍图 3-1、技术说明图 1-1、README 评委入口都用它。`render_slide.py` 从 HTML 生成 |
+| `media/teleprompter-2026-11-16.md`、`media/subtitles-draft-2026-11-16.srt` | 按新时间线生成的提词稿（标出按每秒 4 字读不完的行）和字幕草稿（75 条，录完对着配音微调）；`media/build_teleprompter.py` 从 SHOOTING_SCRIPT.md 生成 |
+| `patch_docx_2026_11_16.py`、`patch_docx_2026_11_16b.py` | 11-16 给两份定稿 Word 补内容的一次性脚本（逐处核对原文后修改），留作修改记录 |
 | `COMPARISON-2026-10-18.md` | 和“直接问 AI”的对照实验与消融：130 条构造真值，本系统三档对 DeepSeek 不联网 / 联网四档，含重复运行一致性 |
 | `USABILITY-2026-10-18.md` | 自动化可用性走查（不是真人测试）：任务步数与耗时、axe-core 无障碍、启发式评估与改进清单 |
 | `CLAIM-SCOPE-2026-10-19.md` | 论断“范围错配”评测：47 条论断（三篇论文摘要 + 合成材料）各判 3 次，比较只判定与加范围复核，含改进过程和局限 |

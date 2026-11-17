@@ -2,6 +2,24 @@
 
 [![CI](https://github.com/newhack-cpu/cite-checkup/actions/workflows/ci.yml/badge.svg)](https://github.com/newhack-cpu/cite-checkup/actions/workflows/ci.yml)
 
+## 评委入口
+
+| 看什么 | 在哪里 |
+|---|---|
+| 在线演示（免登录，电脑、手机都能用；第一次打开约等半分钟） | [魔搭创空间](https://www.modelscope.cn/studios/kgkvybu111111/cite-checkup?mode=full) |
+| 远程 MCP（Claude、Cursor 等填地址即可调用） | `https://kgkvybu111111-cite-checkup.ms.show/api/mcp`，配置见 [MCP Server](#mcp-server) |
+| 技术说明（30 页）/ 作品介绍（9 页） | [技术说明 PDF](docs/competition/output/docx/引用体检-技术说明.pdf) · [作品介绍 PDF](docs/competition/output/docx/引用体检-作品介绍.pdf) |
+| 自动测试 | 页首徽章：每次提交在 GitHub Actions 上跑类型检查、lint、全部单元测试和生产构建 |
+
+**3 分钟怎么看**：
+
+1. 打开在线演示，点“载入示例”→“开始体检”，约 20 秒出结果；点筛选栏“需要处理”，展开看字段比对和数据库里的规范写法。
+2. 结果上方点“AI 继续查”：大模型逐条规划检索，找到的候选由规则逐字段确认，查不到就保持待人工。
+3. 切到顶部“正文论断核查”：输入一句论断和 DOI，看判断、原文引句和判断范围。
+4. 对照下图看 AI 技术深度六项各落在哪个功能上（技术说明图 1-1）。
+
+![AI 技术深度六项对照](docs/competition/media/slides/slide-03-ai-map.jpg)
+
 核查论文参考文献的**真实性、信息准确性与撤稿状态**，并比对**正文论断是否得到指定材料支持**。支持 PDF / DOCX / TXT 导入、拍照 / 截图识别、隐藏提示词检测、证据定位与报告下载。
 
 > 在一项 2023 年研究的特定样本中，GPT-3.5 生成引文的 55% 为虚构，GPT-4 为 18%；这些比例不代表当前模型或所有使用场景。
